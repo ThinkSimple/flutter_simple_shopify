@@ -32,6 +32,8 @@ The Goal is to make creating an Mobile App from your Shopify Website easier.
 ```
 ```dart    
   ShopifyStore shopifyStore = ShopifyStore.instance;
+     Future<List<Product>> getProductsByIds()
+     Future<List<Product>> getXProductsAfterCursor(int limit,String startCursor)
      Future<List<Product>> getAllProducts()
      Future<List<Product>> getNProducts({@required int n, @required SortKey sortKey})
      Future<String> getShopName()
@@ -53,12 +55,12 @@ The Goal is to make creating an Mobile App from your Shopify Website easier.
 ```dart
   ShopifyCustomer shopifyCustomer = ShopifyCustomer.instance;
      Future<void> customerAddressUpdate({String address1, String address2, String company, String city, String country, String firstName, String lastName, String phone, String province, String zip, String customerAccessToken, id})
-     Future<void> createCustomer({String email, String firstName, String lastName, String password, String phoneNumber, bool acceptsMarketing})
-     Future<QueryResult> customerRecover({String email})
-     Future<QueryResult> getCustomer({String customerAccessToken})
-     Future<QueryResult> customerUpdate({String email, String firstName, String lastName, String password, String phoneNumber, String customerAccessToken, bool acceptsMarketing})
+     Future<void> customerRecover({String email})
+     Future<void> getCustomer({String customerAccessToken})
+     Future<void> customerUpdate({String email, String firstName, String lastName, String password, String phoneNumber, String customerAccessToken, bool acceptsMarketing})
      Future<void> customerAddressCreate({String address1, String address2, String company, String city, String country, String firstName, String lastName, String phone, String province, String zip, String customerAccessToken})
-     Future<QueryResult> customerAddressDelete({String customerAccessToken, String addressId})
+     Future<     Future<void> customerUpdate({String email, String firstName, String lastName, String password, String phoneNumber, String customerAccessToken, bool acceptsMarketing})
+> customerAddressDelete({String customerAccessToken, String addressId})
 ```
 
 Above you see the instance on top and the possible methods and functions which you can use.
