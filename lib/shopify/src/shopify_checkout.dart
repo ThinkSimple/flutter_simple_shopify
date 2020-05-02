@@ -14,130 +14,133 @@ import '../../models/src/checkout.dart';
 import '../../shopify_config.dart';
 
 class ShopifyCheckout {
-  
   ShopifyCheckout._();
   static final ShopifyCheckout instance = ShopifyCheckout._();
 
   GraphQLClient _graphQLClient = ShopifyConfig.graphQLClient;
 
-  /// Returns a Checkout object.
+  /// Returns a [Checkout] object.
   ///
   /// Returns the Checkout object of the checkout with the [checkoutId].
-  Future<Checkout> getCheckoutInfoQuery({String checkoutId}) async{
-    final WatchQueryOptions _options = WatchQueryOptions(
-        documentNode: gql(getCheckoutInfo),
-        variables: {
-          'checkoutId' : checkoutId,
-        }
-    );
-   Checkout checkout = Checkout.fromJson((await _graphQLClient.query(_options))?.data['node']);
-    return Checkout.fromJson((await _graphQLClient.query(_options))?.data['node']);
+  Future<Checkout> getCheckoutInfoQuery({String checkoutId}) async {
+    final WatchQueryOptions _options =
+        WatchQueryOptions(documentNode: gql(getCheckoutInfo), variables: {
+      'checkoutId': checkoutId,
+    });
+    return Checkout.fromJson(
+        (await _graphQLClient.query(_options))?.data['node']);
   }
 
-  /// Returns all orders in a List of Orders.
+  /// Returns all [Order] in a List of Orders.
   ///
   /// Returns a List of Orders from the Customer with the [customerAccessToken].
-  Future<List<Order>> getAllOrders({String customerAccessToken}) async{
+  Future<List<Order>> getAllOrders({String customerAccessToken}) async {
     List<Order> orderList = [];
     Orders tempOrder;
     String cursor;
-    do{
-      final WatchQueryOptions _options = WatchQueryOptions(
-          documentNode: gql(getAllOrdersQuery),
-          variables: {
-            'cursor' : cursor,
-            'customerAccessToken' : customerAccessToken,
-          }
-      );
-      tempOrder = (Orders.fromJson(((await _graphQLClient.query(_options))?.data['customer']  ?? const {})['orders']));
+    do {
+      final WatchQueryOptions _options =
+          WatchQueryOptions(documentNode: gql(getAllOrdersQuery), variables: {
+        'cursor': cursor,
+        'customerAccessToken': customerAccessToken,
+      });
+      tempOrder = (Orders.fromJson(
+          ((await _graphQLClient.query(_options))?.data['customer'] ??
+              const {})['orders']));
       orderList += tempOrder?.orderList ?? const [];
       cursor = orderList.last.cursor;
-    }while((tempOrder?.hasNextPage == true));
+    } while ((tempOrder?.hasNextPage == true));
     return orderList;
   }
 
-
-  Future<void> checkoutLineItemsReplace({String checkoutId, List<Map<String,dynamic>> checkoutLineItems}) async {
-    final MutationOptions _options = MutationOptions(
-        documentNode: gql(replaceCheckoutItems),
-        variables: {
-          'checkoutId': checkoutId,
-          'checkoutLineItems': checkoutLineItems,
-        }
-    );
+  /// Replaces the [LineItems] in the [Checkout] associated to the [checkoutId].
+  ///
+  /// [checkoutLineItems] is a List of Map>String,dynamic> and should look like this:
+  ///
+  /// [
+  /// {"quantity": 1, "variantId": "example-variant-id-1"},
+  /// {"quantity": 2, "variantId": "example-variant-id-2"},
+  /// {"quantity": 3, "variantId": "example-variant-id-3"}
+  /// ]
+  Future<void> checkoutLineItemsReplace(
+      {String checkoutId, List<Map<String, dynamic>> checkoutLineItems}) async {
+    final MutationOptions _options =
+        MutationOptions(documentNode: gql(replaceCheckoutItems), variables: {
+      'checkoutId': checkoutId,
+      'checkoutLineItems': checkoutLineItems,
+    });
     return await _graphQLClient.mutate(_options);
   }
 
-  Future<void> checkoutCustomerAssociate({String checkoutId, String customerAccessToken}) async {
+  /// Associates the [Customer] that [customerAccessToken] belongs to, to the [Checkout] that [checkoutId] belongs to.
+  Future<void> checkoutCustomerAssociate(
+      {String checkoutId, String customerAccessToken}) async {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(associateCustomer),
         variables: {
-          'checkoutId' : checkoutId,
-          'customerAccessToken' : customerAccessToken
-        }
-    );
+          'checkoutId': checkoutId,
+          'customerAccessToken': customerAccessToken
+        });
     return await _graphQLClient.mutate(_options);
   }
 
+  /// Disassociates the [Customer] from the [Checkout] that [checkoutId] belongs to.
   Future<void> checkoutCustomerDisassociate({String checkoutId}) async {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(checkoutCustomerDisassociateMutation),
-        variables: {
-          'id' : checkoutId
-        }
-    );
+        variables: {'id': checkoutId});
     return await _graphQLClient.mutate(_options);
   }
 
-  Future<void> checkoutDiscountCodeApply({String checkoutId, String discountCode}) async {
+  /// Applies [discountCode] to the [Checkout] that [checkoutId] belongs to.
+  Future<void> checkoutDiscountCodeApply(
+      {String checkoutId, String discountCode}) async {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(checkoutDiscountCodeApplyMutation),
-        variables: {
-          'checkoutId' : checkoutId,
-          'discountCode' : discountCode
-        }
-    );
+        variables: {'checkoutId': checkoutId, 'discountCode': discountCode});
     return await _graphQLClient.mutate(_options);
   }
 
+  /// Removes the applied discount from the [Checkout] that [checkoutId] belongs to.
   Future<void> checkoutDiscountCodeRemove({String checkoutId}) async {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(checkoutDiscountCodeRemoveMutation),
-        variables: {
-          'checkoutId' : checkoutId
-        }
-    );
+        variables: {'checkoutId': checkoutId});
     return await _graphQLClient.mutate(_options);
   }
 
-  Future<void> checkoutGiftCardAppend(String checkoutId, List<String> giftCardCodes) async {
+  /// Appends the [giftCardCodes] to the [Checkout] that [checkoutId] belongs to.
+  Future<void> checkoutGiftCardAppend(
+      String checkoutId, List<String> giftCardCodes) async {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(checkoutGiftCardsAppendMutation),
-        variables: {
-          'checkoutId' : checkoutId,
-          'giftCardCodes' : giftCardCodes
-        }
-    );
+        variables: {'checkoutId': checkoutId, 'giftCardCodes': giftCardCodes});
     return await _graphQLClient.mutate(_options);
   }
 
+  /// Returns the Checkout Id.
+  ///
+  /// Creates a new [Checkout].
   Future<String> createCheckout() async {
     final MutationOptions _options = MutationOptions(
       documentNode: gql(createCheckoutMutation),
     );
 
-    return (((await ShopifyConfig.graphQLClient.mutate(_options)).data['checkoutCreate'] ?? const {})['checkout'] ?? const {})['id'];
+    return (((await ShopifyConfig.graphQLClient.mutate(_options))
+                .data['checkoutCreate'] ??
+            const {})['checkout'] ??
+        const {})['id'];
   }
 
-  Future<void> checkoutGiftCardRemove(String appliedGiftCardId, String checkoutId) async {
+  /// Removes the Gift card that [appliedGiftCardId] belongs to, from the [Checkout] that [checkoutId] belongs to.
+  Future<void> checkoutGiftCardRemove(
+      String appliedGiftCardId, String checkoutId) async {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(checkoutGiftCardRemoveMutation),
         variables: {
-          'appliedGiftCards' : appliedGiftCardId,
-          'checkoutId' : checkoutId
-        }
-    );
+          'appliedGiftCards': appliedGiftCardId,
+          'checkoutId': checkoutId
+        });
     return await _graphQLClient.mutate(_options);
   }
-
 }

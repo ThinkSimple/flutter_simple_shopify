@@ -1,6 +1,6 @@
 const String getProductsByIdsQuery = r'''
-{
-  nodes(ids: [ID!]) {
+query($ids : [ID!]!){
+  nodes(ids: $ids) {
     ... on Product {
       id
       handle

@@ -31,10 +31,10 @@ class Collection {
   final String id;
   final String updatedAt;
   final ShopifyImage image;
-  final List<Product> productList;
+  final Products products;
   final String cursor;
 
-  Collection({this.title, this.description, this.descriptionHtml, this.handle, this.id, this.updatedAt, this.image, this.productList, this.cursor});
+  Collection({this.title, this.description, this.descriptionHtml, this.handle, this.id, this.updatedAt, this.image, this.products, this.cursor});
 
 
 
@@ -47,7 +47,7 @@ class Collection {
     id: (json['node'] ?? const {})['id'],
     updatedAt: (json['node'] ?? const {})['updatedAt'],
     image: ShopifyImage.fromJson((json['node'] ?? const {})['image'] ?? const {}),
-    productList: _getProductList(json),
+    products: Products.fromJson((json['node'] ?? const {})['products'] ?? const {}),
     cursor: json['cursor'],
     );
   }

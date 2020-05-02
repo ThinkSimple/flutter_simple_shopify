@@ -1,1 +1,1 @@
-export 'src/sort_key.dart';
+export 'src/sort_key_product.dart';

@@ -1,0 +1,9 @@
+enum SortKeyArticle {
+  TITLE,
+  BLOG_TITLE,
+  AUTHOR,
+  UPDATED_AT,
+  PUBLISHED_AT,
+  ID,
+  RELEVANCE
+}

@@ -1,4 +1,4 @@
-enum SortKey{
+enum SortKeyProduct {
   TITLE,
   PRODUCT_TYPE,
   VENDOR,
