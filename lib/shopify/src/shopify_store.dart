@@ -1,7 +1,11 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_from_collection_by_id.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_on_query.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_products_by_ids.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor_within_collection.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_on_query_after_cursor.dart';
 import 'package:flutter_simple_shopify/models/src/product.dart';
 import 'package:flutter_simple_shopify/enums/src/sort_key_product.dart';
 import 'package:graphql/client.dart';
@@ -58,9 +62,10 @@ class ShopifyStore {
                 const {})["products"] ??
             {}));
     productList += tempProduct?.productList ?? const [];
-    cursor = productList.last.cursor;
     return productList;
   }
+
+
 
   /// Returns a List of [Product].
   ///
@@ -151,4 +156,82 @@ class ShopifyStore {
     } while ((tempCollection?.hasNextPage == true));
     return collectionList;
   }
+
+  /// Returns a List of [Product].
+  ///
+  /// Returns all Products from the [Collection] with the [id].
+  Future<List<Product>> getAllProductsFromCollectionById(String id) async {
+    String cursor;
+    List<Product> productList = [];
+    Collection collection;
+    do {
+      final QueryOptions _options = WatchQueryOptions(
+          documentNode: gql(getCollectionByIdQuery),
+          variables: {
+            'id': id,
+            'cursor': cursor
+          }
+      );
+      productList.addAll((Collection.fromJson((await ShopifyConfig.graphQLClient.query(_options))?.data).products).productList);
+      collection = (Collection.fromJson((await ShopifyConfig.graphQLClient.query(_options))?.data));
+      cursor = productList.last.cursor;
+    }while(collection?.products?.hasNextPage == true);
+    return productList;
+  }
+
+  /// Returns a List of [Product].
+  ///
+  /// Returns the first [limit] Products after the given [startCursor].
+  /// [limit] has to be in the range of 0 and 250.
+  Future<List<Product>> getXProductsAfterCursorWithinCollection(
+      String id, int limit, String startCursor, SortKeyProduct sortKey) async {
+    String cursor = startCursor;
+    final WatchQueryOptions _options = WatchQueryOptions(
+        documentNode: gql(getXProductsAfterCursorWithinCollectionQuery),
+        variables: {
+          'id': id,
+          'cursor': cursor,
+          'limit': limit,
+          'sortKey': EnumToString.parse(sortKey),
+        });
+    return (Collection.fromJson((await ShopifyConfig.graphQLClient.query(_options))?.data)).products.productList;
+  }
+
+  /// Returns a List of [Product].
+  ///
+  /// Gets all [Product] from a [query] search sorted by [sortKey].
+  Future<List<Product>> getAllProductsOnQuery(String cursor, SortKeyProduct sortKey, String query) async {
+    String cursor;
+    List<Product> productList = [];
+    Products products;
+    do {
+      final WatchQueryOptions _options = WatchQueryOptions(
+          documentNode: gql(getAllProductsOnQueryQuery),
+          variables: {
+            'cursor': cursor,
+            'sortKey': EnumToString.parse(sortKey),
+            'query': query,
+          });
+      productList.addAll((Products.fromJson(((await ShopifyConfig.graphQLClient.query(_options))?.data ?? const {})['products']))?.productList);
+      products = (Products.fromJson(((await ShopifyConfig.graphQLClient.query(_options))?.data ?? const {})['products']));
+      cursor = productList.last.cursor;
+    }while(products?.hasNextPage == true);
+    return productList;
+  }
+
+  /// Returns a List of [Product].
+  ///
+  /// Gets [limit] amount of [Product] from the [query] search, sorted by [sortKey].
+  Future<List<Product>> getXProductsOnQueryAfterCursor(String cursor, int limit, SortKeyProduct sortKey, String query) async {
+    final WatchQueryOptions _options = WatchQueryOptions(
+        documentNode: gql(getXProductsOnQueryAfterCursorQuery),
+        variables: {
+          'cursor': cursor,
+          'limit': limit,
+          'sortKey': EnumToString.parse(sortKey),
+          'query': query,
+        });
+    return Products.fromJson(((await ShopifyConfig.graphQLClient.query(_options))?.data ?? const{})['products'])?.productList;
+  }
+
 }

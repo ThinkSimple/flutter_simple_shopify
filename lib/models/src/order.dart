@@ -9,14 +9,14 @@ class Orders {
 
   static Orders fromJson(Map<String, dynamic> json){
     return Orders(
-      orderList: _getOrderList(json),
+      orderList: _getOrderList(json ?? const {}),
       hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage']
     );
   }
 
   static List<Order>_getOrderList(Map<String, dynamic> json) {
     List<Order> orderList = [];
-    json['edges'].forEach((e) => orderList.add(Order.fromJson(e)));
+    json['edges']?.forEach((e) => orderList.add(Order.fromJson(e ?? const {})));
     return orderList;
   }
 
@@ -49,7 +49,7 @@ class Order {
       email: (json['node'] ?? const {})['email'],
       currencyCode: (json['node'] ?? const {})['currencyCode'],
       customerUrl: (json['node'] ?? const {})['customerUrl'],
-      lineItems: _getLineItems(json),
+      lineItems: _getLineItems(json ?? const {}),
       name: (json['node'] ?? const {})['name'],
       orderNumber: (json['node'] ?? const {})['orderNumber'],
       phone: (json['node'] ?? const {})['phone'],
@@ -67,7 +67,7 @@ class Order {
 
   static List<LineItems> _getLineItems(Map<String, dynamic> json) {
     List<LineItems> lineItemsList = [];
-    ((json['node'] ?? const {})['lineItems'] ?? const {})['edges'].forEach((e) => lineItemsList.add(LineItems.fromJson(e)));
+    ((json['node'] ?? const {})['lineItems'] ?? const {})['edges']?.forEach((e) => lineItemsList.add(LineItems.fromJson(e ?? const {})));
     return lineItemsList;
   }
 }

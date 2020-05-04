@@ -9,3 +9,11 @@
 ## [0.0.3-alpha] - 02/05/2020
 
 * added ShopifyBlog with 3 new methods. 
+
+## [0.0.4-alpha] - 02/05/2020
+
+* added null checks on the models. 
+
+## [0.0.5-alpha] - 02/05/2020
+
+* fixed a minor bug @ getCheckoutInfoQuery and added 2 new methods

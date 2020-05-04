@@ -14,7 +14,7 @@ void main() {
   
   ShopifyConfig.setConfig(
       'de16cae1ce0b86260703fccaa6b689a3', // Storefront API access token.
-      'exampleShopname.myshopify.com', // Store urk.
+      'exampleShopname.myshopify.com', // Store url.
       '2020-04'); // The Shopify Storefront API version.
   
   runApp(MyApp());
@@ -39,6 +39,8 @@ The goal is to make creating an mobile app from your Shopify website easier.
      Future<String> getShopName()
      Future<Collection> getFeaturedCollection()
      Future<List<Collection>> getAllCollections()
+     Future<List<Product>> getXProductsAfterCursorWithinCollection(String id, int limit, String startCursor, SortKeyProduct sortKey)
+     Future<List<Product>> getAllProductsFromCollectionById(String id)
 ```
 ```dart
   ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;

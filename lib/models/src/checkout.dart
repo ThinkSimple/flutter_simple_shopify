@@ -30,33 +30,33 @@ class Checkout{
     return Checkout(
       id: json['id'],
       email: json['email'],
-      appliedGiftcards: _getAppliedGiftCards(json),
-      availableShippingrates: AvailableShippingRates.fromJson(json['availableShippingRates']),
+      appliedGiftcards: _getAppliedGiftCards(json ?? const {}),
+      availableShippingrates: AvailableShippingRates.fromJson(json['availableShippingRates'] ?? const {}),
       completedAt: json['completedAt'],
       createdAt: json['createddAt'],
       currencyCode: json['currencyCode'],
-      lineItems: _getLineItems(json),
+      lineItems: _getLineItems(json ?? const {}),
       note: json['note'],
       webUrl: json['webUrl'],
       updatedAt: json['updatedAt'],
-      totalTaxV2: PriceV2.fromJson(json['totalTaxV2']),
-      totalPriceV2: PriceV2.fromJson(json['totalPriceV2']),
+      totalTaxV2: PriceV2.fromJson(json['totalTaxV2'] ?? const {}),
+      totalPriceV2: PriceV2.fromJson(json['totalPriceV2'] ?? const {}),
       taxesIncluded: json['taxesIncluded'],
       taxExempt: json['taxExempt'],
-      subtotalPriceV2: PriceV2.fromJson(json['subtotalPriceV2']),
+      subtotalPriceV2: PriceV2.fromJson(json['subtotalPriceV2'] ?? const {}),
       orderStatusUrl: json['orderStatusUrl'],
     );
   }
 
    static List<AppliedGiftCards> _getAppliedGiftCards(Map<String, dynamic> json) {
     List<AppliedGiftCards> appliedGiftCardsList = [];
-    json['appliedGiftCards'].forEach((e) => appliedGiftCardsList.add(AppliedGiftCards.fromJson(e)));
+    json['appliedGiftCards']?.forEach((e) => appliedGiftCardsList.add(AppliedGiftCards.fromJson(e ?? const {})));
     return appliedGiftCardsList;
     }
 
     static List<LineItems> _getLineItems(Map<String, dynamic> json) {
       List<LineItems> lineItemsList = [];
-      (json['lineItems'] ?? const {})['edges'].forEach((e) => lineItemsList.add(LineItems.fromJson(e)));
+      (json['lineItems'] ?? const {})['edges']?.forEach((e) => lineItemsList.add(LineItems.fromJson(e ?? const {})));
       return lineItemsList;
     }
 
@@ -74,12 +74,12 @@ class AvailableShippingRates {
   static AvailableShippingRates fromJson(Map<String, dynamic> json){
     return AvailableShippingRates(
       ready: json['ready'],
-      shippingRates: _getShippingRates(json),
+      shippingRates: _getShippingRates(json ?? const {}),
     );
   }
   static List<ShippingRates> _getShippingRates(Map<String, dynamic> json) {
     List<ShippingRates> shippingRatesList = [];
-    json['shippingRates'].forEach((e) => shippingRatesList.add(ShippingRates.fromJson(e)));
+    json['shippingRates']?.forEach((e) => shippingRatesList.add(ShippingRates.fromJson(e ?? const {})));
     return shippingRatesList;
   }
 
@@ -98,7 +98,7 @@ class ShippingRates {
     return ShippingRates(
       handle: json['handle'],
       title: json['title'],
-      priceV2: PriceV2.fromJson(json['priceV2'])
+      priceV2: PriceV2.fromJson(json['priceV2'] ?? const {})
     );
   }
 }
@@ -151,7 +151,7 @@ class ProductVariantCheckout {
       price:
       PriceV2.fromJson(json['priceV2'] ?? const {}),
       title: json['title'],
-      image: ShopifyImage.fromJson((json['node'] ?? const {})['image'] ?? {}),
+      image: ShopifyImage.fromJson((json['node'] ?? const {})['image'] ?? const {}),
       compareAtPrice: PriceV2.fromJson(
           json['compareAtPriceV2'] ?? const {} ),
       weight: json['weight'] ,
@@ -174,8 +174,8 @@ class AppliedGiftCards {
 
   static AppliedGiftCards fromJson(Map<String, dynamic> json){
     return AppliedGiftCards(
-      amountUsedV2: PriceV2.fromJson(json['amountUsedV2']),
-      balanceV2: PriceV2.fromJson(json['balanceV2']),
+      amountUsedV2: PriceV2.fromJson(json['amountUsedV2'] ?? const {}),
+      balanceV2: PriceV2.fromJson(json['balanceV2'] ?? const {}),
       id: json['id']
     );
   }

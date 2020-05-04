@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:meta/meta.dart';
 import 'package:graphql/client.dart';
 import '../../graphql_operations/mutations/access_token_delete.dart';
 import '../../graphql_operations/mutations/customer_access_token_create.dart';

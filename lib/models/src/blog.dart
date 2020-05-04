@@ -9,13 +9,13 @@ class Blogs {
 
   static Blogs fromJson(Map<String, dynamic> json){
     return Blogs(
-        blogList: _getBlogList(json)
+        blogList: _getBlogList(json ?? const {})
     );
   }
 
   static List<Blog> _getBlogList(Map<String, dynamic> json) {
     List<Blog> blogList = [];
-    json['edges'].forEach((blog) => blogList.add(Blog.fromJson(blog)));
+    json['edges']?.forEach((blog) => blogList.add(Blog.fromJson(blog ?? const {})));
     return blogList;
   }
 }
@@ -36,7 +36,7 @@ class Blog {
         handle: (json['node'] ?? {})['handle'],
         title: (json['node'] ?? {})['title'],
         url: (json['node'] ?? {})['url'],
-        articles: Articles.fromJson((json['node'] ?? {})['articles'])
+        articles: Articles.fromJson(((json['node'] ?? const {})['articles']) ?? const {} )
     );
   }
 

@@ -22,11 +22,14 @@ class ShopifyCheckout {
   /// Returns a [Checkout] object.
   ///
   /// Returns the Checkout object of the checkout with the [checkoutId].
-  Future<Checkout> getCheckoutInfoQuery({String checkoutId}) async {
+  Future<Checkout> getCheckoutInfoQuery(String checkoutId, {bool deleteThisPartOfCache}) async {
     final WatchQueryOptions _options =
         WatchQueryOptions(documentNode: gql(getCheckoutInfo), variables: {
-      'checkoutId': checkoutId,
+      'id': checkoutId,
     });
+    if(deleteThisPartOfCache) {
+      _graphQLClient.cache.write(_options.toKey(), null);
+    }
     return Checkout.fromJson(
         (await _graphQLClient.query(_options))?.data['node']);
   }
@@ -34,7 +37,7 @@ class ShopifyCheckout {
   /// Returns all [Order] in a List of Orders.
   ///
   /// Returns a List of Orders from the Customer with the [customerAccessToken].
-  Future<List<Order>> getAllOrders({String customerAccessToken}) async {
+  Future<List<Order>> getAllOrders(String customerAccessToken) async {
     List<Order> orderList = [];
     Orders tempOrder;
     String cursor;
@@ -63,7 +66,7 @@ class ShopifyCheckout {
   /// {"quantity": 3, "variantId": "example-variant-id-3"}
   /// ]
   Future<void> checkoutLineItemsReplace(
-      {String checkoutId, List<Map<String, dynamic>> checkoutLineItems}) async {
+      String checkoutId, List<Map<String, dynamic>> checkoutLineItems) async {
     final MutationOptions _options =
         MutationOptions(documentNode: gql(replaceCheckoutItems), variables: {
       'checkoutId': checkoutId,
@@ -74,7 +77,7 @@ class ShopifyCheckout {
 
   /// Associates the [Customer] that [customerAccessToken] belongs to, to the [Checkout] that [checkoutId] belongs to.
   Future<void> checkoutCustomerAssociate(
-      {String checkoutId, String customerAccessToken}) async {
+      String checkoutId, String customerAccessToken) async {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(associateCustomer),
         variables: {
@@ -85,7 +88,7 @@ class ShopifyCheckout {
   }
 
   /// Disassociates the [Customer] from the [Checkout] that [checkoutId] belongs to.
-  Future<void> checkoutCustomerDisassociate({String checkoutId}) async {
+  Future<void> checkoutCustomerDisassociate(String checkoutId) async {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(checkoutCustomerDisassociateMutation),
         variables: {'id': checkoutId});
@@ -94,7 +97,7 @@ class ShopifyCheckout {
 
   /// Applies [discountCode] to the [Checkout] that [checkoutId] belongs to.
   Future<void> checkoutDiscountCodeApply(
-      {String checkoutId, String discountCode}) async {
+      String checkoutId, String discountCode) async {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(checkoutDiscountCodeApplyMutation),
         variables: {'checkoutId': checkoutId, 'discountCode': discountCode});
@@ -102,7 +105,7 @@ class ShopifyCheckout {
   }
 
   /// Removes the applied discount from the [Checkout] that [checkoutId] belongs to.
-  Future<void> checkoutDiscountCodeRemove({String checkoutId}) async {
+  Future<void> checkoutDiscountCodeRemove(String checkoutId) async {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(checkoutDiscountCodeRemoveMutation),
         variables: {'checkoutId': checkoutId});

@@ -16,7 +16,7 @@ class ShopifyCustomer {
 
   /// Updated the Address of a Customer, please input only the fields that you wish to update.
   Future<void> customerAddressUpdate(
-      {String address1,
+      String address1,
       String address2,
       String company,
       String city,
@@ -27,7 +27,7 @@ class ShopifyCustomer {
       String province,
       String zip,
       String customerAccessToken,
-      id}) async {
+      id) async {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(customerAddressUpdateMutation),
         variables: {
@@ -48,7 +48,7 @@ class ShopifyCustomer {
   }
 
   //TODO return Custoemr object! (@adam)
-  Future<void> getCustomer({String customerAccessToken}) async {
+  Future<void> getCustomer(String customerAccessToken) async {
     final WatchQueryOptions _options = WatchQueryOptions(
         documentNode: gql(getCustomerQuery),
         variables: {'customerAccessToken': customerAccessToken});

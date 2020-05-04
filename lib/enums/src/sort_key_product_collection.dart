@@ -1,0 +1,10 @@
+enum SortKeyProductCollection {
+  TITLE,
+  PRICE,
+  BEST_SELLING,
+  CREATED,
+  ID,
+  MANUAL,
+  COLLECTION_DEFAULT,
+  RELEVANCE
+}

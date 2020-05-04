@@ -51,7 +51,7 @@ class ShopifyBlog {
   ///
   /// Returns a the first [articleAmount] of [Article] sorted by [sortKeyArticle].
   Future<List<Article>> getXArticlesSorted(
-      {int articleAmount, SortKeyArticle sortKeyArticle}) async {
+      int articleAmount, SortKeyArticle sortKeyArticle) async {
     final QueryOptions _options = WatchQueryOptions(
         documentNode: gql(getNArticlesSortedQuery),
         variables: {
