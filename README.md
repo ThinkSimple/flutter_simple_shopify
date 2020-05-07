@@ -26,9 +26,10 @@ The goal is to make creating an mobile app from your Shopify website easier.
 ```dart
   ShopifyAuth shopifyAuth = ShopifyAuth.instance;
     Future<ShopifyUser> createUserWithEmailAndPassword({@required String email, @required String password})
-    Future<void> accessTokenDelete({String accessToken})
+    Future<void> signOutCurrentUser({String accessToken})
     Future<void> sendPasswordResetEmail({@required String email})
     Future<ShopifyUser> signInWithEmailAndPassword({@required String email, @required String password})
+    Future<ShopifyUser> currentUser()
 ```
 ```dart    
   ShopifyStore shopifyStore = ShopifyStore.instance;
@@ -41,6 +42,8 @@ The goal is to make creating an mobile app from your Shopify website easier.
      Future<List<Collection>> getAllCollections()
      Future<List<Product>> getXProductsAfterCursorWithinCollection(String id, int limit, String startCursor, SortKeyProduct sortKey)
      Future<List<Product>> getAllProductsFromCollectionById(String id)
+     Future<List<Product>> getAllProductsOnQuery(String cursor, SortKeyProduct sortKey, String query)
+     Future<List<Product>> getXProductsOnQueryAfterCursor(String cursor, int limit, SortKeyProduct sortKey, String query)
 ```
 ```dart
   ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;
@@ -58,7 +61,6 @@ The goal is to make creating an mobile app from your Shopify website easier.
 ```dart
   ShopifyCustomer shopifyCustomer = ShopifyCustomer.instance;
      Future<void> customerAddressUpdate({String address1, String address2, String company, String city, String country, String firstName, String lastName, String phone, String province, String zip, String customerAccessToken, id})
-     Future<void> getCustomer({String customerAccessToken})
      Future<void> customerUpdate({String email, String firstName, String lastName, String password, String phoneNumber, String customerAccessToken, bool acceptsMarketing})
      Future<void> customerAddressCreate({String address1, String address2, String company, String city, String country, String firstName, String lastName, String phone, String province, String zip, String customerAccessToken})
      Future<void> customerAddressDelete({String customerAccessToken, String addressId})

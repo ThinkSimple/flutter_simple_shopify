@@ -22,7 +22,7 @@ class ShopifyCheckout {
   /// Returns a [Checkout] object.
   ///
   /// Returns the Checkout object of the checkout with the [checkoutId].
-  Future<Checkout> getCheckoutInfoQuery(String checkoutId, {bool deleteThisPartOfCache}) async {
+  Future<Checkout> getCheckoutInfoQuery(String checkoutId, {bool deleteThisPartOfCache = false}) async {
     final WatchQueryOptions _options =
         WatchQueryOptions(documentNode: gql(getCheckoutInfo), variables: {
       'id': checkoutId,

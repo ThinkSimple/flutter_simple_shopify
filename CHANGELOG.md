@@ -17,3 +17,11 @@
 ## [0.0.5-alpha] - 02/05/2020
 
 * fixed a minor bug @ getCheckoutInfoQuery and added 2 new methods
+
+## [0.0.6-alpha] - 04/05/2020
+
+* added 2 new methods and new enum, changed parameters
+
+## [0.0.7-alpha] - 07/05/2020
+
+* new User model, created all login functionality

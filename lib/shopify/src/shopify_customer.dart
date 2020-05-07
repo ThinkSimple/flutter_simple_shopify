@@ -2,7 +2,6 @@ import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_add
 import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_address_delete.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_address_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_update.dart';
-import 'package:flutter_simple_shopify/graphql_operations/queries/get_customer.dart';
 
 import 'package:graphql/client.dart';
 import '../../shopify_config.dart';
@@ -45,14 +44,6 @@ class ShopifyCustomer {
           'id': id
         });
     return await _graphQLClient.mutate(_options);
-  }
-
-  //TODO return Custoemr object! (@adam)
-  Future<void> getCustomer(String customerAccessToken) async {
-    final WatchQueryOptions _options = WatchQueryOptions(
-        documentNode: gql(getCustomerQuery),
-        variables: {'customerAccessToken': customerAccessToken});
-    return await _graphQLClient.query(_options);
   }
 
   /// Updates the customer to which [customerAccessToken] belongs to.

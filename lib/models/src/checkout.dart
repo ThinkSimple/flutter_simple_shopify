@@ -1,23 +1,23 @@
 import 'package:flutter_simple_shopify/models/src/product.dart';
 
 class Checkout{
-    final String id;
-    final String email;
-    final List<AppliedGiftCards> appliedGiftcards;
-    final AvailableShippingRates availableShippingrates;
-    final String completedAt;
-    final String createdAt;
-    final String currencyCode;
-    final List<LineItems> lineItems;
-    final String note;
-    final String webUrl;
-    final String updatedAt;
-    final PriceV2 totalTaxV2;
-    final PriceV2 totalPriceV2;
-    final bool taxesIncluded;
-    final bool taxExempt;
-    final PriceV2 subtotalPriceV2;
-    final String orderStatusUrl;
+  final String id;
+  final String email;
+  final List<AppliedGiftCards> appliedGiftcards;
+  final AvailableShippingRates availableShippingrates;
+  final String completedAt;
+  final String createdAt;
+  final String currencyCode;
+  final LineItems lineItems;
+  final String note;
+  final String webUrl;
+  final String updatedAt;
+  final PriceV2 totalTaxV2;
+  final PriceV2 totalPriceV2;
+  final bool taxesIncluded;
+  final bool taxExempt;
+  final PriceV2 subtotalPriceV2;
+  final String orderStatusUrl;
 
   Checkout({this.id, this.email, this.appliedGiftcards,
     this.availableShippingrates, this.completedAt, this.createdAt,
@@ -35,7 +35,7 @@ class Checkout{
       completedAt: json['completedAt'],
       createdAt: json['createddAt'],
       currencyCode: json['currencyCode'],
-      lineItems: _getLineItems(json ?? const {}),
+      lineItems: LineItems.fromJson(json['lineItems']),
       note: json['note'],
       webUrl: json['webUrl'],
       updatedAt: json['updatedAt'],
@@ -48,17 +48,13 @@ class Checkout{
     );
   }
 
-   static List<AppliedGiftCards> _getAppliedGiftCards(Map<String, dynamic> json) {
+  static List<AppliedGiftCards> _getAppliedGiftCards(Map<String, dynamic> json) {
     List<AppliedGiftCards> appliedGiftCardsList = [];
     json['appliedGiftCards']?.forEach((e) => appliedGiftCardsList.add(AppliedGiftCards.fromJson(e ?? const {})));
     return appliedGiftCardsList;
-    }
+  }
 
-    static List<LineItems> _getLineItems(Map<String, dynamic> json) {
-      List<LineItems> lineItemsList = [];
-      (json['lineItems'] ?? const {})['edges']?.forEach((e) => lineItemsList.add(LineItems.fromJson(e ?? const {})));
-      return lineItemsList;
-    }
+
 
 }
 
@@ -96,24 +92,39 @@ class ShippingRates {
 
   static ShippingRates fromJson(Map<String, dynamic> json){
     return ShippingRates(
-      handle: json['handle'],
-      title: json['title'],
-      priceV2: PriceV2.fromJson(json['priceV2'] ?? const {})
+        handle: json['handle'],
+        title: json['title'],
+        priceV2: PriceV2.fromJson(json['priceV2'] ?? const {})
     );
   }
 }
+class LineItems{
+  final List<LineItem> lineItemList;
 
+  LineItems({this.lineItemList});
 
-class LineItems {
+  static LineItems fromJson(Map<String, dynamic> json){
+    return LineItems(
+        lineItemList: _getLineItemList(json)
+    );
+  }
+  static List<LineItem> _getLineItemList(Map<String, dynamic> json){
+    List<LineItem> lineItemList = [];
+    json['edges']?.forEach((lineItem) => lineItemList.add(LineItem.fromJson(lineItem ?? const {})));
+    return lineItemList;
+  }
+}
+
+class LineItem {
   final String id;
   final int quantity;
   final String title;
   final ProductVariantCheckout variant;
 
-  LineItems({this.id, this.quantity, this.variant, this.title});
+  LineItem({this.id, this.quantity, this.variant, this.title});
 
-  static LineItems fromJson(Map<String, dynamic> json){
-    return LineItems(
+  static LineItem fromJson(Map<String, dynamic> json){
+    return LineItem(
       id: (json['node'] ?? const {})['id'],
       quantity: (json['node'] ?? const {})['quantity'],
       variant: ProductVariantCheckout.fromJson(((json['node'] ?? const {})['variant'] ?? const{})),
@@ -174,9 +185,9 @@ class AppliedGiftCards {
 
   static AppliedGiftCards fromJson(Map<String, dynamic> json){
     return AppliedGiftCards(
-      amountUsedV2: PriceV2.fromJson(json['amountUsedV2'] ?? const {}),
-      balanceV2: PriceV2.fromJson(json['balanceV2'] ?? const {}),
-      id: json['id']
+        amountUsedV2: PriceV2.fromJson(json['amountUsedV2'] ?? const {}),
+        balanceV2: PriceV2.fromJson(json['balanceV2'] ?? const {}),
+        id: json['id']
     );
   }
 }

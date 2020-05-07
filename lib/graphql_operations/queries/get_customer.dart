@@ -49,18 +49,52 @@ query($customerAccessToken : String!){
     firstName
     id
     lastIncompleteCheckout {
-      completedAt
-      createdAt
-      currencyCode
-      email
-      id
-      webUrl
-      totalPriceV2 {
-        amount
+        completedAt
+        createdAt
         currencyCode
+        email
+        id
+        webUrl
+        totalPriceV2 {
+          amount
+          currencyCode
+        }
+        lineItemsSubtotalPrice {
+          amount
+          currencyCode
+        }
+        lineItems(first: 250) {
+          edges {
+            node {
+              id
+              quantity
+              title
+              variant {
+                priceV2 {
+                  amount
+                  currencyCode
+                }
+                title
+                image {
+                  altText
+                  id
+                  originalSrc
+                }
+                compareAtPriceV2 {
+                  amount
+                  currencyCode
+                }
+                weight
+                weightUnit
+                availableForSale
+                sku
+                requiresShipping
+                id
+              }
+            }
+          }
+        }
       }
-    }
   }
 }
-
 ''';
