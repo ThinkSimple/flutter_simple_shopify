@@ -3,11 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_from_collection_by_id.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_on_query.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_products_by_ids.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_shop.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor_within_collection.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_on_query_after_cursor.dart';
 import 'package:flutter_simple_shopify/models/src/product.dart';
 import 'package:flutter_simple_shopify/enums/src/sort_key_product.dart';
+import 'package:flutter_simple_shopify/models/src/shop.dart';
 import 'package:graphql/client.dart';
 import '../../graphql_operations/queries/get_collections.dart';
 import '../../graphql_operations/queries/get_featured_collections.dart';
@@ -112,14 +114,12 @@ class ShopifyStore {
     return productList;
   }
 
-  /// Returns the Shop name.
-  Future<String> getShopName() async {
+  /// Returns the Shop.
+  Future<Shop> getShop() async {
     final WatchQueryOptions _options = WatchQueryOptions(
-      documentNode: gql(getShopNameQuery),
+      documentNode: gql(getShopQuery),
     );
-    final Map<String, dynamic> _queryMap =
-        (await _graphQLClient.query(_options))?.data;
-    return _queryMap['shop']['name'];
+    return Shop.fromJson((await ShopifyConfig.graphQLClient.query(_options))?.data);
   }
 
   /// Returns the featured collection.

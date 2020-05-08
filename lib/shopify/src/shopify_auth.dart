@@ -1,4 +1,4 @@
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../graphql_operations/mutations/access_token_delete.dart';
@@ -31,9 +31,9 @@ class ShopifyAuth {
       'email': email,
       'password': password,
     });
-    final String customerAccessToken = await _createAccessToken(email, password);
     final shopifyUser = ShopifyUser.fromJson(
         ((await _graphQLClient.mutate(_options))?.data['customerCreate'] ?? const {})['customer']);
+    final String customerAccessToken = await _createAccessToken(email, password);
     _setShopifyUser(customerAccessToken, _shopifyUser);
     return shopifyUser;
   }
@@ -74,15 +74,12 @@ class ShopifyAuth {
 
   /// Helper method for extracting the customerAccessToken from the mutation.
   String _extractAccessToken(Map<String, dynamic> mutationData) {
-    return mutationData['customerAccessTokenCreate']['customerAccessToken']
+    return (((mutationData ?? const {})['customerAccessTokenCreate'] ?? const {})['customerAccessToken'] ?? const {})
     ['accessToken'];
   }
 
-  /// Deletes the [accessToken].
-  ///
-  /// Token deletion is used here to sign out the user.
   /// Signs out the current user and clears it from the disk cache.
-  Future<void> signOutCurrentUser({String accessToken}) async {
+  Future<void> signOutCurrentUser() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     final MutationOptions _options = MutationOptions(
         documentNode: gql(accessTokenDeleteMutation),
@@ -92,9 +89,8 @@ class ShopifyAuth {
   }
 
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
-  Future<ShopifyUser> currentUser() async{ //TODO logic
+  Future<ShopifyUser> currentUser() async{
     SharedPreferences _prefs = await SharedPreferences.getInstance();
-    print(_prefs.getString(_shopifyKey));
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
         documentNode: gql(getCustomerQuery),
         variables: {'customerAccessToken': _prefs.getString(_shopifyKey)});

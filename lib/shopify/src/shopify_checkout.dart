@@ -58,21 +58,29 @@ class ShopifyCheckout {
 
   /// Replaces the [LineItems] in the [Checkout] associated to the [checkoutId].
   ///
-  /// [checkoutLineItems] is a List of Map>String,dynamic> and should look like this:
-  ///
-  /// [
-  /// {"quantity": 1, "variantId": "example-variant-id-1"},
-  /// {"quantity": 2, "variantId": "example-variant-id-2"},
-  /// {"quantity": 3, "variantId": "example-variant-id-3"}
-  /// ]
+  /// [checkoutLineItems] is a List of Variant Ids
   Future<void> checkoutLineItemsReplace(
-      String checkoutId, List<Map<String, dynamic>> checkoutLineItems) async {
+      String checkoutId, List<String> variantIdList) async {
+    var checkoutLineItems = transformVariantIdListIntoListOfMaps(variantIdList);
     final MutationOptions _options =
-        MutationOptions(documentNode: gql(replaceCheckoutItems), variables: {
+    MutationOptions(documentNode: gql(replaceCheckoutItems), variables: {
       'checkoutId': checkoutId,
       'checkoutLineItems': checkoutLineItems,
     });
     return await _graphQLClient.mutate(_options);
+  }
+
+  /// Helper method for transforming a list of variant ids into a List Of Map<String, dynamic> which looks like this:
+  ///
+  /// [{"quantity":AMOUNT,"variantId":"YOUR_VARIANT_ID"}]
+  List<Map<String, dynamic>> transformVariantIdListIntoListOfMaps(List<String> variantIdList){
+    List<Map<String, dynamic>> lineItemList = [];
+    variantIdList.forEach((e){
+      if(lineItemList.indexWhere((test) => e == test['variantId']) == -1)
+        lineItemList.add({"quantity": variantIdList.where((id) => e == id).toList().length,"variantId":e}
+        );
+    });
+    return lineItemList;
   }
 
   /// Associates the [Customer] that [customerAccessToken] belongs to, to the [Checkout] that [checkoutId] belongs to.
