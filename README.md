@@ -26,7 +26,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
 ```dart
   ShopifyAuth shopifyAuth = ShopifyAuth.instance;
     Future<ShopifyUser> createUserWithEmailAndPassword({@required String email, @required String password})
-    Future<void> signOutCurrentUser({String accessToken})
+    Future<void> signOutCurrentUser()
     Future<void> sendPasswordResetEmail({@required String email})
     Future<ShopifyUser> signInWithEmailAndPassword({@required String email, @required String password})
     Future<ShopifyUser> currentUser()
@@ -37,7 +37,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
      Future<List<Product>> getXProductsAfterCursor(int limit,String startCursor)
      Future<List<Product>> getAllProducts()
      Future<List<Product>> getNProducts({@required int n, @required SortKey sortKey})
-     Future<String> getShopName()
+     Future<Shop> getShop()
      Future<Collection> getFeaturedCollection()
      Future<List<Collection>> getAllCollections()
      Future<List<Product>> getXProductsAfterCursorWithinCollection(String id, int limit, String startCursor, SortKeyProduct sortKey)

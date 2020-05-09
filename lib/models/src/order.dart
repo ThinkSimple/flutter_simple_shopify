@@ -1,5 +1,6 @@
+import 'package:flutter_simple_shopify/models/src/checkout.dart';
 import 'package:flutter_simple_shopify/models/src/product.dart';
-import 'checkout.dart';
+
 
 class Orders {
   final List<Order> orderList;
@@ -9,8 +10,8 @@ class Orders {
 
   static Orders fromJson(Map<String, dynamic> json){
     return Orders(
-      orderList: _getOrderList(json ?? const {}),
-      hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage']
+        orderList: _getOrderList(json ?? const {}),
+        hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage']
     );
   }
 
@@ -27,7 +28,7 @@ class Order {
   final String email;
   final String currencyCode;
   final String customerUrl;
-  final List<LineItems> lineItems;
+  final LineItemsOrder lineItems;
   final String name;
   final int orderNumber;
   final String phone;
@@ -45,31 +46,75 @@ class Order {
 
   static Order fromJson(Map<String, dynamic> json){
     return Order(
-      id: (json['node'] ?? const {})['id'],
-      email: (json['node'] ?? const {})['email'],
-      currencyCode: (json['node'] ?? const {})['currencyCode'],
-      customerUrl: (json['node'] ?? const {})['customerUrl'],
-      lineItems: _getLineItems(json ?? const {}),
-      name: (json['node'] ?? const {})['name'],
-      orderNumber: (json['node'] ?? const {})['orderNumber'],
-      phone: (json['node'] ?? const {})['phone'],
-      processedAt: (json['node'] ?? const {})['processedAt'],
-      shippingAddress: ShippingAddress.fromJson((json['node'] ?? const {})['shippingAddress'] ?? const {}),
-      statusUrl: (json['node'] ?? const {})['statusUrl'],
-      subtotalPriceV2: PriceV2.fromJson((json['node'] ?? const {})['subtotalPriceV2'] ?? const {}),
-      totalPriceV2: PriceV2.fromJson((json['node'] ?? const {})['totalPriceV2'] ?? const {}),
-      totalRefundedV2: PriceV2.fromJson((json['node'] ?? const {})['totalRefundedV2'] ?? const {}),
-      totalShippingPriceV2: PriceV2.fromJson((json['node'] ?? const {})['totalShippingPriceV2'] ?? const {}),
-      totalTaxV2: PriceV2.fromJson((json['node'] ?? const {})['totalTaxV2'] ?? const {}),
-      cursor: json['cursor']
+        id: (json['node'] ?? const {})['id'],
+        email: (json['node'] ?? const {})['email'],
+        currencyCode: (json['node'] ?? const {})['currencyCode'],
+        customerUrl: (json['node'] ?? const {})['customerUrl'],
+        lineItems: LineItemsOrder.fromJson((json['node'] ?? const {})['lineItems']),
+        name: (json['node'] ?? const {})['name'],
+        orderNumber: (json['node'] ?? const {})['orderNumber'],
+        phone: (json['node'] ?? const {})['phone'],
+        processedAt: (json['node'] ?? const {})['processedAt'],
+        shippingAddress: ShippingAddress.fromJson((json['node'] ?? const {})['shippingAddress'] ?? const {}),
+        statusUrl: (json['node'] ?? const {})['statusUrl'],
+        subtotalPriceV2: PriceV2.fromJson((json['node'] ?? const {})['subtotalPriceV2'] ?? const {}),
+        totalPriceV2: PriceV2.fromJson((json['node'] ?? const {})['totalPriceV2'] ?? const {}),
+        totalRefundedV2: PriceV2.fromJson((json['node'] ?? const {})['totalRefundedV2'] ?? const {}),
+        totalShippingPriceV2: PriceV2.fromJson((json['node'] ?? const {})['totalShippingPriceV2'] ?? const {}),
+        totalTaxV2: PriceV2.fromJson((json['node'] ?? const {})['totalTaxV2'] ?? const {}),
+        cursor: json['cursor']
+    );
+  }
+}
+
+class LineItemsOrder {
+  final List<LineItemOrder> lineItemOrderList;
+
+  LineItemsOrder({this.lineItemOrderList});
+
+  static LineItemsOrder fromJson(Map<String, dynamic> json){
+    return LineItemsOrder(
+        lineItemOrderList: _getLineItemOrderList(json)
     );
   }
 
-  static List<LineItems> _getLineItems(Map<String, dynamic> json) {
-    List<LineItems> lineItemsList = [];
-    ((json['node'] ?? const {})['lineItems'] ?? const {})['edges']?.forEach((e) => lineItemsList.add(LineItems.fromJson(e ?? const {})));
-    return lineItemsList;
+  static _getLineItemOrderList(Map<String, dynamic> json) {
+    List<LineItemOrder> lineItemListOrder = [];
+    json['edges']?.forEach((lineItemOrder) => lineItemListOrder.add(LineItemOrder.fromJson(lineItemOrder)));
+    return lineItemListOrder;
   }
+
+}
+
+class LineItemOrder {
+  final int currentQuantity;
+  final List<String> discountAllocations;
+  final PriceV2 discountedTotalPrice;
+  final PriceV2 originalTotalPrice;
+  final int quantity;
+  final String title;
+  final ProductVariantCheckout variant;
+
+  LineItemOrder({this.currentQuantity, this.discountAllocations, this.discountedTotalPrice, this.originalTotalPrice, this.quantity, this.title, this.variant});
+
+  static LineItemOrder fromJson(Map<String, dynamic> json){
+    return LineItemOrder(
+        currentQuantity: (json['node'] ?? const {})['currentQuantity'],
+        discountAllocations: _getDiscountAllocationsList(json),
+        discountedTotalPrice: PriceV2.fromJson((json['node'] ?? const {})['discountedTotalPrice']),
+        originalTotalPrice: PriceV2.fromJson((json['node'] ?? const {})['originalTotalPrice']),
+        quantity: (json['node'] ?? const {})['quantity'],
+        title: (json['node'] ?? const {})['title'],
+        variant: ProductVariantCheckout.fromJson((json['node'] ?? const {})['variant'] ?? const {})
+    );
+  }
+
+  static _getDiscountAllocationsList(Map<String, dynamic> json) {
+    List<String> stringList = [];
+    (json['node'] ?? const {})['discountAllocations']?.forEach((string) => stringList.add(string));
+    return stringList;
+  }
+
 }
 
 class ShippingAddress {
@@ -94,22 +139,22 @@ class ShippingAddress {
 
   static ShippingAddress fromJson(Map<String, dynamic> json){
     return ShippingAddress(
-      address1: json['address1'],
-      address2: json['address2'],
-      city: json['city'],
-      company: json['company'],
-      country: json['country'],
-      countryCodeV2: json['countryCodeV2'],
-      firstName: json['firstName'],
-      id: json['id'],
-      lastName: json['lastName'],
-      latitude: json['latitude'],
-      longitude: json['longitude'],
-      name: json['name'],
-      phone: json['phone'],
-      province: json['province'],
-      provinceCode: json['provinceCode'],
-      zip: json['zip']
+        address1: json['address1'],
+        address2: json['address2'],
+        city: json['city'],
+        company: json['company'],
+        country: json['country'],
+        countryCodeV2: json['countryCodeV2'],
+        firstName: json['firstName'],
+        id: json['id'],
+        lastName: json['lastName'],
+        latitude: json['latitude'],
+        longitude: json['longitude'],
+        name: json['name'],
+        phone: json['phone'],
+        province: json['province'],
+        provinceCode: json['provinceCode'],
+        zip: json['zip']
     );
   }
 }

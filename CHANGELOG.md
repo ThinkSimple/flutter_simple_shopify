@@ -25,3 +25,7 @@
 ## [0.0.7-alpha] - 07/05/2020
 
 * new User model, created all login functionality
+
+## [0.0.8-alpha] - 08/05/2020
+
+* new Shop model, made adding lineitems to checkout easier

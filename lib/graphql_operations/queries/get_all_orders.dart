@@ -1,12 +1,8 @@
 const String getAllOrdersQuery = r'''
-query($cursor : String, $customerAccessToken: String!){
-  customer(customerAccessToken: $customerAccessToken){
-    orders(first: 250, sortKey: PROCESSED_AT, after: $cursor) {
-    pageInfo {
-      hasNextPage
-    }
+query getOrders($sortKey : OrderSortKeys, $accessToken : String!){
+customer(customerAccessToken: $accessToken) {
+    orders(first: 250, sortKey: $sortKey) {
       edges {
-      cursor
         node {
           id
           email
@@ -15,6 +11,21 @@ query($cursor : String, $customerAccessToken: String!){
           lineItems(first: 250) {
             edges {
               node {
+                currentQuantity
+                discountAllocations {
+                  allocatedAmount {
+                    amount
+                    currencyCode
+                  }
+                }
+                discountedTotalPrice {
+                  amount
+                  currencyCode
+                }
+                originalTotalPrice {
+                  amount
+                  currencyCode
+                }
                 quantity
                 title
                 variant {
@@ -36,6 +47,7 @@ query($cursor : String, $customerAccessToken: String!){
                   weightUnit
                   availableForSale
                   sku
+                  requiresShipping
                   id
                 }
               }
@@ -46,7 +58,6 @@ query($cursor : String, $customerAccessToken: String!){
           phone
           processedAt
           shippingAddress {
-            id
             address1
             address2
             city
@@ -54,6 +65,7 @@ query($cursor : String, $customerAccessToken: String!){
             country
             countryCodeV2
             firstName
+            id
             lastName
             latitude
             longitude
@@ -85,9 +97,10 @@ query($cursor : String, $customerAccessToken: String!){
             currencyCode
           }
         }
+        cursor
       }
     }
+    id
   }
 }
-
 ''';

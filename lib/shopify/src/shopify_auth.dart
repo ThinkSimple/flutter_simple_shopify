@@ -94,8 +94,16 @@ class ShopifyAuth {
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
         documentNode: gql(getCustomerQuery),
         variables: {'customerAccessToken': _prefs.getString(_shopifyKey)});
-    return _shopifyUser ?? ShopifyUser.fromJson(
-        (await _graphQLClient.query(_getCustomer))?.data['customer']);
+    if (_shopifyUser != null) {
+      return _shopifyUser;
+    } else if (_prefs.getString(_shopifyKey) != null) {
+      var graphQlResult = (await _graphQLClient.query(_getCustomer))?.data;
+      ShopifyUser user = ShopifyUser.fromJson(
+          (graphQlResult ?? const {})['customer'] ?? const {});
+      return user;
+    }else{
+      return null;
+    }
   }
 
   Future<void> _setShopifyUser(String sharedPrefsToken, ShopifyUser shopifyUser) async {

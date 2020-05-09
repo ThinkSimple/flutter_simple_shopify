@@ -1,6 +1,6 @@
 name: flutter_simple_shopify
 description: A new Flutter package which provides help in creating a mobile app of a shopify store.
-version: 0.0.7-alpha
+version: 0.0.9-alpha
 homepage: https://github.com/ThinkSimple/flutter_simple_shopify
 
 environment:

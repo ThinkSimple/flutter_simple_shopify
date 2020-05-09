@@ -1,3 +1,5 @@
+import 'package:enum_to_string/enum_to_string.dart';
+import 'package:flutter_simple_shopify/enums/src/sort_key_order.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/create_checkout.dart';
 import 'package:flutter_simple_shopify/models/src/order.dart';
 import 'package:graphql/client.dart';
@@ -37,22 +39,22 @@ class ShopifyCheckout {
   /// Returns all [Order] in a List of Orders.
   ///
   /// Returns a List of Orders from the Customer with the [customerAccessToken].
-  Future<List<Order>> getAllOrders(String customerAccessToken) async {
+  Future<List<Order>> getAllOrders(String customerAccessToken, SortKeyOrder sortKey) async {
     List<Order> orderList = [];
-    Orders tempOrder;
-    String cursor;
+    Orders orders;
     do {
-      final WatchQueryOptions _options =
-          WatchQueryOptions(documentNode: gql(getAllOrdersQuery), variables: {
-        'cursor': cursor,
-        'customerAccessToken': customerAccessToken,
-      });
-      tempOrder = (Orders.fromJson(
-          ((await _graphQLClient.query(_options))?.data['customer'] ??
-              const {})['orders']));
-      orderList += tempOrder?.orderList ?? const [];
-      cursor = orderList.last.cursor;
-    } while ((tempOrder?.hasNextPage == true));
+      final QueryOptions _options = WatchQueryOptions(
+          documentNode: gql(getAllOrdersQuery),
+          variables: {
+            'accessToken': customerAccessToken,
+            'sortKey': EnumToString.parse(sortKey)
+          }
+      );
+      print(((await ShopifyConfig.graphQLClient.query(_options))?.data as LazyCacheMap)?.data);
+      orders = (Orders.fromJson(((((await ShopifyConfig.graphQLClient.query(_options))?.data ?? const {}))['customer'] ?? const {})['orders'] ?? const {}));
+      print(orders.orderList.length);
+      orderList.addAll(orders.orderList);
+    }while(orders?.hasNextPage == true);
     return orderList;
   }
 
