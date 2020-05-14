@@ -1,6 +1,9 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter_simple_shopify/enums/src/sort_key_order.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/create_checkout.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_requires_shipping.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_without_shipping_rates.dart';
+import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/order.dart';
 import 'package:graphql/client.dart';
 import '../../graphql_operations/mutations/add_item(s)_to_checkout.dart';
@@ -15,7 +18,8 @@ import '../../graphql_operations/queries/get_checkout_information.dart';
 import '../../models/src/checkout.dart';
 import '../../shopify_config.dart';
 
-class ShopifyCheckout {
+/// ShopifyCheckout provides various method in order to work with checkouts.
+class ShopifyCheckout with ShopifyError{
   ShopifyCheckout._();
   static final ShopifyCheckout instance = ShopifyCheckout._();
 
@@ -25,15 +29,27 @@ class ShopifyCheckout {
   ///
   /// Returns the Checkout object of the checkout with the [checkoutId].
   Future<Checkout> getCheckoutInfoQuery(String checkoutId, {bool deleteThisPartOfCache = false}) async {
-    final WatchQueryOptions _options =
-        WatchQueryOptions(documentNode: gql(getCheckoutInfo), variables: {
+    final WatchQueryOptions _optionsRequireShipping =
+    WatchQueryOptions(documentNode: gql(getCheckoutInfoAboutShipping), variables: {
       'id': checkoutId,
     });
+    QueryResult result = await _graphQLClient.query(_optionsRequireShipping);
+    print((result?.data as LazyCacheMap)?.data);
+    final WatchQueryOptions _options =
+    WatchQueryOptions(documentNode: gql(requiresShipping(result) == true ? getCheckoutInfo : getCheckoutInfoWithoutShipping), variables: {
+      'id': checkoutId,
+    });
+    final QueryResult _queryResult = (await _graphQLClient.query(_options));
+    checkForError(_queryResult);
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
     return Checkout.fromJson(
-        (await _graphQLClient.query(_options))?.data['node']);
+        _queryResult?.data['node']);
+  }
+
+  bool requiresShipping(QueryResult result){
+    return ((result?.data ?? const {})['node'] ?? const {})['requiresShipping'];
   }
 
   /// Returns all [Order] in a List of Orders.
@@ -50,9 +66,9 @@ class ShopifyCheckout {
             'sortKey': EnumToString.parse(sortKey)
           }
       );
-      print(((await ShopifyConfig.graphQLClient.query(_options))?.data as LazyCacheMap)?.data);
-      orders = (Orders.fromJson(((((await ShopifyConfig.graphQLClient.query(_options))?.data ?? const {}))['customer'] ?? const {})['orders'] ?? const {}));
-      print(orders.orderList.length);
+      final QueryResult result = await ShopifyConfig.graphQLClient.query(_options);
+      checkForError(result);
+      orders = Orders.fromJson(((((result?.data ?? const {}))['customer'] ?? const {})['orders'] ?? const {}));
       orderList.addAll(orders.orderList);
     }while(orders?.hasNextPage == true);
     return orderList;
@@ -69,7 +85,8 @@ class ShopifyCheckout {
       'checkoutId': checkoutId,
       'checkoutLineItems': checkoutLineItems,
     });
-    return await _graphQLClient.mutate(_options);
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
   }
 
   /// Helper method for transforming a list of variant ids into a List Of Map<String, dynamic> which looks like this:
@@ -94,7 +111,8 @@ class ShopifyCheckout {
           'checkoutId': checkoutId,
           'customerAccessToken': customerAccessToken
         });
-    return await _graphQLClient.mutate(_options);
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
   }
 
   /// Disassociates the [Customer] from the [Checkout] that [checkoutId] belongs to.
@@ -102,7 +120,8 @@ class ShopifyCheckout {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(checkoutCustomerDisassociateMutation),
         variables: {'id': checkoutId});
-    return await _graphQLClient.mutate(_options);
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
   }
 
   /// Applies [discountCode] to the [Checkout] that [checkoutId] belongs to.
@@ -111,7 +130,8 @@ class ShopifyCheckout {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(checkoutDiscountCodeApplyMutation),
         variables: {'checkoutId': checkoutId, 'discountCode': discountCode});
-    return await _graphQLClient.mutate(_options);
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
   }
 
   /// Removes the applied discount from the [Checkout] that [checkoutId] belongs to.
@@ -119,7 +139,8 @@ class ShopifyCheckout {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(checkoutDiscountCodeRemoveMutation),
         variables: {'checkoutId': checkoutId});
-    return await _graphQLClient.mutate(_options);
+    QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
   }
 
   /// Appends the [giftCardCodes] to the [Checkout] that [checkoutId] belongs to.
@@ -128,7 +149,8 @@ class ShopifyCheckout {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(checkoutGiftCardsAppendMutation),
         variables: {'checkoutId': checkoutId, 'giftCardCodes': giftCardCodes});
-    return await _graphQLClient.mutate(_options);
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
   }
 
   /// Returns the Checkout Id.
@@ -138,10 +160,10 @@ class ShopifyCheckout {
     final MutationOptions _options = MutationOptions(
       documentNode: gql(createCheckoutMutation),
     );
-
-    return (((await ShopifyConfig.graphQLClient.mutate(_options))
-                .data['checkoutCreate'] ??
-            const {})['checkout'] ??
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
+    return ((result?.data['checkoutCreate'] ??
+        const {})['checkout'] ??
         const {})['id'];
   }
 
@@ -154,6 +176,7 @@ class ShopifyCheckout {
           'appliedGiftCards': appliedGiftCardId,
           'checkoutId': checkoutId
         });
-    return await _graphQLClient.mutate(_options);
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
   }
 }

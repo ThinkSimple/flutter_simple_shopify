@@ -3,13 +3,15 @@ import 'package:flutter_simple_shopify/enums/src/sort_key_article.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_blog_by_handle.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_n_articles_sorted.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor.dart';
+import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/article.dart';
 import 'package:flutter_simple_shopify/models/src/blog.dart';
 import 'package:graphql/client.dart';
 
 import '../../shopify_config.dart';
 
-class ShopifyBlog {
+/// ShopifyBlog class handles all Blog related things.
+class ShopifyBlog with ShopifyError{
   ShopifyBlog._();
 
   final GraphQLClient _graphQLClient = ShopifyConfig.graphQLClient;
@@ -22,9 +24,11 @@ class ShopifyBlog {
     final WatchQueryOptions _options = WatchQueryOptions(
       documentNode: gql(getXProductsAfterCursorQuery),
     );
-    return (Blogs.fromJson(((await _graphQLClient.query(_options))?.data ??
-                const {})["blogs"] ??
-            const {}))
+    final QueryResult result = await _graphQLClient.query(_options);
+    checkForError(result);
+    return (Blogs.fromJson((result?.data ??
+        const {})["blogs"] ??
+        const {}))
         .blogList;
   }
 
@@ -40,8 +44,10 @@ class ShopifyBlog {
           'handle': handle,
           'sortKey': EnumToString.parse(sortKeyArticle)
         });
-    var response = ((await _graphQLClient.query(_options))?.data['blogByHandle']
-            as LazyCacheMap)
+    final QueryResult result = await _graphQLClient.query(_options);
+    checkForError(result);
+    var response = (result?.data['blogByHandle']
+    as LazyCacheMap)
         ?.data;
     var newResponse = {'node': response};
     return Blog.fromJson(newResponse);
@@ -58,9 +64,11 @@ class ShopifyBlog {
           'x': articleAmount,
           'sortKey': EnumToString.parse(sortKeyArticle)
         });
-    return (Articles.fromJson((((await _graphQLClient.query(_options))?.data ??
-                const {}))['articles'] ??
-            const {}))
+    final QueryResult result = await _graphQLClient.query(_options);
+    checkForError(result);
+    return (Articles.fromJson(((result?.data ??
+        const {}))['articles'] ??
+        const {}))
         .articleList;
   }
 }

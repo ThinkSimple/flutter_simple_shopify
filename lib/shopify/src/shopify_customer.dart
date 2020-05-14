@@ -2,11 +2,13 @@ import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_add
 import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_address_delete.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_address_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_update.dart';
+import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 
 import 'package:graphql/client.dart';
 import '../../shopify_config.dart';
 
-class ShopifyCustomer {
+/// ShopifyCustomer class provides various methods for working with a user/customer.
+class ShopifyCustomer with ShopifyError{
   ShopifyCustomer._();
 
   static final ShopifyCustomer instance = ShopifyCustomer._();
@@ -43,20 +45,21 @@ class ShopifyCustomer {
           'customerAccessToken': customerAccessToken,
           'id': id
         });
-    return await _graphQLClient.mutate(_options);
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
   }
 
   /// Updates the customer to which [customerAccessToken] belongs to.
   Future<void> customerUpdate(
       {String email,
-      String firstName,
-      String lastName,
-      String password,
-      String phoneNumber,
-      String customerAccessToken,
-      bool acceptsMarketing}) async {
+        String firstName,
+        String lastName,
+        String password,
+        String phoneNumber,
+        String customerAccessToken,
+        bool acceptsMarketing}) async {
     final MutationOptions _options =
-        MutationOptions(documentNode: gql(customerUpdateMutation), variables: {
+    MutationOptions(documentNode: gql(customerUpdateMutation), variables: {
       'id': email,
       'firstName': firstName,
       'lastName': lastName,
@@ -65,22 +68,23 @@ class ShopifyCustomer {
       'acceptsMarketing': acceptsMarketing,
       'customerAccessToken': customerAccessToken
     });
-    return await _graphQLClient.mutate(_options);
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
   }
 
   /// Creates a address for the customer to which [customerAccessToken] belongs to.
   Future<void> customerAddressCreate(
       {String address1,
-      String address2,
-      String company,
-      String city,
-      String country,
-      String firstName,
-      String lastName,
-      String phone,
-      String province,
-      String zip,
-      String customerAccessToken}) async {
+        String address2,
+        String company,
+        String city,
+        String country,
+        String firstName,
+        String lastName,
+        String phone,
+        String province,
+        String zip,
+        String customerAccessToken}) async {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(customerAddressCreateMutation),
         variables: {
@@ -96,7 +100,8 @@ class ShopifyCustomer {
           'zip': zip,
           'customerAccessToken': customerAccessToken,
         });
-    return await _graphQLClient.mutate(_options);
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
   }
 
   /// Deletes the address associated with the [addressId] from the customer to which [customerAccessToken] belongs to.
@@ -110,6 +115,7 @@ class ShopifyCustomer {
           'customerAccessToken': customerAccessToken,
           'id': addressId
         });
-    return await _graphQLClient.mutate(_options);
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
   }
 }

@@ -1,6 +1,6 @@
 const String getFeaturedCollectionQuery = r'''
-{
-  collections(query: "Featured Collection", first: 1) {
+query getFeaturedCollectionQuery($query: String!){
+  collections(query: $query, first: 1) {
     edges {
       node {
         title

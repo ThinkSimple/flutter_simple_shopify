@@ -29,3 +29,11 @@
 ## [0.0.8-alpha] - 08/05/2020
 
 * new Shop model, made adding lineitems to checkout easier
+
+## [0.0.9-alpha] - 09/05/2020
+
+* minor changes
+
+## [0.0.10-alpha] - 14/05/2020
+
+* now checking for query/mutation errors and throwing exceptions if something bad happens

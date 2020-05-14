@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:graphql/client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../graphql_operations/mutations/access_token_delete.dart';
@@ -10,7 +11,7 @@ import '../../models/src/shopify_user.dart';
 import '../../shopify_config.dart';
 
 /// ShopifyAuth class handles the authentication.
-class ShopifyAuth {
+class ShopifyAuth with ShopifyError {
   ShopifyAuth._();
   final GraphQLClient _graphQLClient = ShopifyConfig.graphQLClient;
 
@@ -31,8 +32,10 @@ class ShopifyAuth {
       'email': email,
       'password': password,
     });
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
     final shopifyUser = ShopifyUser.fromJson(
-        ((await _graphQLClient.mutate(_options))?.data['customerCreate'] ?? const {})['customer']);
+        (result?.data['customerCreate'] ?? const {})['customer']);
     final String customerAccessToken = await _createAccessToken(email, password);
     _setShopifyUser(customerAccessToken, _shopifyUser);
     return shopifyUser;
@@ -46,7 +49,8 @@ class ShopifyAuth {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(customerRecoverMutation),
         variables: {'email': email});
-    await _graphQLClient.mutate(_options);
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
   }
 
   /// Tries to sign in a user with the given email address and password.
@@ -58,8 +62,10 @@ class ShopifyAuth {
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
         documentNode: gql(getCustomerQuery),
         variables: {'customerAccessToken': customerAccessToken});
+    final QueryResult result = await _graphQLClient.query(_getCustomer);
+    checkForError(result);
     final shopifyUser = ShopifyUser.fromJson(
-        (await _graphQLClient.query(_getCustomer))?.data['customer']);
+        result?.data['customer']);
     _setShopifyUser(customerAccessToken, shopifyUser);
     return shopifyUser;
   }
@@ -69,7 +75,8 @@ class ShopifyAuth {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(customerAccessTokenCreate),
         variables: {'email': email, 'password': password});
-    return _extractAccessToken((await _graphQLClient.mutate(_options)).data);
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    return _extractAccessToken(result?.data);
   }
 
   /// Helper method for extracting the customerAccessToken from the mutation.
@@ -85,7 +92,9 @@ class ShopifyAuth {
         documentNode: gql(accessTokenDeleteMutation),
         variables: {'customerAccessToken': _prefs.getString(_shopifyKey)});
     _setShopifyUser(null, null);
-    return await _graphQLClient.mutate(_options);
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
+    return result;
   }
 
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
@@ -96,10 +105,12 @@ class ShopifyAuth {
         variables: {'customerAccessToken': _prefs.getString(_shopifyKey)});
     if (_shopifyUser != null) {
       return _shopifyUser;
+      //TODO look into shared prefs (@adam)
     } else if (_prefs.getString(_shopifyKey) != null) {
-      var graphQlResult = (await _graphQLClient.query(_getCustomer))?.data;
+      final QueryResult result = (await _graphQLClient.query(_getCustomer));
+      checkForError(result);
       ShopifyUser user = ShopifyUser.fromJson(
-          (graphQlResult ?? const {})['customer'] ?? const {});
+          (result?.data ?? const {})['customer'] ?? const {});
       return user;
     }else{
       return null;

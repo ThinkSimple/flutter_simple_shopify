@@ -7,6 +7,7 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_shop.dart'
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor_within_collection.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_on_query_after_cursor.dart';
+import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/product.dart';
 import 'package:flutter_simple_shopify/enums/src/sort_key_product.dart';
 import 'package:flutter_simple_shopify/models/src/shop.dart';
@@ -15,11 +16,11 @@ import '../../graphql_operations/queries/get_collections.dart';
 import '../../graphql_operations/queries/get_featured_collections.dart';
 import '../../graphql_operations/queries/get_n_products.dart';
 import '../../graphql_operations/queries/get_products.dart';
-import '../../graphql_operations/queries/get_shop_name.dart';
 import '../../models/src/collection.dart';
 import '../../shopify_config.dart';
 
-class ShopifyStore {
+/// ShopifyStore provides various methods related to the shopify store.
+class ShopifyStore with ShopifyError{
   ShopifyStore._();
 
   static final ShopifyStore instance = ShopifyStore._();
@@ -36,9 +37,11 @@ class ShopifyStore {
     do {
       final WatchQueryOptions _options = WatchQueryOptions(
           documentNode: gql(getProductsQuery), variables: {'cursor': cursor});
+      final QueryResult result = await _graphQLClient.query(_options);
+      checkForError(result);
       tempProduct = (Products.fromJson(
-          ((await _graphQLClient.query(_options))?.data ??
-                  const {})["products"] ??
+          (result?.data ??
+              const {})["products"] ??
               {}));
 
       productList += tempProduct?.productList ?? const [];
@@ -59,9 +62,11 @@ class ShopifyStore {
     final WatchQueryOptions _options = WatchQueryOptions(
         documentNode: gql(getXProductsAfterCursorQuery),
         variables: {'x': limit ?? 50, 'cursor': cursor});
+    final QueryResult result = await _graphQLClient.query(_options);
+    checkForError(result);
     tempProduct = (Products.fromJson(
-        ((await ShopifyConfig.graphQLClient.query(_options))?.data ??
-                const {})["products"] ??
+        (result?.data ??
+            const {})["products"] ??
             {}));
     productList += tempProduct?.productList ?? const [];
     return productList;
@@ -74,10 +79,12 @@ class ShopifyStore {
     List<Product> productList = [];
     final QueryOptions _options = WatchQueryOptions(
         documentNode: gql(getProductsByIdsQuery), variables: {'ids': idList});
-    var response = (await ShopifyConfig.graphQLClient.query(_options))?.data;
+    final QueryResult result = await _graphQLClient.query(_options);
+    checkForError(result);
+    var response = result?.data;
     var newResponse = {
       'edges': List.generate(response['nodes'].length,
-          (index) => {'node': response['nodes'][index]})
+              (index) => {'node': response['nodes'][index]})
     };
     productList = Products.fromJson(newResponse).productList;
     return productList;
@@ -102,14 +109,15 @@ class ShopifyStore {
     assert(n != null);
     assert(sortKey != null);
     List<Product> productList = [];
-
     final WatchQueryOptions _options = WatchQueryOptions(
         documentNode: gql(getNProductsQuery),
         variables: {'n': n, 'sortKey': EnumToString.parse(sortKey)});
+    final QueryResult result = await _graphQLClient.query(_options);
+    checkForError(result);
     productList = (Products.fromJson(
-            ((await _graphQLClient.query(_options))?.data ??
-                    const {})["products"] ??
-                {}))
+        (result?.data ??
+            const {})["products"] ??
+            {}))
         .productList;
     return productList;
   }
@@ -119,18 +127,23 @@ class ShopifyStore {
     final WatchQueryOptions _options = WatchQueryOptions(
       documentNode: gql(getShopQuery),
     );
-    return Shop.fromJson((await ShopifyConfig.graphQLClient.query(_options))?.data);
+    final QueryResult result = await _graphQLClient.query(_options);
+    checkForError(result);
+    return Shop.fromJson(result?.data);
   }
 
-  /// Returns the featured collection.
-  ///
-  /// Note: the collection has to be called "Featured Collection"
-  Future<Collection> getFeaturedCollection() async {
+  /// Returns a collection by handle.
+  Future<Collection> getFeaturedCollection(String collectionName) async {
     final WatchQueryOptions _options = WatchQueryOptions(
-      documentNode: gql(getFeaturedCollectionQuery),
+        documentNode: gql(getFeaturedCollectionQuery),
+        variables: {
+          'query' : collectionName
+        }
     );
+    final QueryResult result = await _graphQLClient.query(_options);
+    checkForError(result);
     return Collections.fromJson(
-            (await _graphQLClient.query(_options)).data['collections'])
+        result?.data['collections'])
         .collectionList[0];
   }
 
@@ -145,9 +158,11 @@ class ShopifyStore {
       final WatchQueryOptions _options = WatchQueryOptions(
           documentNode: gql(getAllCollectionsQuery),
           variables: {'cursor': cursor});
+      final QueryResult result = await _graphQLClient.query(_options);
+      checkForError(result);
       tempCollection = (Collections.fromJson(
-          ((await _graphQLClient.query(_options))?.data ??
-                  const {})['collections'] ??
+          (result?.data ??
+              const {})['collections'] ??
               {}));
       collectionList += tempCollection.collectionList;
       cursor = collectionList.last.cursor;
@@ -166,12 +181,14 @@ class ShopifyStore {
       final QueryOptions _options = WatchQueryOptions(
           documentNode: gql(getCollectionByIdQuery),
           variables: {'id': id, 'cursor': cursor});
+      final QueryResult result = await _graphQLClient.query(_options);
+      checkForError(result);
       productList.addAll((Collection.fromJson(
-                  (await ShopifyConfig.graphQLClient.query(_options))?.data)
-              .products)
+          result?.data)
+          .products)
           .productList);
       collection = (Collection.fromJson(
-          (await ShopifyConfig.graphQLClient.query(_options))?.data));
+          result?.data));
       cursor = productList.last.cursor;
     } while (collection?.products?.hasNextPage == true);
     return productList;
@@ -192,8 +209,10 @@ class ShopifyStore {
           'limit': limit,
           'sortKey': EnumToString.parse(sortKey),
         });
+    final QueryResult result = await _graphQLClient.query(_options);
+    checkForError(result);
     return (Collection.fromJson(
-            (await ShopifyConfig.graphQLClient.query(_options))?.data))
+        result?.data))
         .products
         .productList;
   }
@@ -214,12 +233,14 @@ class ShopifyStore {
             'sortKey': EnumToString.parse(sortKey),
             'query': query,
           });
+      final QueryResult result = await _graphQLClient.query(_options);
+      checkForError(result);
       productList.addAll((Products.fromJson(
-              ((await ShopifyConfig.graphQLClient.query(_options))?.data ??
-                  const {})['products']))
+          (result?.data ??
+              const {})['products']))
           ?.productList);
       products = (Products.fromJson(
-          ((await ShopifyConfig.graphQLClient.query(_options))?.data ??
+          (result?.data ??
               const {})['products']));
       cursor = productList.last.cursor;
     } while (products?.hasNextPage == true);
@@ -239,9 +260,11 @@ class ShopifyStore {
           'sortKey': EnumToString.parse(sortKey),
           'query': query,
         });
+    final QueryResult result = await ShopifyConfig.graphQLClient.query(_options);
+    checkForError(result);
     return Products.fromJson(
-            ((await ShopifyConfig.graphQLClient.query(_options))?.data ??
-                const {})['products'])
+        (result?.data ??
+            const {})['products'])
         ?.productList;
   }
 }
