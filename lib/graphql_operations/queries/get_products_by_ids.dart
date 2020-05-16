@@ -21,6 +21,15 @@ query($ids : [ID!]!){
       createdAt
       description
       descriptionHtml
+      images(first: 250) {
+          edges {
+            node {
+              altText
+              id
+              originalSrc
+            }
+          }
+        }
       variants(first: 250) {
         edges {
           node {

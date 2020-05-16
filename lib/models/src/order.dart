@@ -1,5 +1,6 @@
-import 'package:flutter_simple_shopify/models/src/checkout.dart';
 import 'package:flutter_simple_shopify/models/src/product.dart';
+
+import 'checkout.dart';
 
 
 class Orders {
@@ -88,7 +89,7 @@ class LineItemsOrder {
 
 class LineItemOrder {
   final int currentQuantity;
-  final List<String> discountAllocations;
+  final List<DiscountAllocations> discountAllocations;
   final PriceV2 discountedTotalPrice;
   final PriceV2 originalTotalPrice;
   final int quantity;
@@ -110,11 +111,23 @@ class LineItemOrder {
   }
 
   static _getDiscountAllocationsList(Map<String, dynamic> json) {
-    List<String> stringList = [];
-    (json['node'] ?? const {})['discountAllocations']?.forEach((string) => stringList.add(string));
-    return stringList;
+    List<DiscountAllocations> discountList = [];
+    (json['node'] ?? const {})['discountAllocations']?.forEach((discount) => discountList.add(DiscountAllocations.fromJson(discount)));
+    return discountList;
   }
 
+}
+
+class DiscountAllocations {
+  final PriceV2 allocatedAmount;
+
+  DiscountAllocations({this.allocatedAmount});
+
+  static DiscountAllocations fromJson(Map<String, dynamic> json){
+    return DiscountAllocations(
+        allocatedAmount: PriceV2.fromJson(json['allocatedAmount'] ?? const {})
+    );
+  }
 }
 
 class ShippingAddress {

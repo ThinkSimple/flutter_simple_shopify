@@ -21,6 +21,7 @@ class ShopifyAuth with ShopifyError {
 
   static const String _shopifyKey = 'FLUTTER_SIMPLE_SHOPIFY_ACCESS_TOKEN';
 
+  static get currentCustomerAccessToken async => (await SharedPreferences.getInstance()).getString(_shopifyKey);
 
   /// Tries to create a new user account with the given email address and password.
   Future<ShopifyUser> createUserWithEmailAndPassword(

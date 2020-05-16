@@ -3,7 +3,7 @@ query getProductByHandle($handle : String!){
   productByHandle(handle: $handle) {
     id
     handle
-    images(first: 10) {
+    images(first: 250) {
       edges {
         node {
           originalSrc

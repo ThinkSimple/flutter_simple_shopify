@@ -34,23 +34,25 @@ class Product {
   final List<String> tags;
   final String updatedAt;
   final String cursor;
+  final List<ShopifyImage> images;
 
   const Product(
       {this.collectionList,
-      this.title,
-      this.id,
-      this.availableForSale,
-      this.createdAt,
-      this.description,
-      this.productVariants,
-      this.descriptionHtml,
-      this.handle,
-      this.onlineStoreUrl,
-      this.productType,
-      this.publishedAt,
-      this.tags,
-      this.updatedAt,
-      this.cursor});
+        this.title,
+        this.id,
+        this.availableForSale,
+        this.createdAt,
+        this.description,
+        this.productVariants,
+        this.descriptionHtml,
+        this.handle,
+        this.onlineStoreUrl,
+        this.productType,
+        this.publishedAt,
+        this.tags,
+        this.updatedAt,
+        this.cursor,
+        this.images});
 
   static Product fromJson(Map<String, dynamic> json) {
     return Product(
@@ -68,6 +70,7 @@ class Product {
         publishedAt: (json['node'] ?? const {})['publishedAt'],
         tags: _getTags(json ?? const {}),
         updatedAt: (json['node'] ?? const {})['updatedAt'],
+        images: _getImageList((json['node'] ?? const {})['images'] ?? const {}),
         cursor: json['cursor']);
   }
 
@@ -91,12 +94,18 @@ class Product {
       Map<String, dynamic> json) {
     List<AssociatedCollections> collectionList = [];
     (((json['node'] ?? const {})['collections'] ?? const {})['edges'] ??
-            const [])
+        const [])
         ?.forEach((v) {
       if (v?.data != null)
         collectionList.add(AssociatedCollections.fromJson(v?.data ?? const {}));
     });
     return collectionList;
+  }
+
+  static _getImageList(Map<String, dynamic> json) {
+    List<ShopifyImage> imageList = [];
+    json['edges'].forEach((image) => imageList.add(ShopifyImage.fromJson(image['node'] ?? const {})));
+    return imageList;
   }
 }
 
@@ -110,11 +119,11 @@ class AssociatedCollections {
 
   AssociatedCollections(
       {this.description,
-      this.descriptionHtml,
-      this.id,
-      this.handle,
-      this.updatedAt,
-      this.title});
+        this.descriptionHtml,
+        this.id,
+        this.handle,
+        this.updatedAt,
+        this.title});
 
   static AssociatedCollections fromJson(Map<String, dynamic> json) {
     return AssociatedCollections(
@@ -156,20 +165,20 @@ class ProductVariant {
 
   const ProductVariant(
       {this.price,
-      this.title,
-      this.image,
-      this.compareAtPrice,
-      this.weight,
-      this.weightUnit,
-      this.availableForSale,
-      this.sku,
-      this.requiresShipping,
-      this.id});
+        this.title,
+        this.image,
+        this.compareAtPrice,
+        this.weight,
+        this.weightUnit,
+        this.availableForSale,
+        this.sku,
+        this.requiresShipping,
+        this.id});
 
   static ProductVariant fromJson(Map<String, dynamic> json) {
     return ProductVariant(
       price:
-          PriceV2.fromJson((json['node'] ?? const {})['priceV2'] ?? const {}),
+      PriceV2.fromJson((json['node'] ?? const {})['priceV2'] ?? const {}),
       title: (json['node'] ?? const {})['title'],
       image: ShopifyImage.fromJson(
           (json['node'] ?? const {})['image'] ?? const {}),

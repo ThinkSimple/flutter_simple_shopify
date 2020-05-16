@@ -18,33 +18,35 @@ class Checkout{
   final bool taxExempt;
   final PriceV2 subtotalPriceV2;
   final String orderStatusUrl;
+  final bool requiresShipping;
 
   Checkout({this.id, this.email, this.appliedGiftcards,
     this.availableShippingrates, this.completedAt, this.createdAt,
     this.currencyCode, this.lineItems, this.note, this.webUrl, this.updatedAt,
     this.totalTaxV2, this.totalPriceV2, this.taxesIncluded, this.taxExempt,
-    this.subtotalPriceV2, this.orderStatusUrl});
+    this.subtotalPriceV2, this.orderStatusUrl, this.requiresShipping});
 
 
   static Checkout fromJson(Map<String, dynamic> json){
     return Checkout(
-      id: json['id'],
-      email: json['email'],
-      appliedGiftcards: _getAppliedGiftCards(json ?? const {}),
-      availableShippingrates: AvailableShippingRates.fromJson(json['availableShippingRates'] ?? const {}),
-      completedAt: json['completedAt'],
-      createdAt: json['createddAt'],
-      currencyCode: json['currencyCode'],
-      lineItems: LineItems.fromJson(json['lineItems']),
-      note: json['note'],
-      webUrl: json['webUrl'],
-      updatedAt: json['updatedAt'],
-      totalTaxV2: PriceV2.fromJson(json['totalTaxV2'] ?? const {}),
-      totalPriceV2: PriceV2.fromJson(json['totalPriceV2'] ?? const {}),
-      taxesIncluded: json['taxesIncluded'],
-      taxExempt: json['taxExempt'],
-      subtotalPriceV2: PriceV2.fromJson(json['subtotalPriceV2'] ?? const {}),
-      orderStatusUrl: json['orderStatusUrl'],
+        id: json['id'],
+        email: json['email'],
+        appliedGiftcards: _getAppliedGiftCards(json ?? const {}),
+        availableShippingrates: AvailableShippingRates.fromJson(json['availableShippingRates'] ?? const {}),
+        completedAt: json['completedAt'],
+        createdAt: json['createddAt'],
+        currencyCode: json['currencyCode'],
+        lineItems: LineItems.fromJson(json['lineItems']),
+        note: json['note'],
+        webUrl: json['webUrl'],
+        updatedAt: json['updatedAt'],
+        totalTaxV2: PriceV2.fromJson(json['totalTaxV2'] ?? const {}),
+        totalPriceV2: PriceV2.fromJson(json['totalPriceV2'] ?? const {}),
+        taxesIncluded: json['taxesIncluded'],
+        taxExempt: json['taxExempt'],
+        subtotalPriceV2: PriceV2.fromJson(json['subtotalPriceV2'] ?? const {}),
+        orderStatusUrl: json['orderStatusUrl'],
+        requiresShipping: json['requiresShipping']
     );
   }
 
