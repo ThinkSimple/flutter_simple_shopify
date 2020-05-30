@@ -10,7 +10,7 @@ query getProductByHandle($handle : String!){
         }
       }
     }
-    variants(first: 10) {
+    variants(first: 250) {
       edges {
         node {
           priceV2 {

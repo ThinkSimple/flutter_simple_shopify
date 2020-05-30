@@ -1,6 +1,6 @@
 const String getNProductsQuery = r'''
-query($n : Int, $sortKey : ProductSortKeys){
-  products(first: $n, sortKey: $sortKey) {
+query($n : Int, $sortKey : ProductSortKeys, $reverse: Boolean){
+  products(first: $n, sortKey: $sortKey, reverse: $reverse) {
     pageInfo {
       hasNextPage
     }

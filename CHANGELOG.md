@@ -37,3 +37,15 @@
 ## [0.0.10-alpha] - 14/05/2020
 
 * now checking for query/mutation errors and throwing exceptions if something bad happens
+
+## [0.0.11-alpha] - 14/05/2020
+
+* 0.0.11- Products now have images and some other minor changes
+
+## [0.0.12-alpha] - 14/05/2020
+
+* Price property now has a currncy symbol and a formatted price. also you can now reverse the list at getNProducts()
+
+## [0.0.13-alpha] - 14/05/2020
+
+* added example

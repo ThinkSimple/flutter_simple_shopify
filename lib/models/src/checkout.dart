@@ -164,7 +164,7 @@ class ProductVariantCheckout {
       price:
       PriceV2.fromJson(json['priceV2'] ?? const {}),
       title: json['title'],
-      image: ShopifyImage.fromJson((json['node'] ?? const {})['image'] ?? const {}),
+      image: ShopifyImage.fromJson(json['image'] ?? const {}),
       compareAtPrice: PriceV2.fromJson(
           json['compareAtPriceV2'] ?? const {} ),
       weight: json['weight'] ,

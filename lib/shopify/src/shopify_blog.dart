@@ -20,12 +20,15 @@ class ShopifyBlog with ShopifyError{
   /// Returns a List of [Blog].
   ///
   /// Returns All [Blog] of the Shop.
-  Future<List<Blog>> getAllBlogs() async {
+  Future<List<Blog>> getAllBlogs({bool deleteThisPartOfCache = false}) async {
     final WatchQueryOptions _options = WatchQueryOptions(
       documentNode: gql(getXProductsAfterCursorQuery),
     );
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
+    if(deleteThisPartOfCache) {
+      _graphQLClient.cache.write(_options.toKey(), null);
+    }
     return (Blogs.fromJson((result?.data ??
         const {})["blogs"] ??
         const {}))
@@ -37,7 +40,7 @@ class ShopifyBlog with ShopifyError{
   /// Returns the [Blog] that is associated to the [handle].
   /// [sortKeyArticle] is meant for the List of [Article] in the [Blog].
   Future<Blog> getBlogByHandle(
-      String handle, SortKeyArticle sortKeyArticle) async {
+      String handle, SortKeyArticle sortKeyArticle, {bool deleteThisPartOfCache = false}) async {
     final QueryOptions _options = WatchQueryOptions(
         documentNode: gql(getBlogByHandleQuery),
         variables: {
@@ -50,6 +53,9 @@ class ShopifyBlog with ShopifyError{
     as LazyCacheMap)
         ?.data;
     var newResponse = {'node': response};
+    if(deleteThisPartOfCache) {
+      _graphQLClient.cache.write(_options.toKey(), null);
+    }
     return Blog.fromJson(newResponse);
   }
 
@@ -57,7 +63,7 @@ class ShopifyBlog with ShopifyError{
   ///
   /// Returns a the first [articleAmount] of [Article] sorted by [sortKeyArticle].
   Future<List<Article>> getXArticlesSorted(
-      int articleAmount, SortKeyArticle sortKeyArticle) async {
+      int articleAmount, SortKeyArticle sortKeyArticle, {bool deleteThisPartOfCache = false}) async {
     final QueryOptions _options = WatchQueryOptions(
         documentNode: gql(getNArticlesSortedQuery),
         variables: {
@@ -66,6 +72,9 @@ class ShopifyBlog with ShopifyError{
         });
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
+    if(deleteThisPartOfCache) {
+      _graphQLClient.cache.write(_options.toKey(), null);
+    }
     return (Articles.fromJson(((result?.data ??
         const {}))['articles'] ??
         const {}))
