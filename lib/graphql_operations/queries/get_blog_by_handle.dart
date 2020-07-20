@@ -1,7 +1,7 @@
 const String getBlogByHandleQuery = r'''
-query($handle : String!, $sortKey: ArticleSortKeys){
+query($handle : String!, $sortKey: ArticleSortKeys, $reverseArticles: Boolean){
   blogByHandle(handle: $handle) {
-    articles(first: 250, sortKey: $sortKey) {
+    articles(first: 250, sortKey: $sortKey, reverse: $reverseArticles) {
       edges {
         node {
           authorV2 {

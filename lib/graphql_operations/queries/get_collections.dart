@@ -1,6 +1,6 @@
 const String getAllCollectionsQuery = r'''
-query($cursor: String){
-  collections(first: 1, after: $cursor) {
+query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean){
+  collections(first: 250, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
   pageInfo{
     hasNextPage
   }

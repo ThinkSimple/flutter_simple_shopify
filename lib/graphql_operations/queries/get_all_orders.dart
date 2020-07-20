@@ -1,7 +1,7 @@
 const String getAllOrdersQuery = r'''
-query getOrders($sortKey : OrderSortKeys, $accessToken : String!){
+query getOrders($sortKey : OrderSortKeys, $accessToken : String!, $reverse: Boolean){
 customer(customerAccessToken: $accessToken) {
-    orders(first: 250, sortKey: $sortKey) {
+    orders(first: 250, sortKey: $sortKey, reverse: $reverse) {
       edges {
         node {
           id

@@ -16,12 +16,12 @@ class Shop {
       description: (json['shop'] ?? const {})['description'],
       moneyFormat: (json['shop'] ?? const {})['moneyFormat'],
       name: (json['shop'] ?? const {})['name'],
-      paymentSettings: PaymentSettings.fromJson((json['shop'] ?? const {})['paymentSettings']),
-      primaryDomain: PrimaryDomain.fromJson((json['shop'] ?? const {})['primaryDomain']),
-      privacyPolicy: PrivacyPolicy.fromJson((json['shop'] ?? const {})['privacyPolicy']),
-      refundPolicy: RefundPolicy.fromJson((json['shop'] ?? const {})['refundPolicy']),
-      shipsToCountries: _getShipsToCountryList(json['shop'] ?? const {}),
-      termsOfService: TermsOfService.fromJson((json['shop'] ?? const {})['termsOfService']),
+      paymentSettings: PaymentSettings.fromJson((json['shop'] ?? const {})['paymentSettings'] ?? const {}),
+      primaryDomain: PrimaryDomain.fromJson((json['shop'] ?? const {})['primaryDomain'] ?? const {}),
+      privacyPolicy: PrivacyPolicy.fromJson((json['shop'] ?? const {})['privacyPolicy'] ?? const {}),
+      refundPolicy: RefundPolicy.fromJson((json['shop'] ?? const {})['refundPolicy'] ?? const {}),
+      shipsToCountries: _getShipsToCountryList(json['shop'] ?? const {} ),
+      termsOfService: TermsOfService.fromJson((json['shop'] ?? const {})['termsOfService'] ?? const {}),
     );
   }
 

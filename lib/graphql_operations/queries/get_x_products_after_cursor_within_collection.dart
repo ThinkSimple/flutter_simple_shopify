@@ -1,5 +1,5 @@
 const String getXProductsAfterCursorWithinCollectionQuery = r'''
-query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSortKeys){
+query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSortKeys, $reverse: Boolean){
   node(id: $id) {
     ... on Collection {
       id
@@ -13,12 +13,12 @@ query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSor
         id
         originalSrc
       }
-      products(first: $limit, sortKey: $sortKey, after: $cursor) {
+      products(first: $limit, sortKey: $sortKey, after: $cursor, reverse: $reverse) {
         edges {
           cursor
           node {
             availableForSale
-            collections(first: 250) {
+            collections(first: 1) {
               edges {
                 node {
                   description
@@ -35,7 +35,7 @@ query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSor
             descriptionHtml
             handle
             id
-            images(first: 250) {
+            images(first: 20) {
               edges {
                 node {
                   altText
@@ -50,7 +50,7 @@ query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSor
             tags
             title
             updatedAt
-            variants(first: 250) {
+            variants(first: 25) {
               edges {
                 node {
                   title
@@ -72,6 +72,7 @@ query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSor
                   sku
                   requiresShipping
                   availableForSale
+                  id
                 }
               }
             }

@@ -1,6 +1,6 @@
 const String getAllProductsOnQueryQuery = r'''
-query( $cursor: String, $sortKey : ProductSortKeys, $query: String){
-  products(query: $query, first: 250, after: $cursor, sortKey: $sortKey) {
+query( $cursor: String, $sortKey : ProductSortKeys, $query: String, $reverse: Boolean){
+  products(query: $query, first: 250, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
     edges {
       node {
         id
@@ -46,6 +46,7 @@ query( $cursor: String, $sortKey : ProductSortKeys, $query: String){
               availableForSale
               sku
               requiresShipping
+              id
             }
           }
         }

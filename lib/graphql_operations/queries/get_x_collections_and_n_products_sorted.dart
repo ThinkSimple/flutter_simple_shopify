@@ -1,7 +1,11 @@
-const String getFeaturedCollectionQuery = r'''
-query getFeaturedCollectionQuery($query: String!){
-  collections(query: $query, first: 1) {
+const String getXCollectionsAndNProductsSortedQuery = r'''
+query($cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCollectionSortKeys, $reverse: Boolean, $x: Int, $n: Int){
+  collections(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
+  pageInfo{
+    hasNextPage
+  }
     edges {
+      cursor
       node {
         title
         description
@@ -14,10 +18,10 @@ query getFeaturedCollectionQuery($query: String!){
           id
           originalSrc
         }
-        products(first: 20) {
+        products(first: $n, sortKey: $sortKeyProduct) {
           edges {
             node {
-              variants(first: 1) {
+              variants(first: 250) {
                 edges {
                   node {
                     title
@@ -43,18 +47,6 @@ query getFeaturedCollectionQuery($query: String!){
                 }
               }
               availableForSale
-              collections(first: 1) {
-                edges {
-                  node {
-                    description
-                    descriptionHtml
-                    id
-                    handle
-                    title
-                    updatedAt
-                  }
-                }
-              }
               createdAt
               description
               descriptionHtml
@@ -86,5 +78,4 @@ query getFeaturedCollectionQuery($query: String!){
     }
   }
 }
-
 ''';

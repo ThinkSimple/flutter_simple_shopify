@@ -7,3 +7,9 @@ enum SortKeyArticle {
   ID,
   RELEVANCE
 }
+
+extension ParseToStringArticle on SortKeyArticle{
+  String parseToString(){
+    return this.toString().split('.')[1];
+  }
+}

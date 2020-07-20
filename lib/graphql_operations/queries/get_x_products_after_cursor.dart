@@ -1,6 +1,6 @@
 const String getXProductsAfterCursorQuery = r'''
-query($cursor : String, $x : Int){
-  products(first: $x, after: $cursor) {
+query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys){
+  products(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
     pageInfo {
       hasNextPage
     }
@@ -30,6 +30,7 @@ query($cursor : String, $x : Int){
               availableForSale
               sku
               requiresShipping
+              
             }
           }
           pageInfo {

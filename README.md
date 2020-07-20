@@ -2,6 +2,9 @@
 
 A new Flutter package which provides help in creating a mobile app of a shopify store.
 Note: **This library as of right now is not ready for production**
+**however** we finished creating our own app and used the library.
+There are still minor bugs here and there but we advise everyone to start using the library and post as many issues as possible.
+If there are questions about the usage feel free to hit us up on our mail address.
 
 ## How To Use
 
@@ -21,7 +24,7 @@ void main() {
 }
 ```
 
-These are the four possible instances, each contains different methods which will help you with working with the Shopify Storefront API.
+These are the five possible instances, each contains different methods which will help you with working with the Shopify Storefront API.
 The goal is to make creating an mobile app from your Shopify website easier.
 ```dart
   ShopifyAuth shopifyAuth = ShopifyAuth.instance;

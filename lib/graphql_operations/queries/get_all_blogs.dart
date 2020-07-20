@@ -1,13 +1,13 @@
 const String getAllBlogsQuery = r'''
-{
-  blogs(first: 250, sortKey: HANDLE) {
+query getBlogs($reverseBlogs: Boolean, $reverseArticles: Boolean, $sortKey: BlogSortkeys ){
+  blogs(first: 250, sortKey: $sortKey, reverse: $reverseBlogs) {
     edges {
       node {
         id
         handle
         title
         url
-        articles(first: 250, sortKey: TITLE) {
+        articles(first: 250, sortKey: TITLE, reverse: $reverseArticles) {
           edges {
             node {
               authorV2 {

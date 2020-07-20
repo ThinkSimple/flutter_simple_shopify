@@ -24,7 +24,7 @@ class ShopifyAuth with ShopifyError {
   static get currentCustomerAccessToken async => (await SharedPreferences.getInstance()).getString(_shopifyKey);
 
   /// Tries to create a new user account with the given email address and password.
-  Future<ShopifyUser> createUserWithEmailAndPassword(
+    Future<ShopifyUser> createUserWithEmailAndPassword(
       {@required String email, @required String password, bool deleteThisPartOfCache = false}) async {
     assert(email != null);
     assert(password != null);
@@ -34,7 +34,10 @@ class ShopifyAuth with ShopifyError {
       'password': password,
     });
     final QueryResult result = await _graphQLClient.mutate(_options);
+    print(result.exception.toString());
     checkForError(result);
+    if((result?.data['customerCreate'] ?? const {})['customerUserErrors'] != null)
+      throw(result?.data['customerCreate'] ?? const {}['customerUserErrors'].first['message']);
     final shopifyUser = ShopifyUser.fromJson(
         (result?.data['customerCreate'] ?? const {})['customer']);
     final String customerAccessToken = await _createAccessToken(email, password);

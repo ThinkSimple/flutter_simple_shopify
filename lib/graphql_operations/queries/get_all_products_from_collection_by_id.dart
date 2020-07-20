@@ -1,5 +1,5 @@
 const String getCollectionByIdQuery = r'''
-query($id : ID!, $cursor : String){
+query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys){
   node(id: $id) {
     ... on Collection {
       id
@@ -13,7 +13,7 @@ query($id : ID!, $cursor : String){
         id
         originalSrc
       }
-      products(first: 1, sortKey: TITLE, after: $cursor) {
+      products(first: 10, sortKey: $sortKey, after: $cursor) {
         edges {
           cursor
           node {
@@ -72,6 +72,7 @@ query($id : ID!, $cursor : String){
                   sku
                   requiresShipping
                   availableForSale
+                  id
                 }
               }
             }

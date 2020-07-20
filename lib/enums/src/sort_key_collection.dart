@@ -1,11 +1,11 @@
-enum SortKeyBlog {
-  HANDLE,
+enum SortKeyCollection {
+  UPDATED_AT,
   TITLE,
   ID,
   RELEVANCE
 }
 
-extension ParseToStringBlog on SortKeyBlog{
+extension ParseToStringCollection on SortKeyCollection{
   String parseToString(){
     return this.toString().split('.')[1];
   }

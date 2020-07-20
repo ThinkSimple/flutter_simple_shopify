@@ -1,9 +1,11 @@
-import 'package:enum_to_string/enum_to_string.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter_simple_shopify/enums/enums.dart';
+import 'package:flutter_simple_shopify/enums/src/sort_key_collection.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_collections_optimized.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_from_collection_by_id.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_on_query.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_products_by_ids.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_shop.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_collections_and_n_products_sorted.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor_within_collection.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_on_query_after_cursor.dart';
@@ -59,13 +61,14 @@ class ShopifyStore with ShopifyError{
   /// Returns the first [limit] Products after the given [startCursor].
   /// [limit] has to be in the range of 0 and 250.
   Future<List<Product>> getXProductsAfterCursor(
-      int limit, String startCursor, {bool deleteThisPartOfCache = false}) async {
+      int limit, String startCursor,
+      {bool deleteThisPartOfCache = false, bool reverse = false, SortKeyProduct sortKeyProduct = SortKeyProduct.TITLE}) async {
     List<Product> productList = [];
     Products tempProduct;
     String cursor = startCursor;
     final WatchQueryOptions _options = WatchQueryOptions(
         documentNode: gql(getXProductsAfterCursorQuery),
-        variables: {'x': limit ?? 50, 'cursor': cursor});
+        variables: {'x': limit ?? 50, 'cursor': cursor, 'reverse': reverse, 'sortKey': sortKeyProduct.parseToString()});
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     tempProduct = (Products.fromJson(
@@ -116,14 +119,14 @@ class ShopifyStore with ShopifyError{
   ///  SortKey.ID,
   ///  SortKey.RELEVANCE,
   Future<List<Product>> getNProducts(
-      bool reverse, {@required int n, @required SortKeyProduct sortKey, bool deleteThisPartOfCache = false}) async {
+       int n, {bool deleteThisPartOfCache = false, bool reverse, SortKeyProduct sortKey = SortKeyProduct.PRODUCT_TYPE}) async {
     assert(n != null);
     assert(sortKey != null);
     List<Product> productList = [];
     final WatchQueryOptions _options = WatchQueryOptions(
         documentNode: gql(getNProductsQuery),
         variables: {'n': n,
-          'sortKey': EnumToString.parse(sortKey),
+          'sortKey': sortKey.parseToString(),
           'reverse': reverse,
         });
     final QueryResult result = await _graphQLClient.query(_options);
@@ -173,24 +176,62 @@ class ShopifyStore with ShopifyError{
   /// Returns all available collections.
   ///
   /// Tip: When editing Collections you can choose on which channel or app you want to make them available.
-  Future<List<Collection>> getAllCollections({bool deleteThisPartOfCache = false}) async {
+  Future<List<Collection>> getAllCollections({bool deleteThisPartOfCache = false,
+    SortKeyCollection sortKeyCollection = SortKeyCollection.UPDATED_AT, bool reverse = false}) async {
     List<Collection> collectionList = [];
     Collections tempCollection;
     String cursor;
     WatchQueryOptions _options;
     do {
       _options = WatchQueryOptions(
-          documentNode: gql(getAllCollectionsQuery),
-          variables: {'cursor': cursor});
+          documentNode: gql(getAllCollectionsOptimizedQuery),
+          variables: {
+            'cursor': cursor,
+            'sortKey': sortKeyCollection.parseToString(),
+            'reverse': reverse
+          });
       final QueryResult result = await _graphQLClient.query(_options);
       checkForError(result);
       tempCollection = (Collections.fromJson(
           (result?.data ??
               const {})['collections'] ??
               {}));
-      collectionList += tempCollection.collectionList;
+      collectionList = tempCollection.collectionList + collectionList;
       cursor = collectionList.last.cursor;
     } while ((tempCollection?.hasNextPage == true));
+    if(deleteThisPartOfCache) {
+      _graphQLClient.cache.write(_options.toKey(), null);
+    }
+    return collectionList;
+  }
+
+  /// Returns N products from each X collections.
+  ///
+  /// Tip: When editing Collections you can choose on which channel or app you want to make them available.
+  Future<List<Collection>> getXCollectionsAndNProductsSorted(
+      int n, int x,
+      {bool deleteThisPartOfCache = false,
+        SortKeyProductCollection sortKeyProductCollection = SortKeyProductCollection.CREATED,
+        SortKeyCollection sortKeyCollection = SortKeyCollection.UPDATED_AT, bool reverse = false, }) async {
+    List<Collection> collectionList;
+    String cursor;
+    WatchQueryOptions _options;
+    _options = WatchQueryOptions(
+        documentNode: gql(getXCollectionsAndNProductsSortedQuery),
+        variables: {
+          'cursor': cursor,
+          'sortKey': sortKeyCollection.parseToString(),
+          'reverse': reverse,
+          'sortKeyProduct' : sortKeyProductCollection.parseToString(),
+          'x': x,
+          'n': n
+        });
+    final QueryResult result = await _graphQLClient.query(_options);
+    checkForError(result);
+    collectionList = (Collections.fromJson(
+        (result?.data ??
+            const {})['collections'] ??
+            {})).collectionList;
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -200,7 +241,8 @@ class ShopifyStore with ShopifyError{
   /// Returns a List of [Product].
   ///
   /// Returns all Products from the [Collection] with the [id].
-  Future<List<Product>> getAllProductsFromCollectionById(String id, {bool deleteThisPartOfCache = false}) async {
+  Future<List<Product>> getAllProductsFromCollectionById(String id,
+      {bool deleteThisPartOfCache = false, SortKeyProductCollection sortKeyProductCollection = SortKeyProductCollection.CREATED}) async {
     String cursor;
     List<Product> productList = [];
     Collection collection;
@@ -208,7 +250,11 @@ class ShopifyStore with ShopifyError{
     do {
      _options = WatchQueryOptions(
           documentNode: gql(getCollectionByIdQuery),
-          variables: {'id': id, 'cursor': cursor});
+          variables: {
+            'id': id,
+            'cursor': cursor,
+            'sortKey' : sortKeyProductCollection.parseToString()
+          });
       final QueryResult result = await _graphQLClient.query(_options);
       checkForError(result);
       productList.addAll((Collection.fromJson(
@@ -230,7 +276,7 @@ class ShopifyStore with ShopifyError{
   /// Returns the first [limit] Products after the given [startCursor].
   /// [limit] has to be in the range of 0 and 250.
   Future<List<Product>> getXProductsAfterCursorWithinCollection(
-      String id, int limit, String startCursor, SortKeyProduct sortKey, {bool deleteThisPartOfCache = false}) async {
+      String id, int limit, String startCursor, {SortKeyProductCollection sortKey = SortKeyProductCollection.BEST_SELLING, bool deleteThisPartOfCache = false, bool reverse = false}) async {
     String cursor = startCursor;
     final WatchQueryOptions _options = WatchQueryOptions(
         documentNode: gql(getXProductsAfterCursorWithinCollectionQuery),
@@ -238,7 +284,8 @@ class ShopifyStore with ShopifyError{
           'id': id,
           'cursor': cursor,
           'limit': limit,
-          'sortKey': EnumToString.parse(sortKey),
+          'sortKey': sortKey.parseToString(),
+          'reverse': reverse,
         });
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
@@ -255,7 +302,7 @@ class ShopifyStore with ShopifyError{
   ///
   /// Gets all [Product] from a [query] search sorted by [sortKey].
   Future<List<Product>> getAllProductsOnQuery(
-      String cursor, SortKeyProduct sortKey, String query, {bool deleteThisPartOfCache = false}) async {
+      String cursor, String query, {SortKeyProduct sortKey, bool deleteThisPartOfCache = false, bool reverse = false}) async {
     String cursor;
     List<Product> productList = [];
     Products products;
@@ -265,8 +312,9 @@ class ShopifyStore with ShopifyError{
           documentNode: gql(getAllProductsOnQueryQuery),
           variables: {
             'cursor': cursor,
-            'sortKey': EnumToString.parse(sortKey),
+            'sortKey': sortKey.parseToString(),
             'query': query,
+            'reverse': reverse
           });
       final QueryResult result = await _graphQLClient.query(_options);
       checkForError(result);
@@ -289,14 +337,15 @@ class ShopifyStore with ShopifyError{
   ///
   /// Gets [limit] amount of [Product] from the [query] search, sorted by [sortKey].
   Future<List<Product>> getXProductsOnQueryAfterCursor(
-      String cursor, int limit, SortKeyProduct sortKey, String query, {bool deleteThisPartOfCache = false}) async {
+      String query, int limit, String cursor, {SortKeyProduct sortKey, bool deleteThisPartOfCache = false, bool reverse = false}) async {
     final WatchQueryOptions _options = WatchQueryOptions(
         documentNode: gql(getXProductsOnQueryAfterCursorQuery),
         variables: {
           'cursor': cursor,
           'limit': limit,
-          'sortKey': EnumToString.parse(sortKey),
+          'sortKey': sortKey.parseToString(),
           'query': query,
+          'reverse': reverse
         });
     final QueryResult result = await ShopifyConfig.graphQLClient.query(_options);
     checkForError(result);

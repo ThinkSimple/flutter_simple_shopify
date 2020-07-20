@@ -4,3 +4,9 @@ enum SortKeyOrder {
   ID,
   RELEVANCE
 }
+
+extension ParseToStringOrder on SortKeyOrder{
+  String parseToString(){
+    return this.toString().split('.')[1];
+  }
+}
