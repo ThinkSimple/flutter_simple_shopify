@@ -3,6 +3,11 @@ query( $cursor: String, $sortKey : ProductSortKeys, $query: String, $reverse: Bo
   products(query: $query, first: 250, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
     edges {
       node {
+      options(first: 50) {
+            id
+            name
+            values
+            } 
         id
         handle
         availableForSale

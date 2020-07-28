@@ -104,3 +104,13 @@ had to delete the example folder, will add in new version again.
 ## [0.0.17-alpha] - 11/07/2020
 
 * Bug Fix
+
+## [0.0.18-alpha] - 28/07/2020
+
+* additional fields for Product object.
+product.options available now - see what variant options there are and their corresponding values.
+getDeaturedCollection is now getCollectionByHandle, a wrong handle name wont crash your app, it will give a Collection object with null values.
+
+## [0.0.8-thinkSimple] - 28/07/2020
+
+* Bug Fix

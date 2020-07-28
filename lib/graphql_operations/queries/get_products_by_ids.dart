@@ -2,6 +2,11 @@ const String getProductsByIdsQuery = r'''
 query($ids : [ID!]!){
   nodes(ids: $ids) {
     ... on Product {
+    options(first: 50) {
+            id
+            name
+            values
+            } 
       id
       handle
       collections(first: 250) {

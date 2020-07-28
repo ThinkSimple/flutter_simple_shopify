@@ -15,15 +15,6 @@ query($id: ID!){
         }
         id
       }
-      availableShippingRates {
-        ready
-        shippingRates {
-          handle
-          title
-          priceV2 {
-            amount
-            currencyCode
-       }}}
       requiresShipping
       completedAt
       createdAt

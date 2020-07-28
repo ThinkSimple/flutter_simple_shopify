@@ -7,6 +7,11 @@ query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys){
     edges {
       cursor
       node {
+      options(first: 50) {
+            id
+            name
+            values
+            } 
         variants(first: 250) {
           edges {
             node {

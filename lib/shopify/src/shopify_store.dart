@@ -14,7 +14,6 @@ import 'package:flutter_simple_shopify/models/src/product.dart';
 import 'package:flutter_simple_shopify/enums/src/sort_key_product.dart';
 import 'package:flutter_simple_shopify/models/src/shop.dart';
 import 'package:graphql/client.dart';
-import '../../graphql_operations/queries/get_collections.dart';
 import '../../graphql_operations/queries/get_featured_collections.dart';
 import '../../graphql_operations/queries/get_n_products.dart';
 import '../../graphql_operations/queries/get_products.dart';
@@ -156,21 +155,26 @@ class ShopifyStore with ShopifyError{
   }
 
   /// Returns a collection by handle.
-  Future<Collection> getFeaturedCollection(String collectionName, {bool deleteThisPartOfCache = false}) async {
-    final WatchQueryOptions _options = WatchQueryOptions(
-        documentNode: gql(getFeaturedCollectionQuery),
-        variables: {
-          'query' : collectionName
-        }
-    );
-    final QueryResult result = await _graphQLClient.query(_options);
-    checkForError(result);
-    if(deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+  Future<Collection> getCollectionByHandle(String collectionName, {bool deleteThisPartOfCache = false}) async {
+    try{
+      final WatchQueryOptions _options = WatchQueryOptions(
+          documentNode: gql(getFeaturedCollectionQuery),
+          variables: {
+            'query' : collectionName
+          }
+      );
+      final QueryResult result = await _graphQLClient.query(_options);
+      checkForError(result);
+      if(deleteThisPartOfCache) {
+        _graphQLClient.cache.write(_options.toKey(), null);
+      }
+      return Collections.fromJson(
+          result?.data['collections'])
+          .collectionList[0];
+    } catch(e){
+      print(e);
     }
-    return Collections.fromJson(
-        result?.data['collections'])
-        .collectionList[0];
+    return Collection.fromJson({});
   }
 
   /// Returns all available collections.

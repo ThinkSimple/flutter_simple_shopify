@@ -17,6 +17,11 @@ query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSor
         edges {
           cursor
           node {
+          options(first: 50) {
+            id
+            name
+            values
+            } 
             availableForSale
             collections(first: 1) {
               edges {

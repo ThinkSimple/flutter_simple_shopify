@@ -35,6 +35,7 @@ class Product {
   final String updatedAt;
   final String cursor;
   final List<ShopifyImage> images;
+  final List<Option> option;
 
   const Product(
       {this.collectionList,
@@ -52,7 +53,8 @@ class Product {
         this.tags,
         this.updatedAt,
         this.cursor,
-        this.images});
+        this.images,
+        this.option});
 
   static Product fromJson(Map<String, dynamic> json) {
     return Product(
@@ -71,7 +73,8 @@ class Product {
         tags: _getTags(json ?? const {}),
         updatedAt: (json['node'] ?? const {})['updatedAt'],
         images: _getImageList((json['node'] ?? const {})['images'] ?? const {}),
-        cursor: json['cursor']);
+        cursor: json['cursor'],
+        option: _getOptionList((json['node'] ?? const {})));
   }
 
   static List<ProductVariant> _getProductVariants(Map<String, dynamic> json) {
@@ -82,6 +85,16 @@ class Product {
         productVariants.add(ProductVariant.fromJson(v?.data ?? const {}));
     });
     return productVariants;
+  }
+
+
+  static List<Option> _getOptionList(Map<String, dynamic> json) {
+    List<Option> optionList = [];
+    json['options']?.forEach((v) {
+      if (v != null)
+        optionList.add(Option.fromJson(v ?? const {}));
+    });
+    return optionList;
   }
 
   static List<String> _getTags(Map<String, dynamic> json) {
@@ -194,6 +207,28 @@ class ProductVariant {
   }
 }
 
+class Option {
+  final String id;
+  final String name;
+  final List<String> values;
+
+  Option({this.id, this.name, this.values});
+
+  static Option fromJson(Map<String, dynamic> json) {
+    return Option(
+        id: json['id'] ?? "",
+        name: json['name'] ?? "",
+        values: _getValueList(json)
+    );
+  }
+
+  static List<String> _getValueList(Map<String, dynamic> json) {
+    List<String> values = [];
+    json['values']?.forEach((e) => values.add(e ?? ""));
+    return values;
+  }
+}
+
 class PriceV2 {
   final String amount;
   final String currencyCode;
@@ -207,8 +242,33 @@ class PriceV2 {
         amount: json['amount'],
         currencyCode: json['currencyCode'],
         currencySymbol: _simpleCurrencySymbols[json['currencyCode']],
-        formattedPrice: '${json['amount']} ${_simpleCurrencySymbols[json['currencyCode']]}'
+        formattedPrice: _chooseRightOrderOnCurrencySymbol(json)
+
     );
+  }
+  static String _chooseRightOrderOnCurrencySymbol(Map<String, dynamic> json){
+    String currencyString;
+    switch(json['currencyCode']) {
+      case "INR": {
+        currencyString = '${_simpleCurrencySymbols[json['currencyCode']]} ${json['amount']}';
+      }
+      break;
+
+      case "EUR": {
+        currencyString = '${json['amount']} ${_simpleCurrencySymbols[json['currencyCode']]}';
+      }
+      break;
+      case "USD": {
+        currencyString = '${_simpleCurrencySymbols[json['currencyCode']]} ${json['amount']}';
+      }
+      break;
+
+      default: {
+        currencyString = '${json['amount']} ${_simpleCurrencySymbols[json['currencyCode']]}';
+      }
+      break;
+    }
+    return currencyString;
   }
 
   static final Map<String, String> _simpleCurrencySymbols = {
