@@ -3,6 +3,8 @@ import 'package:flutter_simple_shopify/enums/src/sort_key_collection.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_collections_optimized.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_from_collection_by_id.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_on_query.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_collections_by_ids.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_product_recommendations.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_products_by_ids.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_shop.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_collections_and_n_products_sorted.dart';
@@ -140,6 +142,57 @@ class ShopifyStore with ShopifyError{
     }
     return productList;
   }
+  /// Returns a list of recommended [Product] by given id.
+  Future<List<Product>> getProductRecommendations(String productId, {bool deleteThisPartOfCache = false}) async {
+    try{
+      final WatchQueryOptions _options = WatchQueryOptions(
+          documentNode: gql(getProductRecommendationsQuery),
+          variables: {
+            'id' : productId
+          }
+      );
+      final QueryResult result = await _graphQLClient.query(_options);
+      checkForError(result);
+      if(deleteThisPartOfCache) {
+        _graphQLClient.cache.write(_options.toKey(), null);
+      }
+      var newResponse = List.generate(result?.data['productRecommendations']?.length ?? 0, (index) => {"node":(result?.data['productRecommendations'] ?? const {})[index]});
+      var tempProducts = {"edges":newResponse};
+      return Products.fromJson(
+          tempProducts)
+          ?.productList;
+    } catch(e){
+      print(e);
+    }
+    return [Product.fromJson({})];
+  }
+
+  /// Returns a List of [Collection]
+  Future<List<Collection>> getCollectionsByIds(List<String> idList, {bool deleteThisPartOfCache = false}) async {
+    try{
+      final WatchQueryOptions _options = WatchQueryOptions(
+          documentNode: gql(getCollectionsByIdsQuery),
+          variables: {
+            'ids' : idList
+          }
+      );
+      final QueryResult result = await _graphQLClient.query(_options);
+      checkForError(result);
+      if(deleteThisPartOfCache) {
+        _graphQLClient.cache.write(_options.toKey(), null);
+      }
+
+      var newResponse = List.generate(result?.data['nodes']?.length ?? 0, (index) => {"node":(result?.data['nodes'] ?? const {})[index]});
+      var tempCollection = {"edges":newResponse};
+      return Collections.fromJson(
+          tempCollection ?? const {})
+          ?.collectionList;
+    } catch(e){
+      print(e);
+    }
+    return [Collection.fromJson({})];
+  }
+
 
   /// Returns the Shop.
   Future<Shop> getShop({bool deleteThisPartOfCache = false}) async {
@@ -176,6 +229,8 @@ class ShopifyStore with ShopifyError{
     }
     return Collection.fromJson({});
   }
+
+
 
   /// Returns all available collections.
   ///

@@ -111,6 +111,14 @@ had to delete the example folder, will add in new version again.
 product.options available now - see what variant options there are and their corresponding values.
 getDeaturedCollection is now getCollectionByHandle, a wrong handle name wont crash your app, it will give a Collection object with null values.
 
-## [0.0.8-thinkSimple] - 28/07/2020
+## [0.0.9-thinkSimple] - 28/07/2020
+
+* Bug Fix
+
+## [0.0.10-thinkSimple] - 28/07/2020
+
+* Bug Fix
+
+## [0.0.11-thinkSimple] - 28/07/2020
 
 * Bug Fix
