@@ -36,6 +36,7 @@ class Product {
   final String cursor;
   final List<ShopifyImage> images;
   final List<Option> option;
+  final String vendor;
 
   const Product(
       {this.collectionList,
@@ -54,7 +55,8 @@ class Product {
         this.updatedAt,
         this.cursor,
         this.images,
-        this.option});
+        this.option,
+        this.vendor});
 
   static Product fromJson(Map<String, dynamic> json) {
     return Product(
@@ -74,7 +76,8 @@ class Product {
         updatedAt: (json['node'] ?? const {})['updatedAt'],
         images: _getImageList((json['node'] ?? const {})['images'] ?? const {}),
         cursor: json['cursor'],
-        option: _getOptionList((json['node'] ?? const {})));
+        option: _getOptionList((json['node'] ?? const {})),
+        vendor: (json['node'] ?? const {})['vendor']);
   }
 
   static List<ProductVariant> _getProductVariants(Map<String, dynamic> json) {
