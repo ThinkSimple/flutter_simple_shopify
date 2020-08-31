@@ -79,6 +79,7 @@ query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean){
               tags
               title
               updatedAt
+              vendor
             }
             cursor
           }

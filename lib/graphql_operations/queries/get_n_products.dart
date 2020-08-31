@@ -65,6 +65,7 @@ query($n : Int, $sortKey : ProductSortKeys, $reverse: Boolean){
         tags
         title
         updatedAt
+        vendor
         images(first: 250) {
           edges {
             node {

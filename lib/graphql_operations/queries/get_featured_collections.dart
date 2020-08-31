@@ -75,6 +75,7 @@ query getFeaturedCollectionQuery($query: String!){
               tags
               title
               updatedAt
+              vendor
             }
             cursor
           }

@@ -66,6 +66,7 @@ query($ids : [ID!]!){
       publishedAt
       tags
       updatedAt
+      vendor
     }
   }
 }

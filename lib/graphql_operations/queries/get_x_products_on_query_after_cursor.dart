@@ -20,6 +20,7 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
         tags
         title
         updatedAt
+        vendor
         images(first: 250) {
           edges {
             node {
