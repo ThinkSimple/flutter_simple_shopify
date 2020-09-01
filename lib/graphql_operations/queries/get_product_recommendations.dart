@@ -27,6 +27,7 @@ query getProductRecommentationsQuery($id: ID!){
     tags
     title
     updatedAt
+    vendor
     variants(first: 250) {
       edges {
         node {

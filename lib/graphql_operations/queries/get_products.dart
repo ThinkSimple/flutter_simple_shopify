@@ -65,6 +65,7 @@ query($cursor : String){
         tags
         title
         updatedAt
+        vendor
         images(first: 250) {
           edges {
             node {

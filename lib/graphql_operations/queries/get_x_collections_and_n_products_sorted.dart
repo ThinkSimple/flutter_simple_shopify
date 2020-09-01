@@ -67,6 +67,7 @@ query($cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCol
               tags
               title
               updatedAt
+              vendor
             }
             cursor
           }

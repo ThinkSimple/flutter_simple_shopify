@@ -55,6 +55,7 @@ query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSor
             tags
             title
             updatedAt
+            vendor
             variants(first: 25) {
               edges {
                 node {
