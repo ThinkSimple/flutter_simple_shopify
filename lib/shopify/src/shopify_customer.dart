@@ -64,7 +64,7 @@ class ShopifyCustomer with ShopifyError{
   bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options =
     MutationOptions(documentNode: gql(customerUpdateMutation), variables: {
-      'id': email,
+      'email': email,
       'firstName': firstName,
       'lastName': lastName,
       'password': password,
@@ -73,7 +73,8 @@ class ShopifyCustomer with ShopifyError{
       'customerAccessToken': customerAccessToken
     });
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    // Somehow throws error even when mutation was successful
+   // checkForError(result);
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }

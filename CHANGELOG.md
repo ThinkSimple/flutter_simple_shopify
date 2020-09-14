@@ -122,3 +122,17 @@ getDeaturedCollection is now getCollectionByHandle, a wrong handle name wont cra
 ## [0.0.11-thinkSimple] - 28/07/2020
 
 * Bug Fix
+
+## [0.0.19-alpha] - 20/08/2020
+
+* Added getProductRecommendations()
+        getCollectionsByIds()
+        shippingAddressUpdate()
+        
+## [0.0.20-alpha] - 01/09/2020
+
+* Added vendor to product model and various other queries, thank you zeshuaro
+
+## [0.0.21-alpha] - 14/09/2020
+
+* fixed customer update (had to comment out the checkForError part because even when mutation was successful it threw an error)
