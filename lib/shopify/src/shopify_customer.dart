@@ -61,9 +61,9 @@ class ShopifyCustomer with ShopifyError{
         String phoneNumber,
         String customerAccessToken,
         bool acceptsMarketing,
-  bool deleteThisPartOfCache = false}) async {
-    final MutationOptions _options =
-    MutationOptions(documentNode: gql(customerUpdateMutation), variables: {
+        bool deleteThisPartOfCache = false}) async {
+    Map<String, dynamic> variableMap = {};
+    ({
       'email': email,
       'firstName': firstName,
       'lastName': lastName,
@@ -71,10 +71,12 @@ class ShopifyCustomer with ShopifyError{
       'phone': phoneNumber,
       'acceptsMarketing': acceptsMarketing,
       'customerAccessToken': customerAccessToken
-    });
-    final QueryResult result = await _graphQLClient.mutate(_options);
-    // Somehow throws error even when mutation was successful
-   // checkForError(result);
+    }).forEach((k,v) => v != null ? variableMap[k] = v:null);
+    print(variableMap);
+    final MutationOptions _options =
+    MutationOptions(documentNode: gql(createValidMutationString(variableMap)), variables: variableMap);
+    QueryResult result = await _graphQLClient.mutate(_options);
+    // checkForError(result);
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
