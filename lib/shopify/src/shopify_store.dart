@@ -49,7 +49,7 @@ class ShopifyStore with ShopifyError{
               {}));
 
       productList += tempProduct?.productList ?? const [];
-      cursor = productList.last.cursor;
+      cursor = productList.isNotEmpty ? productList.last.cursor : null;
     } while ((tempProduct?.hasNextPage == true));
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
@@ -256,7 +256,7 @@ class ShopifyStore with ShopifyError{
               const {})['collections'] ??
               {}));
       collectionList = tempCollection.collectionList + collectionList;
-      cursor = collectionList.last.cursor;
+      cursor = collectionList.isNotEmpty ? collectionList.last.cursor : null;
     } while ((tempCollection?.hasNextPage == true));
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
@@ -322,7 +322,7 @@ class ShopifyStore with ShopifyError{
           .productList);
       collection = (Collection.fromJson(
           result?.data));
-      cursor = productList.last.cursor;
+      cursor = productList.isNotEmpty ? productList.last.cursor : null;
     } while (collection?.products?.hasNextPage == true);
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
@@ -384,7 +384,7 @@ class ShopifyStore with ShopifyError{
       products = (Products.fromJson(
           (result?.data ??
               const {})['products']));
-      cursor = productList.last.cursor;
+      cursor = productList.isNotEmpty ? productList.last.cursor : null;
     } while (products?.hasNextPage == true);
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
