@@ -1,4 +1,5 @@
 import 'package:flutter_simple_shopify/enums/src/sort_key_order.dart';
+import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_complete_free.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_shipping_address_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/create_checkout.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_requires_shipping.dart';
@@ -237,6 +238,20 @@ class ShopifyCheckout with ShopifyError{
     final QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(result);
     if(deleteThisPartOfCache) {
+      _graphQLClient.cache.write(_options.toKey(), null);
+    }
+  }
+
+  /// Complete [Checkout] without providing payment information.
+  /// You can use this mutation for free items or items whose purchase price is covered by a gift card
+  Future<void> checkoutCompleteFree(String checkoutId,
+      {bool deleteThisPartOfCache = false}) async {
+    final MutationOptions _options = MutationOptions(
+        documentNode: gql(checkoutCompleteFreeMutation),
+        variables: {'checkoutId': checkoutId});
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result);
+    if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
   }
