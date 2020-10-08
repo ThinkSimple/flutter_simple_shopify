@@ -178,6 +178,7 @@ class ProductVariant {
   final String sku;
   final bool requiresShipping;
   final String id;
+  final List<SelectedOption> selectedOptions;
 
   const ProductVariant(
       {this.price,
@@ -189,7 +190,8 @@ class ProductVariant {
         this.availableForSale,
         this.sku,
         this.requiresShipping,
-        this.id});
+        this.id,
+        this.selectedOptions});
 
   static ProductVariant fromJson(Map<String, dynamic> json) {
     return ProductVariant(
@@ -206,8 +208,18 @@ class ProductVariant {
       sku: (json['node'] ?? const {})['sku'],
       requiresShipping: (json['node'] ?? const {})['requiresShipping'],
       id: (json['node'] ?? const {})['id'],
+      selectedOptions: _getOptionList((json['node'] ?? const {})),
     );
   }
+  static List<SelectedOption> _getOptionList(Map<String, dynamic> json) {
+    List<SelectedOption> optionList = [];
+    json['selectedOptions']?.forEach((v) {
+      if (v != null)
+        optionList.add(SelectedOption.fromJson(v ?? const {}));
+    });
+    return optionList;
+  }
+
 }
 
 class Option {
@@ -229,6 +241,20 @@ class Option {
     List<String> values = [];
     json['values']?.forEach((e) => values.add(e ?? ""));
     return values;
+  }
+}
+
+class SelectedOption {
+  final String name;
+  final String value;
+
+  SelectedOption({this.name, this.value});
+
+  static SelectedOption fromJson(Map<String, dynamic> json) {
+    return SelectedOption(
+        name: json['name'] ?? '',
+        value: json['value'] ?? ''
+    );
   }
 }
 

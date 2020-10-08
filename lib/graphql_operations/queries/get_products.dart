@@ -35,6 +35,10 @@ query($cursor : String){
               availableForSale
               sku
               requiresShipping
+              selectedOptions {
+                name
+                value
+              }
             }
           }
           pageInfo {
