@@ -48,6 +48,10 @@ query($cursor : String,  $shouldFetchMetafields : Boolean = false, $metafieldsNa
               sku
               requiresShipping
               quantityAvailable
+              selectedOptions {
+                name
+                value
+              }
             }
           }
           pageInfo {

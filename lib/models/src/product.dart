@@ -193,6 +193,7 @@ class ProductVariant {
   final int quantityAvailable;
   final PriceV2 unitPrice;
   final UnitPriceMeasurement unitPriceMeasurement;
+  final List<SelectedOption> selectedOptions;
 
   const ProductVariant(
       {this.price,
@@ -207,7 +208,8 @@ class ProductVariant {
         this.id,
         this.quantityAvailable,
         this.unitPrice,
-        this.unitPriceMeasurement});
+        this.unitPriceMeasurement,
+        this.selectedOptions});
 
   static ProductVariant fromJson(Map<String, dynamic> json) {
     return ProductVariant(
@@ -229,8 +231,18 @@ class ProductVariant {
           PriceV2.fromJson((json['node'] ?? const {})['unitPrice'] ?? const {}),
       unitPriceMeasurement: UnitPriceMeasurement.fromJson(
           (json['node'] ?? const {})['unitPriceMeasurement'] ?? const {}),
+      selectedOptions: _getOptionList((json['node'] ?? const {})),
     );
   }
+  static List<SelectedOption> _getOptionList(Map<String, dynamic> json) {
+    List<SelectedOption> optionList = [];
+    json['selectedOptions']?.forEach((v) {
+      if (v != null)
+        optionList.add(SelectedOption.fromJson(v ?? const {}));
+    });
+    return optionList;
+  }
+
 }
 
 class Metafield {
@@ -279,6 +291,20 @@ class Option {
     List<String> values = [];
     json['values']?.forEach((e) => values.add(e ?? ""));
     return values;
+  }
+}
+
+class SelectedOption {
+  final String name;
+  final String value;
+
+  SelectedOption({this.name, this.value});
+
+  static SelectedOption fromJson(Map<String, dynamic> json) {
+    return SelectedOption(
+        name: json['name'] ?? '',
+        value: json['value'] ?? ''
+    );
   }
 }
 
