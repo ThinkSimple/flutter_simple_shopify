@@ -57,12 +57,13 @@ class ShopifyCheckout with ShopifyError{
   ///
   /// Returns a List of Orders from the Customer with the [customerAccessToken].
   Future<List<Order>> getAllOrders(String customerAccessToken,
-      { SortKeyOrder sortKey = SortKeyOrder.RELEVANCE, bool deleteThisPartOfCache = false}) async {
+      { SortKeyOrder sortKey = SortKeyOrder.RELEVANCE, bool reverse = true, bool deleteThisPartOfCache = false}) async {
       final QueryOptions _options = WatchQueryOptions(
           documentNode: gql(getAllOrdersQuery),
           variables: {
             'accessToken': customerAccessToken,
-            'sortKey': sortKey.parseToString()
+            'sortKey': sortKey.parseToString(),
+            'reverse': reverse
           }
       );
       final QueryResult result = await ShopifyConfig.graphQLClient.query(_options);
