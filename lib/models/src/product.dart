@@ -210,6 +210,33 @@ class ProductVariant {
   }
 }
 
+class Metafield {
+  final String id;
+  final String namespace;
+  final String key;
+  final String value;
+  final String valueType;
+  final String description;
+
+  const Metafield(
+      {this.id,
+      this.namespace,
+      this.key,
+      this.value,
+      this.valueType,
+      this.description});
+
+  static Metafield fromJson(Map<String, dynamic> json) {
+    return Metafield(
+        id: (json['node'] ?? const {})['id'],
+        namespace: (json['node'] ?? const {})['namespace'],
+        key: (json['node'] ?? const {})['key'],
+        value: (json['node'] ?? const {})['value'],
+        valueType: (json['node'] ?? const {})['valueType'],
+        description: (json['node'] ?? const {})['description']);
+  }
+}
+
 class Option {
   final String id;
   final String name;
