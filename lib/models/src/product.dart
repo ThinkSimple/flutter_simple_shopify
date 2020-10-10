@@ -233,7 +233,7 @@ class Option {
 }
 
 class PriceV2 {
-  final String amount;
+  final double amount;
   final String currencyCode;
   final String currencySymbol;
   final String formattedPrice;
@@ -242,7 +242,7 @@ class PriceV2 {
 
   static PriceV2 fromJson(Map<String, dynamic> json) {
     return PriceV2(
-        amount: json['amount'],
+        amount: json['amount'] != null ? double.parse(json['amount']) : null,
         currencyCode: json['currencyCode'],
         currencySymbol: _simpleCurrencySymbols[json['currencyCode']],
         formattedPrice: _chooseRightOrderOnCurrencySymbol(json)
