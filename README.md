@@ -61,6 +61,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
     Future<String> createCheckout()
     Future<void> checkoutGiftCardAppend(String checkoutId, List<String> giftCardCodes)
     Future<void> checkoutGiftCardRemove(String appliedGiftCardId, String checkoutId)
+    Future<void> checkoutCompleteFree(String checkoutId)
 ```
 ```dart
   ShopifyCustomer shopifyCustomer = ShopifyCustomer.instance;
