@@ -34,7 +34,7 @@ class Checkout{
         appliedGiftcards: _getAppliedGiftCards(json ?? const {}),
         availableShippingrates: AvailableShippingRates.fromJson(json['availableShippingRates'] ?? const {}),
         completedAt: json['completedAt'],
-        createdAt: json['createddAt'],
+        createdAt: json['createdAt'],
         currencyCode: json['currencyCode'],
         lineItems: LineItems.fromJson(json['lineItems']),
         note: json['note'],
