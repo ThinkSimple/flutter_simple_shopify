@@ -158,7 +158,7 @@ class ShopifyCheckout with ShopifyError{
           'zip': zip
         });
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(result, key: 'checkoutShippingAddressUpdateV2', errorKey:'checkoutUserErrors');
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
