@@ -16,6 +16,7 @@ query($id: ID!){
         id
       }
       requiresShipping
+      shippingLine
       completedAt
       createdAt
       currencyCode

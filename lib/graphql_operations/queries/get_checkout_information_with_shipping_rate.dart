@@ -25,6 +25,7 @@ query($id: ID!){
             amount
             currencyCode
        }}}
+      shippingLine
       completedAt
       createdAt
       currencyCode

@@ -5,6 +5,7 @@ class Checkout{
   final String email;
   final List<AppliedGiftCards> appliedGiftcards;
   final AvailableShippingRates availableShippingrates;
+  final ShippingRates shippingLine;
   final String completedAt;
   final String createdAt;
   final String currencyCode;
@@ -21,7 +22,7 @@ class Checkout{
   final bool requiresShipping;
 
   Checkout({this.id, this.email, this.appliedGiftcards,
-    this.availableShippingrates, this.completedAt, this.createdAt,
+    this.availableShippingrates, this.shippingLine, this.completedAt, this.createdAt,
     this.currencyCode, this.lineItems, this.note, this.webUrl, this.updatedAt,
     this.totalTaxV2, this.totalPriceV2, this.taxesIncluded, this.taxExempt,
     this.subtotalPriceV2, this.orderStatusUrl, this.requiresShipping});
@@ -33,6 +34,7 @@ class Checkout{
         email: json['email'],
         appliedGiftcards: _getAppliedGiftCards(json ?? const {}),
         availableShippingrates: AvailableShippingRates.fromJson(json['availableShippingRates'] ?? const {}),
+        shippingLine: ShippingRates.fromJson(json['shippingLine'] ?? const {}),
         completedAt: json['completedAt'],
         createdAt: json['createdAt'],
         currencyCode: json['currencyCode'],
