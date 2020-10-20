@@ -25,7 +25,14 @@ query($id: ID!){
             amount
             currencyCode
        }}}
-      shippingLine
+      shippingLine {
+        handle
+        priceV2 {
+          amount
+          currencyCode
+        }
+        title
+      }
       completedAt
       createdAt
       currencyCode

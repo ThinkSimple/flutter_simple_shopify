@@ -16,7 +16,14 @@ query($id: ID!){
         id
       }
       requiresShipping
-      shippingLine
+      shippingLine {
+        handle
+        priceV2 {
+          amount
+          currencyCode
+        }
+        title
+      }
       completedAt
       createdAt
       currencyCode
