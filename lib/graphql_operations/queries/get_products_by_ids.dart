@@ -57,6 +57,10 @@ query($ids : [ID!]!){
             availableForSale
             sku
             requiresShipping
+             selectedOptions {
+              name
+              value
+             }
             id
             quantityAvailable
           }

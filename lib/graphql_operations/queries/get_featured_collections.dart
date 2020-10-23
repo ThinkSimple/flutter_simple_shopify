@@ -40,6 +40,10 @@ query getFeaturedCollectionQuery($query: String!){
                     requiresShipping
                     availableForSale
                     quantityAvailable
+                    selectedOptions {
+                      name
+                      value
+                    }
                   }
                 }
               }

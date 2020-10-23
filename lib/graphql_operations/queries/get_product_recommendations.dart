@@ -52,6 +52,10 @@ query getProductRecommentationsQuery($id: ID!){
           sku
           requiresShipping
           quantityAvailable
+          selectedOptions {
+            name
+            value
+           }
         }
       }
     }

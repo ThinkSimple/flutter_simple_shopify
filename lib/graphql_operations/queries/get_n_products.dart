@@ -36,6 +36,10 @@ query($n : Int, $sortKey : ProductSortKeys, $reverse: Boolean){
               sku
               requiresShipping
               quantityAvailable
+              selectedOptions {
+                name
+                value
+              }
             }
           }
           pageInfo {

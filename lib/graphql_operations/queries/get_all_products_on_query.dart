@@ -52,6 +52,10 @@ query( $cursor: String, $sortKey : ProductSortKeys, $query: String, $reverse: Bo
               availableForSale
               sku
               requiresShipping
+              selectedOptions {
+                name
+                value
+              }
               id
               quantityAvailable
             }
