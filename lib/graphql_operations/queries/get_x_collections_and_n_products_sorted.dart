@@ -42,6 +42,10 @@ query($cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCol
                     weightUnit
                     sku
                     requiresShipping
+                    selectedOptions {
+                      name
+                      value
+                    }
                     availableForSale
                   }
                 }

@@ -77,6 +77,10 @@ query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSor
                   weightUnit
                   sku
                   requiresShipping
+                  selectedOptions {
+                    name
+                    value
+                  }
                   availableForSale
                   id
                 }

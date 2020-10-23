@@ -39,6 +39,10 @@ query getFeaturedCollectionQuery($query: String!){
                     sku
                     requiresShipping
                     availableForSale
+                    selectedOptions {
+                      name
+                      value
+                    }
                   }
                 }
               }

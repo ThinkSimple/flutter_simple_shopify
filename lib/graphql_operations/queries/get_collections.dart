@@ -42,6 +42,10 @@ query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean){
                     weightUnit
                     sku
                     requiresShipping
+                    selectedOptions {
+                      name
+                      value
+                    }
                     availableForSale
                   }
                 }

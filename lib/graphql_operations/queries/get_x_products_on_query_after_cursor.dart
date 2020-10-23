@@ -52,6 +52,10 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
               availableForSale
               sku
               requiresShipping
+              selectedOptions {
+                name
+                value
+              }
               id
             }
           }
