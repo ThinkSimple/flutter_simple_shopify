@@ -79,6 +79,7 @@ query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys){
                   requiresShipping
                   availableForSale
                   id
+                  quantityAvailable
                 }
               }
             }

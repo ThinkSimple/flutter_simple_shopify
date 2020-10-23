@@ -58,6 +58,7 @@ query($ids : [ID!]!){
             sku
             requiresShipping
             id
+            quantityAvailable
           }
         }
       }

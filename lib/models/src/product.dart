@@ -178,6 +178,7 @@ class ProductVariant {
   final String sku;
   final bool requiresShipping;
   final String id;
+  final double quantityAvailable;
 
   const ProductVariant(
       {this.price,
@@ -189,7 +190,8 @@ class ProductVariant {
         this.availableForSale,
         this.sku,
         this.requiresShipping,
-        this.id});
+        this.id,
+        this.quantityAvailable});
 
   static ProductVariant fromJson(Map<String, dynamic> json) {
     return ProductVariant(
@@ -206,6 +208,7 @@ class ProductVariant {
       sku: (json['node'] ?? const {})['sku'],
       requiresShipping: (json['node'] ?? const {})['requiresShipping'],
       id: (json['node'] ?? const {})['id'],
+      quantityAvailable: (json['node'] ?? const {})['quantityAvailable'],
     );
   }
 }
