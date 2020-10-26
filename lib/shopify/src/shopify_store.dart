@@ -34,14 +34,16 @@ class ShopifyStore with ShopifyError{
   /// Returns a List of [Product].
   ///
   /// Simply returns all Products from your Store.
-  Future<List<Product>> getAllProducts({bool deleteThisPartOfCache = false}) async {
+  Future<List<Product>> getAllProducts({String metafieldsNamespace, bool deleteThisPartOfCache = false}) async {
     List<Product> productList = [];
     Products tempProduct;
     String cursor;
     WatchQueryOptions _options;
     do {
       _options = WatchQueryOptions(
-          documentNode: gql(getProductsQuery), variables: {'cursor': cursor});
+          documentNode: gql(getProductsQuery),
+          variables: {'cursor': cursor, 'shouldFetchMetafields': metafieldsNamespace != null, 'metafieldsNamespace': metafieldsNamespace}
+        );
       final QueryResult result = await _graphQLClient.query(_options);
       checkForError(result);
       tempProduct = (Products.fromJson(
