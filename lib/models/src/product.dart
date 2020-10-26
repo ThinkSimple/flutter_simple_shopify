@@ -178,7 +178,7 @@ class ProductVariant {
   final String sku;
   final bool requiresShipping;
   final String id;
-  final double quantityAvailable;
+  final int quantityAvailable;
 
   const ProductVariant(
       {this.price,
