@@ -1,5 +1,11 @@
 # flutter_simple_shopify
 
+IMPORTANT NOTE: we are happy that our package found some users and we are even more happy that there are people actively contributing.
+That being said, I (Adam) the maintainer am starting university on the 02/11/2020 and would love to find a new maintainer for this project, since my free time is being drastically shortened I won't be able help you guys out as good as I could before.
+I will still try my best to invest time into the package.
+
+
+
 A new Flutter package which provides help in creating a mobile app of a shopify store.
 Note: **This library as of right now is not ready for production**
 **however** we finished creating our own app and used the library.

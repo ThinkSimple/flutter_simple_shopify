@@ -136,3 +136,15 @@ getDeaturedCollection is now getCollectionByHandle, a wrong handle name wont cra
 ## [0.0.21-alpha] - 14/09/2020
 
 * fixed customer update (had to comment out the checkForError part because even when mutation was successful it threw an error)
+
+## [0.0.22-alpha] - 28/09/2020
+
+* fixed customer update for real now!
+
+## [0.0.23-alpha] - 10/10/2020
+
+* Fix PriceV2 amount format, Add query to fetch Product Metafields, Fix cursor on empty list, Add checkoutCompleteFree mutation, Add reverse variable to getAllOrders. Big Thanks to @tuarrep
+
+## [0.0.24-alpha] - 30/10/2020
+
+* merged various pull requests
