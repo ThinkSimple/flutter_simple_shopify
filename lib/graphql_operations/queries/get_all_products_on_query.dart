@@ -53,6 +53,7 @@ query( $cursor: String, $sortKey : ProductSortKeys, $query: String, $reverse: Bo
               sku
               requiresShipping
               id
+              quantityAvailable
             }
           }
         }
