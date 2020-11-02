@@ -285,7 +285,8 @@ class ShopifyCheckout with ShopifyError{
         documentNode: gql(checkoutCompleteFreeMutation),
         variables: {'checkoutId': checkoutId});
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForCheckoutError(result);
+
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }

@@ -53,6 +53,7 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
               sku
               requiresShipping
               id
+              quantityAvailable
             }
           }
         }

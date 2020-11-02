@@ -43,6 +43,7 @@ query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean){
                     sku
                     requiresShipping
                     availableForSale
+                    quantityAvailable
                   }
                 }
               }

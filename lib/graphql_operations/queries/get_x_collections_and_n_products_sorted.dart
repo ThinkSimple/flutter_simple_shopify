@@ -43,6 +43,7 @@ query($cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCol
                     sku
                     requiresShipping
                     availableForSale
+                    quantityAvailable
                   }
                 }
               }

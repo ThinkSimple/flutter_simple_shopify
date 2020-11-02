@@ -37,6 +37,7 @@ class Product {
   final List<ShopifyImage> images;
   final List<Option> option;
   final String vendor;
+  final List<Metafield> metafields;
 
   const Product(
       {this.collectionList,
@@ -56,7 +57,8 @@ class Product {
         this.cursor,
         this.images,
         this.option,
-        this.vendor});
+        this.vendor,
+        this.metafields});
 
   static Product fromJson(Map<String, dynamic> json) {
     return Product(
@@ -77,7 +79,8 @@ class Product {
         images: _getImageList((json['node'] ?? const {})['images'] ?? const {}),
         cursor: json['cursor'],
         option: _getOptionList((json['node'] ?? const {})),
-        vendor: (json['node'] ?? const {})['vendor']);
+        vendor: (json['node'] ?? const {})['vendor'],
+        metafields: _getMetafieldList((json['node'] ?? const {})['metafields'] ?? const {}));
   }
 
   static List<ProductVariant> _getProductVariants(Map<String, dynamic> json) {
@@ -122,6 +125,12 @@ class Product {
     List<ShopifyImage> imageList = [];
     json['edges'].forEach((image) => imageList.add(ShopifyImage.fromJson(image['node'] ?? const {})));
     return imageList;
+  }
+
+  static _getMetafieldList(Map<String, dynamic> json) {
+    List<Metafield> metafieldList = [];
+    json['edges']?.forEach((metafield) => metafieldList.add(Metafield.fromJson(metafield ?? const {})));
+    return metafieldList;
   }
 }
 
@@ -178,6 +187,7 @@ class ProductVariant {
   final String sku;
   final bool requiresShipping;
   final String id;
+  final int quantityAvailable;
 
   const ProductVariant(
       {this.price,
@@ -189,7 +199,8 @@ class ProductVariant {
         this.availableForSale,
         this.sku,
         this.requiresShipping,
-        this.id});
+        this.id,
+        this.quantityAvailable});
 
   static ProductVariant fromJson(Map<String, dynamic> json) {
     return ProductVariant(
@@ -206,6 +217,7 @@ class ProductVariant {
       sku: (json['node'] ?? const {})['sku'],
       requiresShipping: (json['node'] ?? const {})['requiresShipping'],
       id: (json['node'] ?? const {})['id'],
+      quantityAvailable: (json['node'] ?? const {})['quantityAvailable'],
     );
   }
 }
