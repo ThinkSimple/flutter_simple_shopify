@@ -37,16 +37,16 @@ The goal is to make creating an mobile app from your Shopify website easier.
 ```dart    
   ShopifyStore shopifyStore = ShopifyStore.instance;
      Future<List<Product>> getProductsByIds()
-     Future<List<Product>> getXProductsAfterCursor(int limit,String startCursor)
+     Future<Products> getXProductsAfterCursor(int limit,String startCursor)
      Future<List<Product>> getAllProducts()
      Future<List<Product>> getNProducts({@required int n, @required SortKey sortKey})
      Future<Shop> getShop()
      Future<Collection> getFeaturedCollection()
      Future<List<Collection>> getAllCollections()
-     Future<List<Product>> getXProductsAfterCursorWithinCollection(String id, int limit, String startCursor, SortKeyProduct sortKey)
+     Future<Products> getXProductsAfterCursorWithinCollection(String id, int limit, String startCursor, SortKeyProduct sortKey)
      Future<List<Product>> getAllProductsFromCollectionById(String id)
      Future<List<Product>> getAllProductsOnQuery(String cursor, SortKeyProduct sortKey, String query)
-     Future<List<Product>> getXProductsOnQueryAfterCursor(String cursor, int limit, SortKeyProduct sortKey, String query)
+     Future<Products> getXProductsOnQueryAfterCursor(String cursor, int limit, SortKeyProduct sortKey, String query)
      Future<List<Metafield>> getMetafieldsFromProduct(String productHandle, {String namespace})
 ```
 ```dart
