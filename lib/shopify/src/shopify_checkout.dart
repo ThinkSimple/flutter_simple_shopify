@@ -123,6 +123,32 @@ class ShopifyCheckout with ShopifyError {
     return orders.orderList;
   }
 
+  Future<Orders> getXOrdersAfterCursor(
+      String customerAccessToken, int limit, String startCursor,
+      {SortKeyOrder sortKey = SortKeyOrder.ID,
+      bool reverse = true,
+      bool deleteThisPartOfCache = false}) async {
+    String cursor = startCursor;
+    final QueryOptions _options =
+        WatchQueryOptions(documentNode: gql(getAllOrdersQuery), variables: {
+      'accessToken': customerAccessToken,
+      'sortKey': sortKey.parseToString(),
+      'reverse': reverse,
+      'cursor': cursor,
+      'x': limit
+    });
+    final QueryResult result =
+        await ShopifyConfig.graphQLClient.query(_options);
+    checkForError(result);
+    Orders orders = Orders.fromJson(
+        ((((result?.data ?? const {}))['customer'] ?? const {})['orders'] ??
+            const {}));
+    if (deleteThisPartOfCache) {
+      _graphQLClient.cache.write(_options.toKey(), null);
+    }
+    return orders;
+  }
+
   /// Replaces the [LineItems] in the [Checkout] associated to the [checkoutId].
   ///
   /// [checkoutLineItems] is a List of Variant Ids

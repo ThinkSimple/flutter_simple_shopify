@@ -54,6 +54,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
     Future<Checkout> getCheckoutInfoQuery({String checkoutId})
     Future<Checkout> getCheckoutInfoWithAvailableShippingRatesQuery({String checkoutId})
     Future<List<Order>> getAllOrders({String customerAccessToken})
+    Future<Orders> getXOrdersAfterCursor({String customerAccessToken, int limit, String startCursor})
     Future<void> checkoutLineItemsReplace({String checkoutId, List<Map<String,dynamic>> checkoutLineItems})
     Future<void> checkoutCustomerAssociate({String checkoutId, String customerAccessToken}) 
     Future<void> checkoutCustomerDisassociate({String checkoutId})
