@@ -7,6 +7,7 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_i
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_requires_shipping.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_information_with_shipping_rate.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_without_shipping_rates.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_orders_after_cursor.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/order.dart';
 import 'package:graphql/client.dart';
@@ -130,7 +131,7 @@ class ShopifyCheckout with ShopifyError {
       bool deleteThisPartOfCache = false}) async {
     String cursor = startCursor;
     final QueryOptions _options =
-        WatchQueryOptions(documentNode: gql(getAllOrdersQuery), variables: {
+        WatchQueryOptions(documentNode: gql(getXOrdersAfterCursorQuery), variables: {
       'accessToken': customerAccessToken,
       'sortKey': sortKey.parseToString(),
       'reverse': reverse,
