@@ -6,7 +6,7 @@ query($ids : [ID!]!){
             id
             name
             values
-            } 
+      } 
       id
       handle
       collections(first: 250) {
@@ -59,6 +59,10 @@ query($ids : [ID!]!){
             requiresShipping
             id
             quantityAvailable
+            selectedOptions {
+              name
+              value
+            }
           }
         }
       }

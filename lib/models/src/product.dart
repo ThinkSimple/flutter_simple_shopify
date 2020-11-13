@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 class Products {
   final List<Product> productList;
   final bool hasNextPage;
@@ -35,7 +37,7 @@ class Product {
   final String updatedAt;
   final String cursor;
   final List<ShopifyImage> images;
-  final List<Option> option;
+  final List<Option> options;
   final String vendor;
   final List<Metafield> metafields;
 
@@ -56,7 +58,7 @@ class Product {
         this.updatedAt,
         this.cursor,
         this.images,
-        this.option,
+        this.options,
         this.vendor,
         this.metafields});
 
@@ -78,7 +80,7 @@ class Product {
         updatedAt: (json['node'] ?? const {})['updatedAt'],
         images: _getImageList((json['node'] ?? const {})['images'] ?? const {}),
         cursor: json['cursor'],
-        option: _getOptionList((json['node'] ?? const {})),
+        options: _getOptionList((json['node'] ?? const {})),
         vendor: (json['node'] ?? const {})['vendor'],
         metafields: _getMetafieldList((json['node'] ?? const {})['metafields'] ?? const {}));
   }
@@ -91,6 +93,28 @@ class Product {
         productVariants.add(ProductVariant.fromJson(v?.data ?? const {}));
     });
     return productVariants;
+  }
+
+  getProductVariantBySelectedOption(List<SelectedOption> filters){
+    Function unOrdDeepEq = const DeepCollectionEquality.unordered().equals;
+    final productVariant =
+        this.productVariants.firstWhere((ProductVariant productVariant) {
+      bool found = false;
+      List<Map<String, String>> selectedOptionList = [];
+      List<Map<String, String>> filterList = [];
+      productVariant.selectedOptions.forEach((SelectedOption selectedOption) {
+        selectedOptionList.add({selectedOption.name: selectedOption.value});
+      });
+      filters.forEach((SelectedOption selectedOption) {
+        filterList.add({selectedOption.name: selectedOption.value});
+      });
+      if (unOrdDeepEq(selectedOptionList, filterList) == true) {
+        found = true;
+      }
+
+      return found;
+    });
+    return productVariant;
   }
 
 
@@ -188,6 +212,7 @@ class ProductVariant {
   final bool requiresShipping;
   final String id;
   final int quantityAvailable;
+  final List<SelectedOption> selectedOptions;
 
   const ProductVariant(
       {this.price,
@@ -200,7 +225,8 @@ class ProductVariant {
         this.sku,
         this.requiresShipping,
         this.id,
-        this.quantityAvailable});
+        this.quantityAvailable,
+        this.selectedOptions});
 
   static ProductVariant fromJson(Map<String, dynamic> json) {
     return ProductVariant(
@@ -218,7 +244,17 @@ class ProductVariant {
       requiresShipping: (json['node'] ?? const {})['requiresShipping'],
       id: (json['node'] ?? const {})['id'],
       quantityAvailable: (json['node'] ?? const {})['quantityAvailable'],
+      selectedOptions: _getSelectedOptionsList((json['node'] ?? const {})),
     );
+  }
+
+  static List<SelectedOption> _getSelectedOptionsList(Map<String, dynamic> json) {
+    List<SelectedOption> selectedOptionsList = [];
+    json['selectedOptions']?.forEach((v) {
+      if (v != null)
+        selectedOptionsList.add(SelectedOption.fromJson(v ?? const {}));
+    });
+    return selectedOptionsList;
   }
 }
 
@@ -269,6 +305,28 @@ class Option {
     json['values']?.forEach((e) => values.add(e ?? ""));
     return values;
   }
+}
+
+class SelectedOption {
+  // final String id;
+  final String name;
+  final String value;
+
+  SelectedOption({this.name, this.value});
+
+  static SelectedOption fromJson(Map<String, dynamic> json) {
+    return SelectedOption(
+        // id: json['id'] ?? "",
+        name: json['name'] ?? "",
+        value: json['value'] ?? "",
+    );
+  }
+
+  // static List<String> _getValueList(Map<String, dynamic> json) {
+  //   List<String> values = [];
+  //   json['values']?.forEach((e) => values.add(e ?? ""));
+  //   return values;
+  // }
 }
 
 class PriceV2 {
