@@ -89,6 +89,8 @@ class ShopifyAuth with ShopifyError {
         documentNode: gql(customerAccessTokenCreate),
         variables: {'email': email, 'password': password});
     final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForError(result,
+        key: 'customerAccessTokenCreate', errorKey: 'customerUserErrors');
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
