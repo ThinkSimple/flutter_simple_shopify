@@ -43,12 +43,12 @@ class ShopifyAuth with ShopifyError {
       'password': password,
     });
     final QueryResult result = await _graphQLClient.mutate(_options);
-    print(result.exception.toString());
+    // print(result.exception.toString());
     checkForError(result, key:'customerCreate', errorKey: 'customerUserErrors');
-    if ((result?.data['customerCreate'] ?? const {})['customerUserErrors'] !=
-        null)
-      throw (result?.data['customerCreate'] ??
-          const {}['customerUserErrors'].first['message']);
+    // if ((result?.data['customerCreate'] ?? const {})['customerUserErrors'] !=
+    //     null)
+    //   throw (result?.data['customerCreate'] ??
+    //       const {}['customerUserErrors'].first['message']);
     final shopifyUser = ShopifyUser.fromJson(
         (result?.data['customerCreate'] ?? const {})['customer']);
     final String customerAccessToken =
