@@ -5,7 +5,7 @@ class Checkout{
   final String email;
   final List<AppliedGiftCards> appliedGiftcards;
   final AvailableShippingRates availableShippingrates;
-  final ShippingRates shippingLine;
+  final ShippingRate shippingLine;
   final MailingAddress shippingAddress;
   final String completedAt;
   final String createdAt;
@@ -35,7 +35,7 @@ class Checkout{
         email: json['email'],
         appliedGiftcards: _getAppliedGiftCards(json ?? const {}),
         availableShippingrates: AvailableShippingRates.fromJson(json['availableShippingRates'] ?? const {}),
-        shippingLine: ShippingRates.fromJson(json['shippingLine'] ?? const {}),
+        shippingLine: ShippingRate.fromJson(json['shippingLine'] ?? const {}),
         shippingAddress: MailingAddress.fromJson(json['shippingAddress'] ?? const {}),
         completedAt: json['completedAt'],
         createdAt: json['createdAt'],
@@ -68,7 +68,7 @@ class Checkout{
 
 class AvailableShippingRates {
   final bool ready;
-  final List<ShippingRates> shippingRates;
+  final List<ShippingRate> shippingRates;
 
 
   const AvailableShippingRates({this.ready, this.shippingRates});
@@ -79,9 +79,9 @@ class AvailableShippingRates {
       shippingRates: _getShippingRates(json ?? const {}),
     );
   }
-  static List<ShippingRates> _getShippingRates(Map<String, dynamic> json) {
-    List<ShippingRates> shippingRatesList = [];
-    json['shippingRates']?.forEach((e) => shippingRatesList.add(ShippingRates.fromJson(e ?? const {})));
+  static List<ShippingRate> _getShippingRates(Map<String, dynamic> json) {
+    List<ShippingRate> shippingRatesList = [];
+    json['shippingRates']?.forEach((e) => shippingRatesList.add(ShippingRate.fromJson(e ?? const {})));
     return shippingRatesList;
   }
 
@@ -89,15 +89,15 @@ class AvailableShippingRates {
 
 
 
-class ShippingRates {
+class ShippingRate {
   final String handle;
   final String title;
   final PriceV2 priceV2;
 
-  ShippingRates({this.handle, this.title, this.priceV2});
+  ShippingRate({this.handle, this.title, this.priceV2});
 
-  static ShippingRates fromJson(Map<String, dynamic> json){
-    return ShippingRates(
+  static ShippingRate fromJson(Map<String, dynamic> json){
+    return ShippingRate(
         handle: json['handle'],
         title: json['title'],
         priceV2: PriceV2.fromJson(json['priceV2'] ?? const {})
