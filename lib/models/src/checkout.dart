@@ -237,6 +237,8 @@ class DiscountApplications {
 
   DiscountApplications({this.discountApplicationList});
 
+  get length => discountApplicationList.length;
+
   static DiscountApplications fromJson(Map<String, dynamic> json) {
     return DiscountApplications(discountApplicationList: _getDiscountApplicationList(json));
   }
