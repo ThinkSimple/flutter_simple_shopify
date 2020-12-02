@@ -4,6 +4,24 @@ query($id: ID!){
     ... on Checkout {
       id
       email
+      discountApplications(first: 10) {
+        edges {
+          node {
+            allocationMethod
+            targetSelection
+            targetType
+            value {
+              ... on MoneyV2 {
+                amount
+                currencyCode
+              }
+              ... on PricingPercentageValue {
+                percentage
+              }
+            }
+          }
+        }
+      }
       appliedGiftCards {
         amountUsedV2 {
           amount
@@ -80,6 +98,10 @@ query($id: ID!){
       note
       webUrl
       updatedAt
+      lineItemsSubtotalPrice {
+        amount
+        currencyCode
+      }
       totalTaxV2 {
         amount
         currencyCode
