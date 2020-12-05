@@ -1,4 +1,4 @@
-const String getCheckoutInfo = r'''
+const String getCheckoutInfoWithShippingRate = r'''
 query($id: ID!){
   node(id: $id) {
     ... on Checkout {
@@ -16,14 +16,15 @@ query($id: ID!){
         id
       }
       requiresShipping
-      shippingLine {
-        handle
-        priceV2 {
-          amount
-          currencyCode
-        }
-        title
-      }
+      availableShippingRates {
+        ready
+        shippingRates {
+          handle
+          title
+          priceV2 {
+            amount
+            currencyCode
+       }}}
       shippingAddress {
         address1
         address2
@@ -42,6 +43,14 @@ query($id: ID!){
         province
         provinceCode
         zip
+      }
+      shippingLine {
+        handle
+        priceV2 {
+          amount
+          currencyCode
+        }
+        title
       }
       completedAt
       createdAt
@@ -99,6 +108,7 @@ query($id: ID!){
   }
 }
 ''';
+
 
 /* availableShippingRates {
         ready

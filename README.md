@@ -52,6 +52,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
 ```dart
   ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;
     Future<Checkout> getCheckoutInfoQuery({String checkoutId})
+    Future<Checkout> getCheckoutInfoWithAvailableShippingRatesQuery({String checkoutId})
     Future<List<Order>> getAllOrders({String customerAccessToken})
     Future<void> checkoutLineItemsReplace({String checkoutId, List<Map<String,dynamic>> checkoutLineItems})
     Future<void> checkoutCustomerAssociate({String checkoutId, String customerAccessToken}) 
@@ -61,6 +62,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
     Future<String> createCheckout()
     Future<void> checkoutGiftCardAppend(String checkoutId, List<String> giftCardCodes)
     Future<void> checkoutGiftCardRemove(String appliedGiftCardId, String checkoutId)
+    Future<void> shippingLineUpdate(String checkoutId, String shippingRateHandle)
     Future<void> checkoutCompleteFree(String checkoutId)
 ```
 ```dart

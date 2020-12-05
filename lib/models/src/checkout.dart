@@ -5,6 +5,8 @@ class Checkout{
   final String email;
   final List<AppliedGiftCards> appliedGiftcards;
   final AvailableShippingRates availableShippingrates;
+  final ShippingRates shippingLine;
+  final MailingAddress shippingAddress;
   final String completedAt;
   final String createdAt;
   final String currencyCode;
@@ -21,7 +23,7 @@ class Checkout{
   final bool requiresShipping;
 
   Checkout({this.id, this.email, this.appliedGiftcards,
-    this.availableShippingrates, this.completedAt, this.createdAt,
+    this.availableShippingrates, this.shippingLine,this.shippingAddress, this.completedAt, this.createdAt,
     this.currencyCode, this.lineItems, this.note, this.webUrl, this.updatedAt,
     this.totalTaxV2, this.totalPriceV2, this.taxesIncluded, this.taxExempt,
     this.subtotalPriceV2, this.orderStatusUrl, this.requiresShipping});
@@ -33,8 +35,10 @@ class Checkout{
         email: json['email'],
         appliedGiftcards: _getAppliedGiftCards(json ?? const {}),
         availableShippingrates: AvailableShippingRates.fromJson(json['availableShippingRates'] ?? const {}),
+        shippingLine: ShippingRates.fromJson(json['shippingLine'] ?? const {}),
+        shippingAddress: MailingAddress.fromJson(json['shippingAddress'] ?? const {}),
         completedAt: json['completedAt'],
-        createdAt: json['createddAt'],
+        createdAt: json['createdAt'],
         currencyCode: json['currencyCode'],
         lineItems: LineItems.fromJson(json['lineItems']),
         note: json['note'],
@@ -97,6 +101,49 @@ class ShippingRates {
         handle: json['handle'],
         title: json['title'],
         priceV2: PriceV2.fromJson(json['priceV2'] ?? const {})
+    );
+  }
+}
+class MailingAddress {
+  final String address1;
+  final String address2;
+  final String city;
+  final String company;
+  final String country;
+  final String countryCodeV2;
+  final String firstName;
+  final String formattedArea;
+  final String id;
+  final String lastName;
+  final double latitude;
+  final double longitude;
+  final String name;
+  final String phone;
+  final String province;
+  final String provinceCode;
+  final String zip;
+
+  MailingAddress({this.address1, this.address2, this.city,this.company, this.country, this.countryCodeV2,this.firstName, this.formattedArea, this.id,this.lastName, this.latitude, this.longitude, this.name, this.phone, this.province, this.provinceCode, this.zip});
+
+  static MailingAddress fromJson(Map<String, dynamic> json){
+    return MailingAddress(
+        address1: json['address1'],
+        address2: json['address2'],
+        city: json['city'],
+        company: json['company'],
+        country: json['country'],
+        countryCodeV2: json['countryCodeV2'],
+        firstName: json['firstName'],
+        formattedArea: json['formattedArea'],
+        id: json['id'],
+        lastName: json['lastName'],
+        latitude: json['latitude'],
+        longitude: json['longitude'],
+        name: json['name'],
+        phone: json['phone'],
+        province: json['province'],
+        provinceCode: json['provinceCode'],
+        zip: json['zip'],
     );
   }
 }
