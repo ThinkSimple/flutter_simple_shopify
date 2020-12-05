@@ -1,5 +1,5 @@
 const String getNArticlesSortedQuery = r'''
-query($x : Int, $sortKey : ArticleSortKeys, reverse: Boolean){
+query($x : Int, $sortKey : ArticleSortKeys, $reverse: Boolean){
   articles(first: $x, sortKey: $sortKey, reverse: $reverse) {
     edges {
       node {

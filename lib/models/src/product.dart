@@ -123,6 +123,7 @@ class Product {
 
   static _getImageList(Map<String, dynamic> json) {
     List<ShopifyImage> imageList = [];
+    if (json != null && json['edges'] != null)
     json['edges'].forEach((image) => imageList.add(ShopifyImage.fromJson(image['node'] ?? const {})));
     return imageList;
   }
