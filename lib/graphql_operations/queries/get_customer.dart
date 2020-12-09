@@ -20,6 +20,7 @@ query($customerAccessToken : String!){
           phone
           province
           provinceCode
+          formattedArea
           zip
         }
       }
