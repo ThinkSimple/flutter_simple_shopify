@@ -60,6 +60,10 @@ customer(customerAccessToken: $accessToken) {
           orderNumber
           phone
           processedAt
+          canceledAt
+          cancelReason
+          financialStatus
+          fulfillmentStatus
           shippingAddress {
             address1
             address2
