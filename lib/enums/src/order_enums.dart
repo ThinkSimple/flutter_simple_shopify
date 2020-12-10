@@ -5,6 +5,12 @@ enum OrderCancelReason {
   INVENTORY,
   OTHER,
 }
+extension ParseToStringOrderCancelReason on OrderCancelReason{
+  String parseToString(){
+    return this.toString().split('.')[1];
+  }
+}
+
 enum OrderFulfillmentStatus {
   FULFILLED,
   IN_PROGRESS,
@@ -14,6 +20,12 @@ enum OrderFulfillmentStatus {
   RESTOCKED,
   UNFULFILLED,
 }
+extension ParseToStringOrderFulfillmentStatus on OrderFulfillmentStatus{
+  String parseToString(){
+    return this.toString().split('.')[1];
+  }
+}
+
 enum OrderFinancialStatus {
   AUTHORIZED,
   PAID,
@@ -23,3 +35,9 @@ enum OrderFinancialStatus {
   REFUNDED,
   VOIDED,
 }
+extension ParseToStringOrderFinancialStatus on OrderFinancialStatus{
+  String parseToString(){
+    return this.toString().split('.')[1];
+  }
+}
+
