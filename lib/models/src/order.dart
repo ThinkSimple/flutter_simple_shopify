@@ -72,8 +72,9 @@ class Order {
   static Order fromJson(Map<String, dynamic> json) {
     DateTime processedAt =
         DateTime.parse((json['node'] ?? const {})['processedAt']);
-    DateTime canceledAt =
-        DateTime.parse((json['node'] ?? const {})['canceledAt']) ?? null;
+    DateTime canceledAt = (json['node'] ?? const {})['canceledAt'] != null
+        ? DateTime.parse((json['node'] ?? const {})['canceledAt'])
+        : null;
     OrderFinancialStatus financialStatus = EnumToString.fromString(
         OrderFinancialStatus.values,
         (json['node'] ?? const {})['financialStatus']);
