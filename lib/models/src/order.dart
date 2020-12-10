@@ -1,3 +1,4 @@
+import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter_simple_shopify/enums/enums.dart';
 import 'package:flutter_simple_shopify/models/src/product.dart';
 
@@ -73,6 +74,14 @@ class Order {
         DateTime.parse((json['node'] ?? const {})['processedAt']);
     DateTime canceledAt =
         DateTime.parse((json['node'] ?? const {})['canceledAt']) ?? null;
+    OrderFinancialStatus financialStatus = EnumToString.fromString(
+        OrderFinancialStatus.values,
+        (json['node'] ?? const {})['financialStatus']);
+    OrderFulfillmentStatus fulfillmentStatus = EnumToString.fromString(
+        OrderFulfillmentStatus.values,
+        (json['node'] ?? const {})['fulfillmentStatus']);
+    OrderCancelReason cancelReason = EnumToString.fromString(
+        OrderCancelReason.values, (json['node'] ?? const {})['cancelReason']);
     return Order(
         id: (json['node'] ?? const {})['id'],
         email: (json['node'] ?? const {})['email'],
@@ -85,9 +94,9 @@ class Order {
         phone: (json['node'] ?? const {})['phone'],
         processedAt: processedAt,
         canceledAt: canceledAt,
-        cancelReason: (json['node'] ?? const {})['cancelReason'],
-        financialStatus: (json['node'] ?? const {})['financialStatus'],
-        fulfillmentStatus: (json['node'] ?? const {})['fulfillmentStatus'],
+        cancelReason: cancelReason,
+        financialStatus: financialStatus,
+        fulfillmentStatus: fulfillmentStatus,
         shippingAddress: ShippingAddress.fromJson(
             (json['node'] ?? const {})['shippingAddress'] ?? const {}),
         statusUrl: (json['node'] ?? const {})['statusUrl'],
