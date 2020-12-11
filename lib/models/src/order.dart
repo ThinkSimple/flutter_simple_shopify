@@ -38,7 +38,7 @@ class Order {
   final OrderCancelReason cancelReason;
   final OrderFinancialStatus financialStatus;
   final OrderFulfillmentStatus fulfillmentStatus;
-  final ShippingAddress shippingAddress;
+  final MailingAddress shippingAddress;
   final String statusUrl;
   final DiscountApplications discountApplications;
   final PriceV2 subtotalPriceV2;
@@ -102,7 +102,7 @@ class Order {
         cancelReason: cancelReason,
         financialStatus: financialStatus,
         fulfillmentStatus: fulfillmentStatus,
-        shippingAddress: ShippingAddress.fromJson(
+        shippingAddress: MailingAddress.fromJson(
             (json['node'] ?? const {})['shippingAddress'] ?? const {}),
         statusUrl: (json['node'] ?? const {})['statusUrl'],
         discountApplications: DiscountApplications.fromJson(
@@ -189,59 +189,59 @@ class DiscountAllocations {
   }
 }
 
-class ShippingAddress {
-  final String address1;
-  final String address2;
-  final String city;
-  final String company;
-  final String country;
-  final String countryCodeV2;
-  final String firstName;
-  final String id;
-  final String lastName;
-  final double latitude;
-  final double longitude;
-  final String name;
-  final String phone;
-  final String province;
-  final String provinceCode;
-  final String zip;
+// class ShippingAddress {
+//   final String address1;
+//   final String address2;
+//   final String city;
+//   final String company;
+//   final String country;
+//   final String countryCodeV2;
+//   final String firstName;
+//   final String id;
+//   final String lastName;
+//   final double latitude;
+//   final double longitude;
+//   final String name;
+//   final String phone;
+//   final String province;
+//   final String provinceCode;
+//   final String zip;
 
-  ShippingAddress(
-      {this.address1,
-      this.address2,
-      this.city,
-      this.company,
-      this.country,
-      this.countryCodeV2,
-      this.firstName,
-      this.id,
-      this.lastName,
-      this.latitude,
-      this.longitude,
-      this.name,
-      this.phone,
-      this.province,
-      this.provinceCode,
-      this.zip});
+//   ShippingAddress(
+//       {this.address1,
+//       this.address2,
+//       this.city,
+//       this.company,
+//       this.country,
+//       this.countryCodeV2,
+//       this.firstName,
+//       this.id,
+//       this.lastName,
+//       this.latitude,
+//       this.longitude,
+//       this.name,
+//       this.phone,
+//       this.province,
+//       this.provinceCode,
+//       this.zip});
 
-  static ShippingAddress fromJson(Map<String, dynamic> json) {
-    return ShippingAddress(
-        address1: json['address1'],
-        address2: json['address2'],
-        city: json['city'],
-        company: json['company'],
-        country: json['country'],
-        countryCodeV2: json['countryCodeV2'],
-        firstName: json['firstName'],
-        id: json['id'],
-        lastName: json['lastName'],
-        latitude: json['latitude'],
-        longitude: json['longitude'],
-        name: json['name'],
-        phone: json['phone'],
-        province: json['province'],
-        provinceCode: json['provinceCode'],
-        zip: json['zip']);
-  }
-}
+//   static ShippingAddress fromJson(Map<String, dynamic> json) {
+//     return ShippingAddress(
+//         address1: json['address1'],
+//         address2: json['address2'],
+//         city: json['city'],
+//         company: json['company'],
+//         country: json['country'],
+//         countryCodeV2: json['countryCodeV2'],
+//         firstName: json['firstName'],
+//         id: json['id'],
+//         lastName: json['lastName'],
+//         latitude: json['latitude'],
+//         longitude: json['longitude'],
+//         name: json['name'],
+//         phone: json['phone'],
+//         province: json['province'],
+//         provinceCode: json['provinceCode'],
+//         zip: json['zip']);
+//   }
+// }

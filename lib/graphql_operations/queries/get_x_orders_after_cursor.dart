@@ -90,6 +90,7 @@ customer(customerAccessToken: $accessToken) {
             country
             countryCodeV2
             firstName
+            formattedArea
             id
             lastName
             latitude
