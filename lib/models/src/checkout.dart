@@ -51,19 +51,25 @@ class Checkout {
       this.requiresShipping});
 
   static Checkout fromJson(Map<String, dynamic> json) {
+    PriceV2 totalTaxV2 = PriceV2.fromJson(json['totalTaxV2'] ?? const {});
     PriceV2 lineItemsSubtotalPrice =
         PriceV2.fromJson(json['lineItemsSubtotalPrice'] ?? const {});
     PriceV2 totalPriceV2 = PriceV2.fromJson(json['totalPriceV2'] ?? const {});
     String amount;
     String currencyCode;
     if (lineItemsSubtotalPrice.amount != null && totalPriceV2.amount != null) {
-      amount = (totalPriceV2.amount - lineItemsSubtotalPrice.amount).abs().toStringAsFixed(1);
+      double amt = (totalPriceV2.amount - lineItemsSubtotalPrice.amount);
+      if (totalTaxV2.amount != null) {
+        amt -= totalTaxV2.amount;
+      }
+      amount = amt.abs().toStringAsFixed(2);
       currencyCode = totalPriceV2.currencyCode;
     }
     return Checkout(
         id: json['id'],
         email: json['email'],
-        discountApplications: DiscountApplications.fromJson(json['discountApplications']),
+        discountApplications:
+            DiscountApplications.fromJson(json['discountApplications']),
         appliedGiftcards: _getAppliedGiftCards(json ?? const {}),
         availableShippingrates: AvailableShippingRates.fromJson(
             json['availableShippingRates'] ?? const {}),
@@ -77,11 +83,10 @@ class Checkout {
         note: json['note'],
         webUrl: json['webUrl'],
         updatedAt: json['updatedAt'],
-        lineItemsSubtotalPrice:
-            lineItemsSubtotalPrice,
+        lineItemsSubtotalPrice: lineItemsSubtotalPrice,
         discountAmount: PriceV2.fromJson(
             {'amount': amount, 'currencyCode': currencyCode} ?? const {}),
-        totalTaxV2: PriceV2.fromJson(json['totalTaxV2'] ?? const {}),
+        totalTaxV2: totalTaxV2,
         totalPriceV2: totalPriceV2,
         taxesIncluded: json['taxesIncluded'],
         taxExempt: json['taxExempt'],
@@ -240,13 +245,15 @@ class DiscountApplications {
   get length => discountApplicationList.length;
 
   static DiscountApplications fromJson(Map<String, dynamic> json) {
-    return DiscountApplications(discountApplicationList: _getDiscountApplicationList(json));
+    return DiscountApplications(
+        discountApplicationList: _getDiscountApplicationList(json));
   }
 
-  static List<DiscountApplication> _getDiscountApplicationList(Map<String, dynamic> json) {
+  static List<DiscountApplication> _getDiscountApplicationList(
+      Map<String, dynamic> json) {
     List<DiscountApplication> discountApplicationList = [];
-    json['edges']?.forEach((discountApplication) =>
-        discountApplicationList.add(DiscountApplication.fromJson(discountApplication ?? const {})));
+    json['edges']?.forEach((discountApplication) => discountApplicationList
+        .add(DiscountApplication.fromJson(discountApplication ?? const {})));
     return discountApplicationList;
   }
 }
@@ -258,7 +265,12 @@ class DiscountApplication {
   final double percentage;
   final PriceV2 price;
 
-  DiscountApplication({this.allocationMethod, this.targetSelection, this.targetType, this.percentage, this.price});
+  DiscountApplication(
+      {this.allocationMethod,
+      this.targetSelection,
+      this.targetType,
+      this.percentage,
+      this.price});
 
   static DiscountApplication fromJson(Map<String, dynamic> json) {
     print(json);
@@ -266,9 +278,11 @@ class DiscountApplication {
       allocationMethod: (json['node'] ?? const {})['allocationMethod'],
       targetSelection: (json['node'] ?? const {})['targetSelection'],
       targetType: (json['node'] ?? const {})['targetType'],
-      percentage: (((json['node'] ?? const {})['value'] ?? const {})['percentage'] ?? const {}),
-      price: PriceV2.fromJson(
-          ((json['node'] ?? const {})['value'] ?? const {})),
+      percentage:
+          (((json['node'] ?? const {})['value'] ?? const {})['percentage'] ??
+              const {}),
+      price:
+          PriceV2.fromJson(((json['node'] ?? const {})['value'] ?? const {})),
     );
   }
 }
