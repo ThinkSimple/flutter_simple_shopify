@@ -89,13 +89,15 @@ class Order {
     OrderCancelReason cancelReason = EnumToString.fromString(
         OrderCancelReason.values, (json['node'] ?? const {})['cancelReason']);
     
-    PriceV2 lineItemsSubtotalPrice =
-        PriceV2.fromJson(json['lineItemsSubtotalPrice'] ?? const {});
-    PriceV2 totalPriceV2 = PriceV2.fromJson(json['totalPriceV2'] ?? const {});
+    PriceV2 subtotalPriceV2 =
+        PriceV2.fromJson(
+            (json['node'] ?? const {})['subtotalPriceV2'] ?? const {});
+    PriceV2 totalPriceV2 = PriceV2.fromJson(
+            (json['node'] ?? const {})['totalPriceV2'] ?? const {});
     String amount;
     String currencyCode;
-    if (lineItemsSubtotalPrice.amount != null && totalPriceV2.amount != null) {
-      amount = (totalPriceV2.amount - lineItemsSubtotalPrice.amount).abs().toStringAsFixed(1);
+    if (subtotalPriceV2.amount != null && totalPriceV2.amount != null) {
+      amount = (totalPriceV2.amount - subtotalPriceV2.amount).abs().toStringAsFixed(1);
       currencyCode = totalPriceV2.currencyCode;
     }
 
@@ -120,10 +122,8 @@ class Order {
         discountApplications: DiscountApplications.fromJson(json['discountApplications']),
         discountAmount: PriceV2.fromJson(
             {'amount': amount, 'currencyCode': currencyCode} ?? const {}),
-        subtotalPriceV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['subtotalPriceV2'] ?? const {}),
-        totalPriceV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['totalPriceV2'] ?? const {}),
+        subtotalPriceV2: subtotalPriceV2,
+        totalPriceV2: totalPriceV2,
         totalRefundedV2: PriceV2.fromJson(
             (json['node'] ?? const {})['totalRefundedV2'] ?? const {}),
         totalShippingPriceV2: PriceV2.fromJson(
