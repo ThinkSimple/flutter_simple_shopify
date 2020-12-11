@@ -64,6 +64,24 @@ customer(customerAccessToken: $accessToken) {
           cancelReason
           financialStatus
           fulfillmentStatus
+          discountApplications(first: 10) {
+            edges {
+              node {
+                allocationMethod
+                targetSelection
+                targetType
+                value {
+                  ... on MoneyV2 {
+                    amount
+                    currencyCode
+                  }
+                  ... on PricingPercentageValue {
+                    percentage
+                  }
+                }
+              }
+            }
+          }
           shippingAddress {
             address1
             address2

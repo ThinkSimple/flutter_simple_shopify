@@ -1,5 +1,6 @@
 import 'package:enum_to_string/enum_to_string.dart';
-import 'package:flutter_simple_shopify/enums/enums.dart';
+import 'package:flutter_simple_shopify/enums/src/order_enums.dart';
+// import 'package:flutter_simple_shopify/enums/enums.dart';
 import 'package:flutter_simple_shopify/models/src/product.dart';
 
 import 'checkout.dart';
@@ -39,6 +40,8 @@ class Order {
   final OrderFulfillmentStatus fulfillmentStatus;
   final ShippingAddress shippingAddress;
   final String statusUrl;
+  final DiscountApplications discountApplications;
+  final PriceV2 discountAmount;
   final PriceV2 subtotalPriceV2;
   final PriceV2 totalPriceV2;
   final PriceV2 totalRefundedV2;
@@ -62,6 +65,8 @@ class Order {
       this.fulfillmentStatus,
       this.shippingAddress,
       this.statusUrl,
+      this.discountApplications,
+      this.discountAmount,
       this.subtotalPriceV2,
       this.totalPriceV2,
       this.totalRefundedV2,
@@ -83,6 +88,17 @@ class Order {
         (json['node'] ?? const {})['fulfillmentStatus']);
     OrderCancelReason cancelReason = EnumToString.fromString(
         OrderCancelReason.values, (json['node'] ?? const {})['cancelReason']);
+    
+    PriceV2 lineItemsSubtotalPrice =
+        PriceV2.fromJson(json['lineItemsSubtotalPrice'] ?? const {});
+    PriceV2 totalPriceV2 = PriceV2.fromJson(json['totalPriceV2'] ?? const {});
+    String amount;
+    String currencyCode;
+    if (lineItemsSubtotalPrice.amount != null && totalPriceV2.amount != null) {
+      amount = (totalPriceV2.amount - lineItemsSubtotalPrice.amount).abs().toStringAsFixed(1);
+      currencyCode = totalPriceV2.currencyCode;
+    }
+
     return Order(
         id: (json['node'] ?? const {})['id'],
         email: (json['node'] ?? const {})['email'],
@@ -101,6 +117,9 @@ class Order {
         shippingAddress: ShippingAddress.fromJson(
             (json['node'] ?? const {})['shippingAddress'] ?? const {}),
         statusUrl: (json['node'] ?? const {})['statusUrl'],
+        discountApplications: DiscountApplications.fromJson(json['discountApplications']),
+        discountAmount: PriceV2.fromJson(
+            {'amount': amount, 'currencyCode': currencyCode} ?? const {}),
         subtotalPriceV2: PriceV2.fromJson(
             (json['node'] ?? const {})['subtotalPriceV2'] ?? const {}),
         totalPriceV2: PriceV2.fromJson(
