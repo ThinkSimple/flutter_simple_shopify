@@ -119,7 +119,8 @@ class Order {
         shippingAddress: ShippingAddress.fromJson(
             (json['node'] ?? const {})['shippingAddress'] ?? const {}),
         statusUrl: (json['node'] ?? const {})['statusUrl'],
-        discountApplications: DiscountApplications.fromJson(json['discountApplications']),
+        discountApplications: DiscountApplications.fromJson(
+          (json['node'] ?? const {})['discountApplications']),
         discountAmount: PriceV2.fromJson(
             {'amount': amount, 'currencyCode': currencyCode} ?? const {}),
         subtotalPriceV2: subtotalPriceV2,
