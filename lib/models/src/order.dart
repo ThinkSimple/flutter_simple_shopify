@@ -41,11 +41,7 @@ class Order {
   final ShippingAddress shippingAddress;
   final String statusUrl;
   final DiscountApplications discountApplications;
-  final PriceV2 discountAmount;
   final PriceV2 subtotalPriceV2;
-  final PriceV2 currentSubtotalPrice;
-  final PriceV2 currentTotalPrice;
-  final PriceV2 currentTotalTax;
   final PriceV2 totalPriceV2;
   final PriceV2 totalRefundedV2;
   final PriceV2 totalShippingPriceV2;
@@ -68,11 +64,7 @@ class Order {
       this.fulfillmentStatus,
       this.shippingAddress,
       this.statusUrl,
-      this.discountApplications,
-      this.discountAmount,
-      this.currentSubtotalPrice,
-      this.currentTotalPrice,
-      this.currentTotalTax,
+      this.discountApplications,     
       this.subtotalPriceV2,
       this.totalPriceV2,
       this.totalRefundedV2,
@@ -94,18 +86,6 @@ class Order {
         (json['node'] ?? const {})['fulfillmentStatus']);
     OrderCancelReason cancelReason = EnumToString.fromString(
         OrderCancelReason.values, (json['node'] ?? const {})['cancelReason']);
-    
-    PriceV2 currentSubtotalPrice =
-        PriceV2.fromJson(
-            (json['node'] ?? const {})['currentSubtotalPrice'] ?? const {});
-    PriceV2 currentTotalPrice = PriceV2.fromJson(
-            (json['node'] ?? const {})['currentTotalPrice'] ?? const {});
-    String amount;
-    String currencyCode;
-    if (currentSubtotalPrice.amount != null && currentTotalPrice.amount != null) {
-      amount = (currentTotalPrice.amount - currentSubtotalPrice.amount).abs().toStringAsFixed(1);
-      currencyCode = currentTotalPrice.currencyCode;
-    }
 
     return Order(
         id: (json['node'] ?? const {})['id'],
@@ -127,12 +107,6 @@ class Order {
         statusUrl: (json['node'] ?? const {})['statusUrl'],
         discountApplications: DiscountApplications.fromJson(
           (json['node'] ?? const {})['discountApplications']),
-        discountAmount: PriceV2.fromJson(
-            {'amount': amount, 'currencyCode': currencyCode} ?? const {}),
-        currentSubtotalPrice: currentSubtotalPrice,
-        currentTotalPrice: currentTotalPrice,
-        currentTotalTax: PriceV2.fromJson(
-            (json['node'] ?? const {})['currentTotalTax'] ?? const {}),
         subtotalPriceV2: PriceV2.fromJson(
             (json['node'] ?? const {})['subtotalPriceV2'] ?? const {}),
         totalPriceV2: PriceV2.fromJson(

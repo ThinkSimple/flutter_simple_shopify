@@ -101,18 +101,6 @@ customer(customerAccessToken: $accessToken) {
             zip
           }
           statusUrl
-          currentSubtotalPrice {
-            amount
-            currencyCode
-          }
-          currentTotalPrice {
-            amount
-            currencyCode
-          }
-          currentTotalTax {
-            amount
-            currencyCode
-          }
           subtotalPriceV2 {
             amount
             currencyCode
