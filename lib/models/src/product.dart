@@ -70,7 +70,7 @@ class Product {
         availableForSale: (json['node'] ?? const {})['availableForSale'],
         createdAt: (json['node'] ?? const {})['createdAt'],
         description: (json['node'] ?? const {})['description'],
-        productVariants: _getProductVariants(json ?? const {}),
+        productVariants: _getProductVariants(json['node'] ?? const {}),
         descriptionHtml: (json['node'] ?? const {})['descriptionHtml'],
         handle: (json['node'] ?? const {})['handle'],
         onlineStoreUrl: (json['node'] ?? const {})['onlineStoreUrl'],
@@ -85,6 +85,29 @@ class Product {
         metafields: _getMetafieldList(
             (json['node'] ?? const {})['metafields'] ?? const {}));
   }
+  static Product fromProductHandleJson(Map<String, dynamic> json) {
+    return Product(
+        collectionList: _getCollectionList(json ?? const {}),
+        id: json['id'],
+        title: json['title'],
+        availableForSale: json['availableForSale'],
+        createdAt: json['createdAt'],
+        description: json['description'],
+        productVariants: _getProductVariants(json ?? const {}),
+        descriptionHtml: json['descriptionHtml'],
+        handle: json['handle'],
+        onlineStoreUrl: json['onlineStoreUrl'],
+        productType: json['productType'],
+        publishedAt: json['publishedAt'],
+        tags: _getTags(json ?? const {}),
+        updatedAt: json['updatedAt'],
+        images: _getImageList(json['images'] ?? const {}),
+        cursor: json['cursor'],
+        options: _getOptionList(json),
+        vendor: json['vendor'],
+        metafields: _getMetafieldList(
+            json['metafields'] ?? const {}));
+  }
 
   Map toJson() => {
         'id': id,
@@ -94,7 +117,7 @@ class Product {
 
   static List<ProductVariant> _getProductVariants(Map<String, dynamic> json) {
     List<ProductVariant> productVariants = [];
-    (((json['node'] ?? const {})['variants'] ?? const {})['edges'] ?? const [])
+    ((json['variants'] ?? const {})['edges'] ?? const [])
         ?.forEach((v) {
       if (v?.data != null)
         productVariants.add(ProductVariant.fromJson(v?.data ?? const {}));
@@ -152,7 +175,7 @@ class Product {
 
   static _getImageList(Map<String, dynamic> json) {
     List<ShopifyImage> imageList = [];
-    json['edges'].forEach((image) =>
+    json['edges']?.forEach((image) =>
         imageList.add(ShopifyImage.fromJson(image['node'] ?? const {})));
     return imageList;
   }
