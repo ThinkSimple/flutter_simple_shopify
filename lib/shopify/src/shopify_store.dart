@@ -12,6 +12,7 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_metafileds
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_shop.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_collections_and_n_products_sorted.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor_by_collection_handle.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor_within_collection.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_on_query_after_cursor.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
@@ -239,6 +240,35 @@ class ShopifyStore with ShopifyError {
       final WatchQueryOptions _options = WatchQueryOptions(
           documentNode: gql(getCollectionByHandleQuery),
           variables: {'handle': handle});
+      final QueryResult result = await _graphQLClient.query(_options);
+      checkForError(result);
+      if (deleteThisPartOfCache) {
+        _graphQLClient.cache.write(_options.toKey(), null);
+      }
+      return Collection.fromCollectionHandleJson(
+          (result?.data ?? const {})['collectionByHandle'] ?? {});
+    } catch (e) {
+      print(e);
+    }
+    return Collection.fromJson({});
+  }
+
+  Future<Collection> getXProductsAfterCursorByCollectionHandle(
+      String handle, int limit, String startCursor,
+      {bool deleteThisPartOfCache = false,
+      bool reverse = false,
+      SortKeyProductCollection sortKeyProductCollection = SortKeyProductCollection.RELEVANCE}) async {
+    String cursor = startCursor;
+    try {
+      final WatchQueryOptions _options = WatchQueryOptions(
+          documentNode: gql(getXProductAfterCursorByCollectionHandleQuery),
+          variables: {
+            'handle': handle,
+            'x': limit ?? 50,
+            'cursor': cursor,
+            'reverse': reverse,
+            'sortKey': sortKeyProductCollection.parseToString()
+          });
       final QueryResult result = await _graphQLClient.query(_options);
       checkForError(result);
       if (deleteThisPartOfCache) {

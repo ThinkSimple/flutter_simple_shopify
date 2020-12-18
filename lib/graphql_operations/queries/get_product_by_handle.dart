@@ -31,6 +31,10 @@ query($handle: String!) {
                     sku
                     requiresShipping
                     quantityAvailable
+                    selectedOptions {
+                      name
+                      value
+                    }
                 }
             }
             pageInfo {

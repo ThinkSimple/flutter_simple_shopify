@@ -85,6 +85,7 @@ class Product {
         metafields: _getMetafieldList(
             (json['node'] ?? const {})['metafields'] ?? const {}));
   }
+
   static Product fromProductHandleJson(Map<String, dynamic> json) {
     return Product(
         collectionList: _getCollectionList(json ?? const {}),
@@ -105,8 +106,7 @@ class Product {
         cursor: json['cursor'],
         options: _getOptionList(json),
         vendor: json['vendor'],
-        metafields: _getMetafieldList(
-            json['metafields'] ?? const {}));
+        metafields: _getMetafieldList(json['metafields'] ?? const {}));
   }
 
   Map toJson() => {
@@ -117,27 +117,31 @@ class Product {
 
   static List<ProductVariant> _getProductVariants(Map<String, dynamic> json) {
     List<ProductVariant> productVariants = [];
-    ((json['variants'] ?? const {})['edges'] ?? const [])
-        ?.forEach((v) {
+    ((json['variants'] ?? const {})['edges'] ?? const [])?.forEach((v) {
       if (v?.data != null)
         productVariants.add(ProductVariant.fromJson(v?.data ?? const {}));
     });
     return productVariants;
   }
 
-  getProductVariantBySelectedOption(List<SelectedOption> filters) {
+  ProductVariant getProductVariantBySelectedOption(
+      List<SelectedOption> filters) {
     Function unOrdDeepEq = const DeepCollectionEquality.unordered().equals;
+
+    List<Map<String, String>> filterList = [];
+    filters.forEach((SelectedOption selectedOption) {
+      filterList.add({selectedOption.name: selectedOption.value});
+    });
+
     final productVariant =
         this.productVariants.firstWhere((ProductVariant productVariant) {
       bool found = false;
       List<Map<String, String>> selectedOptionList = [];
-      List<Map<String, String>> filterList = [];
+
       productVariant.selectedOptions.forEach((SelectedOption selectedOption) {
         selectedOptionList.add({selectedOption.name: selectedOption.value});
       });
-      filters.forEach((SelectedOption selectedOption) {
-        filterList.add({selectedOption.name: selectedOption.value});
-      });
+
       if (unOrdDeepEq(selectedOptionList, filterList) == true) {
         found = true;
       }
