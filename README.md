@@ -4,6 +4,9 @@ IMPORTANT NOTE: we are happy that our package found some users and we are even m
 That being said, I (Adam) the maintainer am starting university on the 02/11/2020 and would love to find a new maintainer for this project, since my free time is being drastically shortened I won't be able help you guys out as good as I could before.
 I will still try my best to invest time into the package.
 
+If I helped you in any way with the package feel free to donate a coffee for a fellow developer! (You know how much devs like coffee!)
+<a href="https://www.buymeacoffee.com/AdamDevTS1" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
 
 
 A new Flutter package which provides help in creating a mobile app of a shopify store.
