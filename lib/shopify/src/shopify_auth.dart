@@ -41,7 +41,7 @@ class ShopifyAuth with ShopifyError {
     final shopifyUser = ShopifyUser.fromJson(
         (result?.data['customerCreate'] ?? const {})['customer']);
     final String customerAccessToken = await _createAccessToken(email, password);
-    _setShopifyUser(customerAccessToken, _shopifyUser);
+    await _setShopifyUser(customerAccessToken, _shopifyUser);
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -76,7 +76,7 @@ class ShopifyAuth with ShopifyError {
     checkForError(result);
     final shopifyUser = ShopifyUser.fromJson(
         result?.data['customer']);
-    _setShopifyUser(customerAccessToken, shopifyUser);
+    await  _setShopifyUser(customerAccessToken, shopifyUser);
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_getCustomer.toKey(), null);
     }
@@ -107,7 +107,7 @@ class ShopifyAuth with ShopifyError {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(accessTokenDeleteMutation),
         variables: {'customerAccessToken': _prefs.getString(_shopifyKey)});
-    _setShopifyUser(null, null);
+    await _setShopifyUser(null, null);
     final QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(result);
     if(deleteThisPartOfCache) {
