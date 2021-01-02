@@ -148,3 +148,9 @@ getDeaturedCollection is now getCollectionByHandle, a wrong handle name wont cra
 ## [0.0.24-alpha] - 30/10/2020
 
 * merged various pull requests
+
+## [0.0.25-alpha] - 30/10/2020
+
+* Connectivity issues throw now a more detailed error
+* CheckoutCompleteFree now prints the errors directly
+* getAllOrders is fixed and the sortkey SortKeyOrder.RELEVANCE is commented out since it raised problems

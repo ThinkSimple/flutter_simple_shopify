@@ -98,3 +98,12 @@ multiple Flutter or Dart projects.
 For help getting started with Flutter, view our 
 [online documentation](https://flutter.dev/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
+
+#### Contribution
+
+Everybody can contribute and is invited to do so!
+Important: if you add a new field to a model please consider also adding this to every mutation/query that is associated with the model.
+eg. adding a new field to Checkout which is the webUrl, now you will need to go through the various queries/mutations and search for "Checkout" and add webUrl to each one of those.
+(adding a new field to a Model also requires you to update the fromJson)
+
+Also I would like to thank everyone who contributed so far!
