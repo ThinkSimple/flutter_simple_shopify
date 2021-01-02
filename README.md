@@ -5,6 +5,7 @@ That being said, I (Adam) the maintainer am starting university on the 02/11/202
 I will still try my best to invest time into the package.
 
 If I helped you in any way with the package feel free to donate a coffee for a fellow developer! (You know how much devs like coffee!)
+
 <a href="https://www.buymeacoffee.com/AdamDevTS1" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 
