@@ -57,4 +57,19 @@ class Collection {
       cursor: json['cursor'],
     );
   }
+  static Collection fromCollectionHandleJson(Map<String, dynamic> json) {
+    return Collection(
+      title: json['title'],
+      description: json['description'],
+      descriptionHtml: json['descriptionHtml'],
+      handle: json['handle'],
+      id: json['id'],
+      updatedAt: json['updatedAt'],
+      image: ShopifyImage.fromJson(
+          json['image'] ?? const {}),
+      products:
+          Products.fromJson(json['products'] ?? const {}),
+      cursor: json['cursor'],
+    );
+  }
 }

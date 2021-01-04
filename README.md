@@ -47,16 +47,25 @@ The goal is to make creating an mobile app from your Shopify website easier.
 ```dart    
   ShopifyStore shopifyStore = ShopifyStore.instance;
      Future<List<Product>> getProductsByIds()
-     Future<List<Product>> getXProductsAfterCursor(int limit,String startCursor)
+     Future<Product> getProductByHandle(String handle,
+      {bool deleteThisPartOfCache = false})
+     Future<Products> getXProductsAfterCursor(int limit,String startCursor)
      Future<List<Product>> getAllProducts()
      Future<List<Product>> getNProducts({@required int n, @required SortKey sortKey})
      Future<Shop> getShop()
      Future<Collection> getFeaturedCollection()
      Future<List<Collection>> getAllCollections()
-     Future<List<Product>> getXProductsAfterCursorWithinCollection(String id, int limit, String startCursor, SortKeyProduct sortKey)
+     Future<Collection> getCollectionByHandle(String handle,
+      {bool deleteThisPartOfCache = false})
+     Future<Products> getXProductsAfterCursorWithinCollection(String id, int limit, String startCursor, SortKeyProduct sortKey)
+     Future<Collection> getXProductsAfterCursorByCollectionHandle(
+      String handle, int limit, String startCursor,
+      {bool deleteThisPartOfCache = false,
+      bool reverse = false,
+      SortKeyProductCollection sortKeyProductCollection = SortKeyProductCollection.RELEVANCE})
      Future<List<Product>> getAllProductsFromCollectionById(String id)
      Future<List<Product>> getAllProductsOnQuery(String cursor, SortKeyProduct sortKey, String query)
-     Future<List<Product>> getXProductsOnQueryAfterCursor(String cursor, int limit, SortKeyProduct sortKey, String query)
+     Future<Products> getXProductsOnQueryAfterCursor(String cursor, int limit, SortKeyProduct sortKey, String query)
      Future<List<Metafield>> getMetafieldsFromProduct(String productHandle, {String namespace})
 ```
 ```dart
@@ -64,6 +73,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
     Future<Checkout> getCheckoutInfoQuery({String checkoutId})
     Future<Checkout> getCheckoutInfoWithAvailableShippingRatesQuery({String checkoutId})
     Future<List<Order>> getAllOrders({String customerAccessToken})
+    Future<Orders> getXOrdersAfterCursor({String customerAccessToken, int limit, String startCursor})
     Future<void> checkoutLineItemsReplace({String checkoutId, List<Map<String,dynamic>> checkoutLineItems})
     Future<void> checkoutCustomerAssociate({String checkoutId, String customerAccessToken}) 
     Future<void> checkoutCustomerDisassociate({String checkoutId})

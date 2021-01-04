@@ -96,12 +96,11 @@ class _CollectionDetailScreenState extends State<CollectionDetailScreen> {
       final products = await shopifyStore.getXProductsAfterCursorWithinCollection(
         widget.collectionId,
         4,
-        null,
-        SortKeyProduct.RELEVANCE,
+        null
       );
       if(mounted){
         setState(() {
-          this.products = products;
+          this.products = products.productList;
           _isLoading = false;
         });
       }

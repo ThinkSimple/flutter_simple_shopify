@@ -3,3 +3,4 @@ export 'src/sort_key_article.dart';
 export 'src/sort_key_order.dart';
 export 'src/sort_key_blog.dart';
 export 'src/sort_key_product_collection.dart';
+export 'src/order_enums.dart';

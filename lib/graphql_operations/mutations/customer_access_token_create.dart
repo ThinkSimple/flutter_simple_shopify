@@ -5,5 +5,10 @@ mutation customerAccessTokenCreate($email : String!, $password: String!) {
       expiresAt
       accessToken
     }
+    customerUserErrors {
+      code
+      field
+      message
+    }
   }
 }''';
