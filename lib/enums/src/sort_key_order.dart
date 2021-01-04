@@ -2,7 +2,7 @@ enum SortKeyOrder {
   PROCESSED_AT,
   TOTAL_PRICE,
   ID,
-  RELEVANCE
+  //RELEVANCE DOESNT WORK!
 }
 
 extension ParseToStringOrder on SortKeyOrder{

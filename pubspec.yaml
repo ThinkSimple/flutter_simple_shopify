@@ -1,6 +1,6 @@
 name: flutter_simple_shopify
 description: A new Flutter package which provides help in creating a mobile app of a shopify store.
-version: 0.0.21-alpha
+version: 0.0.25-alpha
 homepage: https://github.com/ThinkSimple/flutter_simple_shopify
 
 environment:
@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  graphql: ^3.0.0
+  graphql: ^3.1.0
   shared_preferences: ^0.5.7
   enum_to_string: ^1.0.14
 

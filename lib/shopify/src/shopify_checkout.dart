@@ -2,8 +2,8 @@ import 'package:flutter_simple_shopify/enums/src/sort_key_order.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_complete_free.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_email_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_shipping_address_update.dart';
+import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_shipping_line_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/create_checkout.dart';
-import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_is_ready.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_requires_shipping.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_information_with_shipping_rate.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_without_shipping_rates.dart';
@@ -18,7 +18,6 @@ import '../../graphql_operations/mutations/checkout_discount_code_apply.dart';
 import '../../graphql_operations/mutations/checkout_discount_code_remove.dart';
 import '../../graphql_operations/mutations/checkout_giftcard_remove.dart';
 import '../../graphql_operations/mutations/checkout_giftcards_append.dart';
-import '../../graphql_operations/mutations/checkout_shipping_line_update.dart';
 import '../../graphql_operations/queries/get_all_orders.dart';
 import '../../graphql_operations/queries/get_checkout_information.dart';
 import '../../models/src/checkout.dart';
@@ -87,40 +86,25 @@ class ShopifyCheckout with ShopifyError {
     return ((result?.data ?? const {})['node'] ?? const {})['requiresShipping'];
   }
 
-  Future<void> getCheckoutIsReadyQuery(String checkoutId,
-      {bool deleteThisPartOfCache = false}) async {
-    final WatchQueryOptions _optionsRequireShipping = WatchQueryOptions(
-        documentNode: gql(getCheckoutInfoIsReady),
-        variables: {
-          'id': checkoutId,
-        });
-    QueryResult result = await _graphQLClient.query(_optionsRequireShipping);
-    print('getCheckoutIsReadyQuery');
-    print((result?.data as LazyCacheMap)?.data);
-  }
-
   /// Returns all [Order] in a List of Orders.
   ///
   /// Returns a List of Orders from the Customer with the [customerAccessToken].
   Future<List<Order>> getAllOrders(String customerAccessToken,
-      {SortKeyOrder sortKey = SortKeyOrder.ID,
-      bool reverse = true,
-      bool deleteThisPartOfCache = false}) async {
-    final QueryOptions _options =
-        WatchQueryOptions(documentNode: gql(getAllOrdersQuery), variables: {
-      'accessToken': customerAccessToken,
-      'sortKey': sortKey.parseToString(),
-      'reverse': reverse
-    });
-    final QueryResult result =
-        await ShopifyConfig.graphQLClient.query(_options);
-    checkForError(result);
-    Orders orders = Orders.fromJson(
-        ((((result?.data ?? const {}))['customer'] ?? const {})['orders'] ??
-            const {}));
-    if (deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
-    }
+      { SortKeyOrder sortKey = SortKeyOrder.PROCESSED_AT, bool reverse = true, bool deleteThisPartOfCache = false}) async {
+      final QueryOptions _options = WatchQueryOptions(
+          documentNode: gql(getAllOrdersQuery),
+          variables: {
+            'accessToken': customerAccessToken,
+            'sortKey': sortKey.parseToString(),
+            'reverse': reverse
+          }
+      );
+      final QueryResult result = await ShopifyConfig.graphQLClient.query(_options);
+      checkForError(result);
+      Orders orders = Orders.fromJson(((((result?.data ?? const {}))['customer'] ?? const {})['orders'] ?? const {}));
+      if(deleteThisPartOfCache) {
+        _graphQLClient.cache.write(_options.toKey(), null);
+      }
     return orders.orderList;
   }
 

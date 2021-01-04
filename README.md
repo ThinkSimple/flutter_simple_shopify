@@ -1,5 +1,15 @@
 # flutter_simple_shopify
 
+IMPORTANT NOTE: we are happy that our package found some users and we are even more happy that there are people actively contributing.
+That being said, I (Adam) the maintainer am starting university on the 02/11/2020 and would love to find a new maintainer for this project, since my free time is being drastically shortened I won't be able help you guys out as good as I could before.
+I will still try my best to invest time into the package.
+
+If I helped you in any way with the package feel free to donate a coffee for a fellow developer! (You know how much devs like coffee!)
+
+<a href="https://www.buymeacoffee.com/AdamDevTS1" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
+
+
 A new Flutter package which provides help in creating a mobile app of a shopify store.
 Note: **This library as of right now is not ready for production**
 **however** we finished creating our own app and used the library.
@@ -102,3 +112,12 @@ multiple Flutter or Dart projects.
 For help getting started with Flutter, view our 
 [online documentation](https://flutter.dev/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
+
+#### Contribution
+
+Everybody can contribute and is invited to do so!
+Important: if you add a new field to a model please consider also adding this to every mutation/query that is associated with the model.
+eg. adding a new field to Checkout which is the webUrl, now you will need to go through the various queries/mutations and search for "Checkout" and add webUrl to each one of those.
+(adding a new field to a Model also requires you to update the fromJson)
+
+Also I would like to thank everyone who contributed so far!

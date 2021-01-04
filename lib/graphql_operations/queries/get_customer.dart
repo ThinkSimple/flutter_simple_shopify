@@ -49,6 +49,7 @@ query($customerAccessToken : String!){
     tags
     firstName
     id
+    lastName
     lastIncompleteCheckout {
         completedAt
         createdAt

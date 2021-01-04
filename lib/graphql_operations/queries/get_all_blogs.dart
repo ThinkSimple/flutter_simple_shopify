@@ -1,5 +1,5 @@
 const String getAllBlogsQuery = r'''
-query getBlogs($reverseBlogs: Boolean, $reverseArticles: Boolean, $sortKey: BlogSortkeys ){
+query getBlogs($reverseBlogs: Boolean, $reverseArticles: Boolean, $sortKey: BlogSortKeys ){
   blogs(first: 250, sortKey: $sortKey, reverse: $reverseBlogs) {
     edges {
       node {
