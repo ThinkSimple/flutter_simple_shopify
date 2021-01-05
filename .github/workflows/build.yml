@@ -1,0 +1,38 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Cache libs
+        uses: actions/cache@v2
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-cache-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-pub-cache
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '1.12.13+hotfix.5'
+      - name: Get libs
+        run: flutter pub get
+      - name: Test lib
+        run: flutter test
+      #- name: Test example
+      #  working-directory: example
+      #  run: flutter test
+      - name: Build apk of example
+        working-directory: example
+        run: flutter build apk
+      - name: Upload debug apk
+        uses: actions/upload-artifact@v2
+        with:
+          name: APK
+          path: example/build/app/outputs/flutter-apk/app-release.apk
