@@ -25,14 +25,3 @@ jobs:
         run: flutter pub get
       - name: Test lib
         run: flutter test
-      #- name: Test example
-      #  working-directory: example
-      #  run: flutter test
-      - name: Build apk of example
-        working-directory: example
-        run: flutter build apk
-      - name: Upload debug apk
-        uses: actions/upload-artifact@v2
-        with:
-          name: APK
-          path: example/build/app/outputs/flutter-apk/app-release.apk
