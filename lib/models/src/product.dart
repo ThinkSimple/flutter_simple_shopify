@@ -76,7 +76,7 @@ class Product {
         onlineStoreUrl: (json['node'] ?? const {})['onlineStoreUrl'],
         productType: (json['node'] ?? const {})['productType'],
         publishedAt: (json['node'] ?? const {})['publishedAt'],
-        tags: _getTags(json ?? const {}),
+        tags: _getTags((json['node'] ?? const {})['tags']),
         updatedAt: (json['node'] ?? const {})['updatedAt'],
         images: _getImageList((json['node'] ?? const {})['images'] ?? const {}),
         cursor: json['cursor'],
@@ -100,7 +100,7 @@ class Product {
         onlineStoreUrl: json['onlineStoreUrl'],
         productType: json['productType'],
         publishedAt: json['publishedAt'],
-        tags: _getTags(json ?? const {}),
+        tags: _getTags(json['tags'] ?? []),
         updatedAt: json['updatedAt'],
         images: _getImageList(json['images'] ?? const {}),
         cursor: json['cursor'],
@@ -159,9 +159,9 @@ class Product {
     return optionList;
   }
 
-  static List<String> _getTags(Map<String, dynamic> json) {
+  static List<String> _getTags(List<dynamic> list) {
     List<String> tags = [];
-    (json['node'] ?? const {})['tags']?.forEach((e) => tags.add(e ?? const {}));
+    list?.forEach((e) => tags.add(e ?? const {}));
     return tags;
   }
 
