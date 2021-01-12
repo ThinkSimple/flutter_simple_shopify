@@ -64,7 +64,7 @@ class Product {
 
   static Product fromJson(Map<String, dynamic> json) {
     return Product(
-        collectionList: _getCollectionList(json ?? const {}),
+        collectionList: _getCollectionList(json['node'] ?? const {} ?? const {}),
         id: (json['node'] ?? const {})['id'],
         title: (json['node'] ?? const {})['title'],
         availableForSale: (json['node'] ?? const {})['availableForSale'],
@@ -168,7 +168,7 @@ class Product {
   static List<AssociatedCollections> _getCollectionList(
       Map<String, dynamic> json) {
     List<AssociatedCollections> collectionList = [];
-    (((json['node'] ?? const {})['collections'] ?? const {})['edges'] ??
+    ((json['collections'] ?? const {})['edges'] ??
             const [])
         ?.forEach((v) {
       if (v?.data != null)
