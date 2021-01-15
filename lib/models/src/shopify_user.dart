@@ -2,7 +2,6 @@ import 'package:flutter_simple_shopify/models/src/checkout.dart';
 import 'package:flutter_simple_shopify/models/src/product.dart';
 
 class ShopifyUser {
-
   final Addresses address;
   final String createdAt;
   final String displayName;
@@ -14,7 +13,17 @@ class ShopifyUser {
   final List<String> tags;
   final LastIncompleteCheckout lastIncompleteCheckout;
 
-  ShopifyUser({this.address, this.createdAt, this.displayName, this.email, this.firstName, this.id, this.lastName, this.phone, this.tags, this.lastIncompleteCheckout});
+  ShopifyUser(
+      {this.address,
+      this.createdAt,
+      this.displayName,
+      this.email,
+      this.firstName,
+      this.id,
+      this.lastName,
+      this.phone,
+      this.tags,
+      this.lastIncompleteCheckout});
 
   static ShopifyUser fromJson(Map<String, dynamic> json) {
     return ShopifyUser(
@@ -27,7 +36,8 @@ class ShopifyUser {
       lastName: json['lastName'],
       phone: json['phone'],
       tags: _getTagList(json ?? const []),
-      lastIncompleteCheckout: LastIncompleteCheckout.fromJson(json['lastIncompleteCheckout'] ?? const {}),
+      lastIncompleteCheckout: LastIncompleteCheckout.fromJson(
+          json['lastIncompleteCheckout'] ?? const {}),
     );
   }
 
@@ -36,31 +46,26 @@ class ShopifyUser {
     json['tags']?.forEach((tag) => tagsList.add(tag));
     return tagsList;
   }
-
 }
 
-class Addresses{
+class Addresses {
   final List<Address> addressList;
 
   Addresses({this.addressList});
 
-  static Addresses fromJson(Map<String, dynamic> json){
-    return Addresses(
-        addressList: _getAddressList(json)
-    );
+  static Addresses fromJson(Map<String, dynamic> json) {
+    return Addresses(addressList: _getAddressList(json));
   }
 
   static _getAddressList(Map<String, dynamic> json) {
     List<Address> addressList = [];
-    json['edges']?.forEach((address) => addressList.add(Address.fromJson(address ?? const [])));
+    json['edges']?.forEach(
+        (address) => addressList.add(Address.fromJson(address ?? const [])));
     return addressList;
   }
-
-
 }
 
 class Address {
-
   final String id;
   final String address1;
   final String address2;
@@ -79,9 +84,26 @@ class Address {
   final String provinceCode;
   final String zip;
 
-  Address({this.id, this.address1, this.address2, this.city, this.company, this.country, this.countryCode, this.firstName, this.lastName, this.formattedArea, this.latitude, this.longitude, this.name, this.phone, this.province, this.provinceCode, this.zip});
+  Address(
+      {this.id,
+      this.address1,
+      this.address2,
+      this.city,
+      this.company,
+      this.country,
+      this.countryCode,
+      this.firstName,
+      this.lastName,
+      this.formattedArea,
+      this.latitude,
+      this.longitude,
+      this.name,
+      this.phone,
+      this.province,
+      this.provinceCode,
+      this.zip});
 
-  static Address fromJson(Map<String, dynamic> json){
+  static Address fromJson(Map<String, dynamic> json) {
     return Address(
         id: (json['node'] ?? const {})['id'],
         address1: (json['node'] ?? const {})['address1'],
@@ -99,14 +121,11 @@ class Address {
         phone: (json['node'] ?? const {})['phone'],
         province: (json['node'] ?? const {})['province'],
         provinceCode: (json['node'] ?? const {})['provinceCode'],
-        zip: (json['node'] ?? const {})['zip']
-    );
+        zip: (json['node'] ?? const {})['zip']);
   }
-
 }
 
 class LastIncompleteCheckout {
-
   final String completedAt;
   final String createdAt;
   final String email;
@@ -117,9 +136,18 @@ class LastIncompleteCheckout {
   final PriceV2 lineItemsSubtotalPrice;
   final LineItems lineItems;
 
-  LastIncompleteCheckout({this.completedAt, this.createdAt, this.email, this.id, this.currencyCode, this.webUrl, this.totalPriceV2, this.lineItemsSubtotalPrice, this.lineItems});
+  LastIncompleteCheckout(
+      {this.completedAt,
+      this.createdAt,
+      this.email,
+      this.id,
+      this.currencyCode,
+      this.webUrl,
+      this.totalPriceV2,
+      this.lineItemsSubtotalPrice,
+      this.lineItems});
 
-  static LastIncompleteCheckout fromJson(Map<String, dynamic> json){
+  static LastIncompleteCheckout fromJson(Map<String, dynamic> json) {
     return LastIncompleteCheckout(
         completedAt: json['completedAt'],
         createdAt: json['createdAt'],
@@ -127,10 +155,24 @@ class LastIncompleteCheckout {
         id: json['id'],
         currencyCode: json['currencyCode'],
         webUrl: json['webUrl'],
-        totalPriceV2: PriceV2.fromJson(json['totalPriceV2']?? const {}),
-        lineItemsSubtotalPrice: PriceV2.fromJson(json['lineItemsSubtotalPrice'] ?? const {}),
-        lineItems: LineItems.fromJson(json['lineItems']?? const {})
-    );
+        totalPriceV2: PriceV2.fromJson(json['totalPriceV2'] ?? const {}),
+        lineItemsSubtotalPrice:
+            PriceV2.fromJson(json['lineItemsSubtotalPrice'] ?? const {}),
+        lineItems: LineItems.fromJson(json['lineItems'] ?? const {}));
   }
+}
 
+class CustomerAccessToken {
+  final String accessToken;
+  final DateTime expiresAt;
+
+  CustomerAccessToken(this.accessToken, this.expiresAt);
+
+  static CustomerAccessToken fromJson(Map<String, dynamic> json) {
+    json = ((json ?? const {})['customerAccessToken'] ?? const {});
+    print(json['accessToken']);
+    print(DateTime.parse(json['expiresAt']));
+    return CustomerAccessToken(
+        json['accessToken'], DateTime.parse(json['expiresAt']));
+  }
 }
