@@ -1,3 +1,4 @@
+import 'package:flutter_simple_shopify/models/src/order.dart';
 import 'package:flutter_simple_shopify/models/src/product.dart';
 
 class Checkout{
@@ -21,12 +22,13 @@ class Checkout{
   final PriceV2 subtotalPriceV2;
   final String orderStatusUrl;
   final bool requiresShipping;
+  final Order order;
 
   Checkout({this.id, this.email, this.appliedGiftcards,
     this.availableShippingrates, this.shippingLine,this.shippingAddress, this.completedAt, this.createdAt,
     this.currencyCode, this.lineItems, this.note, this.webUrl, this.updatedAt,
     this.totalTaxV2, this.totalPriceV2, this.taxesIncluded, this.taxExempt,
-    this.subtotalPriceV2, this.orderStatusUrl, this.requiresShipping});
+    this.subtotalPriceV2, this.orderStatusUrl, this.requiresShipping, this.order});
 
 
   static Checkout fromJson(Map<String, dynamic> json){
@@ -50,7 +52,8 @@ class Checkout{
         taxExempt: json['taxExempt'],
         subtotalPriceV2: PriceV2.fromJson(json['subtotalPriceV2'] ?? const {}),
         orderStatusUrl: json['orderStatusUrl'],
-        requiresShipping: json['requiresShipping']
+        requiresShipping: json['requiresShipping'],
+        order: Order.fromJson(json['order'] ?? const {}),
     );
   }
 
