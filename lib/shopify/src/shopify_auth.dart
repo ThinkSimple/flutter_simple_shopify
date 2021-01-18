@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_access_token_renew.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:graphql/client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,8 +24,20 @@ class ShopifyAuth with ShopifyError {
 
   static const String _shopifyKey = 'FLUTTER_SIMPLE_SHOPIFY_ACCESS_TOKEN';
 
-  static get currentCustomerAccessToken async =>
-      (await SharedPreferences.getInstance()).getString(_shopifyKey);
+  static Future<String> get currentCustomerAccessToken async =>
+      (await currentCustomer).accessToken;
+
+  static Future<CustomerAccessToken> get currentCustomer async {
+    String string =
+        (await SharedPreferences.getInstance()).getString(_shopifyKey);
+    if (string != null) {
+      Map<String, dynamic> json = jsonDecode(string);
+      return CustomerAccessToken(
+          json['accessToken'].toString(), DateTime.parse(json['expiresAt']));
+    } else {
+      return null;
+    }
+  }
 
   /// Tries to create a new user account with the given email address and password.
   Future<ShopifyUser> createUser(
@@ -50,7 +65,7 @@ class ShopifyAuth with ShopifyError {
         (result?.data['customerCreate'] ?? const {})['customer']);
     final CustomerAccessToken customerAccessToken =
         await _createAccessToken(email, password);
-    await _setShopifyUser(customerAccessToken.accessToken, _shopifyUser);
+    await _setShopifyUser(customerAccessToken);
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -89,7 +104,7 @@ class ShopifyAuth with ShopifyError {
     final QueryResult result = await _graphQLClient.query(_getCustomer);
     checkForError(result);
     final shopifyUser = ShopifyUser.fromJson(result?.data['customer']);
-    await _setShopifyUser(customerAccessToken.accessToken, shopifyUser);
+    await _setShopifyUser(customerAccessToken);
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_getCustomer.toKey(), null);
     }
@@ -114,17 +129,34 @@ class ShopifyAuth with ShopifyError {
 
   /// Signs out the current user and clears it from the disk cache.
   Future<void> signOutCurrentUser({bool deleteThisPartOfCache = false}) async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    String cat = await currentCustomerAccessToken;
     final MutationOptions _options = MutationOptions(
         documentNode: gql(accessTokenDeleteMutation),
-        variables: {'customerAccessToken': _prefs.getString(_shopifyKey)});
-    await _setShopifyUser(null, null);
+        variables: {'customerAccessToken': cat});
+    await _setShopifyUser(null);
     final QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
     return result;
+  }
+
+  Future<CustomerAccessToken> renewCurrentUser(
+      {bool deleteThisPartOfCache = false}) async {
+    String cat = await currentCustomerAccessToken;
+    final MutationOptions _options = MutationOptions(
+        documentNode: gql(customerAccessTokenRenewMutation),
+        variables: {'customerAccessToken': cat});
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    CustomerAccessToken customerAccessToken =
+        CustomerAccessToken.fromJson(result?.data['customerAccessTokenRenew']);
+    await _setShopifyUser(customerAccessToken);
+    checkForError(result);
+    if (deleteThisPartOfCache) {
+      _graphQLClient.cache.write(_options.toKey(), null);
+    }
+    return customerAccessToken;
   }
 
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
@@ -150,10 +182,14 @@ class ShopifyAuth with ShopifyError {
     }
   }
 
-  Future<void> _setShopifyUser(
-      String sharedPrefsToken, ShopifyUser shopifyUser) async {
+  Future<void> _setShopifyUser(CustomerAccessToken customerAccessToken) async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
-    _shopifyUser = shopifyUser;
-    _prefs.setString(_shopifyKey, sharedPrefsToken);
+    if (customerAccessToken != null) {
+      String jsonString = jsonEncode(customerAccessToken);
+      print('_setShopifyUser $jsonString');
+      _prefs.setString(_shopifyKey, jsonString);
+    } else {
+      _prefs.remove(_shopifyKey);
+    }
   }
 }

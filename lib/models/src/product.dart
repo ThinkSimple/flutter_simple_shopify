@@ -384,31 +384,32 @@ class PriceV2 {
 
   static String _chooseRightOrderOnCurrencySymbol(Map<String, dynamic> json) {
     String currencyString;
+    String amount = json['amount'] != null ? double.parse(json['amount']).toStringAsFixed(2) : '';
     switch (json['currencyCode']) {
       case "INR":
         {
           currencyString =
-              '${_simpleCurrencySymbols[json['currencyCode']]} ${json['amount']}';
+              '${_simpleCurrencySymbols[json['currencyCode']]} $amount';
         }
         break;
 
       case "EUR":
         {
           currencyString =
-              '${json['amount']} ${_simpleCurrencySymbols[json['currencyCode']]}';
+              '$amount ${_simpleCurrencySymbols[json['currencyCode']]}';
         }
         break;
       case "USD":
         {
           currencyString =
-              '${_simpleCurrencySymbols[json['currencyCode']]} ${json['amount']}';
+              '${_simpleCurrencySymbols[json['currencyCode']]} $amount';
         }
         break;
 
       default:
         {
           currencyString =
-              '${json['amount']} ${_simpleCurrencySymbols[json['currencyCode']]}';
+              '$amount ${_simpleCurrencySymbols[json['currencyCode']]}';
         }
         break;
     }

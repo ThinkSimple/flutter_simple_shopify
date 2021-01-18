@@ -170,9 +170,12 @@ class CustomerAccessToken {
 
   static CustomerAccessToken fromJson(Map<String, dynamic> json) {
     json = ((json ?? const {})['customerAccessToken'] ?? const {});
-    print(json['accessToken']);
-    print(DateTime.parse(json['expiresAt']));
     return CustomerAccessToken(
         json['accessToken'], DateTime.parse(json['expiresAt']));
   }
+
+  Map toJson() => {
+        'accessToken': accessToken,
+        'expiresAt': expiresAt.toString(),
+      };
 }
