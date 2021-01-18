@@ -162,9 +162,10 @@ class ShopifyAuth with ShopifyError {
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
   Future<ShopifyUser> currentUser({bool deleteThisPartOfCache = false}) async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
+    String cat = await currentCustomerAccessToken;
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
         documentNode: gql(getCustomerQuery),
-        variables: {'customerAccessToken': _prefs.getString(_shopifyKey)});
+        variables: {'customerAccessToken': cat});
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_getCustomer.toKey(), null);
     }
