@@ -55,12 +55,16 @@ class Checkout {
     PriceV2 lineItemsSubtotalPrice =
         PriceV2.fromJson(json['lineItemsSubtotalPrice'] ?? const {});
     PriceV2 totalPriceV2 = PriceV2.fromJson(json['totalPriceV2'] ?? const {});
+    ShippingRate shippingLine= ShippingRate.fromJson(json['shippingLine'] ?? const {});
     String amount;
     String currencyCode;
     if (lineItemsSubtotalPrice.amount != null && totalPriceV2.amount != null) {
       double amt = (totalPriceV2.amount - lineItemsSubtotalPrice.amount);
       if (totalTaxV2.amount != null) {
         amt -= totalTaxV2.amount;
+      }
+      if (shippingLine.priceV2?.amount != null) {
+        amt -= shippingLine.priceV2.amount;
       }
       amount = amt.abs().toStringAsFixed(2);
       currencyCode = totalPriceV2.currencyCode;
@@ -73,7 +77,7 @@ class Checkout {
         appliedGiftcards: _getAppliedGiftCards(json ?? const {}),
         availableShippingrates: AvailableShippingRates.fromJson(
             json['availableShippingRates'] ?? const {}),
-        shippingLine: ShippingRate.fromJson(json['shippingLine'] ?? const {}),
+        shippingLine: shippingLine,
         shippingAddress:
             MailingAddress.fromJson(json['shippingAddress'] ?? const {}),
         completedAt: json['completedAt'],

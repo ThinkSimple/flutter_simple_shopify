@@ -48,6 +48,7 @@ mutation MyMutation($firstName: String!, $lastName: String!, $email: String!, $p
     displayName
     email
     firstName
+    lastName
     id
     lastIncompleteCheckout {
         completedAt

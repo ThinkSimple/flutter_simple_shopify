@@ -389,27 +389,27 @@ class PriceV2 {
       case "INR":
         {
           currencyString =
-              '${_simpleCurrencySymbols[json['currencyCode']]} $amount';
+              '${_simpleCurrencySymbols[json['currencyCode']]}$amount';
         }
         break;
 
       case "EUR":
         {
           currencyString =
-              '$amount ${_simpleCurrencySymbols[json['currencyCode']]}';
+              '$amount${_simpleCurrencySymbols[json['currencyCode']]}';
         }
         break;
       case "USD":
         {
           currencyString =
-              '${_simpleCurrencySymbols[json['currencyCode']]} $amount';
+              '${_simpleCurrencySymbols[json['currencyCode']]}$amount';
         }
         break;
 
       default:
         {
           currencyString =
-              '$amount ${_simpleCurrencySymbols[json['currencyCode']]}';
+              '$amount${_simpleCurrencySymbols[json['currencyCode']]}';
         }
         break;
     }
