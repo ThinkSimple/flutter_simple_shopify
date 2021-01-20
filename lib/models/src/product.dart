@@ -300,8 +300,9 @@ class PriceV2 {
     NumberFormat priceFormat,
   }) {
     String currencyString;
-    String formattedPrice =
-        priceFormat?.format(json['amount']) ?? json['amount'].toString();
+    String formattedPrice = priceFormat?.format(
+            json['amount'] != null ? double.parse(json['amount']) : 0) ??
+        json['amount'].toString();
     switch(json['currencyCode']) {
       case "INR": {
         currencyString = '${_simpleCurrencySymbols[json['currencyCode']]} $formattedPrice';
