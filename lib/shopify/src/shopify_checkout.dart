@@ -9,6 +9,7 @@ import 'package:flutter_simple_shopify/models/src/order.dart';
 import 'package:graphql/client.dart';
 import '../../graphql_operations/mutations/add_item(s)_to_checkout.dart';
 import '../../graphql_operations/mutations/checkout_associate_customer.dart';
+import '../../graphql_operations/mutations/checkout_attributes_update.dart';
 import '../../graphql_operations/mutations/checkout_customer_disassociate.dart';
 import '../../graphql_operations/mutations/checkout_discount_code_apply.dart';
 import '../../graphql_operations/mutations/checkout_discount_code_remove.dart';
@@ -51,6 +52,40 @@ class ShopifyCheckout with ShopifyError{
 
   bool _requiresShipping(QueryResult result){
     return ((result?.data ?? const {})['node'] ?? const {})['requiresShipping'];
+  }
+
+  /// Updates the attributes of a [Checkout]
+  Future<void> updateAttributes(
+    String checkoutId, {
+    bool allowPartialAddresses,
+    Map<String, String> customAttributes,
+    String note,
+    bool deleteThisPartOfCache = false,
+  }) async {
+    final MutationOptions _options = MutationOptions(
+      documentNode: gql(checkoutAttributesUpdateMutation),
+      variables: {
+        'checkoutId': checkoutId,
+        'input': {
+          if (allowPartialAddresses != null)
+            'allowPartialAddresses': allowPartialAddresses,
+          if (customAttributes != null)
+            'customAttributes': [
+              for (var entry in customAttributes.entries)
+                {
+                  'key': entry.key,
+                  'value': entry.value,
+                }
+            ],
+          if (note != null) 'note': note,
+        },
+      },
+    );
+    final QueryResult result = await _graphQLClient.mutate(_options);
+    checkForCheckoutError(result);
+    if (deleteThisPartOfCache) {
+      _graphQLClient.cache.write(_options.toKey(), null);
+    }
   }
 
   /// Returns all [Order] in a List of Orders.
