@@ -38,6 +38,7 @@ customer(customerAccessToken: $accessToken) {
                     altText
                     id
                     originalSrc
+                    transformedSrc(maxWidth: 200, crop: CENTER)
                   }
                   compareAtPriceV2 {
                     amount

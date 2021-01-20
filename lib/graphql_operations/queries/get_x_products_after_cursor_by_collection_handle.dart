@@ -11,6 +11,7 @@ query($handle: String!, $cursor : String, $x : Int, $reverse: Boolean, $sortKey:
             altText
             id
             originalSrc
+            transformedSrc(maxWidth: 200, crop: CENTER)
         }
         products(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
             pageInfo {
@@ -33,6 +34,7 @@ query($handle: String!, $cursor : String, $x : Int, $reverse: Boolean, $sortKey:
                                     altText
                                     id
                                     originalSrc
+                                    transformedSrc(maxWidth: 200, crop: CENTER)
                                 }
                                 priceV2 {
                                     amount
@@ -89,6 +91,7 @@ query($handle: String!, $cursor : String, $x : Int, $reverse: Boolean, $sortKey:
                                 altText
                                 id
                                 originalSrc
+                                transformedSrc(maxWidth: 200, crop: CENTER)
                             }
                         }
                     }

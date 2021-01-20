@@ -17,6 +17,7 @@ query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean){
           altText
           id
           originalSrc
+          transformedSrc(maxWidth: 200, crop: CENTER)
         }
         products(first: 250) {
           edges {
@@ -29,6 +30,7 @@ query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean){
                       altText
                       id
                       originalSrc
+                      transformedSrc(maxWidth: 200, crop: CENTER)
                     }
                     priceV2 {
                       amount
@@ -71,6 +73,7 @@ query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean){
                     altText
                     id
                     originalSrc
+                    transformedSrc(maxWidth: 200, crop: CENTER)
                   }
                 }
               }

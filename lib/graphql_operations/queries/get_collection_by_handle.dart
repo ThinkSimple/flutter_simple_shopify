@@ -11,6 +11,7 @@ query($handle: String!) {
             altText
             id
             originalSrc
+            transformedSrc(maxWidth: 200, crop: CENTER)
         }
         products(first: 20) {
             edges {
@@ -24,6 +25,7 @@ query($handle: String!) {
                                     altText
                                     id
                                     originalSrc
+                                    transformedSrc(maxWidth: 200, crop: CENTER)
                                 }
                                 priceV2 {
                                     amount
@@ -66,6 +68,7 @@ query($handle: String!) {
                                 altText
                                 id
                                 originalSrc
+                                transformedSrc(maxWidth: 200, crop: CENTER)
                             }
                         }
                     }

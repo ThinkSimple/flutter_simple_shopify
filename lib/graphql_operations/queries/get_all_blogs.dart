@@ -40,6 +40,7 @@ query getBlogs($reverseBlogs: Boolean, $reverseArticles: Boolean, $sortKey: Blog
                 altText
                 id
                 originalSrc
+                transformedSrc(maxWidth: 200, crop: CENTER)
               }
               publishedAt
               tags

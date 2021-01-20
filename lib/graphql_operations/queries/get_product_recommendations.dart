@@ -13,6 +13,7 @@ query getProductRecommentationsQuery($id: ID!){
           altText
           id
           originalSrc
+          transformedSrc(maxWidth: 200, crop: CENTER)
         }
       }
     }
@@ -37,6 +38,7 @@ query getProductRecommentationsQuery($id: ID!){
             altText
             id
             originalSrc
+            transformedSrc(maxWidth: 200, crop: CENTER)
           }
           priceV2 {
             amount

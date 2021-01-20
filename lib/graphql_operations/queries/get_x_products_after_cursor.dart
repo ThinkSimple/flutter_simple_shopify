@@ -21,6 +21,7 @@ query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys){
                 altText
                 id
                 originalSrc
+                transformedSrc(maxWidth: 200, crop: CENTER)
               }
               priceV2 {
                 amount
@@ -73,6 +74,7 @@ query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys){
               altText
               id
               originalSrc
+              transformedSrc(maxWidth: 200, crop: CENTER)
             }
           }
         }

@@ -34,6 +34,7 @@ query($handle : String!, $sortKey: ArticleSortKeys, $reverseArticles: Boolean){
             altText
             id
             originalSrc
+            transformedSrc(maxWidth: 200, crop: CENTER)
           }
           publishedAt
           tags

@@ -6,7 +6,10 @@ query getProductByHandle($handle : String!){
     images(first: 250) {
       edges {
         node {
+          altText
+          id
           originalSrc
+          transformedSrc(maxWidth: 200, crop: CENTER)
         }
       }
     }

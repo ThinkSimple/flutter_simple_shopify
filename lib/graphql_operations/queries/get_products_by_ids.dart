@@ -32,6 +32,7 @@ query($ids : [ID!]!){
               altText
               id
               originalSrc
+              transformedSrc(maxWidth: 200, crop: CENTER)
             }
           }
         }
@@ -46,6 +47,7 @@ query($ids : [ID!]!){
             image {
               altText
               originalSrc
+              transformedSrc(maxWidth: 200, crop: CENTER)
               id
             }
             compareAtPriceV2 {

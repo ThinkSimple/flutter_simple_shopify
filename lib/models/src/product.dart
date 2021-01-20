@@ -222,14 +222,16 @@ class AssociatedCollections {
 class ShopifyImage {
   final String altText;
   final String originalSource;
+  final String transformedSrc;
   final String id;
 
-  const ShopifyImage({this.altText, this.originalSource, this.id});
+  const ShopifyImage({this.altText, this.originalSource, this.transformedSrc, this.id});
 
   static ShopifyImage fromJson(Map<String, dynamic> json) {
     return ShopifyImage(
         altText: json['altText'],
         originalSource: json['originalSrc'],
+        transformedSrc: json['transformedSrc'],
         id: json['id']);
   }
 }
