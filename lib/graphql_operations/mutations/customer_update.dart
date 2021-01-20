@@ -55,6 +55,6 @@ mutation myNewMutation($firstString) {
   }
 }
 ''';
-  print(customerUpdateMutation);
+  // print(customerUpdateMutation);
   return customerUpdateMutation;
 }

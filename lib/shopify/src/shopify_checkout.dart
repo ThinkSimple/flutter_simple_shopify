@@ -41,7 +41,7 @@ class ShopifyCheckout with ShopifyError {
           'id': checkoutId,
         });
     QueryResult result = await _graphQLClient.query(_optionsRequireShipping);
-    print((result?.data as LazyCacheMap)?.data);
+    // print((result?.data as LazyCacheMap)?.data);
     final WatchQueryOptions _options = WatchQueryOptions(
         documentNode: gql(_requiresShipping(result) == true
             ? getCheckoutInfo
@@ -66,7 +66,7 @@ class ShopifyCheckout with ShopifyError {
           'id': checkoutId,
         });
     QueryResult result = await _graphQLClient.query(_optionsRequireShipping);
-    print((result?.data as LazyCacheMap)?.data);
+    // print((result?.data as LazyCacheMap)?.data);
     final WatchQueryOptions _options = WatchQueryOptions(
         documentNode: gql(_requiresShipping(result) == true
             ? getCheckoutInfoWithShippingRate
@@ -334,7 +334,7 @@ class ShopifyCheckout with ShopifyError {
         });
     final QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(result);
-    print((result?.data as LazyCacheMap)?.data);
+    // print((result?.data as LazyCacheMap)?.data);
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -348,7 +348,7 @@ class ShopifyCheckout with ShopifyError {
     final QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(result,
         key: 'checkoutEmailUpdateV2', errorKey: 'checkoutUserErrors');
-    print((result?.data as LazyCacheMap)?.data);
+    // print((result?.data as LazyCacheMap)?.data);
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }

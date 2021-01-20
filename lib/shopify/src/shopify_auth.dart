@@ -187,7 +187,7 @@ class ShopifyAuth with ShopifyError {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     if (customerAccessToken != null) {
       String jsonString = jsonEncode(customerAccessToken);
-      print('_setShopifyUser $jsonString');
+      // print('_setShopifyUser $jsonString');
       _prefs.setString(_shopifyKey, jsonString);
     } else {
       _prefs.remove(_shopifyKey);

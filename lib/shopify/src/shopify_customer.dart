@@ -72,7 +72,7 @@ class ShopifyCustomer with ShopifyError{
       'acceptsMarketing': acceptsMarketing,
       'customerAccessToken': customerAccessToken
     }).forEach((k,v) => v != null ? variableMap[k] = v:null);
-    print(variableMap);
+    // print(variableMap);
     final MutationOptions _options =
     MutationOptions(documentNode: gql(createValidMutationString(variableMap)), variables: variableMap);
     QueryResult result = await _graphQLClient.mutate(_options);

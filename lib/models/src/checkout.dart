@@ -277,7 +277,7 @@ class DiscountApplication {
       this.price});
 
   static DiscountApplication fromJson(Map<String, dynamic> json) {
-    print(json);
+    // print(json);
     return DiscountApplication(
       allocationMethod: (json['node'] ?? const {})['allocationMethod'],
       targetSelection: (json['node'] ?? const {})['targetSelection'],
