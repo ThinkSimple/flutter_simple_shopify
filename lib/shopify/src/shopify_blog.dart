@@ -3,6 +3,7 @@ import 'package:flutter_simple_shopify/enums/src/sort_key_article.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_blogs.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_blog_by_handle.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_n_articles_sorted.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_articles_after_cursor.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/article.dart';
 import 'package:flutter_simple_shopify/models/src/blog.dart';
@@ -11,7 +12,7 @@ import 'package:graphql/client.dart';
 import '../../shopify_config.dart';
 
 /// ShopifyBlog class handles all Blog related things.
-class ShopifyBlog with ShopifyError{
+class ShopifyBlog with ShopifyError {
   ShopifyBlog._();
 
   final GraphQLClient _graphQLClient = ShopifyConfig.graphQLClient;
@@ -20,24 +21,23 @@ class ShopifyBlog with ShopifyError{
   /// Returns a List of [Blog].
   ///
   /// Returns All [Blog] of the Shop.
-  Future<List<Blog>> getAllBlogs({bool deleteThisPartOfCache = false, SortKeyBlog sortKeyBlog = SortKeyBlog.HANDLE,
-    bool reverseBlogs = false, bool reverseArticles = false }) async {
-    final WatchQueryOptions _options = WatchQueryOptions(
-      documentNode: gql(getAllBlogsQuery),
-      variables: {
-        'reverseBlogs' : reverseBlogs,
-        'reverseArticles' : reverseArticles,
-        'sortKey' : sortKeyBlog.parseToString(),
-      }
-    );
+  Future<List<Blog>> getAllBlogs(
+      {bool deleteThisPartOfCache = false,
+      SortKeyBlog sortKeyBlog = SortKeyBlog.HANDLE,
+      bool reverseBlogs = false,
+      bool reverseArticles = false}) async {
+    final WatchQueryOptions _options =
+        WatchQueryOptions(documentNode: gql(getAllBlogsQuery), variables: {
+      'reverseBlogs': reverseBlogs,
+      'reverseArticles': reverseArticles,
+      'sortKey': sortKeyBlog.parseToString(),
+    });
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
-    if(deleteThisPartOfCache) {
+    if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
-    return (Blogs.fromJson((result?.data ??
-        const {})["blogs"] ??
-        const {}))
+    return (Blogs.fromJson((result?.data ?? const {})["blogs"] ?? const {}))
         .blogList;
   }
 
@@ -45,22 +45,21 @@ class ShopifyBlog with ShopifyError{
   ///
   /// Returns the [Blog] that is associated to the [handle].
   /// [sortKeyArticle] is meant for the List of [Article] in the [Blog].
-  Future<Blog> getBlogByHandle(
-      String handle, {SortKeyArticle sortKeyArticle = SortKeyArticle.RELEVANCE, bool deleteThisPartOfCache = false, bool reverse = false}) async {
-    final QueryOptions _options = WatchQueryOptions(
-        documentNode: gql(getBlogByHandleQuery),
-        variables: {
-          'handle': handle,
-          'sortKey': sortKeyArticle.parseToString(),
-          'reverseArticles': reverse
-        });
+  Future<Blog> getBlogByHandle(String handle,
+      {SortKeyArticle sortKeyArticle = SortKeyArticle.RELEVANCE,
+      bool deleteThisPartOfCache = false,
+      bool reverse = false}) async {
+    final QueryOptions _options =
+        WatchQueryOptions(documentNode: gql(getBlogByHandleQuery), variables: {
+      'handle': handle,
+      'sortKey': sortKeyArticle.parseToString(),
+      'reverseArticles': reverse
+    });
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
-    var response = (result?.data['blogByHandle']
-    as LazyCacheMap)
-        ?.data;
+    var response = (result?.data['blogByHandle'] as LazyCacheMap)?.data;
     var newResponse = {'node': response};
-    if(deleteThisPartOfCache) {
+    if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
     return Blog.fromJson(newResponse);
@@ -69,8 +68,9 @@ class ShopifyBlog with ShopifyError{
   /// Returns a List of [Article].
   ///
   /// Returns a the first [articleAmount] of [Article] sorted by [sortKeyArticle].
-  Future<List<Article>> getXArticlesSorted(
-      int articleAmount, {SortKeyArticle sortKeyArticle = SortKeyArticle.RELEVANCE, bool deleteThisPartOfCache = false}) async {
+  Future<List<Article>> getXArticlesSorted(int articleAmount,
+      {SortKeyArticle sortKeyArticle = SortKeyArticle.RELEVANCE,
+      bool deleteThisPartOfCache = false}) async {
     final QueryOptions _options = WatchQueryOptions(
         documentNode: gql(getNArticlesSortedQuery),
         variables: {
@@ -79,12 +79,35 @@ class ShopifyBlog with ShopifyError{
         });
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
-    if(deleteThisPartOfCache) {
+    if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
-    return (Articles.fromJson(((result?.data ??
-        const {}))['articles'] ??
-        const {}))
+    return (Articles.fromJson(
+            ((result?.data ?? const {}))['articles'] ?? const {}))
         .articleList;
+  }
+
+  Future<Articles> getXArticlesAfterCursor(int limit, String startCursor,
+      {bool deleteThisPartOfCache = false,
+      bool reverse = false,
+      SortKeyArticle sortKey = SortKeyArticle.TITLE}) async {
+    String cursor = startCursor;
+    final WatchQueryOptions _options = WatchQueryOptions(
+        documentNode: gql(getXArticlesAfterCursorQuery),
+        variables: {
+          'x': limit ?? 50,
+          'cursor': cursor,
+          'reverse': reverse,
+          'sortKey': sortKey.parseToString()
+        });
+    final QueryResult result = await _graphQLClient.query(_options);
+    checkForError(result);
+
+    if (deleteThisPartOfCache) {
+      _graphQLClient.cache.write(_options.toKey(), null);
+    }
+    Articles articles =
+        (Articles.fromJson((result?.data ?? const {})["articles"] ?? {}));
+    return articles;
   }
 }
