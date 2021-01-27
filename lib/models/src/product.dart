@@ -504,11 +504,11 @@ class UnitPriceMeasurement {
 
   static UnitPriceMeasurement fromJson(Map<String, dynamic> json) {
     return UnitPriceMeasurement(
-      measuredType: (json['node'] ?? const {})['measuredType'],
-      quantityUnit: (json['node'] ?? const {})['quantityUnit'],
-      quantityValue: (json['node'] ?? const {})['quantityValue'],
-      referenceUnit: (json['node'] ?? const {})['referenceUnit'],
-      referenceValue: (json['node'] ?? const {})['referenceValue'],
+      measuredType: json['measuredType'],
+      quantityUnit: json['quantityUnit'],
+      quantityValue: json['quantityValue'],
+      referenceUnit: json['referenceUnit'],
+      referenceValue: json['referenceValue'],
     );
   }
 }
