@@ -80,6 +80,17 @@ query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys){
                   availableForSale
                   id
                   quantityAvailable
+                  unitPrice {
+                      amount
+                      currencyCode
+                  }
+                  unitPriceMeasurement {
+                      measuredType
+                      quantityUnit
+                      quantityValue
+                      referenceUnit
+                      referenceValue
+                  }
                 }
               }
             }
