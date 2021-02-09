@@ -1,6 +1,13 @@
 const String getXOrdersAfterCursorQuery = r'''
-query getOrders($cursor : String, $x : Int,$sortKey : OrderSortKeys, $accessToken : String!, $reverse: Boolean){
-customer(customerAccessToken: $accessToken) {
+query getOrders(
+  $cursor: String
+  $x: Int
+  $sortKey: OrderSortKeys
+  $accessToken: String!
+  $reverse: Boolean
+) {
+  customer(customerAccessToken: $accessToken) {
+    id
     orders(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
       pageInfo {
         hasNextPage
@@ -11,52 +18,6 @@ customer(customerAccessToken: $accessToken) {
           email
           currencyCode
           customerUrl
-          lineItems(first: 250) {
-            edges {
-              node {
-                currentQuantity
-                discountAllocations {
-                  allocatedAmount {
-                    amount
-                    currencyCode
-                  }
-                }
-                discountedTotalPrice {
-                  amount
-                  currencyCode
-                }
-                originalTotalPrice {
-                  amount
-                  currencyCode
-                }
-                quantity
-                title
-                variant {
-                  priceV2 {
-                    amount
-                    currencyCode
-                  }
-                  title
-                  image {
-                    altText
-                    id
-                    originalSrc
-                    transformedSrc(maxWidth: 200, crop: CENTER)
-                  }
-                  compareAtPriceV2 {
-                    amount
-                    currencyCode
-                  }
-                  weight
-                  weightUnit
-                  availableForSale
-                  sku
-                  requiresShipping
-                  id
-                }
-              }
-            }
-          }
           name
           orderNumber
           phone
@@ -65,19 +26,20 @@ customer(customerAccessToken: $accessToken) {
           cancelReason
           financialStatus
           fulfillmentStatus
-          discountApplications(first: 10) {
+          statusUrl
+          lineItems(first: 250) {
             edges {
               node {
-                allocationMethod
-                targetSelection
-                targetType
-                value {
-                  ... on MoneyV2 {
-                    amount
-                    currencyCode
-                  }
-                  ... on PricingPercentageValue {
-                    percentage
+                title
+                variant {
+                  id
+                  title
+                  availableForSale
+                  image {
+                    altText
+                    id
+                    originalSrc
+                    transformedSrc(maxWidth: 200, crop: CENTER)
                   }
                 }
               }
@@ -102,7 +64,6 @@ customer(customerAccessToken: $accessToken) {
             provinceCode
             zip
           }
-          statusUrl
           subtotalPriceV2 {
             amount
             currencyCode
@@ -127,7 +88,6 @@ customer(customerAccessToken: $accessToken) {
         cursor
       }
     }
-    id
   }
 }
 ''';

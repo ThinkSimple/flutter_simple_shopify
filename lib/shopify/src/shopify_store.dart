@@ -4,11 +4,14 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_collec
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_from_collection_by_id.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_on_query.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_collection_by_handle.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_collection_by_handle_with_products.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_collections_by_ids.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_product_by_handle.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_product_by_handle_minimum_data.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_product_recommendations.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_products_by_ids.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_metafileds_from_product.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_products_by_ids_minimum_data.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_shop.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_collections_and_n_products_sorted.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor.dart';
@@ -65,10 +68,12 @@ class ShopifyStore with ShopifyError {
   }
 
   Future<Product> getProductByHandle(String handle,
-      {bool deleteThisPartOfCache = false}) async {
+      {bool deleteThisPartOfCache = false, minimumData = true}) async {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
-          documentNode: gql(getProductByHandleQuery),
+          documentNode: minimumData
+              ? gql(getProductByHandleMinimumDataQuery)
+              : gql(getProductByHandleQuery),
           variables: {'handle': handle});
       final QueryResult result = await _graphQLClient.query(_options);
       checkForError(result);
@@ -114,10 +119,13 @@ class ShopifyStore with ShopifyError {
   ///
   /// Returns the Products associated to the given id's in [idList]
   Future<List<Product>> getProductsByIds(List<String> idList,
-      {bool deleteThisPartOfCache = false}) async {
+      {bool deleteThisPartOfCache = false, minimumData = true}) async {
     List<Product> productList = [];
     final QueryOptions _options = WatchQueryOptions(
-        documentNode: gql(getProductsByIdsQuery), variables: {'ids': idList});
+        documentNode: minimumData
+            ? gql(getProductsByIdsMinimumDataQuery)
+            : gql(getProductsByIdsQuery),
+        variables: {'ids': idList});
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     var response = result?.data;
@@ -235,10 +243,13 @@ class ShopifyStore with ShopifyError {
 
   /// Returns a collection by handle.
   Future<Collection> getCollectionByHandle(String handle,
-      {bool deleteThisPartOfCache = false}) async {
+      {bool deleteThisPartOfCache = false, productsCount}) async {
     try {
+      final a = getCollectionByHandleWithProductsQuery(productsCount);
       final WatchQueryOptions _options = WatchQueryOptions(
-          documentNode: gql(getCollectionByHandleQuery),
+          documentNode: productsCount != null
+              ? gql(getCollectionByHandleWithProductsQuery(productsCount))
+              : gql(getCollectionByHandleQuery),
           variables: {'handle': handle});
       final QueryResult result = await _graphQLClient.query(_options);
       checkForError(result);
@@ -257,7 +268,8 @@ class ShopifyStore with ShopifyError {
       String handle, int limit, String startCursor,
       {bool deleteThisPartOfCache = false,
       bool reverse = false,
-      SortKeyProductCollection sortKeyProductCollection = SortKeyProductCollection.RELEVANCE}) async {
+      SortKeyProductCollection sortKeyProductCollection =
+          SortKeyProductCollection.RELEVANCE}) async {
     String cursor = startCursor;
     try {
       final WatchQueryOptions _options = WatchQueryOptions(

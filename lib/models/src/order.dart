@@ -19,7 +19,7 @@ class Orders {
 
   static List<Order> _getOrderList(Map<String, dynamic> json) {
     List<Order> orderList = [];
-    json['edges']?.forEach((e) => orderList.add(Order.fromJson(e ?? const {})));
+    json['edges']?.forEach((e) => orderList.add(Order.fromJson(e['node'] ?? const {})));
     return orderList;
   }
 }
@@ -74,49 +74,49 @@ class Order {
 
   static Order fromJson(Map<String, dynamic> json) {
     DateTime processedAt =
-        DateTime.parse((json['node'] ?? const {})['processedAt']);
-    DateTime canceledAt = (json['node'] ?? const {})['canceledAt'] != null
-        ? DateTime.parse((json['node'] ?? const {})['canceledAt'])
+        DateTime.parse((json ?? const {})['processedAt']);
+    DateTime canceledAt = (json ?? const {})['canceledAt'] != null
+        ? DateTime.parse((json ?? const {})['canceledAt'])
         : null;
     OrderFinancialStatus financialStatus = EnumToString.fromString(
         OrderFinancialStatus.values,
-        (json['node'] ?? const {})['financialStatus']);
+        (json ?? const {})['financialStatus']);
     OrderFulfillmentStatus fulfillmentStatus = EnumToString.fromString(
         OrderFulfillmentStatus.values,
-        (json['node'] ?? const {})['fulfillmentStatus']);
+        (json ?? const {})['fulfillmentStatus']);
     OrderCancelReason cancelReason = EnumToString.fromString(
-        OrderCancelReason.values, (json['node'] ?? const {})['cancelReason']);
+        OrderCancelReason.values, (json ?? const {})['cancelReason']);
 
     return Order(
-        id: (json['node'] ?? const {})['id'],
-        email: (json['node'] ?? const {})['email'],
-        currencyCode: (json['node'] ?? const {})['currencyCode'],
-        customerUrl: (json['node'] ?? const {})['customerUrl'],
+        id: (json ?? const {})['id'],
+        email: (json ?? const {})['email'],
+        currencyCode: (json ?? const {})['currencyCode'],
+        customerUrl: (json ?? const {})['customerUrl'],
         lineItems:
-            LineItemsOrder.fromJson((json['node'] ?? const {})['lineItems']),
-        name: (json['node'] ?? const {})['name'],
-        orderNumber: (json['node'] ?? const {})['orderNumber'],
-        phone: (json['node'] ?? const {})['phone'],
+            LineItemsOrder.fromJson((json ?? const {})['lineItems']),
+        name: (json ?? const {})['name'],
+        orderNumber: (json ?? const {})['orderNumber'],
+        phone: (json ?? const {})['phone'],
         processedAt: processedAt,
         canceledAt: canceledAt,
         cancelReason: cancelReason,
         financialStatus: financialStatus,
         fulfillmentStatus: fulfillmentStatus,
         shippingAddress: MailingAddress.fromJson(
-            (json['node'] ?? const {})['shippingAddress'] ?? const {}),
-        statusUrl: (json['node'] ?? const {})['statusUrl'],
+            (json ?? const {})['shippingAddress'] ?? const {}),
+        statusUrl: (json ?? const {})['statusUrl'],
         discountApplications: DiscountApplications.fromJson(
-          (json['node'] ?? const {})['discountApplications']),
+          (json ?? const {})['discountApplications']),
         subtotalPriceV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['subtotalPriceV2'] ?? const {}),
+            (json ?? const {})['subtotalPriceV2'] ?? const {}),
         totalPriceV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['totalPriceV2'] ?? const {}),
+            (json ?? const {})['totalPriceV2'] ?? const {}),
         totalRefundedV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['totalRefundedV2'] ?? const {}),
+            (json ?? const {})['totalRefundedV2'] ?? const {}),
         totalShippingPriceV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['totalShippingPriceV2'] ?? const {}),
+            (json ?? const {})['totalShippingPriceV2'] ?? const {}),
         totalTaxV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['totalTaxV2'] ?? const {}),
+            (json ?? const {})['totalTaxV2'] ?? const {}),
         cursor: json['cursor']);
   }
 }
@@ -161,9 +161,9 @@ class LineItemOrder {
         currentQuantity: (json['node'] ?? const {})['currentQuantity'],
         discountAllocations: _getDiscountAllocationsList(json),
         discountedTotalPrice: PriceV2.fromJson(
-            (json['node'] ?? const {})['discountedTotalPrice']),
+            (json['node'] ?? const {})['discountedTotalPrice'] ?? const {}),
         originalTotalPrice:
-            PriceV2.fromJson((json['node'] ?? const {})['originalTotalPrice']),
+            PriceV2.fromJson((json['node'] ?? const {})['originalTotalPrice'] ?? const {}),
         quantity: (json['node'] ?? const {})['quantity'],
         title: (json['node'] ?? const {})['title'],
         variant: ProductVariantCheckout.fromJson(
@@ -173,7 +173,7 @@ class LineItemOrder {
   static _getDiscountAllocationsList(Map<String, dynamic> json) {
     List<DiscountAllocations> discountList = [];
     (json['node'] ?? const {})['discountAllocations']?.forEach(
-        (discount) => discountList.add(DiscountAllocations.fromJson(discount)));
+        (discount) => discountList.add(DiscountAllocations.fromJson(discount ?? const {})));
     return discountList;
   }
 }

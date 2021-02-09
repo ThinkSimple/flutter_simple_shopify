@@ -234,6 +234,13 @@ class ShopifyImage {
         transformedSrc: json['transformedSrc'],
         id: json['id']);
   }
+
+  Map toJson() => {
+        'id': id,
+        'altText': altText,
+        'originalSource': originalSource,
+        'transformedSrc': transformedSrc,
+      };
 }
 
 class ProductVariant {
@@ -287,6 +294,7 @@ class ProductVariant {
   Map toJson() => {
         'id': id,
         'title': title,
+        'image': image.toJson()
         // 'weight': weight,
       };
 

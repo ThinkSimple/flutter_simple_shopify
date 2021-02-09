@@ -1,3 +1,4 @@
+import 'package:flutter_simple_shopify/models/src/order.dart';
 import 'package:flutter_simple_shopify/models/src/product.dart';
 
 class Checkout {
@@ -23,6 +24,7 @@ class Checkout {
   final bool taxExempt;
   final PriceV2 subtotalPriceV2;
   final String orderStatusUrl;
+  final Order order;
   final bool requiresShipping;
 
   Checkout(
@@ -48,6 +50,7 @@ class Checkout {
       this.taxExempt,
       this.subtotalPriceV2,
       this.orderStatusUrl,
+      this.order,
       this.requiresShipping});
 
   static Checkout fromJson(Map<String, dynamic> json) {
@@ -55,7 +58,8 @@ class Checkout {
     PriceV2 lineItemsSubtotalPrice =
         PriceV2.fromJson(json['lineItemsSubtotalPrice'] ?? const {});
     PriceV2 totalPriceV2 = PriceV2.fromJson(json['totalPriceV2'] ?? const {});
-    ShippingRate shippingLine= ShippingRate.fromJson(json['shippingLine'] ?? const {});
+    ShippingRate shippingLine =
+        ShippingRate.fromJson(json['shippingLine'] ?? const {});
     String amount;
     String currencyCode;
     if (lineItemsSubtotalPrice.amount != null && totalPriceV2.amount != null) {
@@ -96,6 +100,7 @@ class Checkout {
         taxExempt: json['taxExempt'],
         subtotalPriceV2: PriceV2.fromJson(json['subtotalPriceV2'] ?? const {}),
         orderStatusUrl: json['orderStatusUrl'],
+        order: json['order']!=null ? Order.fromJson(json['order']) : null,
         requiresShipping: json['requiresShipping']);
   }
 
@@ -256,8 +261,9 @@ class DiscountApplications {
   static List<DiscountApplication> _getDiscountApplicationList(
       Map<String, dynamic> json) {
     List<DiscountApplication> discountApplicationList = [];
-    json['edges']?.forEach((discountApplication) => discountApplicationList
-        .add(DiscountApplication.fromJson(discountApplication ?? const {})));
+    if (json != null)
+      json['edges']?.forEach((discountApplication) => discountApplicationList
+          .add(DiscountApplication.fromJson(discountApplication ?? const {})));
     return discountApplicationList;
   }
 }

@@ -1,5 +1,5 @@
 const String getXArticlesAfterCursorQuery = r'''
-query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ArticleSortKeys){
+query($cursor: String, $x: Int, $reverse: Boolean, $sortKey: ArticleSortKeys) {
   articles(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
     pageInfo {
       hasNextPage
@@ -7,7 +7,11 @@ query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ArticleSortKeys){
     edges {
       cursor
       node {
-      
+        id
+        handle
+        title
+        publishedAt
+        url
         authorV2 {
           bio
           email
@@ -15,39 +19,16 @@ query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ArticleSortKeys){
           lastName
           name
         }
-        comments(first: 250) {
-          edges {
-            node {
-              author {
-                email
-                name
-              }
-              content
-              contentHtml
-              id
-            }
-          }
-        }
-        content
         contentHtml
-        excerpt
-        excerptHtml
-        handle
-        id
         image {
           altText
           id
           originalSrc
           transformedSrc(maxWidth: 200, crop: CENTER)
         }
-        publishedAt
-        tags
-        title
-        url
-        
-        
-        
       }
     }
   }
-}''';
+}
+
+''';

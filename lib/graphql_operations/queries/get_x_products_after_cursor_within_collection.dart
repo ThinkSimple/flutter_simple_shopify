@@ -1,47 +1,36 @@
 const String getXProductsAfterCursorWithinCollectionQuery = r'''
-query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSortKeys, $reverse: Boolean){
+query(
+  $id: ID!
+  $cursor: String
+  $limit: Int
+  $sortKey: ProductCollectionSortKeys
+  $reverse: Boolean
+) {
   node(id: $id) {
     ... on Collection {
       id
-      description
-      descriptionHtml
       handle
       title
-      updatedAt
       image {
         altText
         id
         originalSrc
         transformedSrc(maxWidth: 200, crop: CENTER)
       }
-      products(first: $limit, sortKey: $sortKey, after: $cursor, reverse: $reverse) {
+      products(
+        first: $limit
+        sortKey: $sortKey
+        after: $cursor
+        reverse: $reverse
+      ) {
         edges {
           cursor
           node {
-          options(first: 50) {
             id
-            name
-            values
-            } 
-            availableForSale
-            collections(first: 1) {
-              edges {
-                node {
-                  description
-                  descriptionHtml
-                  handle
-                  id
-                  title
-                  updatedAt
-                }
-              }
-            }
-            createdAt
-            description
-            descriptionHtml
             handle
-            id
-            images(first: 20) {
+            title
+            availableForSale
+            images(first: 1) {
               edges {
                 node {
                   altText
@@ -51,23 +40,14 @@ query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSor
                 }
               }
             }
-            onlineStoreUrl
-            productType
-            publishedAt
-            tags
-            title
-            updatedAt
-            vendor
-            variants(first: 25) {
+            variants(first: 1) {
               edges {
                 node {
+                  id
                   title
-                  image {
-                    altText
-                    id
-                    originalSrc
-                    transformedSrc(maxWidth: 200, crop: CENTER)
-                  }
+                  requiresShipping
+                  availableForSale
+                  quantityAvailable
                   priceV2 {
                     amount
                     currencyCode
@@ -76,22 +56,17 @@ query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSor
                     amount
                     currencyCode
                   }
-                  weight
-                  weightUnit
-                  sku
-                  requiresShipping
-                  availableForSale
-                  id
-                  quantityAvailable
                 }
               }
             }
           }
         }
-      pageInfo{
-        hasNextPage
-        }}
+        pageInfo {
+          hasNextPage
+        }
+      }
     }
   }
 }
+
 ''';

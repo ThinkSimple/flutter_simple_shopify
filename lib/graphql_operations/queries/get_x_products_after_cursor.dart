@@ -1,5 +1,5 @@
 const String getXProductsAfterCursorQuery = r'''
-query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys){
+query($cursor: String, $x: Int, $reverse: Boolean, $sortKey: ProductSortKeys) {
   products(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
     pageInfo {
       hasNextPage
@@ -7,16 +7,29 @@ query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys){
     edges {
       cursor
       node {
-      options(first: 50) {
-            id
-            name
-            values
-            } 
-        variants(first: 250) {
+        id
+        handle
+        title
+        availableForSale
+        images(first: 1) {
+          edges {
+            node {
+              altText
+              id
+              originalSrc
+              transformedSrc(maxWidth: 200, crop: CENTER)
+            }
+          }
+        }
+        variants(first: 1) {
           edges {
             node {
               id
               title
+              sku
+              availableForSale
+              quantityAvailable
+              requiresShipping
               image {
                 altText
                 id
@@ -31,54 +44,14 @@ query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys){
                 amount
                 currencyCode
               }
-              weight
-              weightUnit
-              availableForSale
-              sku
-              requiresShipping
-              quantityAvailable
             }
           }
           pageInfo {
             hasNextPage
           }
         }
-        availableForSale
-        collections(first: 250) {
-          edges {
-            node {
-              description
-              descriptionHtml
-              id
-              handle
-              updatedAt
-              title
-            }
-          }
-        }
-        createdAt
-        description
-        descriptionHtml
-        handle
-        id
-        onlineStoreUrl
-        productType
-        publishedAt
-        tags
-        title
-        updatedAt
-        vendor
-        images(first: 250) {
-          edges {
-            node {
-              altText
-              id
-              originalSrc
-              transformedSrc(maxWidth: 200, crop: CENTER)
-            }
-          }
-        }
       }
     }
   }
-}''';
+}
+''';

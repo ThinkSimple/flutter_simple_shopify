@@ -35,18 +35,20 @@ class ShopifyCheckout with ShopifyError {
   /// Returns the Checkout object of the checkout with the [checkoutId].
   Future<Checkout> getCheckoutInfoQuery(String checkoutId,
       {bool deleteThisPartOfCache = false}) async {
-    final WatchQueryOptions _optionsRequireShipping = WatchQueryOptions(
-        documentNode: gql(getCheckoutInfoAboutShipping),
-        variables: {
-          'id': checkoutId,
-        });
-    QueryResult result = await _graphQLClient.query(_optionsRequireShipping);
+    // final WatchQueryOptions _optionsRequireShipping = WatchQueryOptions(
+    //     documentNode: gql(getCheckoutInfoAboutShipping),
+    //     variables: {
+    //       'id': checkoutId,
+    //     });
+    // QueryResult result = await _graphQLClient.query(_optionsRequireShipping);
     // print((result?.data as LazyCacheMap)?.data);
-    final WatchQueryOptions _options = WatchQueryOptions(
-        documentNode: gql(_requiresShipping(result) == true
-            ? getCheckoutInfo
-            : getCheckoutInfoWithoutShipping),
-        variables: {
+    final WatchQueryOptions _options =
+        WatchQueryOptions(documentNode: gql(getCheckoutInfo),
+            // gql(_requiresShipping(result) == true
+            //     ? getCheckoutInfo
+            //     : getCheckoutInfoWithoutShipping
+            // ),
+            variables: {
           'id': checkoutId,
         });
     final QueryResult _queryResult = (await _graphQLClient.query(_options));
@@ -60,18 +62,22 @@ class ShopifyCheckout with ShopifyError {
   Future<Checkout> getCheckoutInfoWithAvailableShippingRatesQuery(
       String checkoutId,
       {bool deleteThisPartOfCache = false}) async {
-    final WatchQueryOptions _optionsRequireShipping = WatchQueryOptions(
-        documentNode: gql(getCheckoutInfoAboutShipping),
-        variables: {
-          'id': checkoutId,
-        });
-    QueryResult result = await _graphQLClient.query(_optionsRequireShipping);
+    // final WatchQueryOptions _optionsRequireShipping = WatchQueryOptions(
+    //     documentNode: gql(getCheckoutInfoAboutShipping),
+    //     variables: {
+    //       'id': checkoutId,
+    //     });
+    // QueryResult result = await _graphQLClient.query(_optionsRequireShipping);
     // print((result?.data as LazyCacheMap)?.data);
-    final WatchQueryOptions _options = WatchQueryOptions(
-        documentNode: gql(_requiresShipping(result) == true
-            ? getCheckoutInfoWithShippingRate
-            : getCheckoutInfoWithoutShipping),
-        variables: {
+    final WatchQueryOptions _options =
+        WatchQueryOptions(documentNode: gql(getCheckoutInfoWithShippingRate),
+
+            // gql(_requiresShipping(result) == true
+            //     ? getCheckoutInfoWithShippingRate
+            //     : getCheckoutInfoWithoutShipping
+
+            // ),
+            variables: {
           'id': checkoutId,
         });
     final QueryResult _queryResult = (await _graphQLClient.query(_options));
@@ -82,29 +88,32 @@ class ShopifyCheckout with ShopifyError {
     return Checkout.fromJson(_queryResult?.data['node']);
   }
 
-  bool _requiresShipping(QueryResult result) {
-    return ((result?.data ?? const {})['node'] ?? const {})['requiresShipping'];
-  }
+  // bool _requiresShipping(QueryResult result) {
+  //   return ((result?.data ?? const {})['node'] ?? const {})['requiresShipping'];
+  // }
 
   /// Returns all [Order] in a List of Orders.
   ///
   /// Returns a List of Orders from the Customer with the [customerAccessToken].
   Future<List<Order>> getAllOrders(String customerAccessToken,
-      { SortKeyOrder sortKey = SortKeyOrder.PROCESSED_AT, bool reverse = true, bool deleteThisPartOfCache = false}) async {
-      final QueryOptions _options = WatchQueryOptions(
-          documentNode: gql(getAllOrdersQuery),
-          variables: {
-            'accessToken': customerAccessToken,
-            'sortKey': sortKey.parseToString(),
-            'reverse': reverse
-          }
-      );
-      final QueryResult result = await ShopifyConfig.graphQLClient.query(_options);
-      checkForError(result);
-      Orders orders = Orders.fromJson(((((result?.data ?? const {}))['customer'] ?? const {})['orders'] ?? const {}));
-      if(deleteThisPartOfCache) {
-        _graphQLClient.cache.write(_options.toKey(), null);
-      }
+      {SortKeyOrder sortKey = SortKeyOrder.PROCESSED_AT,
+      bool reverse = true,
+      bool deleteThisPartOfCache = false}) async {
+    final QueryOptions _options =
+        WatchQueryOptions(documentNode: gql(getAllOrdersQuery), variables: {
+      'accessToken': customerAccessToken,
+      'sortKey': sortKey.parseToString(),
+      'reverse': reverse
+    });
+    final QueryResult result =
+        await ShopifyConfig.graphQLClient.query(_options);
+    checkForError(result);
+    Orders orders = Orders.fromJson(
+        ((((result?.data ?? const {}))['customer'] ?? const {})['orders'] ??
+            const {}));
+    if (deleteThisPartOfCache) {
+      _graphQLClient.cache.write(_options.toKey(), null);
+    }
     return orders.orderList;
   }
 
@@ -114,14 +123,15 @@ class ShopifyCheckout with ShopifyError {
       bool reverse = true,
       bool deleteThisPartOfCache = false}) async {
     String cursor = startCursor;
-    final QueryOptions _options =
-        WatchQueryOptions(documentNode: gql(getXOrdersAfterCursorQuery), variables: {
-      'accessToken': customerAccessToken,
-      'sortKey': sortKey.parseToString(),
-      'reverse': reverse,
-      'cursor': cursor,
-      'x': limit
-    });
+    final QueryOptions _options = WatchQueryOptions(
+        documentNode: gql(getXOrdersAfterCursorQuery),
+        variables: {
+          'accessToken': customerAccessToken,
+          'sortKey': sortKey.parseToString(),
+          'reverse': reverse,
+          'cursor': cursor,
+          'x': limit
+        });
     final QueryResult result =
         await ShopifyConfig.graphQLClient.query(_options);
     checkForError(result);

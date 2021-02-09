@@ -3,25 +3,13 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
   products(query: $query, first: $limit, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
     edges {
       node {
-      options(first: 50) {
-            id
-            name
-            values
-            } 
         id
         handle
+        title
         availableForSale
-        createdAt
-        description
-        descriptionHtml
         onlineStoreUrl
         productType
-        publishedAt
-        tags
-        title
-        updatedAt
-        vendor
-        images(first: 250) {
+        images(first: 1) {
           edges {
             node {
               altText
@@ -34,7 +22,11 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
         variants(first: 250) {
           edges {
             node {
+              id
               title
+              requiresShipping
+              quantityAvailable
+              availableForSale
               image {
                 altText
                 id
@@ -49,13 +41,7 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
                 amount
                 currencyCode
               }
-              weight
-              weightUnit
-              availableForSale
-              sku
-              requiresShipping
-              id
-              quantityAvailable
+              
             }
           }
         }
@@ -66,4 +52,5 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
       hasNextPage
     }
   }
-}''';
+}
+''';
