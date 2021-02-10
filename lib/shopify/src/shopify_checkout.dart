@@ -6,6 +6,7 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_i
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_without_shipping_rates.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/order.dart';
+import 'package:flutter_simple_shopify/models/src/shopify_user.dart';
 import 'package:graphql/client.dart';
 import '../../graphql_operations/mutations/add_item(s)_to_checkout.dart';
 import '../../graphql_operations/mutations/checkout_associate_customer.dart';
@@ -130,34 +131,16 @@ class ShopifyCheckout with ShopifyError{
 
   /// Updates the shipping address on given [checkoutId]
   Future<void> shippingAddressUpdate(
-      String checkoutId,
-      String address1,
-      String address2,
-      String company,
-      String city,
-      String country,
-      String firstName,
-      String lastName,
-      String phone,
-      String province,
-      String zip,
-      {bool deleteThisPartOfCache = false}
-      ) async {
+    String checkoutId,
+    Address address, {
+    bool deleteThisPartOfCache = false,
+  }) async {
+    Map<String, dynamic> variables = address.toJson();
+    variables['checkoutId'] = checkoutId;
     final MutationOptions _options = MutationOptions(
-        documentNode: gql(checkoutShippingAddressUpdateMutation),
-        variables: {
-          'checkoutId': checkoutId,
-          'address1': address1,
-          'address2': address2,
-          'company': company,
-          'city': city,
-          'country': country,
-          'firstName': firstName,
-          'lastName': lastName,
-          'phone': phone,
-          'province': province,
-          'zip': zip
-        });
+      documentNode: gql(checkoutShippingAddressUpdateMutation),
+      variables: variables,
+    );
     final QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(result);
     if(deleteThisPartOfCache) {

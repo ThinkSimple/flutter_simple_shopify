@@ -103,6 +103,33 @@ class Address {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'address1': address1,
+      'address2': address2,
+      'company': company,
+      'city': city,
+      'country': country,
+      'firstName': firstName,
+      'countryCode': countryCode,
+      'lastName': lastName,
+      'formattedArea': formattedArea,
+      'latitude': latitude,
+      'longitude': longitude,
+      'name': name,
+      'phone': phone,
+      'province': province,
+      'provinceCode': provinceCode,
+      'zip': zip,
+    };
+  }
+
+  Map<String, dynamic> toJsonNode() {
+    return {
+      'node': toJson(),
+    };
+  }
 }
 
 class LastIncompleteCheckout {
