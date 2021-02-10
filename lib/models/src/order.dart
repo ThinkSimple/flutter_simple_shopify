@@ -51,7 +51,7 @@ class Order {
         email: (json['node'] ?? const {})['email'],
         currencyCode: (json['node'] ?? const {})['currencyCode'],
         customerUrl: (json['node'] ?? const {})['customerUrl'],
-        lineItems: LineItemsOrder.fromJson((json['node'] ?? const {})['lineItems']),
+        lineItems: LineItemsOrder.fromJson((json['node'] ?? const {})['lineItems'] ?? const {}),
         name: (json['node'] ?? const {})['name'],
         orderNumber: (json['node'] ?? const {})['orderNumber'],
         phone: (json['node'] ?? const {})['phone'],

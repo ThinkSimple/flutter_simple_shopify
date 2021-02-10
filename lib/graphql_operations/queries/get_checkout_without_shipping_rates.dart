@@ -95,6 +95,9 @@ query($id: ID!){
         currencyCode
       }
       orderStatusUrl
+      order {
+        id
+      }
     }
   }
 }
