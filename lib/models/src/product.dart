@@ -189,6 +189,8 @@ class ProductVariant {
   final bool requiresShipping;
   final String id;
   final int quantityAvailable;
+  final PriceV2 unitPrice;
+  final UnitPriceMeasurement unitPriceMeasurement;
 
   const ProductVariant(
       {this.price,
@@ -201,7 +203,9 @@ class ProductVariant {
         this.sku,
         this.requiresShipping,
         this.id,
-        this.quantityAvailable});
+        this.quantityAvailable,
+        this.unitPrice,
+        this.unitPriceMeasurement});
 
   static ProductVariant fromJson(Map<String, dynamic> json) {
     return ProductVariant(
@@ -219,6 +223,10 @@ class ProductVariant {
       requiresShipping: (json['node'] ?? const {})['requiresShipping'],
       id: (json['node'] ?? const {})['id'],
       quantityAvailable: (json['node'] ?? const {})['quantityAvailable'],
+      unitPrice:
+          PriceV2.fromJson((json['node'] ?? const {})['unitPrice'] ?? const {}),
+      unitPriceMeasurement: UnitPriceMeasurement.fromJson(
+          (json['node'] ?? const {})['unitPriceMeasurement'] ?? const {}),
     );
   }
 }
@@ -477,4 +485,30 @@ class PriceV2 {
     'TMT': 'TMT',
   };
 
+}
+
+class UnitPriceMeasurement {
+  final String measuredType;
+  final String quantityUnit;
+  final double quantityValue;
+  final String referenceUnit;
+  final int referenceValue;
+
+  UnitPriceMeasurement({
+    this.measuredType,
+    this.quantityUnit,
+    this.quantityValue,
+    this.referenceUnit,
+    this.referenceValue,
+  });
+
+  static UnitPriceMeasurement fromJson(Map<String, dynamic> json) {
+    return UnitPriceMeasurement(
+      measuredType: json['measuredType'],
+      quantityUnit: json['quantityUnit'],
+      quantityValue: json['quantityValue'],
+      referenceUnit: json['referenceUnit'],
+      referenceValue: json['referenceValue'],
+    );
+  }
 }
