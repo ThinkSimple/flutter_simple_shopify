@@ -22,7 +22,8 @@ mixin ShopifyError {
 
     final checkoutCompleteFreeData = queryResult.data['checkoutCompleteFree'];
     if (checkoutCompleteFreeData != null) {
-      if (checkoutCompleteFreeData['checkoutUserErrors']?.isNotEmpty) {
+      if (checkoutCompleteFreeData['checkoutUserErrors'] != null &&
+          checkoutCompleteFreeData['checkoutUserErrors'].isNotEmpty) {
         checkoutCompleteFreeData['checkoutUserErrors'].forEach((error)=>print(error.data));
         throw CheckoutCompleteException('Error on checkoutCompleteFree', errors: checkoutCompleteFreeData['checkoutUserErrors']);
       }
