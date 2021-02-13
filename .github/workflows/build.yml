@@ -25,3 +25,5 @@ jobs:
         run: flutter pub get
       - name: Test lib
         run: flutter test
+      - name: Analyze lib
+        run: flutter analyze
