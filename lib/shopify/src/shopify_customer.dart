@@ -76,7 +76,7 @@ class ShopifyCustomer with ShopifyError{
     final MutationOptions _options =
     MutationOptions(documentNode: gql(createValidMutationString(variableMap)), variables: variableMap);
     QueryResult result = await _graphQLClient.mutate(_options);
-    // checkForError(result);
+    checkForError(result);
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
