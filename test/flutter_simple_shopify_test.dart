@@ -1,12 +1,14 @@
-//import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_simple_shopify/flutter_simple_shopify.dart';
+import 'package:flutter_test/flutter_test.dart';
 
-
-// void main() {
-//   test('adds one to input values', () {
-//     final calculator = Calculator();
-//     expect(calculator.addOne(2), 3);
-//     expect(calculator.addOne(-7), -6);
-//     expect(calculator.addOne(0), 1);
-//     expect(() => calculator.addOne(null), throwsNoSuchMethodError);
-//   });
-// }
+void main() {
+  test('Test price formatting', () {
+    PriceV2 price = PriceV2.fromJson({
+      'amount': '1.0',
+      'currencyCode': 'EUR',
+    });
+    expect(price.amount, 1.0);
+    expect(price.currencySymbol, '€');
+    expect(price.formattedPrice, '1.0 €');
+  });
+}
