@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
   graphql: ^3.1.0
   shared_preferences: ^0.5.7
+  intl: ^0.16.1
 
 
 dev_dependencies:

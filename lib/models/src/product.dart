@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Products {
   final List<Product> productList;
   final bool hasNextPage;
@@ -281,6 +283,7 @@ class Option {
 }
 
 class PriceV2 {
+  static NumberFormat priceFormat;
   final double amount;
   final String currencyCode;
   final String currencySymbol;
@@ -293,29 +296,38 @@ class PriceV2 {
         amount: json['amount'] != null ? double.parse(json['amount']) : null,
         currencyCode: json['currencyCode'],
         currencySymbol: _simpleCurrencySymbols[json['currencyCode']],
-        formattedPrice: _chooseRightOrderOnCurrencySymbol(json)
-
+        formattedPrice: _chooseRightOrderOnCurrencySymbol(
+          json,
+          priceFormat: priceFormat,
+        ),
     );
   }
-  static String _chooseRightOrderOnCurrencySymbol(Map<String, dynamic> json){
+
+  static String _chooseRightOrderOnCurrencySymbol(
+    Map<String, dynamic> json, {
+    NumberFormat priceFormat,
+  }) {
     String currencyString;
+    String formattedPrice = priceFormat?.format(
+            json['amount'] != null ? double.parse(json['amount']) : 0) ??
+        json['amount'].toString();
     switch(json['currencyCode']) {
       case "INR": {
-        currencyString = '${_simpleCurrencySymbols[json['currencyCode']]} ${json['amount']}';
+        currencyString = '${_simpleCurrencySymbols[json['currencyCode']]} $formattedPrice';
       }
       break;
 
       case "EUR": {
-        currencyString = '${json['amount']} ${_simpleCurrencySymbols[json['currencyCode']]}';
+        currencyString = '$formattedPrice ${_simpleCurrencySymbols[json['currencyCode']]}';
       }
       break;
       case "USD": {
-        currencyString = '${_simpleCurrencySymbols[json['currencyCode']]} ${json['amount']}';
+        currencyString = '${_simpleCurrencySymbols[json['currencyCode']]} $formattedPrice';
       }
       break;
 
       default: {
-        currencyString = '${json['amount']} ${_simpleCurrencySymbols[json['currencyCode']]}';
+        currencyString = '$formattedPrice ${_simpleCurrencySymbols[json['currencyCode']]}';
       }
       break;
     }
