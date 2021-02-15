@@ -61,7 +61,11 @@ class _SearchTabState extends State<SearchTab> {
     try {
       ShopifyStore shopifyStore = ShopifyStore.instance;
       final products = await shopifyStore.getXProductsOnQueryAfterCursor(
-          null, 4, SortKeyProduct.RELEVANCE, searchKeyword);
+        searchKeyword,
+        4,
+        null,
+        sortKey: SortKeyProduct.RELEVANCE,
+      );
       if (mounted) {
         setState(() {
           this.products = products;
