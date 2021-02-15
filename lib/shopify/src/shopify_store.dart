@@ -374,7 +374,7 @@ class ShopifyStore with ShopifyError{
           documentNode: gql(getAllProductsOnQueryQuery),
           variables: {
             'cursor': cursor,
-            'sortKey': sortKey.parseToString(),
+            'sortKey': sortKey?.parseToString(),
             'query': query,
             'reverse': reverse
           });
@@ -405,7 +405,7 @@ class ShopifyStore with ShopifyError{
         variables: {
           'cursor': cursor,
           'limit': limit,
-          'sortKey': sortKey.parseToString(),
+          'sortKey': sortKey?.parseToString(),
           'query': query,
           'reverse': reverse
         });
