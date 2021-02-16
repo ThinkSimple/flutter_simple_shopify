@@ -15,23 +15,36 @@ class ShopifyConfig {
   /// Default is set to 2020-04.
   static String _storefrontApiVersion = '2020-04';
 
+  /// Where to store the cache.
+  ///
+  /// Default is [InMemoryStore] which does _not_ persist to disk
+  static Store _cacheStore;
+
   /// Sets the config.
   ///
   /// IMPORTANT: preferably call this inside the main function or at least before instantiating other Shopify classes.
-  static void setConfig(String storefrontAccessToken, String storeUrl, String storefrontApiVersion){
+  static void setConfig(
+    String storefrontAccessToken,
+    String storeUrl,
+    String storefrontApiVersion, {
+    Store cacheStore,
+  }) {
     _storefrontAccessToken ??= storefrontAccessToken;
     _storeUrl ??= storeUrl;
     _storefrontApiVersion = storefrontApiVersion != null ? storefrontApiVersion : _storefrontApiVersion;
+    _cacheStore = cacheStore;
   }
 
   /// The GraphQlClient used for communication with the Storefront API.
   static final GraphQLClient graphQLClient = GraphQLClient(
     link: HttpLink(
-        headers: {'X-Shopify-Storefront-Access-Token':'$_storefrontAccessToken'},
-        uri: 'https://$_storeUrl/api/$_storefrontApiVersion/graphql.json'
+      'https://$_storeUrl/api/$_storefrontApiVersion/graphql.json',
+      defaultHeaders: {
+        'X-Shopify-Storefront-Access-Token': _storefrontAccessToken,
+      },
     ),
-    cache: NormalizedInMemoryCache(
-      dataIdFromObject: typenameDataIdFromObject,
+    cache: GraphQLCache(
+      store: _cacheStore,
     ),
   );
 }

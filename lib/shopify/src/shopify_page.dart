@@ -24,7 +24,7 @@ class ShopifyPage with ShopifyError {
     String pagesQuery,
   }) async {
     final WatchQueryOptions _options = WatchQueryOptions(
-      documentNode: gql(getAllPagesQuery),
+      document: gql(getAllPagesQuery),
       variables: {
         'reversePages': reversePages,
         'sortKey': sortKeyPage.parseToString(),
@@ -34,7 +34,7 @@ class ShopifyPage with ShopifyError {
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
     return (Pages.fromJson((result?.data ?? const {})["pages"] ?? const {}))
         .pageList;
@@ -48,17 +48,17 @@ class ShopifyPage with ShopifyError {
     bool deleteThisPartOfCache = false,
   }) async {
     final QueryOptions _options = WatchQueryOptions(
-      documentNode: gql(getPageByHandleQuery),
+      document: gql(getPageByHandleQuery),
       variables: {
         'handle': handle,
       },
     );
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
-    var response = (result?.data['pageByHandle'] as LazyCacheMap)?.data;
+    var response = result?.data['pageByHandle'];
     var newResponse = {'node': response};
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
     return Page.fromJson(newResponse);
   }

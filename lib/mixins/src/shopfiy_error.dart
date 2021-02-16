@@ -7,7 +7,7 @@ mixin ShopifyError {
     if (queryResult.hasException)
       throw queryResult.exception;
     if (key != null && errorKey != null) {
-      Map<String, Object> data = (queryResult?.data as LazyCacheMap)?.data;
+      Map<String, Object> data = queryResult?.data;
       Map<String, Object> content = data[key];
       if (content == null) return;
       List errors = content[errorKey];

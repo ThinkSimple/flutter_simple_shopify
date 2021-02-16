@@ -30,7 +30,7 @@ class ShopifyCustomer with ShopifyError{
       String customerAccessToken,
       id, {bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options = MutationOptions(
-        documentNode: gql(customerAddressUpdateMutation),
+        document: gql(customerAddressUpdateMutation),
         variables: {
           'address1': address1,
           'address2': address2,
@@ -52,7 +52,7 @@ class ShopifyCustomer with ShopifyError{
       errorKey: 'customerUserErrors',
     );
     if(deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
   }
 
@@ -78,7 +78,7 @@ class ShopifyCustomer with ShopifyError{
     }).forEach((k,v) => v != null ? variableMap[k] = v:null);
     print(variableMap);
     final MutationOptions _options =
-    MutationOptions(documentNode: gql(createValidMutationString(variableMap)), variables: variableMap);
+    MutationOptions(document: gql(createValidMutationString(variableMap)), variables: variableMap);
     QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(
       result,
@@ -86,7 +86,7 @@ class ShopifyCustomer with ShopifyError{
       errorKey: 'customerUserErrors',
     );
     if(deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
   }
 
@@ -105,7 +105,7 @@ class ShopifyCustomer with ShopifyError{
         String customerAccessToken,
   bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options = MutationOptions(
-        documentNode: gql(customerAddressCreateMutation),
+        document: gql(customerAddressCreateMutation),
         variables: {
           'address1': address1,
           'address2': address2,
@@ -126,7 +126,7 @@ class ShopifyCustomer with ShopifyError{
       errorKey: 'customerUserErrors',
     );
     if(deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
   }
 
@@ -136,7 +136,7 @@ class ShopifyCustomer with ShopifyError{
   Future<void> customerAddressDelete(
       {String customerAccessToken, String addressId, bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options = MutationOptions(
-        documentNode: gql(customerAddressDeleteMutation),
+        document: gql(customerAddressDeleteMutation),
         variables: {
           'customerAccessToken': customerAccessToken,
           'id': addressId
@@ -148,7 +148,7 @@ class ShopifyCustomer with ShopifyError{
       errorKey: 'customerUserErrors',
     );
     if(deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
   }
 }
