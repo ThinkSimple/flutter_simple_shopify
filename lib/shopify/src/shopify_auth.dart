@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:graphql/client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../graphql_operations/mutations/access_token_delete.dart';
 import '../../graphql_operations/mutations/customer_access_token_create.dart';
 import '../../graphql_operations/mutations/customer_create.dart';
@@ -21,7 +22,11 @@ class ShopifyAuth with ShopifyError {
 
   static const String _shopifyKey = 'FLUTTER_SIMPLE_SHOPIFY_ACCESS_TOKEN';
 
-  static get currentCustomerAccessToken async => (await SharedPreferences.getInstance()).getString(_shopifyKey);
+  static String _currentCustomerAccessToken;
+
+  static Future<String> get currentCustomerAccessToken async =>
+      _currentCustomerAccessToken ??
+      (await SharedPreferences.getInstance()).getString(_shopifyKey);
 
   /// Tries to create a new user account with the given email address and password.
     Future<ShopifyUser> createUserWithEmailAndPassword(
@@ -140,6 +145,7 @@ class ShopifyAuth with ShopifyError {
   }
 
   Future<void> _setShopifyUser(String sharedPrefsToken, ShopifyUser shopifyUser) async {
+    _currentCustomerAccessToken = sharedPrefsToken;
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     _shopifyUser = shopifyUser;
     _prefs.setString(_shopifyKey, sharedPrefsToken);
