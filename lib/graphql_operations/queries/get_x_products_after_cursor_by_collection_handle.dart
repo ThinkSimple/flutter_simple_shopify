@@ -10,6 +10,7 @@ query(
     id
     handle
     title
+    descriptionHtml
     image {
       altText
       id
