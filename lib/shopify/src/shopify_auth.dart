@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:graphql/client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../graphql_operations/mutations/access_token_delete.dart';
 import '../../graphql_operations/mutations/customer_access_token_create.dart';
 import '../../graphql_operations/mutations/customer_create.dart';
@@ -24,12 +25,19 @@ class ShopifyAuth with ShopifyError {
   static get currentCustomerAccessToken async => (await SharedPreferences.getInstance()).getString(_shopifyKey);
 
   /// Tries to create a new user account with the given email address and password.
-    Future<ShopifyUser> createUserWithEmailAndPassword(
-      {@required String email, @required String password, bool deleteThisPartOfCache = false}) async {
+  Future<ShopifyUser> createUserWithEmailAndPassword({
+    String firstName,
+    String lastName,
+    @required String email,
+    @required String password,
+    bool deleteThisPartOfCache = false,
+  }) async {
     assert(email != null);
     assert(password != null);
     final MutationOptions _options =
     MutationOptions(documentNode: gql(customerCreateMutation), variables: {
+      'firstName': firstName,
+      'lastName': lastName,
       'email': email,
       'password': password,
     });
