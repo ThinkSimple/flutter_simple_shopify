@@ -8,6 +8,7 @@ query($ids: [ID!]!) {
       availableForSale
       descriptionHtml
       productType
+      tags
       options(first: 50) {
         id
         name

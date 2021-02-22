@@ -5,6 +5,7 @@ query($handle: String!) {
     handle
     title
     availableForSale
+    tags
     options(first: 50) {
       id
       name
