@@ -26,7 +26,8 @@ class ShopifyAuth with ShopifyError {
 
   static Future<String> get currentCustomerAccessToken async =>
       _currentCustomerAccessToken ??
-      (await SharedPreferences.getInstance()).getString(_shopifyKey);
+      (_currentCustomerAccessToken =
+          (await SharedPreferences.getInstance()).getString(_shopifyKey));
 
   /// Tries to create a new user account with the given email address and password.
     Future<ShopifyUser> createUserWithEmailAndPassword(
@@ -108,10 +109,9 @@ class ShopifyAuth with ShopifyError {
 
   /// Signs out the current user and clears it from the disk cache.
   Future<void> signOutCurrentUser({bool deleteThisPartOfCache = false}) async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
     final MutationOptions _options = MutationOptions(
         documentNode: gql(accessTokenDeleteMutation),
-        variables: {'customerAccessToken': _prefs.getString(_shopifyKey)});
+        variables: {'customerAccessToken': await currentCustomerAccessToken});
     await _setShopifyUser(null, null);
     final QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(result);
@@ -123,17 +123,16 @@ class ShopifyAuth with ShopifyError {
 
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
   Future<ShopifyUser> currentUser({bool deleteThisPartOfCache = false}) async{
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
         documentNode: gql(getCustomerQuery),
-        variables: {'customerAccessToken': _prefs.getString(_shopifyKey)});
+        variables: {'customerAccessToken': await currentCustomerAccessToken});
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_getCustomer.toKey(), null);
     }
     if (_shopifyUser != null) {
       return _shopifyUser;
       //TODO look into shared prefs (@adam)
-    } else if (_prefs.getString(_shopifyKey) != null) {
+    } else if (await currentCustomerAccessToken != null) {
       final QueryResult result = (await _graphQLClient.query(_getCustomer));
       checkForError(result);
       ShopifyUser user = ShopifyUser.fromJson(
