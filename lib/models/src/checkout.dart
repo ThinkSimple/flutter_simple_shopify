@@ -290,7 +290,7 @@ class DiscountApplication {
       targetType: (json['node'] ?? const {})['targetType'],
       percentage:
           (((json['node'] ?? const {})['value'] ?? const {})['percentage'] ??
-              const {}),
+              null),
       price:
           PriceV2.fromJson(((json['node'] ?? const {})['value'] ?? const {})),
     );
