@@ -1,5 +1,5 @@
 const String customerCreateMutation = r''' 
-mutation MyMutation($firstName: String!, $lastName: String!, $email: String!, $password: String!) {
+mutation MyMutation($firstName: String, $lastName: String, $email: String!, $password: String!) {
   customerCreate(input: {firstName: $firstName, lastName: $lastName, email: $email, password: $password}) {
     customer{
       acceptsMarketing
