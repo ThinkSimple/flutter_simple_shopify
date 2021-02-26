@@ -1,9 +1,19 @@
 const String getProductByHandle = r'''
-query getProductByHandle($handle : String!){
+query getProductByHandle($handle: String!) {
   productByHandle(handle: $handle) {
     id
     handle
-    images(first: 250) {
+    title
+    availableForSale
+    descriptionHtml
+    productType
+    tags
+    options(first: 50) {
+      id
+      name
+      values
+    }
+    images(first: 20) {
       edges {
         node {
           altText
@@ -16,14 +26,43 @@ query getProductByHandle($handle : String!){
     variants(first: 250) {
       edges {
         node {
+          id
+          title
+          availableForSale
+          quantityAvailable
+          requiresShipping
+          sku
           priceV2 {
             amount
             currencyCode
           }
-          quantityAvailable
+          compareAtPriceV2 {
+            amount
+            currencyCode
+          }
+          selectedOptions {
+            name
+            value
+          }
+          image {
+            altText
+            id
+            originalSrc
+            transformedSrc(maxWidth: 200, crop: CENTER)
+          }
+        }
+      }
+    }
+    collections(first: 250) {
+      edges {
+        node {
+          id
+          handle
+          title
         }
       }
     }
   }
 }
+
 ''';

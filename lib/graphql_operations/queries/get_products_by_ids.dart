@@ -54,6 +54,15 @@ query($ids: [ID!]!) {
           }
         }
       }
+      collections(first: 250) {
+        edges {
+          node {
+            id
+            handle
+            title
+          }
+        }
+      }
     }
   }
 }
