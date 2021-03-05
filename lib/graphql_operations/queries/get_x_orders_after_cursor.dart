@@ -35,6 +35,10 @@ query getOrders(
                   id
                   title
                   availableForSale
+                  priceV2 {
+                    amount
+                    currencyCode
+                  }
                   image {
                     altText
                     id
