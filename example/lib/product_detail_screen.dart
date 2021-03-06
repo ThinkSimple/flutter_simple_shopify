@@ -44,11 +44,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   }
 
   ///Adds a product variant to the checkout
-  Future<void> _addProductToShoppingCart(ProductVariant variant)async{
+  /*Future<void> _addProductToShoppingCart(ProductVariant variant)async{
     ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;
     String checkoutId = await shopifyCheckout.createCheckout();
     print(checkoutId);
     //Adds a product variant to a specific checkout id
     await shopifyCheckout.checkoutLineItemsReplace(checkoutId, [variant.id]);
-  }
+  }*/
 }
