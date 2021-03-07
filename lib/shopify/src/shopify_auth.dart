@@ -30,20 +30,25 @@ class ShopifyAuth with ShopifyError {
           (await SharedPreferences.getInstance()).getString(_shopifyKey));
 
   /// Tries to create a new user account with the given email address and password.
-    Future<ShopifyUser> createUserWithEmailAndPassword(
-      {@required String email, @required String password, bool deleteThisPartOfCache = false}) async {
+  Future<ShopifyUser> createUserWithEmailAndPassword({
+    String firstName,
+    String lastName,
+    @required String email,
+    @required String password,
+    bool deleteThisPartOfCache = false,
+  }) async {
     assert(email != null);
     assert(password != null);
     final MutationOptions _options =
     MutationOptions(documentNode: gql(customerCreateMutation), variables: {
+      'firstName': firstName,
+      'lastName': lastName,
       'email': email,
       'password': password,
     });
     final QueryResult result = await _graphQLClient.mutate(_options);
     print(result.exception.toString());
-    checkForError(result);
-    if((result?.data['customerCreate'] ?? const {})['customerUserErrors'] != null)
-      throw(result?.data['customerCreate'] ?? const {}['customerUserErrors'].first['message']);
+    checkForError(result, key: 'customerCreate', errorKey: 'customerUserErrors');
     final shopifyUser = ShopifyUser.fromJson(
         (result?.data['customerCreate'] ?? const {})['customer']);
     final String customerAccessToken = await _createAccessToken(email, password);

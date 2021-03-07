@@ -1,6 +1,6 @@
 const String customerCreateMutation = r''' 
-mutation MyMutation($email: String!, $password: String!) {
-  customerCreate(input: {email: $email, password: $password}) {
+mutation MyMutation($firstName: String, $lastName: String, $email: String!, $password: String!) {
+  customerCreate(input: {firstName: $firstName, lastName: $lastName, email: $email, password: $password}) {
     customer{
       acceptsMarketing
     addresses(first: 10) {
@@ -97,6 +97,11 @@ mutation MyMutation($email: String!, $password: String!) {
         }
       }
   }
+  customerUserErrors {
+      code
+      field
+      message
+    }
   }
 }
 ''';
