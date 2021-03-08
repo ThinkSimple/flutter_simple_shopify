@@ -11,6 +11,7 @@ query($cursor: String, $x: Int, $reverse: Boolean, $sortKey: ProductSortKeys) {
         handle
         title
         availableForSale
+        tags
         images(first: 1) {
           edges {
             node {

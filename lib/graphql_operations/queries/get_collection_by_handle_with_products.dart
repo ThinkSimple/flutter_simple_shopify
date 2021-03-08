@@ -18,6 +18,7 @@ query(\$handle: String!) {
           handle
           title
           availableForSale
+          tags
           variants(first: 1) {
             edges {
               node {

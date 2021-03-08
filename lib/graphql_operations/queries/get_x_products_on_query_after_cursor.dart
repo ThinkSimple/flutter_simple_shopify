@@ -9,6 +9,7 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
         availableForSale
         onlineStoreUrl
         productType
+        tags
         images(first: 1) {
           edges {
             node {
