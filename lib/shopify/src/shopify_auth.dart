@@ -152,6 +152,10 @@ class ShopifyAuth with ShopifyError {
     _currentCustomerAccessToken = sharedPrefsToken;
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     _shopifyUser = shopifyUser;
-    _prefs.setString(_shopifyKey, sharedPrefsToken);
+    if (sharedPrefsToken == null) {
+      _prefs.remove(_shopifyKey);
+    } else {
+      _prefs.setString(_shopifyKey, sharedPrefsToken);
+    }
   }
 }

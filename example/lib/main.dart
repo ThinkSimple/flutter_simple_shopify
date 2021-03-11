@@ -53,13 +53,13 @@ class _MyHomePageState extends State<MyHomePage> {
         fixedColor: Theme.of(context).primaryColor,
         unselectedItemColor: Colors.black,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("Home")),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.category), title: Text("Collections")),
+              icon: Icon(Icons.category), label: "Collections"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.search), title: Text("Search")),
+              icon: Icon(Icons.search), label: "Search"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person), title: Text("Profile")),
+              icon: Icon(Icons.person), label: "Profile"),
         ],
       ),
     );
