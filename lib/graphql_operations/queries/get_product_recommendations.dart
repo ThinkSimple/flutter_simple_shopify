@@ -5,6 +5,7 @@ query getProductRecommentationsQuery($id: ID!){
     handle
     title
     availableForSale
+    tags
     images(first: 1) {
       edges {
         node {

@@ -415,6 +415,12 @@ class PriceV2 {
               '${_simpleCurrencySymbols[json['currencyCode']]}$amount';
         }
         break;
+      case "AED":
+        {
+          currencyString =
+              '${_simpleCurrencySymbols[json['currencyCode']]}$amount';
+        }
+        break;
 
       default:
         {
@@ -448,7 +454,7 @@ class PriceV2 {
     'LYD': 'din',
     'RSD': 'din',
     'TND': 'din',
-    'AED': 'dh',
+    'AED': 'AED',
     'MAD': 'dh',
     'STD': 'Db',
     'BSD': r'$',
