@@ -8,6 +8,7 @@ import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/order.dart';
 import 'package:flutter_simple_shopify/models/src/shopify_user.dart';
 import 'package:graphql/client.dart';
+
 import '../../graphql_operations/mutations/add_item(s)_to_checkout.dart';
 import '../../graphql_operations/mutations/checkout_associate_customer.dart';
 import '../../graphql_operations/mutations/checkout_attributes_update.dart';
@@ -83,7 +84,11 @@ class ShopifyCheckout with ShopifyError{
       },
     );
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForCheckoutError(result);
+    checkForError(
+      result,
+      key: 'checkoutAttributesUpdateV2',
+      errorKey: 'checkoutUserErrors',
+    );
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -123,7 +128,11 @@ class ShopifyCheckout with ShopifyError{
       'checkoutLineItems': checkoutLineItems,
     });
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(
+      result,
+      key: 'checkoutLineItemsReplace',
+      errorKey: 'userErrors',
+    );
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -142,7 +151,11 @@ class ShopifyCheckout with ShopifyError{
       variables: variables,
     );
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(
+      result,
+      key: 'checkoutShippingAddressUpdateV2',
+      errorKey: 'checkoutUserErrors',
+    );
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -171,7 +184,11 @@ class ShopifyCheckout with ShopifyError{
           'customerAccessToken': customerAccessToken
         });
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(
+      result,
+      key: 'checkoutCustomerAssociateV2',
+      errorKey: 'checkoutUserErrors',
+    );
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -183,7 +200,11 @@ class ShopifyCheckout with ShopifyError{
         documentNode: gql(checkoutCustomerDisassociateMutation),
         variables: {'id': checkoutId});
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(
+      result,
+      key: 'checkoutCustomerDisassociateV2',
+      errorKey: 'checkoutUserErrors',
+    );
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -196,7 +217,11 @@ class ShopifyCheckout with ShopifyError{
         documentNode: gql(checkoutDiscountCodeApplyMutation),
         variables: {'checkoutId': checkoutId, 'discountCode': discountCode});
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(
+      result,
+      key: 'checkoutDiscountCodeApplyV2',
+      errorKey: 'checkoutUserErrors',
+    );
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -208,7 +233,11 @@ class ShopifyCheckout with ShopifyError{
         documentNode: gql(checkoutDiscountCodeRemoveMutation),
         variables: {'checkoutId': checkoutId});
     QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(
+      result,
+      key: 'checkoutDiscountCodeRemove',
+      errorKey: 'checkoutUserErrors',
+    );
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -221,7 +250,11 @@ class ShopifyCheckout with ShopifyError{
         documentNode: gql(checkoutGiftCardsAppendMutation),
         variables: {'checkoutId': checkoutId, 'giftCardCodes': giftCardCodes});
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(
+      result,
+      key: 'checkoutGiftCardsAppend',
+      errorKey: 'checkoutUserErrors',
+    );
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -255,7 +288,11 @@ class ShopifyCheckout with ShopifyError{
           'checkoutId': checkoutId
         });
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(
+      result,
+      key: 'checkoutGiftCardRemoveV2',
+      errorKey: 'checkoutUserErrors',
+    );
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -269,7 +306,11 @@ class ShopifyCheckout with ShopifyError{
         documentNode: gql(checkoutCompleteFreeMutation),
         variables: {'checkoutId': checkoutId});
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForCheckoutError(result);
+    checkForError(
+      result,
+      key: 'checkoutCompleteFree',
+      errorKey: 'checkoutUserErrors',
+    );
 
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);

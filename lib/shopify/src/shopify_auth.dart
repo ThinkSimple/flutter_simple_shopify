@@ -68,7 +68,11 @@ class ShopifyAuth with ShopifyError {
         documentNode: gql(customerRecoverMutation),
         variables: {'email': email});
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(
+      result,
+      key: 'customerRecover',
+      errorKey: 'customerUserErrors',
+    );
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -119,7 +123,11 @@ class ShopifyAuth with ShopifyError {
         variables: {'customerAccessToken': await currentCustomerAccessToken});
     await _setShopifyUser(null, null);
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(
+      result,
+      key: 'customerAccessTokenDelete',
+      errorKey: 'userErrors',
+    );
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }

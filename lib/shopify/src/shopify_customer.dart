@@ -3,8 +3,8 @@ import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_add
 import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_address_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_update.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
-
 import 'package:graphql/client.dart';
+
 import '../../shopify_config.dart';
 
 /// ShopifyCustomer class provides various methods for working with a user/customer.
@@ -46,7 +46,11 @@ class ShopifyCustomer with ShopifyError{
           'id': id
         });
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(
+      result,
+      key: 'customerAddressUpdate',
+      errorKey: 'customerUserErrors',
+    );
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -76,7 +80,11 @@ class ShopifyCustomer with ShopifyError{
     final MutationOptions _options =
     MutationOptions(documentNode: gql(createValidMutationString(variableMap)), variables: variableMap);
     QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(
+      result,
+      key: 'customerUpdate',
+      errorKey: 'customerUserErrors',
+    );
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -112,7 +120,11 @@ class ShopifyCustomer with ShopifyError{
           'customerAccessToken': customerAccessToken,
         });
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(
+      result,
+      key: 'customerAddressCreate',
+      errorKey: 'customerUserErrors',
+    );
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -130,7 +142,11 @@ class ShopifyCustomer with ShopifyError{
           'id': addressId
         });
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(
+      result,
+      key: 'customerAddressDelete',
+      errorKey: 'customerUserErrors',
+    );
     if(deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
