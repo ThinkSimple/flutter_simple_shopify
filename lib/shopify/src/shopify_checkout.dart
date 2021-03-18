@@ -33,10 +33,14 @@ class ShopifyCheckout with ShopifyError {
   /// Returns the Checkout Id.
   ///
   /// Creates a new [Checkout].
-  Future<String> createCheckout({bool deleteThisPartOfCache = false}) async {
-    final MutationOptions _options = MutationOptions(
-      documentNode: gql(createCheckoutMutation),
-    );
+  Future<String> createCheckout(
+      {String note, bool deleteThisPartOfCache = false}) async {
+    final MutationOptions _options =
+        MutationOptions(documentNode: gql(createCheckoutMutation), variables: {
+      "input": {
+        'note': note
+      }
+    });
     final QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
@@ -244,7 +248,8 @@ class ShopifyCheckout with ShopifyError {
     }
   }
 
-  Future<Checkout> shippingLineUpdate(String checkoutId, String shippingRateHandle,
+  Future<Checkout> shippingLineUpdate(
+      String checkoutId, String shippingRateHandle,
       {bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(checkoutShippingLineUpdateMutation),

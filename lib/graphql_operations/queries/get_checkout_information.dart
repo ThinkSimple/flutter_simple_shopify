@@ -9,6 +9,7 @@ query(\$id: ID!) {
       currencyCode
       webUrl
       orderStatusUrl
+      note
       order {
           id
           email

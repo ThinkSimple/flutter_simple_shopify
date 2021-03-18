@@ -9,6 +9,7 @@ query($ids: [ID!]!) {
       descriptionHtml
       productType
       tags
+      onlineStoreUrl
       options(first: 50) {
         id
         name
