@@ -20,10 +20,12 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '2.0.1'
+          channel: 'stable'
       - name: Get libs
         run: flutter pub get
       - name: Test lib
         run: flutter test
       - name: Analyze lib
-        run: flutter analyze
+        uses: axel-op/dart-package-analyzer@v3
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
