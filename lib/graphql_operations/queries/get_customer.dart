@@ -5,6 +5,7 @@ query($customerAccessToken: String!) {
     email
     firstName
     lastName
+    tags
     addresses(first: 10) {
       edges {
         node {
