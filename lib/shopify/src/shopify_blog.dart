@@ -23,7 +23,7 @@ class ShopifyBlog with ShopifyError{
   Future<List<Blog>> getAllBlogs({bool deleteThisPartOfCache = false, SortKeyBlog sortKeyBlog = SortKeyBlog.HANDLE,
     bool reverseBlogs = false, bool reverseArticles = false }) async {
     final WatchQueryOptions _options = WatchQueryOptions(
-      documentNode: gql(getAllBlogsQuery),
+      document: gql(getAllBlogsQuery),
       variables: {
         'reverseBlogs' : reverseBlogs,
         'reverseArticles' : reverseArticles,
@@ -33,7 +33,7 @@ class ShopifyBlog with ShopifyError{
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     if(deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
     return (Blogs.fromJson((result?.data ??
         const {})["blogs"] ??
@@ -48,7 +48,7 @@ class ShopifyBlog with ShopifyError{
   Future<Blog> getBlogByHandle(
       String handle, {SortKeyArticle sortKeyArticle = SortKeyArticle.RELEVANCE, bool deleteThisPartOfCache = false, bool reverse = false}) async {
     final QueryOptions _options = WatchQueryOptions(
-        documentNode: gql(getBlogByHandleQuery),
+        document: gql(getBlogByHandleQuery),
         variables: {
           'handle': handle,
           'sortKey': sortKeyArticle.parseToString(),
@@ -56,12 +56,10 @@ class ShopifyBlog with ShopifyError{
         });
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
-    var response = (result?.data['blogByHandle']
-    as LazyCacheMap)
-        ?.data;
+    var response = result?.data['blogByHandle'];
     var newResponse = {'node': response};
     if(deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
     return Blog.fromJson(newResponse);
   }
@@ -72,7 +70,7 @@ class ShopifyBlog with ShopifyError{
   Future<List<Article>> getXArticlesSorted(
       int articleAmount, {SortKeyArticle sortKeyArticle = SortKeyArticle.RELEVANCE, bool deleteThisPartOfCache = false}) async {
     final QueryOptions _options = WatchQueryOptions(
-        documentNode: gql(getNArticlesSortedQuery),
+        document: gql(getNArticlesSortedQuery),
         variables: {
           'x': articleAmount,
           'sortKey': sortKeyArticle.parseToString(),
@@ -80,7 +78,7 @@ class ShopifyBlog with ShopifyError{
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     if(deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
     return (Articles.fromJson(((result?.data ??
         const {}))['articles'] ??

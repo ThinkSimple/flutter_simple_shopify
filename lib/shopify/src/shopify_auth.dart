@@ -40,7 +40,7 @@ class ShopifyAuth with ShopifyError {
     assert(email != null);
     assert(password != null);
     final MutationOptions _options =
-    MutationOptions(documentNode: gql(customerCreateMutation), variables: {
+    MutationOptions(document: gql(customerCreateMutation), variables: {
       'firstName': firstName,
       'lastName': lastName,
       'email': email,
@@ -54,7 +54,7 @@ class ShopifyAuth with ShopifyError {
     final String customerAccessToken = await _createAccessToken(email, password);
     await _setShopifyUser(customerAccessToken, _shopifyUser);
     if(deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
     return shopifyUser;
   }
@@ -65,7 +65,7 @@ class ShopifyAuth with ShopifyError {
   Future<void> sendPasswordResetEmail({@required String email, bool deleteThisPartOfCache = false}) async {
     assert(email != null);
     final MutationOptions _options = MutationOptions(
-        documentNode: gql(customerRecoverMutation),
+        document: gql(customerRecoverMutation),
         variables: {'email': email});
     final QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(
@@ -74,7 +74,7 @@ class ShopifyAuth with ShopifyError {
       errorKey: 'customerUserErrors',
     );
     if(deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
   }
 
@@ -85,7 +85,7 @@ class ShopifyAuth with ShopifyError {
     assert(password != null);
     final String customerAccessToken = await _createAccessToken(email, password);
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
-        documentNode: gql(getCustomerQuery),
+        document: gql(getCustomerQuery),
         variables: {'customerAccessToken': customerAccessToken});
     final QueryResult result = await _graphQLClient.query(_getCustomer);
     checkForError(result);
@@ -93,7 +93,7 @@ class ShopifyAuth with ShopifyError {
         result?.data['customer']);
     await  _setShopifyUser(customerAccessToken, shopifyUser);
     if(deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_getCustomer.toKey(), null);
+      _graphQLClient.cache.writeQuery(_getCustomer.asRequest, data: null);
     }
     return shopifyUser;
   }
@@ -101,11 +101,11 @@ class ShopifyAuth with ShopifyError {
   /// Helper method for creating the accessToken.
   Future<String> _createAccessToken(String email, String password, {bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options = MutationOptions(
-        documentNode: gql(customerAccessTokenCreate),
+        document: gql(customerAccessTokenCreate),
         variables: {'email': email, 'password': password});
     final QueryResult result = await _graphQLClient.mutate(_options);
     if(deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
     return _extractAccessToken(result?.data);
   }
@@ -119,7 +119,7 @@ class ShopifyAuth with ShopifyError {
   /// Signs out the current user and clears it from the disk cache.
   Future<void> signOutCurrentUser({bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options = MutationOptions(
-        documentNode: gql(accessTokenDeleteMutation),
+        document: gql(accessTokenDeleteMutation),
         variables: {'customerAccessToken': await currentCustomerAccessToken});
     await _setShopifyUser(null, null);
     final QueryResult result = await _graphQLClient.mutate(_options);
@@ -129,7 +129,7 @@ class ShopifyAuth with ShopifyError {
       errorKey: 'userErrors',
     );
     if(deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
     return result;
   }
@@ -137,10 +137,10 @@ class ShopifyAuth with ShopifyError {
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
   Future<ShopifyUser> currentUser({bool deleteThisPartOfCache = false}) async{
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
-        documentNode: gql(getCustomerQuery),
+        document: gql(getCustomerQuery),
         variables: {'customerAccessToken': await currentCustomerAccessToken});
     if(deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_getCustomer.toKey(), null);
+      _graphQLClient.cache.writeQuery(_getCustomer.asRequest, data: null);
     }
     if (_shopifyUser != null) {
       return _shopifyUser;

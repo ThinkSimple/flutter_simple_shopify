@@ -8,15 +8,15 @@ class Products {
 
   static Products fromJson(Map<String, dynamic> json) {
     return Products(
-        productList: _getProductList(json ?? const {}),
+        productList: _getProductList(json),
         hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage']);
   }
 
   static List<Product> _getProductList(Map<String, dynamic> json) {
-    List<Product> productList = [];
-    json['edges']
-        ?.forEach((e) => productList.add(Product.fromJson(e ?? const {})));
-    return productList;
+    return (json['edges'] as List)
+            ?.map((e) => Product.fromJson(e ?? const {}))
+            ?.toList() ??
+        const <Product>[];
   }
 }
 
@@ -64,7 +64,7 @@ class Product {
 
   static Product fromJson(Map<String, dynamic> json) {
     return Product(
-        collectionList: _getCollectionList(json ?? const {}),
+        collectionList: _getCollectionList(json),
         id: (json['node'] ?? const {})['id'],
         title: (json['node'] ?? const {})['title'],
         availableForSale: (json['node'] ?? const {})['availableForSale'],
@@ -85,14 +85,12 @@ class Product {
         metafields: _getMetafieldList((json['node'] ?? const {})['metafields'] ?? const {}));
   }
 
-  static List<ProductVariant> _getProductVariants(Map<String, dynamic> json) {
-    List<ProductVariant> productVariants = [];
-    (((json['node'] ?? const {})['variants'] ?? const {})['edges'] ?? const [])
-        ?.forEach((v) {
-      if (v?.data != null)
-        productVariants.add(ProductVariant.fromJson(v?.data ?? const {}));
-    });
-    return productVariants;
+  static List _getProductVariants(Map<String, dynamic> json) {
+    return (((json['node'] ?? const {})['variants'] ?? const {})['edges']
+                as List)
+            ?.map((v) => ProductVariant.fromJson(v ?? const {}))
+            ?.toList() ??
+        const <ProductVariant>[];
   }
 
 
@@ -113,14 +111,11 @@ class Product {
 
   static List<AssociatedCollections> _getCollectionList(
       Map<String, dynamic> json) {
-    List<AssociatedCollections> collectionList = [];
-    (((json['node'] ?? const {})['collections'] ?? const {})['edges'] ??
-        const [])
-        ?.forEach((v) {
-      if (v?.data != null)
-        collectionList.add(AssociatedCollections.fromJson(v?.data ?? const {}));
-    });
-    return collectionList;
+    return (((json['node'] ?? const {})['collections'] ?? const {})['edges']
+                as List)
+            ?.map((v) => AssociatedCollections.fromJson(v ?? const {}))
+            ?.toList() ??
+        const <AssociatedCollections>[];
   }
 
   static _getImageList(Map<String, dynamic> json) {

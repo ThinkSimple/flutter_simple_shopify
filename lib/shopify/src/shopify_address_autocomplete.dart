@@ -13,8 +13,8 @@ class ShopifyAddressAutocomplete with ShopifyError {
 
   final GraphQLClient _graphQLClient = GraphQLClient(
     link: HttpLink(
-      uri: "https://autocomplete-service.shopifycloud.com/graphql",
-      headers: {
+      "https://autocomplete-service.shopifycloud.com/graphql",
+      defaultHeaders: {
         "origin": "https://checkout.shopify.com",
       },
     ),
@@ -33,7 +33,7 @@ class ShopifyAddressAutocomplete with ShopifyError {
     bool deleteThisPartOfCache = false,
   }) async {
     final QueryOptions _options = WatchQueryOptions(
-      documentNode: gql(getAddressPredictions),
+      document: gql(getAddressPredictions),
       variables: {
         'query': query,
         'countryCode': countryCode,
@@ -44,7 +44,7 @@ class ShopifyAddressAutocomplete with ShopifyError {
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
     return (result.data['predictions'] as List)
         .map((e) => AddressPrediction.fromJson(e))
@@ -57,7 +57,7 @@ class ShopifyAddressAutocomplete with ShopifyError {
     bool deleteThisPartOfCache = false,
   }) async {
     final QueryOptions _options = WatchQueryOptions(
-      documentNode: gql(getAddressDetails),
+      document: gql(getAddressDetails),
       variables: {
         'predictionId': prediction.addressId,
         'locale': locale ?? Intl.getCurrentLocale(),
@@ -66,7 +66,7 @@ class ShopifyAddressAutocomplete with ShopifyError {
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
     }
     return AddressDetails.fromJson(result.data['address']);
   }
