@@ -1,12 +1,13 @@
 import 'package:flutter_simple_shopify/enums/enums.dart';
 import 'package:flutter_simple_shopify/enums/src/sort_key_collection.dart';
+import 'package:flutter_simple_shopify/enums/src/sort_key_product.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_collections_optimized.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_from_collection_by_id.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_on_query.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_collections_by_ids.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_metafileds_from_product.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_product_recommendations.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_products_by_ids.dart';
-import 'package:flutter_simple_shopify/graphql_operations/queries/get_metafileds_from_product.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_shop.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_collections_and_n_products_sorted.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor.dart';
@@ -14,9 +15,9 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_on_query_after_cursor.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/product.dart';
-import 'package:flutter_simple_shopify/enums/src/sort_key_product.dart';
 import 'package:flutter_simple_shopify/models/src/shop.dart';
 import 'package:graphql/client.dart';
+
 import '../../graphql_operations/queries/get_featured_collections.dart';
 import '../../graphql_operations/queries/get_n_products.dart';
 import '../../graphql_operations/queries/get_products.dart';
@@ -41,9 +42,12 @@ class ShopifyStore with ShopifyError{
     WatchQueryOptions _options;
     do {
       _options = WatchQueryOptions(
-          document: gql(getProductsQuery),
-          variables: {'cursor': cursor, 'shouldFetchMetafields': metafieldsNamespace != null, 'metafieldsNamespace': metafieldsNamespace}
-        );
+        document: gql(getProductsQuery),
+        variables: {
+          'cursor': cursor,
+          'metafieldsNamespace': metafieldsNamespace,
+        },
+      );
       final QueryResult result = await _graphQLClient.query(_options);
       checkForError(result);
       tempProduct = (Products.fromJson(

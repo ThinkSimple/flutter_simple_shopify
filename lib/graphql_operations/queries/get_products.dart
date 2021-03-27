@@ -1,5 +1,5 @@
 const String getProductsQuery = r'''
-query($cursor : String,  $shouldFetchMetafields : Boolean = false, $metafieldsNamespace : String){
+query($cursor : String, $metafieldsNamespace : String){
   products(first: 250, after: $cursor) {
     pageInfo {
       hasNextPage
@@ -12,7 +12,7 @@ query($cursor : String,  $shouldFetchMetafields : Boolean = false, $metafieldsNa
           name
           values
         }
-        metafields(namespace: $metafieldsNamespace, first: 250) @include(if: $shouldFetchMetafields) {
+        metafields(namespace: $metafieldsNamespace, first: 250) {
           edges {
             node {
               id
