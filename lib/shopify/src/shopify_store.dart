@@ -30,7 +30,7 @@ class ShopifyStore with ShopifyError{
 
   static final ShopifyStore instance = ShopifyStore._();
 
-  GraphQLClient _graphQLClient = ShopifyConfig.graphQLClient;
+  GraphQLClient get _graphQLClient => ShopifyConfig.graphQLClient;
 
   /// Returns a List of [Product].
   ///

@@ -11,7 +11,7 @@ import '../../shopify_config.dart';
 class ShopifyPage with ShopifyError {
   ShopifyPage._();
 
-  final GraphQLClient _graphQLClient = ShopifyConfig.graphQLClient;
+  GraphQLClient get _graphQLClient => ShopifyConfig.graphQLClient;
   static final ShopifyPage instance = ShopifyPage._();
 
   /// Returns a List of [Page].

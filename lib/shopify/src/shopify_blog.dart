@@ -14,7 +14,7 @@ import '../../shopify_config.dart';
 class ShopifyBlog with ShopifyError{
   ShopifyBlog._();
 
-  final GraphQLClient _graphQLClient = ShopifyConfig.graphQLClient;
+  GraphQLClient get _graphQLClient => ShopifyConfig.graphQLClient;
   static final ShopifyBlog instance = ShopifyBlog._();
 
   /// Returns a List of [Blog].

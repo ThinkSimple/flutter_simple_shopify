@@ -14,7 +14,7 @@ import '../../shopify_config.dart';
 /// ShopifyAuth class handles the authentication.
 class ShopifyAuth with ShopifyError {
   ShopifyAuth._();
-  final GraphQLClient _graphQLClient = ShopifyConfig.graphQLClient;
+  GraphQLClient get _graphQLClient => ShopifyConfig.graphQLClient;
 
   static final ShopifyAuth instance = ShopifyAuth._();
 

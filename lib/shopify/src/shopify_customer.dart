@@ -13,7 +13,7 @@ class ShopifyCustomer with ShopifyError{
 
   static final ShopifyCustomer instance = ShopifyCustomer._();
 
-  GraphQLClient _graphQLClient = ShopifyConfig.graphQLClient;
+  GraphQLClient get _graphQLClient => ShopifyConfig.graphQLClient;
 
   /// Updated the Address of a Customer, please input only the fields that you wish to update.
   Future<void> customerAddressUpdate(

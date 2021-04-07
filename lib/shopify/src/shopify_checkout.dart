@@ -27,7 +27,7 @@ class ShopifyCheckout with ShopifyError{
   ShopifyCheckout._();
   static final ShopifyCheckout instance = ShopifyCheckout._();
 
-  GraphQLClient _graphQLClient = ShopifyConfig.graphQLClient;
+  GraphQLClient get _graphQLClient => ShopifyConfig.graphQLClient;
 
   /// Returns a [Checkout] object.
   ///
