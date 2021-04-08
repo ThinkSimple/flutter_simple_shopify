@@ -1,7 +1,6 @@
 import 'package:graphql/client.dart';
 
 class ShopifyConfig {
-
   /// Your own unique access key found on your Shopify dashboard under apps -> manage private apps -> your-app-name .
   static String _storefrontAccessToken;
 
@@ -9,6 +8,8 @@ class ShopifyConfig {
   ///
   /// eg: "shopname.myshopify.com"
   static String _storeUrl;
+
+  static String get storeUrl => _storeUrl;
 
   /// The version of the Storefront API.
   ///
@@ -29,9 +30,9 @@ class ShopifyConfig {
     String storefrontApiVersion, {
     Store cacheStore,
   }) {
-    _storefrontAccessToken ??= storefrontAccessToken;
-    _storeUrl ??= storeUrl;
-    _storefrontApiVersion = storefrontApiVersion != null ? storefrontApiVersion : _storefrontApiVersion;
+    _storefrontAccessToken = storefrontAccessToken ?? _storefrontAccessToken;
+    _storeUrl = storeUrl ?? _storeUrl;
+    _storefrontApiVersion = storefrontApiVersion ?? _storefrontApiVersion;
     _cacheStore = cacheStore;
   }
 

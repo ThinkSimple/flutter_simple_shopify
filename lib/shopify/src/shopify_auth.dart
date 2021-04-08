@@ -20,14 +20,21 @@ class ShopifyAuth with ShopifyError {
 
   static ShopifyUser _shopifyUser;
 
+  @deprecated
   static const String _shopifyKey = 'FLUTTER_SIMPLE_SHOPIFY_ACCESS_TOKEN';
 
-  static String _currentCustomerAccessToken;
+  static Map<String, String> _currentCustomerAccessToken;
 
-  static Future<String> get currentCustomerAccessToken async =>
-      _currentCustomerAccessToken ??
-      (_currentCustomerAccessToken =
-          (await SharedPreferences.getInstance()).getString(_shopifyKey));
+  static Future<String> get currentCustomerAccessToken async {
+    if (_currentCustomerAccessToken.containsKey(ShopifyConfig.storeUrl))
+      return _currentCustomerAccessToken[ShopifyConfig.storeUrl];
+    final _prefs = await SharedPreferences.getInstance();
+    if (_prefs.containsKey(ShopifyConfig.storeUrl))
+      return _currentCustomerAccessToken[ShopifyConfig.storeUrl] =
+          _prefs.getString(ShopifyConfig.storeUrl);
+    return _currentCustomerAccessToken[ShopifyConfig.storeUrl] =
+        _prefs.getString(_shopifyKey);
+  }
 
   /// Tries to create a new user account with the given email address and password.
   Future<ShopifyUser> createUserWithEmailAndPassword({
@@ -156,14 +163,19 @@ class ShopifyAuth with ShopifyError {
     }
   }
 
-  Future<void> _setShopifyUser(String sharedPrefsToken, ShopifyUser shopifyUser) async {
-    _currentCustomerAccessToken = sharedPrefsToken;
+  Future<void> _setShopifyUser(
+    String sharedPrefsToken,
+    ShopifyUser shopifyUser,
+  ) async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     _shopifyUser = shopifyUser;
     if (sharedPrefsToken == null) {
+      _currentCustomerAccessToken.remove(ShopifyConfig.storeUrl);
       _prefs.remove(_shopifyKey);
+      _prefs.remove(ShopifyConfig.storeUrl);
     } else {
-      _prefs.setString(_shopifyKey, sharedPrefsToken);
+      _currentCustomerAccessToken[ShopifyConfig.storeUrl] = sharedPrefsToken;
+      _prefs.setString(ShopifyConfig.storeUrl, sharedPrefsToken);
     }
   }
 }
