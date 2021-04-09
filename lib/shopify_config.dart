@@ -34,18 +34,21 @@ class ShopifyConfig {
     _storeUrl = storeUrl ?? _storeUrl;
     _storefrontApiVersion = storefrontApiVersion ?? _storefrontApiVersion;
     _cacheStore = cacheStore;
+    _graphQLClient = GraphQLClient(
+      link: HttpLink(
+        'https://$_storeUrl/api/$_storefrontApiVersion/graphql.json',
+        defaultHeaders: {
+          'X-Shopify-Storefront-Access-Token': _storefrontAccessToken,
+        },
+      ),
+      cache: GraphQLCache(
+        store: _cacheStore,
+      ),
+    );
   }
 
+  static GraphQLClient _graphQLClient;
+
   /// The GraphQlClient used for communication with the Storefront API.
-  static final GraphQLClient graphQLClient = GraphQLClient(
-    link: HttpLink(
-      'https://$_storeUrl/api/$_storefrontApiVersion/graphql.json',
-      defaultHeaders: {
-        'X-Shopify-Storefront-Access-Token': _storefrontAccessToken,
-      },
-    ),
-    cache: GraphQLCache(
-      store: _cacheStore,
-    ),
-  );
+  static GraphQLClient get graphQLClient => _graphQLClient;
 }
