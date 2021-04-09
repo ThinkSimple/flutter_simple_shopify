@@ -21,6 +21,8 @@ class ShopifyConfig {
   /// Default is [InMemoryStore] which does _not_ persist to disk
   static Store _cacheStore;
 
+  static Store get cacheStore => _cacheStore;
+
   /// Sets the config.
   ///
   /// IMPORTANT: preferably call this inside the main function or at least before instantiating other Shopify classes.

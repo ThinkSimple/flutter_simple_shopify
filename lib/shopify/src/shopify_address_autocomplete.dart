@@ -18,7 +18,9 @@ class ShopifyAddressAutocomplete with ShopifyError {
         "origin": "https://checkout.shopify.com",
       },
     ),
-    cache: ShopifyConfig.graphQLClient.cache,
+    cache: GraphQLCache(
+      store: ShopifyConfig.cacheStore,
+    ),
   );
   static final ShopifyAddressAutocomplete instance =
       ShopifyAddressAutocomplete._();
