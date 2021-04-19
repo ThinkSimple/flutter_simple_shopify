@@ -19,49 +19,54 @@ class _CollectionTabState extends State<CollectionTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Collections")),
+      appBar: AppBar(title: const Text('Collections')),
       body: Center(
-        child: _isLoading ? CircularProgressIndicator() :
-        ListView.builder(
-          itemCount: collections.length,
-            itemBuilder: (_,int index) => ListTile(
-              onTap: () => _navigateToCollectionDetailScreen(collections[index].id,collections[index].title),
-              title: Text(collections[index].title),
-            ),
-        ),
+        child: _isLoading
+            ? const CircularProgressIndicator()
+            : ListView.builder(
+                itemCount: collections.length,
+                itemBuilder: (_, int index) => ListTile(
+                  onTap: () => _navigateToCollectionDetailScreen(
+                      collections[index].id, collections[index].title),
+                  title: Text(collections[index].title),
+                ),
+              ),
       ),
     );
   }
 
   Future<void> _fetchCollections() async {
-    try{
-      ShopifyStore shopifyStore = ShopifyStore.instance;
+    try {
+      final shopifyStore = ShopifyStore.instance;
       final collections = await shopifyStore.getAllCollections();
-      if(mounted){
+      if (mounted) {
         setState(() {
           this.collections = collections;
           _isLoading = false;
         });
       }
-    }catch(e){
-      print(e);
+    } catch (e) {
+      debugPrint(e);
     }
   }
 
-  void _navigateToCollectionDetailScreen(String collectionId,String collectionTitle){
-    Navigator.push(context, MaterialPageRoute(
-        builder: (context) => CollectionDetailScreen(
-            collectionId: collectionId,
-            collectionTitle: collectionTitle)));
+  void _navigateToCollectionDetailScreen(
+      String collectionId, String collectionTitle) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => CollectionDetailScreen(
+                collectionId: collectionId, collectionTitle: collectionTitle)));
   }
 }
 
 class CollectionDetailScreen extends StatefulWidget {
+  const CollectionDetailScreen(
+      {Key key, @required this.collectionId, @required this.collectionTitle})
+      : super(key: key);
   final String collectionId;
   final String collectionTitle;
 
-  const CollectionDetailScreen({Key key,@required this.collectionId,@required this.collectionTitle})
-      : super(key: key);
   @override
   _CollectionDetailScreenState createState() => _CollectionDetailScreenState();
 }
@@ -79,35 +84,39 @@ class _CollectionDetailScreenState extends State<CollectionDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.collectionTitle),),
+      appBar: AppBar(
+        title: Text(widget.collectionTitle),
+      ),
       body: Center(
-        child: _isLoading ? CircularProgressIndicator() :
-        ListView.builder(
-          itemCount: products.length,
-            itemBuilder: (_,int index) =>
-                ListTile(title: Text(products[index].title),)),
+        child: _isLoading
+            ? const CircularProgressIndicator()
+            : ListView.builder(
+                itemCount: products.length,
+                itemBuilder: (_, int index) => ListTile(
+                      title: Text(products[index].title),
+                    )),
       ),
     );
   }
 
-  Future<void> _fetchProductsByCollectionId() async{
-    try{
-      ShopifyStore shopifyStore = ShopifyStore.instance;
-      final products = await shopifyStore.getXProductsAfterCursorWithinCollection(
+  Future<void> _fetchProductsByCollectionId() async {
+    try {
+      final shopifyStore = ShopifyStore.instance;
+      final products =
+          await shopifyStore.getXProductsAfterCursorWithinCollection(
         widget.collectionId,
         4,
         null,
         sortKey: SortKeyProductCollection.RELEVANCE,
       );
-      if(mounted){
+      if (mounted) {
         setState(() {
           this.products = products;
           _isLoading = false;
         });
       }
-    }catch(e){
-      print(e);
+    } catch (e) {
+      debugPrint(e);
     }
   }
 }
-

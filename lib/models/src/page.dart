@@ -1,10 +1,10 @@
 class Pages {
   Pages({this.pageList});
 
-  final List<Page> pageList;
+  final List<Page>? pageList;
 
   static Pages fromJson(Map<String, dynamic> json) {
-    return Pages(pageList: _getPageList(json ?? const {}));
+    return Pages(pageList: _getPageList(json));
   }
 
   static List<Page> _getPageList(Map<String, dynamic> json) {
@@ -16,14 +16,14 @@ class Pages {
 }
 
 class Page {
-  final String body;
-  final String bodySummary;
-  final DateTime createdAt;
-  final String handle;
-  final String id;
-  final String title;
-  final DateTime updatedAt;
-  final String url;
+  final String? body;
+  final String? bodySummary;
+  final DateTime? createdAt;
+  final String? handle;
+  final String? id;
+  final String? title;
+  final DateTime? updatedAt;
+  final String? url;
 
   Page({
     this.id,

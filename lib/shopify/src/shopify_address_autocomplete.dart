@@ -30,8 +30,8 @@ class ShopifyAddressAutocomplete with ShopifyError {
   Future<List<AddressPrediction>> getPredictions(
     String query,
     String countryCode, {
-    String locale,
-    LocationInput location,
+    String? locale,
+    LocationInput? location,
     bool deleteThisPartOfCache = false,
   }) async {
     final QueryOptions _options = WatchQueryOptions(
@@ -46,16 +46,16 @@ class ShopifyAddressAutocomplete with ShopifyError {
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
-    return (result.data['predictions'] as List)
+    return (result.data!['predictions'] as List)
         .map((e) => AddressPrediction.fromJson(e))
         .toList();
   }
 
   Future<AddressDetails> getDetails(
     AddressPrediction prediction, {
-    String locale,
+    String? locale,
     bool deleteThisPartOfCache = false,
   }) async {
     final QueryOptions _options = WatchQueryOptions(
@@ -68,8 +68,8 @@ class ShopifyAddressAutocomplete with ShopifyError {
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
-    return AddressDetails.fromJson(result.data['address']);
+    return AddressDetails.fromJson(result.data!['address']);
   }
 }

@@ -7,9 +7,9 @@ import 'search_tab.dart';
 
 void main() {
   ShopifyConfig.setConfig(
-    "STOREFRONT-API-ACCESS-TOKEN",
-    "YOUR-SHOPIFY-WEBSITE",
-    "2020-04",
+    'STOREFRONT-API-ACCESS-TOKEN',
+    'YOUR-SHOPIFY-WEBSITE',
+    '2020-04',
   );
   runApp(MyApp());
 }
@@ -53,13 +53,13 @@ class _MyHomePageState extends State<MyHomePage> {
         fixedColor: Theme.of(context).primaryColor,
         unselectedItemColor: Colors.black,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.category), label: "Collections"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.search), label: "Search"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person), label: "Profile"),
+          const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.category), label: 'Collections'),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.search), label: 'Search'),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
     );

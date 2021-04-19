@@ -7,7 +7,7 @@ class SearchTab extends StatefulWidget {
 }
 
 class _SearchTabState extends State<SearchTab> {
-  final _controller = TextEditingController(text: "");
+  final _controller = TextEditingController(text: '');
   List<Product> products = [];
   bool _isLoading = false;
 
@@ -15,7 +15,7 @@ class _SearchTabState extends State<SearchTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Search"),
+        title: const Text('Search'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -27,26 +27,28 @@ class _SearchTabState extends State<SearchTab> {
                   child: TextFormField(
                       controller: _controller,
                       decoration: InputDecoration(
-                        labelText: "Search...",
+                        labelText: 'Search...',
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.0),
-                          borderSide: BorderSide(),
+                          borderSide: const BorderSide(),
                         ),
                         //fillColor: Colors.green
                       )),
                 ),
-                Padding(padding: const EdgeInsets.all(8)),
+                const Padding(padding: EdgeInsets.all(8)),
                 IconButton(
-                    icon: Icon(Icons.search),
+                    icon: const Icon(Icons.search),
                     onPressed: () => _searchForProduct(_controller.text)),
               ],
             ),
-            Padding(padding: const EdgeInsets.all(10)),
+            const Padding(padding: EdgeInsets.all(10)),
             Center(
-              child: _isLoading ? CircularProgressIndicator() : Column(
-                children: _buildProductList(),
-              ),
+              child: _isLoading
+                  ? const CircularProgressIndicator()
+                  : Column(
+                      children: _buildProductList(),
+                    ),
             )
           ],
         ),
@@ -59,7 +61,7 @@ class _SearchTabState extends State<SearchTab> {
       _isLoading = true;
     });
     try {
-      ShopifyStore shopifyStore = ShopifyStore.instance;
+      final shopifyStore = ShopifyStore.instance;
       final products = await shopifyStore.getXProductsOnQueryAfterCursor(
         searchKeyword,
         4,
@@ -73,12 +75,12 @@ class _SearchTabState extends State<SearchTab> {
         });
       }
     } catch (e) {
-      print(e);
+      debugPrint(e);
     }
   }
 
   List<Widget> _buildProductList() {
-    List<Widget> widgetList = [];
+    final widgetList = [];
     products.forEach((product) => widgetList.add(ListTile(
           title: Text(product.title),
         )));
