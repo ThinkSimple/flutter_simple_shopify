@@ -1,6 +1,6 @@
 class LocationInput {
-  final double latitude;
-  final double longitude;
+  final double? latitude;
+  final double? longitude;
 
   const LocationInput({
     this.latitude,
@@ -16,9 +16,9 @@ class LocationInput {
 }
 
 class AddressPrediction {
-  final String addressId;
-  final String description;
-  final List<MatchedSubstring> matchedSubstrings;
+  final String? addressId;
+  final String? description;
+  final List<MatchedSubstring>? matchedSubstrings;
 
   const AddressPrediction({
     this.addressId,
@@ -38,8 +38,8 @@ class AddressPrediction {
 }
 
 class MatchedSubstring {
-  final int length;
-  final int offset;
+  final int? length;
+  final int? offset;
 
   const MatchedSubstring({
     this.length,
@@ -55,18 +55,18 @@ class MatchedSubstring {
 }
 
 class AddressDetails {
-  final String address1;
-  final String address2;
-  final String city;
-  final String company;
-  final String completionService;
-  final String country;
-  final String countryCode;
-  final double latitude;
-  final double longitude;
-  final String province;
-  final String provinceCode;
-  final String zip;
+  final String? address1;
+  final String? address2;
+  final String? city;
+  final String? company;
+  final String? completionService;
+  final String? country;
+  final String? countryCode;
+  final double? latitude;
+  final double? longitude;
+  final String? province;
+  final String? provinceCode;
+  final String? zip;
 
   const AddressDetails({
     this.address1,

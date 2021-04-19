@@ -9,7 +9,9 @@ class _ProfileTabState extends State<ProfileTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Profile"),),
+      appBar: AppBar(
+        title: const Text('Profile'),
+      ),
     );
   }
 }
