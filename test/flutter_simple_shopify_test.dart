@@ -1,4 +1,4 @@
-import 'package:flutter_simple_shopify/flutter_simple_shopify.dart';
+import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
