@@ -7,7 +7,7 @@ import '../../graphql_operations/mutations/customer_access_token_create.dart';
 import '../../graphql_operations/mutations/customer_create.dart';
 import '../../graphql_operations/mutations/customer_recover.dart';
 import '../../graphql_operations/queries/get_customer.dart';
-import '../../models/src/shopify_user.dart';
+import '../../models/src/shopify_user/shopify_user.dart';
 import '../../shopify_config.dart';
 
 /// ShopifyAuth class handles the authentication.

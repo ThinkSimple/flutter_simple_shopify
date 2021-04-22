@@ -1,9 +1,8 @@
-export 'src/checkout.dart';
-export 'src/collection.dart';
-export 'src/order.dart';
+export 'src/checkout/checkout.dart';
+export 'src/collection/collection.dart';
+export 'src/order/order.dart';
 export 'src/product/product.dart';
-export 'src/shopify_user.dart';
-export 'src/article.dart';
-export 'src/blog.dart';
-export 'src/shop.dart';
-export 'src/address_autocomplete.dart';
+export 'src/shopify_user/shopify_user.dart';
+export 'src/article/article.dart';
+export 'src/blog/blog.dart';
+export 'src/shop/shop.dart';

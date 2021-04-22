@@ -4,8 +4,10 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_blogs.
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_blog_by_handle.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_n_articles_sorted.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
-import 'package:flutter_simple_shopify/models/src/article.dart';
-import 'package:flutter_simple_shopify/models/src/blog.dart';
+import 'package:flutter_simple_shopify/models/src/article/article.dart';
+import 'package:flutter_simple_shopify/models/src/article/articles/articles.dart';
+import 'package:flutter_simple_shopify/models/src/blog/blog.dart';
+import 'package:flutter_simple_shopify/models/src/blog/blogs/blogs.dart';
 import 'package:graphql/client.dart';
 
 import '../../shopify_config.dart';

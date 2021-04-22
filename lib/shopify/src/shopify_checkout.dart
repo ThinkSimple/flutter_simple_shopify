@@ -5,8 +5,9 @@ import 'package:flutter_simple_shopify/graphql_operations/mutations/create_check
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_requires_shipping.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_without_shipping_rates.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
-import 'package:flutter_simple_shopify/models/src/order.dart';
-import 'package:flutter_simple_shopify/models/src/shopify_user.dart';
+import 'package:flutter_simple_shopify/models/src/order/order.dart';
+import 'package:flutter_simple_shopify/models/src/order/orders/orders.dart';
+import 'package:flutter_simple_shopify/models/src/shopify_user/address/address.dart';
 import 'package:graphql/client.dart';
 
 import '../../graphql_operations/mutations/checkout_associate_customer.dart';
@@ -18,7 +19,7 @@ import '../../graphql_operations/mutations/checkout_giftcard_remove.dart';
 import '../../graphql_operations/mutations/checkout_giftcards_append.dart';
 import '../../graphql_operations/queries/get_all_orders.dart';
 import '../../graphql_operations/queries/get_checkout_information.dart';
-import '../../models/src/checkout.dart';
+import '../../models/src/checkout/checkout.dart';
 import '../../shopify_config.dart';
 
 /// ShopifyCheckout provides various method in order to work with checkouts.
