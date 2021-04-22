@@ -1,0 +1,228 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+
+part of 'line_item.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+class _$LineItemTearOff {
+  const _$LineItemTearOff();
+
+  _LineItem call(
+      {String? id,
+      int? quantity,
+      ProductVariantCheckout? variant,
+      String? title}) {
+    return _LineItem(
+      id: id,
+      quantity: quantity,
+      variant: variant,
+      title: title,
+    );
+  }
+}
+
+/// @nodoc
+const $LineItem = _$LineItemTearOff();
+
+/// @nodoc
+mixin _$LineItem {
+  String? get id => throw _privateConstructorUsedError;
+  int? get quantity => throw _privateConstructorUsedError;
+  ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $LineItemCopyWith<LineItem> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LineItemCopyWith<$Res> {
+  factory $LineItemCopyWith(LineItem value, $Res Function(LineItem) then) =
+      _$LineItemCopyWithImpl<$Res>;
+  $Res call(
+      {String? id,
+      int? quantity,
+      ProductVariantCheckout? variant,
+      String? title});
+
+  $ProductVariantCheckoutCopyWith<$Res>? get variant;
+}
+
+/// @nodoc
+class _$LineItemCopyWithImpl<$Res> implements $LineItemCopyWith<$Res> {
+  _$LineItemCopyWithImpl(this._value, this._then);
+
+  final LineItem _value;
+  // ignore: unused_field
+  final $Res Function(LineItem) _then;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? quantity = freezed,
+    Object? variant = freezed,
+    Object? title = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int?,
+      variant: variant == freezed
+          ? _value.variant
+          : variant // ignore: cast_nullable_to_non_nullable
+              as ProductVariantCheckout?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  @override
+  $ProductVariantCheckoutCopyWith<$Res>? get variant {
+    if (_value.variant == null) {
+      return null;
+    }
+
+    return $ProductVariantCheckoutCopyWith<$Res>(_value.variant!, (value) {
+      return _then(_value.copyWith(variant: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$LineItemCopyWith<$Res> implements $LineItemCopyWith<$Res> {
+  factory _$LineItemCopyWith(_LineItem value, $Res Function(_LineItem) then) =
+      __$LineItemCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String? id,
+      int? quantity,
+      ProductVariantCheckout? variant,
+      String? title});
+
+  @override
+  $ProductVariantCheckoutCopyWith<$Res>? get variant;
+}
+
+/// @nodoc
+class __$LineItemCopyWithImpl<$Res> extends _$LineItemCopyWithImpl<$Res>
+    implements _$LineItemCopyWith<$Res> {
+  __$LineItemCopyWithImpl(_LineItem _value, $Res Function(_LineItem) _then)
+      : super(_value, (v) => _then(v as _LineItem));
+
+  @override
+  _LineItem get _value => super._value as _LineItem;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? quantity = freezed,
+    Object? variant = freezed,
+    Object? title = freezed,
+  }) {
+    return _then(_LineItem(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int?,
+      variant: variant == freezed
+          ? _value.variant
+          : variant // ignore: cast_nullable_to_non_nullable
+              as ProductVariantCheckout?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_LineItem extends _LineItem {
+  _$_LineItem({this.id, this.quantity, this.variant, this.title}) : super._();
+
+  @override
+  final String? id;
+  @override
+  final int? quantity;
+  @override
+  final ProductVariantCheckout? variant;
+  @override
+  final String? title;
+
+  @override
+  String toString() {
+    return 'LineItem(id: $id, quantity: $quantity, variant: $variant, title: $title)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _LineItem &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.quantity, quantity) ||
+                const DeepCollectionEquality()
+                    .equals(other.quantity, quantity)) &&
+            (identical(other.variant, variant) ||
+                const DeepCollectionEquality()
+                    .equals(other.variant, variant)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(quantity) ^
+      const DeepCollectionEquality().hash(variant) ^
+      const DeepCollectionEquality().hash(title);
+
+  @JsonKey(ignore: true)
+  @override
+  _$LineItemCopyWith<_LineItem> get copyWith =>
+      __$LineItemCopyWithImpl<_LineItem>(this, _$identity);
+}
+
+abstract class _LineItem extends LineItem {
+  factory _LineItem(
+      {String? id,
+      int? quantity,
+      ProductVariantCheckout? variant,
+      String? title}) = _$_LineItem;
+  _LineItem._() : super._();
+
+  @override
+  String? get id => throw _privateConstructorUsedError;
+  @override
+  int? get quantity => throw _privateConstructorUsedError;
+  @override
+  ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
+  @override
+  String? get title => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$LineItemCopyWith<_LineItem> get copyWith =>
+      throw _privateConstructorUsedError;
+}

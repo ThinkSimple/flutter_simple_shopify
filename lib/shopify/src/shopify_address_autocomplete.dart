@@ -1,7 +1,9 @@
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_address_details.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_address_predictions.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
-import 'package:flutter_simple_shopify/models/src/address_autocomplete.dart';
+import 'package:flutter_simple_shopify/models/src/address_autocomplete/address_details/address_details.dart';
+import 'package:flutter_simple_shopify/models/src/address_autocomplete/address_prediction/address_prediction.dart';
+import 'package:flutter_simple_shopify/models/src/address_autocomplete/location_input/location_input.dart';
 import 'package:graphql/client.dart';
 import 'package:intl/intl.dart';
 
