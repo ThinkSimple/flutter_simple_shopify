@@ -1,5 +1,6 @@
 import 'package:flutter_simple_shopify/models/src/order.dart';
-import 'package:flutter_simple_shopify/models/src/product.dart';
+import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.dart';
+import 'package:flutter_simple_shopify/models/src/product/shopify_image/shopify_image.dart';
 
 class Checkout {
   final String? id;

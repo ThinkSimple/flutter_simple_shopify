@@ -14,7 +14,9 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor_within_collection.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_on_query_after_cursor.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
-import 'package:flutter_simple_shopify/models/src/product.dart';
+import 'package:flutter_simple_shopify/models/src/product/metafield/metafield.dart';
+import 'package:flutter_simple_shopify/models/src/product/product.dart';
+import 'package:flutter_simple_shopify/models/src/product/products/products.dart';
 import 'package:flutter_simple_shopify/models/src/shop.dart';
 import 'package:graphql/client.dart';
 

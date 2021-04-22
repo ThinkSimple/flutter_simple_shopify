@@ -6,11 +6,8 @@ import 'profile_tab.dart';
 import 'search_tab.dart';
 
 void main() {
-  ShopifyConfig.setConfig(
-    'STOREFRONT-API-ACCESS-TOKEN',
-    'YOUR-SHOPIFY-WEBSITE',
-    '2020-04',
-  );
+  ShopifyConfig.setConfig('9a6f9561ad910bd37b7ec9df8dbaa866',
+      'cleansimpleeats.myshopify.com', '2020-10');
   runApp(MyApp());
 }
 
@@ -33,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
-  final _tabs = [
+  List<Widget> _tabs = [
     HomeTab(),
     CollectionTab(),
     SearchTab(),

@@ -9,7 +9,6 @@ import 'package:flutter_simple_shopify/models/src/order.dart';
 import 'package:flutter_simple_shopify/models/src/shopify_user.dart';
 import 'package:graphql/client.dart';
 
-import '../../graphql_operations/mutations/add_item(s)_to_checkout.dart';
 import '../../graphql_operations/mutations/checkout_associate_customer.dart';
 import '../../graphql_operations/mutations/checkout_attributes_update.dart';
 import '../../graphql_operations/mutations/checkout_customer_disassociate.dart';
@@ -121,29 +120,6 @@ class ShopifyCheckout with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return orders.orderList;
-  }
-
-  /// Replaces the [LineItems] in the [Checkout] associated to the [checkoutId].
-  ///
-  /// [checkoutLineItems] is a List of Variant Ids
-  Future<void> checkoutLineItemsReplace(
-      String checkoutId, List<String> variantIdList,
-      {bool deleteThisPartOfCache = false}) async {
-    var checkoutLineItems = transformVariantIdListIntoListOfMaps(variantIdList);
-    final MutationOptions _options =
-        MutationOptions(document: gql(replaceCheckoutItems), variables: {
-      'checkoutId': checkoutId,
-      'checkoutLineItems': checkoutLineItems,
-    });
-    final QueryResult result = await _graphQLClient!.mutate(_options);
-    checkForError(
-      result,
-      key: 'checkoutLineItemsReplace',
-      errorKey: 'userErrors',
-    );
-    if (deleteThisPartOfCache) {
-      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
-    }
   }
 
   /// Updates the shipping address on given [checkoutId]

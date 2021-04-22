@@ -1,4 +1,5 @@
-import 'package:flutter_simple_shopify/models/src/product.dart';
+
+import 'package:flutter_simple_shopify/models/src/product/shopify_image/shopify_image.dart';
 
 class Articles {
   final List<Article>? articleList;

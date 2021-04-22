@@ -39,7 +39,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   }
 
   List<Widget> _buildProductVariants() {
-    final widgetList = [];
+    List<Widget> widgetList = [];
     product.productVariants.forEach((variant) => widgetList.add(ListTile(
           title: Text(variant.title),
           trailing: Text(variant.price.formattedPrice),
