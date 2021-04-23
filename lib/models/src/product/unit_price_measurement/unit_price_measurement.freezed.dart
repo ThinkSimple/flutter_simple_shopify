@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+UnitPriceMeasurement _$UnitPriceMeasurementFromJson(Map<String, dynamic> json) {
+  return _UnitPriceMeasurement.fromJson(json);
+}
+
 /// @nodoc
 class _$UnitPriceMeasurementTearOff {
   const _$UnitPriceMeasurementTearOff();
@@ -30,6 +34,10 @@ class _$UnitPriceMeasurementTearOff {
       referenceValue: referenceValue,
     );
   }
+
+  UnitPriceMeasurement fromJson(Map<String, Object> json) {
+    return UnitPriceMeasurement.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -43,6 +51,7 @@ mixin _$UnitPriceMeasurement {
   String? get referenceUnit => throw _privateConstructorUsedError;
   int? get referenceValue => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $UnitPriceMeasurementCopyWith<UnitPriceMeasurement> get copyWith =>
       throw _privateConstructorUsedError;
@@ -162,6 +171,8 @@ class __$UnitPriceMeasurementCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_UnitPriceMeasurement extends _UnitPriceMeasurement {
   _$_UnitPriceMeasurement(
@@ -171,6 +182,9 @@ class _$_UnitPriceMeasurement extends _UnitPriceMeasurement {
       this.referenceUnit,
       this.referenceValue})
       : super._();
+
+  factory _$_UnitPriceMeasurement.fromJson(Map<String, dynamic> json) =>
+      _$_$_UnitPriceMeasurementFromJson(json);
 
   @override
   final String? measuredType;
@@ -223,6 +237,11 @@ class _$_UnitPriceMeasurement extends _UnitPriceMeasurement {
   _$UnitPriceMeasurementCopyWith<_UnitPriceMeasurement> get copyWith =>
       __$UnitPriceMeasurementCopyWithImpl<_UnitPriceMeasurement>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_UnitPriceMeasurementToJson(this);
+  }
 }
 
 abstract class _UnitPriceMeasurement extends UnitPriceMeasurement {
@@ -233,6 +252,9 @@ abstract class _UnitPriceMeasurement extends UnitPriceMeasurement {
       String? referenceUnit,
       int? referenceValue}) = _$_UnitPriceMeasurement;
   _UnitPriceMeasurement._() : super._();
+
+  factory _UnitPriceMeasurement.fromJson(Map<String, dynamic> json) =
+      _$_UnitPriceMeasurement.fromJson;
 
   @override
   String? get measuredType => throw _privateConstructorUsedError;

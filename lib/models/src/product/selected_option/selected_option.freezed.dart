@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+SelectedOption _$SelectedOptionFromJson(Map<String, dynamic> json) {
+  return _SelectedOption.fromJson(json);
+}
+
 /// @nodoc
 class _$SelectedOptionTearOff {
   const _$SelectedOptionTearOff();
@@ -21,6 +25,10 @@ class _$SelectedOptionTearOff {
       name: name,
       value: value,
     );
+  }
+
+  SelectedOption fromJson(Map<String, Object> json) {
+    return SelectedOption.fromJson(json);
   }
 }
 
@@ -32,6 +40,7 @@ mixin _$SelectedOption {
   String? get name => throw _privateConstructorUsedError;
   String? get value => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SelectedOptionCopyWith<SelectedOption> get copyWith =>
       throw _privateConstructorUsedError;
@@ -111,9 +120,14 @@ class __$SelectedOptionCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_SelectedOption extends _SelectedOption {
   _$_SelectedOption({this.name, this.value}) : super._();
+
+  factory _$_SelectedOption.fromJson(Map<String, dynamic> json) =>
+      _$_$_SelectedOptionFromJson(json);
 
   @override
   final String? name;
@@ -145,11 +159,19 @@ class _$_SelectedOption extends _SelectedOption {
   @override
   _$SelectedOptionCopyWith<_SelectedOption> get copyWith =>
       __$SelectedOptionCopyWithImpl<_SelectedOption>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_SelectedOptionToJson(this);
+  }
 }
 
 abstract class _SelectedOption extends SelectedOption {
   factory _SelectedOption({String? name, String? value}) = _$_SelectedOption;
   _SelectedOption._() : super._();
+
+  factory _SelectedOption.fromJson(Map<String, dynamic> json) =
+      _$_SelectedOption.fromJson;
 
   @override
   String? get name => throw _privateConstructorUsedError;

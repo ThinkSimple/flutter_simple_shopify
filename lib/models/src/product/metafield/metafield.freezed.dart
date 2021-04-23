@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Metafield _$MetafieldFromJson(Map<String, dynamic> json) {
+  return _Metafield.fromJson(json);
+}
+
 /// @nodoc
 class _$MetafieldTearOff {
   const _$MetafieldTearOff();
@@ -32,6 +36,10 @@ class _$MetafieldTearOff {
       description: description,
     );
   }
+
+  Metafield fromJson(Map<String, Object> json) {
+    return Metafield.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -46,6 +54,7 @@ mixin _$Metafield {
   String? get valueType => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $MetafieldCopyWith<Metafield> get copyWith =>
       throw _privateConstructorUsedError;
@@ -172,6 +181,8 @@ class __$MetafieldCopyWithImpl<$Res> extends _$MetafieldCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Metafield extends _Metafield {
   _$_Metafield(
@@ -182,6 +193,9 @@ class _$_Metafield extends _Metafield {
       this.valueType,
       this.description})
       : super._();
+
+  factory _$_Metafield.fromJson(Map<String, dynamic> json) =>
+      _$_$_MetafieldFromJson(json);
 
   @override
   final String? id;
@@ -236,6 +250,11 @@ class _$_Metafield extends _Metafield {
   @override
   _$MetafieldCopyWith<_Metafield> get copyWith =>
       __$MetafieldCopyWithImpl<_Metafield>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_MetafieldToJson(this);
+  }
 }
 
 abstract class _Metafield extends Metafield {
@@ -247,6 +266,9 @@ abstract class _Metafield extends Metafield {
       String? valueType,
       String? description}) = _$_Metafield;
   _Metafield._() : super._();
+
+  factory _Metafield.fromJson(Map<String, dynamic> json) =
+      _$_Metafield.fromJson;
 
   @override
   String? get id => throw _privateConstructorUsedError;

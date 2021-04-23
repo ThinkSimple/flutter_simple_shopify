@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ShopifyImage _$ShopifyImageFromJson(Map<String, dynamic> json) {
+  return _ShopifyImage.fromJson(json);
+}
+
 /// @nodoc
 class _$ShopifyImageTearOff {
   const _$ShopifyImageTearOff();
@@ -22,6 +26,10 @@ class _$ShopifyImageTearOff {
       originalSource: originalSource,
       id: id,
     );
+  }
+
+  ShopifyImage fromJson(Map<String, Object> json) {
+    return ShopifyImage.fromJson(json);
   }
 }
 
@@ -34,6 +42,7 @@ mixin _$ShopifyImage {
   String? get originalSource => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ShopifyImageCopyWith<ShopifyImage> get copyWith =>
       throw _privateConstructorUsedError;
@@ -121,9 +130,14 @@ class __$ShopifyImageCopyWithImpl<$Res> extends _$ShopifyImageCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_ShopifyImage extends _ShopifyImage {
   _$_ShopifyImage({this.altText, this.originalSource, this.id}) : super._();
+
+  factory _$_ShopifyImage.fromJson(Map<String, dynamic> json) =>
+      _$_$_ShopifyImageFromJson(json);
 
   @override
   final String? altText;
@@ -162,12 +176,20 @@ class _$_ShopifyImage extends _ShopifyImage {
   @override
   _$ShopifyImageCopyWith<_ShopifyImage> get copyWith =>
       __$ShopifyImageCopyWithImpl<_ShopifyImage>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ShopifyImageToJson(this);
+  }
 }
 
 abstract class _ShopifyImage extends ShopifyImage {
   factory _ShopifyImage({String? altText, String? originalSource, String? id}) =
       _$_ShopifyImage;
   _ShopifyImage._() : super._();
+
+  factory _ShopifyImage.fromJson(Map<String, dynamic> json) =
+      _$_ShopifyImage.fromJson;
 
   @override
   String? get altText => throw _privateConstructorUsedError;

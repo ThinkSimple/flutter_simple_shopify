@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'unit_price_measurement.freezed.dart';
+part 'unit_price_measurement.g.dart';
 
 @freezed
 class UnitPriceMeasurement with _$UnitPriceMeasurement {
@@ -13,13 +14,6 @@ class UnitPriceMeasurement with _$UnitPriceMeasurement {
     int? referenceValue,
   }) = _UnitPriceMeasurement;
 
-  static UnitPriceMeasurement fromJson(Map<String, dynamic> json) {
-    return UnitPriceMeasurement(
-      measuredType: json['measuredType'],
-      quantityUnit: json['quantityUnit'],
-      quantityValue: json['quantityValue'],
-      referenceUnit: json['referenceUnit'],
-      referenceValue: json['referenceValue'],
-    );
-  }
+  factory UnitPriceMeasurement.fromJson(Map<String, dynamic> json) =>
+      _$UnitPriceMeasurementFromJson(json);
 }

@@ -12,6 +12,11 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+AssociatedCollections _$AssociatedCollectionsFromJson(
+    Map<String, dynamic> json) {
+  return _AssociatedCollections.fromJson(json);
+}
+
 /// @nodoc
 class _$AssociatedCollectionsTearOff {
   const _$AssociatedCollectionsTearOff();
@@ -32,6 +37,10 @@ class _$AssociatedCollectionsTearOff {
       title: title,
     );
   }
+
+  AssociatedCollections fromJson(Map<String, Object> json) {
+    return AssociatedCollections.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -46,6 +55,7 @@ mixin _$AssociatedCollections {
   String? get updatedAt => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AssociatedCollectionsCopyWith<AssociatedCollections> get copyWith =>
       throw _privateConstructorUsedError;
@@ -177,6 +187,8 @@ class __$AssociatedCollectionsCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_AssociatedCollections extends _AssociatedCollections {
   _$_AssociatedCollections(
@@ -187,6 +199,9 @@ class _$_AssociatedCollections extends _AssociatedCollections {
       this.updatedAt,
       this.title})
       : super._();
+
+  factory _$_AssociatedCollections.fromJson(Map<String, dynamic> json) =>
+      _$_$_AssociatedCollectionsFromJson(json);
 
   @override
   final String? description;
@@ -242,6 +257,11 @@ class _$_AssociatedCollections extends _AssociatedCollections {
   _$AssociatedCollectionsCopyWith<_AssociatedCollections> get copyWith =>
       __$AssociatedCollectionsCopyWithImpl<_AssociatedCollections>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_AssociatedCollectionsToJson(this);
+  }
 }
 
 abstract class _AssociatedCollections extends AssociatedCollections {
@@ -253,6 +273,9 @@ abstract class _AssociatedCollections extends AssociatedCollections {
       String? updatedAt,
       String? title}) = _$_AssociatedCollections;
   _AssociatedCollections._() : super._();
+
+  factory _AssociatedCollections.fromJson(Map<String, dynamic> json) =
+      _$_AssociatedCollections.fromJson;
 
   @override
   String? get description => throw _privateConstructorUsedError;

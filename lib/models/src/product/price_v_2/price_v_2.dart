@@ -23,6 +23,15 @@ class PriceV2 with _$PriceV2 {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'amount': amount,
+      'currencyCode': currencyCode,
+      'currencySymbol': currencySymbol,
+      'formattedPrice': formattedPrice
+    };
+  }
+
   static String _chooseRightOrderOnCurrencySymbol(
     Map<String, dynamic> json,
   ) {
@@ -223,4 +232,8 @@ class PriceV2 with _$PriceV2 {
     'ANG': 'ƒ',
     'TMT': 'TMT',
   };
+}
+
+PriceV2 priceV2FromJson(Map<String, dynamic> json) {
+  return PriceV2.fromJson(json);
 }

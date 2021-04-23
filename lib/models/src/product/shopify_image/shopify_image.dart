@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'shopify_image.freezed.dart';
+part 'shopify_image.g.dart';
 
 @freezed
 class ShopifyImage with _$ShopifyImage {
@@ -12,10 +13,6 @@ class ShopifyImage with _$ShopifyImage {
     String? id,
   }) = _ShopifyImage;
 
-  static ShopifyImage fromJson(Map<String, dynamic> json) {
-    return ShopifyImage(
-        altText: json['altText'],
-        originalSource: json['originalSrc'],
-        id: json['id']);
-  }
+ factory ShopifyImage.fromJson(Map<String, dynamic> json) =>
+      _$ShopifyImageFromJson(json);
 }
