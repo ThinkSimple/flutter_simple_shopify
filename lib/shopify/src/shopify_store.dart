@@ -55,7 +55,7 @@ class ShopifyStore with ShopifyError {
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       tempProduct =
-          (Products.fromJson((result.data ?? const {})["products"] ?? {}));
+          (Products.fromGraphJson((result.data ?? const {})["products"] ?? {}));
 
       productList += tempProduct.productList ?? const [];
       cursor = productList.isNotEmpty ? productList.last.cursor : '';
@@ -88,7 +88,7 @@ class ShopifyStore with ShopifyError {
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     tempProduct =
-        (Products.fromJson((result.data ?? const {})["products"] ?? {}));
+        (Products.fromGraphJson((result.data ?? const {})["products"] ?? {}));
     productList += tempProduct.productList ?? const [];
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
@@ -111,7 +111,7 @@ class ShopifyStore with ShopifyError {
       'edges': List.generate(response['nodes'].length,
           (index) => {'node': response['nodes'][index]})
     };
-    productList = Products.fromJson(newResponse).productList;
+    productList = Products.fromGraphJson(newResponse).productList;
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
@@ -147,7 +147,7 @@ class ShopifyStore with ShopifyError {
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     productList =
-        (Products.fromJson((result.data ?? const {})["products"] ?? {}))
+        (Products.fromGraphJson((result.data ?? const {})["products"] ?? {}))
             .productList;
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
@@ -174,7 +174,7 @@ class ShopifyStore with ShopifyError {
                     (result.data!['productRecommendations'] ?? const {})[index]
               });
       var tempProducts = {"edges": newResponse};
-      return Products.fromJson(tempProducts).productList;
+      return Products.fromGraphJson(tempProducts).productList;
     } catch (e) {
       print(e);
     }
@@ -196,7 +196,7 @@ class ShopifyStore with ShopifyError {
       var newResponse = List.generate(result.data!['nodes']?.length ?? 0,
           (index) => {"node": (result.data!['nodes'] ?? const {})[index]});
       var tempCollection = {"edges": newResponse};
-      return Collections.fromJson(tempCollection).collectionList;
+      return Collections.fromGraphJson(tempCollection).collectionList;
     } catch (e) {
       print(e);
     }
@@ -228,8 +228,8 @@ class ShopifyStore with ShopifyError {
       if (deleteThisPartOfCache) {
         _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
       }
-      return Collections.fromJson(result.data!['collections'])
-          .collectionList![0];
+      return Collections.fromGraphJson(result.data!['collections'])
+          .collectionList[0];
     } catch (e) {
       print(e);
     }
@@ -257,9 +257,9 @@ class ShopifyStore with ShopifyError {
           });
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      tempCollection = (Collections.fromJson(
+      tempCollection = (Collections.fromGraphJson(
           (result.data ?? const {})['collections'] ?? {}));
-      collectionList = tempCollection.collectionList! + collectionList;
+      collectionList = tempCollection.collectionList + collectionList;
       cursor = collectionList.isNotEmpty ? collectionList.last.cursor : '';
     } while ((tempCollection.hasNextPage == true));
     if (deleteThisPartOfCache) {
@@ -295,9 +295,9 @@ class ShopifyStore with ShopifyError {
         });
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
-    collectionList =
-        (Collections.fromJson((result.data ?? const {})['collections'] ?? {}))
-            .collectionList;
+    collectionList = (Collections.fromGraphJson(
+            (result.data ?? const {})['collections'] ?? {}))
+        .collectionList;
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
@@ -360,7 +360,7 @@ class ShopifyStore with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
-    return (Collection.fromJson(result.data!)).products!.productList;
+    return (Collection.fromGraphJson(result.data!)).products!.productList;
   }
 
   /// Returns a List of [Product].
@@ -385,9 +385,10 @@ class ShopifyStore with ShopifyError {
           });
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      productList
-          .addAll((Products.fromJson((result.data!)['products'])).productList!);
-      products = (Products.fromJson((result.data ?? const {})['products']));
+      productList.addAll(
+          (Products.fromGraphJson((result.data!)['products'])).productList!);
+      products =
+          (Products.fromGraphJson((result.data ?? const {})['products']));
       cursor = productList.isNotEmpty ? productList.last.cursor : '';
     } while (products.hasNextPage == true);
     if (deleteThisPartOfCache) {
@@ -419,7 +420,8 @@ class ShopifyStore with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
-    return Products.fromJson((result.data ?? const {})['products']).productList;
+    return Products.fromGraphJson((result.data ?? const {})['products'])
+        .productList;
   }
 
   /// Returns a List of [Metafield].

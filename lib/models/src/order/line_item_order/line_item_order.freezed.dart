@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+LineItemOrder _$LineItemOrderFromJson(Map<String, dynamic> json) {
+  return _LineItemOrder.fromJson(json);
+}
+
 /// @nodoc
 class _$LineItemOrderTearOff {
   const _$LineItemOrderTearOff();
@@ -19,8 +23,8 @@ class _$LineItemOrderTearOff {
   _LineItemOrder call(
       {int? currentQuantity,
       List<DiscountAllocations>? discountAllocations,
-      PriceV2? discountedTotalPrice,
-      PriceV2? originalTotalPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? discountedTotalPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? originalTotalPrice,
       int? quantity,
       String? title,
       ProductVariantCheckout? variant}) {
@@ -34,6 +38,10 @@ class _$LineItemOrderTearOff {
       variant: variant,
     );
   }
+
+  LineItemOrder fromJson(Map<String, Object> json) {
+    return LineItemOrder.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -44,12 +52,15 @@ mixin _$LineItemOrder {
   int? get currentQuantity => throw _privateConstructorUsedError;
   List<DiscountAllocations>? get discountAllocations =>
       throw _privateConstructorUsedError;
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get discountedTotalPrice => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get originalTotalPrice => throw _privateConstructorUsedError;
   int? get quantity => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LineItemOrderCopyWith<LineItemOrder> get copyWith =>
       throw _privateConstructorUsedError;
@@ -63,8 +74,8 @@ abstract class $LineItemOrderCopyWith<$Res> {
   $Res call(
       {int? currentQuantity,
       List<DiscountAllocations>? discountAllocations,
-      PriceV2? discountedTotalPrice,
-      PriceV2? originalTotalPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? discountedTotalPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? originalTotalPrice,
       int? quantity,
       String? title,
       ProductVariantCheckout? variant});
@@ -169,8 +180,8 @@ abstract class _$LineItemOrderCopyWith<$Res>
   $Res call(
       {int? currentQuantity,
       List<DiscountAllocations>? discountAllocations,
-      PriceV2? discountedTotalPrice,
-      PriceV2? originalTotalPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? discountedTotalPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? originalTotalPrice,
       int? quantity,
       String? title,
       ProductVariantCheckout? variant});
@@ -237,25 +248,32 @@ class __$LineItemOrderCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_LineItemOrder extends _LineItemOrder {
   _$_LineItemOrder(
       {this.currentQuantity,
       this.discountAllocations,
-      this.discountedTotalPrice,
-      this.originalTotalPrice,
+      @JsonKey(fromJson: priceV2FromJson) this.discountedTotalPrice,
+      @JsonKey(fromJson: priceV2FromJson) this.originalTotalPrice,
       this.quantity,
       this.title,
       this.variant})
       : super._();
+
+  factory _$_LineItemOrder.fromJson(Map<String, dynamic> json) =>
+      _$_$_LineItemOrderFromJson(json);
 
   @override
   final int? currentQuantity;
   @override
   final List<DiscountAllocations>? discountAllocations;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? discountedTotalPrice;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? originalTotalPrice;
   @override
   final int? quantity;
@@ -309,18 +327,26 @@ class _$_LineItemOrder extends _LineItemOrder {
   @override
   _$LineItemOrderCopyWith<_LineItemOrder> get copyWith =>
       __$LineItemOrderCopyWithImpl<_LineItemOrder>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_LineItemOrderToJson(this);
+  }
 }
 
 abstract class _LineItemOrder extends LineItemOrder {
   factory _LineItemOrder(
       {int? currentQuantity,
       List<DiscountAllocations>? discountAllocations,
-      PriceV2? discountedTotalPrice,
-      PriceV2? originalTotalPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? discountedTotalPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? originalTotalPrice,
       int? quantity,
       String? title,
       ProductVariantCheckout? variant}) = _$_LineItemOrder;
   _LineItemOrder._() : super._();
+
+  factory _LineItemOrder.fromJson(Map<String, dynamic> json) =
+      _$_LineItemOrder.fromJson;
 
   @override
   int? get currentQuantity => throw _privateConstructorUsedError;
@@ -328,8 +354,10 @@ abstract class _LineItemOrder extends LineItemOrder {
   List<DiscountAllocations>? get discountAllocations =>
       throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get discountedTotalPrice => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get originalTotalPrice => throw _privateConstructorUsedError;
   @override
   int? get quantity => throw _privateConstructorUsedError;

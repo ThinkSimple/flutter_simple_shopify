@@ -9,7 +9,7 @@ class ShopifyImage with _$ShopifyImage {
 
   factory ShopifyImage({
     String? altText,
-    String? originalSource,
+    String? originalSrc,
     String? id,
   }) = _ShopifyImage;
 

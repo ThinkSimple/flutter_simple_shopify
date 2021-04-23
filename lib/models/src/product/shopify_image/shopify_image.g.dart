@@ -9,7 +9,7 @@ part of 'shopify_image.dart';
 _$_ShopifyImage _$_$_ShopifyImageFromJson(Map<String, dynamic> json) {
   return _$_ShopifyImage(
     altText: json['altText'] as String?,
-    originalSource: json['originalSource'] as String?,
+    originalSrc: json['originalSrc'] as String?,
     id: json['id'] as String?,
   );
 }
@@ -17,6 +17,6 @@ _$_ShopifyImage _$_$_ShopifyImageFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_ShopifyImageToJson(_$_ShopifyImage instance) =>
     <String, dynamic>{
       'altText': instance.altText,
-      'originalSource': instance.originalSource,
+      'originalSrc': instance.originalSrc,
       'id': instance.id,
     };

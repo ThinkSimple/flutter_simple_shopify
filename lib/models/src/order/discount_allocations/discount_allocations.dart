@@ -2,15 +2,15 @@ import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.da
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'discount_allocations.freezed.dart';
+part 'discount_allocations.g.dart';
 
 @freezed
 class DiscountAllocations with _$DiscountAllocations {
   const DiscountAllocations._();
-  factory DiscountAllocations({PriceV2? allocatedAmount}) =
-      _DiscountAllocations;
+  factory DiscountAllocations(
+      {@JsonKey(fromJson: priceV2FromJson)
+          required PriceV2 allocatedAmount}) = _DiscountAllocations;
 
-  static DiscountAllocations fromJson(Map<String, dynamic> json) {
-    return DiscountAllocations(
-        allocatedAmount: PriceV2.fromJson(json['allocatedAmount'] ?? const {}));
-  }
+  factory DiscountAllocations.fromJson(Map<String, dynamic> json) =>
+      _$DiscountAllocationsFromJson(json);
 }

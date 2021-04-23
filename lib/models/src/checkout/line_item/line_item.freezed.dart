@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+LineItem _$LineItemFromJson(Map<String, dynamic> json) {
+  return _LineItem.fromJson(json);
+}
+
 /// @nodoc
 class _$LineItemTearOff {
   const _$LineItemTearOff();
@@ -28,6 +32,10 @@ class _$LineItemTearOff {
       title: title,
     );
   }
+
+  LineItem fromJson(Map<String, Object> json) {
+    return LineItem.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -40,6 +48,7 @@ mixin _$LineItem {
   ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LineItemCopyWith<LineItem> get copyWith =>
       throw _privateConstructorUsedError;
@@ -157,9 +166,14 @@ class __$LineItemCopyWithImpl<$Res> extends _$LineItemCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_LineItem extends _LineItem {
   _$_LineItem({this.id, this.quantity, this.variant, this.title}) : super._();
+
+  factory _$_LineItem.fromJson(Map<String, dynamic> json) =>
+      _$_$_LineItemFromJson(json);
 
   @override
   final String? id;
@@ -203,6 +217,11 @@ class _$_LineItem extends _LineItem {
   @override
   _$LineItemCopyWith<_LineItem> get copyWith =>
       __$LineItemCopyWithImpl<_LineItem>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_LineItemToJson(this);
+  }
 }
 
 abstract class _LineItem extends LineItem {
@@ -212,6 +231,8 @@ abstract class _LineItem extends LineItem {
       ProductVariantCheckout? variant,
       String? title}) = _$_LineItem;
   _LineItem._() : super._();
+
+  factory _LineItem.fromJson(Map<String, dynamic> json) = _$_LineItem.fromJson;
 
   @override
   String? get id => throw _privateConstructorUsedError;

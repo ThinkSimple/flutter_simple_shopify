@@ -12,16 +12,27 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ShippingRates _$ShippingRatesFromJson(Map<String, dynamic> json) {
+  return _ShippingRates.fromJson(json);
+}
+
 /// @nodoc
 class _$ShippingRatesTearOff {
   const _$ShippingRatesTearOff();
 
-  _ShippingRates call({String? handle, String? title, PriceV2? priceV2}) {
+  _ShippingRates call(
+      {String? handle,
+      String? title,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? priceV2}) {
     return _ShippingRates(
       handle: handle,
       title: title,
       priceV2: priceV2,
     );
+  }
+
+  ShippingRates fromJson(Map<String, Object> json) {
+    return ShippingRates.fromJson(json);
   }
 }
 
@@ -32,8 +43,10 @@ const $ShippingRates = _$ShippingRatesTearOff();
 mixin _$ShippingRates {
   String? get handle => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get priceV2 => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ShippingRatesCopyWith<ShippingRates> get copyWith =>
       throw _privateConstructorUsedError;
@@ -44,7 +57,10 @@ abstract class $ShippingRatesCopyWith<$Res> {
   factory $ShippingRatesCopyWith(
           ShippingRates value, $Res Function(ShippingRates) then) =
       _$ShippingRatesCopyWithImpl<$Res>;
-  $Res call({String? handle, String? title, PriceV2? priceV2});
+  $Res call(
+      {String? handle,
+      String? title,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? priceV2});
 
   $PriceV2CopyWith<$Res>? get priceV2;
 }
@@ -99,7 +115,10 @@ abstract class _$ShippingRatesCopyWith<$Res>
           _ShippingRates value, $Res Function(_ShippingRates) then) =
       __$ShippingRatesCopyWithImpl<$Res>;
   @override
-  $Res call({String? handle, String? title, PriceV2? priceV2});
+  $Res call(
+      {String? handle,
+      String? title,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? priceV2});
 
   @override
   $PriceV2CopyWith<$Res>? get priceV2;
@@ -139,15 +158,25 @@ class __$ShippingRatesCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_ShippingRates extends _ShippingRates {
-  _$_ShippingRates({this.handle, this.title, this.priceV2}) : super._();
+  _$_ShippingRates(
+      {this.handle,
+      this.title,
+      @JsonKey(fromJson: priceV2FromJson) this.priceV2})
+      : super._();
+
+  factory _$_ShippingRates.fromJson(Map<String, dynamic> json) =>
+      _$_$_ShippingRatesFromJson(json);
 
   @override
   final String? handle;
   @override
   final String? title;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? priceV2;
 
   @override
@@ -178,18 +207,29 @@ class _$_ShippingRates extends _ShippingRates {
   @override
   _$ShippingRatesCopyWith<_ShippingRates> get copyWith =>
       __$ShippingRatesCopyWithImpl<_ShippingRates>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ShippingRatesToJson(this);
+  }
 }
 
 abstract class _ShippingRates extends ShippingRates {
-  factory _ShippingRates({String? handle, String? title, PriceV2? priceV2}) =
-      _$_ShippingRates;
+  factory _ShippingRates(
+      {String? handle,
+      String? title,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? priceV2}) = _$_ShippingRates;
   _ShippingRates._() : super._();
+
+  factory _ShippingRates.fromJson(Map<String, dynamic> json) =
+      _$_ShippingRates.fromJson;
 
   @override
   String? get handle => throw _privateConstructorUsedError;
   @override
   String? get title => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get priceV2 => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

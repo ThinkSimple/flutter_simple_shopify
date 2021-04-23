@@ -3,6 +3,7 @@ import 'package:flutter_simple_shopify/models/src/product/shopify_image/shopify_
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'collection.freezed.dart';
+part 'collection.g.dart';
 
 @freezed
 class Collection with _$Collection {
@@ -19,7 +20,7 @@ class Collection with _$Collection {
     String? cursor,
   }) = _Collection;
 
-  static Collection fromJson(Map<String, dynamic> json) {
+  static Collection fromGraphJson(Map<String, dynamic> json) {
     return Collection(
       title: (json['node'] ?? const {})['title'],
       description: (json['node'] ?? const {})['description'],
@@ -29,9 +30,12 @@ class Collection with _$Collection {
       updatedAt: (json['node'] ?? const {})['updatedAt'],
       image: ShopifyImage.fromJson(
           (json['node'] ?? const {})['image'] ?? const {}),
-      products:
-          Products.fromJson((json['node'] ?? const {})['products'] ?? const {}),
+      products: Products.fromGraphJson(
+          (json['node'] ?? const {})['products'] ?? const {}),
       cursor: json['cursor'],
     );
   }
+
+  factory Collection.fromJson(Map<String, dynamic> json) =>
+      _$CollectionFromJson(json);
 }

@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Collection _$CollectionFromJson(Map<String, dynamic> json) {
+  return _Collection.fromJson(json);
+}
+
 /// @nodoc
 class _$CollectionTearOff {
   const _$CollectionTearOff();
@@ -38,6 +42,10 @@ class _$CollectionTearOff {
       cursor: cursor,
     );
   }
+
+  Collection fromJson(Map<String, Object> json) {
+    return Collection.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -55,6 +63,7 @@ mixin _$Collection {
   Products? get products => throw _privateConstructorUsedError;
   String? get cursor => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CollectionCopyWith<Collection> get copyWith =>
       throw _privateConstructorUsedError;
@@ -77,6 +86,7 @@ abstract class $CollectionCopyWith<$Res> {
       String? cursor});
 
   $ShopifyImageCopyWith<$Res>? get image;
+  $ProductsCopyWith<$Res>? get products;
 }
 
 /// @nodoc
@@ -149,6 +159,17 @@ class _$CollectionCopyWithImpl<$Res> implements $CollectionCopyWith<$Res> {
       return _then(_value.copyWith(image: value));
     });
   }
+
+  @override
+  $ProductsCopyWith<$Res>? get products {
+    if (_value.products == null) {
+      return null;
+    }
+
+    return $ProductsCopyWith<$Res>(_value.products!, (value) {
+      return _then(_value.copyWith(products: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -170,6 +191,8 @@ abstract class _$CollectionCopyWith<$Res> implements $CollectionCopyWith<$Res> {
 
   @override
   $ShopifyImageCopyWith<$Res>? get image;
+  @override
+  $ProductsCopyWith<$Res>? get products;
 }
 
 /// @nodoc
@@ -235,6 +258,8 @@ class __$CollectionCopyWithImpl<$Res> extends _$CollectionCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Collection extends _Collection {
   _$_Collection(
@@ -248,6 +273,9 @@ class _$_Collection extends _Collection {
       this.products,
       this.cursor})
       : super._();
+
+  factory _$_Collection.fromJson(Map<String, dynamic> json) =>
+      _$_$_CollectionFromJson(json);
 
   @override
   final String? title;
@@ -318,6 +346,11 @@ class _$_Collection extends _Collection {
   @override
   _$CollectionCopyWith<_Collection> get copyWith =>
       __$CollectionCopyWithImpl<_Collection>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_CollectionToJson(this);
+  }
 }
 
 abstract class _Collection extends Collection {
@@ -332,6 +365,9 @@ abstract class _Collection extends Collection {
       Products? products,
       String? cursor}) = _$_Collection;
   _Collection._() : super._();
+
+  factory _Collection.fromJson(Map<String, dynamic> json) =
+      _$_Collection.fromJson;
 
   @override
   String? get title => throw _privateConstructorUsedError;

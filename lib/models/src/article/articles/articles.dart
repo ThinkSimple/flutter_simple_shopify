@@ -1,18 +1,24 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../article.dart';
 
-class Articles {
-  final List<Article>? articleList;
+part 'articles.freezed.dart';
+part 'articles.g.dart';
 
-  Articles({this.articleList});
+@freezed
+class Articles with _$Articles {
+  factory Articles({required List<Article> articleList}) = _Articles;
+  factory Articles.fromJson(Map<String, dynamic> json) =>
+      _$ArticlesFromJson(json);
 
-  static Articles fromJson(Map<String, dynamic> json) {
+  static Articles fromGraphJson(Map<String, dynamic> json) {
     return Articles(articleList: _getArticleList(json));
   }
 
   static _getArticleList(Map<String, dynamic> json) {
     List<Article> articleList = [];
-    json['edges']?.forEach(
-        (article) => articleList.add(Article.fromJson(article ?? const {})));
+    json['edges']?.forEach((article) =>
+        articleList.add(Article.fromGraphJson(article ?? const {})));
     return articleList;
   }
 }

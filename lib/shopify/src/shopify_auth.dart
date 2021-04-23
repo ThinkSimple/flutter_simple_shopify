@@ -59,7 +59,7 @@ class ShopifyAuth with ShopifyError {
       key: 'customerCreate',
       errorKey: 'customerUserErrors',
     );
-    final shopifyUser = ShopifyUser.fromJson(
+    final shopifyUser = ShopifyUser.fromGraphJson(
         (result.data!['customerCreate'] ?? const {})['customer']);
     final String? customerAccessToken = await _createAccessToken(
       email,
@@ -108,7 +108,7 @@ class ShopifyAuth with ShopifyError {
         variables: {'customerAccessToken': customerAccessToken});
     final QueryResult result = await _graphQLClient!.query(_getCustomer);
     checkForError(result);
-    final shopifyUser = ShopifyUser.fromJson(result.data!['customer']);
+    final shopifyUser = ShopifyUser.fromGraphJson(result.data!['customer']);
     await _setShopifyUser(customerAccessToken, shopifyUser);
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_getCustomer.asRequest, data: {});
@@ -167,7 +167,7 @@ class ShopifyAuth with ShopifyError {
     } else if (await currentCustomerAccessToken != null) {
       final QueryResult result = (await _graphQLClient!.query(_getCustomer));
       checkForError(result);
-      ShopifyUser user = ShopifyUser.fromJson(
+      ShopifyUser user = ShopifyUser.fromGraphJson(
           (result.data ?? const {})['customer'] ?? const {});
       return user;
     } else {

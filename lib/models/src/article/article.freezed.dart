@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Article _$ArticleFromJson(Map<String, dynamic> json) {
+  return _Article.fromJson(json);
+}
+
 /// @nodoc
 class _$ArticleTearOff {
   const _$ArticleTearOff();
@@ -46,6 +50,10 @@ class _$ArticleTearOff {
       url: url,
     );
   }
+
+  Article fromJson(Map<String, Object> json) {
+    return Article.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -67,6 +75,7 @@ mixin _$Article {
   String? get title => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ArticleCopyWith<Article> get copyWith => throw _privateConstructorUsedError;
 }
@@ -305,6 +314,8 @@ class __$ArticleCopyWithImpl<$Res> extends _$ArticleCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Article extends _Article {
   _$_Article(
@@ -322,6 +333,9 @@ class _$_Article extends _Article {
       this.title,
       this.url})
       : super._();
+
+  factory _$_Article.fromJson(Map<String, dynamic> json) =>
+      _$_$_ArticleFromJson(json);
 
   @override
   final AuthorV2? author;
@@ -414,6 +428,11 @@ class _$_Article extends _Article {
   @override
   _$ArticleCopyWith<_Article> get copyWith =>
       __$ArticleCopyWithImpl<_Article>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ArticleToJson(this);
+  }
 }
 
 abstract class _Article extends Article {
@@ -432,6 +451,8 @@ abstract class _Article extends Article {
       String? title,
       String? url}) = _$_Article;
   _Article._() : super._();
+
+  factory _Article.fromJson(Map<String, dynamic> json) = _$_Article.fromJson;
 
   @override
   AuthorV2? get author => throw _privateConstructorUsedError;

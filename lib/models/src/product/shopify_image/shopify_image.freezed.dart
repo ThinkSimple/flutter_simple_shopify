@@ -20,10 +20,10 @@ ShopifyImage _$ShopifyImageFromJson(Map<String, dynamic> json) {
 class _$ShopifyImageTearOff {
   const _$ShopifyImageTearOff();
 
-  _ShopifyImage call({String? altText, String? originalSource, String? id}) {
+  _ShopifyImage call({String? altText, String? originalSrc, String? id}) {
     return _ShopifyImage(
       altText: altText,
-      originalSource: originalSource,
+      originalSrc: originalSrc,
       id: id,
     );
   }
@@ -39,7 +39,7 @@ const $ShopifyImage = _$ShopifyImageTearOff();
 /// @nodoc
 mixin _$ShopifyImage {
   String? get altText => throw _privateConstructorUsedError;
-  String? get originalSource => throw _privateConstructorUsedError;
+  String? get originalSrc => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ abstract class $ShopifyImageCopyWith<$Res> {
   factory $ShopifyImageCopyWith(
           ShopifyImage value, $Res Function(ShopifyImage) then) =
       _$ShopifyImageCopyWithImpl<$Res>;
-  $Res call({String? altText, String? originalSource, String? id});
+  $Res call({String? altText, String? originalSrc, String? id});
 }
 
 /// @nodoc
@@ -67,7 +67,7 @@ class _$ShopifyImageCopyWithImpl<$Res> implements $ShopifyImageCopyWith<$Res> {
   @override
   $Res call({
     Object? altText = freezed,
-    Object? originalSource = freezed,
+    Object? originalSrc = freezed,
     Object? id = freezed,
   }) {
     return _then(_value.copyWith(
@@ -75,9 +75,9 @@ class _$ShopifyImageCopyWithImpl<$Res> implements $ShopifyImageCopyWith<$Res> {
           ? _value.altText
           : altText // ignore: cast_nullable_to_non_nullable
               as String?,
-      originalSource: originalSource == freezed
-          ? _value.originalSource
-          : originalSource // ignore: cast_nullable_to_non_nullable
+      originalSrc: originalSrc == freezed
+          ? _value.originalSrc
+          : originalSrc // ignore: cast_nullable_to_non_nullable
               as String?,
       id: id == freezed
           ? _value.id
@@ -94,7 +94,7 @@ abstract class _$ShopifyImageCopyWith<$Res>
           _ShopifyImage value, $Res Function(_ShopifyImage) then) =
       __$ShopifyImageCopyWithImpl<$Res>;
   @override
-  $Res call({String? altText, String? originalSource, String? id});
+  $Res call({String? altText, String? originalSrc, String? id});
 }
 
 /// @nodoc
@@ -110,7 +110,7 @@ class __$ShopifyImageCopyWithImpl<$Res> extends _$ShopifyImageCopyWithImpl<$Res>
   @override
   $Res call({
     Object? altText = freezed,
-    Object? originalSource = freezed,
+    Object? originalSrc = freezed,
     Object? id = freezed,
   }) {
     return _then(_ShopifyImage(
@@ -118,9 +118,9 @@ class __$ShopifyImageCopyWithImpl<$Res> extends _$ShopifyImageCopyWithImpl<$Res>
           ? _value.altText
           : altText // ignore: cast_nullable_to_non_nullable
               as String?,
-      originalSource: originalSource == freezed
-          ? _value.originalSource
-          : originalSource // ignore: cast_nullable_to_non_nullable
+      originalSrc: originalSrc == freezed
+          ? _value.originalSrc
+          : originalSrc // ignore: cast_nullable_to_non_nullable
               as String?,
       id: id == freezed
           ? _value.id
@@ -134,7 +134,7 @@ class __$ShopifyImageCopyWithImpl<$Res> extends _$ShopifyImageCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_ShopifyImage extends _ShopifyImage {
-  _$_ShopifyImage({this.altText, this.originalSource, this.id}) : super._();
+  _$_ShopifyImage({this.altText, this.originalSrc, this.id}) : super._();
 
   factory _$_ShopifyImage.fromJson(Map<String, dynamic> json) =>
       _$_$_ShopifyImageFromJson(json);
@@ -142,13 +142,13 @@ class _$_ShopifyImage extends _ShopifyImage {
   @override
   final String? altText;
   @override
-  final String? originalSource;
+  final String? originalSrc;
   @override
   final String? id;
 
   @override
   String toString() {
-    return 'ShopifyImage(altText: $altText, originalSource: $originalSource, id: $id)';
+    return 'ShopifyImage(altText: $altText, originalSrc: $originalSrc, id: $id)';
   }
 
   @override
@@ -158,9 +158,9 @@ class _$_ShopifyImage extends _ShopifyImage {
             (identical(other.altText, altText) ||
                 const DeepCollectionEquality()
                     .equals(other.altText, altText)) &&
-            (identical(other.originalSource, originalSource) ||
+            (identical(other.originalSrc, originalSrc) ||
                 const DeepCollectionEquality()
-                    .equals(other.originalSource, originalSource)) &&
+                    .equals(other.originalSrc, originalSrc)) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)));
   }
@@ -169,7 +169,7 @@ class _$_ShopifyImage extends _ShopifyImage {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(altText) ^
-      const DeepCollectionEquality().hash(originalSource) ^
+      const DeepCollectionEquality().hash(originalSrc) ^
       const DeepCollectionEquality().hash(id);
 
   @JsonKey(ignore: true)
@@ -184,7 +184,7 @@ class _$_ShopifyImage extends _ShopifyImage {
 }
 
 abstract class _ShopifyImage extends ShopifyImage {
-  factory _ShopifyImage({String? altText, String? originalSource, String? id}) =
+  factory _ShopifyImage({String? altText, String? originalSrc, String? id}) =
       _$_ShopifyImage;
   _ShopifyImage._() : super._();
 
@@ -194,7 +194,7 @@ abstract class _ShopifyImage extends ShopifyImage {
   @override
   String? get altText => throw _privateConstructorUsedError;
   @override
-  String? get originalSource => throw _privateConstructorUsedError;
+  String? get originalSrc => throw _privateConstructorUsedError;
   @override
   String? get id => throw _privateConstructorUsedError;
   @override
