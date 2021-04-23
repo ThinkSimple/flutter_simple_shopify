@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_simple_shopify/flutter_simple_shopify.dart';
-import 'collection_tab.dart';
-import 'home_tab.dart';
-import 'profile_tab.dart';
-import 'search_tab.dart';
+
+import 'lib/collection_tab.dart';
+import 'lib/home_tab.dart';
+import 'lib/profile_tab.dart';
+import 'lib/search_tab.dart';
 
 void main() {
   ShopifyConfig.setConfig('9a6f9561ad910bd37b7ec9df8dbaa866',
