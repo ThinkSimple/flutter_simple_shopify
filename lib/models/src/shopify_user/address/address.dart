@@ -1,42 +1,32 @@
-class Address {
-  final String? id;
-  final String? address1;
-  final String? address2;
-  final String? city;
-  final String? company;
-  final String? country;
-  final String? countryCode;
-  final String? firstName;
-  final String? lastName;
-  final String? formattedArea;
-  final String? latitude;
-  final String? longitude;
-  final String? name;
-  final String? phone;
-  final String? province;
-  final String? provinceCode;
-  final String? zip;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  Address(
-      {this.id,
-      this.address1,
-      this.address2,
-      this.city,
-      this.company,
-      this.country,
-      this.countryCode,
-      this.firstName,
-      this.lastName,
-      this.formattedArea,
-      this.latitude,
-      this.longitude,
-      this.name,
-      this.phone,
-      this.province,
-      this.provinceCode,
-      this.zip});
+part 'address.freezed.dart';
+part 'address.g.dart';
 
-  static Address fromJson(Map<String, dynamic> json) {
+@freezed
+class Address with _$Address {
+  const Address._();
+  factory Address({
+    String? id,
+    String? address1,
+    String? address2,
+    String? city,
+    String? company,
+    String? country,
+    String? countryCode,
+    String? firstName,
+    String? lastName,
+    String? formattedArea,
+    String? latitude,
+    String? longitude,
+    String? name,
+    String? phone,
+    String? province,
+    String? provinceCode,
+    String? zip,
+  }) = _Address;
+
+  static Address fromGraphJson(Map<String, dynamic> json) {
     return Address(
         id: (json['node'] ?? const {})['id'],
         address1: (json['node'] ?? const {})['address1'],
@@ -57,31 +47,6 @@ class Address {
         zip: (json['node'] ?? const {})['zip']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'address1': address1,
-      'address2': address2,
-      'company': company,
-      'city': city,
-      'country': country,
-      'firstName': firstName,
-      'countryCode': countryCode,
-      'lastName': lastName,
-      'formattedArea': formattedArea,
-      'latitude': latitude,
-      'longitude': longitude,
-      'name': name,
-      'phone': phone,
-      'province': province,
-      'provinceCode': provinceCode,
-      'zip': zip,
-    };
-  }
-
-  Map<String, dynamic> toJsonNode() {
-    return {
-      'node': toJson(),
-    };
-  }
+  factory Address.fromJson(Map<String, dynamic> json) =>
+      _$AddressFromJson(json);
 }

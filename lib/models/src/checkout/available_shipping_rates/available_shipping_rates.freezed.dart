@@ -12,6 +12,11 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+AvailableShippingRates _$AvailableShippingRatesFromJson(
+    Map<String, dynamic> json) {
+  return _AvailableShippingRates.fromJson(json);
+}
+
 /// @nodoc
 class _$AvailableShippingRatesTearOff {
   const _$AvailableShippingRatesTearOff();
@@ -23,6 +28,10 @@ class _$AvailableShippingRatesTearOff {
       shippingRates: shippingRates,
     );
   }
+
+  AvailableShippingRates fromJson(Map<String, Object> json) {
+    return AvailableShippingRates.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -33,6 +42,7 @@ mixin _$AvailableShippingRates {
   bool? get ready => throw _privateConstructorUsedError;
   List<ShippingRates>? get shippingRates => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AvailableShippingRatesCopyWith<AvailableShippingRates> get copyWith =>
       throw _privateConstructorUsedError;
@@ -112,9 +122,14 @@ class __$AvailableShippingRatesCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_AvailableShippingRates extends _AvailableShippingRates {
   _$_AvailableShippingRates({this.ready, this.shippingRates}) : super._();
+
+  factory _$_AvailableShippingRates.fromJson(Map<String, dynamic> json) =>
+      _$_$_AvailableShippingRatesFromJson(json);
 
   @override
   final bool? ready;
@@ -148,6 +163,11 @@ class _$_AvailableShippingRates extends _AvailableShippingRates {
   _$AvailableShippingRatesCopyWith<_AvailableShippingRates> get copyWith =>
       __$AvailableShippingRatesCopyWithImpl<_AvailableShippingRates>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_AvailableShippingRatesToJson(this);
+  }
 }
 
 abstract class _AvailableShippingRates extends AvailableShippingRates {
@@ -155,6 +175,9 @@ abstract class _AvailableShippingRates extends AvailableShippingRates {
       {bool? ready,
       List<ShippingRates>? shippingRates}) = _$_AvailableShippingRates;
   _AvailableShippingRates._() : super._();
+
+  factory _AvailableShippingRates.fromJson(Map<String, dynamic> json) =
+      _$_AvailableShippingRates.fromJson;
 
   @override
   bool? get ready => throw _privateConstructorUsedError;

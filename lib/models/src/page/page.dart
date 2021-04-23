@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'page.freezed.dart';
+part 'page.g.dart';
 
 @freezed
 class Page with _$Page {
@@ -16,7 +17,7 @@ class Page with _$Page {
     String? url,
   }) = _Page;
 
-  static Page fromJson(Map<String, dynamic> json) {
+  static Page fromGraphJson(Map<String, dynamic> json) {
     return Page(
       id: (json['node'] ?? {})['id'],
       handle: (json['node'] ?? {})['handle'],
@@ -28,4 +29,6 @@ class Page with _$Page {
       updatedAt: DateTime.tryParse(((json['node'] ?? const {})['updatedAt'])),
     );
   }
+
+  factory Page.fromJson(Map<String, dynamic> json) => _$PageFromJson(json);
 }

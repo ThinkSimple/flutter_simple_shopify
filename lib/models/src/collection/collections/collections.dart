@@ -1,12 +1,20 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../collection.dart';
 
-class Collections {
-  final List<Collection>? collectionList;
-  final bool? hasNextPage;
+part 'collections.freezed.dart';
+part 'collections.g.dart';
 
-  Collections({this.collectionList, this.hasNextPage});
+@freezed
+class Collections with _$Collections {
+  factory Collections(
+      {required List<Collection> collectionList,
+      required bool hasNextPage}) = _Collections;
 
-  static Collections fromJson(Map<String, dynamic> json) {
+  factory Collections.fromJson(Map<String, dynamic> json) =>
+      _$CollectionsFromJson(json);
+
+  static Collections fromGraphJson(Map<String, dynamic> json) {
     return Collections(
         collectionList: _getCollectionList(json),
         hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage']);
@@ -15,7 +23,7 @@ class Collections {
   static List<Collection> _getCollectionList(Map<String, dynamic> json) {
     List<Collection> collectionList = [];
     json['edges']?.forEach(
-        (e) => collectionList.add(Collection.fromJson(e ?? const {})));
+        (e) => collectionList.add(Collection.fromGraphJson(e ?? const {})));
     return collectionList;
   }
 }

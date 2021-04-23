@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'comment.freezed.dart';
+part 'comment.g.dart';
 
 @freezed
 class Comment with _$Comment {
@@ -13,7 +14,10 @@ class Comment with _$Comment {
     String? id,
   }) = _Comment;
 
-  static Comment fromJson(Map<String, dynamic> json) {
+  factory Comment.fromJson(Map<String, dynamic> json) =>
+      _$CommentFromJson(json);
+
+  static Comment fromGraphJson(Map<String, dynamic> json) {
     return Comment(
         email: ((json['node'] ?? const {})['author'] ?? const {})['email'],
         name: ((json['node'] ?? const {})['author'] ?? const {})['name'],

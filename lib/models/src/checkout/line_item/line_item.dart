@@ -2,6 +2,7 @@ import 'package:flutter_simple_shopify/models/src/checkout/product_variant_check
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'line_item.freezed.dart';
+part 'line_item.g.dart';
 
 @freezed
 class LineItem with _$LineItem {
@@ -12,7 +13,7 @@ class LineItem with _$LineItem {
       ProductVariantCheckout? variant,
       String? title}) = _LineItem;
 
-  static LineItem fromJson(Map<String, dynamic> json) {
+  static LineItem fromGraphJson(Map<String, dynamic> json) {
     return LineItem(
       id: (json['node'] ?? const {})['id'],
       quantity: (json['node'] ?? const {})['quantity'],
@@ -21,4 +22,7 @@ class LineItem with _$LineItem {
       title: (json['node'] ?? const {})['title'],
     );
   }
+
+  factory LineItem.fromJson(Map<String, dynamic> json) =>
+      _$LineItemFromJson(json);
 }

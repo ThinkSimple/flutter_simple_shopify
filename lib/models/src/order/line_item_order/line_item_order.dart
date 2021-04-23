@@ -4,6 +4,7 @@ import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.da
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'line_item_order.freezed.dart';
+part 'line_item_order.g.dart';
 
 @freezed
 class LineItemOrder with _$LineItemOrder {
@@ -12,14 +13,17 @@ class LineItemOrder with _$LineItemOrder {
   factory LineItemOrder({
     int? currentQuantity,
     List<DiscountAllocations>? discountAllocations,
-    PriceV2? discountedTotalPrice,
-    PriceV2? originalTotalPrice,
+    @JsonKey(fromJson: priceV2FromJson) PriceV2? discountedTotalPrice,
+    @JsonKey(fromJson: priceV2FromJson) PriceV2? originalTotalPrice,
     int? quantity,
     String? title,
     ProductVariantCheckout? variant,
   }) = _LineItemOrder;
 
-  static LineItemOrder fromJson(Map<String, dynamic> json) {
+  factory LineItemOrder.fromJson(Map<String, dynamic> json) =>
+      _$LineItemOrderFromJson(json);
+
+  static LineItemOrder fromGraphJson(Map<String, dynamic> json) {
     return LineItemOrder(
         currentQuantity: (json['node'] ?? const {})['currentQuantity'],
         discountAllocations: _getDiscountAllocationsList(json),

@@ -5,6 +5,7 @@ import 'author_v_2/author_v_2.dart';
 import 'comment/comment.dart';
 
 part 'article.freezed.dart';
+part 'article.g.dart';
 
 @freezed
 class Article with _$Article {
@@ -26,7 +27,10 @@ class Article with _$Article {
     final String? url,
   }) = _Article;
 
-  static Article fromJson(Map<String, dynamic> json) {
+  factory Article.fromJson(Map<String, dynamic> json) =>
+      _$ArticleFromJson(json);
+
+  static Article fromGraphJson(Map<String, dynamic> json) {
     return Article(
       author: AuthorV2.fromJson(
           ((json['node'] ?? const {})['authorV2']) ?? const {}),
@@ -50,7 +54,7 @@ class Article with _$Article {
   static _getCommentList(Map<String, dynamic> json) {
     List<Comment> commentList = [];
     json['edges']?.forEach(
-        (comment) => commentList.add(Comment.fromJson(comment ?? const {})));
+        (comment) => commentList.add(Comment.fromGraphJson(comment ?? const {})));
     return commentList;
   }
 

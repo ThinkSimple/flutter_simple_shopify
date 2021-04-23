@@ -58,18 +58,19 @@ class _HomeTabState extends State<HomeTab> {
   }
 
   Widget _buildProductThumbnail(Product product) {
+   
     return InkWell(
       onTap: () => _navigateToProductDetailScreen(product),
       child: Container(
         alignment: Alignment.bottomCenter,
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: product?.images?.first?.originalSource != null
+        decoration: product?.images?.first?.originalSrc != null
             ? BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(
-                      product.images.first.originalSource,
+                      product.images.first.originalSrc,
                     )))
             : const BoxDecoration(),
         child: Container(

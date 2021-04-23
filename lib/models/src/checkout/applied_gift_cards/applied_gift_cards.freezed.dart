@@ -12,17 +12,27 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+AppliedGiftCards _$AppliedGiftCardsFromJson(Map<String, dynamic> json) {
+  return _AppliedGiftCards.fromJson(json);
+}
+
 /// @nodoc
 class _$AppliedGiftCardsTearOff {
   const _$AppliedGiftCardsTearOff();
 
   _AppliedGiftCards call(
-      {PriceV2? amountUsedV2, PriceV2? balanceV2, String? id}) {
+      {@JsonKey(fromJson: priceV2FromJson) PriceV2? amountUsedV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? balanceV2,
+      String? id}) {
     return _AppliedGiftCards(
       amountUsedV2: amountUsedV2,
       balanceV2: balanceV2,
       id: id,
     );
+  }
+
+  AppliedGiftCards fromJson(Map<String, Object> json) {
+    return AppliedGiftCards.fromJson(json);
   }
 }
 
@@ -31,10 +41,13 @@ const $AppliedGiftCards = _$AppliedGiftCardsTearOff();
 
 /// @nodoc
 mixin _$AppliedGiftCards {
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get amountUsedV2 => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get balanceV2 => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AppliedGiftCardsCopyWith<AppliedGiftCards> get copyWith =>
       throw _privateConstructorUsedError;
@@ -45,7 +58,10 @@ abstract class $AppliedGiftCardsCopyWith<$Res> {
   factory $AppliedGiftCardsCopyWith(
           AppliedGiftCards value, $Res Function(AppliedGiftCards) then) =
       _$AppliedGiftCardsCopyWithImpl<$Res>;
-  $Res call({PriceV2? amountUsedV2, PriceV2? balanceV2, String? id});
+  $Res call(
+      {@JsonKey(fromJson: priceV2FromJson) PriceV2? amountUsedV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? balanceV2,
+      String? id});
 
   $PriceV2CopyWith<$Res>? get amountUsedV2;
   $PriceV2CopyWith<$Res>? get balanceV2;
@@ -112,7 +128,10 @@ abstract class _$AppliedGiftCardsCopyWith<$Res>
           _AppliedGiftCards value, $Res Function(_AppliedGiftCards) then) =
       __$AppliedGiftCardsCopyWithImpl<$Res>;
   @override
-  $Res call({PriceV2? amountUsedV2, PriceV2? balanceV2, String? id});
+  $Res call(
+      {@JsonKey(fromJson: priceV2FromJson) PriceV2? amountUsedV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? balanceV2,
+      String? id});
 
   @override
   $PriceV2CopyWith<$Res>? get amountUsedV2;
@@ -154,13 +173,24 @@ class __$AppliedGiftCardsCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_AppliedGiftCards extends _AppliedGiftCards {
-  _$_AppliedGiftCards({this.amountUsedV2, this.balanceV2, this.id}) : super._();
+  _$_AppliedGiftCards(
+      {@JsonKey(fromJson: priceV2FromJson) this.amountUsedV2,
+      @JsonKey(fromJson: priceV2FromJson) this.balanceV2,
+      this.id})
+      : super._();
+
+  factory _$_AppliedGiftCards.fromJson(Map<String, dynamic> json) =>
+      _$_$_AppliedGiftCardsFromJson(json);
 
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? amountUsedV2;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? balanceV2;
   @override
   final String? id;
@@ -195,18 +225,28 @@ class _$_AppliedGiftCards extends _AppliedGiftCards {
   @override
   _$AppliedGiftCardsCopyWith<_AppliedGiftCards> get copyWith =>
       __$AppliedGiftCardsCopyWithImpl<_AppliedGiftCards>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_AppliedGiftCardsToJson(this);
+  }
 }
 
 abstract class _AppliedGiftCards extends AppliedGiftCards {
   factory _AppliedGiftCards(
-      {PriceV2? amountUsedV2,
-      PriceV2? balanceV2,
+      {@JsonKey(fromJson: priceV2FromJson) PriceV2? amountUsedV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? balanceV2,
       String? id}) = _$_AppliedGiftCards;
   _AppliedGiftCards._() : super._();
 
+  factory _AppliedGiftCards.fromJson(Map<String, dynamic> json) =
+      _$_AppliedGiftCards.fromJson;
+
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get amountUsedV2 => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get balanceV2 => throw _privateConstructorUsedError;
   @override
   String? get id => throw _privateConstructorUsedError;

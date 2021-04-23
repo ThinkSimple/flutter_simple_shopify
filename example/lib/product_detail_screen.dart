@@ -22,9 +22,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       ),
       body: ListView(
         children: <Widget>[
-          product?.images?.first?.originalSource != null
+          product?.images?.first?.originalSrc != null
               ? Image.network(
-                  product.images.first.originalSource,
+                  product.images.first.originalSrc,
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height / 3,
                   fit: BoxFit.cover,

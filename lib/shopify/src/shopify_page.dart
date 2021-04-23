@@ -37,7 +37,7 @@ class ShopifyPage with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
-    return (Pages.fromJson((result.data ?? const {})["pages"] ?? const {}))
+    return (Pages.fromGraphJson((result.data ?? const {})["pages"] ?? const {}))
         .pageList;
   }
 

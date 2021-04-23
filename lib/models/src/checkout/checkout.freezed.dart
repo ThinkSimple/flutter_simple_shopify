@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Checkout _$CheckoutFromJson(Map<String, dynamic> json) {
+  return _Checkout.fromJson(json);
+}
+
 /// @nodoc
 class _$CheckoutTearOff {
   const _$CheckoutTearOff();
@@ -30,11 +34,11 @@ class _$CheckoutTearOff {
       String? note,
       String? webUrl,
       String? updatedAt,
-      PriceV2? totalTaxV2,
-      PriceV2? totalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
       bool? taxesIncluded,
       bool? taxExempt,
-      PriceV2? subtotalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
       String? orderStatusUrl,
       bool? requiresShipping,
       Order? order}) {
@@ -62,6 +66,10 @@ class _$CheckoutTearOff {
       order: order,
     );
   }
+
+  Checkout fromJson(Map<String, Object> json) {
+    return Checkout.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -84,15 +92,19 @@ mixin _$Checkout {
   String? get note => throw _privateConstructorUsedError;
   String? get webUrl => throw _privateConstructorUsedError;
   String? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalTaxV2 => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalPriceV2 => throw _privateConstructorUsedError;
   bool? get taxesIncluded => throw _privateConstructorUsedError;
   bool? get taxExempt => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get subtotalPriceV2 => throw _privateConstructorUsedError;
   String? get orderStatusUrl => throw _privateConstructorUsedError;
   bool? get requiresShipping => throw _privateConstructorUsedError;
   Order? get order => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CheckoutCopyWith<Checkout> get copyWith =>
       throw _privateConstructorUsedError;
@@ -116,11 +128,11 @@ abstract class $CheckoutCopyWith<$Res> {
       String? note,
       String? webUrl,
       String? updatedAt,
-      PriceV2? totalTaxV2,
-      PriceV2? totalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
       bool? taxesIncluded,
       bool? taxExempt,
-      PriceV2? subtotalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
       String? orderStatusUrl,
       bool? requiresShipping,
       Order? order});
@@ -128,6 +140,7 @@ abstract class $CheckoutCopyWith<$Res> {
   $AvailableShippingRatesCopyWith<$Res>? get availableShippingrates;
   $ShippingRatesCopyWith<$Res>? get shippingLine;
   $MailingAddressCopyWith<$Res>? get shippingAddress;
+  $LineItemsCopyWith<$Res>? get lineItems;
   $PriceV2CopyWith<$Res>? get totalTaxV2;
   $PriceV2CopyWith<$Res>? get totalPriceV2;
   $PriceV2CopyWith<$Res>? get subtotalPriceV2;
@@ -289,6 +302,17 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
   }
 
   @override
+  $LineItemsCopyWith<$Res>? get lineItems {
+    if (_value.lineItems == null) {
+      return null;
+    }
+
+    return $LineItemsCopyWith<$Res>(_value.lineItems!, (value) {
+      return _then(_value.copyWith(lineItems: value));
+    });
+  }
+
+  @override
   $PriceV2CopyWith<$Res>? get totalTaxV2 {
     if (_value.totalTaxV2 == null) {
       return null;
@@ -352,11 +376,11 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
       String? note,
       String? webUrl,
       String? updatedAt,
-      PriceV2? totalTaxV2,
-      PriceV2? totalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
       bool? taxesIncluded,
       bool? taxExempt,
-      PriceV2? subtotalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
       String? orderStatusUrl,
       bool? requiresShipping,
       Order? order});
@@ -367,6 +391,8 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
   $ShippingRatesCopyWith<$Res>? get shippingLine;
   @override
   $MailingAddressCopyWith<$Res>? get shippingAddress;
+  @override
+  $LineItemsCopyWith<$Res>? get lineItems;
   @override
   $PriceV2CopyWith<$Res>? get totalTaxV2;
   @override
@@ -499,6 +525,8 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Checkout extends _Checkout {
   _$_Checkout(
@@ -515,15 +543,18 @@ class _$_Checkout extends _Checkout {
       this.note,
       this.webUrl,
       this.updatedAt,
-      this.totalTaxV2,
-      this.totalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) this.totalTaxV2,
+      @JsonKey(fromJson: priceV2FromJson) this.totalPriceV2,
       this.taxesIncluded,
       this.taxExempt,
-      this.subtotalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) this.subtotalPriceV2,
       this.orderStatusUrl,
       this.requiresShipping,
       this.order})
       : super._();
+
+  factory _$_Checkout.fromJson(Map<String, dynamic> json) =>
+      _$_$_CheckoutFromJson(json);
 
   @override
   final String? id;
@@ -552,14 +583,17 @@ class _$_Checkout extends _Checkout {
   @override
   final String? updatedAt;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? totalTaxV2;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? totalPriceV2;
   @override
   final bool? taxesIncluded;
   @override
   final bool? taxExempt;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? subtotalPriceV2;
   @override
   final String? orderStatusUrl;
@@ -666,6 +700,11 @@ class _$_Checkout extends _Checkout {
   @override
   _$CheckoutCopyWith<_Checkout> get copyWith =>
       __$CheckoutCopyWithImpl<_Checkout>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_CheckoutToJson(this);
+  }
 }
 
 abstract class _Checkout extends Checkout {
@@ -683,15 +722,17 @@ abstract class _Checkout extends Checkout {
       String? note,
       String? webUrl,
       String? updatedAt,
-      PriceV2? totalTaxV2,
-      PriceV2? totalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
       bool? taxesIncluded,
       bool? taxExempt,
-      PriceV2? subtotalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
       String? orderStatusUrl,
       bool? requiresShipping,
       Order? order}) = _$_Checkout;
   _Checkout._() : super._();
+
+  factory _Checkout.fromJson(Map<String, dynamic> json) = _$_Checkout.fromJson;
 
   @override
   String? get id => throw _privateConstructorUsedError;
@@ -722,14 +763,17 @@ abstract class _Checkout extends Checkout {
   @override
   String? get updatedAt => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalTaxV2 => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalPriceV2 => throw _privateConstructorUsedError;
   @override
   bool? get taxesIncluded => throw _privateConstructorUsedError;
   @override
   bool? get taxExempt => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get subtotalPriceV2 => throw _privateConstructorUsedError;
   @override
   String? get orderStatusUrl => throw _privateConstructorUsedError;

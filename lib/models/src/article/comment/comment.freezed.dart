@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Comment _$CommentFromJson(Map<String, dynamic> json) {
+  return _Comment.fromJson(json);
+}
+
 /// @nodoc
 class _$CommentTearOff {
   const _$CommentTearOff();
@@ -30,6 +34,10 @@ class _$CommentTearOff {
       id: id,
     );
   }
+
+  Comment fromJson(Map<String, Object> json) {
+    return Comment.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -43,6 +51,7 @@ mixin _$Comment {
   String? get contentHtml => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CommentCopyWith<Comment> get copyWith => throw _privateConstructorUsedError;
 }
@@ -155,10 +164,15 @@ class __$CommentCopyWithImpl<$Res> extends _$CommentCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Comment extends _Comment {
   _$_Comment({this.email, this.name, this.content, this.contentHtml, this.id})
       : super._();
+
+  factory _$_Comment.fromJson(Map<String, dynamic> json) =>
+      _$_$_CommentFromJson(json);
 
   @override
   final String? email;
@@ -207,6 +221,11 @@ class _$_Comment extends _Comment {
   @override
   _$CommentCopyWith<_Comment> get copyWith =>
       __$CommentCopyWithImpl<_Comment>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_CommentToJson(this);
+  }
 }
 
 abstract class _Comment extends Comment {
@@ -217,6 +236,8 @@ abstract class _Comment extends Comment {
       String? contentHtml,
       String? id}) = _$_Comment;
   _Comment._() : super._();
+
+  factory _Comment.fromJson(Map<String, dynamic> json) = _$_Comment.fromJson;
 
   @override
   String? get email => throw _privateConstructorUsedError;

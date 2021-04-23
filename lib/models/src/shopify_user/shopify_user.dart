@@ -1,33 +1,29 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'addresses/addresses.dart';
 import 'last_incomplete_checkout/last_incomplete_checkout.dart';
 
-class ShopifyUser {
-  final Addresses? address;
-  final String? createdAt;
-  final String? displayName;
-  final String? email;
-  final String? firstName;
-  final String? id;
-  final String? lastName;
-  final String? phone;
-  final List<String>? tags;
-  final LastIncompleteCheckout? lastIncompleteCheckout;
+part 'shopify_user.freezed.dart';
+part 'shopify_user.g.dart';
 
-  ShopifyUser(
-      {this.address,
-      this.createdAt,
-      this.displayName,
-      this.email,
-      this.firstName,
-      this.id,
-      this.lastName,
-      this.phone,
-      this.tags,
-      this.lastIncompleteCheckout});
+@freezed
+class ShopifyUser with _$ShopifyUser {
+  factory ShopifyUser({
+    Addresses? address,
+    String? createdAt,
+    String? displayName,
+    String? email,
+    String? firstName,
+    String? id,
+    String? lastName,
+    String? phone,
+    List<String>? tags,
+    LastIncompleteCheckout? lastIncompleteCheckout,
+  }) = _ShopifyUser;
 
-  static ShopifyUser fromJson(Map<String, dynamic> json) {
+  static ShopifyUser fromGraphJson(Map<String, dynamic> json) {
     return ShopifyUser(
-      address: Addresses.fromJson(json['addresses'] ?? const {}),
+      address: Addresses.fromGraphJson(json['addresses'] ?? const {}),
       createdAt: json['createdAt'],
       displayName: json['displayName'],
       email: json['email'],
@@ -40,6 +36,9 @@ class ShopifyUser {
           json['lastIncompleteCheckout'] ?? const {}),
     );
   }
+
+  factory ShopifyUser.fromJson(Map<String, dynamic> json) =>
+      _$ShopifyUserFromJson(json);
 
   static _getTagList(Map<String, dynamic> json) {
     List<String> tagsList = [];

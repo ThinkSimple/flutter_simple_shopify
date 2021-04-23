@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Order _$OrderFromJson(Map<String, dynamic> json) {
+  return _Order.fromJson(json);
+}
+
 /// @nodoc
 class _$OrderTearOff {
   const _$OrderTearOff();
@@ -28,11 +32,11 @@ class _$OrderTearOff {
       String? processedAt,
       ShippingAddress? shippingAddress,
       String? statusUrl,
-      PriceV2? subtotalPriceV2,
-      PriceV2? totalPriceV2,
-      PriceV2? totalRefundedV2,
-      PriceV2? totalShippingPriceV2,
-      PriceV2? totalTaxV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalRefundedV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalShippingPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
       String? cursor}) {
     return _Order(
       id: id,
@@ -54,6 +58,10 @@ class _$OrderTearOff {
       cursor: cursor,
     );
   }
+
+  Order fromJson(Map<String, Object> json) {
+    return Order.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -72,13 +80,19 @@ mixin _$Order {
   String? get processedAt => throw _privateConstructorUsedError;
   ShippingAddress? get shippingAddress => throw _privateConstructorUsedError;
   String? get statusUrl => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get subtotalPriceV2 => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalPriceV2 => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalRefundedV2 => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalShippingPriceV2 => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalTaxV2 => throw _privateConstructorUsedError;
   String? get cursor => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $OrderCopyWith<Order> get copyWith => throw _privateConstructorUsedError;
 }
@@ -99,13 +113,14 @@ abstract class $OrderCopyWith<$Res> {
       String? processedAt,
       ShippingAddress? shippingAddress,
       String? statusUrl,
-      PriceV2? subtotalPriceV2,
-      PriceV2? totalPriceV2,
-      PriceV2? totalRefundedV2,
-      PriceV2? totalShippingPriceV2,
-      PriceV2? totalTaxV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalRefundedV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalShippingPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
       String? cursor});
 
+  $LineItemsOrderCopyWith<$Res>? get lineItems;
   $ShippingAddressCopyWith<$Res>? get shippingAddress;
   $PriceV2CopyWith<$Res>? get subtotalPriceV2;
   $PriceV2CopyWith<$Res>? get totalPriceV2;
@@ -215,6 +230,17 @@ class _$OrderCopyWithImpl<$Res> implements $OrderCopyWith<$Res> {
   }
 
   @override
+  $LineItemsOrderCopyWith<$Res>? get lineItems {
+    if (_value.lineItems == null) {
+      return null;
+    }
+
+    return $LineItemsOrderCopyWith<$Res>(_value.lineItems!, (value) {
+      return _then(_value.copyWith(lineItems: value));
+    });
+  }
+
+  @override
   $ShippingAddressCopyWith<$Res>? get shippingAddress {
     if (_value.shippingAddress == null) {
       return null;
@@ -298,13 +324,15 @@ abstract class _$OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
       String? processedAt,
       ShippingAddress? shippingAddress,
       String? statusUrl,
-      PriceV2? subtotalPriceV2,
-      PriceV2? totalPriceV2,
-      PriceV2? totalRefundedV2,
-      PriceV2? totalShippingPriceV2,
-      PriceV2? totalTaxV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalRefundedV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalShippingPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
       String? cursor});
 
+  @override
+  $LineItemsOrderCopyWith<$Res>? get lineItems;
   @override
   $ShippingAddressCopyWith<$Res>? get shippingAddress;
   @override
@@ -421,6 +449,8 @@ class __$OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Order extends _Order {
   _$_Order(
@@ -435,13 +465,16 @@ class _$_Order extends _Order {
       this.processedAt,
       this.shippingAddress,
       this.statusUrl,
-      this.subtotalPriceV2,
-      this.totalPriceV2,
-      this.totalRefundedV2,
-      this.totalShippingPriceV2,
-      this.totalTaxV2,
+      @JsonKey(fromJson: priceV2FromJson) this.subtotalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) this.totalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) this.totalRefundedV2,
+      @JsonKey(fromJson: priceV2FromJson) this.totalShippingPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) this.totalTaxV2,
       this.cursor})
       : super._();
+
+  factory _$_Order.fromJson(Map<String, dynamic> json) =>
+      _$_$_OrderFromJson(json);
 
   @override
   final String? id;
@@ -466,14 +499,19 @@ class _$_Order extends _Order {
   @override
   final String? statusUrl;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? subtotalPriceV2;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? totalPriceV2;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? totalRefundedV2;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? totalShippingPriceV2;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? totalTaxV2;
   @override
   final String? cursor;
@@ -560,6 +598,11 @@ class _$_Order extends _Order {
   @override
   _$OrderCopyWith<_Order> get copyWith =>
       __$OrderCopyWithImpl<_Order>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_OrderToJson(this);
+  }
 }
 
 abstract class _Order extends Order {
@@ -575,13 +618,15 @@ abstract class _Order extends Order {
       String? processedAt,
       ShippingAddress? shippingAddress,
       String? statusUrl,
-      PriceV2? subtotalPriceV2,
-      PriceV2? totalPriceV2,
-      PriceV2? totalRefundedV2,
-      PriceV2? totalShippingPriceV2,
-      PriceV2? totalTaxV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalRefundedV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalShippingPriceV2,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
       String? cursor}) = _$_Order;
   _Order._() : super._();
+
+  factory _Order.fromJson(Map<String, dynamic> json) = _$_Order.fromJson;
 
   @override
   String? get id => throw _privateConstructorUsedError;
@@ -606,14 +651,19 @@ abstract class _Order extends Order {
   @override
   String? get statusUrl => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get subtotalPriceV2 => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalPriceV2 => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalRefundedV2 => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalShippingPriceV2 => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalTaxV2 => throw _privateConstructorUsedError;
   @override
   String? get cursor => throw _privateConstructorUsedError;

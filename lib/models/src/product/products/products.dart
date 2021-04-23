@@ -1,12 +1,16 @@
 import 'package:flutter_simple_shopify/models/src/product/product.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Products {
-  final List<Product>? productList;
-  final bool? hasNextPage;
+part 'products.freezed.dart';
+part 'products.g.dart';
 
-  Products({this.productList, this.hasNextPage});
+@freezed
+class Products with _$Products {
+  const Products._();
+  factory Products(
+      {final List<Product>? productList, final bool? hasNextPage}) = _Products;
 
-  static Products fromJson(Map<String, dynamic> json) {
+  static Products fromGraphJson(Map<String, dynamic> json) {
     return Products(
         productList: _getProductList(json),
         hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage']);
@@ -18,4 +22,7 @@ class Products {
             .toList() ??
         const <Product>[];
   }
+
+  factory Products.fromJson(Map<String, dynamic> json) =>
+      _$ProductsFromJson(json);
 }

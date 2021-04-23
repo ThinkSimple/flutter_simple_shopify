@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Page _$PageFromJson(Map<String, dynamic> json) {
+  return _Page.fromJson(json);
+}
+
 /// @nodoc
 class _$PageTearOff {
   const _$PageTearOff();
@@ -36,6 +40,10 @@ class _$PageTearOff {
       url: url,
     );
   }
+
+  Page fromJson(Map<String, Object> json) {
+    return Page.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -52,6 +60,7 @@ mixin _$Page {
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PageCopyWith<Page> get copyWith => throw _privateConstructorUsedError;
 }
@@ -200,6 +209,8 @@ class __$PageCopyWithImpl<$Res> extends _$PageCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Page extends _Page {
   _$_Page(
@@ -212,6 +223,9 @@ class _$_Page extends _Page {
       this.updatedAt,
       this.url})
       : super._();
+
+  factory _$_Page.fromJson(Map<String, dynamic> json) =>
+      _$_$_PageFromJson(json);
 
   @override
   final String? body;
@@ -276,6 +290,11 @@ class _$_Page extends _Page {
   @override
   _$PageCopyWith<_Page> get copyWith =>
       __$PageCopyWithImpl<_Page>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_PageToJson(this);
+  }
 }
 
 abstract class _Page extends Page {
@@ -289,6 +308,8 @@ abstract class _Page extends Page {
       DateTime? updatedAt,
       String? url}) = _$_Page;
   _Page._() : super._();
+
+  factory _Page.fromJson(Map<String, dynamic> json) = _$_Page.fromJson;
 
   @override
   String? get body => throw _privateConstructorUsedError;
