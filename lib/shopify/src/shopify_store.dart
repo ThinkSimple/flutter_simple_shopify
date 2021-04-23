@@ -178,7 +178,7 @@ class ShopifyStore with ShopifyError {
     } catch (e) {
       print(e);
     }
-    return [Product.fromJson({})];
+    return [Product.fromGraphJson({})];
   }
 
   /// Returns a List of [Collection]
@@ -439,7 +439,7 @@ class ShopifyStore with ShopifyError {
     }
     return (result.data!['productByHandle']['metafields']['edges']
             as List<Object>)
-        .map((e) => Metafield.fromJson(e as Map<String, dynamic>))
+        .map((e) => Metafield.fromGraphJson(e as Map<String, dynamic>))
         .toList();
   }
 }

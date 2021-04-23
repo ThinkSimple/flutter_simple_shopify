@@ -7,7 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'associated_collections/associated_collections.dart';
 
 part 'product.freezed.dart';
-
+part 'product.g.dart';
 
 @freezed
 class Product with _$Product {
@@ -33,7 +33,7 @@ class Product with _$Product {
       String? vendor,
       List<Metafield>? metafields}) = _Product;
 
-  static Product fromJson(Map<String, dynamic> json) {
+  static Product fromGraphJson(Map<String, dynamic> json) {
     return Product(
         collectionList: _getCollectionList(json),
         id: (json['node'] ?? const {})['id'],
@@ -57,10 +57,13 @@ class Product with _$Product {
             (json['node'] ?? const {})['metafields'] ?? const {}));
   }
 
+  factory Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
+
   static List<ProductVariant> _getProductVariants(Map<String, dynamic> json) {
     return (((json['node'] ?? const {})['variants'] ?? const {})['edges']
             as List)
-        .map((v) => ProductVariant.fromJson(v ?? const {}))
+        .map((v) => ProductVariant.fromGraphJson(v ?? const {}))
         .toList();
   }
 
@@ -82,7 +85,7 @@ class Product with _$Product {
       Map<String, dynamic> json) {
     return (((json['node'] ?? const {})['collections'] ?? const {})['edges']
             as List)
-        .map((v) => AssociatedCollections.fromJson(v ?? const {}))
+        .map((v) => AssociatedCollections.fromGraphJson(v ?? const {}))
         .toList();
   }
 
@@ -97,7 +100,7 @@ class Product with _$Product {
   static _getMetafieldList(Map<String, dynamic> json) {
     List<Metafield> metafieldList = [];
     json['edges']?.forEach((metafield) =>
-        metafieldList.add(Metafield.fromJson(metafield ?? const {})));
+        metafieldList.add(Metafield.fromGraphJson(metafield ?? const {})));
     return metafieldList;
   }
 }

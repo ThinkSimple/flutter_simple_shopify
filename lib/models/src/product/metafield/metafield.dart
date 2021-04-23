@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'metafield.freezed.dart';
+part 'metafield.g.dart';
 
 @freezed
 class Metafield with _$Metafield {
@@ -15,7 +16,7 @@ class Metafield with _$Metafield {
     String? description,
   }) = _Metafield;
 
-  static Metafield fromJson(Map<String, dynamic> json) {
+  static Metafield fromGraphJson(Map<String, dynamic> json) {
     return Metafield(
         id: (json['node'] ?? const {})['id'],
         namespace: (json['node'] ?? const {})['namespace'],
@@ -24,4 +25,7 @@ class Metafield with _$Metafield {
         valueType: (json['node'] ?? const {})['valueType'],
         description: (json['node'] ?? const {})['description']);
   }
+
+  factory Metafield.fromJson(Map<String, dynamic> json) =>
+      _$MetafieldFromJson(json);
 }

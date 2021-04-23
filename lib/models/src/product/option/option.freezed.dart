@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Option _$OptionFromJson(Map<String, dynamic> json) {
+  return _Option.fromJson(json);
+}
+
 /// @nodoc
 class _$OptionTearOff {
   const _$OptionTearOff();
@@ -22,6 +26,10 @@ class _$OptionTearOff {
       name: name,
       values: values,
     );
+  }
+
+  Option fromJson(Map<String, Object> json) {
+    return Option.fromJson(json);
   }
 }
 
@@ -34,6 +42,7 @@ mixin _$Option {
   String? get name => throw _privateConstructorUsedError;
   List<String>? get values => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $OptionCopyWith<Option> get copyWith => throw _privateConstructorUsedError;
 }
@@ -116,9 +125,14 @@ class __$OptionCopyWithImpl<$Res> extends _$OptionCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Option extends _Option {
   _$_Option({this.id, this.name, this.values}) : super._();
+
+  factory _$_Option.fromJson(Map<String, dynamic> json) =>
+      _$_$_OptionFromJson(json);
 
   @override
   final String? id;
@@ -155,11 +169,18 @@ class _$_Option extends _Option {
   @override
   _$OptionCopyWith<_Option> get copyWith =>
       __$OptionCopyWithImpl<_Option>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_OptionToJson(this);
+  }
 }
 
 abstract class _Option extends Option {
   factory _Option({String? id, String? name, List<String>? values}) = _$_Option;
   _Option._() : super._();
+
+  factory _Option.fromJson(Map<String, dynamic> json) = _$_Option.fromJson;
 
   @override
   String? get id => throw _privateConstructorUsedError;

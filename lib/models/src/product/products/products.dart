@@ -14,7 +14,7 @@ class Products {
 
   static List<Product> _getProductList(Map<String, dynamic> json) {
     return (json['edges'] as List?)
-            ?.map((e) => Product.fromJson(e ?? const {}))
+            ?.map((e) => Product.fromGraphJson(e ?? const {}))
             .toList() ??
         const <Product>[];
   }

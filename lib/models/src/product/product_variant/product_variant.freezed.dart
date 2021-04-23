@@ -12,15 +12,19 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ProductVariant _$ProductVariantFromJson(Map<String, dynamic> json) {
+  return _ProductVariant.fromJson(json);
+}
+
 /// @nodoc
 class _$ProductVariantTearOff {
   const _$ProductVariantTearOff();
 
   _ProductVariant call(
-      {PriceV2? price,
+      {@JsonKey(fromJson: priceV2FromJson) PriceV2? price,
       String? title,
       ShopifyImage? image,
-      PriceV2? compareAtPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
       double? weight,
       String? weightUnit,
       bool? availableForSale,
@@ -28,7 +32,7 @@ class _$ProductVariantTearOff {
       bool? requiresShipping,
       String? id,
       int? quantityAvailable,
-      PriceV2? unitPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? unitPrice,
       UnitPriceMeasurement? unitPriceMeasurement,
       List<SelectedOption>? selectedOptions}) {
     return _ProductVariant(
@@ -48,6 +52,10 @@ class _$ProductVariantTearOff {
       selectedOptions: selectedOptions,
     );
   }
+
+  ProductVariant fromJson(Map<String, Object> json) {
+    return ProductVariant.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -55,9 +63,11 @@ const $ProductVariant = _$ProductVariantTearOff();
 
 /// @nodoc
 mixin _$ProductVariant {
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get price => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   ShopifyImage? get image => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get compareAtPrice => throw _privateConstructorUsedError;
   double? get weight => throw _privateConstructorUsedError;
   String? get weightUnit => throw _privateConstructorUsedError;
@@ -66,12 +76,14 @@ mixin _$ProductVariant {
   bool? get requiresShipping => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
   int? get quantityAvailable => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get unitPrice => throw _privateConstructorUsedError;
   UnitPriceMeasurement? get unitPriceMeasurement =>
       throw _privateConstructorUsedError;
   List<SelectedOption>? get selectedOptions =>
       throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ProductVariantCopyWith<ProductVariant> get copyWith =>
       throw _privateConstructorUsedError;
@@ -83,10 +95,10 @@ abstract class $ProductVariantCopyWith<$Res> {
           ProductVariant value, $Res Function(ProductVariant) then) =
       _$ProductVariantCopyWithImpl<$Res>;
   $Res call(
-      {PriceV2? price,
+      {@JsonKey(fromJson: priceV2FromJson) PriceV2? price,
       String? title,
       ShopifyImage? image,
-      PriceV2? compareAtPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
       double? weight,
       String? weightUnit,
       bool? availableForSale,
@@ -94,7 +106,7 @@ abstract class $ProductVariantCopyWith<$Res> {
       bool? requiresShipping,
       String? id,
       int? quantityAvailable,
-      PriceV2? unitPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? unitPrice,
       UnitPriceMeasurement? unitPriceMeasurement,
       List<SelectedOption>? selectedOptions});
 
@@ -256,10 +268,10 @@ abstract class _$ProductVariantCopyWith<$Res>
       __$ProductVariantCopyWithImpl<$Res>;
   @override
   $Res call(
-      {PriceV2? price,
+      {@JsonKey(fromJson: priceV2FromJson) PriceV2? price,
       String? title,
       ShopifyImage? image,
-      PriceV2? compareAtPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
       double? weight,
       String? weightUnit,
       bool? availableForSale,
@@ -267,7 +279,7 @@ abstract class _$ProductVariantCopyWith<$Res>
       bool? requiresShipping,
       String? id,
       int? quantityAvailable,
-      PriceV2? unitPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? unitPrice,
       UnitPriceMeasurement? unitPriceMeasurement,
       List<SelectedOption>? selectedOptions});
 
@@ -372,13 +384,15 @@ class __$ProductVariantCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_ProductVariant extends _ProductVariant {
   _$_ProductVariant(
-      {this.price,
+      {@JsonKey(fromJson: priceV2FromJson) this.price,
       this.title,
       this.image,
-      this.compareAtPrice,
+      @JsonKey(fromJson: priceV2FromJson) this.compareAtPrice,
       this.weight,
       this.weightUnit,
       this.availableForSale,
@@ -386,18 +400,23 @@ class _$_ProductVariant extends _ProductVariant {
       this.requiresShipping,
       this.id,
       this.quantityAvailable,
-      this.unitPrice,
+      @JsonKey(fromJson: priceV2FromJson) this.unitPrice,
       this.unitPriceMeasurement,
       this.selectedOptions})
       : super._();
 
+  factory _$_ProductVariant.fromJson(Map<String, dynamic> json) =>
+      _$_$_ProductVariantFromJson(json);
+
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? price;
   @override
   final String? title;
   @override
   final ShopifyImage? image;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? compareAtPrice;
   @override
   final double? weight;
@@ -414,6 +433,7 @@ class _$_ProductVariant extends _ProductVariant {
   @override
   final int? quantityAvailable;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? unitPrice;
   @override
   final UnitPriceMeasurement? unitPriceMeasurement;
@@ -489,14 +509,19 @@ class _$_ProductVariant extends _ProductVariant {
   @override
   _$ProductVariantCopyWith<_ProductVariant> get copyWith =>
       __$ProductVariantCopyWithImpl<_ProductVariant>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ProductVariantToJson(this);
+  }
 }
 
 abstract class _ProductVariant extends ProductVariant {
   factory _ProductVariant(
-      {PriceV2? price,
+      {@JsonKey(fromJson: priceV2FromJson) PriceV2? price,
       String? title,
       ShopifyImage? image,
-      PriceV2? compareAtPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
       double? weight,
       String? weightUnit,
       bool? availableForSale,
@@ -504,18 +529,23 @@ abstract class _ProductVariant extends ProductVariant {
       bool? requiresShipping,
       String? id,
       int? quantityAvailable,
-      PriceV2? unitPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? unitPrice,
       UnitPriceMeasurement? unitPriceMeasurement,
       List<SelectedOption>? selectedOptions}) = _$_ProductVariant;
   _ProductVariant._() : super._();
 
+  factory _ProductVariant.fromJson(Map<String, dynamic> json) =
+      _$_ProductVariant.fromJson;
+
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get price => throw _privateConstructorUsedError;
   @override
   String? get title => throw _privateConstructorUsedError;
   @override
   ShopifyImage? get image => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get compareAtPrice => throw _privateConstructorUsedError;
   @override
   double? get weight => throw _privateConstructorUsedError;
@@ -532,6 +562,7 @@ abstract class _ProductVariant extends ProductVariant {
   @override
   int? get quantityAvailable => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get unitPrice => throw _privateConstructorUsedError;
   @override
   UnitPriceMeasurement? get unitPriceMeasurement =>

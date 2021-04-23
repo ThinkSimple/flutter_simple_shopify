@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Product _$ProductFromJson(Map<String, dynamic> json) {
+  return _Product.fromJson(json);
+}
+
 /// @nodoc
 class _$ProductTearOff {
   const _$ProductTearOff();
@@ -58,6 +62,10 @@ class _$ProductTearOff {
       metafields: metafields,
     );
   }
+
+  Product fromJson(Map<String, Object> json) {
+    return Product.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -87,6 +95,7 @@ mixin _$Product {
   String? get vendor => throw _privateConstructorUsedError;
   List<Metafield>? get metafields => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
 }
@@ -367,6 +376,8 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Product extends _Product {
   _$_Product(
@@ -390,6 +401,9 @@ class _$_Product extends _Product {
       this.vendor,
       this.metafields})
       : super._();
+
+  factory _$_Product.fromJson(Map<String, dynamic> json) =>
+      _$_$_ProductFromJson(json);
 
   @override
   final List<AssociatedCollections>? collectionList;
@@ -517,6 +531,11 @@ class _$_Product extends _Product {
   @override
   _$ProductCopyWith<_Product> get copyWith =>
       __$ProductCopyWithImpl<_Product>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ProductToJson(this);
+  }
 }
 
 abstract class _Product extends Product {
@@ -541,6 +560,8 @@ abstract class _Product extends Product {
       String? vendor,
       List<Metafield>? metafields}) = _$_Product;
   _Product._() : super._();
+
+  factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
 
   @override
   List<AssociatedCollections>? get collectionList =>

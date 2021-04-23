@@ -5,15 +5,16 @@ import 'package:flutter_simple_shopify/models/src/product/unit_price_measurement
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'product_variant.freezed.dart';
+part 'product_variant.g.dart';
 
 @freezed
 class ProductVariant with _$ProductVariant {
   const ProductVariant._();
   factory ProductVariant(
-      {PriceV2? price,
+      {@JsonKey(fromJson: priceV2FromJson) PriceV2? price,
       String? title,
       ShopifyImage? image,
-      PriceV2? compareAtPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
       double? weight,
       String? weightUnit,
       bool? availableForSale,
@@ -21,11 +22,11 @@ class ProductVariant with _$ProductVariant {
       bool? requiresShipping,
       String? id,
       int? quantityAvailable,
-      PriceV2? unitPrice,
+      @JsonKey(fromJson: priceV2FromJson) PriceV2? unitPrice,
       UnitPriceMeasurement? unitPriceMeasurement,
       List<SelectedOption>? selectedOptions}) = _ProductVariant;
 
-  static ProductVariant fromJson(Map<String, dynamic> json) {
+  static ProductVariant fromGraphJson(Map<String, dynamic> json) {
     return ProductVariant(
       price:
           PriceV2.fromJson((json['node'] ?? const {})['priceV2'] ?? const {}),
@@ -48,6 +49,9 @@ class ProductVariant with _$ProductVariant {
       selectedOptions: _getOptionList((json['node'] ?? const {})),
     );
   }
+
+  factory ProductVariant.fromJson(Map<String, dynamic> json) =>
+      _$ProductVariantFromJson(json);
 
   static List<SelectedOption> _getOptionList(Map<String, dynamic> json) {
     List<SelectedOption> optionList = [];
