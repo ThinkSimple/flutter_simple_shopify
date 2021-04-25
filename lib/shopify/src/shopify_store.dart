@@ -233,7 +233,7 @@ class ShopifyStore with ShopifyError {
     } catch (e) {
       print(e);
     }
-    return Collection.fromJson({});
+    return Collection.fromGraphJson({});
   }
 
   /// Returns all available collections.
@@ -325,9 +325,9 @@ class ShopifyStore with ShopifyError {
           });
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      productList
-          .addAll(Collection.fromJson(result.data!).products!.productList!);
-      collection = (Collection.fromJson(result.data!));
+      productList.addAll(
+          Collection.fromGraphJson(result.data!).products!.productList!);
+      collection = (Collection.fromGraphJson(result.data!));
       cursor = productList.isNotEmpty ? productList.last.cursor : '';
     } while (collection.products?.hasNextPage == true);
     if (deleteThisPartOfCache) {
