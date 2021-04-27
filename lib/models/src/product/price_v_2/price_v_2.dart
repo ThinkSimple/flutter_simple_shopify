@@ -14,7 +14,11 @@ class PriceV2 with _$PriceV2 {
       String? formattedPrice}) = _PriceV2;
   static PriceV2 fromJson(Map<String, dynamic> json) {
     return PriceV2(
-      amount: json['amount'] != null ? double.parse(json['amount']) : null,
+      amount: json['amount'] != null
+          ? json['amount'] is String
+              ? double.parse(json['amount'])
+              : json['amount']
+          : null,
       currencyCode: json['currencyCode'],
       currencySymbol: _simpleCurrencySymbols[json['currencyCode']],
       formattedPrice: _chooseRightOrderOnCurrencySymbol(
