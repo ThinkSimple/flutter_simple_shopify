@@ -41,8 +41,11 @@ class PriceV2 with _$PriceV2 {
   ) {
     NumberFormat priceFormat = NumberFormat();
     String currencyString;
-    String formattedPrice = priceFormat
-        .format(json['amount'] != null ? double.parse(json['amount']) : 0);
+    String formattedPrice = priceFormat.format(json['amount'] != null
+        ? json['amount'] is String
+            ? double.parse(json['amount'])
+            : json['amount']
+        : 0);
     switch (json['currencyCode']) {
       case "INR":
         {
