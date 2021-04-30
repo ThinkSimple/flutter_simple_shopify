@@ -8,13 +8,16 @@ part of 'product_variant.dart';
 
 _$_ProductVariant _$_$_ProductVariantFromJson(Map<String, dynamic> json) {
   return _$_ProductVariant(
-    price: priceV2FromJson(json['price'] as Map<String, dynamic>),
+    price: json['price'] == null
+        ? null
+        : PriceV2.fromJson(json['price'] as Map<String, dynamic>),
     title: json['title'] as String?,
     image: json['image'] == null
         ? null
         : ShopifyImage.fromJson(json['image'] as Map<String, dynamic>),
-    compareAtPrice:
-        priceV2FromJson(json['compareAtPrice'] as Map<String, dynamic>),
+    compareAtPrice: json['compareAtPrice'] == null
+        ? null
+        : PriceV2.fromJson(json['compareAtPrice'] as Map<String, dynamic>),
     weight: (json['weight'] as num?)?.toDouble(),
     weightUnit: json['weightUnit'] as String?,
     availableForSale: json['availableForSale'] as bool?,
@@ -22,7 +25,9 @@ _$_ProductVariant _$_$_ProductVariantFromJson(Map<String, dynamic> json) {
     requiresShipping: json['requiresShipping'] as bool?,
     id: json['id'] as String?,
     quantityAvailable: json['quantityAvailable'] as int?,
-    unitPrice: priceV2FromJson(json['unitPrice'] as Map<String, dynamic>),
+    unitPrice: json['unitPrice'] == null
+        ? null
+        : PriceV2.fromJson(json['unitPrice'] as Map<String, dynamic>),
     unitPriceMeasurement: json['unitPriceMeasurement'] == null
         ? null
         : UnitPriceMeasurement.fromJson(

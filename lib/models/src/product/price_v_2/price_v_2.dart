@@ -2,43 +2,32 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 
 part 'price_v_2.freezed.dart';
+part 'price_v_2.g.dart';
 
 @freezed
 class PriceV2 with _$PriceV2 {
   PriceV2._();
 
   factory PriceV2(
-      {double? amount,
+      {@JsonKey(fromJson: _amountFromJson)
+          double? amount,
       String? currencyCode,
       String? currencySymbol,
-      String? formattedPrice}) = _PriceV2;
-  static PriceV2 fromJson(Map<String, dynamic> json) {
-    return PriceV2(
-      amount: json['amount'] != null
-          ? json['amount'] is String
-              ? double.parse(json['amount'])
-              : json['amount']
-          : null,
-      currencyCode: json['currencyCode'],
-      currencySymbol: _simpleCurrencySymbols[json['currencyCode']],
-      formattedPrice: _chooseRightOrderOnCurrencySymbol(
-        json,
-      ),
-    );
+      @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
+          String? formattedPrice}) = _PriceV2;
+
+  factory PriceV2.fromJson(Map<String, dynamic> json) =>
+      _$PriceV2FromJson(json);
+
+  static double _amountFromJson(dynamic json) {
+    return json['amount'] != null
+        ? json['amount'] is String
+            ? double.parse(json['amount'])
+            : json['amount']
+        : null;
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'amount': amount,
-      'currencyCode': currencyCode,
-      'currencySymbol': currencySymbol,
-      'formattedPrice': formattedPrice
-    };
-  }
-
-  static String _chooseRightOrderOnCurrencySymbol(
-    Map<String, dynamic> json,
-  ) {
+  static String _chooseRightOrderOnCurrencySymbol(Map<String, dynamic> json) {
     NumberFormat priceFormat = NumberFormat();
     String currencyString;
     String formattedPrice = priceFormat.format(json['amount'] != null
@@ -239,8 +228,4 @@ class PriceV2 with _$PriceV2 {
     'ANG': 'ƒ',
     'TMT': 'TMT',
   };
-}
-
-PriceV2 priceV2FromJson(Map<String, dynamic> json) {
-  return PriceV2.fromJson(json);
 }

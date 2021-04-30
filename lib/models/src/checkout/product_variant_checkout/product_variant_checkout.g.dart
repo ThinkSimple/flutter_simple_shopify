@@ -9,13 +9,16 @@ part of 'product_variant_checkout.dart';
 _$_ProductVariantCheckout _$_$_ProductVariantCheckoutFromJson(
     Map<String, dynamic> json) {
   return _$_ProductVariantCheckout(
-    price: priceV2FromJson(json['price'] as Map<String, dynamic>),
+    price: json['price'] == null
+        ? null
+        : PriceV2.fromJson(json['price'] as Map<String, dynamic>),
     title: json['title'] as String?,
     image: json['image'] == null
         ? null
         : ShopifyImage.fromJson(json['image'] as Map<String, dynamic>),
-    compareAtPrice:
-        priceV2FromJson(json['compareAtPrice'] as Map<String, dynamic>),
+    compareAtPrice: json['compareAtPrice'] == null
+        ? null
+        : PriceV2.fromJson(json['compareAtPrice'] as Map<String, dynamic>),
     weight: (json['weight'] as num?)?.toDouble(),
     weightUnit: json['weightUnit'] as String?,
     availableForSale: json['availableForSale'] as bool?,

@@ -28,8 +28,8 @@ class _$LastIncompleteCheckoutTearOff {
       String? id,
       String? currencyCode,
       String? webUrl,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? lineItemsSubtotalPrice,
+      PriceV2? totalPriceV2,
+      PriceV2? lineItemsSubtotalPrice,
       LineItems? lineItems}) {
     return _LastIncompleteCheckout(
       completedAt: completedAt,
@@ -60,9 +60,7 @@ mixin _$LastIncompleteCheckout {
   String? get id => throw _privateConstructorUsedError;
   String? get currencyCode => throw _privateConstructorUsedError;
   String? get webUrl => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalPriceV2 => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get lineItemsSubtotalPrice => throw _privateConstructorUsedError;
   LineItems? get lineItems => throw _privateConstructorUsedError;
 
@@ -84,8 +82,8 @@ abstract class $LastIncompleteCheckoutCopyWith<$Res> {
       String? id,
       String? currencyCode,
       String? webUrl,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? lineItemsSubtotalPrice,
+      PriceV2? totalPriceV2,
+      PriceV2? lineItemsSubtotalPrice,
       LineItems? lineItems});
 
   $PriceV2CopyWith<$Res>? get totalPriceV2;
@@ -202,8 +200,8 @@ abstract class _$LastIncompleteCheckoutCopyWith<$Res>
       String? id,
       String? currencyCode,
       String? webUrl,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? lineItemsSubtotalPrice,
+      PriceV2? totalPriceV2,
+      PriceV2? lineItemsSubtotalPrice,
       LineItems? lineItems});
 
   @override
@@ -289,8 +287,8 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
       this.id,
       this.currencyCode,
       this.webUrl,
-      @JsonKey(fromJson: priceV2FromJson) this.totalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) this.lineItemsSubtotalPrice,
+      this.totalPriceV2,
+      this.lineItemsSubtotalPrice,
       this.lineItems});
 
   factory _$_LastIncompleteCheckout.fromJson(Map<String, dynamic> json) =>
@@ -309,10 +307,8 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
   @override
   final String? webUrl;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? totalPriceV2;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? lineItemsSubtotalPrice;
   @override
   final LineItems? lineItems;
@@ -385,8 +381,8 @@ abstract class _LastIncompleteCheckout implements LastIncompleteCheckout {
       String? id,
       String? currencyCode,
       String? webUrl,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? lineItemsSubtotalPrice,
+      PriceV2? totalPriceV2,
+      PriceV2? lineItemsSubtotalPrice,
       LineItems? lineItems}) = _$_LastIncompleteCheckout;
 
   factory _LastIncompleteCheckout.fromJson(Map<String, dynamic> json) =
@@ -405,10 +401,8 @@ abstract class _LastIncompleteCheckout implements LastIncompleteCheckout {
   @override
   String? get webUrl => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalPriceV2 => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get lineItemsSubtotalPrice => throw _privateConstructorUsedError;
   @override
   LineItems? get lineItems => throw _privateConstructorUsedError;

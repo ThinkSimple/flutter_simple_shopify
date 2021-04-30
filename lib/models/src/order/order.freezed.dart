@@ -32,11 +32,11 @@ class _$OrderTearOff {
       String? processedAt,
       ShippingAddress? shippingAddress,
       String? statusUrl,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalRefundedV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalShippingPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
+      PriceV2? subtotalPriceV2,
+      PriceV2? totalPriceV2,
+      PriceV2? totalRefundedV2,
+      PriceV2? totalShippingPriceV2,
+      PriceV2? totalTaxV2,
       String? cursor}) {
     return _Order(
       id: id,
@@ -80,15 +80,10 @@ mixin _$Order {
   String? get processedAt => throw _privateConstructorUsedError;
   ShippingAddress? get shippingAddress => throw _privateConstructorUsedError;
   String? get statusUrl => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get subtotalPriceV2 => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalPriceV2 => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalRefundedV2 => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalShippingPriceV2 => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalTaxV2 => throw _privateConstructorUsedError;
   String? get cursor => throw _privateConstructorUsedError;
 
@@ -113,11 +108,11 @@ abstract class $OrderCopyWith<$Res> {
       String? processedAt,
       ShippingAddress? shippingAddress,
       String? statusUrl,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalRefundedV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalShippingPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
+      PriceV2? subtotalPriceV2,
+      PriceV2? totalPriceV2,
+      PriceV2? totalRefundedV2,
+      PriceV2? totalShippingPriceV2,
+      PriceV2? totalTaxV2,
       String? cursor});
 
   $LineItemsOrderCopyWith<$Res>? get lineItems;
@@ -324,11 +319,11 @@ abstract class _$OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
       String? processedAt,
       ShippingAddress? shippingAddress,
       String? statusUrl,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalRefundedV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalShippingPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
+      PriceV2? subtotalPriceV2,
+      PriceV2? totalPriceV2,
+      PriceV2? totalRefundedV2,
+      PriceV2? totalShippingPriceV2,
+      PriceV2? totalTaxV2,
       String? cursor});
 
   @override
@@ -465,11 +460,11 @@ class _$_Order extends _Order {
       this.processedAt,
       this.shippingAddress,
       this.statusUrl,
-      @JsonKey(fromJson: priceV2FromJson) this.subtotalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) this.totalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) this.totalRefundedV2,
-      @JsonKey(fromJson: priceV2FromJson) this.totalShippingPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) this.totalTaxV2,
+      this.subtotalPriceV2,
+      this.totalPriceV2,
+      this.totalRefundedV2,
+      this.totalShippingPriceV2,
+      this.totalTaxV2,
       this.cursor})
       : super._();
 
@@ -499,19 +494,14 @@ class _$_Order extends _Order {
   @override
   final String? statusUrl;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? subtotalPriceV2;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? totalPriceV2;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? totalRefundedV2;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? totalShippingPriceV2;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? totalTaxV2;
   @override
   final String? cursor;
@@ -618,11 +608,11 @@ abstract class _Order extends Order {
       String? processedAt,
       ShippingAddress? shippingAddress,
       String? statusUrl,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalRefundedV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalShippingPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
+      PriceV2? subtotalPriceV2,
+      PriceV2? totalPriceV2,
+      PriceV2? totalRefundedV2,
+      PriceV2? totalShippingPriceV2,
+      PriceV2? totalTaxV2,
       String? cursor}) = _$_Order;
   _Order._() : super._();
 
@@ -651,19 +641,14 @@ abstract class _Order extends Order {
   @override
   String? get statusUrl => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get subtotalPriceV2 => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalPriceV2 => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalRefundedV2 => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalShippingPriceV2 => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalTaxV2 => throw _privateConstructorUsedError;
   @override
   String? get cursor => throw _privateConstructorUsedError;

@@ -13,8 +13,8 @@ class LineItemOrder with _$LineItemOrder {
   factory LineItemOrder({
     int? currentQuantity,
     List<DiscountAllocations>? discountAllocations,
-    @JsonKey(fromJson: priceV2FromJson) PriceV2? discountedTotalPrice,
-    @JsonKey(fromJson: priceV2FromJson) PriceV2? originalTotalPrice,
+    PriceV2? discountedTotalPrice,
+    PriceV2? originalTotalPrice,
     int? quantity,
     String? title,
     ProductVariantCheckout? variant,
