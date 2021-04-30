@@ -12,21 +12,31 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+PriceV2 _$PriceV2FromJson(Map<String, dynamic> json) {
+  return _PriceV2.fromJson(json);
+}
+
 /// @nodoc
 class _$PriceV2TearOff {
   const _$PriceV2TearOff();
 
   _PriceV2 call(
-      {double? amount,
+      {@JsonKey(fromJson: _amountFromJson)
+          double? amount,
       String? currencyCode,
       String? currencySymbol,
-      String? formattedPrice}) {
+      @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
+          String? formattedPrice}) {
     return _PriceV2(
       amount: amount,
       currencyCode: currencyCode,
       currencySymbol: currencySymbol,
       formattedPrice: formattedPrice,
     );
+  }
+
+  PriceV2 fromJson(Map<String, Object> json) {
+    return PriceV2.fromJson(json);
   }
 }
 
@@ -35,11 +45,14 @@ const $PriceV2 = _$PriceV2TearOff();
 
 /// @nodoc
 mixin _$PriceV2 {
+  @JsonKey(fromJson: _amountFromJson)
   double? get amount => throw _privateConstructorUsedError;
   String? get currencyCode => throw _privateConstructorUsedError;
   String? get currencySymbol => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
   String? get formattedPrice => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PriceV2CopyWith<PriceV2> get copyWith => throw _privateConstructorUsedError;
 }
@@ -49,10 +62,12 @@ abstract class $PriceV2CopyWith<$Res> {
   factory $PriceV2CopyWith(PriceV2 value, $Res Function(PriceV2) then) =
       _$PriceV2CopyWithImpl<$Res>;
   $Res call(
-      {double? amount,
+      {@JsonKey(fromJson: _amountFromJson)
+          double? amount,
       String? currencyCode,
       String? currencySymbol,
-      String? formattedPrice});
+      @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
+          String? formattedPrice});
 }
 
 /// @nodoc
@@ -97,10 +112,12 @@ abstract class _$PriceV2CopyWith<$Res> implements $PriceV2CopyWith<$Res> {
       __$PriceV2CopyWithImpl<$Res>;
   @override
   $Res call(
-      {double? amount,
+      {@JsonKey(fromJson: _amountFromJson)
+          double? amount,
       String? currencyCode,
       String? currencySymbol,
-      String? formattedPrice});
+      @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
+          String? formattedPrice});
 }
 
 /// @nodoc
@@ -140,22 +157,31 @@ class __$PriceV2CopyWithImpl<$Res> extends _$PriceV2CopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_PriceV2 extends _PriceV2 {
   _$_PriceV2(
-      {this.amount,
+      {@JsonKey(fromJson: _amountFromJson)
+          this.amount,
       this.currencyCode,
       this.currencySymbol,
-      this.formattedPrice})
+      @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
+          this.formattedPrice})
       : super._();
 
+  factory _$_PriceV2.fromJson(Map<String, dynamic> json) =>
+      _$_$_PriceV2FromJson(json);
+
   @override
+  @JsonKey(fromJson: _amountFromJson)
   final double? amount;
   @override
   final String? currencyCode;
   @override
   final String? currencySymbol;
   @override
+  @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
   final String? formattedPrice;
 
   @override
@@ -192,23 +218,34 @@ class _$_PriceV2 extends _PriceV2 {
   @override
   _$PriceV2CopyWith<_PriceV2> get copyWith =>
       __$PriceV2CopyWithImpl<_PriceV2>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_PriceV2ToJson(this);
+  }
 }
 
 abstract class _PriceV2 extends PriceV2 {
   factory _PriceV2(
-      {double? amount,
+      {@JsonKey(fromJson: _amountFromJson)
+          double? amount,
       String? currencyCode,
       String? currencySymbol,
-      String? formattedPrice}) = _$_PriceV2;
+      @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
+          String? formattedPrice}) = _$_PriceV2;
   _PriceV2._() : super._();
 
+  factory _PriceV2.fromJson(Map<String, dynamic> json) = _$_PriceV2.fromJson;
+
   @override
+  @JsonKey(fromJson: _amountFromJson)
   double? get amount => throw _privateConstructorUsedError;
   @override
   String? get currencyCode => throw _privateConstructorUsedError;
   @override
   String? get currencySymbol => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
   String? get formattedPrice => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

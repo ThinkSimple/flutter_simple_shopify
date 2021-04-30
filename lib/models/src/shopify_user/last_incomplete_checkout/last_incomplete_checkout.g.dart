@@ -15,9 +15,13 @@ _$_LastIncompleteCheckout _$_$_LastIncompleteCheckoutFromJson(
     id: json['id'] as String?,
     currencyCode: json['currencyCode'] as String?,
     webUrl: json['webUrl'] as String?,
-    totalPriceV2: priceV2FromJson(json['totalPriceV2'] as Map<String, dynamic>),
-    lineItemsSubtotalPrice:
-        priceV2FromJson(json['lineItemsSubtotalPrice'] as Map<String, dynamic>),
+    totalPriceV2: json['totalPriceV2'] == null
+        ? null
+        : PriceV2.fromJson(json['totalPriceV2'] as Map<String, dynamic>),
+    lineItemsSubtotalPrice: json['lineItemsSubtotalPrice'] == null
+        ? null
+        : PriceV2.fromJson(
+            json['lineItemsSubtotalPrice'] as Map<String, dynamic>),
     lineItems: json['lineItems'] == null
         ? null
         : LineItems.fromJson(json['lineItems'] as Map<String, dynamic>),

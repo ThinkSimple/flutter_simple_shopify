@@ -14,8 +14,8 @@ class LastIncompleteCheckout with _$LastIncompleteCheckout {
       String? id,
       String? currencyCode,
       String? webUrl,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? lineItemsSubtotalPrice,
+      PriceV2? totalPriceV2,
+      PriceV2? lineItemsSubtotalPrice,
       LineItems? lineItems}) = _LastIncompleteCheckout;
 
   factory LastIncompleteCheckout.fromJson(Map<String, dynamic> json) =>

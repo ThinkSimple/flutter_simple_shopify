@@ -10,10 +10,10 @@ class ProductVariantCheckout with _$ProductVariantCheckout {
   const ProductVariantCheckout._();
 
   factory ProductVariantCheckout({
-    @JsonKey(fromJson: priceV2FromJson) PriceV2? price,
+    PriceV2? price,
     String? title,
     ShopifyImage? image,
-    @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
+    PriceV2? compareAtPrice,
     double? weight,
     String? weightUnit,
     bool? availableForSale,

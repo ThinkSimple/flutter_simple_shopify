@@ -33,12 +33,17 @@ _$_Checkout _$_$_CheckoutFromJson(Map<String, dynamic> json) {
     note: json['note'] as String?,
     webUrl: json['webUrl'] as String?,
     updatedAt: json['updatedAt'] as String?,
-    totalTaxV2: priceV2FromJson(json['totalTaxV2'] as Map<String, dynamic>),
-    totalPriceV2: priceV2FromJson(json['totalPriceV2'] as Map<String, dynamic>),
+    totalTaxV2: json['totalTaxV2'] == null
+        ? null
+        : PriceV2.fromJson(json['totalTaxV2'] as Map<String, dynamic>),
+    totalPriceV2: json['totalPriceV2'] == null
+        ? null
+        : PriceV2.fromJson(json['totalPriceV2'] as Map<String, dynamic>),
     taxesIncluded: json['taxesIncluded'] as bool?,
     taxExempt: json['taxExempt'] as bool?,
-    subtotalPriceV2:
-        priceV2FromJson(json['subtotalPriceV2'] as Map<String, dynamic>),
+    subtotalPriceV2: json['subtotalPriceV2'] == null
+        ? null
+        : PriceV2.fromJson(json['subtotalPriceV2'] as Map<String, dynamic>),
     orderStatusUrl: json['orderStatusUrl'] as String?,
     requiresShipping: json['requiresShipping'] as bool?,
     order: json['order'] == null

@@ -21,10 +21,10 @@ class _$ProductVariantTearOff {
   const _$ProductVariantTearOff();
 
   _ProductVariant call(
-      {@JsonKey(fromJson: priceV2FromJson) PriceV2? price,
+      {PriceV2? price,
       String? title,
       ShopifyImage? image,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
+      PriceV2? compareAtPrice,
       double? weight,
       String? weightUnit,
       bool? availableForSale,
@@ -32,7 +32,7 @@ class _$ProductVariantTearOff {
       bool? requiresShipping,
       String? id,
       int? quantityAvailable,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? unitPrice,
+      PriceV2? unitPrice,
       UnitPriceMeasurement? unitPriceMeasurement,
       List<SelectedOption>? selectedOptions}) {
     return _ProductVariant(
@@ -63,11 +63,9 @@ const $ProductVariant = _$ProductVariantTearOff();
 
 /// @nodoc
 mixin _$ProductVariant {
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get price => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   ShopifyImage? get image => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get compareAtPrice => throw _privateConstructorUsedError;
   double? get weight => throw _privateConstructorUsedError;
   String? get weightUnit => throw _privateConstructorUsedError;
@@ -76,7 +74,6 @@ mixin _$ProductVariant {
   bool? get requiresShipping => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
   int? get quantityAvailable => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get unitPrice => throw _privateConstructorUsedError;
   UnitPriceMeasurement? get unitPriceMeasurement =>
       throw _privateConstructorUsedError;
@@ -95,10 +92,10 @@ abstract class $ProductVariantCopyWith<$Res> {
           ProductVariant value, $Res Function(ProductVariant) then) =
       _$ProductVariantCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(fromJson: priceV2FromJson) PriceV2? price,
+      {PriceV2? price,
       String? title,
       ShopifyImage? image,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
+      PriceV2? compareAtPrice,
       double? weight,
       String? weightUnit,
       bool? availableForSale,
@@ -106,7 +103,7 @@ abstract class $ProductVariantCopyWith<$Res> {
       bool? requiresShipping,
       String? id,
       int? quantityAvailable,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? unitPrice,
+      PriceV2? unitPrice,
       UnitPriceMeasurement? unitPriceMeasurement,
       List<SelectedOption>? selectedOptions});
 
@@ -268,10 +265,10 @@ abstract class _$ProductVariantCopyWith<$Res>
       __$ProductVariantCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(fromJson: priceV2FromJson) PriceV2? price,
+      {PriceV2? price,
       String? title,
       ShopifyImage? image,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
+      PriceV2? compareAtPrice,
       double? weight,
       String? weightUnit,
       bool? availableForSale,
@@ -279,7 +276,7 @@ abstract class _$ProductVariantCopyWith<$Res>
       bool? requiresShipping,
       String? id,
       int? quantityAvailable,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? unitPrice,
+      PriceV2? unitPrice,
       UnitPriceMeasurement? unitPriceMeasurement,
       List<SelectedOption>? selectedOptions});
 
@@ -389,10 +386,10 @@ class __$ProductVariantCopyWithImpl<$Res>
 /// @nodoc
 class _$_ProductVariant extends _ProductVariant {
   _$_ProductVariant(
-      {@JsonKey(fromJson: priceV2FromJson) this.price,
+      {this.price,
       this.title,
       this.image,
-      @JsonKey(fromJson: priceV2FromJson) this.compareAtPrice,
+      this.compareAtPrice,
       this.weight,
       this.weightUnit,
       this.availableForSale,
@@ -400,7 +397,7 @@ class _$_ProductVariant extends _ProductVariant {
       this.requiresShipping,
       this.id,
       this.quantityAvailable,
-      @JsonKey(fromJson: priceV2FromJson) this.unitPrice,
+      this.unitPrice,
       this.unitPriceMeasurement,
       this.selectedOptions})
       : super._();
@@ -409,14 +406,12 @@ class _$_ProductVariant extends _ProductVariant {
       _$_$_ProductVariantFromJson(json);
 
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? price;
   @override
   final String? title;
   @override
   final ShopifyImage? image;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? compareAtPrice;
   @override
   final double? weight;
@@ -433,7 +428,6 @@ class _$_ProductVariant extends _ProductVariant {
   @override
   final int? quantityAvailable;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? unitPrice;
   @override
   final UnitPriceMeasurement? unitPriceMeasurement;
@@ -518,10 +512,10 @@ class _$_ProductVariant extends _ProductVariant {
 
 abstract class _ProductVariant extends ProductVariant {
   factory _ProductVariant(
-      {@JsonKey(fromJson: priceV2FromJson) PriceV2? price,
+      {PriceV2? price,
       String? title,
       ShopifyImage? image,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
+      PriceV2? compareAtPrice,
       double? weight,
       String? weightUnit,
       bool? availableForSale,
@@ -529,7 +523,7 @@ abstract class _ProductVariant extends ProductVariant {
       bool? requiresShipping,
       String? id,
       int? quantityAvailable,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? unitPrice,
+      PriceV2? unitPrice,
       UnitPriceMeasurement? unitPriceMeasurement,
       List<SelectedOption>? selectedOptions}) = _$_ProductVariant;
   _ProductVariant._() : super._();
@@ -538,14 +532,12 @@ abstract class _ProductVariant extends ProductVariant {
       _$_ProductVariant.fromJson;
 
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get price => throw _privateConstructorUsedError;
   @override
   String? get title => throw _privateConstructorUsedError;
   @override
   ShopifyImage? get image => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get compareAtPrice => throw _privateConstructorUsedError;
   @override
   double? get weight => throw _privateConstructorUsedError;
@@ -562,7 +554,6 @@ abstract class _ProductVariant extends ProductVariant {
   @override
   int? get quantityAvailable => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get unitPrice => throw _privateConstructorUsedError;
   @override
   UnitPriceMeasurement? get unitPriceMeasurement =>

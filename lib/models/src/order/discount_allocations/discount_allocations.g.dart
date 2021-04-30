@@ -10,7 +10,7 @@ _$_DiscountAllocations _$_$_DiscountAllocationsFromJson(
     Map<String, dynamic> json) {
   return _$_DiscountAllocations(
     allocatedAmount:
-        priceV2FromJson(json['allocatedAmount'] as Map<String, dynamic>),
+        PriceV2.fromJson(json['allocatedAmount'] as Map<String, dynamic>),
   );
 }
 

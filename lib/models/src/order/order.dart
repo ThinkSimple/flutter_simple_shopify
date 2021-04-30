@@ -23,11 +23,11 @@ class Order with _$Order {
     String? processedAt,
     ShippingAddress? shippingAddress,
     String? statusUrl,
-    @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
-    @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
-    @JsonKey(fromJson: priceV2FromJson) PriceV2? totalRefundedV2,
-    @JsonKey(fromJson: priceV2FromJson) PriceV2? totalShippingPriceV2,
-    @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
+    PriceV2? subtotalPriceV2,
+    PriceV2? totalPriceV2,
+    PriceV2? totalRefundedV2,
+    PriceV2? totalShippingPriceV2,
+    PriceV2? totalTaxV2,
     String? cursor,
   }) = _Order;
 

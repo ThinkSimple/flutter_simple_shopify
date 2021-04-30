@@ -20,8 +20,7 @@ DiscountAllocations _$DiscountAllocationsFromJson(Map<String, dynamic> json) {
 class _$DiscountAllocationsTearOff {
   const _$DiscountAllocationsTearOff();
 
-  _DiscountAllocations call(
-      {@JsonKey(fromJson: priceV2FromJson) required PriceV2 allocatedAmount}) {
+  _DiscountAllocations call({required PriceV2 allocatedAmount}) {
     return _DiscountAllocations(
       allocatedAmount: allocatedAmount,
     );
@@ -37,7 +36,6 @@ const $DiscountAllocations = _$DiscountAllocationsTearOff();
 
 /// @nodoc
 mixin _$DiscountAllocations {
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2 get allocatedAmount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,7 +49,7 @@ abstract class $DiscountAllocationsCopyWith<$Res> {
   factory $DiscountAllocationsCopyWith(
           DiscountAllocations value, $Res Function(DiscountAllocations) then) =
       _$DiscountAllocationsCopyWithImpl<$Res>;
-  $Res call({@JsonKey(fromJson: priceV2FromJson) PriceV2 allocatedAmount});
+  $Res call({PriceV2 allocatedAmount});
 
   $PriceV2CopyWith<$Res> get allocatedAmount;
 }
@@ -92,7 +90,7 @@ abstract class _$DiscountAllocationsCopyWith<$Res>
           $Res Function(_DiscountAllocations) then) =
       __$DiscountAllocationsCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(fromJson: priceV2FromJson) PriceV2 allocatedAmount});
+  $Res call({PriceV2 allocatedAmount});
 
   @override
   $PriceV2CopyWith<$Res> get allocatedAmount;
@@ -126,15 +124,12 @@ class __$DiscountAllocationsCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_DiscountAllocations extends _DiscountAllocations {
-  _$_DiscountAllocations(
-      {@JsonKey(fromJson: priceV2FromJson) required this.allocatedAmount})
-      : super._();
+  _$_DiscountAllocations({required this.allocatedAmount}) : super._();
 
   factory _$_DiscountAllocations.fromJson(Map<String, dynamic> json) =>
       _$_$_DiscountAllocationsFromJson(json);
 
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2 allocatedAmount;
 
   @override
@@ -169,16 +164,14 @@ class _$_DiscountAllocations extends _DiscountAllocations {
 }
 
 abstract class _DiscountAllocations extends DiscountAllocations {
-  factory _DiscountAllocations(
-      {@JsonKey(fromJson: priceV2FromJson)
-          required PriceV2 allocatedAmount}) = _$_DiscountAllocations;
+  factory _DiscountAllocations({required PriceV2 allocatedAmount}) =
+      _$_DiscountAllocations;
   _DiscountAllocations._() : super._();
 
   factory _DiscountAllocations.fromJson(Map<String, dynamic> json) =
       _$_DiscountAllocations.fromJson;
 
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2 get allocatedAmount => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

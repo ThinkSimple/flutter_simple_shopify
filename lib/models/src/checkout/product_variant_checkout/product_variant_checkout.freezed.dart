@@ -22,10 +22,10 @@ class _$ProductVariantCheckoutTearOff {
   const _$ProductVariantCheckoutTearOff();
 
   _ProductVariantCheckout call(
-      {@JsonKey(fromJson: priceV2FromJson) PriceV2? price,
+      {PriceV2? price,
       String? title,
       ShopifyImage? image,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
+      PriceV2? compareAtPrice,
       double? weight,
       String? weightUnit,
       bool? availableForSale,
@@ -56,11 +56,9 @@ const $ProductVariantCheckout = _$ProductVariantCheckoutTearOff();
 
 /// @nodoc
 mixin _$ProductVariantCheckout {
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get price => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   ShopifyImage? get image => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get compareAtPrice => throw _privateConstructorUsedError;
   double? get weight => throw _privateConstructorUsedError;
   String? get weightUnit => throw _privateConstructorUsedError;
@@ -81,10 +79,10 @@ abstract class $ProductVariantCheckoutCopyWith<$Res> {
           $Res Function(ProductVariantCheckout) then) =
       _$ProductVariantCheckoutCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(fromJson: priceV2FromJson) PriceV2? price,
+      {PriceV2? price,
       String? title,
       ShopifyImage? image,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
+      PriceV2? compareAtPrice,
       double? weight,
       String? weightUnit,
       bool? availableForSale,
@@ -205,10 +203,10 @@ abstract class _$ProductVariantCheckoutCopyWith<$Res>
       __$ProductVariantCheckoutCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(fromJson: priceV2FromJson) PriceV2? price,
+      {PriceV2? price,
       String? title,
       ShopifyImage? image,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
+      PriceV2? compareAtPrice,
       double? weight,
       String? weightUnit,
       bool? availableForSale,
@@ -298,10 +296,10 @@ class __$ProductVariantCheckoutCopyWithImpl<$Res>
 /// @nodoc
 class _$_ProductVariantCheckout extends _ProductVariantCheckout {
   _$_ProductVariantCheckout(
-      {@JsonKey(fromJson: priceV2FromJson) this.price,
+      {this.price,
       this.title,
       this.image,
-      @JsonKey(fromJson: priceV2FromJson) this.compareAtPrice,
+      this.compareAtPrice,
       this.weight,
       this.weightUnit,
       this.availableForSale,
@@ -314,14 +312,12 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
       _$_$_ProductVariantCheckoutFromJson(json);
 
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? price;
   @override
   final String? title;
   @override
   final ShopifyImage? image;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? compareAtPrice;
   @override
   final double? weight;
@@ -399,10 +395,10 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
 
 abstract class _ProductVariantCheckout extends ProductVariantCheckout {
   factory _ProductVariantCheckout(
-      {@JsonKey(fromJson: priceV2FromJson) PriceV2? price,
+      {PriceV2? price,
       String? title,
       ShopifyImage? image,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
+      PriceV2? compareAtPrice,
       double? weight,
       String? weightUnit,
       bool? availableForSale,
@@ -415,14 +411,12 @@ abstract class _ProductVariantCheckout extends ProductVariantCheckout {
       _$_ProductVariantCheckout.fromJson;
 
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get price => throw _privateConstructorUsedError;
   @override
   String? get title => throw _privateConstructorUsedError;
   @override
   ShopifyImage? get image => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get compareAtPrice => throw _privateConstructorUsedError;
   @override
   double? get weight => throw _privateConstructorUsedError;

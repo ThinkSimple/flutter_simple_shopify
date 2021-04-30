@@ -24,14 +24,22 @@ _$_Order _$_$_OrderFromJson(Map<String, dynamic> json) {
         : ShippingAddress.fromJson(
             json['shippingAddress'] as Map<String, dynamic>),
     statusUrl: json['statusUrl'] as String?,
-    subtotalPriceV2:
-        priceV2FromJson(json['subtotalPriceV2'] as Map<String, dynamic>),
-    totalPriceV2: priceV2FromJson(json['totalPriceV2'] as Map<String, dynamic>),
-    totalRefundedV2:
-        priceV2FromJson(json['totalRefundedV2'] as Map<String, dynamic>),
-    totalShippingPriceV2:
-        priceV2FromJson(json['totalShippingPriceV2'] as Map<String, dynamic>),
-    totalTaxV2: priceV2FromJson(json['totalTaxV2'] as Map<String, dynamic>),
+    subtotalPriceV2: json['subtotalPriceV2'] == null
+        ? null
+        : PriceV2.fromJson(json['subtotalPriceV2'] as Map<String, dynamic>),
+    totalPriceV2: json['totalPriceV2'] == null
+        ? null
+        : PriceV2.fromJson(json['totalPriceV2'] as Map<String, dynamic>),
+    totalRefundedV2: json['totalRefundedV2'] == null
+        ? null
+        : PriceV2.fromJson(json['totalRefundedV2'] as Map<String, dynamic>),
+    totalShippingPriceV2: json['totalShippingPriceV2'] == null
+        ? null
+        : PriceV2.fromJson(
+            json['totalShippingPriceV2'] as Map<String, dynamic>),
+    totalTaxV2: json['totalTaxV2'] == null
+        ? null
+        : PriceV2.fromJson(json['totalTaxV2'] as Map<String, dynamic>),
     cursor: json['cursor'] as String?,
   );
 }

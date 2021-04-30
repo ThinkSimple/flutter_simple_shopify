@@ -34,11 +34,11 @@ class _$CheckoutTearOff {
       String? note,
       String? webUrl,
       String? updatedAt,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
+      PriceV2? totalTaxV2,
+      PriceV2? totalPriceV2,
       bool? taxesIncluded,
       bool? taxExempt,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
+      PriceV2? subtotalPriceV2,
       String? orderStatusUrl,
       bool? requiresShipping,
       Order? order}) {
@@ -92,13 +92,10 @@ mixin _$Checkout {
   String? get note => throw _privateConstructorUsedError;
   String? get webUrl => throw _privateConstructorUsedError;
   String? get updatedAt => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalTaxV2 => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalPriceV2 => throw _privateConstructorUsedError;
   bool? get taxesIncluded => throw _privateConstructorUsedError;
   bool? get taxExempt => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get subtotalPriceV2 => throw _privateConstructorUsedError;
   String? get orderStatusUrl => throw _privateConstructorUsedError;
   bool? get requiresShipping => throw _privateConstructorUsedError;
@@ -128,11 +125,11 @@ abstract class $CheckoutCopyWith<$Res> {
       String? note,
       String? webUrl,
       String? updatedAt,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
+      PriceV2? totalTaxV2,
+      PriceV2? totalPriceV2,
       bool? taxesIncluded,
       bool? taxExempt,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
+      PriceV2? subtotalPriceV2,
       String? orderStatusUrl,
       bool? requiresShipping,
       Order? order});
@@ -376,11 +373,11 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
       String? note,
       String? webUrl,
       String? updatedAt,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
+      PriceV2? totalTaxV2,
+      PriceV2? totalPriceV2,
       bool? taxesIncluded,
       bool? taxExempt,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
+      PriceV2? subtotalPriceV2,
       String? orderStatusUrl,
       bool? requiresShipping,
       Order? order});
@@ -543,11 +540,11 @@ class _$_Checkout extends _Checkout {
       this.note,
       this.webUrl,
       this.updatedAt,
-      @JsonKey(fromJson: priceV2FromJson) this.totalTaxV2,
-      @JsonKey(fromJson: priceV2FromJson) this.totalPriceV2,
+      this.totalTaxV2,
+      this.totalPriceV2,
       this.taxesIncluded,
       this.taxExempt,
-      @JsonKey(fromJson: priceV2FromJson) this.subtotalPriceV2,
+      this.subtotalPriceV2,
       this.orderStatusUrl,
       this.requiresShipping,
       this.order})
@@ -583,17 +580,14 @@ class _$_Checkout extends _Checkout {
   @override
   final String? updatedAt;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? totalTaxV2;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? totalPriceV2;
   @override
   final bool? taxesIncluded;
   @override
   final bool? taxExempt;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? subtotalPriceV2;
   @override
   final String? orderStatusUrl;
@@ -722,11 +716,11 @@ abstract class _Checkout extends Checkout {
       String? note,
       String? webUrl,
       String? updatedAt,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalTaxV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? totalPriceV2,
+      PriceV2? totalTaxV2,
+      PriceV2? totalPriceV2,
       bool? taxesIncluded,
       bool? taxExempt,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? subtotalPriceV2,
+      PriceV2? subtotalPriceV2,
       String? orderStatusUrl,
       bool? requiresShipping,
       Order? order}) = _$_Checkout;
@@ -763,17 +757,14 @@ abstract class _Checkout extends Checkout {
   @override
   String? get updatedAt => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalTaxV2 => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get totalPriceV2 => throw _privateConstructorUsedError;
   @override
   bool? get taxesIncluded => throw _privateConstructorUsedError;
   @override
   bool? get taxExempt => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get subtotalPriceV2 => throw _privateConstructorUsedError;
   @override
   String? get orderStatusUrl => throw _privateConstructorUsedError;

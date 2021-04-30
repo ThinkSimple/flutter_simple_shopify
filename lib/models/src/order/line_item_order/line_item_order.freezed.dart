@@ -23,8 +23,8 @@ class _$LineItemOrderTearOff {
   _LineItemOrder call(
       {int? currentQuantity,
       List<DiscountAllocations>? discountAllocations,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? discountedTotalPrice,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? originalTotalPrice,
+      PriceV2? discountedTotalPrice,
+      PriceV2? originalTotalPrice,
       int? quantity,
       String? title,
       ProductVariantCheckout? variant}) {
@@ -52,9 +52,7 @@ mixin _$LineItemOrder {
   int? get currentQuantity => throw _privateConstructorUsedError;
   List<DiscountAllocations>? get discountAllocations =>
       throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get discountedTotalPrice => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get originalTotalPrice => throw _privateConstructorUsedError;
   int? get quantity => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
@@ -74,8 +72,8 @@ abstract class $LineItemOrderCopyWith<$Res> {
   $Res call(
       {int? currentQuantity,
       List<DiscountAllocations>? discountAllocations,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? discountedTotalPrice,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? originalTotalPrice,
+      PriceV2? discountedTotalPrice,
+      PriceV2? originalTotalPrice,
       int? quantity,
       String? title,
       ProductVariantCheckout? variant});
@@ -180,8 +178,8 @@ abstract class _$LineItemOrderCopyWith<$Res>
   $Res call(
       {int? currentQuantity,
       List<DiscountAllocations>? discountAllocations,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? discountedTotalPrice,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? originalTotalPrice,
+      PriceV2? discountedTotalPrice,
+      PriceV2? originalTotalPrice,
       int? quantity,
       String? title,
       ProductVariantCheckout? variant});
@@ -255,8 +253,8 @@ class _$_LineItemOrder extends _LineItemOrder {
   _$_LineItemOrder(
       {this.currentQuantity,
       this.discountAllocations,
-      @JsonKey(fromJson: priceV2FromJson) this.discountedTotalPrice,
-      @JsonKey(fromJson: priceV2FromJson) this.originalTotalPrice,
+      this.discountedTotalPrice,
+      this.originalTotalPrice,
       this.quantity,
       this.title,
       this.variant})
@@ -270,10 +268,8 @@ class _$_LineItemOrder extends _LineItemOrder {
   @override
   final List<DiscountAllocations>? discountAllocations;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? discountedTotalPrice;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? originalTotalPrice;
   @override
   final int? quantity;
@@ -338,8 +334,8 @@ abstract class _LineItemOrder extends LineItemOrder {
   factory _LineItemOrder(
       {int? currentQuantity,
       List<DiscountAllocations>? discountAllocations,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? discountedTotalPrice,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? originalTotalPrice,
+      PriceV2? discountedTotalPrice,
+      PriceV2? originalTotalPrice,
       int? quantity,
       String? title,
       ProductVariantCheckout? variant}) = _$_LineItemOrder;
@@ -354,10 +350,8 @@ abstract class _LineItemOrder extends LineItemOrder {
   List<DiscountAllocations>? get discountAllocations =>
       throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get discountedTotalPrice => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get originalTotalPrice => throw _privateConstructorUsedError;
   @override
   int? get quantity => throw _privateConstructorUsedError;
