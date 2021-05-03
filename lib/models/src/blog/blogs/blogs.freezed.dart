@@ -101,9 +101,8 @@ class __$BlogsCopyWithImpl<$Res> extends _$BlogsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Blogs implements _Blogs {
   _$_Blogs({required this.blogList});
 

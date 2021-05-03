@@ -21,12 +21,12 @@ class _$MetafieldTearOff {
   const _$MetafieldTearOff();
 
   _Metafield call(
-      {String? id,
-      String? namespace,
-      String? key,
-      String? value,
-      String? valueType,
-      String? description}) {
+      {required String id,
+      required String namespace,
+      required String key,
+      required String value,
+      required String valueType,
+      String description = ''}) {
     return _Metafield(
       id: id,
       namespace: namespace,
@@ -47,12 +47,12 @@ const $Metafield = _$MetafieldTearOff();
 
 /// @nodoc
 mixin _$Metafield {
-  String? get id => throw _privateConstructorUsedError;
-  String? get namespace => throw _privateConstructorUsedError;
-  String? get key => throw _privateConstructorUsedError;
-  String? get value => throw _privateConstructorUsedError;
-  String? get valueType => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get namespace => throw _privateConstructorUsedError;
+  String get key => throw _privateConstructorUsedError;
+  String get value => throw _privateConstructorUsedError;
+  String get valueType => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,12 +65,12 @@ abstract class $MetafieldCopyWith<$Res> {
   factory $MetafieldCopyWith(Metafield value, $Res Function(Metafield) then) =
       _$MetafieldCopyWithImpl<$Res>;
   $Res call(
-      {String? id,
-      String? namespace,
-      String? key,
-      String? value,
-      String? valueType,
-      String? description});
+      {String id,
+      String namespace,
+      String key,
+      String value,
+      String valueType,
+      String description});
 }
 
 /// @nodoc
@@ -94,27 +94,27 @@ class _$MetafieldCopyWithImpl<$Res> implements $MetafieldCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       namespace: namespace == freezed
           ? _value.namespace
           : namespace // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       key: key == freezed
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       value: value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       valueType: valueType == freezed
           ? _value.valueType
           : valueType // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -126,12 +126,12 @@ abstract class _$MetafieldCopyWith<$Res> implements $MetafieldCopyWith<$Res> {
       __$MetafieldCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? id,
-      String? namespace,
-      String? key,
-      String? value,
-      String? valueType,
-      String? description});
+      {String id,
+      String namespace,
+      String key,
+      String value,
+      String valueType,
+      String description});
 }
 
 /// @nodoc
@@ -156,59 +156,59 @@ class __$MetafieldCopyWithImpl<$Res> extends _$MetafieldCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       namespace: namespace == freezed
           ? _value.namespace
           : namespace // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       key: key == freezed
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       value: value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       valueType: valueType == freezed
           ? _value.valueType
           : valueType // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Metafield extends _Metafield {
   _$_Metafield(
-      {this.id,
-      this.namespace,
-      this.key,
-      this.value,
-      this.valueType,
-      this.description})
+      {required this.id,
+      required this.namespace,
+      required this.key,
+      required this.value,
+      required this.valueType,
+      this.description = ''})
       : super._();
 
   factory _$_Metafield.fromJson(Map<String, dynamic> json) =>
       _$_$_MetafieldFromJson(json);
 
   @override
-  final String? id;
+  final String id;
   @override
-  final String? namespace;
+  final String namespace;
   @override
-  final String? key;
+  final String key;
   @override
-  final String? value;
+  final String value;
   @override
-  final String? valueType;
+  final String valueType;
+  @JsonKey(defaultValue: '')
   @override
-  final String? description;
+  final String description;
 
   @override
   String toString() {
@@ -259,29 +259,29 @@ class _$_Metafield extends _Metafield {
 
 abstract class _Metafield extends Metafield {
   factory _Metafield(
-      {String? id,
-      String? namespace,
-      String? key,
-      String? value,
-      String? valueType,
-      String? description}) = _$_Metafield;
+      {required String id,
+      required String namespace,
+      required String key,
+      required String value,
+      required String valueType,
+      String description}) = _$_Metafield;
   _Metafield._() : super._();
 
   factory _Metafield.fromJson(Map<String, dynamic> json) =
       _$_Metafield.fromJson;
 
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String? get namespace => throw _privateConstructorUsedError;
+  String get namespace => throw _privateConstructorUsedError;
   @override
-  String? get key => throw _privateConstructorUsedError;
+  String get key => throw _privateConstructorUsedError;
   @override
-  String? get value => throw _privateConstructorUsedError;
+  String get value => throw _privateConstructorUsedError;
   @override
-  String? get valueType => throw _privateConstructorUsedError;
+  String get valueType => throw _privateConstructorUsedError;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MetafieldCopyWith<_Metafield> get copyWith =>

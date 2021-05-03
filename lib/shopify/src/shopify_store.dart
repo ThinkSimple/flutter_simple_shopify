@@ -57,7 +57,7 @@ class ShopifyStore with ShopifyError {
       tempProduct =
           (Products.fromGraphJson((result.data ?? const {})["products"] ?? {}));
 
-      productList += tempProduct.productList ?? const [];
+      productList += tempProduct.productList;
       cursor = productList.isNotEmpty ? productList.last.cursor : '';
     } while ((tempProduct.hasNextPage == true));
     if (deleteThisPartOfCache) {
@@ -89,7 +89,7 @@ class ShopifyStore with ShopifyError {
     checkForError(result);
     tempProduct =
         (Products.fromGraphJson((result.data ?? const {})["products"] ?? {}));
-    productList += tempProduct.productList ?? const [];
+    productList += tempProduct.productList;
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
@@ -325,11 +325,11 @@ class ShopifyStore with ShopifyError {
           });
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      productList.addAll(
-          Collection.fromGraphJson(result.data!).products!.productList!);
+      productList
+          .addAll(Collection.fromGraphJson(result.data!).products.productList);
       collection = (Collection.fromGraphJson(result.data!));
       cursor = productList.isNotEmpty ? productList.last.cursor : '';
-    } while (collection.products?.hasNextPage == true);
+    } while (collection.products.hasNextPage == true);
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
@@ -341,11 +341,12 @@ class ShopifyStore with ShopifyError {
   /// Returns the first [limit] Products after the given [startCursor].
   /// [limit] has to be in the range of 0 and 250.
   Future<List<Product>?> getXProductsAfterCursorWithinCollection(
-      String id, int limit, String startCursor,
-      {SortKeyProductCollection sortKey = SortKeyProductCollection.BEST_SELLING,
+      String id, int limit,
+      {String? startCursor = null,
+      SortKeyProductCollection sortKey = SortKeyProductCollection.BEST_SELLING,
       bool deleteThisPartOfCache = false,
       bool reverse = false}) async {
-    String cursor = startCursor;
+    String? cursor = startCursor;
     final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getXProductsAfterCursorWithinCollectionQuery),
         variables: {
@@ -360,7 +361,7 @@ class ShopifyStore with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
-    return (Collection.fromGraphJson(result.data!)).products!.productList;
+    return (Collection.fromGraphJson(result.data!)).products.productList;
   }
 
   /// Returns a List of [Product].
@@ -386,7 +387,7 @@ class ShopifyStore with ShopifyError {
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       productList.addAll(
-          (Products.fromGraphJson((result.data!)['products'])).productList!);
+          (Products.fromGraphJson((result.data!)['products'])).productList);
       products =
           (Products.fromGraphJson((result.data ?? const {})['products']));
       cursor = productList.isNotEmpty ? productList.last.cursor : '';

@@ -7,13 +7,14 @@ part 'associated_collections.g.dart';
 class AssociatedCollections with _$AssociatedCollections {
   const AssociatedCollections._();
 
-  factory AssociatedCollections(
-      {String? description,
-      String? descriptionHtml,
-      String? id,
-      String? handle,
-      String? updatedAt,
-      String? title}) = _AssociatedCollections;
+  factory AssociatedCollections({
+    required String id,
+    required String title,
+    @Default('') String description,
+    @Default('') String descriptionHtml,
+    @Default('') String handle,
+    @Default('') String updatedAt,
+  }) = _AssociatedCollections;
 
   static AssociatedCollections fromGraphJson(Map<String, dynamic> json) {
     return AssociatedCollections(

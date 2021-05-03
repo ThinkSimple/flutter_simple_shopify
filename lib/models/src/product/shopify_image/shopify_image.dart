@@ -8,11 +8,11 @@ class ShopifyImage with _$ShopifyImage {
   const ShopifyImage._();
 
   factory ShopifyImage({
-    String? altText,
-    String? originalSrc,
-    String? id,
+    required String altText,
+    required String originalSrc,
+    required String id,
   }) = _ShopifyImage;
 
- factory ShopifyImage.fromJson(Map<String, dynamic> json) =>
+  factory ShopifyImage.fromJson(Map<String, dynamic> json) =>
       _$ShopifyImageFromJson(json);
 }

@@ -444,9 +444,8 @@ class __$OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Order extends _Order {
   _$_Order(
       {this.id,

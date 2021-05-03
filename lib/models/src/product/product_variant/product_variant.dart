@@ -10,43 +10,44 @@ part 'product_variant.g.dart';
 @freezed
 class ProductVariant with _$ProductVariant {
   const ProductVariant._();
-  factory ProductVariant(
-      {PriceV2? price,
-      String? title,
-      ShopifyImage? image,
-      PriceV2? compareAtPrice,
-      double? weight,
-      String? weightUnit,
-      bool? availableForSale,
-      String? sku,
-      bool? requiresShipping,
-      String? id,
-      int? quantityAvailable,
-      PriceV2? unitPrice,
-      UnitPriceMeasurement? unitPriceMeasurement,
-      List<SelectedOption>? selectedOptions}) = _ProductVariant;
+  factory ProductVariant({
+    required PriceV2 price,
+    required String title,
+    required double weight,
+    required String weightUnit,
+    required bool availableForSale,
+    required String sku,
+    required bool requiresShipping,
+    required String id,
+    required int quantityAvailable,
+    PriceV2? unitPrice,
+    UnitPriceMeasurement? unitPriceMeasurement,
+    List<SelectedOption>? selectedOptions,
+    PriceV2? compareAtPrice,
+    ShopifyImage? image,
+  }) = _ProductVariant;
 
   static ProductVariant fromGraphJson(Map<String, dynamic> json) {
     return ProductVariant(
-      price:
-          PriceV2.fromJson((json['node'] ?? const {})['priceV2'] ?? const {}),
-      title: (json['node'] ?? const {})['title'],
-      image: ShopifyImage.fromJson(
-          (json['node'] ?? const {})['image'] ?? const {}),
-      compareAtPrice: PriceV2.fromJson(
-          (json['node'] ?? const {})['compareAtPriceV2'] ?? const {}),
-      weight: (json['node'] ?? const {})['weight'],
-      weightUnit: (json['node'] ?? const {})['weightUnit'],
-      availableForSale: (json['node'] ?? const {})['availableForSale'],
-      sku: (json['node'] ?? const {})['sku'],
-      requiresShipping: (json['node'] ?? const {})['requiresShipping'],
-      id: (json['node'] ?? const {})['id'],
-      quantityAvailable: (json['node'] ?? const {})['quantityAvailable'],
-      unitPrice:
-          PriceV2.fromJson((json['node'] ?? const {})['unitPrice'] ?? const {}),
-      unitPriceMeasurement: UnitPriceMeasurement.fromJson(
-          (json['node'] ?? const {})['unitPriceMeasurement'] ?? const {}),
-      selectedOptions: _getOptionList((json['node'] ?? const {})),
+      price: PriceV2.fromJson((json['node'])['priceV2'] ?? const {}),
+      title: (json['node'])['title'],
+      image: ShopifyImage.fromJson((json['node'])['image'] ?? const {}),
+      compareAtPrice:
+          PriceV2.fromJson((json['node'])['compareAtPriceV2'] ?? const {}),
+      weight: (json['node'])['weight'],
+      weightUnit: (json['node'])['weightUnit'],
+      availableForSale: (json['node'])['availableForSale'],
+      sku: (json['node'])['sku'],
+      requiresShipping: (json['node'])['requiresShipping'],
+      id: (json['node'])['id'],
+      quantityAvailable: (json['node'])['quantityAvailable'],
+      unitPrice: json['node']['unitPrice'] == null
+          ? null
+          : PriceV2.fromJson((json['node'])['unitPrice']),
+      unitPriceMeasurement: json['node']['unitPriceMeasurement'] == null
+          ? null
+          : UnitPriceMeasurement.fromJson(json['node']['unitPriceMeasurement']),
+      selectedOptions: _getOptionList((json['node'])),
     );
   }
 

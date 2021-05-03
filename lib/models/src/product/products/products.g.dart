@@ -8,10 +8,10 @@ part of 'products.dart';
 
 _$_Products _$_$_ProductsFromJson(Map<String, dynamic> json) {
   return _$_Products(
-    productList: (json['productList'] as List<dynamic>?)
-        ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
+    productList: (json['productList'] as List<dynamic>)
+        .map((e) => Product.fromJson(e as Map<String, dynamic>))
         .toList(),
-    hasNextPage: json['hasNextPage'] as bool?,
+    hasNextPage: json['hasNextPage'] as bool,
   );
 }
 

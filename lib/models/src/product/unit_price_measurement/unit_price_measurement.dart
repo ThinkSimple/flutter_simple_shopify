@@ -7,11 +7,11 @@ part 'unit_price_measurement.g.dart';
 class UnitPriceMeasurement with _$UnitPriceMeasurement {
   const UnitPriceMeasurement._();
   factory UnitPriceMeasurement({
-    String? measuredType,
-    String? quantityUnit,
-    double? quantityValue,
-    String? referenceUnit,
-    int? referenceValue,
+    required String measuredType,
+    required String quantityUnit,
+    required double quantityValue,
+    required String referenceUnit,
+    required int referenceValue,
   }) = _UnitPriceMeasurement;
 
   factory UnitPriceMeasurement.fromJson(Map<String, dynamic> json) =>

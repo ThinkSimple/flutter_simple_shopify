@@ -8,8 +8,8 @@ part of 'selected_option.dart';
 
 _$_SelectedOption _$_$_SelectedOptionFromJson(Map<String, dynamic> json) {
   return _$_SelectedOption(
-    name: json['name'] as String?,
-    value: json['value'] as String?,
+    name: json['name'] as String,
+    value: json['value'] as String,
   );
 }
 

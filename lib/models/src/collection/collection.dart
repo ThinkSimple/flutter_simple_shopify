@@ -9,15 +9,15 @@ part 'collection.g.dart';
 class Collection with _$Collection {
   const Collection._();
   factory Collection({
-    String? title,
-    String? description,
-    String? descriptionHtml,
-    String? handle,
-    String? id,
-    String? updatedAt,
+    required String title,
+    required String id,
+    required Products products,
+    required String cursor,
+    @Default('') String description,
+    @Default('') String descriptionHtml,
+    @Default('') String handle,
+    @Default('') String updatedAt,
     ShopifyImage? image,
-    Products? products,
-    String? cursor,
   }) = _Collection;
 
   static Collection fromGraphJson(Map<String, dynamic> json) {

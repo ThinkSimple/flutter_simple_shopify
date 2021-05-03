@@ -164,9 +164,8 @@ class __$CommentCopyWithImpl<$Res> extends _$CommentCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Comment extends _Comment {
   _$_Comment({this.email, this.name, this.content, this.contentHtml, this.id})
       : super._();

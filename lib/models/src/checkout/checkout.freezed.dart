@@ -522,9 +522,8 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Checkout extends _Checkout {
   _$_Checkout(
       {this.id,

@@ -163,9 +163,8 @@ class __$AppliedGiftCardsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_AppliedGiftCards extends _AppliedGiftCards {
   _$_AppliedGiftCards({this.amountUsedV2, this.balanceV2, this.id}) : super._();
 

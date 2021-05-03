@@ -21,25 +21,25 @@ class _$CollectionTearOff {
   const _$CollectionTearOff();
 
   _Collection call(
-      {String? title,
-      String? description,
-      String? descriptionHtml,
-      String? handle,
-      String? id,
-      String? updatedAt,
-      ShopifyImage? image,
-      Products? products,
-      String? cursor}) {
+      {required String title,
+      required String id,
+      required Products products,
+      required String cursor,
+      String description = '',
+      String descriptionHtml = '',
+      String handle = '',
+      String updatedAt = '',
+      ShopifyImage? image}) {
     return _Collection(
       title: title,
+      id: id,
+      products: products,
+      cursor: cursor,
       description: description,
       descriptionHtml: descriptionHtml,
       handle: handle,
-      id: id,
       updatedAt: updatedAt,
       image: image,
-      products: products,
-      cursor: cursor,
     );
   }
 
@@ -53,15 +53,15 @@ const $Collection = _$CollectionTearOff();
 
 /// @nodoc
 mixin _$Collection {
-  String? get title => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  String? get descriptionHtml => throw _privateConstructorUsedError;
-  String? get handle => throw _privateConstructorUsedError;
-  String? get id => throw _privateConstructorUsedError;
-  String? get updatedAt => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  Products get products => throw _privateConstructorUsedError;
+  String get cursor => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get descriptionHtml => throw _privateConstructorUsedError;
+  String get handle => throw _privateConstructorUsedError;
+  String get updatedAt => throw _privateConstructorUsedError;
   ShopifyImage? get image => throw _privateConstructorUsedError;
-  Products? get products => throw _privateConstructorUsedError;
-  String? get cursor => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -75,18 +75,18 @@ abstract class $CollectionCopyWith<$Res> {
           Collection value, $Res Function(Collection) then) =
       _$CollectionCopyWithImpl<$Res>;
   $Res call(
-      {String? title,
-      String? description,
-      String? descriptionHtml,
-      String? handle,
-      String? id,
-      String? updatedAt,
-      ShopifyImage? image,
-      Products? products,
-      String? cursor});
+      {String title,
+      String id,
+      Products products,
+      String cursor,
+      String description,
+      String descriptionHtml,
+      String handle,
+      String updatedAt,
+      ShopifyImage? image});
 
+  $ProductsCopyWith<$Res> get products;
   $ShopifyImageCopyWith<$Res>? get image;
-  $ProductsCopyWith<$Res>? get products;
 }
 
 /// @nodoc
@@ -100,53 +100,60 @@ class _$CollectionCopyWithImpl<$Res> implements $CollectionCopyWith<$Res> {
   @override
   $Res call({
     Object? title = freezed,
+    Object? id = freezed,
+    Object? products = freezed,
+    Object? cursor = freezed,
     Object? description = freezed,
     Object? descriptionHtml = freezed,
     Object? handle = freezed,
-    Object? id = freezed,
     Object? updatedAt = freezed,
     Object? image = freezed,
-    Object? products = freezed,
-    Object? cursor = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descriptionHtml: descriptionHtml == freezed
-          ? _value.descriptionHtml
-          : descriptionHtml // ignore: cast_nullable_to_non_nullable
-              as String?,
-      handle: handle == freezed
-          ? _value.handle
-          : handle // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      products: products == freezed
+          ? _value.products
+          : products // ignore: cast_nullable_to_non_nullable
+              as Products,
+      cursor: cursor == freezed
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      descriptionHtml: descriptionHtml == freezed
+          ? _value.descriptionHtml
+          : descriptionHtml // ignore: cast_nullable_to_non_nullable
+              as String,
+      handle: handle == freezed
+          ? _value.handle
+          : handle // ignore: cast_nullable_to_non_nullable
+              as String,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as ShopifyImage?,
-      products: products == freezed
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as Products?,
-      cursor: cursor == freezed
-          ? _value.cursor
-          : cursor // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
+  }
+
+  @override
+  $ProductsCopyWith<$Res> get products {
+    return $ProductsCopyWith<$Res>(_value.products, (value) {
+      return _then(_value.copyWith(products: value));
+    });
   }
 
   @override
@@ -159,17 +166,6 @@ class _$CollectionCopyWithImpl<$Res> implements $CollectionCopyWith<$Res> {
       return _then(_value.copyWith(image: value));
     });
   }
-
-  @override
-  $ProductsCopyWith<$Res>? get products {
-    if (_value.products == null) {
-      return null;
-    }
-
-    return $ProductsCopyWith<$Res>(_value.products!, (value) {
-      return _then(_value.copyWith(products: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -179,20 +175,20 @@ abstract class _$CollectionCopyWith<$Res> implements $CollectionCopyWith<$Res> {
       __$CollectionCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? title,
-      String? description,
-      String? descriptionHtml,
-      String? handle,
-      String? id,
-      String? updatedAt,
-      ShopifyImage? image,
-      Products? products,
-      String? cursor});
+      {String title,
+      String id,
+      Products products,
+      String cursor,
+      String description,
+      String descriptionHtml,
+      String handle,
+      String updatedAt,
+      ShopifyImage? image});
 
   @override
-  $ShopifyImageCopyWith<$Res>? get image;
+  $ProductsCopyWith<$Res> get products;
   @override
-  $ProductsCopyWith<$Res>? get products;
+  $ShopifyImageCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -208,97 +204,100 @@ class __$CollectionCopyWithImpl<$Res> extends _$CollectionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = freezed,
+    Object? id = freezed,
+    Object? products = freezed,
+    Object? cursor = freezed,
     Object? description = freezed,
     Object? descriptionHtml = freezed,
     Object? handle = freezed,
-    Object? id = freezed,
     Object? updatedAt = freezed,
     Object? image = freezed,
-    Object? products = freezed,
-    Object? cursor = freezed,
   }) {
     return _then(_Collection(
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descriptionHtml: descriptionHtml == freezed
-          ? _value.descriptionHtml
-          : descriptionHtml // ignore: cast_nullable_to_non_nullable
-              as String?,
-      handle: handle == freezed
-          ? _value.handle
-          : handle // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      products: products == freezed
+          ? _value.products
+          : products // ignore: cast_nullable_to_non_nullable
+              as Products,
+      cursor: cursor == freezed
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      descriptionHtml: descriptionHtml == freezed
+          ? _value.descriptionHtml
+          : descriptionHtml // ignore: cast_nullable_to_non_nullable
+              as String,
+      handle: handle == freezed
+          ? _value.handle
+          : handle // ignore: cast_nullable_to_non_nullable
+              as String,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as ShopifyImage?,
-      products: products == freezed
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as Products?,
-      cursor: cursor == freezed
-          ? _value.cursor
-          : cursor // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Collection extends _Collection {
   _$_Collection(
-      {this.title,
-      this.description,
-      this.descriptionHtml,
-      this.handle,
-      this.id,
-      this.updatedAt,
-      this.image,
-      this.products,
-      this.cursor})
+      {required this.title,
+      required this.id,
+      required this.products,
+      required this.cursor,
+      this.description = '',
+      this.descriptionHtml = '',
+      this.handle = '',
+      this.updatedAt = '',
+      this.image})
       : super._();
 
   factory _$_Collection.fromJson(Map<String, dynamic> json) =>
       _$_$_CollectionFromJson(json);
 
   @override
-  final String? title;
+  final String title;
   @override
-  final String? description;
+  final String id;
   @override
-  final String? descriptionHtml;
+  final Products products;
   @override
-  final String? handle;
+  final String cursor;
+  @JsonKey(defaultValue: '')
   @override
-  final String? id;
+  final String description;
+  @JsonKey(defaultValue: '')
   @override
-  final String? updatedAt;
+  final String descriptionHtml;
+  @JsonKey(defaultValue: '')
+  @override
+  final String handle;
+  @JsonKey(defaultValue: '')
+  @override
+  final String updatedAt;
   @override
   final ShopifyImage? image;
-  @override
-  final Products? products;
-  @override
-  final String? cursor;
 
   @override
   String toString() {
-    return 'Collection(title: $title, description: $description, descriptionHtml: $descriptionHtml, handle: $handle, id: $id, updatedAt: $updatedAt, image: $image, products: $products, cursor: $cursor)';
+    return 'Collection(title: $title, id: $id, products: $products, cursor: $cursor, description: $description, descriptionHtml: $descriptionHtml, handle: $handle, updatedAt: $updatedAt, image: $image)';
   }
 
   @override
@@ -307,6 +306,13 @@ class _$_Collection extends _Collection {
         (other is _Collection &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.products, products) ||
+                const DeepCollectionEquality()
+                    .equals(other.products, products)) &&
+            (identical(other.cursor, cursor) ||
+                const DeepCollectionEquality().equals(other.cursor, cursor)) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
@@ -315,32 +321,25 @@ class _$_Collection extends _Collection {
                     .equals(other.descriptionHtml, descriptionHtml)) &&
             (identical(other.handle, handle) ||
                 const DeepCollectionEquality().equals(other.handle, handle)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.updatedAt, updatedAt) ||
                 const DeepCollectionEquality()
                     .equals(other.updatedAt, updatedAt)) &&
             (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)) &&
-            (identical(other.products, products) ||
-                const DeepCollectionEquality()
-                    .equals(other.products, products)) &&
-            (identical(other.cursor, cursor) ||
-                const DeepCollectionEquality().equals(other.cursor, cursor)));
+                const DeepCollectionEquality().equals(other.image, image)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(products) ^
+      const DeepCollectionEquality().hash(cursor) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(descriptionHtml) ^
       const DeepCollectionEquality().hash(handle) ^
-      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(updatedAt) ^
-      const DeepCollectionEquality().hash(image) ^
-      const DeepCollectionEquality().hash(products) ^
-      const DeepCollectionEquality().hash(cursor);
+      const DeepCollectionEquality().hash(image);
 
   @JsonKey(ignore: true)
   @override
@@ -355,38 +354,38 @@ class _$_Collection extends _Collection {
 
 abstract class _Collection extends Collection {
   factory _Collection(
-      {String? title,
-      String? description,
-      String? descriptionHtml,
-      String? handle,
-      String? id,
-      String? updatedAt,
-      ShopifyImage? image,
-      Products? products,
-      String? cursor}) = _$_Collection;
+      {required String title,
+      required String id,
+      required Products products,
+      required String cursor,
+      String description,
+      String descriptionHtml,
+      String handle,
+      String updatedAt,
+      ShopifyImage? image}) = _$_Collection;
   _Collection._() : super._();
 
   factory _Collection.fromJson(Map<String, dynamic> json) =
       _$_Collection.fromJson;
 
   @override
-  String? get title => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String? get descriptionHtml => throw _privateConstructorUsedError;
+  Products get products => throw _privateConstructorUsedError;
   @override
-  String? get handle => throw _privateConstructorUsedError;
+  String get cursor => throw _privateConstructorUsedError;
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @override
-  String? get updatedAt => throw _privateConstructorUsedError;
+  String get descriptionHtml => throw _privateConstructorUsedError;
+  @override
+  String get handle => throw _privateConstructorUsedError;
+  @override
+  String get updatedAt => throw _privateConstructorUsedError;
   @override
   ShopifyImage? get image => throw _privateConstructorUsedError;
-  @override
-  Products? get products => throw _privateConstructorUsedError;
-  @override
-  String? get cursor => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$CollectionCopyWith<_Collection> get copyWith =>

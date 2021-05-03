@@ -122,9 +122,8 @@ class __$AvailableShippingRatesCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_AvailableShippingRates extends _AvailableShippingRates {
   _$_AvailableShippingRates({this.ready, this.shippingRates}) : super._();
 

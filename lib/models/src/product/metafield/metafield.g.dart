@@ -8,12 +8,12 @@ part of 'metafield.dart';
 
 _$_Metafield _$_$_MetafieldFromJson(Map<String, dynamic> json) {
   return _$_Metafield(
-    id: json['id'] as String?,
-    namespace: json['namespace'] as String?,
-    key: json['key'] as String?,
-    value: json['value'] as String?,
-    valueType: json['valueType'] as String?,
-    description: json['description'] as String?,
+    id: json['id'] as String,
+    namespace: json['namespace'] as String,
+    key: json['key'] as String,
+    value: json['value'] as String,
+    valueType: json['valueType'] as String,
+    description: json['description'] as String? ?? '',
   );
 }
 

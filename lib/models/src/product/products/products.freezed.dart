@@ -20,7 +20,8 @@ Products _$ProductsFromJson(Map<String, dynamic> json) {
 class _$ProductsTearOff {
   const _$ProductsTearOff();
 
-  _Products call({List<Product>? productList, bool? hasNextPage}) {
+  _Products call(
+      {required List<Product> productList, required bool hasNextPage}) {
     return _Products(
       productList: productList,
       hasNextPage: hasNextPage,
@@ -37,8 +38,8 @@ const $Products = _$ProductsTearOff();
 
 /// @nodoc
 mixin _$Products {
-  List<Product>? get productList => throw _privateConstructorUsedError;
-  bool? get hasNextPage => throw _privateConstructorUsedError;
+  List<Product> get productList => throw _privateConstructorUsedError;
+  bool get hasNextPage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,7 +51,7 @@ mixin _$Products {
 abstract class $ProductsCopyWith<$Res> {
   factory $ProductsCopyWith(Products value, $Res Function(Products) then) =
       _$ProductsCopyWithImpl<$Res>;
-  $Res call({List<Product>? productList, bool? hasNextPage});
+  $Res call({List<Product> productList, bool hasNextPage});
 }
 
 /// @nodoc
@@ -70,11 +71,11 @@ class _$ProductsCopyWithImpl<$Res> implements $ProductsCopyWith<$Res> {
       productList: productList == freezed
           ? _value.productList
           : productList // ignore: cast_nullable_to_non_nullable
-              as List<Product>?,
+              as List<Product>,
       hasNextPage: hasNextPage == freezed
           ? _value.hasNextPage
           : hasNextPage // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ));
   }
 }
@@ -84,7 +85,7 @@ abstract class _$ProductsCopyWith<$Res> implements $ProductsCopyWith<$Res> {
   factory _$ProductsCopyWith(_Products value, $Res Function(_Products) then) =
       __$ProductsCopyWithImpl<$Res>;
   @override
-  $Res call({List<Product>? productList, bool? hasNextPage});
+  $Res call({List<Product> productList, bool hasNextPage});
 }
 
 /// @nodoc
@@ -105,28 +106,28 @@ class __$ProductsCopyWithImpl<$Res> extends _$ProductsCopyWithImpl<$Res>
       productList: productList == freezed
           ? _value.productList
           : productList // ignore: cast_nullable_to_non_nullable
-              as List<Product>?,
+              as List<Product>,
       hasNextPage: hasNextPage == freezed
           ? _value.hasNextPage
           : hasNextPage // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Products extends _Products {
-  _$_Products({this.productList, this.hasNextPage}) : super._();
+  _$_Products({required this.productList, required this.hasNextPage})
+      : super._();
 
   factory _$_Products.fromJson(Map<String, dynamic> json) =>
       _$_$_ProductsFromJson(json);
 
   @override
-  final List<Product>? productList;
+  final List<Product> productList;
   @override
-  final bool? hasNextPage;
+  final bool hasNextPage;
 
   @override
   String toString() {
@@ -163,16 +164,17 @@ class _$_Products extends _Products {
 }
 
 abstract class _Products extends Products {
-  factory _Products({List<Product>? productList, bool? hasNextPage}) =
-      _$_Products;
+  factory _Products(
+      {required List<Product> productList,
+      required bool hasNextPage}) = _$_Products;
   _Products._() : super._();
 
   factory _Products.fromJson(Map<String, dynamic> json) = _$_Products.fromJson;
 
   @override
-  List<Product>? get productList => throw _privateConstructorUsedError;
+  List<Product> get productList => throw _privateConstructorUsedError;
   @override
-  bool? get hasNextPage => throw _privateConstructorUsedError;
+  bool get hasNextPage => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductsCopyWith<_Products> get copyWith =>

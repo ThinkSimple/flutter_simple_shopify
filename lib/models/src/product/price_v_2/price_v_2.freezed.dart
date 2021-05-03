@@ -21,17 +21,11 @@ class _$PriceV2TearOff {
   const _$PriceV2TearOff();
 
   _PriceV2 call(
-      {@JsonKey(fromJson: _amountFromJson)
-          double? amount,
-      String? currencyCode,
-      String? currencySymbol,
-      @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
-          String? formattedPrice}) {
+      {@JsonKey(fromJson: JsonHelper.amountFromJson) required double amount,
+      required String currencyCode}) {
     return _PriceV2(
       amount: amount,
       currencyCode: currencyCode,
-      currencySymbol: currencySymbol,
-      formattedPrice: formattedPrice,
     );
   }
 
@@ -45,12 +39,9 @@ const $PriceV2 = _$PriceV2TearOff();
 
 /// @nodoc
 mixin _$PriceV2 {
-  @JsonKey(fromJson: _amountFromJson)
-  double? get amount => throw _privateConstructorUsedError;
-  String? get currencyCode => throw _privateConstructorUsedError;
-  String? get currencySymbol => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
-  String? get formattedPrice => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: JsonHelper.amountFromJson)
+  double get amount => throw _privateConstructorUsedError;
+  String get currencyCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -62,12 +53,8 @@ abstract class $PriceV2CopyWith<$Res> {
   factory $PriceV2CopyWith(PriceV2 value, $Res Function(PriceV2) then) =
       _$PriceV2CopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(fromJson: _amountFromJson)
-          double? amount,
-      String? currencyCode,
-      String? currencySymbol,
-      @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
-          String? formattedPrice});
+      {@JsonKey(fromJson: JsonHelper.amountFromJson) double amount,
+      String currencyCode});
 }
 
 /// @nodoc
@@ -82,26 +69,16 @@ class _$PriceV2CopyWithImpl<$Res> implements $PriceV2CopyWith<$Res> {
   $Res call({
     Object? amount = freezed,
     Object? currencyCode = freezed,
-    Object? currencySymbol = freezed,
-    Object? formattedPrice = freezed,
   }) {
     return _then(_value.copyWith(
       amount: amount == freezed
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       currencyCode: currencyCode == freezed
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      currencySymbol: currencySymbol == freezed
-          ? _value.currencySymbol
-          : currencySymbol // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formattedPrice: formattedPrice == freezed
-          ? _value.formattedPrice
-          : formattedPrice // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -112,12 +89,8 @@ abstract class _$PriceV2CopyWith<$Res> implements $PriceV2CopyWith<$Res> {
       __$PriceV2CopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(fromJson: _amountFromJson)
-          double? amount,
-      String? currencyCode,
-      String? currencySymbol,
-      @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
-          String? formattedPrice});
+      {@JsonKey(fromJson: JsonHelper.amountFromJson) double amount,
+      String currencyCode});
 }
 
 /// @nodoc
@@ -133,60 +106,40 @@ class __$PriceV2CopyWithImpl<$Res> extends _$PriceV2CopyWithImpl<$Res>
   $Res call({
     Object? amount = freezed,
     Object? currencyCode = freezed,
-    Object? currencySymbol = freezed,
-    Object? formattedPrice = freezed,
   }) {
     return _then(_PriceV2(
       amount: amount == freezed
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       currencyCode: currencyCode == freezed
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      currencySymbol: currencySymbol == freezed
-          ? _value.currencySymbol
-          : currencySymbol // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formattedPrice: formattedPrice == freezed
-          ? _value.formattedPrice
-          : formattedPrice // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_PriceV2 extends _PriceV2 {
   _$_PriceV2(
-      {@JsonKey(fromJson: _amountFromJson)
-          this.amount,
-      this.currencyCode,
-      this.currencySymbol,
-      @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
-          this.formattedPrice})
+      {@JsonKey(fromJson: JsonHelper.amountFromJson) required this.amount,
+      required this.currencyCode})
       : super._();
 
   factory _$_PriceV2.fromJson(Map<String, dynamic> json) =>
       _$_$_PriceV2FromJson(json);
 
   @override
-  @JsonKey(fromJson: _amountFromJson)
-  final double? amount;
+  @JsonKey(fromJson: JsonHelper.amountFromJson)
+  final double amount;
   @override
-  final String? currencyCode;
-  @override
-  final String? currencySymbol;
-  @override
-  @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
-  final String? formattedPrice;
+  final String currencyCode;
 
   @override
   String toString() {
-    return 'PriceV2(amount: $amount, currencyCode: $currencyCode, currencySymbol: $currencySymbol, formattedPrice: $formattedPrice)';
+    return 'PriceV2(amount: $amount, currencyCode: $currencyCode)';
   }
 
   @override
@@ -197,22 +150,14 @@ class _$_PriceV2 extends _PriceV2 {
                 const DeepCollectionEquality().equals(other.amount, amount)) &&
             (identical(other.currencyCode, currencyCode) ||
                 const DeepCollectionEquality()
-                    .equals(other.currencyCode, currencyCode)) &&
-            (identical(other.currencySymbol, currencySymbol) ||
-                const DeepCollectionEquality()
-                    .equals(other.currencySymbol, currencySymbol)) &&
-            (identical(other.formattedPrice, formattedPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.formattedPrice, formattedPrice)));
+                    .equals(other.currencyCode, currencyCode)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(amount) ^
-      const DeepCollectionEquality().hash(currencyCode) ^
-      const DeepCollectionEquality().hash(currencySymbol) ^
-      const DeepCollectionEquality().hash(formattedPrice);
+      const DeepCollectionEquality().hash(currencyCode);
 
   @JsonKey(ignore: true)
   @override
@@ -227,26 +172,17 @@ class _$_PriceV2 extends _PriceV2 {
 
 abstract class _PriceV2 extends PriceV2 {
   factory _PriceV2(
-      {@JsonKey(fromJson: _amountFromJson)
-          double? amount,
-      String? currencyCode,
-      String? currencySymbol,
-      @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
-          String? formattedPrice}) = _$_PriceV2;
+      {@JsonKey(fromJson: JsonHelper.amountFromJson) required double amount,
+      required String currencyCode}) = _$_PriceV2;
   _PriceV2._() : super._();
 
   factory _PriceV2.fromJson(Map<String, dynamic> json) = _$_PriceV2.fromJson;
 
   @override
-  @JsonKey(fromJson: _amountFromJson)
-  double? get amount => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: JsonHelper.amountFromJson)
+  double get amount => throw _privateConstructorUsedError;
   @override
-  String? get currencyCode => throw _privateConstructorUsedError;
-  @override
-  String? get currencySymbol => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(fromJson: _chooseRightOrderOnCurrencySymbol)
-  String? get formattedPrice => throw _privateConstructorUsedError;
+  String get currencyCode => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PriceV2CopyWith<_PriceV2> get copyWith =>

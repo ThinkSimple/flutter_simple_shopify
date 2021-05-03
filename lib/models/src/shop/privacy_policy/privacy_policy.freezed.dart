@@ -159,9 +159,8 @@ class __$PrivacyPolicyCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_PrivacyPolicy implements _PrivacyPolicy {
   _$_PrivacyPolicy({this.body, this.handle, this.id, this.title, this.url});
 

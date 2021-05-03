@@ -157,9 +157,8 @@ class __$RefundPolicyCopyWithImpl<$Res> extends _$RefundPolicyCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_RefundPolicy implements _RefundPolicy {
   _$_RefundPolicy({this.body, this.handle, this.id, this.title, this.url});
 

@@ -344,9 +344,8 @@ class __$AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Address extends _Address {
   _$_Address(
       {this.id,

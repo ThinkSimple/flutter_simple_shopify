@@ -166,9 +166,8 @@ class __$LineItemCopyWithImpl<$Res> extends _$LineItemCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_LineItem extends _LineItem {
   _$_LineItem({this.id, this.quantity, this.variant, this.title}) : super._();
 

@@ -42,7 +42,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     List<Widget> widgetList = [];
     product.productVariants.forEach((variant) => widgetList.add(ListTile(
           title: Text(variant.title),
-          trailing: Text(variant.price.formattedPrice),
+          trailing: Text(variant.price.amount.toString()),
         )));
     return widgetList;
   }
