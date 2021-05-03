@@ -120,9 +120,8 @@ class __$DiscountAllocationsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_DiscountAllocations extends _DiscountAllocations {
   _$_DiscountAllocations({required this.allocatedAmount}) : super._();
 

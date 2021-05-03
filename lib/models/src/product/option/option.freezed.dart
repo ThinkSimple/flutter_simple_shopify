@@ -20,7 +20,10 @@ Option _$OptionFromJson(Map<String, dynamic> json) {
 class _$OptionTearOff {
   const _$OptionTearOff();
 
-  _Option call({String? id, String? name, List<String>? values}) {
+  _Option call(
+      {required String id,
+      required String name,
+      required List<String> values}) {
     return _Option(
       id: id,
       name: name,
@@ -38,9 +41,9 @@ const $Option = _$OptionTearOff();
 
 /// @nodoc
 mixin _$Option {
-  String? get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  List<String>? get values => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  List<String> get values => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +54,7 @@ mixin _$Option {
 abstract class $OptionCopyWith<$Res> {
   factory $OptionCopyWith(Option value, $Res Function(Option) then) =
       _$OptionCopyWithImpl<$Res>;
-  $Res call({String? id, String? name, List<String>? values});
+  $Res call({String id, String name, List<String> values});
 }
 
 /// @nodoc
@@ -72,15 +75,15 @@ class _$OptionCopyWithImpl<$Res> implements $OptionCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       values: values == freezed
           ? _value.values
           : values // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String>,
     ));
   }
 }
@@ -90,7 +93,7 @@ abstract class _$OptionCopyWith<$Res> implements $OptionCopyWith<$Res> {
   factory _$OptionCopyWith(_Option value, $Res Function(_Option) then) =
       __$OptionCopyWithImpl<$Res>;
   @override
-  $Res call({String? id, String? name, List<String>? values});
+  $Res call({String id, String name, List<String> values});
 }
 
 /// @nodoc
@@ -112,34 +115,34 @@ class __$OptionCopyWithImpl<$Res> extends _$OptionCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       values: values == freezed
           ? _value.values
           : values // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String>,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Option extends _Option {
-  _$_Option({this.id, this.name, this.values}) : super._();
+  _$_Option({required this.id, required this.name, required this.values})
+      : super._();
 
   factory _$_Option.fromJson(Map<String, dynamic> json) =>
       _$_$_OptionFromJson(json);
 
   @override
-  final String? id;
+  final String id;
   @override
-  final String? name;
+  final String name;
   @override
-  final List<String>? values;
+  final List<String> values;
 
   @override
   String toString() {
@@ -177,17 +180,20 @@ class _$_Option extends _Option {
 }
 
 abstract class _Option extends Option {
-  factory _Option({String? id, String? name, List<String>? values}) = _$_Option;
+  factory _Option(
+      {required String id,
+      required String name,
+      required List<String> values}) = _$_Option;
   _Option._() : super._();
 
   factory _Option.fromJson(Map<String, dynamic> json) = _$_Option.fromJson;
 
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @override
-  List<String>? get values => throw _privateConstructorUsedError;
+  List<String> get values => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$OptionCopyWith<_Option> get copyWith => throw _privateConstructorUsedError;

@@ -20,7 +20,7 @@ SelectedOption _$SelectedOptionFromJson(Map<String, dynamic> json) {
 class _$SelectedOptionTearOff {
   const _$SelectedOptionTearOff();
 
-  _SelectedOption call({String? name, String? value}) {
+  _SelectedOption call({required String name, required String value}) {
     return _SelectedOption(
       name: name,
       value: value,
@@ -37,8 +37,8 @@ const $SelectedOption = _$SelectedOptionTearOff();
 
 /// @nodoc
 mixin _$SelectedOption {
-  String? get name => throw _privateConstructorUsedError;
-  String? get value => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get value => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +51,7 @@ abstract class $SelectedOptionCopyWith<$Res> {
   factory $SelectedOptionCopyWith(
           SelectedOption value, $Res Function(SelectedOption) then) =
       _$SelectedOptionCopyWithImpl<$Res>;
-  $Res call({String? name, String? value});
+  $Res call({String name, String value});
 }
 
 /// @nodoc
@@ -72,11 +72,11 @@ class _$SelectedOptionCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       value: value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -88,7 +88,7 @@ abstract class _$SelectedOptionCopyWith<$Res>
           _SelectedOption value, $Res Function(_SelectedOption) then) =
       __$SelectedOptionCopyWithImpl<$Res>;
   @override
-  $Res call({String? name, String? value});
+  $Res call({String name, String value});
 }
 
 /// @nodoc
@@ -111,28 +111,27 @@ class __$SelectedOptionCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       value: value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_SelectedOption extends _SelectedOption {
-  _$_SelectedOption({this.name, this.value}) : super._();
+  _$_SelectedOption({required this.name, required this.value}) : super._();
 
   factory _$_SelectedOption.fromJson(Map<String, dynamic> json) =>
       _$_$_SelectedOptionFromJson(json);
 
   @override
-  final String? name;
+  final String name;
   @override
-  final String? value;
+  final String value;
 
   @override
   String toString() {
@@ -167,16 +166,17 @@ class _$_SelectedOption extends _SelectedOption {
 }
 
 abstract class _SelectedOption extends SelectedOption {
-  factory _SelectedOption({String? name, String? value}) = _$_SelectedOption;
+  factory _SelectedOption({required String name, required String value}) =
+      _$_SelectedOption;
   _SelectedOption._() : super._();
 
   factory _SelectedOption.fromJson(Map<String, dynamic> json) =
       _$_SelectedOption.fromJson;
 
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @override
-  String? get value => throw _privateConstructorUsedError;
+  String get value => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SelectedOptionCopyWith<_SelectedOption> get copyWith =>

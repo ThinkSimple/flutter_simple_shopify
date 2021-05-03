@@ -8,12 +8,12 @@ class Metafield with _$Metafield {
   const Metafield._();
 
   factory Metafield({
-    String? id,
-    String? namespace,
-    String? key,
-    String? value,
-    String? valueType,
-    String? description,
+    required String id,
+    required String namespace,
+    required String key,
+    required String value,
+    required String valueType,
+    @Default('') String description,
   }) = _Metafield;
 
   static Metafield fromGraphJson(Map<String, dynamic> json) {

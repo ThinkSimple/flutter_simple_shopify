@@ -120,9 +120,8 @@ class __$MatchedSubstringCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_MatchedSubstring implements _MatchedSubstring {
   const _$_MatchedSubstring({this.length, this.offset});
 

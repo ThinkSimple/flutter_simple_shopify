@@ -106,7 +106,7 @@ class _CollectionDetailScreenState extends State<CollectionDetailScreen> {
           await shopifyStore.getXProductsAfterCursorWithinCollection(
         widget.collectionId,
         4,
-        null,
+        startCursor: null,
         sortKey: SortKeyProductCollection.RELEVANCE,
       );
       if (mounted) {

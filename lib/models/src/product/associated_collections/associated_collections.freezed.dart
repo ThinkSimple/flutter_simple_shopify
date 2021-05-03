@@ -22,19 +22,19 @@ class _$AssociatedCollectionsTearOff {
   const _$AssociatedCollectionsTearOff();
 
   _AssociatedCollections call(
-      {String? description,
-      String? descriptionHtml,
-      String? id,
-      String? handle,
-      String? updatedAt,
-      String? title}) {
+      {required String id,
+      required String title,
+      String description = '',
+      String descriptionHtml = '',
+      String handle = '',
+      String updatedAt = ''}) {
     return _AssociatedCollections(
+      id: id,
+      title: title,
       description: description,
       descriptionHtml: descriptionHtml,
-      id: id,
       handle: handle,
       updatedAt: updatedAt,
-      title: title,
     );
   }
 
@@ -48,12 +48,12 @@ const $AssociatedCollections = _$AssociatedCollectionsTearOff();
 
 /// @nodoc
 mixin _$AssociatedCollections {
-  String? get description => throw _privateConstructorUsedError;
-  String? get descriptionHtml => throw _privateConstructorUsedError;
-  String? get id => throw _privateConstructorUsedError;
-  String? get handle => throw _privateConstructorUsedError;
-  String? get updatedAt => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get descriptionHtml => throw _privateConstructorUsedError;
+  String get handle => throw _privateConstructorUsedError;
+  String get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -67,12 +67,12 @@ abstract class $AssociatedCollectionsCopyWith<$Res> {
           $Res Function(AssociatedCollections) then) =
       _$AssociatedCollectionsCopyWithImpl<$Res>;
   $Res call(
-      {String? description,
-      String? descriptionHtml,
-      String? id,
-      String? handle,
-      String? updatedAt,
-      String? title});
+      {String id,
+      String title,
+      String description,
+      String descriptionHtml,
+      String handle,
+      String updatedAt});
 }
 
 /// @nodoc
@@ -86,38 +86,38 @@ class _$AssociatedCollectionsCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
+    Object? title = freezed,
     Object? description = freezed,
     Object? descriptionHtml = freezed,
-    Object? id = freezed,
     Object? handle = freezed,
     Object? updatedAt = freezed,
-    Object? title = freezed,
   }) {
     return _then(_value.copyWith(
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descriptionHtml: descriptionHtml == freezed
-          ? _value.descriptionHtml
-          : descriptionHtml // ignore: cast_nullable_to_non_nullable
-              as String?,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      handle: handle == freezed
-          ? _value.handle
-          : handle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      updatedAt: updatedAt == freezed
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      descriptionHtml: descriptionHtml == freezed
+          ? _value.descriptionHtml
+          : descriptionHtml // ignore: cast_nullable_to_non_nullable
+              as String,
+      handle: handle == freezed
+          ? _value.handle
+          : handle // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: updatedAt == freezed
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -130,12 +130,12 @@ abstract class _$AssociatedCollectionsCopyWith<$Res>
       __$AssociatedCollectionsCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? description,
-      String? descriptionHtml,
-      String? id,
-      String? handle,
-      String? updatedAt,
-      String? title});
+      {String id,
+      String title,
+      String description,
+      String descriptionHtml,
+      String handle,
+      String updatedAt});
 }
 
 /// @nodoc
@@ -151,106 +151,109 @@ class __$AssociatedCollectionsCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
+    Object? title = freezed,
     Object? description = freezed,
     Object? descriptionHtml = freezed,
-    Object? id = freezed,
     Object? handle = freezed,
     Object? updatedAt = freezed,
-    Object? title = freezed,
   }) {
     return _then(_AssociatedCollections(
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descriptionHtml: descriptionHtml == freezed
-          ? _value.descriptionHtml
-          : descriptionHtml // ignore: cast_nullable_to_non_nullable
-              as String?,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      handle: handle == freezed
-          ? _value.handle
-          : handle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      updatedAt: updatedAt == freezed
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      descriptionHtml: descriptionHtml == freezed
+          ? _value.descriptionHtml
+          : descriptionHtml // ignore: cast_nullable_to_non_nullable
+              as String,
+      handle: handle == freezed
+          ? _value.handle
+          : handle // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: updatedAt == freezed
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_AssociatedCollections extends _AssociatedCollections {
   _$_AssociatedCollections(
-      {this.description,
-      this.descriptionHtml,
-      this.id,
-      this.handle,
-      this.updatedAt,
-      this.title})
+      {required this.id,
+      required this.title,
+      this.description = '',
+      this.descriptionHtml = '',
+      this.handle = '',
+      this.updatedAt = ''})
       : super._();
 
   factory _$_AssociatedCollections.fromJson(Map<String, dynamic> json) =>
       _$_$_AssociatedCollectionsFromJson(json);
 
   @override
-  final String? description;
+  final String id;
   @override
-  final String? descriptionHtml;
+  final String title;
+  @JsonKey(defaultValue: '')
   @override
-  final String? id;
+  final String description;
+  @JsonKey(defaultValue: '')
   @override
-  final String? handle;
+  final String descriptionHtml;
+  @JsonKey(defaultValue: '')
   @override
-  final String? updatedAt;
+  final String handle;
+  @JsonKey(defaultValue: '')
   @override
-  final String? title;
+  final String updatedAt;
 
   @override
   String toString() {
-    return 'AssociatedCollections(description: $description, descriptionHtml: $descriptionHtml, id: $id, handle: $handle, updatedAt: $updatedAt, title: $title)';
+    return 'AssociatedCollections(id: $id, title: $title, description: $description, descriptionHtml: $descriptionHtml, handle: $handle, updatedAt: $updatedAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _AssociatedCollections &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
             (identical(other.descriptionHtml, descriptionHtml) ||
                 const DeepCollectionEquality()
                     .equals(other.descriptionHtml, descriptionHtml)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.handle, handle) ||
                 const DeepCollectionEquality().equals(other.handle, handle)) &&
             (identical(other.updatedAt, updatedAt) ||
                 const DeepCollectionEquality()
-                    .equals(other.updatedAt, updatedAt)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)));
+                    .equals(other.updatedAt, updatedAt)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(descriptionHtml) ^
-      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(handle) ^
-      const DeepCollectionEquality().hash(updatedAt) ^
-      const DeepCollectionEquality().hash(title);
+      const DeepCollectionEquality().hash(updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -266,29 +269,29 @@ class _$_AssociatedCollections extends _AssociatedCollections {
 
 abstract class _AssociatedCollections extends AssociatedCollections {
   factory _AssociatedCollections(
-      {String? description,
-      String? descriptionHtml,
-      String? id,
-      String? handle,
-      String? updatedAt,
-      String? title}) = _$_AssociatedCollections;
+      {required String id,
+      required String title,
+      String description,
+      String descriptionHtml,
+      String handle,
+      String updatedAt}) = _$_AssociatedCollections;
   _AssociatedCollections._() : super._();
 
   factory _AssociatedCollections.fromJson(Map<String, dynamic> json) =
       _$_AssociatedCollections.fromJson;
 
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String? get descriptionHtml => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @override
-  String? get handle => throw _privateConstructorUsedError;
+  String get descriptionHtml => throw _privateConstructorUsedError;
   @override
-  String? get updatedAt => throw _privateConstructorUsedError;
+  String get handle => throw _privateConstructorUsedError;
   @override
-  String? get title => throw _privateConstructorUsedError;
+  String get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AssociatedCollectionsCopyWith<_AssociatedCollections> get copyWith =>

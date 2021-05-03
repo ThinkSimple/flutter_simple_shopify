@@ -132,9 +132,8 @@ class __$PrimaryDomainCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_PrimaryDomain implements _PrimaryDomain {
   _$_PrimaryDomain({this.host, this.sslEnabled, this.url});
 

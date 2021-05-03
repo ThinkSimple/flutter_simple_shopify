@@ -8,9 +8,9 @@ class Option with _$Option {
   const Option._();
 
   factory Option({
-    String? id,
-    String? name,
-    List<String>? values,
+    required String id,
+    required String name,
+    required List<String> values,
   }) = _Option;
 
   factory Option.fromJson(Map<String, dynamic> json) => _$OptionFromJson(json);

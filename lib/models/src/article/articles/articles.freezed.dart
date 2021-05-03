@@ -102,9 +102,8 @@ class __$ArticlesCopyWithImpl<$Res> extends _$ArticlesCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Articles implements _Articles {
   _$_Articles({required this.articleList});
 

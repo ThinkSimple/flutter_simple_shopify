@@ -8,8 +8,8 @@ class SelectedOption with _$SelectedOption {
   const SelectedOption._();
 
   factory SelectedOption({
-    String? name,
-    String? value,
+    required String name,
+    required String value,
   }) = _SelectedOption;
 
   factory SelectedOption.fromJson(Map<String, dynamic> json) =>

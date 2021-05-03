@@ -101,9 +101,8 @@ class __$PagesCopyWithImpl<$Res> extends _$PagesCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Pages implements _Pages {
   _$_Pages({required this.pageList});
 

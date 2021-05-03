@@ -113,9 +113,8 @@ class __$OrdersCopyWithImpl<$Res> extends _$OrdersCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Orders implements _Orders {
   _$_Orders({required this.orderList, required this.hasNextPage});
 

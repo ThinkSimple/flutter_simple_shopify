@@ -142,9 +142,8 @@ class __$AddressPredictionCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_AddressPrediction implements _AddressPrediction {
   const _$_AddressPrediction(
       {this.addressId, this.description, this.matchedSubstrings});

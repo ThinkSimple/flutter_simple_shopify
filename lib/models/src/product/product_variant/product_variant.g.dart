@@ -8,23 +8,15 @@ part of 'product_variant.dart';
 
 _$_ProductVariant _$_$_ProductVariantFromJson(Map<String, dynamic> json) {
   return _$_ProductVariant(
-    price: json['price'] == null
-        ? null
-        : PriceV2.fromJson(json['price'] as Map<String, dynamic>),
-    title: json['title'] as String?,
-    image: json['image'] == null
-        ? null
-        : ShopifyImage.fromJson(json['image'] as Map<String, dynamic>),
-    compareAtPrice: json['compareAtPrice'] == null
-        ? null
-        : PriceV2.fromJson(json['compareAtPrice'] as Map<String, dynamic>),
-    weight: (json['weight'] as num?)?.toDouble(),
-    weightUnit: json['weightUnit'] as String?,
-    availableForSale: json['availableForSale'] as bool?,
-    sku: json['sku'] as String?,
-    requiresShipping: json['requiresShipping'] as bool?,
-    id: json['id'] as String?,
-    quantityAvailable: json['quantityAvailable'] as int?,
+    price: PriceV2.fromJson(json['price'] as Map<String, dynamic>),
+    title: json['title'] as String,
+    weight: (json['weight'] as num).toDouble(),
+    weightUnit: json['weightUnit'] as String,
+    availableForSale: json['availableForSale'] as bool,
+    sku: json['sku'] as String,
+    requiresShipping: json['requiresShipping'] as bool,
+    id: json['id'] as String,
+    quantityAvailable: json['quantityAvailable'] as int,
     unitPrice: json['unitPrice'] == null
         ? null
         : PriceV2.fromJson(json['unitPrice'] as Map<String, dynamic>),
@@ -35,6 +27,12 @@ _$_ProductVariant _$_$_ProductVariantFromJson(Map<String, dynamic> json) {
     selectedOptions: (json['selectedOptions'] as List<dynamic>?)
         ?.map((e) => SelectedOption.fromJson(e as Map<String, dynamic>))
         .toList(),
+    compareAtPrice: json['compareAtPrice'] == null
+        ? null
+        : PriceV2.fromJson(json['compareAtPrice'] as Map<String, dynamic>),
+    image: json['image'] == null
+        ? null
+        : ShopifyImage.fromJson(json['image'] as Map<String, dynamic>),
   );
 }
 
@@ -42,8 +40,6 @@ Map<String, dynamic> _$_$_ProductVariantToJson(_$_ProductVariant instance) =>
     <String, dynamic>{
       'price': instance.price,
       'title': instance.title,
-      'image': instance.image,
-      'compareAtPrice': instance.compareAtPrice,
       'weight': instance.weight,
       'weightUnit': instance.weightUnit,
       'availableForSale': instance.availableForSale,
@@ -54,4 +50,6 @@ Map<String, dynamic> _$_$_ProductVariantToJson(_$_ProductVariant instance) =>
       'unitPrice': instance.unitPrice,
       'unitPriceMeasurement': instance.unitPriceMeasurement,
       'selectedOptions': instance.selectedOptions,
+      'compareAtPrice': instance.compareAtPrice,
+      'image': instance.image,
     };

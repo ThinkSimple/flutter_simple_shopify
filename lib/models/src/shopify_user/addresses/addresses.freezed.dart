@@ -103,9 +103,8 @@ class __$AddressesCopyWithImpl<$Res> extends _$AddressesCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Addresses extends _Addresses {
   _$_Addresses({required this.addressList}) : super._();
 

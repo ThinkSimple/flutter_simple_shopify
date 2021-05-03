@@ -203,9 +203,8 @@ class __$PaymentSettingsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_PaymentSettings implements _PaymentSettings {
   _$_PaymentSettings(
       {this.acceptedCardBrands,

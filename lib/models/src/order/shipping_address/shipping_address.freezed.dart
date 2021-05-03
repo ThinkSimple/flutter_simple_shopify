@@ -336,9 +336,8 @@ class __$ShippingAddressCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_ShippingAddress implements _ShippingAddress {
   _$_ShippingAddress(
       {this.address1,

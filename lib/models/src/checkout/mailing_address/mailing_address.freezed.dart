@@ -351,9 +351,8 @@ class __$MailingAddressCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_MailingAddress implements _MailingAddress {
   _$_MailingAddress(
       {this.address1,

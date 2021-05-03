@@ -12,26 +12,27 @@ part 'product.g.dart';
 @freezed
 class Product with _$Product {
   const Product._();
-  factory Product(
-      {List<AssociatedCollections>? collectionList,
-      String? title,
-      String? id,
-      bool? availableForSale,
-      String? createdAt,
-      String? description,
-      List<ProductVariant>? productVariants,
-      String? descriptionHtml,
-      String? handle,
-      String? onlineStoreUrl,
-      String? productType,
-      String? publishedAt,
-      List<String>? tags,
-      String? updatedAt,
-      String? cursor,
-      List<ShopifyImage>? images,
-      List<Option>? option,
-      String? vendor,
-      List<Metafield>? metafields}) = _Product;
+  factory Product({
+    required List<AssociatedCollections> collectionList,
+    required String title,
+    required String id,
+    required bool availableForSale,
+    required String createdAt,
+    required List<ProductVariant> productVariants,
+    required String onlineStoreUrl,
+    required String productType,
+    required String publishedAt,
+    required List<String> tags,
+    required String updatedAt,
+    required String cursor,
+    required List<ShopifyImage> images,
+    required List<Option> option,
+    required String vendor,
+    required List<Metafield> metafields,
+    @Default('') String description,
+    @Default('') String descriptionHtml,
+    @Default('') String handle,
+  }) = _Product;
 
   static Product fromGraphJson(Map<String, dynamic> json) {
     return Product(

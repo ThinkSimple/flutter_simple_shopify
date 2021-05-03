@@ -291,9 +291,8 @@ class __$ProductVariantCheckoutCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_ProductVariantCheckout extends _ProductVariantCheckout {
   _$_ProductVariantCheckout(
       {this.price,

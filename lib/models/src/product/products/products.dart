@@ -8,7 +8,8 @@ part 'products.g.dart';
 class Products with _$Products {
   const Products._();
   factory Products(
-      {final List<Product>? productList, final bool? hasNextPage}) = _Products;
+      {required List<Product> productList,
+      required bool hasNextPage}) = _Products;
 
   static Products fromGraphJson(Map<String, dynamic> json) {
     return Products(

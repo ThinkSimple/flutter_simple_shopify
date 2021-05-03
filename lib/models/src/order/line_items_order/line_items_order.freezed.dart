@@ -109,9 +109,8 @@ class __$LineItemsOrderCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_LineItemsOrder implements _LineItemsOrder {
   _$_LineItemsOrder({required this.lineItemOrderList});
 

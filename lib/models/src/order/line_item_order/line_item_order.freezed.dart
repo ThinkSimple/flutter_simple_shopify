@@ -246,9 +246,8 @@ class __$LineItemOrderCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_LineItemOrder extends _LineItemOrder {
   _$_LineItemOrder(
       {this.currentQuantity,

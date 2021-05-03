@@ -276,9 +276,8 @@ class __$LastIncompleteCheckoutCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
   _$_LastIncompleteCheckout(
       {this.completedAt,

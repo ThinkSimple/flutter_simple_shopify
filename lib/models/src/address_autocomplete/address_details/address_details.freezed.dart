@@ -276,9 +276,8 @@ class __$AddressDetailsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_AddressDetails implements _AddressDetails {
   const _$_AddressDetails(
       {this.address1,

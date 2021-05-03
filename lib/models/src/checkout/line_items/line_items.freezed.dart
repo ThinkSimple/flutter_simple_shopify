@@ -103,9 +103,8 @@ class __$LineItemsCopyWithImpl<$Res> extends _$LineItemsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_LineItems implements _LineItems {
   _$_LineItems({required this.lineItemList});
 

@@ -53,12 +53,11 @@ class _HomeTabState extends State<HomeTab> {
         });
       }
     } catch (e) {
-      debugPrint(e);
+      debugPrint(e.toString());
     }
   }
 
   Widget _buildProductThumbnail(Product product) {
-   
     return InkWell(
       onTap: () => _navigateToProductDetailScreen(product),
       child: Container(

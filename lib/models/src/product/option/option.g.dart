@@ -8,10 +8,9 @@ part of 'option.dart';
 
 _$_Option _$_$_OptionFromJson(Map<String, dynamic> json) {
   return _$_Option(
-    id: json['id'] as String?,
-    name: json['name'] as String?,
-    values:
-        (json['values'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    id: json['id'] as String,
+    name: json['name'] as String,
+    values: (json['values'] as List<dynamic>).map((e) => e as String).toList(),
   );
 }
 
