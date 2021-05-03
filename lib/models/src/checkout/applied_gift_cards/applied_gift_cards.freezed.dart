@@ -21,9 +21,7 @@ class _$AppliedGiftCardsTearOff {
   const _$AppliedGiftCardsTearOff();
 
   _AppliedGiftCards call(
-      {@JsonKey(fromJson: priceV2FromJson) PriceV2? amountUsedV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? balanceV2,
-      String? id}) {
+      {PriceV2? amountUsedV2, PriceV2? balanceV2, String? id}) {
     return _AppliedGiftCards(
       amountUsedV2: amountUsedV2,
       balanceV2: balanceV2,
@@ -41,9 +39,7 @@ const $AppliedGiftCards = _$AppliedGiftCardsTearOff();
 
 /// @nodoc
 mixin _$AppliedGiftCards {
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get amountUsedV2 => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get balanceV2 => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
 
@@ -58,10 +54,7 @@ abstract class $AppliedGiftCardsCopyWith<$Res> {
   factory $AppliedGiftCardsCopyWith(
           AppliedGiftCards value, $Res Function(AppliedGiftCards) then) =
       _$AppliedGiftCardsCopyWithImpl<$Res>;
-  $Res call(
-      {@JsonKey(fromJson: priceV2FromJson) PriceV2? amountUsedV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? balanceV2,
-      String? id});
+  $Res call({PriceV2? amountUsedV2, PriceV2? balanceV2, String? id});
 
   $PriceV2CopyWith<$Res>? get amountUsedV2;
   $PriceV2CopyWith<$Res>? get balanceV2;
@@ -128,10 +121,7 @@ abstract class _$AppliedGiftCardsCopyWith<$Res>
           _AppliedGiftCards value, $Res Function(_AppliedGiftCards) then) =
       __$AppliedGiftCardsCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@JsonKey(fromJson: priceV2FromJson) PriceV2? amountUsedV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? balanceV2,
-      String? id});
+  $Res call({PriceV2? amountUsedV2, PriceV2? balanceV2, String? id});
 
   @override
   $PriceV2CopyWith<$Res>? get amountUsedV2;
@@ -177,20 +167,14 @@ class __$AppliedGiftCardsCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_AppliedGiftCards extends _AppliedGiftCards {
-  _$_AppliedGiftCards(
-      {@JsonKey(fromJson: priceV2FromJson) this.amountUsedV2,
-      @JsonKey(fromJson: priceV2FromJson) this.balanceV2,
-      this.id})
-      : super._();
+  _$_AppliedGiftCards({this.amountUsedV2, this.balanceV2, this.id}) : super._();
 
   factory _$_AppliedGiftCards.fromJson(Map<String, dynamic> json) =>
       _$_$_AppliedGiftCardsFromJson(json);
 
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? amountUsedV2;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   final PriceV2? balanceV2;
   @override
   final String? id;
@@ -234,8 +218,8 @@ class _$_AppliedGiftCards extends _AppliedGiftCards {
 
 abstract class _AppliedGiftCards extends AppliedGiftCards {
   factory _AppliedGiftCards(
-      {@JsonKey(fromJson: priceV2FromJson) PriceV2? amountUsedV2,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? balanceV2,
+      {PriceV2? amountUsedV2,
+      PriceV2? balanceV2,
       String? id}) = _$_AppliedGiftCards;
   _AppliedGiftCards._() : super._();
 
@@ -243,10 +227,8 @@ abstract class _AppliedGiftCards extends AppliedGiftCards {
       _$_AppliedGiftCards.fromJson;
 
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get amountUsedV2 => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: priceV2FromJson)
   PriceV2? get balanceV2 => throw _privateConstructorUsedError;
   @override
   String? get id => throw _privateConstructorUsedError;

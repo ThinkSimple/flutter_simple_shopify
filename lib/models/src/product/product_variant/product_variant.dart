@@ -11,10 +11,10 @@ part 'product_variant.g.dart';
 class ProductVariant with _$ProductVariant {
   const ProductVariant._();
   factory ProductVariant(
-      {@JsonKey(fromJson: priceV2FromJson) PriceV2? price,
+      {PriceV2? price,
       String? title,
       ShopifyImage? image,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? compareAtPrice,
+      PriceV2? compareAtPrice,
       double? weight,
       String? weightUnit,
       bool? availableForSale,
@@ -22,7 +22,7 @@ class ProductVariant with _$ProductVariant {
       bool? requiresShipping,
       String? id,
       int? quantityAvailable,
-      @JsonKey(fromJson: priceV2FromJson) PriceV2? unitPrice,
+      PriceV2? unitPrice,
       UnitPriceMeasurement? unitPriceMeasurement,
       List<SelectedOption>? selectedOptions}) = _ProductVariant;
 
