@@ -381,9 +381,8 @@ class __$ProductVariantCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_ProductVariant extends _ProductVariant {
   _$_ProductVariant(
       {this.price,

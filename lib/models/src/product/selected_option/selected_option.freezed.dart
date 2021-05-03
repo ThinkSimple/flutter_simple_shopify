@@ -120,9 +120,8 @@ class __$SelectedOptionCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_SelectedOption extends _SelectedOption {
   _$_SelectedOption({this.name, this.value}) : super._();
 

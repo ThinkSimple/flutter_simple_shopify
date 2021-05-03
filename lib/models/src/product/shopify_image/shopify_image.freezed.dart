@@ -130,9 +130,8 @@ class __$ShopifyImageCopyWithImpl<$Res> extends _$ShopifyImageCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_ShopifyImage extends _ShopifyImage {
   _$_ShopifyImage({this.altText, this.originalSrc, this.id}) : super._();
 

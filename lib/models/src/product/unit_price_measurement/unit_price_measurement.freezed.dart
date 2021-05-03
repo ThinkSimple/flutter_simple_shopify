@@ -171,9 +171,8 @@ class __$UnitPriceMeasurementCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_UnitPriceMeasurement extends _UnitPriceMeasurement {
   _$_UnitPriceMeasurement(
       {this.measuredType,

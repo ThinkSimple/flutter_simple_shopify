@@ -181,9 +181,8 @@ class __$MetafieldCopyWithImpl<$Res> extends _$MetafieldCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Metafield extends _Metafield {
   _$_Metafield(
       {this.id,

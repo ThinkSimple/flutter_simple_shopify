@@ -157,9 +157,8 @@ class __$PriceV2CopyWithImpl<$Res> extends _$PriceV2CopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_PriceV2 extends _PriceV2 {
   _$_PriceV2(
       {@JsonKey(fromJson: _amountFromJson)

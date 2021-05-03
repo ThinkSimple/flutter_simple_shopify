@@ -165,9 +165,8 @@ class __$AuthorV2CopyWithImpl<$Res> extends _$AuthorV2CopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_AuthorV2 implements _AuthorV2 {
   _$_AuthorV2({this.bio, this.email, this.firstName, this.lastName, this.name});
 

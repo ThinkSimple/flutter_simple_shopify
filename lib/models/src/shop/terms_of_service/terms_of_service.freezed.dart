@@ -159,9 +159,8 @@ class __$TermsOfServiceCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_TermsOfService implements _TermsOfService {
   _$_TermsOfService({this.body, this.handle, this.id, this.title, this.url});
 

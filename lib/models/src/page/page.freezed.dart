@@ -209,9 +209,8 @@ class __$PageCopyWithImpl<$Res> extends _$PageCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Page extends _Page {
   _$_Page(
       {this.body,

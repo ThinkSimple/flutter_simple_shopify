@@ -8,11 +8,10 @@ part of 'price_v_2.dart';
 
 _$_PriceV2 _$_$_PriceV2FromJson(Map<String, dynamic> json) {
   return _$_PriceV2(
-    amount: PriceV2._amountFromJson(json['amount']),
+    amount: (json['amount'] as num?)?.toDouble(),
     currencyCode: json['currencyCode'] as String?,
     currencySymbol: json['currencySymbol'] as String?,
-    formattedPrice: PriceV2._chooseRightOrderOnCurrencySymbol(
-        json['formattedPrice'] as Map<String, dynamic>),
+    formattedPrice: json['formattedPrice'] as String?,
   );
 }
 

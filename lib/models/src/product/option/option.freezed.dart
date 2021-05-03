@@ -125,9 +125,8 @@ class __$OptionCopyWithImpl<$Res> extends _$OptionCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Option extends _Option {
   _$_Option({this.id, this.name, this.values}) : super._();
 

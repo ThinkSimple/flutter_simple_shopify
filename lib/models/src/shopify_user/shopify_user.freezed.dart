@@ -276,9 +276,8 @@ class __$ShopifyUserCopyWithImpl<$Res> extends _$ShopifyUserCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_ShopifyUser implements _ShopifyUser {
   _$_ShopifyUser(
       {this.address,

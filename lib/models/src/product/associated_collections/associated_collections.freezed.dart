@@ -187,9 +187,8 @@ class __$AssociatedCollectionsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_AssociatedCollections extends _AssociatedCollections {
   _$_AssociatedCollections(
       {this.description,

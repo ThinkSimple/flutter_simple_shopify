@@ -120,9 +120,8 @@ class __$LocationInputCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_LocationInput implements _LocationInput {
   _$_LocationInput({this.latitude, this.longitude});
 

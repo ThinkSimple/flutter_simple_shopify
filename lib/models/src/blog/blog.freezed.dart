@@ -180,9 +180,8 @@ class __$BlogCopyWithImpl<$Res> extends _$BlogCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Blog extends _Blog {
   _$_Blog({this.id, this.handle, this.title, this.url, this.articles})
       : super._();

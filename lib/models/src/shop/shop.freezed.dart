@@ -296,9 +296,8 @@ class __$ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Shop implements _Shop {
   _$_Shop(
       {this.description,

@@ -114,9 +114,8 @@ class __$ProductsCopyWithImpl<$Res> extends _$ProductsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Products extends _Products {
   _$_Products({this.productList, this.hasNextPage}) : super._();
 

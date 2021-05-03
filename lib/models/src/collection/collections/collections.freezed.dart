@@ -119,9 +119,8 @@ class __$CollectionsCopyWithImpl<$Res> extends _$CollectionsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Collections implements _Collections {
   _$_Collections({required this.collectionList, required this.hasNextPage});
 
