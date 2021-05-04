@@ -11,13 +11,13 @@ class LineItemOrder with _$LineItemOrder {
   const LineItemOrder._();
 
   factory LineItemOrder({
-    int? currentQuantity,
-    List<DiscountAllocations>? discountAllocations,
-    PriceV2? discountedTotalPrice,
-    PriceV2? originalTotalPrice,
-    int? quantity,
-    String? title,
-    ProductVariantCheckout? variant,
+    required int currentQuantity,
+    required PriceV2 discountedTotalPrice,
+    required PriceV2 originalTotalPrice,
+    required int quantity,
+    required String title,
+    @Default([]) List<DiscountAllocations> discountAllocations,
+    @Default(null) ProductVariantCheckout? variant,
   }) = _LineItemOrder;
 
   factory LineItemOrder.fromJson(Map<String, dynamic> json) =>

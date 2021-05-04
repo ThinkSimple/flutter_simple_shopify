@@ -6,22 +6,22 @@ part 'shipping_address.g.dart';
 @freezed
 class ShippingAddress with _$ShippingAddress {
   factory ShippingAddress({
-    String? address1,
+    required String name,
+    required String firstName,
+    required String id,
+    required String lastName,
+    required String address1,
+    required String city,
+    required String country,
     String? address2,
-    String? city,
     String? company,
-    String? country,
     String? countryCodeV2,
-    String? firstName,
-    String? id,
-    String? lastName,
     double? latitude,
     double? longitude,
-    String? name,
     String? phone,
     String? province,
     String? provinceCode,
-    String? zip,
+    required String zip,
   }) = _ShippingAddress;
 
   factory ShippingAddress.fromJson(Map<String, dynamic> json) =>

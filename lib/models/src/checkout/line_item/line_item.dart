@@ -7,11 +7,12 @@ part 'line_item.g.dart';
 @freezed
 class LineItem with _$LineItem {
   const LineItem._();
-  factory LineItem(
-      {String? id,
-      int? quantity,
-      ProductVariantCheckout? variant,
-      String? title}) = _LineItem;
+  factory LineItem({
+    required String title,
+    required String id,
+    required int quantity,
+    ProductVariantCheckout? variant,
+  }) = _LineItem;
 
   static LineItem fromGraphJson(Map<String, dynamic> json) {
     return LineItem(

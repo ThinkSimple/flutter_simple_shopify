@@ -21,7 +21,9 @@ class _$AppliedGiftCardsTearOff {
   const _$AppliedGiftCardsTearOff();
 
   _AppliedGiftCards call(
-      {PriceV2? amountUsedV2, PriceV2? balanceV2, String? id}) {
+      {required PriceV2 amountUsedV2,
+      required PriceV2 balanceV2,
+      required String id}) {
     return _AppliedGiftCards(
       amountUsedV2: amountUsedV2,
       balanceV2: balanceV2,
@@ -39,9 +41,9 @@ const $AppliedGiftCards = _$AppliedGiftCardsTearOff();
 
 /// @nodoc
 mixin _$AppliedGiftCards {
-  PriceV2? get amountUsedV2 => throw _privateConstructorUsedError;
-  PriceV2? get balanceV2 => throw _privateConstructorUsedError;
-  String? get id => throw _privateConstructorUsedError;
+  PriceV2 get amountUsedV2 => throw _privateConstructorUsedError;
+  PriceV2 get balanceV2 => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,10 +56,10 @@ abstract class $AppliedGiftCardsCopyWith<$Res> {
   factory $AppliedGiftCardsCopyWith(
           AppliedGiftCards value, $Res Function(AppliedGiftCards) then) =
       _$AppliedGiftCardsCopyWithImpl<$Res>;
-  $Res call({PriceV2? amountUsedV2, PriceV2? balanceV2, String? id});
+  $Res call({PriceV2 amountUsedV2, PriceV2 balanceV2, String id});
 
-  $PriceV2CopyWith<$Res>? get amountUsedV2;
-  $PriceV2CopyWith<$Res>? get balanceV2;
+  $PriceV2CopyWith<$Res> get amountUsedV2;
+  $PriceV2CopyWith<$Res> get balanceV2;
 }
 
 /// @nodoc
@@ -79,36 +81,28 @@ class _$AppliedGiftCardsCopyWithImpl<$Res>
       amountUsedV2: amountUsedV2 == freezed
           ? _value.amountUsedV2
           : amountUsedV2 // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
+              as PriceV2,
       balanceV2: balanceV2 == freezed
           ? _value.balanceV2
           : balanceV2 // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
+              as PriceV2,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 
   @override
-  $PriceV2CopyWith<$Res>? get amountUsedV2 {
-    if (_value.amountUsedV2 == null) {
-      return null;
-    }
-
-    return $PriceV2CopyWith<$Res>(_value.amountUsedV2!, (value) {
+  $PriceV2CopyWith<$Res> get amountUsedV2 {
+    return $PriceV2CopyWith<$Res>(_value.amountUsedV2, (value) {
       return _then(_value.copyWith(amountUsedV2: value));
     });
   }
 
   @override
-  $PriceV2CopyWith<$Res>? get balanceV2 {
-    if (_value.balanceV2 == null) {
-      return null;
-    }
-
-    return $PriceV2CopyWith<$Res>(_value.balanceV2!, (value) {
+  $PriceV2CopyWith<$Res> get balanceV2 {
+    return $PriceV2CopyWith<$Res>(_value.balanceV2, (value) {
       return _then(_value.copyWith(balanceV2: value));
     });
   }
@@ -121,12 +115,12 @@ abstract class _$AppliedGiftCardsCopyWith<$Res>
           _AppliedGiftCards value, $Res Function(_AppliedGiftCards) then) =
       __$AppliedGiftCardsCopyWithImpl<$Res>;
   @override
-  $Res call({PriceV2? amountUsedV2, PriceV2? balanceV2, String? id});
+  $Res call({PriceV2 amountUsedV2, PriceV2 balanceV2, String id});
 
   @override
-  $PriceV2CopyWith<$Res>? get amountUsedV2;
+  $PriceV2CopyWith<$Res> get amountUsedV2;
   @override
-  $PriceV2CopyWith<$Res>? get balanceV2;
+  $PriceV2CopyWith<$Res> get balanceV2;
 }
 
 /// @nodoc
@@ -150,15 +144,15 @@ class __$AppliedGiftCardsCopyWithImpl<$Res>
       amountUsedV2: amountUsedV2 == freezed
           ? _value.amountUsedV2
           : amountUsedV2 // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
+              as PriceV2,
       balanceV2: balanceV2 == freezed
           ? _value.balanceV2
           : balanceV2 // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
+              as PriceV2,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -166,17 +160,19 @@ class __$AppliedGiftCardsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AppliedGiftCards extends _AppliedGiftCards {
-  _$_AppliedGiftCards({this.amountUsedV2, this.balanceV2, this.id}) : super._();
+  _$_AppliedGiftCards(
+      {required this.amountUsedV2, required this.balanceV2, required this.id})
+      : super._();
 
   factory _$_AppliedGiftCards.fromJson(Map<String, dynamic> json) =>
       _$_$_AppliedGiftCardsFromJson(json);
 
   @override
-  final PriceV2? amountUsedV2;
+  final PriceV2 amountUsedV2;
   @override
-  final PriceV2? balanceV2;
+  final PriceV2 balanceV2;
   @override
-  final String? id;
+  final String id;
 
   @override
   String toString() {
@@ -217,20 +213,20 @@ class _$_AppliedGiftCards extends _AppliedGiftCards {
 
 abstract class _AppliedGiftCards extends AppliedGiftCards {
   factory _AppliedGiftCards(
-      {PriceV2? amountUsedV2,
-      PriceV2? balanceV2,
-      String? id}) = _$_AppliedGiftCards;
+      {required PriceV2 amountUsedV2,
+      required PriceV2 balanceV2,
+      required String id}) = _$_AppliedGiftCards;
   _AppliedGiftCards._() : super._();
 
   factory _AppliedGiftCards.fromJson(Map<String, dynamic> json) =
       _$_AppliedGiftCards.fromJson;
 
   @override
-  PriceV2? get amountUsedV2 => throw _privateConstructorUsedError;
+  PriceV2 get amountUsedV2 => throw _privateConstructorUsedError;
   @override
-  PriceV2? get balanceV2 => throw _privateConstructorUsedError;
+  PriceV2 get balanceV2 => throw _privateConstructorUsedError;
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AppliedGiftCardsCopyWith<_AppliedGiftCards> get copyWith =>

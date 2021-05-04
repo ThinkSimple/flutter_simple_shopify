@@ -7,14 +7,14 @@ part 'page.g.dart';
 class Page with _$Page {
   const Page._();
   factory Page({
-    String? body,
-    String? bodySummary,
-    DateTime? createdAt,
-    String? handle,
-    String? id,
-    String? title,
-    DateTime? updatedAt,
-    String? url,
+    required String body,
+    required String bodySummary,
+    required DateTime createdAt,
+    required String handle,
+    required String id,
+    required String title,
+    required DateTime updatedAt,
+    required String url,
   }) = _Page;
 
   static Page fromGraphJson(Map<String, dynamic> json) {
@@ -25,8 +25,8 @@ class Page with _$Page {
       url: (json['node'] ?? {})['url'],
       body: (json['node'] ?? {})['body'],
       bodySummary: (json['node'] ?? {})['bodySummary'],
-      createdAt: DateTime.tryParse(((json['node'] ?? const {})['createdAt'])),
-      updatedAt: DateTime.tryParse(((json['node'] ?? const {})['updatedAt'])),
+      createdAt: DateTime.parse(((json['node'] ?? const {})['createdAt'])),
+      updatedAt: DateTime.parse(((json['node'] ?? const {})['updatedAt'])),
     );
   }
 

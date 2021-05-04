@@ -10,10 +10,10 @@ class AssociatedCollections with _$AssociatedCollections {
   factory AssociatedCollections({
     required String id,
     required String title,
-    @Default('') String description,
-    @Default('') String descriptionHtml,
-    @Default('') String handle,
-    @Default('') String updatedAt,
+    required String description,
+    required String updatedAt,
+    String? descriptionHtml,
+    String? handle,
   }) = _AssociatedCollections;
 
   static AssociatedCollections fromGraphJson(Map<String, dynamic> json) {
