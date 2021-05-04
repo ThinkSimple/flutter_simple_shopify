@@ -8,13 +8,10 @@ part of 'applied_gift_cards.dart';
 
 _$_AppliedGiftCards _$_$_AppliedGiftCardsFromJson(Map<String, dynamic> json) {
   return _$_AppliedGiftCards(
-    amountUsedV2: json['amountUsedV2'] == null
-        ? null
-        : PriceV2.fromJson(json['amountUsedV2'] as Map<String, dynamic>),
-    balanceV2: json['balanceV2'] == null
-        ? null
-        : PriceV2.fromJson(json['balanceV2'] as Map<String, dynamic>),
-    id: json['id'] as String?,
+    amountUsedV2:
+        PriceV2.fromJson(json['amountUsedV2'] as Map<String, dynamic>),
+    balanceV2: PriceV2.fromJson(json['balanceV2'] as Map<String, dynamic>),
+    id: json['id'] as String,
   );
 }
 

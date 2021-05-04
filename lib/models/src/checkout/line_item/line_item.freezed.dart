@@ -21,15 +21,15 @@ class _$LineItemTearOff {
   const _$LineItemTearOff();
 
   _LineItem call(
-      {String? id,
-      int? quantity,
-      ProductVariantCheckout? variant,
-      String? title}) {
+      {required String title,
+      required String id,
+      required int quantity,
+      ProductVariantCheckout? variant}) {
     return _LineItem(
+      title: title,
       id: id,
       quantity: quantity,
       variant: variant,
-      title: title,
     );
   }
 
@@ -43,10 +43,10 @@ const $LineItem = _$LineItemTearOff();
 
 /// @nodoc
 mixin _$LineItem {
-  String? get id => throw _privateConstructorUsedError;
-  int? get quantity => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
   ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,10 +59,7 @@ abstract class $LineItemCopyWith<$Res> {
   factory $LineItemCopyWith(LineItem value, $Res Function(LineItem) then) =
       _$LineItemCopyWithImpl<$Res>;
   $Res call(
-      {String? id,
-      int? quantity,
-      ProductVariantCheckout? variant,
-      String? title});
+      {String title, String id, int quantity, ProductVariantCheckout? variant});
 
   $ProductVariantCheckoutCopyWith<$Res>? get variant;
 }
@@ -77,28 +74,28 @@ class _$LineItemCopyWithImpl<$Res> implements $LineItemCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? title = freezed,
     Object? id = freezed,
     Object? quantity = freezed,
     Object? variant = freezed,
-    Object? title = freezed,
   }) {
     return _then(_value.copyWith(
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       variant: variant == freezed
           ? _value.variant
           : variant // ignore: cast_nullable_to_non_nullable
               as ProductVariantCheckout?,
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 
@@ -120,10 +117,7 @@ abstract class _$LineItemCopyWith<$Res> implements $LineItemCopyWith<$Res> {
       __$LineItemCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? id,
-      int? quantity,
-      ProductVariantCheckout? variant,
-      String? title});
+      {String title, String id, int quantity, ProductVariantCheckout? variant});
 
   @override
   $ProductVariantCheckoutCopyWith<$Res>? get variant;
@@ -140,28 +134,28 @@ class __$LineItemCopyWithImpl<$Res> extends _$LineItemCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? title = freezed,
     Object? id = freezed,
     Object? quantity = freezed,
     Object? variant = freezed,
-    Object? title = freezed,
   }) {
     return _then(_LineItem(
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       variant: variant == freezed
           ? _value.variant
           : variant // ignore: cast_nullable_to_non_nullable
               as ProductVariantCheckout?,
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -169,48 +163,52 @@ class __$LineItemCopyWithImpl<$Res> extends _$LineItemCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_LineItem extends _LineItem {
-  _$_LineItem({this.id, this.quantity, this.variant, this.title}) : super._();
+  _$_LineItem(
+      {required this.title,
+      required this.id,
+      required this.quantity,
+      this.variant})
+      : super._();
 
   factory _$_LineItem.fromJson(Map<String, dynamic> json) =>
       _$_$_LineItemFromJson(json);
 
   @override
-  final String? id;
+  final String title;
   @override
-  final int? quantity;
+  final String id;
+  @override
+  final int quantity;
   @override
   final ProductVariantCheckout? variant;
-  @override
-  final String? title;
 
   @override
   String toString() {
-    return 'LineItem(id: $id, quantity: $quantity, variant: $variant, title: $title)';
+    return 'LineItem(title: $title, id: $id, quantity: $quantity, variant: $variant)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _LineItem &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.quantity, quantity) ||
                 const DeepCollectionEquality()
                     .equals(other.quantity, quantity)) &&
             (identical(other.variant, variant) ||
-                const DeepCollectionEquality()
-                    .equals(other.variant, variant)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)));
+                const DeepCollectionEquality().equals(other.variant, variant)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(quantity) ^
-      const DeepCollectionEquality().hash(variant) ^
-      const DeepCollectionEquality().hash(title);
+      const DeepCollectionEquality().hash(variant);
 
   @JsonKey(ignore: true)
   @override
@@ -225,22 +223,22 @@ class _$_LineItem extends _LineItem {
 
 abstract class _LineItem extends LineItem {
   factory _LineItem(
-      {String? id,
-      int? quantity,
-      ProductVariantCheckout? variant,
-      String? title}) = _$_LineItem;
+      {required String title,
+      required String id,
+      required int quantity,
+      ProductVariantCheckout? variant}) = _$_LineItem;
   _LineItem._() : super._();
 
   factory _LineItem.fromJson(Map<String, dynamic> json) = _$_LineItem.fromJson;
 
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   @override
-  int? get quantity => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  @override
+  int get quantity => throw _privateConstructorUsedError;
   @override
   ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
-  @override
-  String? get title => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$LineItemCopyWith<_LineItem> get copyWith =>

@@ -9,8 +9,8 @@ class AvailableShippingRates with _$AvailableShippingRates {
   const AvailableShippingRates._();
 
   factory AvailableShippingRates(
-      {bool? ready,
-      List<ShippingRates>? shippingRates}) = _AvailableShippingRates;
+      {required bool ready,
+      required List<ShippingRates> shippingRates}) = _AvailableShippingRates;
 
   factory AvailableShippingRates.fromJson(Map<String, dynamic> json) =>
       _$AvailableShippingRatesFromJson(json);

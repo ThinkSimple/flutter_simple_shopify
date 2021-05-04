@@ -22,27 +22,27 @@ class _$ProductVariantCheckoutTearOff {
   const _$ProductVariantCheckoutTearOff();
 
   _ProductVariantCheckout call(
-      {PriceV2? price,
-      String? title,
+      {required PriceV2 price,
+      required String title,
+      required bool availableForSale,
+      required String sku,
+      required bool requiresShipping,
+      required String id,
       ShopifyImage? image,
       PriceV2? compareAtPrice,
       double? weight,
-      String? weightUnit,
-      bool? availableForSale,
-      String? sku,
-      bool? requiresShipping,
-      String? id}) {
+      String? weightUnit}) {
     return _ProductVariantCheckout(
       price: price,
       title: title,
-      image: image,
-      compareAtPrice: compareAtPrice,
-      weight: weight,
-      weightUnit: weightUnit,
       availableForSale: availableForSale,
       sku: sku,
       requiresShipping: requiresShipping,
       id: id,
+      image: image,
+      compareAtPrice: compareAtPrice,
+      weight: weight,
+      weightUnit: weightUnit,
     );
   }
 
@@ -56,16 +56,16 @@ const $ProductVariantCheckout = _$ProductVariantCheckoutTearOff();
 
 /// @nodoc
 mixin _$ProductVariantCheckout {
-  PriceV2? get price => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
+  PriceV2 get price => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  bool get availableForSale => throw _privateConstructorUsedError;
+  String get sku => throw _privateConstructorUsedError;
+  bool get requiresShipping => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   ShopifyImage? get image => throw _privateConstructorUsedError;
   PriceV2? get compareAtPrice => throw _privateConstructorUsedError;
   double? get weight => throw _privateConstructorUsedError;
   String? get weightUnit => throw _privateConstructorUsedError;
-  bool? get availableForSale => throw _privateConstructorUsedError;
-  String? get sku => throw _privateConstructorUsedError;
-  bool? get requiresShipping => throw _privateConstructorUsedError;
-  String? get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -79,18 +79,18 @@ abstract class $ProductVariantCheckoutCopyWith<$Res> {
           $Res Function(ProductVariantCheckout) then) =
       _$ProductVariantCheckoutCopyWithImpl<$Res>;
   $Res call(
-      {PriceV2? price,
-      String? title,
+      {PriceV2 price,
+      String title,
+      bool availableForSale,
+      String sku,
+      bool requiresShipping,
+      String id,
       ShopifyImage? image,
       PriceV2? compareAtPrice,
       double? weight,
-      String? weightUnit,
-      bool? availableForSale,
-      String? sku,
-      bool? requiresShipping,
-      String? id});
+      String? weightUnit});
 
-  $PriceV2CopyWith<$Res>? get price;
+  $PriceV2CopyWith<$Res> get price;
   $ShopifyImageCopyWith<$Res>? get image;
   $PriceV2CopyWith<$Res>? get compareAtPrice;
 }
@@ -108,24 +108,40 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res>
   $Res call({
     Object? price = freezed,
     Object? title = freezed,
-    Object? image = freezed,
-    Object? compareAtPrice = freezed,
-    Object? weight = freezed,
-    Object? weightUnit = freezed,
     Object? availableForSale = freezed,
     Object? sku = freezed,
     Object? requiresShipping = freezed,
     Object? id = freezed,
+    Object? image = freezed,
+    Object? compareAtPrice = freezed,
+    Object? weight = freezed,
+    Object? weightUnit = freezed,
   }) {
     return _then(_value.copyWith(
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
+              as PriceV2,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      availableForSale: availableForSale == freezed
+          ? _value.availableForSale
+          : availableForSale // ignore: cast_nullable_to_non_nullable
+              as bool,
+      sku: sku == freezed
+          ? _value.sku
+          : sku // ignore: cast_nullable_to_non_nullable
+              as String,
+      requiresShipping: requiresShipping == freezed
+          ? _value.requiresShipping
+          : requiresShipping // ignore: cast_nullable_to_non_nullable
+              as bool,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -142,32 +158,12 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res>
           ? _value.weightUnit
           : weightUnit // ignore: cast_nullable_to_non_nullable
               as String?,
-      availableForSale: availableForSale == freezed
-          ? _value.availableForSale
-          : availableForSale // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      sku: sku == freezed
-          ? _value.sku
-          : sku // ignore: cast_nullable_to_non_nullable
-              as String?,
-      requiresShipping: requiresShipping == freezed
-          ? _value.requiresShipping
-          : requiresShipping // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 
   @override
-  $PriceV2CopyWith<$Res>? get price {
-    if (_value.price == null) {
-      return null;
-    }
-
-    return $PriceV2CopyWith<$Res>(_value.price!, (value) {
+  $PriceV2CopyWith<$Res> get price {
+    return $PriceV2CopyWith<$Res>(_value.price, (value) {
       return _then(_value.copyWith(price: value));
     });
   }
@@ -203,19 +199,19 @@ abstract class _$ProductVariantCheckoutCopyWith<$Res>
       __$ProductVariantCheckoutCopyWithImpl<$Res>;
   @override
   $Res call(
-      {PriceV2? price,
-      String? title,
+      {PriceV2 price,
+      String title,
+      bool availableForSale,
+      String sku,
+      bool requiresShipping,
+      String id,
       ShopifyImage? image,
       PriceV2? compareAtPrice,
       double? weight,
-      String? weightUnit,
-      bool? availableForSale,
-      String? sku,
-      bool? requiresShipping,
-      String? id});
+      String? weightUnit});
 
   @override
-  $PriceV2CopyWith<$Res>? get price;
+  $PriceV2CopyWith<$Res> get price;
   @override
   $ShopifyImageCopyWith<$Res>? get image;
   @override
@@ -237,24 +233,40 @@ class __$ProductVariantCheckoutCopyWithImpl<$Res>
   $Res call({
     Object? price = freezed,
     Object? title = freezed,
-    Object? image = freezed,
-    Object? compareAtPrice = freezed,
-    Object? weight = freezed,
-    Object? weightUnit = freezed,
     Object? availableForSale = freezed,
     Object? sku = freezed,
     Object? requiresShipping = freezed,
     Object? id = freezed,
+    Object? image = freezed,
+    Object? compareAtPrice = freezed,
+    Object? weight = freezed,
+    Object? weightUnit = freezed,
   }) {
     return _then(_ProductVariantCheckout(
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
+              as PriceV2,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      availableForSale: availableForSale == freezed
+          ? _value.availableForSale
+          : availableForSale // ignore: cast_nullable_to_non_nullable
+              as bool,
+      sku: sku == freezed
+          ? _value.sku
+          : sku // ignore: cast_nullable_to_non_nullable
+              as String,
+      requiresShipping: requiresShipping == freezed
+          ? _value.requiresShipping
+          : requiresShipping // ignore: cast_nullable_to_non_nullable
+              as bool,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -271,22 +283,6 @@ class __$ProductVariantCheckoutCopyWithImpl<$Res>
           ? _value.weightUnit
           : weightUnit // ignore: cast_nullable_to_non_nullable
               as String?,
-      availableForSale: availableForSale == freezed
-          ? _value.availableForSale
-          : availableForSale // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      sku: sku == freezed
-          ? _value.sku
-          : sku // ignore: cast_nullable_to_non_nullable
-              as String?,
-      requiresShipping: requiresShipping == freezed
-          ? _value.requiresShipping
-          : requiresShipping // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -295,25 +291,33 @@ class __$ProductVariantCheckoutCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ProductVariantCheckout extends _ProductVariantCheckout {
   _$_ProductVariantCheckout(
-      {this.price,
-      this.title,
+      {required this.price,
+      required this.title,
+      required this.availableForSale,
+      required this.sku,
+      required this.requiresShipping,
+      required this.id,
       this.image,
       this.compareAtPrice,
       this.weight,
-      this.weightUnit,
-      this.availableForSale,
-      this.sku,
-      this.requiresShipping,
-      this.id})
+      this.weightUnit})
       : super._();
 
   factory _$_ProductVariantCheckout.fromJson(Map<String, dynamic> json) =>
       _$_$_ProductVariantCheckoutFromJson(json);
 
   @override
-  final PriceV2? price;
+  final PriceV2 price;
   @override
-  final String? title;
+  final String title;
+  @override
+  final bool availableForSale;
+  @override
+  final String sku;
+  @override
+  final bool requiresShipping;
+  @override
+  final String id;
   @override
   final ShopifyImage? image;
   @override
@@ -322,18 +326,10 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
   final double? weight;
   @override
   final String? weightUnit;
-  @override
-  final bool? availableForSale;
-  @override
-  final String? sku;
-  @override
-  final bool? requiresShipping;
-  @override
-  final String? id;
 
   @override
   String toString() {
-    return 'ProductVariantCheckout(price: $price, title: $title, image: $image, compareAtPrice: $compareAtPrice, weight: $weight, weightUnit: $weightUnit, availableForSale: $availableForSale, sku: $sku, requiresShipping: $requiresShipping, id: $id)';
+    return 'ProductVariantCheckout(price: $price, title: $title, availableForSale: $availableForSale, sku: $sku, requiresShipping: $requiresShipping, id: $id, image: $image, compareAtPrice: $compareAtPrice, weight: $weight, weightUnit: $weightUnit)';
   }
 
   @override
@@ -344,16 +340,6 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
                 const DeepCollectionEquality().equals(other.price, price)) &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)) &&
-            (identical(other.compareAtPrice, compareAtPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.compareAtPrice, compareAtPrice)) &&
-            (identical(other.weight, weight) ||
-                const DeepCollectionEquality().equals(other.weight, weight)) &&
-            (identical(other.weightUnit, weightUnit) ||
-                const DeepCollectionEquality()
-                    .equals(other.weightUnit, weightUnit)) &&
             (identical(other.availableForSale, availableForSale) ||
                 const DeepCollectionEquality()
                     .equals(other.availableForSale, availableForSale)) &&
@@ -363,7 +349,17 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
                 const DeepCollectionEquality()
                     .equals(other.requiresShipping, requiresShipping)) &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.image, image) ||
+                const DeepCollectionEquality().equals(other.image, image)) &&
+            (identical(other.compareAtPrice, compareAtPrice) ||
+                const DeepCollectionEquality()
+                    .equals(other.compareAtPrice, compareAtPrice)) &&
+            (identical(other.weight, weight) ||
+                const DeepCollectionEquality().equals(other.weight, weight)) &&
+            (identical(other.weightUnit, weightUnit) ||
+                const DeepCollectionEquality()
+                    .equals(other.weightUnit, weightUnit)));
   }
 
   @override
@@ -371,14 +367,14 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(price) ^
       const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(image) ^
-      const DeepCollectionEquality().hash(compareAtPrice) ^
-      const DeepCollectionEquality().hash(weight) ^
-      const DeepCollectionEquality().hash(weightUnit) ^
       const DeepCollectionEquality().hash(availableForSale) ^
       const DeepCollectionEquality().hash(sku) ^
       const DeepCollectionEquality().hash(requiresShipping) ^
-      const DeepCollectionEquality().hash(id);
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(image) ^
+      const DeepCollectionEquality().hash(compareAtPrice) ^
+      const DeepCollectionEquality().hash(weight) ^
+      const DeepCollectionEquality().hash(weightUnit);
 
   @JsonKey(ignore: true)
   @override
@@ -394,25 +390,33 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
 
 abstract class _ProductVariantCheckout extends ProductVariantCheckout {
   factory _ProductVariantCheckout(
-      {PriceV2? price,
-      String? title,
+      {required PriceV2 price,
+      required String title,
+      required bool availableForSale,
+      required String sku,
+      required bool requiresShipping,
+      required String id,
       ShopifyImage? image,
       PriceV2? compareAtPrice,
       double? weight,
-      String? weightUnit,
-      bool? availableForSale,
-      String? sku,
-      bool? requiresShipping,
-      String? id}) = _$_ProductVariantCheckout;
+      String? weightUnit}) = _$_ProductVariantCheckout;
   _ProductVariantCheckout._() : super._();
 
   factory _ProductVariantCheckout.fromJson(Map<String, dynamic> json) =
       _$_ProductVariantCheckout.fromJson;
 
   @override
-  PriceV2? get price => throw _privateConstructorUsedError;
+  PriceV2 get price => throw _privateConstructorUsedError;
   @override
-  String? get title => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  @override
+  bool get availableForSale => throw _privateConstructorUsedError;
+  @override
+  String get sku => throw _privateConstructorUsedError;
+  @override
+  bool get requiresShipping => throw _privateConstructorUsedError;
+  @override
+  String get id => throw _privateConstructorUsedError;
   @override
   ShopifyImage? get image => throw _privateConstructorUsedError;
   @override
@@ -421,14 +425,6 @@ abstract class _ProductVariantCheckout extends ProductVariantCheckout {
   double? get weight => throw _privateConstructorUsedError;
   @override
   String? get weightUnit => throw _privateConstructorUsedError;
-  @override
-  bool? get availableForSale => throw _privateConstructorUsedError;
-  @override
-  String? get sku => throw _privateConstructorUsedError;
-  @override
-  bool? get requiresShipping => throw _privateConstructorUsedError;
-  @override
-  String? get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductVariantCheckoutCopyWith<_ProductVariantCheckout> get copyWith =>

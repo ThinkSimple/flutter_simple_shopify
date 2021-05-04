@@ -8,19 +8,18 @@ part of 'line_item_order.dart';
 
 _$_LineItemOrder _$_$_LineItemOrderFromJson(Map<String, dynamic> json) {
   return _$_LineItemOrder(
-    currentQuantity: json['currentQuantity'] as int?,
+    currentQuantity: json['currentQuantity'] as int,
+    discountedTotalPrice:
+        PriceV2.fromJson(json['discountedTotalPrice'] as Map<String, dynamic>),
+    originalTotalPrice:
+        PriceV2.fromJson(json['originalTotalPrice'] as Map<String, dynamic>),
+    quantity: json['quantity'] as int,
+    title: json['title'] as String,
     discountAllocations: (json['discountAllocations'] as List<dynamic>?)
-        ?.map((e) => DiscountAllocations.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    discountedTotalPrice: json['discountedTotalPrice'] == null
-        ? null
-        : PriceV2.fromJson(
-            json['discountedTotalPrice'] as Map<String, dynamic>),
-    originalTotalPrice: json['originalTotalPrice'] == null
-        ? null
-        : PriceV2.fromJson(json['originalTotalPrice'] as Map<String, dynamic>),
-    quantity: json['quantity'] as int?,
-    title: json['title'] as String?,
+            ?.map(
+                (e) => DiscountAllocations.fromJson(e as Map<String, dynamic>))
+            .toList() ??
+        [],
     variant: json['variant'] == null
         ? null
         : ProductVariantCheckout.fromJson(
@@ -31,10 +30,10 @@ _$_LineItemOrder _$_$_LineItemOrderFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_LineItemOrderToJson(_$_LineItemOrder instance) =>
     <String, dynamic>{
       'currentQuantity': instance.currentQuantity,
-      'discountAllocations': instance.discountAllocations,
       'discountedTotalPrice': instance.discountedTotalPrice,
       'originalTotalPrice': instance.originalTotalPrice,
       'quantity': instance.quantity,
       'title': instance.title,
+      'discountAllocations': instance.discountAllocations,
       'variant': instance.variant,
     };

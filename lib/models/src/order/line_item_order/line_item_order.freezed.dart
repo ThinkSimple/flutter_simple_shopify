@@ -21,20 +21,20 @@ class _$LineItemOrderTearOff {
   const _$LineItemOrderTearOff();
 
   _LineItemOrder call(
-      {int? currentQuantity,
-      List<DiscountAllocations>? discountAllocations,
-      PriceV2? discountedTotalPrice,
-      PriceV2? originalTotalPrice,
-      int? quantity,
-      String? title,
-      ProductVariantCheckout? variant}) {
+      {required int currentQuantity,
+      required PriceV2 discountedTotalPrice,
+      required PriceV2 originalTotalPrice,
+      required int quantity,
+      required String title,
+      List<DiscountAllocations> discountAllocations = const [],
+      ProductVariantCheckout? variant = null}) {
     return _LineItemOrder(
       currentQuantity: currentQuantity,
-      discountAllocations: discountAllocations,
       discountedTotalPrice: discountedTotalPrice,
       originalTotalPrice: originalTotalPrice,
       quantity: quantity,
       title: title,
+      discountAllocations: discountAllocations,
       variant: variant,
     );
   }
@@ -49,13 +49,13 @@ const $LineItemOrder = _$LineItemOrderTearOff();
 
 /// @nodoc
 mixin _$LineItemOrder {
-  int? get currentQuantity => throw _privateConstructorUsedError;
-  List<DiscountAllocations>? get discountAllocations =>
+  int get currentQuantity => throw _privateConstructorUsedError;
+  PriceV2 get discountedTotalPrice => throw _privateConstructorUsedError;
+  PriceV2 get originalTotalPrice => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  List<DiscountAllocations> get discountAllocations =>
       throw _privateConstructorUsedError;
-  PriceV2? get discountedTotalPrice => throw _privateConstructorUsedError;
-  PriceV2? get originalTotalPrice => throw _privateConstructorUsedError;
-  int? get quantity => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
   ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -70,16 +70,16 @@ abstract class $LineItemOrderCopyWith<$Res> {
           LineItemOrder value, $Res Function(LineItemOrder) then) =
       _$LineItemOrderCopyWithImpl<$Res>;
   $Res call(
-      {int? currentQuantity,
-      List<DiscountAllocations>? discountAllocations,
-      PriceV2? discountedTotalPrice,
-      PriceV2? originalTotalPrice,
-      int? quantity,
-      String? title,
+      {int currentQuantity,
+      PriceV2 discountedTotalPrice,
+      PriceV2 originalTotalPrice,
+      int quantity,
+      String title,
+      List<DiscountAllocations> discountAllocations,
       ProductVariantCheckout? variant});
 
-  $PriceV2CopyWith<$Res>? get discountedTotalPrice;
-  $PriceV2CopyWith<$Res>? get originalTotalPrice;
+  $PriceV2CopyWith<$Res> get discountedTotalPrice;
+  $PriceV2CopyWith<$Res> get originalTotalPrice;
   $ProductVariantCheckoutCopyWith<$Res>? get variant;
 }
 
@@ -95,38 +95,38 @@ class _$LineItemOrderCopyWithImpl<$Res>
   @override
   $Res call({
     Object? currentQuantity = freezed,
-    Object? discountAllocations = freezed,
     Object? discountedTotalPrice = freezed,
     Object? originalTotalPrice = freezed,
     Object? quantity = freezed,
     Object? title = freezed,
+    Object? discountAllocations = freezed,
     Object? variant = freezed,
   }) {
     return _then(_value.copyWith(
       currentQuantity: currentQuantity == freezed
           ? _value.currentQuantity
           : currentQuantity // ignore: cast_nullable_to_non_nullable
-              as int?,
-      discountAllocations: discountAllocations == freezed
-          ? _value.discountAllocations
-          : discountAllocations // ignore: cast_nullable_to_non_nullable
-              as List<DiscountAllocations>?,
+              as int,
       discountedTotalPrice: discountedTotalPrice == freezed
           ? _value.discountedTotalPrice
           : discountedTotalPrice // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
+              as PriceV2,
       originalTotalPrice: originalTotalPrice == freezed
           ? _value.originalTotalPrice
           : originalTotalPrice // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
+              as PriceV2,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      discountAllocations: discountAllocations == freezed
+          ? _value.discountAllocations
+          : discountAllocations // ignore: cast_nullable_to_non_nullable
+              as List<DiscountAllocations>,
       variant: variant == freezed
           ? _value.variant
           : variant // ignore: cast_nullable_to_non_nullable
@@ -135,23 +135,15 @@ class _$LineItemOrderCopyWithImpl<$Res>
   }
 
   @override
-  $PriceV2CopyWith<$Res>? get discountedTotalPrice {
-    if (_value.discountedTotalPrice == null) {
-      return null;
-    }
-
-    return $PriceV2CopyWith<$Res>(_value.discountedTotalPrice!, (value) {
+  $PriceV2CopyWith<$Res> get discountedTotalPrice {
+    return $PriceV2CopyWith<$Res>(_value.discountedTotalPrice, (value) {
       return _then(_value.copyWith(discountedTotalPrice: value));
     });
   }
 
   @override
-  $PriceV2CopyWith<$Res>? get originalTotalPrice {
-    if (_value.originalTotalPrice == null) {
-      return null;
-    }
-
-    return $PriceV2CopyWith<$Res>(_value.originalTotalPrice!, (value) {
+  $PriceV2CopyWith<$Res> get originalTotalPrice {
+    return $PriceV2CopyWith<$Res>(_value.originalTotalPrice, (value) {
       return _then(_value.copyWith(originalTotalPrice: value));
     });
   }
@@ -176,18 +168,18 @@ abstract class _$LineItemOrderCopyWith<$Res>
       __$LineItemOrderCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int? currentQuantity,
-      List<DiscountAllocations>? discountAllocations,
-      PriceV2? discountedTotalPrice,
-      PriceV2? originalTotalPrice,
-      int? quantity,
-      String? title,
+      {int currentQuantity,
+      PriceV2 discountedTotalPrice,
+      PriceV2 originalTotalPrice,
+      int quantity,
+      String title,
+      List<DiscountAllocations> discountAllocations,
       ProductVariantCheckout? variant});
 
   @override
-  $PriceV2CopyWith<$Res>? get discountedTotalPrice;
+  $PriceV2CopyWith<$Res> get discountedTotalPrice;
   @override
-  $PriceV2CopyWith<$Res>? get originalTotalPrice;
+  $PriceV2CopyWith<$Res> get originalTotalPrice;
   @override
   $ProductVariantCheckoutCopyWith<$Res>? get variant;
 }
@@ -206,38 +198,38 @@ class __$LineItemOrderCopyWithImpl<$Res>
   @override
   $Res call({
     Object? currentQuantity = freezed,
-    Object? discountAllocations = freezed,
     Object? discountedTotalPrice = freezed,
     Object? originalTotalPrice = freezed,
     Object? quantity = freezed,
     Object? title = freezed,
+    Object? discountAllocations = freezed,
     Object? variant = freezed,
   }) {
     return _then(_LineItemOrder(
       currentQuantity: currentQuantity == freezed
           ? _value.currentQuantity
           : currentQuantity // ignore: cast_nullable_to_non_nullable
-              as int?,
-      discountAllocations: discountAllocations == freezed
-          ? _value.discountAllocations
-          : discountAllocations // ignore: cast_nullable_to_non_nullable
-              as List<DiscountAllocations>?,
+              as int,
       discountedTotalPrice: discountedTotalPrice == freezed
           ? _value.discountedTotalPrice
           : discountedTotalPrice // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
+              as PriceV2,
       originalTotalPrice: originalTotalPrice == freezed
           ? _value.originalTotalPrice
           : originalTotalPrice // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
+              as PriceV2,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      discountAllocations: discountAllocations == freezed
+          ? _value.discountAllocations
+          : discountAllocations // ignore: cast_nullable_to_non_nullable
+              as List<DiscountAllocations>,
       variant: variant == freezed
           ? _value.variant
           : variant // ignore: cast_nullable_to_non_nullable
@@ -250,36 +242,38 @@ class __$LineItemOrderCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_LineItemOrder extends _LineItemOrder {
   _$_LineItemOrder(
-      {this.currentQuantity,
-      this.discountAllocations,
-      this.discountedTotalPrice,
-      this.originalTotalPrice,
-      this.quantity,
-      this.title,
-      this.variant})
+      {required this.currentQuantity,
+      required this.discountedTotalPrice,
+      required this.originalTotalPrice,
+      required this.quantity,
+      required this.title,
+      this.discountAllocations = const [],
+      this.variant = null})
       : super._();
 
   factory _$_LineItemOrder.fromJson(Map<String, dynamic> json) =>
       _$_$_LineItemOrderFromJson(json);
 
   @override
-  final int? currentQuantity;
+  final int currentQuantity;
   @override
-  final List<DiscountAllocations>? discountAllocations;
+  final PriceV2 discountedTotalPrice;
   @override
-  final PriceV2? discountedTotalPrice;
+  final PriceV2 originalTotalPrice;
   @override
-  final PriceV2? originalTotalPrice;
+  final int quantity;
   @override
-  final int? quantity;
+  final String title;
+  @JsonKey(defaultValue: const [])
   @override
-  final String? title;
+  final List<DiscountAllocations> discountAllocations;
+  @JsonKey(defaultValue: null)
   @override
   final ProductVariantCheckout? variant;
 
   @override
   String toString() {
-    return 'LineItemOrder(currentQuantity: $currentQuantity, discountAllocations: $discountAllocations, discountedTotalPrice: $discountedTotalPrice, originalTotalPrice: $originalTotalPrice, quantity: $quantity, title: $title, variant: $variant)';
+    return 'LineItemOrder(currentQuantity: $currentQuantity, discountedTotalPrice: $discountedTotalPrice, originalTotalPrice: $originalTotalPrice, quantity: $quantity, title: $title, discountAllocations: $discountAllocations, variant: $variant)';
   }
 
   @override
@@ -289,9 +283,6 @@ class _$_LineItemOrder extends _LineItemOrder {
             (identical(other.currentQuantity, currentQuantity) ||
                 const DeepCollectionEquality()
                     .equals(other.currentQuantity, currentQuantity)) &&
-            (identical(other.discountAllocations, discountAllocations) ||
-                const DeepCollectionEquality()
-                    .equals(other.discountAllocations, discountAllocations)) &&
             (identical(other.discountedTotalPrice, discountedTotalPrice) ||
                 const DeepCollectionEquality().equals(
                     other.discountedTotalPrice, discountedTotalPrice)) &&
@@ -303,6 +294,9 @@ class _$_LineItemOrder extends _LineItemOrder {
                     .equals(other.quantity, quantity)) &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.discountAllocations, discountAllocations) ||
+                const DeepCollectionEquality()
+                    .equals(other.discountAllocations, discountAllocations)) &&
             (identical(other.variant, variant) ||
                 const DeepCollectionEquality().equals(other.variant, variant)));
   }
@@ -311,11 +305,11 @@ class _$_LineItemOrder extends _LineItemOrder {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(currentQuantity) ^
-      const DeepCollectionEquality().hash(discountAllocations) ^
       const DeepCollectionEquality().hash(discountedTotalPrice) ^
       const DeepCollectionEquality().hash(originalTotalPrice) ^
       const DeepCollectionEquality().hash(quantity) ^
       const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(discountAllocations) ^
       const DeepCollectionEquality().hash(variant);
 
   @JsonKey(ignore: true)
@@ -331,12 +325,12 @@ class _$_LineItemOrder extends _LineItemOrder {
 
 abstract class _LineItemOrder extends LineItemOrder {
   factory _LineItemOrder(
-      {int? currentQuantity,
-      List<DiscountAllocations>? discountAllocations,
-      PriceV2? discountedTotalPrice,
-      PriceV2? originalTotalPrice,
-      int? quantity,
-      String? title,
+      {required int currentQuantity,
+      required PriceV2 discountedTotalPrice,
+      required PriceV2 originalTotalPrice,
+      required int quantity,
+      required String title,
+      List<DiscountAllocations> discountAllocations,
       ProductVariantCheckout? variant}) = _$_LineItemOrder;
   _LineItemOrder._() : super._();
 
@@ -344,18 +338,18 @@ abstract class _LineItemOrder extends LineItemOrder {
       _$_LineItemOrder.fromJson;
 
   @override
-  int? get currentQuantity => throw _privateConstructorUsedError;
+  int get currentQuantity => throw _privateConstructorUsedError;
   @override
-  List<DiscountAllocations>? get discountAllocations =>
+  PriceV2 get discountedTotalPrice => throw _privateConstructorUsedError;
+  @override
+  PriceV2 get originalTotalPrice => throw _privateConstructorUsedError;
+  @override
+  int get quantity => throw _privateConstructorUsedError;
+  @override
+  String get title => throw _privateConstructorUsedError;
+  @override
+  List<DiscountAllocations> get discountAllocations =>
       throw _privateConstructorUsedError;
-  @override
-  PriceV2? get discountedTotalPrice => throw _privateConstructorUsedError;
-  @override
-  PriceV2? get originalTotalPrice => throw _privateConstructorUsedError;
-  @override
-  int? get quantity => throw _privateConstructorUsedError;
-  @override
-  String? get title => throw _privateConstructorUsedError;
   @override
   ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
   @override

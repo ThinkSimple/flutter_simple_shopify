@@ -7,8 +7,10 @@ part 'shipping_rates.g.dart';
 @freezed
 class ShippingRates with _$ShippingRates {
   const ShippingRates._();
-  factory ShippingRates({String? handle, String? title, PriceV2? priceV2}) =
-      _ShippingRates;
+  factory ShippingRates(
+      {required String handle,
+      required String title,
+      required PriceV2 priceV2}) = _ShippingRates;
 
   factory ShippingRates.fromJson(Map<String, dynamic> json) =>
       _$ShippingRatesFromJson(json);

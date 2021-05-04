@@ -10,16 +10,16 @@ class ProductVariantCheckout with _$ProductVariantCheckout {
   const ProductVariantCheckout._();
 
   factory ProductVariantCheckout({
-    PriceV2? price,
-    String? title,
+    required PriceV2 price,
+    required String title,
+    required bool availableForSale,
+    required String sku,
+    required bool requiresShipping,
+    required String id,
     ShopifyImage? image,
     PriceV2? compareAtPrice,
     double? weight,
     String? weightUnit,
-    bool? availableForSale,
-    String? sku,
-    bool? requiresShipping,
-    String? id,
   }) = _ProductVariantCheckout;
 
   factory ProductVariantCheckout.fromJson(Map<String, dynamic> json) =>

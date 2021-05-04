@@ -9,9 +9,9 @@ class AppliedGiftCards with _$AppliedGiftCards {
   const AppliedGiftCards._();
 
   factory AppliedGiftCards(
-      {PriceV2? amountUsedV2,
-      PriceV2? balanceV2,
-      String? id}) = _AppliedGiftCards;
+      {required PriceV2 amountUsedV2,
+      required PriceV2 balanceV2,
+      required String id}) = _AppliedGiftCards;
 
   factory AppliedGiftCards.fromJson(Map<String, dynamic> json) =>
       _$AppliedGiftCardsFromJson(json);
