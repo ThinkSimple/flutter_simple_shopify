@@ -24,11 +24,11 @@ class _$CollectionTearOff {
       {required String title,
       required String id,
       required Products products,
-      required String cursor,
-      String description = '',
-      String descriptionHtml = '',
-      String handle = '',
-      String updatedAt = '',
+      String? cursor,
+      String? description,
+      String? descriptionHtml,
+      String? handle,
+      String? updatedAt,
       ShopifyImage? image}) {
     return _Collection(
       title: title,
@@ -56,11 +56,11 @@ mixin _$Collection {
   String get title => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   Products get products => throw _privateConstructorUsedError;
-  String get cursor => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  String get descriptionHtml => throw _privateConstructorUsedError;
-  String get handle => throw _privateConstructorUsedError;
-  String get updatedAt => throw _privateConstructorUsedError;
+  String? get cursor => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get descriptionHtml => throw _privateConstructorUsedError;
+  String? get handle => throw _privateConstructorUsedError;
+  String? get updatedAt => throw _privateConstructorUsedError;
   ShopifyImage? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -78,11 +78,11 @@ abstract class $CollectionCopyWith<$Res> {
       {String title,
       String id,
       Products products,
-      String cursor,
-      String description,
-      String descriptionHtml,
-      String handle,
-      String updatedAt,
+      String? cursor,
+      String? description,
+      String? descriptionHtml,
+      String? handle,
+      String? updatedAt,
       ShopifyImage? image});
 
   $ProductsCopyWith<$Res> get products;
@@ -125,23 +125,23 @@ class _$CollectionCopyWithImpl<$Res> implements $CollectionCopyWith<$Res> {
       cursor: cursor == freezed
           ? _value.cursor
           : cursor // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       descriptionHtml: descriptionHtml == freezed
           ? _value.descriptionHtml
           : descriptionHtml // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       handle: handle == freezed
           ? _value.handle
           : handle // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -178,11 +178,11 @@ abstract class _$CollectionCopyWith<$Res> implements $CollectionCopyWith<$Res> {
       {String title,
       String id,
       Products products,
-      String cursor,
-      String description,
-      String descriptionHtml,
-      String handle,
-      String updatedAt,
+      String? cursor,
+      String? description,
+      String? descriptionHtml,
+      String? handle,
+      String? updatedAt,
       ShopifyImage? image});
 
   @override
@@ -229,23 +229,23 @@ class __$CollectionCopyWithImpl<$Res> extends _$CollectionCopyWithImpl<$Res>
       cursor: cursor == freezed
           ? _value.cursor
           : cursor // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       descriptionHtml: descriptionHtml == freezed
           ? _value.descriptionHtml
           : descriptionHtml // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       handle: handle == freezed
           ? _value.handle
           : handle // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -261,11 +261,11 @@ class _$_Collection extends _Collection {
       {required this.title,
       required this.id,
       required this.products,
-      required this.cursor,
-      this.description = '',
-      this.descriptionHtml = '',
-      this.handle = '',
-      this.updatedAt = '',
+      this.cursor,
+      this.description,
+      this.descriptionHtml,
+      this.handle,
+      this.updatedAt,
       this.image})
       : super._();
 
@@ -279,19 +279,15 @@ class _$_Collection extends _Collection {
   @override
   final Products products;
   @override
-  final String cursor;
-  @JsonKey(defaultValue: '')
+  final String? cursor;
   @override
-  final String description;
-  @JsonKey(defaultValue: '')
+  final String? description;
   @override
-  final String descriptionHtml;
-  @JsonKey(defaultValue: '')
+  final String? descriptionHtml;
   @override
-  final String handle;
-  @JsonKey(defaultValue: '')
+  final String? handle;
   @override
-  final String updatedAt;
+  final String? updatedAt;
   @override
   final ShopifyImage? image;
 
@@ -357,11 +353,11 @@ abstract class _Collection extends Collection {
       {required String title,
       required String id,
       required Products products,
-      required String cursor,
-      String description,
-      String descriptionHtml,
-      String handle,
-      String updatedAt,
+      String? cursor,
+      String? description,
+      String? descriptionHtml,
+      String? handle,
+      String? updatedAt,
       ShopifyImage? image}) = _$_Collection;
   _Collection._() : super._();
 
@@ -375,15 +371,15 @@ abstract class _Collection extends Collection {
   @override
   Products get products => throw _privateConstructorUsedError;
   @override
-  String get cursor => throw _privateConstructorUsedError;
+  String? get cursor => throw _privateConstructorUsedError;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   @override
-  String get descriptionHtml => throw _privateConstructorUsedError;
+  String? get descriptionHtml => throw _privateConstructorUsedError;
   @override
-  String get handle => throw _privateConstructorUsedError;
+  String? get handle => throw _privateConstructorUsedError;
   @override
-  String get updatedAt => throw _privateConstructorUsedError;
+  String? get updatedAt => throw _privateConstructorUsedError;
   @override
   ShopifyImage? get image => throw _privateConstructorUsedError;
   @override

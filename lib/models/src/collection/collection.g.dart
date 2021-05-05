@@ -11,11 +11,11 @@ _$_Collection _$_$_CollectionFromJson(Map<String, dynamic> json) {
     title: json['title'] as String,
     id: json['id'] as String,
     products: Products.fromJson(json['products'] as Map<String, dynamic>),
-    cursor: json['cursor'] as String,
-    description: json['description'] as String? ?? '',
-    descriptionHtml: json['descriptionHtml'] as String? ?? '',
-    handle: json['handle'] as String? ?? '',
-    updatedAt: json['updatedAt'] as String? ?? '',
+    cursor: json['cursor'] as String?,
+    description: json['description'] as String?,
+    descriptionHtml: json['descriptionHtml'] as String?,
+    handle: json['handle'] as String?,
+    updatedAt: json['updatedAt'] as String?,
     image: json['image'] == null
         ? null
         : ShopifyImage.fromJson(json['image'] as Map<String, dynamic>),
