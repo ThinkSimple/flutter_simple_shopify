@@ -12,11 +12,11 @@ class Collection with _$Collection {
     required String title,
     required String id,
     required Products products,
-    required String cursor,
-    @Default('') String description,
-    @Default('') String descriptionHtml,
-    @Default('') String handle,
-    @Default('') String updatedAt,
+    String? cursor,
+    String? description,
+    String? descriptionHtml,
+    String? handle,
+    String? updatedAt,
     ShopifyImage? image,
   }) = _Collection;
 
