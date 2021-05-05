@@ -21,19 +21,20 @@ class Collection with _$Collection {
   }) = _Collection;
 
   static Collection fromGraphJson(Map<String, dynamic> json) {
+    Map<String, dynamic> nodeJson = json['node'] ?? const {};
+
     return Collection(
-      title: (json['node'] ?? const {})['title'],
-      description: (json['node'] ?? const {})['description'],
-      descriptionHtml: (json['node'] ?? const {})['descriptionHtml'],
-      handle: (json['node'] ?? const {})['handle'],
-      id: (json['node'] ?? const {})['id'],
-      updatedAt: (json['node'] ?? const {})['updatedAt'],
-      image: (json['node'] ?? const {}['image']) != null
+      title: nodeJson['title'],
+      description: nodeJson['description'],
+      descriptionHtml: nodeJson['descriptionHtml'],
+      handle: nodeJson['handle'],
+      id: nodeJson['id'],
+      updatedAt: nodeJson['updatedAt'],
+      image: nodeJson['image'] != null
           ? ShopifyImage.fromJson(
               (json['node'] ?? const {})['image'] ?? const {})
           : null,
-      products: Products.fromGraphJson(
-          (json['node'] ?? const {})['products'] ?? const {}),
+      products: Products.fromGraphJson(nodeJson['products'] ?? const {}),
       cursor: json['cursor'],
     );
   }
