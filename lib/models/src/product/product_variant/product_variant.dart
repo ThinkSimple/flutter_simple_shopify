@@ -28,26 +28,29 @@ class ProductVariant with _$ProductVariant {
   }) = _ProductVariant;
 
   static ProductVariant fromGraphJson(Map<String, dynamic> json) {
+    Map<String, dynamic> nodeJson = json['node'] ?? const {};
+
     return ProductVariant(
-      price: PriceV2.fromJson((json['node'])['priceV2'] ?? const {}),
-      title: (json['node'])['title'],
-      image: ShopifyImage.fromJson((json['node'])['image'] ?? const {}),
-      compareAtPrice:
-          PriceV2.fromJson((json['node'])['compareAtPriceV2'] ?? const {}),
-      weight: (json['node'])['weight'],
-      weightUnit: (json['node'])['weightUnit'],
-      availableForSale: (json['node'])['availableForSale'],
-      sku: (json['node'])['sku'],
-      requiresShipping: (json['node'])['requiresShipping'],
-      id: (json['node'])['id'],
-      quantityAvailable: (json['node'])['quantityAvailable'],
-      unitPrice: json['node']['unitPrice'] == null
-          ? null
-          : PriceV2.fromJson((json['node'])['unitPrice']),
-      unitPriceMeasurement: json['node']['unitPriceMeasurement'] == null
-          ? null
-          : UnitPriceMeasurement.fromJson(json['node']['unitPriceMeasurement']),
-      selectedOptions: _getOptionList((json['node'])),
+      price: PriceV2.fromJson(nodeJson['priceV2']),
+      title: nodeJson['title'],
+      image: nodeJson['image'] != null ? ShopifyImage.fromJson(nodeJson) : null,
+      compareAtPrice: nodeJson['compareAtPriceV2'] != null
+          ? PriceV2.fromJson(nodeJson['compareAtPriceV2'])
+          : null,
+      weight: nodeJson['weight'],
+      weightUnit: nodeJson['weightUnit'],
+      availableForSale: nodeJson['availableForSale'],
+      sku: nodeJson['sku'],
+      requiresShipping: nodeJson['requiresShipping'],
+      id: nodeJson['id'],
+      quantityAvailable: nodeJson['quantityAvailable'],
+      unitPrice: nodeJson['unitPrice'] != null
+          ? PriceV2.fromJson(nodeJson['unitPrice'])
+          : null,
+      unitPriceMeasurement: nodeJson['unitPriceMeasurement'] != null
+          ? UnitPriceMeasurement.fromJson(nodeJson['unitPriceMeasurement'])
+          : null,
+      selectedOptions: _getOptionList((nodeJson)),
     );
   }
 
