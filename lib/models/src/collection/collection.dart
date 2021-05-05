@@ -28,7 +28,7 @@ class Collection with _$Collection {
       handle: (json['node'] ?? const {})['handle'],
       id: (json['node'] ?? const {})['id'],
       updatedAt: (json['node'] ?? const {})['updatedAt'],
-      image: json['node'] ?? const {}['image']
+      image: json['node'] ?? const {}['image'] != null
           ? ShopifyImage.fromJson(
               (json['node'] ?? const {})['image'] ?? const {})
           : null,
