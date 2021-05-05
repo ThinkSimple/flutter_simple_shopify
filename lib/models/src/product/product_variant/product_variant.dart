@@ -33,7 +33,9 @@ class ProductVariant with _$ProductVariant {
     return ProductVariant(
       price: PriceV2.fromJson(nodeJson['priceV2']),
       title: nodeJson['title'],
-      image: nodeJson['image'] != null ? ShopifyImage.fromJson(nodeJson) : null,
+      image: nodeJson['image'] != null
+          ? ShopifyImage.fromJson(nodeJson['image'])
+          : null,
       compareAtPrice: nodeJson['compareAtPriceV2'] != null
           ? PriceV2.fromJson(nodeJson['compareAtPriceV2'])
           : null,
