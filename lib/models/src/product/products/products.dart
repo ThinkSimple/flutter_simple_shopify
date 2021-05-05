@@ -14,7 +14,7 @@ class Products with _$Products {
   static Products fromGraphJson(Map<String, dynamic> json) {
     return Products(
         productList: _getProductList(json),
-        hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage']);
+        hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage'] ?? false);
   }
 
   static List<Product> _getProductList(Map<String, dynamic> json) {
