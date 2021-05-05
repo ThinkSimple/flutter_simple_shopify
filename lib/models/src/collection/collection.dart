@@ -28,8 +28,10 @@ class Collection with _$Collection {
       handle: (json['node'] ?? const {})['handle'],
       id: (json['node'] ?? const {})['id'],
       updatedAt: (json['node'] ?? const {})['updatedAt'],
-      image: ShopifyImage.fromJson(
-          (json['node'] ?? const {})['image'] ?? const {}),
+      image: json['node'] ?? const {}['image']
+          ? ShopifyImage.fromJson(
+              (json['node'] ?? const {})['image'] ?? const {})
+          : null,
       products: Products.fromGraphJson(
           (json['node'] ?? const {})['products'] ?? const {}),
       cursor: json['cursor'],
