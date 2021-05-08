@@ -15,12 +15,15 @@ class LineItem with _$LineItem {
   }) = _LineItem;
 
   static LineItem fromGraphJson(Map<String, dynamic> json) {
+    Map<String, dynamic> nodeJson = json['node'] ?? {};
+
     return LineItem(
-      id: (json['node'] ?? const {})['id'],
-      quantity: (json['node'] ?? const {})['quantity'],
-      variant: ProductVariantCheckout.fromJson(
-          ((json['node'] ?? const {})['variant'] ?? const {})),
-      title: (json['node'] ?? const {})['title'],
+      id: nodeJson['id'],
+      quantity: nodeJson['quantity'],
+      variant: nodeJson['variant'] != null
+          ? ProductVariantCheckout.fromJson(nodeJson['variant'])
+          : null,
+      title: nodeJson['title'],
     );
   }
 

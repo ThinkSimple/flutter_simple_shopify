@@ -10,7 +10,7 @@ class ProductVariantCheckout with _$ProductVariantCheckout {
   const ProductVariantCheckout._();
 
   factory ProductVariantCheckout({
-    required PriceV2 price,
+    required PriceV2 priceV2,
     required String title,
     required bool availableForSale,
     required String sku,

@@ -9,7 +9,7 @@ part of 'product_variant_checkout.dart';
 _$_ProductVariantCheckout _$_$_ProductVariantCheckoutFromJson(
     Map<String, dynamic> json) {
   return _$_ProductVariantCheckout(
-    price: PriceV2.fromJson(json['price'] as Map<String, dynamic>),
+    priceV2: PriceV2.fromJson(json['priceV2'] as Map<String, dynamic>),
     title: json['title'] as String,
     availableForSale: json['availableForSale'] as bool,
     sku: json['sku'] as String,
@@ -29,7 +29,7 @@ _$_ProductVariantCheckout _$_$_ProductVariantCheckoutFromJson(
 Map<String, dynamic> _$_$_ProductVariantCheckoutToJson(
         _$_ProductVariantCheckout instance) =>
     <String, dynamic>{
-      'price': instance.price,
+      'priceV2': instance.priceV2,
       'title': instance.title,
       'availableForSale': instance.availableForSale,
       'sku': instance.sku,

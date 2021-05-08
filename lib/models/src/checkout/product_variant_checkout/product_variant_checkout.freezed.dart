@@ -22,7 +22,7 @@ class _$ProductVariantCheckoutTearOff {
   const _$ProductVariantCheckoutTearOff();
 
   _ProductVariantCheckout call(
-      {required PriceV2 price,
+      {required PriceV2 priceV2,
       required String title,
       required bool availableForSale,
       required String sku,
@@ -33,7 +33,7 @@ class _$ProductVariantCheckoutTearOff {
       double? weight,
       String? weightUnit}) {
     return _ProductVariantCheckout(
-      price: price,
+      priceV2: priceV2,
       title: title,
       availableForSale: availableForSale,
       sku: sku,
@@ -56,7 +56,7 @@ const $ProductVariantCheckout = _$ProductVariantCheckoutTearOff();
 
 /// @nodoc
 mixin _$ProductVariantCheckout {
-  PriceV2 get price => throw _privateConstructorUsedError;
+  PriceV2 get priceV2 => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   bool get availableForSale => throw _privateConstructorUsedError;
   String get sku => throw _privateConstructorUsedError;
@@ -79,7 +79,7 @@ abstract class $ProductVariantCheckoutCopyWith<$Res> {
           $Res Function(ProductVariantCheckout) then) =
       _$ProductVariantCheckoutCopyWithImpl<$Res>;
   $Res call(
-      {PriceV2 price,
+      {PriceV2 priceV2,
       String title,
       bool availableForSale,
       String sku,
@@ -90,7 +90,7 @@ abstract class $ProductVariantCheckoutCopyWith<$Res> {
       double? weight,
       String? weightUnit});
 
-  $PriceV2CopyWith<$Res> get price;
+  $PriceV2CopyWith<$Res> get priceV2;
   $ShopifyImageCopyWith<$Res>? get image;
   $PriceV2CopyWith<$Res>? get compareAtPrice;
 }
@@ -106,7 +106,7 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? price = freezed,
+    Object? priceV2 = freezed,
     Object? title = freezed,
     Object? availableForSale = freezed,
     Object? sku = freezed,
@@ -118,9 +118,9 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res>
     Object? weightUnit = freezed,
   }) {
     return _then(_value.copyWith(
-      price: price == freezed
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
+      priceV2: priceV2 == freezed
+          ? _value.priceV2
+          : priceV2 // ignore: cast_nullable_to_non_nullable
               as PriceV2,
       title: title == freezed
           ? _value.title
@@ -162,9 +162,9 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res>
   }
 
   @override
-  $PriceV2CopyWith<$Res> get price {
-    return $PriceV2CopyWith<$Res>(_value.price, (value) {
-      return _then(_value.copyWith(price: value));
+  $PriceV2CopyWith<$Res> get priceV2 {
+    return $PriceV2CopyWith<$Res>(_value.priceV2, (value) {
+      return _then(_value.copyWith(priceV2: value));
     });
   }
 
@@ -199,7 +199,7 @@ abstract class _$ProductVariantCheckoutCopyWith<$Res>
       __$ProductVariantCheckoutCopyWithImpl<$Res>;
   @override
   $Res call(
-      {PriceV2 price,
+      {PriceV2 priceV2,
       String title,
       bool availableForSale,
       String sku,
@@ -211,7 +211,7 @@ abstract class _$ProductVariantCheckoutCopyWith<$Res>
       String? weightUnit});
 
   @override
-  $PriceV2CopyWith<$Res> get price;
+  $PriceV2CopyWith<$Res> get priceV2;
   @override
   $ShopifyImageCopyWith<$Res>? get image;
   @override
@@ -231,7 +231,7 @@ class __$ProductVariantCheckoutCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? price = freezed,
+    Object? priceV2 = freezed,
     Object? title = freezed,
     Object? availableForSale = freezed,
     Object? sku = freezed,
@@ -243,9 +243,9 @@ class __$ProductVariantCheckoutCopyWithImpl<$Res>
     Object? weightUnit = freezed,
   }) {
     return _then(_ProductVariantCheckout(
-      price: price == freezed
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
+      priceV2: priceV2 == freezed
+          ? _value.priceV2
+          : priceV2 // ignore: cast_nullable_to_non_nullable
               as PriceV2,
       title: title == freezed
           ? _value.title
@@ -291,7 +291,7 @@ class __$ProductVariantCheckoutCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ProductVariantCheckout extends _ProductVariantCheckout {
   _$_ProductVariantCheckout(
-      {required this.price,
+      {required this.priceV2,
       required this.title,
       required this.availableForSale,
       required this.sku,
@@ -307,7 +307,7 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
       _$_$_ProductVariantCheckoutFromJson(json);
 
   @override
-  final PriceV2 price;
+  final PriceV2 priceV2;
   @override
   final String title;
   @override
@@ -329,15 +329,16 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
 
   @override
   String toString() {
-    return 'ProductVariantCheckout(price: $price, title: $title, availableForSale: $availableForSale, sku: $sku, requiresShipping: $requiresShipping, id: $id, image: $image, compareAtPrice: $compareAtPrice, weight: $weight, weightUnit: $weightUnit)';
+    return 'ProductVariantCheckout(priceV2: $priceV2, title: $title, availableForSale: $availableForSale, sku: $sku, requiresShipping: $requiresShipping, id: $id, image: $image, compareAtPrice: $compareAtPrice, weight: $weight, weightUnit: $weightUnit)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _ProductVariantCheckout &&
-            (identical(other.price, price) ||
-                const DeepCollectionEquality().equals(other.price, price)) &&
+            (identical(other.priceV2, priceV2) ||
+                const DeepCollectionEquality()
+                    .equals(other.priceV2, priceV2)) &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.availableForSale, availableForSale) ||
@@ -365,7 +366,7 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(price) ^
+      const DeepCollectionEquality().hash(priceV2) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(availableForSale) ^
       const DeepCollectionEquality().hash(sku) ^
@@ -390,7 +391,7 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
 
 abstract class _ProductVariantCheckout extends ProductVariantCheckout {
   factory _ProductVariantCheckout(
-      {required PriceV2 price,
+      {required PriceV2 priceV2,
       required String title,
       required bool availableForSale,
       required String sku,
@@ -406,7 +407,7 @@ abstract class _ProductVariantCheckout extends ProductVariantCheckout {
       _$_ProductVariantCheckout.fromJson;
 
   @override
-  PriceV2 get price => throw _privateConstructorUsedError;
+  PriceV2 get priceV2 => throw _privateConstructorUsedError;
   @override
   String get title => throw _privateConstructorUsedError;
   @override

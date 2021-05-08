@@ -1,10 +1,15 @@
 import 'package:flutter_simple_shopify/enums/src/sort_key_order.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_complete_free.dart';
+import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_line_item_add.dart';
+import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_line_item_remove.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_shipping_address_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/create_checkout.dart';
+import 'package:flutter_simple_shopify/graphql_operations/mutations/create_empty_checkout.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_requires_shipping.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_without_shipping_rates.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
+import 'package:flutter_simple_shopify/models/src/checkout/line_item/line_item.dart';
+import 'package:flutter_simple_shopify/models/src/checkout/responses/checkout_response.dart';
 import 'package:flutter_simple_shopify/models/src/order/order.dart';
 import 'package:flutter_simple_shopify/models/src/order/orders/orders.dart';
 import 'package:flutter_simple_shopify/models/src/shopify_user/address/address.dart';
@@ -250,6 +255,96 @@ class ShopifyCheckout with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
+  }
+
+  Future<CheckoutResponse> checkoutWithLineItems(List<LineItem> lineItems,
+      {bool deleteThisPartOfCache = false}) async {
+    final MutationOptions _options = MutationOptions(
+        document: gql(createCheckoutWithLineItemsMutation),
+        variables: {
+          'input': {
+            'lineItems': [
+              for (var lineItem in lineItems)
+                {
+                  'variantId': lineItem.id,
+                  'quantity': lineItem.quantity,
+                }
+            ]
+          },
+        });
+    final QueryResult result = await _graphQLClient!.mutate(_options);
+    checkForError(
+      result,
+      key: 'checkoutWithLineItems',
+      errorKey: 'checkoutUserErrors',
+    );
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
+
+    print(result.data!['checkoutCreate']);
+
+    return CheckoutResponse.fromJson(
+        ((result.data!['checkoutCreate'] ?? const {})['checkout'] ?? const {}));
+  }
+
+  Future<String> addLineItemsToCheckout(
+      {required String checkoutId,
+      required List<LineItem> lineItems,
+      bool deleteThisPartOfCache = false}) async {
+    final MutationOptions _options = MutationOptions(
+        document: gql(addLineItemsToCheckoutMutation),
+        variables: {
+          'checkoutId': checkoutId,
+          'lineItems': [
+            for (var lineItem in lineItems)
+              {
+                'variantId': lineItem.id,
+                'quantity': lineItem.quantity,
+              }
+          ],
+        });
+    final QueryResult result = await _graphQLClient!.mutate(_options);
+    checkForError(
+      result,
+      key: 'addLineItemsToCheckout',
+      errorKey: 'checkoutUserErrors',
+    );
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
+
+    print(result.data);
+
+    return ((result.data!['checkoutLineItemsAdd'] ?? const {})['checkout'] ??
+        const {})['id'];
+  }
+
+  Future<String> removeLineItemsFromCheckout(
+      {required String checkoutId,
+      required List<LineItem> lineItems,
+      bool deleteThisPartOfCache = false}) async {
+    final MutationOptions _options = MutationOptions(
+        document: gql(removeLineItemsFromCheckoutMutation),
+        variables: {
+          'checkoutId': checkoutId,
+          'lineItemIds': [for (var lineItem in lineItems) lineItem.id],
+        });
+
+    final QueryResult result = await _graphQLClient!.mutate(_options);
+    checkForError(
+      result,
+      key: 'removeLineItemsFromCheckout',
+      errorKey: 'checkoutUserErrors',
+    );
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
+
+    print(result.data);
+
+    return ((result.data!['checkoutLineItemsRemove'] ?? const {})['checkout'] ??
+        const {})['id'];
   }
 
   /// Returns the Checkout Id.

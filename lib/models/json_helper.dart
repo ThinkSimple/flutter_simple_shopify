@@ -1,7 +1,15 @@
 import 'package:intl/intl.dart';
 
+import 'src/checkout/line_item/line_item.dart';
+
 class JsonHelper {
   const JsonHelper._();
+
+  static List<LineItem> lineItemsFromEdges(dynamic json) {
+    return (json['edges'] as List)
+        .map((e) => LineItem.fromGraphJson(e))
+        .toList();
+  }
 
   static double amountFromJson(dynamic json) {
     return json == null
