@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_simple_shopify/flutter_simple_shopify.dart';
+import 'package:flutter_simple_shopify/models/src/checkout/line_item/line_item.dart';
+import 'package:flutter_simple_shopify/models/src/checkout/responses/checkout_response.dart';
+import 'package:flutter_simple_shopify/models/src/product/product_variant/product_variant.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   const ProductDetailScreen({Key key, @required this.product})
@@ -13,6 +16,9 @@ class ProductDetailScreen extends StatefulWidget {
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   _ProductDetailScreenState(this.product);
   final Product product;
+  String checkoutId;
+  String checkoutUrl;
+  List<LineItem> lineItems;
 
   @override
   Widget build(BuildContext context) {
@@ -42,17 +48,49 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     List<Widget> widgetList = [];
     product.productVariants.forEach((variant) => widgetList.add(ListTile(
           title: Text(variant.title),
+          subtitle: Row(
+            children: [
+              IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: () => _addProductToShoppingCart(variant)),
+              IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: () =>
+                      _removeProductFromShoppingCart(lineItems.first))
+            ],
+          ),
           trailing: Text(variant.price.amount.toString()),
         )));
     return widgetList;
   }
 
   ///Adds a product variant to the checkout
-  /*Future<void> _addProductToShoppingCart(ProductVariant variant)async{
+  Future<void> _addProductToShoppingCart(ProductVariant variant) async {
     ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;
-    String checkoutId = await shopifyCheckout.createCheckout();
-    print(checkoutId);
-    //Adds a product variant to a specific checkout id
-    await shopifyCheckout.checkoutLineItemsReplace(checkoutId, [variant.id]);
-  }*/
+
+    if (checkoutId == null) {
+      CheckoutResponse response = await shopifyCheckout.checkoutWithLineItems(
+          [LineItem(title: variant.title, id: variant.id, quantity: 1)]);
+      setState(() {
+        checkoutId = response.id;
+        checkoutUrl = response.webUrl;
+        lineItems = response.lineItems;
+      });
+    } else {
+      String id = await shopifyCheckout.addLineItemsToCheckout(
+          checkoutId: checkoutId,
+          lineItems: [
+            LineItem(title: variant.title, id: variant.id, quantity: 1)
+          ]);
+    }
+  }
+
+  Future<void> _removeProductFromShoppingCart(LineItem lineItem) async {
+    ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;
+
+    print(lineItem.id);
+
+    String id = await shopifyCheckout.removeLineItemsFromCheckout(
+        checkoutId: checkoutId, lineItems: [lineItem]);
+  }
 }
