@@ -2,9 +2,9 @@ import 'package:flutter_simple_shopify/enums/src/sort_key_order.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_complete_free.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_line_item_add.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_line_item_remove.dart';
+import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_line_item_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_shipping_address_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/create_checkout.dart';
-import 'package:flutter_simple_shopify/graphql_operations/mutations/create_empty_checkout.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_requires_shipping.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_without_shipping_rates.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
@@ -45,7 +45,7 @@ class ShopifyCheckout with ShopifyError {
           'id': checkoutId,
         });
     QueryResult result = await _graphQLClient!.query(_optionsRequireShipping);
-    print(result.data);
+
     final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(_requiresShipping(result) == true
             ? getCheckoutInfo
@@ -257,21 +257,20 @@ class ShopifyCheckout with ShopifyError {
     }
   }
 
-  Future<CheckoutResponse> checkoutWithLineItems(List<LineItem> lineItems,
+  Future<CheckoutResponse> createCheckout(List<LineItem> lineItems,
       {bool deleteThisPartOfCache = false}) async {
-    final MutationOptions _options = MutationOptions(
-        document: gql(createCheckoutWithLineItemsMutation),
-        variables: {
-          'input': {
-            'lineItems': [
-              for (var lineItem in lineItems)
-                {
-                  'variantId': lineItem.id,
-                  'quantity': lineItem.quantity,
-                }
-            ]
-          },
-        });
+    final MutationOptions _options =
+        MutationOptions(document: gql(createCheckoutMutation), variables: {
+      'input': {
+        'lineItems': [
+          for (var lineItem in lineItems)
+            {
+              'variantId': lineItem.id,
+              'quantity': lineItem.quantity,
+            }
+        ]
+      },
+    });
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -288,7 +287,7 @@ class ShopifyCheckout with ShopifyError {
         ((result.data!['checkoutCreate'] ?? const {})['checkout'] ?? const {}));
   }
 
-  Future<String> addLineItemsToCheckout(
+  Future<CheckoutResponse> addLineItemsToCheckout(
       {required String checkoutId,
       required List<LineItem> lineItems,
       bool deleteThisPartOfCache = false}) async {
@@ -314,13 +313,43 @@ class ShopifyCheckout with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
 
-    print(result.data);
-
-    return ((result.data!['checkoutLineItemsAdd'] ?? const {})['checkout'] ??
-        const {})['id'];
+    return CheckoutResponse.fromJson(
+        ((result.data!['checkoutLineItemsAdd'] ?? const {})['checkout'] ??
+            const {}));
   }
 
-  Future<String> removeLineItemsFromCheckout(
+  Future<CheckoutResponse> updateLineItemsInCheckout(
+      {required String checkoutId,
+      required List<LineItem> lineItems,
+      bool deleteThisPartOfCache = false}) async {
+    final MutationOptions _options = MutationOptions(
+        document: gql(updateLineItemsInCheckoutMutation),
+        variables: {
+          'checkoutId': checkoutId,
+          'lineItems': [
+            for (var lineItem in lineItems)
+              {
+                'variantId': lineItem.id,
+                'quantity': lineItem.quantity,
+              }
+          ],
+        });
+    final QueryResult result = await _graphQLClient!.mutate(_options);
+    checkForError(
+      result,
+      key: 'updateLineItemsInCheckout',
+      errorKey: 'checkoutUserErrors',
+    );
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
+
+    return CheckoutResponse.fromJson(
+        ((result.data!['checkoutLineItemsUpdate'] ?? const {})['checkout'] ??
+            const {}));
+  }
+
+  Future<CheckoutResponse> removeLineItemsFromCheckout(
       {required String checkoutId,
       required List<LineItem> lineItems,
       bool deleteThisPartOfCache = false}) async {
@@ -341,26 +370,9 @@ class ShopifyCheckout with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
 
-    print(result.data);
-
-    return ((result.data!['checkoutLineItemsRemove'] ?? const {})['checkout'] ??
-        const {})['id'];
-  }
-
-  /// Returns the Checkout Id.
-  ///
-  /// Creates a new [Checkout].
-  Future<String?> createCheckout({bool deleteThisPartOfCache = false}) async {
-    final MutationOptions _options = MutationOptions(
-      document: gql(createCheckoutMutation),
-    );
-    final QueryResult result = await _graphQLClient!.mutate(_options);
-    checkForError(result);
-    if (deleteThisPartOfCache) {
-      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
-    }
-    return ((result.data!['checkoutCreate'] ?? const {})['checkout'] ??
-        const {})['id'];
+    return CheckoutResponse.fromJson(
+        ((result.data!['checkoutLineItemsRemove'] ?? const {})['checkout'] ??
+            const {}));
   }
 
   /// Removes the Gift card that [appliedGiftCardId] belongs to, from the [Checkout] that [checkoutId] belongs to.

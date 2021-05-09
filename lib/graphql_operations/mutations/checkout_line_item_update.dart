@@ -1,6 +1,6 @@
-String createCheckoutMutation = r'''
-mutation checkoutCreate($input: CheckoutCreateInput!) {
-  checkoutCreate(input: $input) {
+String updateLineItemsInCheckoutMutation = r'''
+mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemInput!]!, $checkoutId: ID!) {
+  checkoutLineItemsUpdate(lineItems: $lineItems, checkoutId: $checkoutId) {
     checkout {
       id
       webUrl

@@ -69,7 +69,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;
 
     if (checkoutId == null) {
-      CheckoutResponse response = await shopifyCheckout.checkoutWithLineItems(
+      CheckoutResponse response = await shopifyCheckout.createCheckout(
           [LineItem(title: variant.title, id: variant.id, quantity: 1)]);
       setState(() {
         checkoutId = response.id;
@@ -77,7 +77,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         lineItems = response.lineItems;
       });
     } else {
-      String id = await shopifyCheckout.addLineItemsToCheckout(
+      CheckoutResponse response = await shopifyCheckout.addLineItemsToCheckout(
           checkoutId: checkoutId,
           lineItems: [
             LineItem(title: variant.title, id: variant.id, quantity: 1)
@@ -90,7 +90,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
     print(lineItem.id);
 
-    String id = await shopifyCheckout.removeLineItemsFromCheckout(
-        checkoutId: checkoutId, lineItems: [lineItem]);
+    CheckoutResponse response = await shopifyCheckout
+        .removeLineItemsFromCheckout(
+            checkoutId: checkoutId, lineItems: [lineItem]);
   }
 }
