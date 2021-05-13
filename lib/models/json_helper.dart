@@ -6,8 +6,8 @@ class JsonHelper {
   const JsonHelper._();
 
   static List<LineItem> lineItems(dynamic json) {
-    if (json['lineItems'] != null) {
-      (json['lineItems'] as List).map((e) => LineItem.fromJson(e)).toList();
+    if (json is List) {
+      json.map((e) => LineItem.fromJson(e)).toList();
     }
 
     return (json['edges'] as List)
