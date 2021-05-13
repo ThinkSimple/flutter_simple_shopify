@@ -22,10 +22,7 @@ class _$CheckoutTearOff {
 
   _Checkout call(
       {required String id,
-      required String email,
       required AvailableShippingRates? availableShippingrates,
-      required ShippingRates shippingLine,
-      required MailingAddress shippingAddress,
       required String createdAt,
       required String currencyCode,
       required LineItems lineItems,
@@ -34,20 +31,20 @@ class _$CheckoutTearOff {
       required bool taxesIncluded,
       required bool taxExempt,
       required PriceV2 subtotalPriceV2,
-      required String orderStatusUrl,
       required bool requiresShipping,
-      required Order order,
       List<AppliedGiftCards> appliedGiftcards = const [],
+      Order? order,
+      String? orderStatusUrl,
+      MailingAddress? shippingAddress,
+      ShippingRates? shippingLine,
+      String? email,
       String? completedAt,
       String? note,
       String? webUrl,
       String? updatedAt}) {
     return _Checkout(
       id: id,
-      email: email,
       availableShippingrates: availableShippingrates,
-      shippingLine: shippingLine,
-      shippingAddress: shippingAddress,
       createdAt: createdAt,
       currencyCode: currencyCode,
       lineItems: lineItems,
@@ -56,10 +53,13 @@ class _$CheckoutTearOff {
       taxesIncluded: taxesIncluded,
       taxExempt: taxExempt,
       subtotalPriceV2: subtotalPriceV2,
-      orderStatusUrl: orderStatusUrl,
       requiresShipping: requiresShipping,
-      order: order,
       appliedGiftcards: appliedGiftcards,
+      order: order,
+      orderStatusUrl: orderStatusUrl,
+      shippingAddress: shippingAddress,
+      shippingLine: shippingLine,
+      email: email,
       completedAt: completedAt,
       note: note,
       webUrl: webUrl,
@@ -78,11 +78,8 @@ const $Checkout = _$CheckoutTearOff();
 /// @nodoc
 mixin _$Checkout {
   String get id => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
   AvailableShippingRates? get availableShippingrates =>
       throw _privateConstructorUsedError;
-  ShippingRates get shippingLine => throw _privateConstructorUsedError;
-  MailingAddress get shippingAddress => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
   String get currencyCode => throw _privateConstructorUsedError;
   LineItems get lineItems => throw _privateConstructorUsedError;
@@ -91,11 +88,14 @@ mixin _$Checkout {
   bool get taxesIncluded => throw _privateConstructorUsedError;
   bool get taxExempt => throw _privateConstructorUsedError;
   PriceV2 get subtotalPriceV2 => throw _privateConstructorUsedError;
-  String get orderStatusUrl => throw _privateConstructorUsedError;
   bool get requiresShipping => throw _privateConstructorUsedError;
-  Order get order => throw _privateConstructorUsedError;
   List<AppliedGiftCards> get appliedGiftcards =>
       throw _privateConstructorUsedError;
+  Order? get order => throw _privateConstructorUsedError;
+  String? get orderStatusUrl => throw _privateConstructorUsedError;
+  MailingAddress? get shippingAddress => throw _privateConstructorUsedError;
+  ShippingRates? get shippingLine => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   String? get completedAt => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
   String? get webUrl => throw _privateConstructorUsedError;
@@ -113,10 +113,7 @@ abstract class $CheckoutCopyWith<$Res> {
       _$CheckoutCopyWithImpl<$Res>;
   $Res call(
       {String id,
-      String email,
       AvailableShippingRates? availableShippingrates,
-      ShippingRates shippingLine,
-      MailingAddress shippingAddress,
       String createdAt,
       String currencyCode,
       LineItems lineItems,
@@ -125,23 +122,26 @@ abstract class $CheckoutCopyWith<$Res> {
       bool taxesIncluded,
       bool taxExempt,
       PriceV2 subtotalPriceV2,
-      String orderStatusUrl,
       bool requiresShipping,
-      Order order,
       List<AppliedGiftCards> appliedGiftcards,
+      Order? order,
+      String? orderStatusUrl,
+      MailingAddress? shippingAddress,
+      ShippingRates? shippingLine,
+      String? email,
       String? completedAt,
       String? note,
       String? webUrl,
       String? updatedAt});
 
   $AvailableShippingRatesCopyWith<$Res>? get availableShippingrates;
-  $ShippingRatesCopyWith<$Res> get shippingLine;
-  $MailingAddressCopyWith<$Res> get shippingAddress;
   $LineItemsCopyWith<$Res> get lineItems;
   $PriceV2CopyWith<$Res> get totalTaxV2;
   $PriceV2CopyWith<$Res> get totalPriceV2;
   $PriceV2CopyWith<$Res> get subtotalPriceV2;
-  $OrderCopyWith<$Res> get order;
+  $OrderCopyWith<$Res>? get order;
+  $MailingAddressCopyWith<$Res>? get shippingAddress;
+  $ShippingRatesCopyWith<$Res>? get shippingLine;
 }
 
 /// @nodoc
@@ -155,10 +155,7 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? email = freezed,
     Object? availableShippingrates = freezed,
-    Object? shippingLine = freezed,
-    Object? shippingAddress = freezed,
     Object? createdAt = freezed,
     Object? currencyCode = freezed,
     Object? lineItems = freezed,
@@ -167,10 +164,13 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
     Object? taxesIncluded = freezed,
     Object? taxExempt = freezed,
     Object? subtotalPriceV2 = freezed,
-    Object? orderStatusUrl = freezed,
     Object? requiresShipping = freezed,
-    Object? order = freezed,
     Object? appliedGiftcards = freezed,
+    Object? order = freezed,
+    Object? orderStatusUrl = freezed,
+    Object? shippingAddress = freezed,
+    Object? shippingLine = freezed,
+    Object? email = freezed,
     Object? completedAt = freezed,
     Object? note = freezed,
     Object? webUrl = freezed,
@@ -181,22 +181,10 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      email: email == freezed
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
       availableShippingrates: availableShippingrates == freezed
           ? _value.availableShippingrates
           : availableShippingrates // ignore: cast_nullable_to_non_nullable
               as AvailableShippingRates?,
-      shippingLine: shippingLine == freezed
-          ? _value.shippingLine
-          : shippingLine // ignore: cast_nullable_to_non_nullable
-              as ShippingRates,
-      shippingAddress: shippingAddress == freezed
-          ? _value.shippingAddress
-          : shippingAddress // ignore: cast_nullable_to_non_nullable
-              as MailingAddress,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -229,22 +217,34 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
           ? _value.subtotalPriceV2
           : subtotalPriceV2 // ignore: cast_nullable_to_non_nullable
               as PriceV2,
-      orderStatusUrl: orderStatusUrl == freezed
-          ? _value.orderStatusUrl
-          : orderStatusUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       requiresShipping: requiresShipping == freezed
           ? _value.requiresShipping
           : requiresShipping // ignore: cast_nullable_to_non_nullable
               as bool,
-      order: order == freezed
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order,
       appliedGiftcards: appliedGiftcards == freezed
           ? _value.appliedGiftcards
           : appliedGiftcards // ignore: cast_nullable_to_non_nullable
               as List<AppliedGiftCards>,
+      order: order == freezed
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as Order?,
+      orderStatusUrl: orderStatusUrl == freezed
+          ? _value.orderStatusUrl
+          : orderStatusUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shippingAddress: shippingAddress == freezed
+          ? _value.shippingAddress
+          : shippingAddress // ignore: cast_nullable_to_non_nullable
+              as MailingAddress?,
+      shippingLine: shippingLine == freezed
+          ? _value.shippingLine
+          : shippingLine // ignore: cast_nullable_to_non_nullable
+              as ShippingRates?,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       completedAt: completedAt == freezed
           ? _value.completedAt
           : completedAt // ignore: cast_nullable_to_non_nullable
@@ -277,20 +277,6 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
   }
 
   @override
-  $ShippingRatesCopyWith<$Res> get shippingLine {
-    return $ShippingRatesCopyWith<$Res>(_value.shippingLine, (value) {
-      return _then(_value.copyWith(shippingLine: value));
-    });
-  }
-
-  @override
-  $MailingAddressCopyWith<$Res> get shippingAddress {
-    return $MailingAddressCopyWith<$Res>(_value.shippingAddress, (value) {
-      return _then(_value.copyWith(shippingAddress: value));
-    });
-  }
-
-  @override
   $LineItemsCopyWith<$Res> get lineItems {
     return $LineItemsCopyWith<$Res>(_value.lineItems, (value) {
       return _then(_value.copyWith(lineItems: value));
@@ -319,9 +305,35 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
   }
 
   @override
-  $OrderCopyWith<$Res> get order {
-    return $OrderCopyWith<$Res>(_value.order, (value) {
+  $OrderCopyWith<$Res>? get order {
+    if (_value.order == null) {
+      return null;
+    }
+
+    return $OrderCopyWith<$Res>(_value.order!, (value) {
       return _then(_value.copyWith(order: value));
+    });
+  }
+
+  @override
+  $MailingAddressCopyWith<$Res>? get shippingAddress {
+    if (_value.shippingAddress == null) {
+      return null;
+    }
+
+    return $MailingAddressCopyWith<$Res>(_value.shippingAddress!, (value) {
+      return _then(_value.copyWith(shippingAddress: value));
+    });
+  }
+
+  @override
+  $ShippingRatesCopyWith<$Res>? get shippingLine {
+    if (_value.shippingLine == null) {
+      return null;
+    }
+
+    return $ShippingRatesCopyWith<$Res>(_value.shippingLine!, (value) {
+      return _then(_value.copyWith(shippingLine: value));
     });
   }
 }
@@ -333,10 +345,7 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
   @override
   $Res call(
       {String id,
-      String email,
       AvailableShippingRates? availableShippingrates,
-      ShippingRates shippingLine,
-      MailingAddress shippingAddress,
       String createdAt,
       String currencyCode,
       LineItems lineItems,
@@ -345,10 +354,13 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
       bool taxesIncluded,
       bool taxExempt,
       PriceV2 subtotalPriceV2,
-      String orderStatusUrl,
       bool requiresShipping,
-      Order order,
       List<AppliedGiftCards> appliedGiftcards,
+      Order? order,
+      String? orderStatusUrl,
+      MailingAddress? shippingAddress,
+      ShippingRates? shippingLine,
+      String? email,
       String? completedAt,
       String? note,
       String? webUrl,
@@ -356,10 +368,6 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
 
   @override
   $AvailableShippingRatesCopyWith<$Res>? get availableShippingrates;
-  @override
-  $ShippingRatesCopyWith<$Res> get shippingLine;
-  @override
-  $MailingAddressCopyWith<$Res> get shippingAddress;
   @override
   $LineItemsCopyWith<$Res> get lineItems;
   @override
@@ -369,7 +377,11 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
   @override
   $PriceV2CopyWith<$Res> get subtotalPriceV2;
   @override
-  $OrderCopyWith<$Res> get order;
+  $OrderCopyWith<$Res>? get order;
+  @override
+  $MailingAddressCopyWith<$Res>? get shippingAddress;
+  @override
+  $ShippingRatesCopyWith<$Res>? get shippingLine;
 }
 
 /// @nodoc
@@ -384,10 +396,7 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? email = freezed,
     Object? availableShippingrates = freezed,
-    Object? shippingLine = freezed,
-    Object? shippingAddress = freezed,
     Object? createdAt = freezed,
     Object? currencyCode = freezed,
     Object? lineItems = freezed,
@@ -396,10 +405,13 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
     Object? taxesIncluded = freezed,
     Object? taxExempt = freezed,
     Object? subtotalPriceV2 = freezed,
-    Object? orderStatusUrl = freezed,
     Object? requiresShipping = freezed,
-    Object? order = freezed,
     Object? appliedGiftcards = freezed,
+    Object? order = freezed,
+    Object? orderStatusUrl = freezed,
+    Object? shippingAddress = freezed,
+    Object? shippingLine = freezed,
+    Object? email = freezed,
     Object? completedAt = freezed,
     Object? note = freezed,
     Object? webUrl = freezed,
@@ -410,22 +422,10 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      email: email == freezed
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
       availableShippingrates: availableShippingrates == freezed
           ? _value.availableShippingrates
           : availableShippingrates // ignore: cast_nullable_to_non_nullable
               as AvailableShippingRates?,
-      shippingLine: shippingLine == freezed
-          ? _value.shippingLine
-          : shippingLine // ignore: cast_nullable_to_non_nullable
-              as ShippingRates,
-      shippingAddress: shippingAddress == freezed
-          ? _value.shippingAddress
-          : shippingAddress // ignore: cast_nullable_to_non_nullable
-              as MailingAddress,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -458,22 +458,34 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
           ? _value.subtotalPriceV2
           : subtotalPriceV2 // ignore: cast_nullable_to_non_nullable
               as PriceV2,
-      orderStatusUrl: orderStatusUrl == freezed
-          ? _value.orderStatusUrl
-          : orderStatusUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       requiresShipping: requiresShipping == freezed
           ? _value.requiresShipping
           : requiresShipping // ignore: cast_nullable_to_non_nullable
               as bool,
-      order: order == freezed
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order,
       appliedGiftcards: appliedGiftcards == freezed
           ? _value.appliedGiftcards
           : appliedGiftcards // ignore: cast_nullable_to_non_nullable
               as List<AppliedGiftCards>,
+      order: order == freezed
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as Order?,
+      orderStatusUrl: orderStatusUrl == freezed
+          ? _value.orderStatusUrl
+          : orderStatusUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shippingAddress: shippingAddress == freezed
+          ? _value.shippingAddress
+          : shippingAddress // ignore: cast_nullable_to_non_nullable
+              as MailingAddress?,
+      shippingLine: shippingLine == freezed
+          ? _value.shippingLine
+          : shippingLine // ignore: cast_nullable_to_non_nullable
+              as ShippingRates?,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       completedAt: completedAt == freezed
           ? _value.completedAt
           : completedAt // ignore: cast_nullable_to_non_nullable
@@ -499,10 +511,7 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
 class _$_Checkout extends _Checkout {
   _$_Checkout(
       {required this.id,
-      required this.email,
       required this.availableShippingrates,
-      required this.shippingLine,
-      required this.shippingAddress,
       required this.createdAt,
       required this.currencyCode,
       required this.lineItems,
@@ -511,10 +520,13 @@ class _$_Checkout extends _Checkout {
       required this.taxesIncluded,
       required this.taxExempt,
       required this.subtotalPriceV2,
-      required this.orderStatusUrl,
       required this.requiresShipping,
-      required this.order,
       this.appliedGiftcards = const [],
+      this.order,
+      this.orderStatusUrl,
+      this.shippingAddress,
+      this.shippingLine,
+      this.email,
       this.completedAt,
       this.note,
       this.webUrl,
@@ -527,13 +539,7 @@ class _$_Checkout extends _Checkout {
   @override
   final String id;
   @override
-  final String email;
-  @override
   final AvailableShippingRates? availableShippingrates;
-  @override
-  final ShippingRates shippingLine;
-  @override
-  final MailingAddress shippingAddress;
   @override
   final String createdAt;
   @override
@@ -551,14 +557,20 @@ class _$_Checkout extends _Checkout {
   @override
   final PriceV2 subtotalPriceV2;
   @override
-  final String orderStatusUrl;
-  @override
   final bool requiresShipping;
-  @override
-  final Order order;
   @JsonKey(defaultValue: const [])
   @override
   final List<AppliedGiftCards> appliedGiftcards;
+  @override
+  final Order? order;
+  @override
+  final String? orderStatusUrl;
+  @override
+  final MailingAddress? shippingAddress;
+  @override
+  final ShippingRates? shippingLine;
+  @override
+  final String? email;
   @override
   final String? completedAt;
   @override
@@ -570,7 +582,7 @@ class _$_Checkout extends _Checkout {
 
   @override
   String toString() {
-    return 'Checkout(id: $id, email: $email, availableShippingrates: $availableShippingrates, shippingLine: $shippingLine, shippingAddress: $shippingAddress, createdAt: $createdAt, currencyCode: $currencyCode, lineItems: $lineItems, totalTaxV2: $totalTaxV2, totalPriceV2: $totalPriceV2, taxesIncluded: $taxesIncluded, taxExempt: $taxExempt, subtotalPriceV2: $subtotalPriceV2, orderStatusUrl: $orderStatusUrl, requiresShipping: $requiresShipping, order: $order, appliedGiftcards: $appliedGiftcards, completedAt: $completedAt, note: $note, webUrl: $webUrl, updatedAt: $updatedAt)';
+    return 'Checkout(id: $id, availableShippingrates: $availableShippingrates, createdAt: $createdAt, currencyCode: $currencyCode, lineItems: $lineItems, totalTaxV2: $totalTaxV2, totalPriceV2: $totalPriceV2, taxesIncluded: $taxesIncluded, taxExempt: $taxExempt, subtotalPriceV2: $subtotalPriceV2, requiresShipping: $requiresShipping, appliedGiftcards: $appliedGiftcards, order: $order, orderStatusUrl: $orderStatusUrl, shippingAddress: $shippingAddress, shippingLine: $shippingLine, email: $email, completedAt: $completedAt, note: $note, webUrl: $webUrl, updatedAt: $updatedAt)';
   }
 
   @override
@@ -579,17 +591,9 @@ class _$_Checkout extends _Checkout {
         (other is _Checkout &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.availableShippingrates, availableShippingrates) ||
                 const DeepCollectionEquality().equals(
                     other.availableShippingrates, availableShippingrates)) &&
-            (identical(other.shippingLine, shippingLine) ||
-                const DeepCollectionEquality()
-                    .equals(other.shippingLine, shippingLine)) &&
-            (identical(other.shippingAddress, shippingAddress) ||
-                const DeepCollectionEquality()
-                    .equals(other.shippingAddress, shippingAddress)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
                     .equals(other.createdAt, createdAt)) &&
@@ -614,17 +618,25 @@ class _$_Checkout extends _Checkout {
             (identical(other.subtotalPriceV2, subtotalPriceV2) ||
                 const DeepCollectionEquality()
                     .equals(other.subtotalPriceV2, subtotalPriceV2)) &&
-            (identical(other.orderStatusUrl, orderStatusUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.orderStatusUrl, orderStatusUrl)) &&
             (identical(other.requiresShipping, requiresShipping) ||
                 const DeepCollectionEquality()
                     .equals(other.requiresShipping, requiresShipping)) &&
-            (identical(other.order, order) ||
-                const DeepCollectionEquality().equals(other.order, order)) &&
             (identical(other.appliedGiftcards, appliedGiftcards) ||
                 const DeepCollectionEquality()
                     .equals(other.appliedGiftcards, appliedGiftcards)) &&
+            (identical(other.order, order) ||
+                const DeepCollectionEquality().equals(other.order, order)) &&
+            (identical(other.orderStatusUrl, orderStatusUrl) ||
+                const DeepCollectionEquality()
+                    .equals(other.orderStatusUrl, orderStatusUrl)) &&
+            (identical(other.shippingAddress, shippingAddress) ||
+                const DeepCollectionEquality()
+                    .equals(other.shippingAddress, shippingAddress)) &&
+            (identical(other.shippingLine, shippingLine) ||
+                const DeepCollectionEquality()
+                    .equals(other.shippingLine, shippingLine)) &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.completedAt, completedAt) ||
                 const DeepCollectionEquality()
                     .equals(other.completedAt, completedAt)) &&
@@ -641,10 +653,7 @@ class _$_Checkout extends _Checkout {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(availableShippingrates) ^
-      const DeepCollectionEquality().hash(shippingLine) ^
-      const DeepCollectionEquality().hash(shippingAddress) ^
       const DeepCollectionEquality().hash(createdAt) ^
       const DeepCollectionEquality().hash(currencyCode) ^
       const DeepCollectionEquality().hash(lineItems) ^
@@ -653,10 +662,13 @@ class _$_Checkout extends _Checkout {
       const DeepCollectionEquality().hash(taxesIncluded) ^
       const DeepCollectionEquality().hash(taxExempt) ^
       const DeepCollectionEquality().hash(subtotalPriceV2) ^
-      const DeepCollectionEquality().hash(orderStatusUrl) ^
       const DeepCollectionEquality().hash(requiresShipping) ^
-      const DeepCollectionEquality().hash(order) ^
       const DeepCollectionEquality().hash(appliedGiftcards) ^
+      const DeepCollectionEquality().hash(order) ^
+      const DeepCollectionEquality().hash(orderStatusUrl) ^
+      const DeepCollectionEquality().hash(shippingAddress) ^
+      const DeepCollectionEquality().hash(shippingLine) ^
+      const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(completedAt) ^
       const DeepCollectionEquality().hash(note) ^
       const DeepCollectionEquality().hash(webUrl) ^
@@ -676,10 +688,7 @@ class _$_Checkout extends _Checkout {
 abstract class _Checkout extends Checkout {
   factory _Checkout(
       {required String id,
-      required String email,
       required AvailableShippingRates? availableShippingrates,
-      required ShippingRates shippingLine,
-      required MailingAddress shippingAddress,
       required String createdAt,
       required String currencyCode,
       required LineItems lineItems,
@@ -688,10 +697,13 @@ abstract class _Checkout extends Checkout {
       required bool taxesIncluded,
       required bool taxExempt,
       required PriceV2 subtotalPriceV2,
-      required String orderStatusUrl,
       required bool requiresShipping,
-      required Order order,
       List<AppliedGiftCards> appliedGiftcards,
+      Order? order,
+      String? orderStatusUrl,
+      MailingAddress? shippingAddress,
+      ShippingRates? shippingLine,
+      String? email,
       String? completedAt,
       String? note,
       String? webUrl,
@@ -703,14 +715,8 @@ abstract class _Checkout extends Checkout {
   @override
   String get id => throw _privateConstructorUsedError;
   @override
-  String get email => throw _privateConstructorUsedError;
-  @override
   AvailableShippingRates? get availableShippingrates =>
       throw _privateConstructorUsedError;
-  @override
-  ShippingRates get shippingLine => throw _privateConstructorUsedError;
-  @override
-  MailingAddress get shippingAddress => throw _privateConstructorUsedError;
   @override
   String get createdAt => throw _privateConstructorUsedError;
   @override
@@ -728,14 +734,20 @@ abstract class _Checkout extends Checkout {
   @override
   PriceV2 get subtotalPriceV2 => throw _privateConstructorUsedError;
   @override
-  String get orderStatusUrl => throw _privateConstructorUsedError;
-  @override
   bool get requiresShipping => throw _privateConstructorUsedError;
-  @override
-  Order get order => throw _privateConstructorUsedError;
   @override
   List<AppliedGiftCards> get appliedGiftcards =>
       throw _privateConstructorUsedError;
+  @override
+  Order? get order => throw _privateConstructorUsedError;
+  @override
+  String? get orderStatusUrl => throw _privateConstructorUsedError;
+  @override
+  MailingAddress? get shippingAddress => throw _privateConstructorUsedError;
+  @override
+  ShippingRates? get shippingLine => throw _privateConstructorUsedError;
+  @override
+  String? get email => throw _privateConstructorUsedError;
   @override
   String? get completedAt => throw _privateConstructorUsedError;
   @override
