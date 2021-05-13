@@ -20,7 +20,9 @@ LineItems _$LineItemsFromJson(Map<String, dynamic> json) {
 class _$LineItemsTearOff {
   const _$LineItemsTearOff();
 
-  _LineItems call({required List<LineItem> lineItemList}) {
+  _LineItems call(
+      {@JsonKey(fromJson: _getLineItemList)
+          required List<LineItem> lineItemList}) {
     return _LineItems(
       lineItemList: lineItemList,
     );
@@ -36,6 +38,7 @@ const $LineItems = _$LineItemsTearOff();
 
 /// @nodoc
 mixin _$LineItems {
+  @JsonKey(fromJson: _getLineItemList)
   List<LineItem> get lineItemList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,7 +51,7 @@ mixin _$LineItems {
 abstract class $LineItemsCopyWith<$Res> {
   factory $LineItemsCopyWith(LineItems value, $Res Function(LineItems) then) =
       _$LineItemsCopyWithImpl<$Res>;
-  $Res call({List<LineItem> lineItemList});
+  $Res call({@JsonKey(fromJson: _getLineItemList) List<LineItem> lineItemList});
 }
 
 /// @nodoc
@@ -78,7 +81,7 @@ abstract class _$LineItemsCopyWith<$Res> implements $LineItemsCopyWith<$Res> {
           _LineItems value, $Res Function(_LineItems) then) =
       __$LineItemsCopyWithImpl<$Res>;
   @override
-  $Res call({List<LineItem> lineItemList});
+  $Res call({@JsonKey(fromJson: _getLineItemList) List<LineItem> lineItemList});
 }
 
 /// @nodoc
@@ -106,12 +109,14 @@ class __$LineItemsCopyWithImpl<$Res> extends _$LineItemsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_LineItems implements _LineItems {
-  _$_LineItems({required this.lineItemList});
+  _$_LineItems(
+      {@JsonKey(fromJson: _getLineItemList) required this.lineItemList});
 
   factory _$_LineItems.fromJson(Map<String, dynamic> json) =>
       _$_$_LineItemsFromJson(json);
 
   @override
+  @JsonKey(fromJson: _getLineItemList)
   final List<LineItem> lineItemList;
 
   @override
@@ -144,12 +149,15 @@ class _$_LineItems implements _LineItems {
 }
 
 abstract class _LineItems implements LineItems {
-  factory _LineItems({required List<LineItem> lineItemList}) = _$_LineItems;
+  factory _LineItems(
+      {@JsonKey(fromJson: _getLineItemList)
+          required List<LineItem> lineItemList}) = _$_LineItems;
 
   factory _LineItems.fromJson(Map<String, dynamic> json) =
       _$_LineItems.fromJson;
 
   @override
+  @JsonKey(fromJson: _getLineItemList)
   List<LineItem> get lineItemList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
