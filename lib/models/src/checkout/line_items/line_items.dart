@@ -8,9 +8,7 @@ part 'line_items.g.dart';
 
 @freezed
 class LineItems with _$LineItems {
-  factory LineItems(
-      {@JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
-          required List<LineItem> lineItemList}) = _LineItems;
+  factory LineItems({required List<LineItem> lineItemList}) = _LineItems;
 
   factory LineItems.fromJson(Map<String, dynamic> json) =>
       _$LineItemsFromJson(json);
