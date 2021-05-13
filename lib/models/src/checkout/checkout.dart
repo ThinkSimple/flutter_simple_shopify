@@ -6,7 +6,6 @@ import '../../json_helper.dart';
 import 'applied_gift_cards/applied_gift_cards.dart';
 import 'available_shipping_rates/available_shipping_rates.dart';
 import 'line_item/line_item.dart';
-import 'line_items/line_items.dart';
 import 'mailing_address/mailing_address.dart';
 import 'shipping_rates/shipping_rates.dart';
 
@@ -28,8 +27,7 @@ class Checkout with _$Checkout {
     required bool taxExempt,
     required PriceV2 subtotalPriceV2,
     required bool requiresShipping,
-    @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
-        required List<LineItem> lineItems,
+    @JsonKey(fromJson: JsonHelper.lineItems) required List<LineItem> lineItems,
     @Default([]) List<AppliedGiftCards> appliedGiftcards,
     Order? order,
     String? orderStatusUrl,

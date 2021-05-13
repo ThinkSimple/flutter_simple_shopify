@@ -5,7 +5,11 @@ import 'src/checkout/line_item/line_item.dart';
 class JsonHelper {
   const JsonHelper._();
 
-  static List<LineItem> lineItemsFromEdges(dynamic json) {
+  static List<LineItem> lineItems(dynamic json) {
+    if (json['lineItems'] != null) {
+      (json['lineItems'] as List).map((e) => LineItem.fromJson(e)).toList();
+    }
+
     return (json['edges'] as List)
         .map((e) => LineItem.fromGraphJson(e))
         .toList();

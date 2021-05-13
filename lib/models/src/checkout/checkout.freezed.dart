@@ -31,7 +31,7 @@ class _$CheckoutTearOff {
       required bool taxExempt,
       required PriceV2 subtotalPriceV2,
       required bool requiresShipping,
-      @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
+      @JsonKey(fromJson: JsonHelper.lineItems)
           required List<LineItem> lineItems,
       List<AppliedGiftCards> appliedGiftcards = const [],
       Order? order,
@@ -89,7 +89,7 @@ mixin _$Checkout {
   bool get taxExempt => throw _privateConstructorUsedError;
   PriceV2 get subtotalPriceV2 => throw _privateConstructorUsedError;
   bool get requiresShipping => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
+  @JsonKey(fromJson: JsonHelper.lineItems)
   List<LineItem> get lineItems => throw _privateConstructorUsedError;
   List<AppliedGiftCards> get appliedGiftcards =>
       throw _privateConstructorUsedError;
@@ -124,8 +124,7 @@ abstract class $CheckoutCopyWith<$Res> {
       bool taxExempt,
       PriceV2 subtotalPriceV2,
       bool requiresShipping,
-      @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
-          List<LineItem> lineItems,
+      @JsonKey(fromJson: JsonHelper.lineItems) List<LineItem> lineItems,
       List<AppliedGiftCards> appliedGiftcards,
       Order? order,
       String? orderStatusUrl,
@@ -349,8 +348,7 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
       bool taxExempt,
       PriceV2 subtotalPriceV2,
       bool requiresShipping,
-      @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
-          List<LineItem> lineItems,
+      @JsonKey(fromJson: JsonHelper.lineItems) List<LineItem> lineItems,
       List<AppliedGiftCards> appliedGiftcards,
       Order? order,
       String? orderStatusUrl,
@@ -514,7 +512,7 @@ class _$_Checkout extends _Checkout {
       required this.taxExempt,
       required this.subtotalPriceV2,
       required this.requiresShipping,
-      @JsonKey(fromJson: JsonHelper.lineItemsFromEdges) required this.lineItems,
+      @JsonKey(fromJson: JsonHelper.lineItems) required this.lineItems,
       this.appliedGiftcards = const [],
       this.order,
       this.orderStatusUrl,
@@ -551,7 +549,7 @@ class _$_Checkout extends _Checkout {
   @override
   final bool requiresShipping;
   @override
-  @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
+  @JsonKey(fromJson: JsonHelper.lineItems)
   final List<LineItem> lineItems;
   @JsonKey(defaultValue: const [])
   @override
@@ -692,7 +690,7 @@ abstract class _Checkout extends Checkout {
       required bool taxExempt,
       required PriceV2 subtotalPriceV2,
       required bool requiresShipping,
-      @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
+      @JsonKey(fromJson: JsonHelper.lineItems)
           required List<LineItem> lineItems,
       List<AppliedGiftCards> appliedGiftcards,
       Order? order,
@@ -730,7 +728,7 @@ abstract class _Checkout extends Checkout {
   @override
   bool get requiresShipping => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
+  @JsonKey(fromJson: JsonHelper.lineItems)
   List<LineItem> get lineItems => throw _privateConstructorUsedError;
   @override
   List<AppliedGiftCards> get appliedGiftcards =>

@@ -12,8 +12,7 @@ class CheckoutResponse with _$CheckoutResponse {
   factory CheckoutResponse({
     required String id,
     required String webUrl,
-    @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
-        required List<LineItem> lineItems,
+    @JsonKey(fromJson: JsonHelper.lineItems) required List<LineItem> lineItems,
   }) = _CheckoutResponse;
 
   factory CheckoutResponse.fromJson(Map<String, dynamic> json) =>
