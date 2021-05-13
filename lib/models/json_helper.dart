@@ -7,7 +7,7 @@ class JsonHelper {
 
   static List<LineItem> lineItems(dynamic json) {
     if (json is List) {
-      json.map((e) => LineItem.fromJson(e)).toList();
+      return json.map((e) => LineItem.fromJson(e)).toList();
     }
 
     return (json['edges'] as List)
