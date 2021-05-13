@@ -8,7 +8,9 @@ part of 'line_items.dart';
 
 _$_LineItems _$_$_LineItemsFromJson(Map<String, dynamic> json) {
   return _$_LineItems(
-    lineItemList: JsonHelper.lineItemsFromEdges(json['lineItemList']),
+    lineItemList: (json['lineItemList'] as List<dynamic>)
+        .map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 

@@ -2,8 +2,10 @@ import 'package:flutter_simple_shopify/models/src/order/order.dart';
 import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../json_helper.dart';
 import 'applied_gift_cards/applied_gift_cards.dart';
 import 'available_shipping_rates/available_shipping_rates.dart';
+import 'line_item/line_item.dart';
 import 'line_items/line_items.dart';
 import 'mailing_address/mailing_address.dart';
 import 'shipping_rates/shipping_rates.dart';
@@ -20,13 +22,14 @@ class Checkout with _$Checkout {
     required AvailableShippingRates? availableShippingrates,
     required String createdAt,
     required String currencyCode,
-    required LineItems lineItems,
     required PriceV2 totalTaxV2,
     required PriceV2 totalPriceV2,
     required bool taxesIncluded,
     required bool taxExempt,
     required PriceV2 subtotalPriceV2,
     required bool requiresShipping,
+    @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
+        required List<LineItem> lineItems,
     @Default([]) List<AppliedGiftCards> appliedGiftcards,
     Order? order,
     String? orderStatusUrl,
