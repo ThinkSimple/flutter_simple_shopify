@@ -10,7 +10,7 @@ _$_CheckoutResponse _$_$_CheckoutResponseFromJson(Map<String, dynamic> json) {
   return _$_CheckoutResponse(
     id: json['id'] as String,
     webUrl: json['webUrl'] as String,
-    lineItems: JsonHelper.lineItemsFromEdges(json['lineItems']),
+    lineItems: JsonHelper.lineItems(json['lineItems']),
   );
 }
 

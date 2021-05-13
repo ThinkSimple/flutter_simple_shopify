@@ -1,8 +1,6 @@
 import 'package:flutter_simple_shopify/models/src/checkout/line_item/line_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../json_helper.dart';
-
 part 'line_items.freezed.dart';
 part 'line_items.g.dart';
 

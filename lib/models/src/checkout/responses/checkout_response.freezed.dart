@@ -23,7 +23,7 @@ class _$CheckoutResponseTearOff {
   _CheckoutResponse call(
       {required String id,
       required String webUrl,
-      @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
+      @JsonKey(fromJson: JsonHelper.lineItems)
           required List<LineItem> lineItems}) {
     return _CheckoutResponse(
       id: id,
@@ -44,7 +44,7 @@ const $CheckoutResponse = _$CheckoutResponseTearOff();
 mixin _$CheckoutResponse {
   String get id => throw _privateConstructorUsedError;
   String get webUrl => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
+  @JsonKey(fromJson: JsonHelper.lineItems)
   List<LineItem> get lineItems => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -61,8 +61,7 @@ abstract class $CheckoutResponseCopyWith<$Res> {
   $Res call(
       {String id,
       String webUrl,
-      @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
-          List<LineItem> lineItems});
+      @JsonKey(fromJson: JsonHelper.lineItems) List<LineItem> lineItems});
 }
 
 /// @nodoc
@@ -107,8 +106,7 @@ abstract class _$CheckoutResponseCopyWith<$Res>
   $Res call(
       {String id,
       String webUrl,
-      @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
-          List<LineItem> lineItems});
+      @JsonKey(fromJson: JsonHelper.lineItems) List<LineItem> lineItems});
 }
 
 /// @nodoc
@@ -151,8 +149,7 @@ class _$_CheckoutResponse extends _CheckoutResponse {
   _$_CheckoutResponse(
       {required this.id,
       required this.webUrl,
-      @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
-          required this.lineItems})
+      @JsonKey(fromJson: JsonHelper.lineItems) required this.lineItems})
       : super._();
 
   factory _$_CheckoutResponse.fromJson(Map<String, dynamic> json) =>
@@ -163,7 +160,7 @@ class _$_CheckoutResponse extends _CheckoutResponse {
   @override
   final String webUrl;
   @override
-  @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
+  @JsonKey(fromJson: JsonHelper.lineItems)
   final List<LineItem> lineItems;
 
   @override
@@ -206,7 +203,7 @@ abstract class _CheckoutResponse extends CheckoutResponse {
   factory _CheckoutResponse(
       {required String id,
       required String webUrl,
-      @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
+      @JsonKey(fromJson: JsonHelper.lineItems)
           required List<LineItem> lineItems}) = _$_CheckoutResponse;
   _CheckoutResponse._() : super._();
 
@@ -218,7 +215,7 @@ abstract class _CheckoutResponse extends CheckoutResponse {
   @override
   String get webUrl => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: JsonHelper.lineItemsFromEdges)
+  @JsonKey(fromJson: JsonHelper.lineItems)
   List<LineItem> get lineItems => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
