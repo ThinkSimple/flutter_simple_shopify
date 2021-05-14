@@ -36,6 +36,7 @@ class _$CheckoutTearOff {
       List<AppliedGiftCards> appliedGiftcards = const [],
       Order? order,
       String? orderStatusUrl,
+      String? shopifyPaymentsAccountId,
       MailingAddress? shippingAddress,
       ShippingRates? shippingLine,
       String? email,
@@ -58,6 +59,7 @@ class _$CheckoutTearOff {
       appliedGiftcards: appliedGiftcards,
       order: order,
       orderStatusUrl: orderStatusUrl,
+      shopifyPaymentsAccountId: shopifyPaymentsAccountId,
       shippingAddress: shippingAddress,
       shippingLine: shippingLine,
       email: email,
@@ -95,6 +97,7 @@ mixin _$Checkout {
       throw _privateConstructorUsedError;
   Order? get order => throw _privateConstructorUsedError;
   String? get orderStatusUrl => throw _privateConstructorUsedError;
+  String? get shopifyPaymentsAccountId => throw _privateConstructorUsedError;
   MailingAddress? get shippingAddress => throw _privateConstructorUsedError;
   ShippingRates? get shippingLine => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
@@ -128,6 +131,7 @@ abstract class $CheckoutCopyWith<$Res> {
       List<AppliedGiftCards> appliedGiftcards,
       Order? order,
       String? orderStatusUrl,
+      String? shopifyPaymentsAccountId,
       MailingAddress? shippingAddress,
       ShippingRates? shippingLine,
       String? email,
@@ -169,6 +173,7 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
     Object? appliedGiftcards = freezed,
     Object? order = freezed,
     Object? orderStatusUrl = freezed,
+    Object? shopifyPaymentsAccountId = freezed,
     Object? shippingAddress = freezed,
     Object? shippingLine = freezed,
     Object? email = freezed,
@@ -233,6 +238,10 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
       orderStatusUrl: orderStatusUrl == freezed
           ? _value.orderStatusUrl
           : orderStatusUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shopifyPaymentsAccountId: shopifyPaymentsAccountId == freezed
+          ? _value.shopifyPaymentsAccountId
+          : shopifyPaymentsAccountId // ignore: cast_nullable_to_non_nullable
               as String?,
       shippingAddress: shippingAddress == freezed
           ? _value.shippingAddress
@@ -352,6 +361,7 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
       List<AppliedGiftCards> appliedGiftcards,
       Order? order,
       String? orderStatusUrl,
+      String? shopifyPaymentsAccountId,
       MailingAddress? shippingAddress,
       ShippingRates? shippingLine,
       String? email,
@@ -401,6 +411,7 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
     Object? appliedGiftcards = freezed,
     Object? order = freezed,
     Object? orderStatusUrl = freezed,
+    Object? shopifyPaymentsAccountId = freezed,
     Object? shippingAddress = freezed,
     Object? shippingLine = freezed,
     Object? email = freezed,
@@ -466,6 +477,10 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
           ? _value.orderStatusUrl
           : orderStatusUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      shopifyPaymentsAccountId: shopifyPaymentsAccountId == freezed
+          ? _value.shopifyPaymentsAccountId
+          : shopifyPaymentsAccountId // ignore: cast_nullable_to_non_nullable
+              as String?,
       shippingAddress: shippingAddress == freezed
           ? _value.shippingAddress
           : shippingAddress // ignore: cast_nullable_to_non_nullable
@@ -516,6 +531,7 @@ class _$_Checkout extends _Checkout {
       this.appliedGiftcards = const [],
       this.order,
       this.orderStatusUrl,
+      this.shopifyPaymentsAccountId,
       this.shippingAddress,
       this.shippingLine,
       this.email,
@@ -559,6 +575,8 @@ class _$_Checkout extends _Checkout {
   @override
   final String? orderStatusUrl;
   @override
+  final String? shopifyPaymentsAccountId;
+  @override
   final MailingAddress? shippingAddress;
   @override
   final ShippingRates? shippingLine;
@@ -575,7 +593,7 @@ class _$_Checkout extends _Checkout {
 
   @override
   String toString() {
-    return 'Checkout(id: $id, availableShippingrates: $availableShippingrates, createdAt: $createdAt, currencyCode: $currencyCode, totalTaxV2: $totalTaxV2, totalPriceV2: $totalPriceV2, taxesIncluded: $taxesIncluded, taxExempt: $taxExempt, subtotalPriceV2: $subtotalPriceV2, requiresShipping: $requiresShipping, lineItems: $lineItems, appliedGiftcards: $appliedGiftcards, order: $order, orderStatusUrl: $orderStatusUrl, shippingAddress: $shippingAddress, shippingLine: $shippingLine, email: $email, completedAt: $completedAt, note: $note, webUrl: $webUrl, updatedAt: $updatedAt)';
+    return 'Checkout(id: $id, availableShippingrates: $availableShippingrates, createdAt: $createdAt, currencyCode: $currencyCode, totalTaxV2: $totalTaxV2, totalPriceV2: $totalPriceV2, taxesIncluded: $taxesIncluded, taxExempt: $taxExempt, subtotalPriceV2: $subtotalPriceV2, requiresShipping: $requiresShipping, lineItems: $lineItems, appliedGiftcards: $appliedGiftcards, order: $order, orderStatusUrl: $orderStatusUrl, shopifyPaymentsAccountId: $shopifyPaymentsAccountId, shippingAddress: $shippingAddress, shippingLine: $shippingLine, email: $email, completedAt: $completedAt, note: $note, webUrl: $webUrl, updatedAt: $updatedAt)';
   }
 
   @override
@@ -622,6 +640,10 @@ class _$_Checkout extends _Checkout {
             (identical(other.orderStatusUrl, orderStatusUrl) ||
                 const DeepCollectionEquality()
                     .equals(other.orderStatusUrl, orderStatusUrl)) &&
+            (identical(other.shopifyPaymentsAccountId, shopifyPaymentsAccountId) ||
+                const DeepCollectionEquality().equals(
+                    other.shopifyPaymentsAccountId,
+                    shopifyPaymentsAccountId)) &&
             (identical(other.shippingAddress, shippingAddress) ||
                 const DeepCollectionEquality()
                     .equals(other.shippingAddress, shippingAddress)) &&
@@ -659,6 +681,7 @@ class _$_Checkout extends _Checkout {
       const DeepCollectionEquality().hash(appliedGiftcards) ^
       const DeepCollectionEquality().hash(order) ^
       const DeepCollectionEquality().hash(orderStatusUrl) ^
+      const DeepCollectionEquality().hash(shopifyPaymentsAccountId) ^
       const DeepCollectionEquality().hash(shippingAddress) ^
       const DeepCollectionEquality().hash(shippingLine) ^
       const DeepCollectionEquality().hash(email) ^
@@ -695,6 +718,7 @@ abstract class _Checkout extends Checkout {
       List<AppliedGiftCards> appliedGiftcards,
       Order? order,
       String? orderStatusUrl,
+      String? shopifyPaymentsAccountId,
       MailingAddress? shippingAddress,
       ShippingRates? shippingLine,
       String? email,
@@ -737,6 +761,8 @@ abstract class _Checkout extends Checkout {
   Order? get order => throw _privateConstructorUsedError;
   @override
   String? get orderStatusUrl => throw _privateConstructorUsedError;
+  @override
+  String? get shopifyPaymentsAccountId => throw _privateConstructorUsedError;
   @override
   MailingAddress? get shippingAddress => throw _privateConstructorUsedError;
   @override
