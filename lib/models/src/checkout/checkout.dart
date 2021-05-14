@@ -31,6 +31,7 @@ class Checkout with _$Checkout {
     @Default([]) List<AppliedGiftCards> appliedGiftcards,
     Order? order,
     String? orderStatusUrl,
+    String? shopifyPaymentsAccountId,
     MailingAddress? shippingAddress,
     ShippingRates? shippingLine,
     String? email,

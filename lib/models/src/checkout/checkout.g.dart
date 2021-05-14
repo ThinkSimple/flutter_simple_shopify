@@ -32,6 +32,7 @@ _$_Checkout _$_$_CheckoutFromJson(Map<String, dynamic> json) {
         ? null
         : Order.fromJson(json['order'] as Map<String, dynamic>),
     orderStatusUrl: json['orderStatusUrl'] as String?,
+    shopifyPaymentsAccountId: json['shopifyPaymentsAccountId'] as String?,
     shippingAddress: json['shippingAddress'] == null
         ? null
         : MailingAddress.fromJson(
@@ -63,6 +64,7 @@ Map<String, dynamic> _$_$_CheckoutToJson(_$_Checkout instance) =>
       'appliedGiftcards': instance.appliedGiftcards,
       'order': instance.order,
       'orderStatusUrl': instance.orderStatusUrl,
+      'shopifyPaymentsAccountId': instance.shopifyPaymentsAccountId,
       'shippingAddress': instance.shippingAddress,
       'shippingLine': instance.shippingLine,
       'email': instance.email,
