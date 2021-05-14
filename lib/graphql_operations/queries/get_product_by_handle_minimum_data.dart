@@ -6,6 +6,18 @@ query($handle: String!) {
     title
     availableForSale
     tags
+    rating: metafield(namespace: "rview", key: "rating") {
+      key 
+      namespace 
+      value 
+      valueType 
+    }
+    review_count: metafield(namespace: "rview", key: "review-count") {
+      key 
+      namespace 
+      value 
+      valueType 
+    }
     variants(first: 1) {
       edges {
         node {

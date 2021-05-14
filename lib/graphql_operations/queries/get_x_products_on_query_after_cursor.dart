@@ -10,6 +10,18 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
         onlineStoreUrl
         productType
         tags
+        rating: metafield(namespace: "rview", key: "rating") {
+          key 
+          namespace 
+          value 
+          valueType 
+        }
+        review_count: metafield(namespace: "rview", key: "review-count") {
+          key 
+          namespace 
+          value 
+          valueType 
+        }
         images(first: 1) {
           edges {
             node {

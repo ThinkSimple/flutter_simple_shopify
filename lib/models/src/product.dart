@@ -40,6 +40,8 @@ class Product {
   final List<Option> options;
   final String vendor;
   final List<Metafield> metafields;
+  final double rating;
+  final int reviewCount;
 
   const Product(
       {this.collectionList,
@@ -60,11 +62,14 @@ class Product {
       this.images,
       this.options,
       this.vendor,
-      this.metafields});
+      this.metafields,
+      this.rating,
+      this.reviewCount});
 
   static Product fromJson(Map<String, dynamic> json) {
     return Product(
-        collectionList: _getCollectionList(json['node'] ?? const {} ?? const {}),
+        collectionList:
+            _getCollectionList(json['node'] ?? const {} ?? const {}),
         id: (json['node'] ?? const {})['id'],
         title: (json['node'] ?? const {})['title'],
         availableForSale: (json['node'] ?? const {})['availableForSale'],
@@ -83,7 +88,10 @@ class Product {
         options: _getOptionList((json['node'] ?? const {})),
         vendor: (json['node'] ?? const {})['vendor'],
         metafields: _getMetafieldList(
-            (json['node'] ?? const {})['metafields'] ?? const {}));
+            (json['node'] ?? const {})['metafields'] ?? const {}),
+        rating: _getRating((json['node'] ?? const {})['rating'] ?? const {}),
+        reviewCount: _getReviewCount(
+            (json['node'] ?? const {})['review_count'] ?? const {}));
   }
 
   static Product fromProductHandleJson(Map<String, dynamic> json) {
@@ -106,7 +114,9 @@ class Product {
         cursor: json['cursor'],
         options: _getOptionList(json),
         vendor: json['vendor'],
-        metafields: _getMetafieldList(json['metafields'] ?? const {}));
+        metafields: _getMetafieldList(json['metafields'] ?? const {}),
+        rating: _getRating(json['rating'] ?? const {}),
+        reviewCount: _getReviewCount(json['review_count'] ?? const {}));
   }
 
   Map toJson() => {
@@ -114,6 +124,14 @@ class Product {
         'title': title,
         'description': description,
       };
+
+  static double _getRating(Map<String, dynamic> json) {
+    return json['value'] != null ? double.parse(json['value']) : 0;
+  }
+
+  static int _getReviewCount(Map<String, dynamic> json) {
+    return json['value'] != null ? int.parse(json['value']) : 0;
+  }
 
   static List<ProductVariant> _getProductVariants(Map<String, dynamic> json) {
     List<ProductVariant> productVariants = [];
@@ -168,9 +186,7 @@ class Product {
   static List<AssociatedCollections> _getCollectionList(
       Map<String, dynamic> json) {
     List<AssociatedCollections> collectionList = [];
-    ((json['collections'] ?? const {})['edges'] ??
-            const [])
-        ?.forEach((v) {
+    ((json['collections'] ?? const {})['edges'] ?? const [])?.forEach((v) {
       if (v?.data != null)
         collectionList.add(AssociatedCollections.fromJson(v?.data ?? const {}));
     });
@@ -180,7 +196,8 @@ class Product {
   static _getImageList(Map<String, dynamic> json) {
     List<ShopifyImage> imageList = [];
     if (json != null && json['edges'] != null)
-    json['edges'].forEach((image) => imageList.add(ShopifyImage.fromJson(image['node'] ?? const {})));
+      json['edges'].forEach((image) =>
+          imageList.add(ShopifyImage.fromJson(image['node'] ?? const {})));
     return imageList;
   }
 
@@ -225,7 +242,8 @@ class ShopifyImage {
   final String transformedSrc;
   final String id;
 
-  const ShopifyImage({this.altText, this.originalSource, this.transformedSrc, this.id});
+  const ShopifyImage(
+      {this.altText, this.originalSource, this.transformedSrc, this.id});
 
   static ShopifyImage fromJson(Map<String, dynamic> json) {
     return ShopifyImage(
@@ -394,7 +412,9 @@ class PriceV2 {
 
   static String _chooseRightOrderOnCurrencySymbol(Map<String, dynamic> json) {
     String currencyString;
-    String amount = json['amount'] != null ? double.parse(json['amount']).toStringAsFixed(2) : '';
+    String amount = json['amount'] != null
+        ? double.parse(json['amount']).toStringAsFixed(2)
+        : '';
     switch (json['currencyCode']) {
       case "INR":
         {
