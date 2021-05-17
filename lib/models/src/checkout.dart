@@ -1,6 +1,8 @@
 import 'package:flutter_simple_shopify/models/src/order.dart';
 import 'package:flutter_simple_shopify/models/src/product.dart';
 
+import '../../flutter_simple_shopify.dart';
+
 class Checkout {
   final String id;
   final String email;
@@ -308,6 +310,7 @@ class ProductVariantCheckout {
   final String sku;
   final bool requiresShipping;
   final String id;
+  final Product product;
 
   const ProductVariantCheckout(
       {this.price,
@@ -319,7 +322,8 @@ class ProductVariantCheckout {
       this.availableForSale,
       this.sku,
       this.requiresShipping,
-      this.id});
+      this.id, 
+      this.product});
 
   static ProductVariantCheckout fromJson(Map<String, dynamic> json) {
     return ProductVariantCheckout(
@@ -333,6 +337,7 @@ class ProductVariantCheckout {
       sku: json['sku'],
       requiresShipping: json['requiresShipping'],
       id: json['id'],
+      product: Product.fromProductHandleJson(json['product'])
     );
   }
 }

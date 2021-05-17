@@ -4,13 +4,13 @@ import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_ema
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_shipping_address_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_shipping_line_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/create_checkout.dart';
-import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_requires_shipping.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_information_with_shipping_rate.dart';
-import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_without_shipping_rates.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_recently_ordered_products.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_orders_after_cursor.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/order.dart';
 import 'package:graphql/client.dart';
+import '../../flutter_simple_shopify.dart';
 import '../../graphql_operations/mutations/add_item(s)_to_checkout.dart';
 import '../../graphql_operations/mutations/checkout_associate_customer.dart';
 import '../../graphql_operations/mutations/checkout_customer_disassociate.dart';
@@ -333,6 +333,39 @@ class ShopifyCheckout with ShopifyError {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
     return orders;
+  }
+
+  Future<List<Product>> getRecentlyOrderedProducts(
+      String customerAccessToken, int limit, 
+      {SortKeyOrder sortKey = SortKeyOrder.ID,
+      bool reverse = true,
+      bool deleteThisPartOfCache = false}) async {
+    String cursor;
+    final QueryOptions _options = WatchQueryOptions(
+        documentNode: gql(getRecentlyOrderedProductsQuery),
+        variables: {
+          'accessToken': customerAccessToken,
+          'sortKey': sortKey.parseToString(),
+          'reverse': reverse,
+          'cursor': cursor,
+          'x': limit
+        });
+    final QueryResult result =
+        await ShopifyConfig.graphQLClient.query(_options);
+    checkForError(result);
+    Orders orders = Orders.fromJson(
+        ((((result?.data ?? const {}))['customer'] ?? const {})['orders'] ??
+            const {}));
+    if (deleteThisPartOfCache) {
+      _graphQLClient.cache.write(_options.toKey(), null);
+    }
+    List<Product> pList = [];
+    orders.orderList.forEach((order) { 
+      order.lineItems.lineItemOrderList.forEach((lineItem) { 
+        pList.add(lineItem.variant.product);
+      });
+    });
+    return pList;
   }
 
   /// Helper method for transforming a list of variant ids into a List Of Map<String, dynamic> which looks like this:
