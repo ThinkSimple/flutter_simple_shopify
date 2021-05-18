@@ -126,6 +126,7 @@ mutation checkoutShippingAddressUpdateV2(
         amount
         currencyCode
       }
+      taxesIncluded 
       totalTaxV2 {
         amount
         currencyCode

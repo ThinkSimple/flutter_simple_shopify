@@ -167,6 +167,7 @@ query(\$id: ID!) {
         amount
         currencyCode
       }
+      taxesIncluded
       totalTaxV2 {
         amount
         currencyCode

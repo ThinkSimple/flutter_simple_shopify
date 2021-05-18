@@ -106,6 +106,7 @@ mutation checkoutShippingLineUpdate(
         amount
         currencyCode
       }
+      taxesIncluded 
       totalTaxV2 {
         amount
         currencyCode

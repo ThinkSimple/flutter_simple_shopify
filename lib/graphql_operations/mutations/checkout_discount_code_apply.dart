@@ -92,6 +92,7 @@ mutation checkoutDiscountCodeApplyV2($checkoutId: ID!, $discountCode: String!) {
         amount
         currencyCode
       }
+      taxesIncluded
       totalTaxV2 {
         amount
         currencyCode

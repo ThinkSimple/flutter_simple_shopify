@@ -56,6 +56,7 @@ class Checkout {
       this.requiresShipping});
 
   static Checkout fromJson(Map<String, dynamic> json) {
+    bool taxesIncluded = json['taxesIncluded'];
     PriceV2 totalTaxV2 = PriceV2.fromJson(json['totalTaxV2'] ?? const {});
     PriceV2 lineItemsSubtotalPrice =
         PriceV2.fromJson(json['lineItemsSubtotalPrice'] ?? const {});
@@ -66,7 +67,7 @@ class Checkout {
     String currencyCode;
     if (lineItemsSubtotalPrice.amount != null && totalPriceV2.amount != null) {
       double amt = (totalPriceV2.amount - lineItemsSubtotalPrice.amount);
-      if (totalTaxV2.amount != null) {
+      if (totalTaxV2.amount != null && !taxesIncluded) {
         amt -= totalTaxV2.amount;
       }
       if (shippingLine.priceV2?.amount != null) {
@@ -98,7 +99,7 @@ class Checkout {
             {'amount': amount, 'currencyCode': currencyCode} ?? const {}),
         totalTaxV2: totalTaxV2,
         totalPriceV2: totalPriceV2,
-        taxesIncluded: json['taxesIncluded'],
+        taxesIncluded: taxesIncluded,
         taxExempt: json['taxExempt'],
         subtotalPriceV2: PriceV2.fromJson(json['subtotalPriceV2'] ?? const {}),
         orderStatusUrl: json['orderStatusUrl'],
@@ -337,7 +338,7 @@ class ProductVariantCheckout {
       sku: json['sku'],
       requiresShipping: json['requiresShipping'],
       id: json['id'],
-      product: Product.fromProductHandleJson(json['product'])
+      product: json['product'] !=null ? Product.fromProductHandleJson(json['product']) : null
     );
   }
 }
