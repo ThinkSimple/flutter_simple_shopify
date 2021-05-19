@@ -9,7 +9,7 @@ part of 'line_item.dart';
 _$_LineItem _$_$_LineItemFromJson(Map<String, dynamic> json) {
   return _$_LineItem(
     title: json['title'] as String,
-    id: json['id'] as String,
+    id: json['id'] as String?,
     quantity: json['quantity'] as int,
     variant: json['variant'] == null
         ? null

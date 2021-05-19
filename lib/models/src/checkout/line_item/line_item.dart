@@ -9,7 +9,7 @@ class LineItem with _$LineItem {
   const LineItem._();
   factory LineItem({
     required String title,
-    required String id,
+    String? id,
     required int quantity,
     ProductVariantCheckout? variant,
   }) = _LineItem;

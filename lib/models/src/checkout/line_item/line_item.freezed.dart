@@ -22,7 +22,7 @@ class _$LineItemTearOff {
 
   _LineItem call(
       {required String title,
-      required String id,
+      String? id,
       required int quantity,
       ProductVariantCheckout? variant}) {
     return _LineItem(
@@ -44,7 +44,7 @@ const $LineItem = _$LineItemTearOff();
 /// @nodoc
 mixin _$LineItem {
   String get title => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
 
@@ -59,7 +59,10 @@ abstract class $LineItemCopyWith<$Res> {
   factory $LineItemCopyWith(LineItem value, $Res Function(LineItem) then) =
       _$LineItemCopyWithImpl<$Res>;
   $Res call(
-      {String title, String id, int quantity, ProductVariantCheckout? variant});
+      {String title,
+      String? id,
+      int quantity,
+      ProductVariantCheckout? variant});
 
   $ProductVariantCheckoutCopyWith<$Res>? get variant;
 }
@@ -87,7 +90,7 @@ class _$LineItemCopyWithImpl<$Res> implements $LineItemCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -117,7 +120,10 @@ abstract class _$LineItemCopyWith<$Res> implements $LineItemCopyWith<$Res> {
       __$LineItemCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String title, String id, int quantity, ProductVariantCheckout? variant});
+      {String title,
+      String? id,
+      int quantity,
+      ProductVariantCheckout? variant});
 
   @override
   $ProductVariantCheckoutCopyWith<$Res>? get variant;
@@ -147,7 +153,7 @@ class __$LineItemCopyWithImpl<$Res> extends _$LineItemCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -164,10 +170,7 @@ class __$LineItemCopyWithImpl<$Res> extends _$LineItemCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_LineItem extends _LineItem {
   _$_LineItem(
-      {required this.title,
-      required this.id,
-      required this.quantity,
-      this.variant})
+      {required this.title, this.id, required this.quantity, this.variant})
       : super._();
 
   factory _$_LineItem.fromJson(Map<String, dynamic> json) =>
@@ -176,7 +179,7 @@ class _$_LineItem extends _LineItem {
   @override
   final String title;
   @override
-  final String id;
+  final String? id;
   @override
   final int quantity;
   @override
@@ -224,7 +227,7 @@ class _$_LineItem extends _LineItem {
 abstract class _LineItem extends LineItem {
   factory _LineItem(
       {required String title,
-      required String id,
+      String? id,
       required int quantity,
       ProductVariantCheckout? variant}) = _$_LineItem;
   _LineItem._() : super._();
@@ -234,7 +237,7 @@ abstract class _LineItem extends LineItem {
   @override
   String get title => throw _privateConstructorUsedError;
   @override
-  String get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   @override
   int get quantity => throw _privateConstructorUsedError;
   @override
