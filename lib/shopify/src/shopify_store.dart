@@ -23,7 +23,6 @@ import 'package:flutter_simple_shopify/models/src/product.dart';
 import 'package:flutter_simple_shopify/enums/src/sort_key_product.dart';
 import 'package:flutter_simple_shopify/models/src/shop.dart';
 import 'package:graphql/client.dart';
-import '../../graphql_operations/queries/get_featured_collections.dart';
 import '../../graphql_operations/queries/get_n_products.dart';
 import '../../graphql_operations/queries/get_products.dart';
 import '../../models/src/collection.dart';
@@ -245,7 +244,6 @@ class ShopifyStore with ShopifyError {
   Future<Collection> getCollectionByHandle(String handle,
       {bool deleteThisPartOfCache = false, productsCount}) async {
     try {
-      final a = getCollectionByHandleWithProductsQuery(productsCount);
       final WatchQueryOptions _options = WatchQueryOptions(
           documentNode: productsCount != null
               ? gql(getCollectionByHandleWithProductsQuery(productsCount))

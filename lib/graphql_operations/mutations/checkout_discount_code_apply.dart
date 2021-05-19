@@ -38,38 +38,6 @@ mutation checkoutDiscountCodeApplyV2($checkoutId: ID!, $discountCode: String!) {
         provinceCode
         zip
       }
-      lineItems(first: 10) {
-        edges {
-          node {
-            id
-            quantity
-            title
-            variant {
-              id
-              priceV2 {
-                amount
-                currencyCode
-              }
-              title
-              image {
-                altText
-                originalSrc
-                transformedSrc(maxWidth: 200, crop: CENTER)
-                id
-              }
-              compareAtPriceV2 {
-                amount
-                currencyCode
-              }
-              weight
-              weightUnit
-              availableForSale
-              sku
-              requiresShipping
-            }
-          }
-        }
-      }
       discountApplications(first: 10) {
         edges {
           node {

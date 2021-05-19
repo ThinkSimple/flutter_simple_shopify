@@ -90,7 +90,7 @@ class Checkout {
         completedAt: json['completedAt'],
         createdAt: json['createdAt'],
         currencyCode: json['currencyCode'],
-        lineItems: LineItems.fromJson(json['lineItems']),
+        lineItems: json['lineItems'] != null ? LineItems.fromJson(json['lineItems']) : LineItems(lineItemList:[]),
         note: json['note'],
         webUrl: json['webUrl'],
         updatedAt: json['updatedAt'],
