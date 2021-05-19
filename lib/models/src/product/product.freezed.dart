@@ -27,7 +27,6 @@ class _$ProductTearOff {
       required bool availableForSale,
       required String createdAt,
       required List<ProductVariant> productVariants,
-      required String onlineStoreUrl,
       required String productType,
       required String publishedAt,
       required List<String> tags,
@@ -37,9 +36,10 @@ class _$ProductTearOff {
       required List<Option> option,
       required String vendor,
       required List<Metafield> metafields,
-      String description = '',
-      String descriptionHtml = '',
-      String handle = ''}) {
+      String? onlineStoreUrl,
+      String? description,
+      String? descriptionHtml,
+      String? handle}) {
     return _Product(
       collectionList: collectionList,
       title: title,
@@ -47,7 +47,6 @@ class _$ProductTearOff {
       availableForSale: availableForSale,
       createdAt: createdAt,
       productVariants: productVariants,
-      onlineStoreUrl: onlineStoreUrl,
       productType: productType,
       publishedAt: publishedAt,
       tags: tags,
@@ -57,6 +56,7 @@ class _$ProductTearOff {
       option: option,
       vendor: vendor,
       metafields: metafields,
+      onlineStoreUrl: onlineStoreUrl,
       description: description,
       descriptionHtml: descriptionHtml,
       handle: handle,
@@ -81,7 +81,6 @@ mixin _$Product {
   String get createdAt => throw _privateConstructorUsedError;
   List<ProductVariant> get productVariants =>
       throw _privateConstructorUsedError;
-  String get onlineStoreUrl => throw _privateConstructorUsedError;
   String get productType => throw _privateConstructorUsedError;
   String get publishedAt => throw _privateConstructorUsedError;
   List<String> get tags => throw _privateConstructorUsedError;
@@ -91,9 +90,10 @@ mixin _$Product {
   List<Option> get option => throw _privateConstructorUsedError;
   String get vendor => throw _privateConstructorUsedError;
   List<Metafield> get metafields => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  String get descriptionHtml => throw _privateConstructorUsedError;
-  String get handle => throw _privateConstructorUsedError;
+  String? get onlineStoreUrl => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get descriptionHtml => throw _privateConstructorUsedError;
+  String? get handle => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -111,7 +111,6 @@ abstract class $ProductCopyWith<$Res> {
       bool availableForSale,
       String createdAt,
       List<ProductVariant> productVariants,
-      String onlineStoreUrl,
       String productType,
       String publishedAt,
       List<String> tags,
@@ -121,9 +120,10 @@ abstract class $ProductCopyWith<$Res> {
       List<Option> option,
       String vendor,
       List<Metafield> metafields,
-      String description,
-      String descriptionHtml,
-      String handle});
+      String? onlineStoreUrl,
+      String? description,
+      String? descriptionHtml,
+      String? handle});
 }
 
 /// @nodoc
@@ -142,7 +142,6 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object? availableForSale = freezed,
     Object? createdAt = freezed,
     Object? productVariants = freezed,
-    Object? onlineStoreUrl = freezed,
     Object? productType = freezed,
     Object? publishedAt = freezed,
     Object? tags = freezed,
@@ -152,6 +151,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object? option = freezed,
     Object? vendor = freezed,
     Object? metafields = freezed,
+    Object? onlineStoreUrl = freezed,
     Object? description = freezed,
     Object? descriptionHtml = freezed,
     Object? handle = freezed,
@@ -181,10 +181,6 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _value.productVariants
           : productVariants // ignore: cast_nullable_to_non_nullable
               as List<ProductVariant>,
-      onlineStoreUrl: onlineStoreUrl == freezed
-          ? _value.onlineStoreUrl
-          : onlineStoreUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       productType: productType == freezed
           ? _value.productType
           : productType // ignore: cast_nullable_to_non_nullable
@@ -221,18 +217,22 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _value.metafields
           : metafields // ignore: cast_nullable_to_non_nullable
               as List<Metafield>,
+      onlineStoreUrl: onlineStoreUrl == freezed
+          ? _value.onlineStoreUrl
+          : onlineStoreUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       descriptionHtml: descriptionHtml == freezed
           ? _value.descriptionHtml
           : descriptionHtml // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       handle: handle == freezed
           ? _value.handle
           : handle // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -249,7 +249,6 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       bool availableForSale,
       String createdAt,
       List<ProductVariant> productVariants,
-      String onlineStoreUrl,
       String productType,
       String publishedAt,
       List<String> tags,
@@ -259,9 +258,10 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       List<Option> option,
       String vendor,
       List<Metafield> metafields,
-      String description,
-      String descriptionHtml,
-      String handle});
+      String? onlineStoreUrl,
+      String? description,
+      String? descriptionHtml,
+      String? handle});
 }
 
 /// @nodoc
@@ -281,7 +281,6 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object? availableForSale = freezed,
     Object? createdAt = freezed,
     Object? productVariants = freezed,
-    Object? onlineStoreUrl = freezed,
     Object? productType = freezed,
     Object? publishedAt = freezed,
     Object? tags = freezed,
@@ -291,6 +290,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object? option = freezed,
     Object? vendor = freezed,
     Object? metafields = freezed,
+    Object? onlineStoreUrl = freezed,
     Object? description = freezed,
     Object? descriptionHtml = freezed,
     Object? handle = freezed,
@@ -320,10 +320,6 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           ? _value.productVariants
           : productVariants // ignore: cast_nullable_to_non_nullable
               as List<ProductVariant>,
-      onlineStoreUrl: onlineStoreUrl == freezed
-          ? _value.onlineStoreUrl
-          : onlineStoreUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       productType: productType == freezed
           ? _value.productType
           : productType // ignore: cast_nullable_to_non_nullable
@@ -360,18 +356,22 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           ? _value.metafields
           : metafields // ignore: cast_nullable_to_non_nullable
               as List<Metafield>,
+      onlineStoreUrl: onlineStoreUrl == freezed
+          ? _value.onlineStoreUrl
+          : onlineStoreUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       descriptionHtml: descriptionHtml == freezed
           ? _value.descriptionHtml
           : descriptionHtml // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       handle: handle == freezed
           ? _value.handle
           : handle // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -386,7 +386,6 @@ class _$_Product extends _Product {
       required this.availableForSale,
       required this.createdAt,
       required this.productVariants,
-      required this.onlineStoreUrl,
       required this.productType,
       required this.publishedAt,
       required this.tags,
@@ -396,9 +395,10 @@ class _$_Product extends _Product {
       required this.option,
       required this.vendor,
       required this.metafields,
-      this.description = '',
-      this.descriptionHtml = '',
-      this.handle = ''})
+      this.onlineStoreUrl,
+      this.description,
+      this.descriptionHtml,
+      this.handle})
       : super._();
 
   factory _$_Product.fromJson(Map<String, dynamic> json) =>
@@ -417,8 +417,6 @@ class _$_Product extends _Product {
   @override
   final List<ProductVariant> productVariants;
   @override
-  final String onlineStoreUrl;
-  @override
   final String productType;
   @override
   final String publishedAt;
@@ -436,19 +434,18 @@ class _$_Product extends _Product {
   final String vendor;
   @override
   final List<Metafield> metafields;
-  @JsonKey(defaultValue: '')
   @override
-  final String description;
-  @JsonKey(defaultValue: '')
+  final String? onlineStoreUrl;
   @override
-  final String descriptionHtml;
-  @JsonKey(defaultValue: '')
+  final String? description;
   @override
-  final String handle;
+  final String? descriptionHtml;
+  @override
+  final String? handle;
 
   @override
   String toString() {
-    return 'Product(collectionList: $collectionList, title: $title, id: $id, availableForSale: $availableForSale, createdAt: $createdAt, productVariants: $productVariants, onlineStoreUrl: $onlineStoreUrl, productType: $productType, publishedAt: $publishedAt, tags: $tags, updatedAt: $updatedAt, cursor: $cursor, images: $images, option: $option, vendor: $vendor, metafields: $metafields, description: $description, descriptionHtml: $descriptionHtml, handle: $handle)';
+    return 'Product(collectionList: $collectionList, title: $title, id: $id, availableForSale: $availableForSale, createdAt: $createdAt, productVariants: $productVariants, productType: $productType, publishedAt: $publishedAt, tags: $tags, updatedAt: $updatedAt, cursor: $cursor, images: $images, option: $option, vendor: $vendor, metafields: $metafields, onlineStoreUrl: $onlineStoreUrl, description: $description, descriptionHtml: $descriptionHtml, handle: $handle)';
   }
 
   @override
@@ -471,9 +468,6 @@ class _$_Product extends _Product {
             (identical(other.productVariants, productVariants) ||
                 const DeepCollectionEquality()
                     .equals(other.productVariants, productVariants)) &&
-            (identical(other.onlineStoreUrl, onlineStoreUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.onlineStoreUrl, onlineStoreUrl)) &&
             (identical(other.productType, productType) ||
                 const DeepCollectionEquality()
                     .equals(other.productType, productType)) &&
@@ -496,6 +490,9 @@ class _$_Product extends _Product {
             (identical(other.metafields, metafields) ||
                 const DeepCollectionEquality()
                     .equals(other.metafields, metafields)) &&
+            (identical(other.onlineStoreUrl, onlineStoreUrl) ||
+                const DeepCollectionEquality()
+                    .equals(other.onlineStoreUrl, onlineStoreUrl)) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
@@ -515,7 +512,6 @@ class _$_Product extends _Product {
       const DeepCollectionEquality().hash(availableForSale) ^
       const DeepCollectionEquality().hash(createdAt) ^
       const DeepCollectionEquality().hash(productVariants) ^
-      const DeepCollectionEquality().hash(onlineStoreUrl) ^
       const DeepCollectionEquality().hash(productType) ^
       const DeepCollectionEquality().hash(publishedAt) ^
       const DeepCollectionEquality().hash(tags) ^
@@ -525,6 +521,7 @@ class _$_Product extends _Product {
       const DeepCollectionEquality().hash(option) ^
       const DeepCollectionEquality().hash(vendor) ^
       const DeepCollectionEquality().hash(metafields) ^
+      const DeepCollectionEquality().hash(onlineStoreUrl) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(descriptionHtml) ^
       const DeepCollectionEquality().hash(handle);
@@ -548,7 +545,6 @@ abstract class _Product extends Product {
       required bool availableForSale,
       required String createdAt,
       required List<ProductVariant> productVariants,
-      required String onlineStoreUrl,
       required String productType,
       required String publishedAt,
       required List<String> tags,
@@ -558,9 +554,10 @@ abstract class _Product extends Product {
       required List<Option> option,
       required String vendor,
       required List<Metafield> metafields,
-      String description,
-      String descriptionHtml,
-      String handle}) = _$_Product;
+      String? onlineStoreUrl,
+      String? description,
+      String? descriptionHtml,
+      String? handle}) = _$_Product;
   _Product._() : super._();
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
@@ -580,8 +577,6 @@ abstract class _Product extends Product {
   List<ProductVariant> get productVariants =>
       throw _privateConstructorUsedError;
   @override
-  String get onlineStoreUrl => throw _privateConstructorUsedError;
-  @override
   String get productType => throw _privateConstructorUsedError;
   @override
   String get publishedAt => throw _privateConstructorUsedError;
@@ -600,11 +595,13 @@ abstract class _Product extends Product {
   @override
   List<Metafield> get metafields => throw _privateConstructorUsedError;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String? get onlineStoreUrl => throw _privateConstructorUsedError;
   @override
-  String get descriptionHtml => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   @override
-  String get handle => throw _privateConstructorUsedError;
+  String? get descriptionHtml => throw _privateConstructorUsedError;
+  @override
+  String? get handle => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductCopyWith<_Product> get copyWith =>

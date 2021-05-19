@@ -19,7 +19,6 @@ class Product with _$Product {
     required bool availableForSale,
     required String createdAt,
     required List<ProductVariant> productVariants,
-    required String onlineStoreUrl,
     required String productType,
     required String publishedAt,
     required List<String> tags,
@@ -29,9 +28,10 @@ class Product with _$Product {
     required List<Option> option,
     required String vendor,
     required List<Metafield> metafields,
-    @Default('') String description,
-    @Default('') String descriptionHtml,
-    @Default('') String handle,
+    String? onlineStoreUrl,
+    String? description,
+    String? descriptionHtml,
+    String? handle,
   }) = _Product;
 
   static Product fromGraphJson(Map<String, dynamic> json) {
