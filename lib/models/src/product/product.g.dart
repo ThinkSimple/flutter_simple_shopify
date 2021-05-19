@@ -18,7 +18,6 @@ _$_Product _$_$_ProductFromJson(Map<String, dynamic> json) {
     productVariants: (json['productVariants'] as List<dynamic>)
         .map((e) => ProductVariant.fromJson(e as Map<String, dynamic>))
         .toList(),
-    onlineStoreUrl: json['onlineStoreUrl'] as String,
     productType: json['productType'] as String,
     publishedAt: json['publishedAt'] as String,
     tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
@@ -34,9 +33,10 @@ _$_Product _$_$_ProductFromJson(Map<String, dynamic> json) {
     metafields: (json['metafields'] as List<dynamic>)
         .map((e) => Metafield.fromJson(e as Map<String, dynamic>))
         .toList(),
-    description: json['description'] as String? ?? '',
-    descriptionHtml: json['descriptionHtml'] as String? ?? '',
-    handle: json['handle'] as String? ?? '',
+    onlineStoreUrl: json['onlineStoreUrl'] as String?,
+    description: json['description'] as String?,
+    descriptionHtml: json['descriptionHtml'] as String?,
+    handle: json['handle'] as String?,
   );
 }
 
@@ -48,7 +48,6 @@ Map<String, dynamic> _$_$_ProductToJson(_$_Product instance) =>
       'availableForSale': instance.availableForSale,
       'createdAt': instance.createdAt,
       'productVariants': instance.productVariants,
-      'onlineStoreUrl': instance.onlineStoreUrl,
       'productType': instance.productType,
       'publishedAt': instance.publishedAt,
       'tags': instance.tags,
@@ -58,6 +57,7 @@ Map<String, dynamic> _$_$_ProductToJson(_$_Product instance) =>
       'option': instance.option,
       'vendor': instance.vendor,
       'metafields': instance.metafields,
+      'onlineStoreUrl': instance.onlineStoreUrl,
       'description': instance.description,
       'descriptionHtml': instance.descriptionHtml,
       'handle': instance.handle,
