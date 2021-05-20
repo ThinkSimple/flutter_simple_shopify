@@ -4,6 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../graphql_operations/mutations/access_token_delete.dart';
 import '../../graphql_operations/mutations/customer_access_token_create.dart';
+import '../../graphql_operations/mutations/customer_access_token_create_with_multipass.dart';
+import '../../graphql_operations/mutations/customer_access_token_renew.dart';
 import '../../graphql_operations/mutations/customer_create.dart';
 import '../../graphql_operations/mutations/customer_recover.dart';
 import '../../graphql_operations/queries/get_customer.dart';
@@ -116,6 +118,32 @@ class ShopifyAuth with ShopifyError {
     return shopifyUser;
   }
 
+  Future<void> renewCurrentAccessToken(String accessToken) async {
+    final updatedAccessToken = await _renewAccessToken(accessToken);
+    await _setShopifyUser(
+        updatedAccessToken, _shopifyUser[ShopifyConfig.storeUrl]);
+  }
+
+  /// Tries to sign in a user with the given Multipass token.
+  Future<ShopifyUser> signInWithMultipassToken(
+    final String multipassToken, {
+    bool deleteThisPartOfCache = false,
+  }) async {
+    final String? customerAccessToken =
+        await _createAccessTokenWithMultipass(multipassToken);
+    final WatchQueryOptions _getCustomer = WatchQueryOptions(
+        document: gql(getCustomerQuery),
+        variables: {'customerAccessToken': customerAccessToken});
+    final QueryResult result = await _graphQLClient!.query(_getCustomer);
+    checkForError(result);
+    final shopifyUser = ShopifyUser.fromGraphJson(result.data!['customer']);
+    await _setShopifyUser(customerAccessToken, shopifyUser);
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_getCustomer.asRequest, data: {});
+    }
+    return shopifyUser;
+  }
+
   /// Helper method for creating the accessToken.
   Future<String?> _createAccessToken(String email, String password,
       {bool deleteThisPartOfCache = false}) async {
@@ -129,9 +157,23 @@ class ShopifyAuth with ShopifyError {
     return _extractAccessToken(result.data);
   }
 
+  /// Helper method for creating the accessToken with Multipass.
+  Future<String?> _createAccessTokenWithMultipass(String multipassToken,
+      {bool deleteThisPartOfCache = false}) async {
+    final MutationOptions _options = MutationOptions(
+        document: gql(customerAccessTokenCreateWithMultipassMutation),
+        variables: {'multipassToken': multipassToken});
+    final QueryResult result = await _graphQLClient!.mutate(_options);
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
+    return _extractAccessToken(result.data);
+  }
+
   /// Helper method for extracting the customerAccessToken from the mutation.
   String? _extractAccessToken(Map<String, dynamic>? mutationData) {
-    return (((mutationData ?? const {})['customerAccessTokenCreate'] ??
+    return (((mutationData ??
+                const {})['customerAccessTokenCreateWithMultipass'] ??
             const {})['customerAccessToken'] ??
         const {})['accessToken'];
   }
@@ -151,6 +193,19 @@ class ShopifyAuth with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
+  }
+
+  /// Renews customer access token
+  Future<String?> _renewAccessToken(String customerAccessToken,
+      {bool deleteThisPartOfCache = false}) async {
+    final MutationOptions _options = MutationOptions(
+        document: gql(customerAccessTokenRenewMutation),
+        variables: {'customerAccessToken': customerAccessToken});
+    final QueryResult result = await _graphQLClient!.mutate(_options);
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
+    return _extractAccessToken(result.data);
   }
 
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
