@@ -9,8 +9,9 @@ part of 'line_item.dart';
 _$_LineItem _$_$_LineItemFromJson(Map<String, dynamic> json) {
   return _$_LineItem(
     title: json['title'] as String,
-    id: json['id'] as String?,
     quantity: json['quantity'] as int,
+    variantId: json['variantId'] as String?,
+    id: json['id'] as String?,
     variant: json['variant'] == null
         ? null
         : ProductVariantCheckout.fromJson(
@@ -21,7 +22,8 @@ _$_LineItem _$_$_LineItemFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_LineItemToJson(_$_LineItem instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'id': instance.id,
       'quantity': instance.quantity,
+      'variantId': instance.variantId,
+      'id': instance.id,
       'variant': instance.variant,
     };
