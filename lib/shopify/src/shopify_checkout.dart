@@ -204,7 +204,7 @@ class ShopifyCheckout with ShopifyError {
   }
 
   /// Removes the applied discount from the [Checkout] that [checkoutId] belongs to.
-  Future<void> checkoutDiscountCodeRemove(String checkoutId,
+  Future<Checkout> checkoutDiscountCodeRemove(String checkoutId,
       {bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(checkoutDiscountCodeRemoveMutation),
@@ -214,6 +214,9 @@ class ShopifyCheckout with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
+
+    return Checkout.fromJson(
+        result?.data['checkoutDiscountCodeRemove']?.data['checkout']);
   }
 
   /// Appends the [giftCardCodes] to the [Checkout] that [checkoutId] belongs to.

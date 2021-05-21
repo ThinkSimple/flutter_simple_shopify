@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:intl/intl.dart';
 
 class Products {
   final List<Product> productList;
@@ -395,57 +396,75 @@ class PriceV2 {
   final String currencyCode;
   final String currencySymbol;
   final String formattedPrice;
+  final String numberFormattedPrice;
 
   const PriceV2(
       {this.formattedPrice,
       this.currencySymbol,
       this.amount,
-      this.currencyCode});
+      this.currencyCode, 
+      this.numberFormattedPrice});
 
   static PriceV2 fromJson(Map<String, dynamic> json) {
+    // var format = NumberFormat.currency(locale: 'HI');
+    // String amount = json['amount'] != null
+    //     ? double.parse(json['amount']).toStringAsFixed(2)
+    //     : '';
     return PriceV2(
         amount: json['amount'] != null ? double.parse(json['amount']) : null,
         currencyCode: json['currencyCode'],
         currencySymbol: _simpleCurrencySymbols[json['currencyCode']],
-        formattedPrice: _chooseRightOrderOnCurrencySymbol(json));
+        formattedPrice: _chooseRightOrderOnCurrencySymbol(json['amount'], json['currencyCode']),
+        numberFormattedPrice: _chooseRightOrderOnCurrencySymbol(json['amount'], json['currencyCode'], numberFormat: true)
+        );
   }
 
-  static String _chooseRightOrderOnCurrencySymbol(Map<String, dynamic> json) {
+  static String _chooseRightOrderOnCurrencySymbol(String amount, String currencyCode, {bool numberFormat = false}) {
     String currencyString;
-    String amount = json['amount'] != null
-        ? double.parse(json['amount']).toStringAsFixed(2)
-        : '';
-    switch (json['currencyCode']) {
+    String formattedAmount = '';
+
+    if(amount != null){
+      if(numberFormat){
+        var format = NumberFormat.currency(locale: 'HI', symbol: '');
+        formattedAmount = format.format(double.parse(amount));
+      }else{
+        formattedAmount = double.parse(amount).toStringAsFixed(2);
+      }
+    }else{
+      // formattedAmount = '';
+      return '';
+    }
+    switch (currencyCode) {
       case "INR":
         {
           currencyString =
-              '${_simpleCurrencySymbols[json['currencyCode']]}$amount';
+              '${_simpleCurrencySymbols[currencyCode]}$formattedAmount';
         }
         break;
 
       case "EUR":
         {
           currencyString =
-              '$amount${_simpleCurrencySymbols[json['currencyCode']]}';
+              '$formattedAmount${_simpleCurrencySymbols[currencyCode]}';
         }
         break;
       case "USD":
         {
           currencyString =
-              '${_simpleCurrencySymbols[json['currencyCode']]}$amount';
+              '${_simpleCurrencySymbols[currencyCode]}$formattedAmount';
         }
         break;
       case "AED":
         {
           currencyString =
-              '${_simpleCurrencySymbols[json['currencyCode']]}$amount';
+              '${_simpleCurrencySymbols[currencyCode]}$formattedAmount';
         }
         break;
 
       default:
         {
           currencyString =
-              '$amount${_simpleCurrencySymbols[json['currencyCode']]}';
+              '$formattedAmount${_simpleCurrencySymbols[currencyCode]}';
         }
         break;
     }
