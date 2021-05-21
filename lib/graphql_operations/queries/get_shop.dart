@@ -10,7 +10,6 @@ query getShop {
       countryCode
       currencyCode
       enabledPresentmentCurrencies
-      shopifyPaymentsAccountId
       supportedDigitalWallets
     }
     primaryDomain {
