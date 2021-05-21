@@ -79,7 +79,6 @@ query($id: ID!){
       }
       note
       webUrl
-      shopifyPaymentsAccountId
       updatedAt
       totalTaxV2 {
         amount
