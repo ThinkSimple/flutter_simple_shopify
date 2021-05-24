@@ -381,7 +381,8 @@ class ShopifyCheckout with ShopifyError {
     List<Product> pList = [];
     orders.orderList.forEach((order) {
       order.lineItems.lineItemOrderList.forEach((lineItem) {
-        pList.add(lineItem.variant.product);
+        if(lineItem.variant.product !=null)
+          pList.add(lineItem.variant.product);
       });
     });
     return pList;
