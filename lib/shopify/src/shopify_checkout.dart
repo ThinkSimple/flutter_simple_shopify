@@ -34,24 +34,22 @@ class ShopifyCheckout with ShopifyError {
   ///
   /// Creates a new [Checkout].
   Future<Checkout> createCheckout(List<String> variantIdList,
-      {Map<String, String> shippingAddress, String email,
+      {Map<String, String> shippingAddress,
+      String email,
       String note,
       bool deleteThisPartOfCache = false}) async {
     var lineItems = transformVariantIdListIntoListOfMaps(variantIdList);
     dynamic variables = {
-      "input": {
-        "lineItems": lineItems,
-        "note": note
-      }
+      "input": {"lineItems": lineItems, "note": note}
     };
-    if(shippingAddress!=null){
+    if (shippingAddress != null) {
       variables["input"]["shippingAddress"] = shippingAddress;
     }
-    if(email!=null){
+    if (email != null) {
       variables["input"]["email"] = email;
     }
-    final MutationOptions _options =
-        MutationOptions(documentNode: gql(createCheckoutMutation), variables: variables);
+    final MutationOptions _options = MutationOptions(
+        documentNode: gql(createCheckoutMutation), variables: variables);
     final QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
@@ -381,8 +379,14 @@ class ShopifyCheckout with ShopifyError {
     List<Product> pList = [];
     orders.orderList.forEach((order) {
       order.lineItems.lineItemOrderList.forEach((lineItem) {
-        if(lineItem.variant.product !=null)
-          pList.add(lineItem.variant.product);
+        if (lineItem.variant.product != null) {
+          Product hasProduct = pList.firstWhere(
+              (product) => product.id == lineItem.variant.product.id,
+              orElse: () => null);
+          if (hasProduct == null) {
+            pList.add(lineItem.variant.product);
+          }
+        }
       });
     });
     return pList;
