@@ -7,22 +7,32 @@ query($n : Int, $sortKey : ProductSortKeys, $reverse: Boolean){
     edges {
       cursor
       node {
-      options(first: 50) {
-            id
-            name
-            values
-            } 
-        variants(first: 250) {
+        id
+        handle
+        title
+        availableForSale
+        tags
+        rating: metafield(namespace: "rview", key: "rating") {
+          key 
+          namespace 
+          value 
+          valueType 
+        }
+        review_count: metafield(namespace: "rview", key: "review-count") {
+          key 
+          namespace 
+          value 
+          valueType 
+        }
+        variants(first: 1) {
           edges {
             node {
               id
               title
-              image {
-                altText
-                id
-                originalSrc
-                transformedSrc(maxWidth: 200, crop: CENTER)
-              }
+              availableForSale
+              sku
+              requiresShipping
+              quantityAvailable
               priceV2 {
                 amount
                 currencyCode
@@ -31,44 +41,10 @@ query($n : Int, $sortKey : ProductSortKeys, $reverse: Boolean){
                 amount
                 currencyCode
               }
-              weight
-              weightUnit
-              availableForSale
-              sku
-              requiresShipping
-              quantityAvailable
-            }
-          }
-          pageInfo {
-            hasNextPage
-          }
-        }
-        availableForSale
-        collections(first: 250) {
-          edges {
-            node {
-              description
-              descriptionHtml
-              id
-              handle
-              updatedAt
-              title
             }
           }
         }
-        createdAt
-        description
-        descriptionHtml
-        handle
-        id
-        onlineStoreUrl
-        productType
-        publishedAt
-        tags
-        title
-        updatedAt
-        vendor
-        images(first: 250) {
+        images(first: 1) {
           edges {
             node {
               altText

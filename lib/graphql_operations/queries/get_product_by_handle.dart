@@ -7,6 +7,7 @@ query($handle: String!) {
     availableForSale
     tags
     onlineStoreUrl
+    productType 
     options(first: 50) {
       id
       name
