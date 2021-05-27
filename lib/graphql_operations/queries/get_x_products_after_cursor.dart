@@ -12,6 +12,7 @@ query($cursor: String, $x: Int, $reverse: Boolean, $sortKey: ProductSortKeys) {
         title
         availableForSale
         tags
+        vendor
         rating: metafield(namespace: "rview", key: "rating") {
           key 
           namespace 

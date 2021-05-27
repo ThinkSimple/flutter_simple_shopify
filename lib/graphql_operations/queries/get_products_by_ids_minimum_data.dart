@@ -8,6 +8,7 @@ query($ids: [ID!]!) {
       availableForSale
       descriptionHtml
       productType
+      vendor
       rating: metafield(namespace: "rview", key: "rating") {
         key 
         namespace 

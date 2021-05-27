@@ -457,7 +457,7 @@ class PriceV2 {
       case "AED":
         {
           currencyString =
-              '${_simpleCurrencySymbols[currencyCode]}$formattedAmount';
+              '${_simpleCurrencySymbols[currencyCode]} $formattedAmount';
         }
         break;
 

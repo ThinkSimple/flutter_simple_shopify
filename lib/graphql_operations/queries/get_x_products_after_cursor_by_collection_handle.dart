@@ -29,6 +29,7 @@ query(
           availableForSale
           title
           tags
+          vendor
           rating: metafield(namespace: "rview", key: "rating") {
             key 
             namespace 

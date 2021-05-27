@@ -6,6 +6,7 @@ query($handle: String!) {
     title
     availableForSale
     tags
+    vendor
     rating: metafield(namespace: "rview", key: "rating") {
       key 
       namespace 

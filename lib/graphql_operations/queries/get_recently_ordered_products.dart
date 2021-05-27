@@ -30,6 +30,7 @@ query getOrders(
                     title
                     handle
                     availableForSale
+                    vendor
                     rating: metafield(namespace: "rview", key: "rating") {
                       key 
                       namespace 

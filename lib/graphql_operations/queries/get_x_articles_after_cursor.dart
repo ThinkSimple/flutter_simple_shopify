@@ -12,6 +12,9 @@ query($cursor: String, $x: Int, $reverse: Boolean, $sortKey: ArticleSortKeys) {
         title
         publishedAt
         url
+        excerpt
+        excerptHtml
+        contentHtml
         authorV2 {
           bio
           email
@@ -19,7 +22,6 @@ query($cursor: String, $x: Int, $reverse: Boolean, $sortKey: ArticleSortKeys) {
           lastName
           name
         }
-        contentHtml
         image {
           altText
           id

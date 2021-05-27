@@ -7,12 +7,14 @@ query($handle: String!) {
     availableForSale
     tags
     onlineStoreUrl
-    productType 
+    productType
+    vendor 
     options(first: 50) {
       id
       name
       values
     }
+    vendor
     rating: metafield(namespace: "rview", key: "rating") {
       key 
       namespace 

@@ -10,6 +10,7 @@ query($ids: [ID!]!) {
       productType
       tags
       onlineStoreUrl
+      vendor
       rating: metafield(namespace: "rview", key: "rating") {
         key 
         namespace 
@@ -64,15 +65,6 @@ query($ids: [ID!]!) {
               originalSrc
               transformedSrc(maxWidth: 200, crop: CENTER)
             }
-          }
-        }
-      }
-      collections(first: 250) {
-        edges {
-          node {
-            id
-            handle
-            title
           }
         }
       }

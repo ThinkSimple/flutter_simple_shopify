@@ -8,6 +8,7 @@ query getProductByHandle($handle: String!) {
     descriptionHtml
     productType
     tags
+    vendor
     rating: metafield(namespace: "rview", key: "rating") {
       key 
       namespace 

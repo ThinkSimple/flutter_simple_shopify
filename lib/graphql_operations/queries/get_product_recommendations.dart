@@ -6,6 +6,7 @@ query getProductRecommentationsQuery($id: ID!){
     title
     availableForSale
     tags
+    vendor
     rating: metafield(namespace: "rview", key: "rating") {
       key 
       namespace 

@@ -10,6 +10,7 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
         onlineStoreUrl
         productType
         tags
+        vendor
         rating: metafield(namespace: "rview", key: "rating") {
           key 
           namespace 
