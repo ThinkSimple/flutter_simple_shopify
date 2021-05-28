@@ -4,36 +4,18 @@ query($id: ID!){
     ... on Checkout {
       id
       email
-      discountApplications(first: 10) {
-        edges {
-          node {
-            allocationMethod
-            targetSelection
-            targetType
-            value {
-              ... on MoneyV2 {
-                amount
-                currencyCode
-              }
-              ... on PricingPercentageValue {
-                percentage
-              }
-            }
-          }
-        }
-      }
-      appliedGiftCards {
-        amountUsedV2 {
-          amount
-          currencyCode
-        }
-        balanceV2 {
-          amount
-          currencyCode
-        }
-        id
-      }
       requiresShipping
+      currencyCode
+      webUrl
+      orderStatusUrl
+      shippingLine {
+        handle
+        title
+        priceV2 {
+          amount
+          currencyCode
+        }
+      }
       availableShippingRates {
         ready
         shippingRates {
@@ -42,7 +24,9 @@ query($id: ID!){
           priceV2 {
             amount
             currencyCode
-       }}}
+          }
+        }
+      }
       shippingAddress {
         address1
         address2
@@ -62,55 +46,30 @@ query($id: ID!){
         provinceCode
         zip
       }
-      shippingLine {
-        handle
-        priceV2 {
-          amount
-          currencyCode
-        }
-        title
-      }
-      completedAt
-      createdAt
-      currencyCode
-      lineItems(first: 10) {
+      
+      discountApplications(first: 10) {
         edges {
           node {
-            id
-            quantity
-            title
-            variant {
-              id
-              priceV2 {
+            allocationMethod
+            targetSelection
+            targetType
+            value {
+              ... on MoneyV2 {
                 amount
                 currencyCode
               }
-              title
-              image {
-                altText
-                originalSrc
-                id
+              ... on PricingPercentageValue {
+                percentage
               }
-              compareAtPriceV2 {
-                amount
-                currencyCode
-              }
-              weight
-              weightUnit
-              availableForSale
-              sku
-              requiresShipping
             }
           }
         }
       }
-      note
-      webUrl
-      updatedAt
       lineItemsSubtotalPrice {
         amount
         currencyCode
       }
+      taxesIncluded
       totalTaxV2 {
         amount
         currencyCode
@@ -119,13 +78,10 @@ query($id: ID!){
         amount
         currencyCode
       }
-      taxesIncluded
-      taxExempt
       subtotalPriceV2 {
         amount
         currencyCode
       }
-      orderStatusUrl
     }
   }
 }

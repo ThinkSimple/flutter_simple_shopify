@@ -12,6 +12,7 @@ query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys){
         altText
         id
         originalSrc
+        transformedSrc(maxWidth: 200, crop: CENTER)
       }
       products(first: 10, sortKey: $sortKey, after: $cursor) {
         edges {
@@ -46,6 +47,7 @@ query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys){
                   altText
                   id
                   originalSrc
+                  transformedSrc(maxWidth: 200, crop: CENTER)
                 }
               }
             }
@@ -64,6 +66,7 @@ query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys){
                     altText
                     id
                     originalSrc
+                    transformedSrc(maxWidth: 200, crop: CENTER)
                   }
                   priceV2 {
                     amount

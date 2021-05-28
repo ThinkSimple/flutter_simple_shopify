@@ -9,44 +9,45 @@ class Orders {
   final List<Order> orderList;
   final bool hasNextPage;
 
-  Orders({this.orderList, this.hasNextPage});
+  Orders({required this.orderList, required this.hasNextPage});
 
   static Orders fromJson(Map<String, dynamic> json) {
     return Orders(
-        orderList: _getOrderList(json ?? const {}),
+        orderList: _getOrderList(json),
         hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage']);
   }
 
   static List<Order> _getOrderList(Map<String, dynamic> json) {
     List<Order> orderList = [];
-    json['edges']?.forEach((e) => orderList.add(Order.fromJson(e ?? const {})));
+    json['edges']
+        ?.forEach((e) => orderList.add(Order.fromJson(e['node'] ?? const {})));
     return orderList;
   }
 }
 
 class Order {
-  final String id;
-  final String email;
-  final String currencyCode;
-  final String customerUrl;
-  final LineItemsOrder lineItems;
-  final String name;
-  final int orderNumber;
-  final String phone;
-  final DateTime processedAt;
-  final DateTime canceledAt;
-  final OrderCancelReason cancelReason;
-  final OrderFinancialStatus financialStatus;
-  final OrderFulfillmentStatus fulfillmentStatus;
-  final MailingAddress shippingAddress;
-  final String statusUrl;
-  final DiscountApplications discountApplications;
-  final PriceV2 subtotalPriceV2;
-  final PriceV2 totalPriceV2;
-  final PriceV2 totalRefundedV2;
-  final PriceV2 totalShippingPriceV2;
-  final PriceV2 totalTaxV2;
-  final String cursor;
+  final String? id;
+  final String? email;
+  final String? currencyCode;
+  final String? customerUrl;
+  final LineItemsOrder? lineItems;
+  final String? name;
+  final int? orderNumber;
+  final String? phone;
+  final DateTime? processedAt;
+  final DateTime? canceledAt;
+  final OrderCancelReason? cancelReason;
+  final OrderFinancialStatus? financialStatus;
+  final OrderFulfillmentStatus? fulfillmentStatus;
+  final MailingAddress? shippingAddress;
+  final String? statusUrl;
+  final DiscountApplications? discountApplications;
+  final PriceV2? subtotalPriceV2;
+  final PriceV2? totalPriceV2;
+  final PriceV2? totalRefundedV2;
+  final PriceV2? totalShippingPriceV2;
+  final PriceV2? totalTaxV2;
+  final String? cursor;
 
   Order(
       {this.id,
@@ -64,7 +65,7 @@ class Order {
       this.fulfillmentStatus,
       this.shippingAddress,
       this.statusUrl,
-      this.discountApplications,     
+      this.discountApplications,
       this.subtotalPriceV2,
       this.totalPriceV2,
       this.totalRefundedV2,
@@ -72,57 +73,53 @@ class Order {
       this.totalTaxV2,
       this.cursor});
 
-  static Order fromJson(Map<String, dynamic> json) {
-    DateTime processedAt =
-        DateTime.parse((json['node'] ?? const {})['processedAt']);
-    DateTime canceledAt = (json['node'] ?? const {})['canceledAt'] != null
-        ? DateTime.parse((json['node'] ?? const {})['canceledAt'])
+  static Order fromJson(Map<String, dynamic>? json) {
+    DateTime processedAt = DateTime.parse((json ?? const {})['processedAt']);
+    DateTime? canceledAt = (json ?? const {})['canceledAt'] != null
+        ? DateTime.parse((json ?? const {})['canceledAt'])
         : null;
-    OrderFinancialStatus financialStatus = EnumToString.fromString(
-        OrderFinancialStatus.values,
-        (json['node'] ?? const {})['financialStatus']);
-    OrderFulfillmentStatus fulfillmentStatus = EnumToString.fromString(
-        OrderFulfillmentStatus.values,
-        (json['node'] ?? const {})['fulfillmentStatus']);
-    OrderCancelReason cancelReason = EnumToString.fromString(
-        OrderCancelReason.values, (json['node'] ?? const {})['cancelReason']);
+    OrderFinancialStatus? financialStatus = EnumToString.fromString(
+        OrderFinancialStatus.values, (json ?? const {})['financialStatus']);
+    OrderFulfillmentStatus? fulfillmentStatus = EnumToString.fromString(
+        OrderFulfillmentStatus.values, (json ?? const {})['fulfillmentStatus']);
+    OrderCancelReason? cancelReason = EnumToString.fromString(
+        OrderCancelReason.values, (json ?? const {})['cancelReason']);
 
     return Order(
-        id: (json['node'] ?? const {})['id'],
-        email: (json['node'] ?? const {})['email'],
-        currencyCode: (json['node'] ?? const {})['currencyCode'],
-        customerUrl: (json['node'] ?? const {})['customerUrl'],
-        lineItems:
-            LineItemsOrder.fromJson((json['node'] ?? const {})['lineItems']),
-        name: (json['node'] ?? const {})['name'],
-        orderNumber: (json['node'] ?? const {})['orderNumber'],
-        phone: (json['node'] ?? const {})['phone'],
+        id: (json ?? const {})['id'],
+        email: (json ?? const {})['email'],
+        currencyCode: (json ?? const {})['currencyCode'],
+        customerUrl: (json ?? const {})['customerUrl'],
+        lineItems: LineItemsOrder.fromJson((json ?? const {})['lineItems']),
+        name: (json ?? const {})['name'],
+        orderNumber: (json ?? const {})['orderNumber'],
+        phone: (json ?? const {})['phone'],
         processedAt: processedAt,
         canceledAt: canceledAt,
         cancelReason: cancelReason,
         financialStatus: financialStatus,
         fulfillmentStatus: fulfillmentStatus,
         shippingAddress: MailingAddress.fromJson(
-            (json['node'] ?? const {})['shippingAddress'] ?? const {}),
-        statusUrl: (json['node'] ?? const {})['statusUrl'],
+            (json ?? const {})['shippingAddress'] ?? const {}),
+        statusUrl: (json ?? const {})['statusUrl'],
         discountApplications: DiscountApplications.fromJson(
-          (json['node'] ?? const {})['discountApplications']),
-        subtotalPriceV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['subtotalPriceV2'] ?? const {}),
-        totalPriceV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['totalPriceV2'] ?? const {}),
-        totalRefundedV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['totalRefundedV2'] ?? const {}),
+            (json ?? const {})['discountApplications']),
+        subtotalPriceV2:
+            PriceV2.fromJson((json ?? const {})['subtotalPriceV2'] ?? const {}),
+        totalPriceV2:
+            PriceV2.fromJson((json ?? const {})['totalPriceV2'] ?? const {}),
+        totalRefundedV2:
+            PriceV2.fromJson((json ?? const {})['totalRefundedV2'] ?? const {}),
         totalShippingPriceV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['totalShippingPriceV2'] ?? const {}),
-        totalTaxV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['totalTaxV2'] ?? const {}),
-        cursor: json['cursor']);
+            (json ?? const {})['totalShippingPriceV2'] ?? const {}),
+        totalTaxV2:
+            PriceV2.fromJson((json ?? const {})['totalTaxV2'] ?? const {}),
+        cursor: json?['cursor']);
   }
 }
 
 class LineItemsOrder {
-  final List<LineItemOrder> lineItemOrderList;
+  final List<LineItemOrder>? lineItemOrderList;
 
   LineItemsOrder({this.lineItemOrderList});
 
@@ -139,31 +136,31 @@ class LineItemsOrder {
 }
 
 class LineItemOrder {
-  final int currentQuantity;
+  final int? currentQuantity;
   final List<DiscountAllocations> discountAllocations;
   final PriceV2 discountedTotalPrice;
   final PriceV2 originalTotalPrice;
-  final int quantity;
-  final String title;
+  final int? quantity;
+  final String? title;
   final ProductVariantCheckout variant;
 
   LineItemOrder(
       {this.currentQuantity,
-      this.discountAllocations,
-      this.discountedTotalPrice,
-      this.originalTotalPrice,
+      required this.discountAllocations,
+      required this.discountedTotalPrice,
+      required this.originalTotalPrice,
       this.quantity,
       this.title,
-      this.variant});
+      required this.variant});
 
   static LineItemOrder fromJson(Map<String, dynamic> json) {
     return LineItemOrder(
         currentQuantity: (json['node'] ?? const {})['currentQuantity'],
         discountAllocations: _getDiscountAllocationsList(json),
         discountedTotalPrice: PriceV2.fromJson(
-            (json['node'] ?? const {})['discountedTotalPrice']),
-        originalTotalPrice:
-            PriceV2.fromJson((json['node'] ?? const {})['originalTotalPrice']),
+            (json['node'] ?? const {})['discountedTotalPrice'] ?? const {}),
+        originalTotalPrice: PriceV2.fromJson(
+            (json['node'] ?? const {})['originalTotalPrice'] ?? const {}),
         quantity: (json['node'] ?? const {})['quantity'],
         title: (json['node'] ?? const {})['title'],
         variant: ProductVariantCheckout.fromJson(
@@ -172,8 +169,8 @@ class LineItemOrder {
 
   static _getDiscountAllocationsList(Map<String, dynamic> json) {
     List<DiscountAllocations> discountList = [];
-    (json['node'] ?? const {})['discountAllocations']?.forEach(
-        (discount) => discountList.add(DiscountAllocations.fromJson(discount)));
+    (json['node'] ?? const {})['discountAllocations']?.forEach((discount) =>
+        discountList.add(DiscountAllocations.fromJson(discount ?? const {})));
     return discountList;
   }
 }
@@ -181,7 +178,7 @@ class LineItemOrder {
 class DiscountAllocations {
   final PriceV2 allocatedAmount;
 
-  DiscountAllocations({this.allocatedAmount});
+  DiscountAllocations({required this.allocatedAmount});
 
   static DiscountAllocations fromJson(Map<String, dynamic> json) {
     return DiscountAllocations(

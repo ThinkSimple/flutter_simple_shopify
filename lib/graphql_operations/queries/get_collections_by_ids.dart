@@ -8,6 +8,7 @@ query getCollectionsByIds($ids: [ID!]!){
       image {
         src
         originalSrc
+        transformedSrc(maxWidth: 200, crop: CENTER)
         id
         altText
       }

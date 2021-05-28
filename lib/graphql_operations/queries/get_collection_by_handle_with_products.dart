@@ -1,33 +1,23 @@
-const String getXProductAfterCursorByCollectionHandleQuery = r'''
-query(
-  $handle: String!
-  $cursor: String
-  $x: Int
-  $reverse: Boolean
-  $sortKey: ProductCollectionSortKeys
-) {
-  collectionByHandle(handle: $handle) {
-    id
-    handle
+String getCollectionByHandleWithProductsQuery(int productsCount) {
+  return '''
+query(\$handle: String!) {
+  collectionByHandle(handle: \$handle) {
     title
-    descriptionHtml
+    handle
+    id
     image {
       altText
       id
       originalSrc
       transformedSrc(maxWidth: 200, crop: CENTER)
     }
-    products(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
-      pageInfo {
-        hasNextPage
-      }
+    products(first: $productsCount) {
       edges {
-        cursor
         node {
           id
           handle
-          availableForSale
           title
+          availableForSale
           tags
           vendor
           rating: metafield(namespace: "rview", key: "rating") {
@@ -42,24 +32,20 @@ query(
             value 
             valueType 
           }
-          images(first: 1) {
-            edges {
-              node {
-                altText
-                id
-                originalSrc
-                transformedSrc(maxWidth: 200, crop: CENTER)
-              }
-            }
-          }
           variants(first: 1) {
             edges {
               node {
                 id
                 title
-                availableForSale
                 requiresShipping
+                availableForSale
                 quantityAvailable
+                image {
+                  altText
+                  id
+                  originalSrc
+                  transformedSrc(maxWidth: 200, crop: CENTER)
+                }
                 priceV2 {
                   amount
                   currencyCode
@@ -70,13 +56,25 @@ query(
                 }
               }
             }
-            pageInfo {
-              hasNextPage
+          }
+          images(first: 10) {
+            edges {
+              node {
+                altText
+                id
+                originalSrc
+                transformedSrc(maxWidth: 200, crop: CENTER)
+              }
             }
           }
         }
+        cursor
+      }
+      pageInfo {
+        hasNextPage
       }
     }
   }
 }
 ''';
+}

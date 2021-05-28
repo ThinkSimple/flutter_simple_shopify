@@ -64,7 +64,7 @@ query($id: ID!){
       completedAt
       createdAt
       currencyCode
-      lineItems(first: 10) {
+      lineItems(first: 250) {
         edges {
           node {
             id
@@ -80,6 +80,7 @@ query($id: ID!){
               image {
                 altText
                 originalSrc
+                transformedSrc(maxWidth: 200, crop: CENTER)
                 id
               }
               compareAtPriceV2 {

@@ -1,4 +1,4 @@
-const String getProductByHandleQuery = r'''
+const String getProductByHandleMinimumDataQuery = r'''
 query($handle: String!) {
   productByHandle(handle: $handle) {
     id
@@ -6,14 +6,6 @@ query($handle: String!) {
     title
     availableForSale
     tags
-    onlineStoreUrl
-    productType
-    vendor 
-    options(first: 50) {
-      id
-      name
-      values
-    }
     vendor
     rating: metafield(namespace: "rview", key: "rating") {
       key 
@@ -27,7 +19,7 @@ query($handle: String!) {
       value 
       valueType 
     }
-    variants(first: 250) {
+    variants(first: 1) {
       edges {
         node {
           id
@@ -44,20 +36,10 @@ query($handle: String!) {
             amount
             currencyCode
           }
-          selectedOptions {
-            name
-            value
-          }
-          image {
-            altText
-            id
-            originalSrc
-            transformedSrc(maxWidth: 200, crop: CENTER)
-          }
         }
       }
     }
-    images(first: 20) {
+    images(first: 1) {
       edges {
         node {
           altText

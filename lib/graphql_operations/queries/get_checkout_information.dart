@@ -1,46 +1,98 @@
-const String getCheckoutInfo = r'''
-query($id: ID!){
-  node(id: $id) {
+const String getCheckoutInfo =
+  '''
+query(\$id: ID!) {
+  node(id: \$id) {
     ... on Checkout {
       id
       email
-      discountApplications(first: 10) {
-        edges {
-          node {
-            allocationMethod
-            targetSelection
-            targetType
-            value {
-              ... on MoneyV2 {
-                amount
-                currencyCode
-              }
-              ... on PricingPercentageValue {
-                percentage
+      requiresShipping
+      currencyCode
+      webUrl
+      orderStatusUrl
+      note
+      order {
+          id
+          email
+          currencyCode
+          customerUrl
+          name
+          orderNumber
+          phone
+          processedAt
+          canceledAt
+          cancelReason
+          financialStatus
+          fulfillmentStatus
+          statusUrl
+          lineItems(first: 250) {
+            edges {
+              node {
+                title
+                variant {
+                  id
+                  title
+                  availableForSale
+                  priceV2 {
+                    amount
+                    currencyCode
+                  }
+                  image {
+                    altText
+                    id
+                    originalSrc
+                    transformedSrc(maxWidth: 200, crop: CENTER)
+                  }
+                }
               }
             }
           }
-        }
+          shippingAddress {
+            address1
+            address2
+            city
+            company
+            country
+            countryCodeV2
+            firstName
+            formattedArea
+            id
+            lastName
+            latitude
+            longitude
+            name
+            phone
+            province
+            provinceCode
+            zip
+          }
+          subtotalPriceV2 {
+            amount
+            currencyCode
+          }
+          totalPriceV2 {
+            amount
+            currencyCode
+          }
+          totalRefundedV2 {
+            amount
+            currencyCode
+          }
+          totalShippingPriceV2 {
+            amount
+            currencyCode
+          }
+          totalTaxV2 {
+            amount
+            currencyCode
+          }
       }
-      appliedGiftCards {
-        amountUsedV2 {
-          amount
-          currencyCode
-        }
-        balanceV2 {
-          amount
-          currencyCode
-        }
-        id
-      }
-      requiresShipping
       shippingLine {
         handle
+        title
         priceV2 {
           amount
           currencyCode
         }
-        title
       }
       shippingAddress {
         address1
@@ -61,9 +113,6 @@ query($id: ID!){
         provinceCode
         zip
       }
-      completedAt
-      createdAt
-      currencyCode
       lineItems(first: 10) {
         edges {
           node {
@@ -80,6 +129,7 @@ query($id: ID!){
               image {
                 altText
                 originalSrc
+                transformedSrc(maxWidth: 200, crop: CENTER)
                 id
               }
               compareAtPriceV2 {
@@ -95,13 +145,29 @@ query($id: ID!){
           }
         }
       }
-      note
-      webUrl
-      updatedAt
+      discountApplications(first: 10) {
+        edges {
+          node {
+            allocationMethod
+            targetSelection
+            targetType
+            value {
+              ... on MoneyV2 {
+                amount
+                currencyCode
+              }
+              ... on PricingPercentageValue {
+                percentage
+              }
+            }
+          }
+        }
+      }
       lineItemsSubtotalPrice {
         amount
         currencyCode
       }
+      taxesIncluded
       totalTaxV2 {
         amount
         currencyCode
@@ -110,17 +176,16 @@ query($id: ID!){
         amount
         currencyCode
       }
-      taxesIncluded
-      taxExempt
       subtotalPriceV2 {
         amount
         currencyCode
       }
-      orderStatusUrl
     }
   }
 }
+
 ''';
+
 
 /* availableShippingRates {
         ready

@@ -1,4 +1,4 @@
-const String getProductsByIdsQuery = r'''
+const String getProductsByIdsMinimumDataQuery = r'''
 query($ids: [ID!]!) {
   nodes(ids: $ids) {
     ... on Product {
@@ -8,8 +8,6 @@ query($ids: [ID!]!) {
       availableForSale
       descriptionHtml
       productType
-      tags
-      onlineStoreUrl
       vendor
       rating: metafield(namespace: "rview", key: "rating") {
         key 
@@ -23,12 +21,7 @@ query($ids: [ID!]!) {
         value 
         valueType 
       }
-      options(first: 50) {
-        id
-        name
-        values
-      }
-      images(first: 20) {
+      images(first: 1) {
         edges {
           node {
             altText
@@ -38,7 +31,7 @@ query($ids: [ID!]!) {
           }
         }
       }
-      variants(first: 250) {
+      variants(first: 1) {
         edges {
           node {
             id
@@ -54,16 +47,6 @@ query($ids: [ID!]!) {
             compareAtPriceV2 {
               amount
               currencyCode
-            }
-            selectedOptions {
-              name
-              value
-            }
-            image {
-              altText
-              id
-              originalSrc
-              transformedSrc(maxWidth: 200, crop: CENTER)
             }
           }
         }

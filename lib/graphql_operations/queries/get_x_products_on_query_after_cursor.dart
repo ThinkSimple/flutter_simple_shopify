@@ -3,41 +3,49 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
   products(query: $query, first: $limit, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
     edges {
       node {
-      options(first: 50) {
-            id
-            name
-            values
-            } 
         id
         handle
+        title
         availableForSale
-        createdAt
-        description
-        descriptionHtml
         onlineStoreUrl
         productType
-        publishedAt
         tags
-        title
-        updatedAt
         vendor
-        images(first: 250) {
+        rating: metafield(namespace: "rview", key: "rating") {
+          key 
+          namespace 
+          value 
+          valueType 
+        }
+        review_count: metafield(namespace: "rview", key: "review-count") {
+          key 
+          namespace 
+          value 
+          valueType 
+        }
+        images(first: 1) {
           edges {
             node {
               altText
               id
               originalSrc
+              transformedSrc(maxWidth: 200, crop: CENTER)
             }
           }
         }
         variants(first: 250) {
           edges {
             node {
+              id
               title
+              requiresShipping
+              quantityAvailable
+              availableForSale
               image {
                 altText
                 id
                 originalSrc
+                transformedSrc(maxWidth: 200, crop: CENTER)
               }
               priceV2 {
                 amount
@@ -47,13 +55,7 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
                 amount
                 currencyCode
               }
-              weight
-              weightUnit
-              availableForSale
-              sku
-              requiresShipping
-              id
-              quantityAvailable
+              
             }
           }
         }
@@ -64,4 +66,5 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
       hasNextPage
     }
   }
-}''';
+}
+''';

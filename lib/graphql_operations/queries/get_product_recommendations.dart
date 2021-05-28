@@ -1,43 +1,43 @@
 const String getProductRecommendationsQuery = r'''
 query getProductRecommentationsQuery($id: ID!){
   productRecommendations(productId: $id) {
-    availableForSale
-    createdAt
-    description
-    descriptionHtml
-    handle
     id
-    images(first: 250) {
+    handle
+    title
+    availableForSale
+    tags
+    vendor
+    rating: metafield(namespace: "rview", key: "rating") {
+      key 
+      namespace 
+      value 
+      valueType 
+    }
+    review_count: metafield(namespace: "rview", key: "review-count") {
+      key 
+      namespace 
+      value 
+      valueType 
+    }
+    images(first: 1) {
       edges {
         node {
           altText
           id
           originalSrc
+          transformedSrc(maxWidth: 200, crop: CENTER)
         }
       }
     }
-    onlineStoreUrl
-    options(first: 50) {
-      id
-      name
-      values
-    }
-    productType
-    publishedAt
-    tags
-    title
-    updatedAt
-    vendor
-    variants(first: 250) {
+    variants(first: 1) {
       edges {
         node {
           id
           title
-          image {
-            altText
-            id
-            originalSrc
-          }
+          availableForSale
+          requiresShipping
+          quantityAvailable
+          sku
           priceV2 {
             amount
             currencyCode
@@ -46,12 +46,6 @@ query getProductRecommentationsQuery($id: ID!){
             amount
             currencyCode
           }
-          weight
-          weightUnit
-          availableForSale
-          sku
-          requiresShipping
-          quantityAvailable
         }
       }
     }
