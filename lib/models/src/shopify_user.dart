@@ -3,18 +3,18 @@ import 'package:flutter_simple_shopify/models/src/product.dart';
 
 class ShopifyUser {
   final Addresses address;
-  final String createdAt;
-  final String displayName;
-  final String email;
-  final String firstName;
-  final String id;
-  final String lastName;
-  final String phone;
+  final String? createdAt;
+  final String? displayName;
+  final String? email;
+  final String? firstName;
+  final String? id;
+  final String? lastName;
+  final String? phone;
   final List<String> tags;
   final LastIncompleteCheckout lastIncompleteCheckout;
 
   ShopifyUser(
-      {this.address,
+      {required this.address,
       this.createdAt,
       this.displayName,
       this.email,
@@ -22,8 +22,8 @@ class ShopifyUser {
       this.id,
       this.lastName,
       this.phone,
-      this.tags,
-      this.lastIncompleteCheckout});
+      required this.tags,
+      required this.lastIncompleteCheckout});
 
   static ShopifyUser fromJson(Map<String, dynamic> json) {
     return ShopifyUser(
@@ -35,7 +35,7 @@ class ShopifyUser {
       id: json['id'],
       lastName: json['lastName'],
       phone: json['phone'],
-      tags: _getTagList(json ?? const []),
+      tags: _getTagList((json)),
       lastIncompleteCheckout: LastIncompleteCheckout.fromJson(
           json['lastIncompleteCheckout'] ?? const {}),
     );
@@ -51,7 +51,7 @@ class ShopifyUser {
 class Addresses {
   final List<Address> addressList;
 
-  Addresses({this.addressList});
+  Addresses({required this.addressList});
 
   static Addresses fromJson(Map<String, dynamic> json) {
     return Addresses(addressList: _getAddressList(json));
@@ -66,23 +66,23 @@ class Addresses {
 }
 
 class Address {
-  final String id;
-  final String address1;
-  final String address2;
-  final String city;
-  final String company;
-  final String country;
-  final String countryCode;
-  final String firstName;
-  final String lastName;
-  final String formattedArea;
-  final String latitude;
-  final String longitude;
-  final String name;
-  final String phone;
-  final String province;
-  final String provinceCode;
-  final String zip;
+  final String? id;
+  final String? address1;
+  final String? address2;
+  final String? city;
+  final String? company;
+  final String? country;
+  final String? countryCode;
+  final String? firstName;
+  final String? lastName;
+  final String? formattedArea;
+  final String? latitude;
+  final String? longitude;
+  final String? name;
+  final String? phone;
+  final String? province;
+  final String? provinceCode;
+  final String? zip;
 
   Address(
       {this.id,
@@ -126,12 +126,12 @@ class Address {
 }
 
 class LastIncompleteCheckout {
-  final String completedAt;
-  final String createdAt;
-  final String email;
-  final String id;
-  final String currencyCode;
-  final String webUrl;
+  final String? completedAt;
+  final String? createdAt;
+  final String? email;
+  final String? id;
+  final String? currencyCode;
+  final String? webUrl;
   final PriceV2 totalPriceV2;
   final PriceV2 lineItemsSubtotalPrice;
   final LineItems lineItems;
@@ -143,9 +143,9 @@ class LastIncompleteCheckout {
       this.id,
       this.currencyCode,
       this.webUrl,
-      this.totalPriceV2,
-      this.lineItemsSubtotalPrice,
-      this.lineItems});
+      required this.totalPriceV2,
+      required this.lineItemsSubtotalPrice,
+      required this.lineItems});
 
   static LastIncompleteCheckout fromJson(Map<String, dynamic> json) {
     return LastIncompleteCheckout(
@@ -163,15 +163,15 @@ class LastIncompleteCheckout {
 }
 
 class CustomerAccessToken {
-  final String accessToken;
+  final String? accessToken;
   final DateTime expiresAt;
 
   CustomerAccessToken(this.accessToken, this.expiresAt);
 
-  static CustomerAccessToken fromJson(Map<String, dynamic> json) {
+  static CustomerAccessToken fromJson(Map<String, dynamic>? json) {
     json = ((json ?? const {})['customerAccessToken'] ?? const {});
     return CustomerAccessToken(
-        json['accessToken'], DateTime.parse(json['expiresAt']));
+        json!['accessToken'], DateTime.parse(json['expiresAt']));
   }
 
   Map toJson() => {

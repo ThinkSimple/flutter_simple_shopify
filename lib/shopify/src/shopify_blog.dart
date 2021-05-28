@@ -15,7 +15,7 @@ import '../../shopify_config.dart';
 class ShopifyBlog with ShopifyError {
   ShopifyBlog._();
 
-  final GraphQLClient _graphQLClient = ShopifyConfig.graphQLClient;
+  final GraphQLClient _graphQLClient = ShopifyConfig.graphQLClient!;
   static final ShopifyBlog instance = ShopifyBlog._();
 
   /// Returns a List of [Blog].
@@ -27,7 +27,7 @@ class ShopifyBlog with ShopifyError {
       bool reverseBlogs = false,
       bool reverseArticles = false}) async {
     final WatchQueryOptions _options =
-        WatchQueryOptions(documentNode: gql(getAllBlogsQuery), variables: {
+        WatchQueryOptions(document: gql(getAllBlogsQuery), variables: {
       'reverseBlogs': reverseBlogs,
       'reverseArticles': reverseArticles,
       'sortKey': sortKeyBlog.parseToString(),
@@ -35,9 +35,9 @@ class ShopifyBlog with ShopifyError {
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
-    return (Blogs.fromJson((result?.data ?? const {})["blogs"] ?? const {}))
+    return (Blogs.fromJson((result.data ?? const {})["blogs"] ?? const {}))
         .blogList;
   }
 
@@ -50,17 +50,17 @@ class ShopifyBlog with ShopifyError {
       bool deleteThisPartOfCache = false,
       bool reverse = false}) async {
     final QueryOptions _options =
-        WatchQueryOptions(documentNode: gql(getBlogByHandleQuery), variables: {
+        WatchQueryOptions(document: gql(getBlogByHandleQuery), variables: {
       'handle': handle,
       'sortKey': sortKeyArticle.parseToString(),
       'reverseArticles': reverse
     });
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
-    var response = (result?.data['blogByHandle'] as LazyCacheMap)?.data;
+    var response = result.data!['blogByHandle'];
     var newResponse = {'node': response};
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return Blog.fromJson(newResponse);
   }
@@ -71,19 +71,18 @@ class ShopifyBlog with ShopifyError {
   Future<List<Article>> getXArticlesSorted(int articleAmount,
       {SortKeyArticle sortKeyArticle = SortKeyArticle.RELEVANCE,
       bool deleteThisPartOfCache = false}) async {
-    final QueryOptions _options = WatchQueryOptions(
-        documentNode: gql(getNArticlesSortedQuery),
-        variables: {
-          'x': articleAmount,
-          'sortKey': sortKeyArticle.parseToString(),
-        });
+    final QueryOptions _options =
+        WatchQueryOptions(document: gql(getNArticlesSortedQuery), variables: {
+      'x': articleAmount,
+      'sortKey': sortKeyArticle.parseToString(),
+    });
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return (Articles.fromJson(
-            ((result?.data ?? const {}))['articles'] ?? const {}))
+            (result.data ?? const {})['articles'] ?? const {}))
         .articleList;
   }
 
@@ -93,9 +92,9 @@ class ShopifyBlog with ShopifyError {
       SortKeyArticle sortKey = SortKeyArticle.TITLE}) async {
     String cursor = startCursor;
     final WatchQueryOptions _options = WatchQueryOptions(
-        documentNode: gql(getXArticlesAfterCursorQuery),
+        document: gql(getXArticlesAfterCursorQuery),
         variables: {
-          'x': limit ?? 50,
+          'x': limit,
           'cursor': cursor,
           'reverse': reverse,
           'sortKey': sortKey.parseToString()
@@ -104,10 +103,10 @@ class ShopifyBlog with ShopifyError {
     checkForError(result);
 
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.write(_options.toKey(), null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     Articles articles =
-        (Articles.fromJson((result?.data ?? const {})["articles"] ?? {}));
+        (Articles.fromJson((result.data ?? const {})["articles"] ?? {}));
     return articles;
   }
 }

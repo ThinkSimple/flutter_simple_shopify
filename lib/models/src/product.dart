@@ -5,11 +5,11 @@ class Products {
   final List<Product> productList;
   final bool hasNextPage;
 
-  Products({this.productList, this.hasNextPage});
+  Products({required this.productList, required this.hasNextPage});
 
   static Products fromJson(Map<String, dynamic> json) {
     return Products(
-        productList: _getProductList(json ?? const {}),
+        productList: _getProductList(json),
         hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage']);
   }
 
@@ -23,35 +23,35 @@ class Products {
 
 class Product {
   final List<AssociatedCollections> collectionList;
-  final String title;
-  final String id;
-  final bool availableForSale;
-  final String createdAt;
-  final String description;
+  final String? title;
+  final String? id;
+  final bool? availableForSale;
+  final String? createdAt;
+  final String? description;
   final List<ProductVariant> productVariants;
-  final String descriptionHtml;
-  final String handle;
-  final String onlineStoreUrl;
-  final String productType;
-  final String publishedAt;
-  final List<String> tags;
-  final String updatedAt;
-  final String cursor;
+  final String? descriptionHtml;
+  final String? handle;
+  final String? onlineStoreUrl;
+  final String? productType;
+  final String? publishedAt;
+  final List<String>? tags;
+  final String? updatedAt;
+  final String? cursor;
   final List<ShopifyImage> images;
   final List<Option> options;
-  final String vendor;
+  final String? vendor;
   final List<Metafield> metafields;
-  final double rating;
-  final int reviewCount;
+  final double? rating;
+  final int? reviewCount;
 
   const Product(
-      {this.collectionList,
+      {required this.collectionList,
       this.title,
       this.id,
       this.availableForSale,
       this.createdAt,
       this.description,
-      this.productVariants,
+      required this.productVariants,
       this.descriptionHtml,
       this.handle,
       this.onlineStoreUrl,
@@ -60,10 +60,10 @@ class Product {
       this.tags,
       this.updatedAt,
       this.cursor,
-      this.images,
-      this.options,
+      required this.images,
+      required this.options,
       this.vendor,
-      this.metafields,
+      required this.metafields,
       this.rating,
       this.reviewCount});
 
@@ -97,13 +97,13 @@ class Product {
 
   static Product fromProductHandleJson(Map<String, dynamic> json) {
     return Product(
-        collectionList: _getCollectionList(json ?? const {}),
+        collectionList: _getCollectionList(json),
         id: json['id'],
         title: json['title'],
         availableForSale: json['availableForSale'],
         createdAt: json['createdAt'],
         description: json['description'],
-        productVariants: _getProductVariants(json ?? const {}),
+        productVariants: _getProductVariants(json),
         descriptionHtml: json['descriptionHtml'],
         handle: json['handle'],
         onlineStoreUrl: json['onlineStoreUrl'],
@@ -147,7 +147,7 @@ class Product {
       List<SelectedOption> filters) {
     Function unOrdDeepEq = const DeepCollectionEquality.unordered().equals;
 
-    List<Map<String, String>> filterList = [];
+    List<Map<String?, String?>> filterList = [];
     filters.forEach((SelectedOption selectedOption) {
       filterList.add({selectedOption.name: selectedOption.value});
     });
@@ -155,7 +155,7 @@ class Product {
     final productVariant =
         this.productVariants.firstWhere((ProductVariant productVariant) {
       bool found = false;
-      List<Map<String, String>> selectedOptionList = [];
+      List<Map<String?, String?>> selectedOptionList = [];
 
       productVariant.selectedOptions.forEach((SelectedOption selectedOption) {
         selectedOptionList.add({selectedOption.name: selectedOption.value});
@@ -178,7 +178,7 @@ class Product {
     return optionList;
   }
 
-  static List<String> _getTags(List<dynamic> list) {
+  static List<String> _getTags(List<dynamic>? list) {
     List<String> tags = [];
     list?.forEach((e) => tags.add(e ?? const {}));
     return tags;
@@ -196,7 +196,7 @@ class Product {
 
   static _getImageList(Map<String, dynamic> json) {
     List<ShopifyImage> imageList = [];
-    if (json != null && json['edges'] != null)
+    if (json['edges'] != null)
       json['edges'].forEach((image) =>
           imageList.add(ShopifyImage.fromJson(image['node'] ?? const {})));
     return imageList;
@@ -211,12 +211,12 @@ class Product {
 }
 
 class AssociatedCollections {
-  final String description;
-  final String descriptionHtml;
-  final String id;
-  final String handle;
-  final String updatedAt;
-  final String title;
+  final String? description;
+  final String? descriptionHtml;
+  final String? id;
+  final String? handle;
+  final String? updatedAt;
+  final String? title;
 
   AssociatedCollections(
       {this.description,
@@ -238,10 +238,10 @@ class AssociatedCollections {
 }
 
 class ShopifyImage {
-  final String altText;
-  final String originalSource;
-  final String transformedSrc;
-  final String id;
+  final String? altText;
+  final String? originalSource;
+  final String? transformedSrc;
+  final String? id;
 
   const ShopifyImage(
       {this.altText, this.originalSource, this.transformedSrc, this.id});
@@ -264,23 +264,23 @@ class ShopifyImage {
 
 class ProductVariant {
   final PriceV2 price;
-  final String title;
+  final String? title;
   final ShopifyImage image;
   final PriceV2 compareAtPrice;
-  final double weight;
-  final String weightUnit;
-  final bool availableForSale;
-  final String sku;
-  final bool requiresShipping;
-  final String id;
-  final int quantityAvailable;
+  final double? weight;
+  final String? weightUnit;
+  final bool? availableForSale;
+  final String? sku;
+  final bool? requiresShipping;
+  final String? id;
+  final int? quantityAvailable;
   final List<SelectedOption> selectedOptions;
 
   const ProductVariant(
-      {this.price,
+      {required this.price,
       this.title,
-      this.image,
-      this.compareAtPrice,
+      required this.image,
+      required this.compareAtPrice,
       this.weight,
       this.weightUnit,
       this.availableForSale,
@@ -288,7 +288,7 @@ class ProductVariant {
       this.requiresShipping,
       this.id,
       this.quantityAvailable,
-      this.selectedOptions});
+      required this.selectedOptions});
 
   static ProductVariant fromJson(Map<String, dynamic> json) {
     return ProductVariant(
@@ -329,12 +329,12 @@ class ProductVariant {
 }
 
 class Metafield {
-  final String id;
-  final String namespace;
-  final String key;
-  final String value;
-  final String valueType;
-  final String description;
+  final String? id;
+  final String? namespace;
+  final String? key;
+  final String? value;
+  final String? valueType;
+  final String? description;
 
   const Metafield(
       {this.id,
@@ -356,11 +356,11 @@ class Metafield {
 }
 
 class Option {
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
   final List<String> values;
 
-  Option({this.id, this.name, this.values});
+  Option({this.id, this.name, required this.values});
 
   static Option fromJson(Map<String, dynamic> json) {
     return Option(
@@ -377,8 +377,8 @@ class Option {
 }
 
 class SelectedOption {
-  final String name;
-  final String value;
+  final String? name;
+  final String? value;
 
   SelectedOption({this.name, this.value});
 
@@ -392,11 +392,11 @@ class SelectedOption {
 }
 
 class PriceV2 {
-  final double amount;
-  final String currencyCode;
-  final String currencySymbol;
-  final String formattedPrice;
-  final String numberFormattedPrice;
+  final double? amount;
+  final String? currencyCode;
+  final String? currencySymbol;
+  final String? formattedPrice;
+  final String? numberFormattedPrice;
 
   const PriceV2(
       {this.formattedPrice,
@@ -419,7 +419,7 @@ class PriceV2 {
         );
   }
 
-  static String _chooseRightOrderOnCurrencySymbol(String amount, String currencyCode, {bool numberFormat = false}) {
+  static String _chooseRightOrderOnCurrencySymbol(String? amount, String? currencyCode, {bool numberFormat = false}) {
     String currencyString;
     String formattedAmount = '';
 
@@ -438,33 +438,33 @@ class PriceV2 {
       case "INR":
         {
           currencyString =
-              '${_simpleCurrencySymbols[currencyCode]}$formattedAmount';
+              '${_simpleCurrencySymbols[currencyCode!]}$formattedAmount';
         }
         break;
 
       case "EUR":
         {
           currencyString =
-              '$formattedAmount${_simpleCurrencySymbols[currencyCode]}';
+              '$formattedAmount${_simpleCurrencySymbols[currencyCode!]}';
         }
         break;
       case "USD":
         {
           currencyString =
-              '${_simpleCurrencySymbols[currencyCode]}$formattedAmount';
+              '${_simpleCurrencySymbols[currencyCode!]}$formattedAmount';
         }
         break;
       case "AED":
         {
           currencyString =
-              '${_simpleCurrencySymbols[currencyCode]} $formattedAmount';
+              '${_simpleCurrencySymbols[currencyCode!]} $formattedAmount';
         }
         break;
 
       default:
         {
           currencyString =
-              '$formattedAmount${_simpleCurrencySymbols[currencyCode]}';
+              '$formattedAmount${_simpleCurrencySymbols[currencyCode!]}';
         }
         break;
     }

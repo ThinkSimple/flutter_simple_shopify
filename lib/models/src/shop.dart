@@ -1,7 +1,7 @@
 class Shop {
-  final String description;
-  final String moneyFormat;
-  final String name;
+  final String? description;
+  final String? moneyFormat;
+  final String? name;
   final PaymentSettings paymentSettings;
   final PrimaryDomain primaryDomain;
   final PrivacyPolicy privacyPolicy;
@@ -9,7 +9,7 @@ class Shop {
   final List<String> shipsToCountries;
   final TermsOfService termsOfService;
 
-  Shop({this.description, this.moneyFormat, this.name, this.paymentSettings, this.primaryDomain, this.privacyPolicy, this.refundPolicy, this.shipsToCountries, this.termsOfService});
+  Shop({this.description, this.moneyFormat, this.name, required this.paymentSettings, required this.primaryDomain, required this.privacyPolicy, required this.refundPolicy, required this.shipsToCountries, required this.termsOfService});
 
   static Shop fromJson(Map<String, dynamic> json){
     return Shop(
@@ -33,16 +33,16 @@ class Shop {
 }
 
 class PaymentSettings {
-  final List<String> acceptedCardBrands;
-  final String cardVaultUrl;
-  final String countryCode;
-  final String currencyCode;
-  final List<String> enabledPresentmentCurrencies;
-  final String shopifyPaymentAccountId;
+  final List<String>? acceptedCardBrands;
+  final String? cardVaultUrl;
+  final String? countryCode;
+  final String? currencyCode;
+  final List<String>? enabledPresentmentCurrencies;
+  final String? shopifyPaymentAccountId;
   final List<String> supportedDigitalWallets;
 
   PaymentSettings(
-      {this.acceptedCardBrands, this.cardVaultUrl, this.countryCode, this.currencyCode, this.enabledPresentmentCurrencies, this.shopifyPaymentAccountId, this.supportedDigitalWallets});
+      {this.acceptedCardBrands, this.cardVaultUrl, this.countryCode, this.currencyCode, this.enabledPresentmentCurrencies, this.shopifyPaymentAccountId, required this.supportedDigitalWallets});
 
   static PaymentSettings fromJson(Map<String, dynamic> json) {
     return PaymentSettings(
@@ -76,9 +76,9 @@ class PaymentSettings {
 }
 
 class PrimaryDomain {
-  final String host;
-  final bool sslEnabled;
-  final String url;
+  final String? host;
+  final bool? sslEnabled;
+  final String? url;
 
   PrimaryDomain({this.host, this.sslEnabled, this.url});
 
@@ -92,11 +92,11 @@ class PrimaryDomain {
 }
 
 class PrivacyPolicy {
-  final String body;
-  final String handle;
-  final String id;
-  final String title;
-  final String url;
+  final String? body;
+  final String? handle;
+  final String? id;
+  final String? title;
+  final String? url;
 
   PrivacyPolicy({this.body, this.handle, this.id, this.title, this.url});
 
@@ -112,11 +112,11 @@ class PrivacyPolicy {
 }
 
 class RefundPolicy {
-  final String body;
-  final String handle;
-  final String id;
-  final String title;
-  final String url;
+  final String? body;
+  final String? handle;
+  final String? id;
+  final String? title;
+  final String? url;
 
   RefundPolicy({this.body, this.handle, this.id, this.title, this.url});
 
@@ -132,11 +132,11 @@ class RefundPolicy {
 }
 
 class TermsOfService {
-  final String body;
-  final String handle;
-  final String id;
-  final String title;
-  final String url;
+  final String? body;
+  final String? handle;
+  final String? id;
+  final String? title;
+  final String? url;
 
   TermsOfService({this.body, this.handle, this.id, this.title, this.url});
 

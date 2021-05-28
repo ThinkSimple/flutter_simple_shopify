@@ -3,13 +3,13 @@ import 'package:flutter_simple_shopify/models/src/article.dart';
 
 class Blogs {
 
-  Blogs({this.blogList});
+  Blogs({required this.blogList});
 
   final List<Blog> blogList;
 
   static Blogs fromJson(Map<String, dynamic> json){
     return Blogs(
-        blogList: _getBlogList(json ?? const {})
+        blogList: _getBlogList(json)
     );
   }
 
@@ -22,11 +22,11 @@ class Blogs {
 
 class Blog {
 
-  final String id;
-  final String handle;
-  final String title;
-  final String url;
-  final Articles articles;
+  final String? id;
+  final String? handle;
+  final String? title;
+  final String? url;
+  final Articles? articles;
 
   Blog({this.id, this.handle, this.title, this.url, this.articles});
 

@@ -4,74 +4,74 @@ import 'package:flutter_simple_shopify/models/src/product.dart';
 import '../../flutter_simple_shopify.dart';
 
 class Checkout {
-  final String id;
-  final String email;
+  final String? id;
+  final String? email;
   final DiscountApplications discountApplications;
   final List<AppliedGiftCards> appliedGiftcards;
-  final AvailableShippingRates availableShippingrates;
+  final AvailableShippingRates? availableShippingrates;
   final ShippingRate shippingLine;
   final MailingAddress shippingAddress;
-  final String completedAt;
-  final String createdAt;
-  final String currencyCode;
+  final String? completedAt;
+  final String? createdAt;
+  final String? currencyCode;
   final LineItems lineItems;
-  final String note;
-  final String webUrl;
-  final String updatedAt;
+  final String? note;
+  final String? webUrl;
+  final String? updatedAt;
   final PriceV2 lineItemsSubtotalPrice;
   final PriceV2 discountAmount;
   final PriceV2 totalTaxV2;
   final PriceV2 totalPriceV2;
-  final bool taxesIncluded;
-  final bool taxExempt;
+  final bool? taxesIncluded;
+  final bool? taxExempt;
   final PriceV2 subtotalPriceV2;
-  final String orderStatusUrl;
-  final Order order;
-  final bool requiresShipping;
+  final String? orderStatusUrl;
+  final Order? order;
+  final bool? requiresShipping;
 
   Checkout(
       {this.id,
       this.email,
-      this.discountApplications,
-      this.appliedGiftcards,
+      required this.discountApplications,
+      required this.appliedGiftcards,
       this.availableShippingrates,
-      this.shippingLine,
-      this.shippingAddress,
+      required this.shippingLine,
+      required this.shippingAddress,
       this.completedAt,
       this.createdAt,
       this.currencyCode,
-      this.lineItems,
+      required this.lineItems,
       this.note,
       this.webUrl,
       this.updatedAt,
-      this.totalTaxV2,
-      this.totalPriceV2,
-      this.lineItemsSubtotalPrice,
-      this.discountAmount,
+      required this.totalTaxV2,
+      required this.totalPriceV2,
+      required this.lineItemsSubtotalPrice,
+      required this.discountAmount,
       this.taxesIncluded,
       this.taxExempt,
-      this.subtotalPriceV2,
+      required this.subtotalPriceV2,
       this.orderStatusUrl,
       this.order,
       this.requiresShipping});
 
   static Checkout fromJson(Map<String, dynamic> json) {
-    bool taxesIncluded = json['taxesIncluded'];
+    bool? taxesIncluded = json['taxesIncluded'];
     PriceV2 totalTaxV2 = PriceV2.fromJson(json['totalTaxV2'] ?? const {});
     PriceV2 lineItemsSubtotalPrice =
         PriceV2.fromJson(json['lineItemsSubtotalPrice'] ?? const {});
     PriceV2 totalPriceV2 = PriceV2.fromJson(json['totalPriceV2'] ?? const {});
     ShippingRate shippingLine =
         ShippingRate.fromJson(json['shippingLine'] ?? const {});
-    String amount;
-    String currencyCode;
+    String? amount;
+    String? currencyCode;
     if (lineItemsSubtotalPrice.amount != null && totalPriceV2.amount != null) {
-      double amt = (totalPriceV2.amount - lineItemsSubtotalPrice.amount);
-      if (totalTaxV2.amount != null && !taxesIncluded) {
-        amt -= totalTaxV2.amount;
+      double amt = (totalPriceV2.amount! - lineItemsSubtotalPrice.amount!);
+      if (totalTaxV2.amount != null && !taxesIncluded!) {
+        amt -= totalTaxV2.amount!;
       }
-      if (shippingLine.priceV2?.amount != null) {
-        amt -= shippingLine.priceV2.amount;
+      if (shippingLine.priceV2.amount != null) {
+        amt -= shippingLine.priceV2.amount!;
       }
       amount = amt.abs().toStringAsFixed(2);
       currencyCode = totalPriceV2.currencyCode;
@@ -81,7 +81,7 @@ class Checkout {
         email: json['email'],
         discountApplications:
             DiscountApplications.fromJson(json['discountApplications']),
-        appliedGiftcards: _getAppliedGiftCards(json ?? const {}),
+        appliedGiftcards: _getAppliedGiftCards(json),
         availableShippingrates: AvailableShippingRates.fromJson(
             json['availableShippingRates'] ?? const {}),
         shippingLine: shippingLine,
@@ -96,7 +96,7 @@ class Checkout {
         updatedAt: json['updatedAt'],
         lineItemsSubtotalPrice: lineItemsSubtotalPrice,
         discountAmount: PriceV2.fromJson(
-            {'amount': amount, 'currencyCode': currencyCode} ?? const {}),
+            {'amount': amount, 'currencyCode': currencyCode}),
         totalTaxV2: totalTaxV2,
         totalPriceV2: totalPriceV2,
         taxesIncluded: taxesIncluded,
@@ -117,15 +117,15 @@ class Checkout {
 }
 
 class AvailableShippingRates {
-  final bool ready;
+  final bool? ready;
   final List<ShippingRate> shippingRates;
 
-  const AvailableShippingRates({this.ready, this.shippingRates});
+  const AvailableShippingRates({this.ready, required this.shippingRates});
 
   static AvailableShippingRates fromJson(Map<String, dynamic> json) {
     return AvailableShippingRates(
       ready: json['ready'],
-      shippingRates: _getShippingRates(json ?? const {}),
+      shippingRates: _getShippingRates(json),
     );
   }
 
@@ -138,11 +138,11 @@ class AvailableShippingRates {
 }
 
 class ShippingRate {
-  final String handle;
-  final String title;
+  final String? handle;
+  final String? title;
   final PriceV2 priceV2;
 
-  ShippingRate({this.handle, this.title, this.priceV2});
+  ShippingRate({this.handle, this.title, required this.priceV2});
 
   static ShippingRate fromJson(Map<String, dynamic> json) {
     return ShippingRate(
@@ -153,23 +153,23 @@ class ShippingRate {
 }
 
 class MailingAddress {
-  final String address1;
-  final String address2;
-  final String city;
-  final String company;
-  final String country;
-  final String countryCodeV2;
-  final String firstName;
-  final String formattedArea;
-  final String id;
-  final String lastName;
-  final double latitude;
-  final double longitude;
-  final String name;
-  final String phone;
-  final String province;
-  final String provinceCode;
-  final String zip;
+  final String? address1;
+  final String? address2;
+  final String? city;
+  final String? company;
+  final String? country;
+  final String? countryCodeV2;
+  final String? firstName;
+  final String? formattedArea;
+  final String? id;
+  final String? lastName;
+  final double? latitude;
+  final double? longitude;
+  final String? name;
+  final String? phone;
+  final String? province;
+  final String? provinceCode;
+  final String? zip;
 
   MailingAddress(
       {this.address1,
@@ -216,7 +216,7 @@ class MailingAddress {
 class LineItems {
   final List<LineItem> lineItemList;
 
-  LineItems({this.lineItemList});
+  LineItems({required this.lineItemList});
 
   static LineItems fromJson(Map<String, dynamic> json) {
     return LineItems(lineItemList: _getLineItemList(json));
@@ -231,10 +231,10 @@ class LineItems {
 }
 
 class LineItem {
-  final String id;
-  final int quantity;
-  final String title;
-  final ProductVariantCheckout variant;
+  final String? id;
+  final int? quantity;
+  final String? title;
+  final ProductVariantCheckout? variant;
 
   LineItem({this.id, this.quantity, this.variant, this.title});
 
@@ -252,17 +252,17 @@ class LineItem {
 class DiscountApplications {
   final List<DiscountApplication> discountApplicationList;
 
-  DiscountApplications({this.discountApplicationList});
+  DiscountApplications({required this.discountApplicationList});
 
   get length => discountApplicationList.length;
 
-  static DiscountApplications fromJson(Map<String, dynamic> json) {
+  static DiscountApplications fromJson(Map<String, dynamic>? json) {
     return DiscountApplications(
         discountApplicationList: _getDiscountApplicationList(json));
   }
 
   static List<DiscountApplication> _getDiscountApplicationList(
-      Map<String, dynamic> json) {
+      Map<String, dynamic>? json) {
     List<DiscountApplication> discountApplicationList = [];
     if (json != null)
       json['edges']?.forEach((discountApplication) => discountApplicationList
@@ -272,10 +272,10 @@ class DiscountApplications {
 }
 
 class DiscountApplication {
-  final String allocationMethod;
-  final String targetSelection;
-  final String targetType;
-  final double percentage;
+  final String? allocationMethod;
+  final String? targetSelection;
+  final String? targetType;
+  final double? percentage;
   final PriceV2 price;
 
   DiscountApplication(
@@ -283,7 +283,7 @@ class DiscountApplication {
       this.targetSelection,
       this.targetType,
       this.percentage,
-      this.price});
+      required this.price});
 
   static DiscountApplication fromJson(Map<String, dynamic> json) {
     // print(json);
@@ -302,22 +302,22 @@ class DiscountApplication {
 
 class ProductVariantCheckout {
   final PriceV2 price;
-  final String title;
+  final String? title;
   final ShopifyImage image;
   final PriceV2 compareAtPrice;
-  final double weight;
-  final String weightUnit;
-  final bool availableForSale;
-  final String sku;
-  final bool requiresShipping;
-  final String id;
-  final Product product;
+  final double? weight;
+  final String? weightUnit;
+  final bool? availableForSale;
+  final String? sku;
+  final bool? requiresShipping;
+  final String? id;
+  final Product? product;
 
   const ProductVariantCheckout(
-      {this.price,
+      {required this.price,
       this.title,
-      this.image,
-      this.compareAtPrice,
+      required this.image,
+      required this.compareAtPrice,
       this.weight,
       this.weightUnit,
       this.availableForSale,
@@ -346,9 +346,9 @@ class ProductVariantCheckout {
 class AppliedGiftCards {
   final PriceV2 amountUsedV2;
   final PriceV2 balanceV2;
-  final String id;
+  final String? id;
 
-  AppliedGiftCards({this.amountUsedV2, this.balanceV2, this.id});
+  AppliedGiftCards({required this.amountUsedV2, required this.balanceV2, this.id});
 
   static AppliedGiftCards fromJson(Map<String, dynamic> json) {
     return AppliedGiftCards(
