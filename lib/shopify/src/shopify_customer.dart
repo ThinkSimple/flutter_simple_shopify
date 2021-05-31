@@ -53,7 +53,7 @@ class ShopifyCustomer with ShopifyError {
       errorKey: 'customerUserErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
   }
 
@@ -88,7 +88,7 @@ class ShopifyCustomer with ShopifyError {
       errorKey: 'customerUserErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
   }
 
@@ -128,7 +128,7 @@ class ShopifyCustomer with ShopifyError {
       errorKey: 'customerUserErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
   }
 
@@ -152,7 +152,7 @@ class ShopifyCustomer with ShopifyError {
       errorKey: 'customerUserErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
   }
 }

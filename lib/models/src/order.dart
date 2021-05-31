@@ -78,12 +78,20 @@ class Order {
     DateTime? canceledAt = (json ?? const {})['canceledAt'] != null
         ? DateTime.parse((json ?? const {})['canceledAt'])
         : null;
-    OrderFinancialStatus? financialStatus = EnumToString.fromString(
-        OrderFinancialStatus.values, (json ?? const {})['financialStatus']);
-    OrderFulfillmentStatus? fulfillmentStatus = EnumToString.fromString(
-        OrderFulfillmentStatus.values, (json ?? const {})['fulfillmentStatus']);
-    OrderCancelReason? cancelReason = EnumToString.fromString(
-        OrderCancelReason.values, (json ?? const {})['cancelReason']);
+    OrderFinancialStatus? financialStatus =
+        (json ?? const {})['financialStatus'] != null
+            ? EnumToString.fromString(OrderFinancialStatus.values,
+                (json ?? const {})['financialStatus'])
+            : null;
+    OrderFulfillmentStatus? fulfillmentStatus =
+        (json ?? const {})['fulfillmentStatus'] != null
+            ? EnumToString.fromString(OrderFulfillmentStatus.values,
+                (json ?? const {})['fulfillmentStatus'])
+            : null;
+    OrderCancelReason? cancelReason = (json ?? const {})['cancelReason'] != null
+        ? EnumToString.fromString(
+            OrderCancelReason.values, (json ?? const {})['cancelReason'])
+        : null;
 
     return Order(
         id: (json ?? const {})['id'],
@@ -163,8 +171,7 @@ class LineItemOrder {
             (json['node'] ?? const {})['originalTotalPrice'] ?? const {}),
         quantity: (json['node'] ?? const {})['quantity'],
         title: (json['node'] ?? const {})['title'],
-        variant: ProductVariantCheckout.fromJson(
-            (json['node'] ?? const {})['variant'] ?? const {}));
+        variant: ProductVariantCheckout.fromJson((json['node'] ?? const {})['variant'] ?? {}));
   }
 
   static _getDiscountAllocationsList(Map<String, dynamic> json) {

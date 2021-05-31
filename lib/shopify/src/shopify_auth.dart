@@ -64,7 +64,7 @@ class ShopifyAuth with ShopifyError {
         await _createAccessToken(email, password);
     await _setShopifyUser(customerAccessToken);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return shopifyUser;
   }
@@ -83,7 +83,7 @@ class ShopifyAuth with ShopifyError {
       errorKey: 'customerUserErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
   }
 
@@ -102,7 +102,7 @@ class ShopifyAuth with ShopifyError {
     final shopifyUser = ShopifyUser.fromJson(result.data!['customer']);
     await _setShopifyUser(customerAccessToken);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_getCustomer.asRequest, data: {});
+      // _graphQLClient.cache.writeQuery(_getCustomer.asRequest, data: {});
     }
     return shopifyUser;
   }
@@ -117,7 +117,7 @@ class ShopifyAuth with ShopifyError {
     checkForError(result,
         key: 'customerAccessTokenCreate', errorKey: 'customerUserErrors');
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return CustomerAccessToken.fromJson(
         result.data!['customerAccessTokenCreate']);
@@ -137,7 +137,7 @@ class ShopifyAuth with ShopifyError {
       errorKey: 'userErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     // return result;
   }
@@ -154,7 +154,7 @@ class ShopifyAuth with ShopifyError {
     await _setShopifyUser(customerAccessToken);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return customerAccessToken;
   }
@@ -167,7 +167,7 @@ class ShopifyAuth with ShopifyError {
         document: gql(getCustomerQuery),
         variables: {'customerAccessToken': cat});
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_getCustomer.asRequest, data: {});
+      // _graphQLClient.cache.writeQuery(_getCustomer.asRequest, data: {});
     }
     if (_shopifyUser != null) {
       return _shopifyUser;

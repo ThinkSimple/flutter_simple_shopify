@@ -35,7 +35,7 @@ class ShopifyBlog with ShopifyError {
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return (Blogs.fromJson((result.data ?? const {})["blogs"] ?? const {}))
         .blogList;
@@ -60,7 +60,7 @@ class ShopifyBlog with ShopifyError {
     var response = result.data!['blogByHandle'];
     var newResponse = {'node': response};
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return Blog.fromJson(newResponse);
   }
@@ -79,7 +79,7 @@ class ShopifyBlog with ShopifyError {
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return (Articles.fromJson(
             (result.data ?? const {})['articles'] ?? const {}))
@@ -103,7 +103,7 @@ class ShopifyBlog with ShopifyError {
     checkForError(result);
 
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     Articles articles =
         (Articles.fromJson((result.data ?? const {})["articles"] ?? {}));
