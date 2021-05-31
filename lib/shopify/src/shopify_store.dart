@@ -34,7 +34,7 @@ class ShopifyStore with ShopifyError {
 
   static final ShopifyStore instance = ShopifyStore._();
 
-  GraphQLClient _graphQLClient = ShopifyConfig.graphQLClient!;
+  GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;
 
   /// Returns a List of [Product].
   ///
@@ -51,7 +51,7 @@ class ShopifyStore with ShopifyError {
         'shouldFetchMetafields': metafieldsNamespace != null,
         'metafieldsNamespace': metafieldsNamespace
       });
-      final QueryResult result = await _graphQLClient.query(_options);
+      final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       tempProduct =
           (Products.fromJson((result.data ?? const {})["products"] ?? {}));
@@ -60,7 +60,7 @@ class ShopifyStore with ShopifyError {
       cursor = productList.isNotEmpty ? productList.last.cursor : null;
     } while ((tempProduct.hasNextPage == true));
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return productList;
   }
@@ -73,10 +73,10 @@ class ShopifyStore with ShopifyError {
               ? gql(getProductByHandleMinimumDataQuery)
               : gql(getProductByHandleQuery),
           variables: {'handle': handle});
-      final QueryResult result = await _graphQLClient.query(_options);
+      final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       if (deleteThisPartOfCache) {
-        _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+        //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
       }
       // Map<String, dynamic> a = (result?.data ?? const {})['productByHandle'] ?? {};
       return Product.fromProductHandleJson(
@@ -104,11 +104,11 @@ class ShopifyStore with ShopifyError {
           'reverse': reverse,
           'sortKey': sortKeyProduct.parseToString()
         });
-    final QueryResult result = await _graphQLClient.query(_options);
+    final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
 
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return (Products.fromJson((result.data ?? const {})["products"] ?? {}));
   }
@@ -124,7 +124,7 @@ class ShopifyStore with ShopifyError {
             ? gql(getProductsByIdsMinimumDataQuery)
             : gql(getProductsByIdsQuery),
         variables: {'ids': idList});
-    final QueryResult result = await _graphQLClient.query(_options);
+    final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     var response = result.data!;
     var newResponse = {
@@ -133,7 +133,7 @@ class ShopifyStore with ShopifyError {
     };
     productList = Products.fromJson(newResponse).productList;
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return productList;
   }
@@ -159,18 +159,20 @@ class ShopifyStore with ShopifyError {
       SortKeyProduct sortKey = SortKeyProduct.PRODUCT_TYPE}) async {
     List<Product> productList = [];
     final WatchQueryOptions _options =
-        WatchQueryOptions(document: gql(getNProductsQuery), variables: {
-      'n': n,
-      'sortKey': sortKey.parseToString(),
-      'reverse': reverse,
-    });
-    final QueryResult result = await _graphQLClient.query(_options);
+        WatchQueryOptions(
+          document: gql(getNProductsQuery), 
+          variables: {
+          'n': n,
+          'sortKey': sortKey.parseToString(),
+          'reverse': reverse,
+        });
+    final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     productList =
         (Products.fromJson((result.data ?? const {})["products"] ?? {}))
             .productList;
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return productList;
   }
@@ -182,10 +184,10 @@ class ShopifyStore with ShopifyError {
       final WatchQueryOptions _options = WatchQueryOptions(
           document: gql(getProductRecommendationsQuery),
           variables: {'id': productId});
-      final QueryResult result = await _graphQLClient.query(_options);
+      final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       if (deleteThisPartOfCache) {
-        _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+        //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
       }
       var newResponse = List.generate(
           result.data!['productRecommendations']?.length ?? 0,
@@ -207,10 +209,10 @@ class ShopifyStore with ShopifyError {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
           document: gql(getCollectionsByIdsQuery), variables: {'ids': idList});
-      final QueryResult result = await _graphQLClient.query(_options);
+      final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       if (deleteThisPartOfCache) {
-        _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+        //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
       }
 
       var newResponse = List.generate(result.data!['nodes']?.length ?? 0,
@@ -228,10 +230,10 @@ class ShopifyStore with ShopifyError {
     final WatchQueryOptions _options = WatchQueryOptions(
       document: gql(getShopQuery),
     );
-    final QueryResult result = await _graphQLClient.query(_options);
+    final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return Shop.fromJson(result.data!);
   }
@@ -246,10 +248,10 @@ class ShopifyStore with ShopifyError {
               ? gql(getCollectionByHandleWithProductsQuery(productsCount))
               : gql(getCollectionByHandleQuery),
           variables: {'handle': handle});
-      final QueryResult result = await _graphQLClient.query(_options);
+      final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       if (deleteThisPartOfCache) {
-        _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+        //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
       }
       collection = Collection.fromCollectionHandleJson(
           (result.data ?? const {})['collectionByHandle'] ?? {});
@@ -276,10 +278,10 @@ class ShopifyStore with ShopifyError {
             'reverse': reverse,
             'sortKey': sortKeyProductCollection.parseToString()
           });
-      final QueryResult result = await _graphQLClient.query(_options);
+      final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       if (deleteThisPartOfCache) {
-        _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+        //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
       }
       return Collection.fromCollectionHandleJson(
           (result.data ?? const {})['collectionByHandle'] ?? {});
@@ -308,7 +310,7 @@ class ShopifyStore with ShopifyError {
             'sortKey': sortKeyCollection.parseToString(),
             'reverse': reverse
           });
-      final QueryResult result = await _graphQLClient.query(_options);
+      final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       tempCollection = (Collections.fromJson(
           (result.data ?? const {})['collections'] ?? {}));
@@ -316,7 +318,7 @@ class ShopifyStore with ShopifyError {
       cursor = collectionList.isNotEmpty ? collectionList.last.cursor : null;
     } while ((tempCollection.hasNextPage == true));
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return collectionList;
   }
@@ -346,13 +348,13 @@ class ShopifyStore with ShopifyError {
           'x': x,
           'n': n
         });
-    final QueryResult result = await _graphQLClient.query(_options);
+    final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     collectionList =
         (Collections.fromJson((result.data ?? const {})['collections'] ?? {}))
             .collectionList;
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return collectionList;
   }
@@ -376,7 +378,7 @@ class ShopifyStore with ShopifyError {
             'cursor': cursor,
             'sortKey': sortKeyProductCollection.parseToString()
           });
-      final QueryResult result = await _graphQLClient.query(_options);
+      final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       productList
           .addAll(Collection.fromJson(result.data!).products!.productList);
@@ -384,7 +386,7 @@ class ShopifyStore with ShopifyError {
       cursor = productList.isNotEmpty ? productList.last.cursor : null;
     } while (collection.products?.hasNextPage == true);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return productList;
   }
@@ -408,10 +410,10 @@ class ShopifyStore with ShopifyError {
           'sortKey': sortKey.parseToString(),
           'reverse': reverse,
         });
-    final QueryResult result = await _graphQLClient.query(_options);
+    final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return (Collection.fromJson(result.data!)).products;
   }
@@ -436,7 +438,7 @@ class ShopifyStore with ShopifyError {
             'query': query,
             'reverse': reverse
           });
-      final QueryResult result = await _graphQLClient.query(_options);
+      final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       productList.addAll(
           (Products.fromJson((result.data ?? const {})['products']))
@@ -445,7 +447,7 @@ class ShopifyStore with ShopifyError {
       cursor = productList.isNotEmpty ? productList.last.cursor : null;
     } while (products.hasNextPage == true);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return productList;
   }
@@ -471,7 +473,7 @@ class ShopifyStore with ShopifyError {
         await ShopifyConfig.graphQLClient!.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
 
     return Products.fromJson((result.data ?? const {})['products']);
@@ -490,7 +492,7 @@ class ShopifyStore with ShopifyError {
         await ShopifyConfig.graphQLClient!.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return (result.data!['productByHandle']['metafields']['edges']
             as List<Object>)

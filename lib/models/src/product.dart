@@ -22,13 +22,13 @@ class Products {
 }
 
 class Product {
-  final List<AssociatedCollections> collectionList;
+  final List<AssociatedCollections>? collectionList;
   final String? title;
   final String? id;
   final bool? availableForSale;
   final String? createdAt;
   final String? description;
-  final List<ProductVariant> productVariants;
+  final List<ProductVariant>? productVariants;
   final String? descriptionHtml;
   final String? handle;
   final String? onlineStoreUrl;
@@ -37,21 +37,21 @@ class Product {
   final List<String>? tags;
   final String? updatedAt;
   final String? cursor;
-  final List<ShopifyImage> images;
-  final List<Option> options;
+  final List<ShopifyImage>? images;
+  final List<Option>? options;
   final String? vendor;
-  final List<Metafield> metafields;
+  final List<Metafield>? metafields;
   final double? rating;
   final int? reviewCount;
 
   const Product(
-      {required this.collectionList,
+      {this.collectionList,
       this.title,
       this.id,
       this.availableForSale,
       this.createdAt,
       this.description,
-      required this.productVariants,
+      this.productVariants,
       this.descriptionHtml,
       this.handle,
       this.onlineStoreUrl,
@@ -60,10 +60,10 @@ class Product {
       this.tags,
       this.updatedAt,
       this.cursor,
-      required this.images,
-      required this.options,
+      this.images,
+      this.options,
       this.vendor,
-      required this.metafields,
+      this.metafields,
       this.rating,
       this.reviewCount});
 
@@ -135,15 +135,12 @@ class Product {
   }
 
   static List<ProductVariant> _getProductVariants(Map<String, dynamic> json) {
-    List<ProductVariant> productVariants = [];
-    ((json['variants'] ?? const {})['edges'] ?? const [])?.forEach((v) {
-      if (v?.data != null)
-        productVariants.add(ProductVariant.fromJson(v?.data ?? const {}));
-    });
-    return productVariants;
+    return ((json['variants'] ?? const {})['edges'] as List<dynamic>)
+            .map((v) => ProductVariant.fromJson(v ?? const {}))
+            .toList() ;
   }
 
-  ProductVariant getProductVariantBySelectedOption(
+  ProductVariant? getProductVariantBySelectedOption(
       List<SelectedOption> filters) {
     Function unOrdDeepEq = const DeepCollectionEquality.unordered().equals;
 
@@ -153,11 +150,11 @@ class Product {
     });
 
     final productVariant =
-        this.productVariants.firstWhere((ProductVariant productVariant) {
+        this.productVariants?.firstWhere((ProductVariant productVariant) {
       bool found = false;
       List<Map<String?, String?>> selectedOptionList = [];
-
-      productVariant.selectedOptions.forEach((SelectedOption selectedOption) {
+  
+      productVariant.selectedOptions?.forEach((SelectedOption selectedOption) {
         selectedOptionList.add({selectedOption.name: selectedOption.value});
       });
 
@@ -263,10 +260,10 @@ class ShopifyImage {
 }
 
 class ProductVariant {
-  final PriceV2 price;
+  final PriceV2? price;
   final String? title;
-  final ShopifyImage image;
-  final PriceV2 compareAtPrice;
+  final ShopifyImage? image;
+  final PriceV2? compareAtPrice;
   final double? weight;
   final String? weightUnit;
   final bool? availableForSale;
@@ -274,13 +271,13 @@ class ProductVariant {
   final bool? requiresShipping;
   final String? id;
   final int? quantityAvailable;
-  final List<SelectedOption> selectedOptions;
+  final List<SelectedOption>? selectedOptions;
 
   const ProductVariant(
-      {required this.price,
+      {this.price,
       this.title,
-      required this.image,
-      required this.compareAtPrice,
+      this.image,
+      this.compareAtPrice,
       this.weight,
       this.weightUnit,
       this.availableForSale,
@@ -288,7 +285,7 @@ class ProductVariant {
       this.requiresShipping,
       this.id,
       this.quantityAvailable,
-      required this.selectedOptions});
+      this.selectedOptions});
 
   static ProductVariant fromJson(Map<String, dynamic> json) {
     return ProductVariant(
@@ -313,7 +310,7 @@ class ProductVariant {
   Map toJson() => {
         'id': id,
         'title': title,
-        'image': image.toJson()
+        'image': image?.toJson()
         // 'weight': weight,
       };
 

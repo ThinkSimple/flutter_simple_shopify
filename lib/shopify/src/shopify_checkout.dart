@@ -53,7 +53,7 @@ class ShopifyCheckout with ShopifyError {
     final QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     // return ((result?.data['checkoutCreate'] ?? const {})['checkout'] ??
     //     const {});
@@ -81,7 +81,7 @@ class ShopifyCheckout with ShopifyError {
       errorKey: 'userErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
   }
 
@@ -97,7 +97,7 @@ class ShopifyCheckout with ShopifyError {
     final QueryResult _queryResult = (await _graphQLClient.query(_options));
     checkForError(_queryResult);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return Checkout.fromJson(_queryResult.data!['node']);
   }
@@ -138,7 +138,7 @@ class ShopifyCheckout with ShopifyError {
       errorKey: 'checkoutUserErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return Checkout.fromJson(
         result.data!['checkoutShippingAddressUpdateV2']?.data['checkout']);
@@ -155,7 +155,7 @@ class ShopifyCheckout with ShopifyError {
     final QueryResult _queryResult = (await _graphQLClient.query(_options));
     checkForError(_queryResult);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return Checkout.fromJson(_queryResult.data!['node']);
   }
@@ -177,7 +177,7 @@ class ShopifyCheckout with ShopifyError {
       errorKey: 'checkoutUserErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
   }
 
@@ -194,7 +194,7 @@ class ShopifyCheckout with ShopifyError {
       errorKey: 'checkoutUserErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
   }
 
@@ -213,7 +213,7 @@ class ShopifyCheckout with ShopifyError {
       errorKey: 'checkoutUserErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
 
     return Checkout.fromJson(
@@ -233,7 +233,7 @@ class ShopifyCheckout with ShopifyError {
       errorKey: 'checkoutUserErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
 
     return Checkout.fromJson(
@@ -254,7 +254,7 @@ class ShopifyCheckout with ShopifyError {
       errorKey: 'checkoutUserErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
   }
 
@@ -275,7 +275,7 @@ class ShopifyCheckout with ShopifyError {
       errorKey: 'checkoutUserErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
   }
 
@@ -294,7 +294,7 @@ class ShopifyCheckout with ShopifyError {
     );
 
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
   }
 
@@ -314,7 +314,7 @@ class ShopifyCheckout with ShopifyError {
       errorKey: 'checkoutUserErrors',
     );
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return Checkout.fromJson(
         result.data!['checkoutShippingLineUpdate']?.data['checkout']);
@@ -329,7 +329,7 @@ class ShopifyCheckout with ShopifyError {
     checkForError(result,
         key: 'checkoutEmailUpdateV2', errorKey: 'checkoutUserErrors');
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return Checkout.fromJson(
         result.data!['checkoutEmailUpdateV2']?.data['checkout']);
@@ -359,7 +359,7 @@ class ShopifyCheckout with ShopifyError {
         (((result.data ?? const {})['customer'] ?? const {})['orders'] ??
             const {}));
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return orders.orderList;
   }
@@ -386,7 +386,7 @@ class ShopifyCheckout with ShopifyError {
         (((result.data ?? const {})['customer'] ?? const {})['orders'] ??
             const {}));
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return orders;
   }
@@ -413,11 +413,11 @@ class ShopifyCheckout with ShopifyError {
         (((result.data ?? const {})['customer'] ?? const {})['orders'] ??
             const {}));
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
+      //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     List<Product?> pList = [];
     orders.orderList.forEach((order) {
-      order.lineItems!.lineItemOrderList!.forEach((lineItem) {
+      order.lineItems?.lineItemOrderList?.forEach((lineItem) {
         if (lineItem.variant.product != null) {
           Product? hasProduct = pList.firstWhere(
               (product) => product!.id == lineItem.variant.product!.id,
