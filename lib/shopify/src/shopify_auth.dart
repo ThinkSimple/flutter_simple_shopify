@@ -116,11 +116,14 @@ class ShopifyAuth with ShopifyError {
     final QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(result,
         key: 'customerAccessTokenCreate', errorKey: 'customerUserErrors');
+        print('object');
     if (deleteThisPartOfCache) {
       //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
+    var a = (result.data ?? const {})['customerAccessTokenCreate'] ?? {};
+    print('object');
     return CustomerAccessToken.fromJson(
-        result.data!['customerAccessTokenCreate']);
+        (result.data ?? const {})['customerAccessTokenCreate'] ?? {});
   }
 
   /// Signs out the current user and clears it from the disk cache.

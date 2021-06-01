@@ -7,7 +7,7 @@ import 'checkout.dart';
 
 class Orders {
   final List<Order> orderList;
-  final bool hasNextPage;
+  final bool? hasNextPage;
 
   Orders({required this.orderList, required this.hasNextPage});
 

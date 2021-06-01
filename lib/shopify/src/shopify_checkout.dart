@@ -365,11 +365,11 @@ class ShopifyCheckout with ShopifyError {
   }
 
   Future<Orders> getXOrdersAfterCursor(
-      String customerAccessToken, int limit, String startCursor,
+      String customerAccessToken, int limit, String? startCursor,
       {SortKeyOrder sortKey = SortKeyOrder.ID,
       bool reverse = true,
       bool deleteThisPartOfCache = false}) async {
-    String cursor = startCursor;
+    String? cursor = startCursor;
     final QueryOptions _options = WatchQueryOptions(
         document: gql(getXOrdersAfterCursorQuery),
         variables: {

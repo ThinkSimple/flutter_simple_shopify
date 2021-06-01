@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 
 class Products {
   final List<Product> productList;
-  final bool hasNextPage;
+  final bool? hasNextPage;
 
   Products({required this.productList, required this.hasNextPage});
 

@@ -2,7 +2,7 @@ import 'package:flutter_simple_shopify/models/src/product.dart';
 
 class Collections {
   final List<Collection> collectionList;
-  final bool hasNextPage;
+  final bool? hasNextPage;
 
   Collections({required this.collectionList, required this.hasNextPage});
 
