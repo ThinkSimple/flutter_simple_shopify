@@ -24,28 +24,6 @@ query(\$id: ID!) {
           financialStatus
           fulfillmentStatus
           statusUrl
-          lineItems(first: 250) {
-            edges {
-              node {
-                title
-                variant {
-                  id
-                  title
-                  availableForSale
-                  priceV2 {
-                    amount
-                    currencyCode
-                  }
-                  image {
-                    altText
-                    id
-                    originalSrc
-                    transformedSrc(maxWidth: 200, crop: CENTER)
-                  }
-                }
-              }
-            }
-          }
           shippingAddress {
             address1
             address2
@@ -113,7 +91,7 @@ query(\$id: ID!) {
         provinceCode
         zip
       }
-      lineItems(first: 10) {
+      lineItems(first: 250) {
         edges {
           node {
             id
