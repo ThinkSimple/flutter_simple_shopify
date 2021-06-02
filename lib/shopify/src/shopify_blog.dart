@@ -86,11 +86,11 @@ class ShopifyBlog with ShopifyError {
         .articleList;
   }
 
-  Future<Articles> getXArticlesAfterCursor(int limit, String startCursor,
+  Future<Articles> getXArticlesAfterCursor(int limit, String? startCursor,
       {bool deleteThisPartOfCache = false,
       bool reverse = false,
       SortKeyArticle sortKey = SortKeyArticle.TITLE}) async {
-    String cursor = startCursor;
+    String? cursor = startCursor;
     final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getXArticlesAfterCursorQuery),
         variables: {
