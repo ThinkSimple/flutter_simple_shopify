@@ -26,7 +26,7 @@ class ShopifyAuth with ShopifyError {
 
   static Map<String?, String?> _currentCustomerAccessToken = {};
 
-  static Future<String?> get currentCustomerAccessToken async {
+  Future<String?> get currentCustomerAccessToken async {
     if (_currentCustomerAccessToken.containsKey(ShopifyConfig.storeUrl))
       return _currentCustomerAccessToken[ShopifyConfig.storeUrl];
     final _prefs = await SharedPreferences.getInstance();
