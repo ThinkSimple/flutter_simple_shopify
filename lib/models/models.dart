@@ -6,3 +6,4 @@ export 'src/shopify_user/shopify_user.dart';
 export 'src/article/article.dart';
 export 'src/blog/blog.dart';
 export 'src/shop/shop.dart';
+export 'src/checkout/line_item/line_item.dart';
