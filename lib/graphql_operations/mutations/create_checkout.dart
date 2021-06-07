@@ -4,7 +4,6 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
     checkout {
       id
       webUrl
-      shopify_payments_account_id
       lineItems(first: 5) {
          edges {
            node {
