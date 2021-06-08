@@ -77,7 +77,7 @@ class ShopifyCustomer with ShopifyError {
       'acceptsMarketing': acceptsMarketing,
       'customerAccessToken': customerAccessToken
     }).forEach((k, v) => v != {} ? variableMap[k] = v : {});
-    print(variableMap);
+   
     final MutationOptions _options = MutationOptions(
         document: gql(createValidMutationString(variableMap)),
         variables: variableMap);
