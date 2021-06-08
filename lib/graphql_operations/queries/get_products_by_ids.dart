@@ -34,7 +34,7 @@ query($ids: [ID!]!) {
             altText
             id
             originalSrc
-            transformedSrc(maxWidth: 200, crop: CENTER)
+            transformedSrc(maxWidth: 400, crop: CENTER)
           }
         }
       }
@@ -63,7 +63,7 @@ query($ids: [ID!]!) {
               altText
               id
               originalSrc
-              transformedSrc(maxWidth: 200, crop: CENTER)
+              transformedSrc(maxWidth: 400, crop: CENTER)
             }
           }
         }

@@ -15,7 +15,7 @@ query(
       altText
       id
       originalSrc
-      transformedSrc(maxWidth: 200, crop: CENTER)
+      transformedSrc(maxWidth: 400, crop: CENTER)
     }
     products(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
       pageInfo {
@@ -48,7 +48,7 @@ query(
                 altText
                 id
                 originalSrc
-                transformedSrc(maxWidth: 200, crop: CENTER)
+                transformedSrc(maxWidth: 400, crop: CENTER)
               }
             }
           }

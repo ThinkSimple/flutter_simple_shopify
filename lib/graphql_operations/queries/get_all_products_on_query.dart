@@ -27,7 +27,7 @@ query( $cursor: String, $sortKey : ProductSortKeys, $query: String, $reverse: Bo
               altText
               id
               originalSrc
-              transformedSrc(maxWidth: 200, crop: CENTER)
+              transformedSrc(maxWidth: 400, crop: CENTER)
             }
           }
         }
@@ -39,7 +39,7 @@ query( $cursor: String, $sortKey : ProductSortKeys, $query: String, $reverse: Bo
                 altText
                 id
                 originalSrc
-                transformedSrc(maxWidth: 200, crop: CENTER)
+                transformedSrc(maxWidth: 400, crop: CENTER)
               }
               priceV2 {
                 amount

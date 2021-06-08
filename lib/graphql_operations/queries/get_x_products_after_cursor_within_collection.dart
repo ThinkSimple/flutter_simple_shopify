@@ -15,7 +15,7 @@ query(
         altText
         id
         originalSrc
-        transformedSrc(maxWidth: 200, crop: CENTER)
+        transformedSrc(maxWidth: 400, crop: CENTER)
       }
       products(
         first: $limit
@@ -36,7 +36,7 @@ query(
                   altText
                   id
                   originalSrc
-                  transformedSrc(maxWidth: 200, crop: CENTER)
+                  transformedSrc(maxWidth: 400, crop: CENTER)
                 }
               }
             }

@@ -68,7 +68,7 @@ mutation checkoutShippingLineUpdate(
               image {
                 altText
                 originalSrc
-                transformedSrc(maxWidth: 200, crop: CENTER)
+                transformedSrc(maxWidth: 400, crop: CENTER)
                 id
               }
               compareAtPriceV2 {

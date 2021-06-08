@@ -13,7 +13,7 @@ query getFeaturedCollectionQuery($query: String!){
           altText
           id
           originalSrc
-          transformedSrc(maxWidth: 200, crop: CENTER)
+          transformedSrc(maxWidth: 400, crop: CENTER)
         }
         products(first: 20) {
           edges {
@@ -26,7 +26,7 @@ query getFeaturedCollectionQuery($query: String!){
                       altText
                       id
                       originalSrc
-                      transformedSrc(maxWidth: 200, crop: CENTER)
+                      transformedSrc(maxWidth: 400, crop: CENTER)
                     }
                     priceV2 {
                       amount
@@ -69,7 +69,7 @@ query getFeaturedCollectionQuery($query: String!){
                     altText
                     id
                     originalSrc
-                    transformedSrc(maxWidth: 200, crop: CENTER)
+                    transformedSrc(maxWidth: 400, crop: CENTER)
                   }
                 }
               }

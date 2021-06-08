@@ -52,7 +52,7 @@ query($handle: String!) {
             altText
             id
             originalSrc
-            transformedSrc(maxWidth: 200, crop: CENTER)
+            transformedSrc(maxWidth: 400, crop: CENTER)
           }
         }
       }
@@ -63,7 +63,7 @@ query($handle: String!) {
           altText
           id
           originalSrc
-          transformedSrc(maxWidth: 200, crop: CENTER)
+          transformedSrc(maxWidth: 400, crop: CENTER)
         }
       }
     }

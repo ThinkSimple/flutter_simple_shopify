@@ -29,7 +29,7 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
               altText
               id
               originalSrc
-              transformedSrc(maxWidth: 200, crop: CENTER)
+              transformedSrc(maxWidth: 400, crop: CENTER)
             }
           }
         }
@@ -45,7 +45,7 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
                 altText
                 id
                 originalSrc
-                transformedSrc(maxWidth: 200, crop: CENTER)
+                transformedSrc(maxWidth: 400, crop: CENTER)
               }
               priceV2 {
                 amount

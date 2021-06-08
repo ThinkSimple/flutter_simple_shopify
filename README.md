@@ -67,6 +67,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
      Future<List<Product>> getAllProductsOnQuery(String cursor, SortKeyProduct sortKey, String query)
      Future<Products> getXProductsOnQueryAfterCursor(String cursor, int limit, SortKeyProduct sortKey, String query)
      Future<List<Metafield>> getMetafieldsFromProduct(String productHandle, {String namespace})
+     Future<ShopifyPage> getPageByHandle(String handle)
 ```
 ```dart
   ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;

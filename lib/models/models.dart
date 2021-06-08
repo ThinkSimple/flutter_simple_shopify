@@ -6,3 +6,4 @@ export 'src/shopify_user.dart';
 export 'src/article.dart';
 export 'src/blog.dart';
 export 'src/shop.dart';
+export 'src/page.dart';

@@ -120,8 +120,8 @@ class ShopifyAuth with ShopifyError {
     if (deleteThisPartOfCache) {
       //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
-    var a = (result.data ?? const {})['customerAccessTokenCreate'] ?? {};
-    print('object');
+    // var a = (result.data ?? const {})['customerAccessTokenCreate'] ?? {};
+    // print('object');
     return CustomerAccessToken.fromJson(
         (result.data ?? const {})['customerAccessTokenCreate'] ?? {});
   }

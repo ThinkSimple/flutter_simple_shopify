@@ -26,7 +26,7 @@ query($cursor: String, $x: Int, $reverse: Boolean, $sortKey: ArticleSortKeys) {
           altText
           id
           originalSrc
-          transformedSrc(maxWidth: 200, crop: CENTER)
+          transformedSrc(maxWidth: 400, crop: CENTER)
         }
       }
     }
