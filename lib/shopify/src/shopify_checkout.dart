@@ -281,8 +281,6 @@ class ShopifyCheckout with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
 
-    print(result.data!['checkoutCreate']);
-
     return CheckoutResponse.fromJson(
         ((result.data!['checkoutCreate'] ?? const {})['checkout'] ?? const {}));
   }
