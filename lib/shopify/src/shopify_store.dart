@@ -513,7 +513,7 @@ class ShopifyStore with ShopifyError {
     final QueryResult result =
         await ShopifyConfig.graphQLClient!.query(_options);
     checkForError(result);
-    var response = (result.data!['pageByHandle'])?.data;
+    var response = (result.data!['pageByHandle']);
     // var newResponse = {'node': response};
     if (deleteThisPartOfCache) {
       // _graphQLClient.cache.write(_options.toKey(), null);

@@ -141,7 +141,7 @@ class ShopifyCheckout with ShopifyError {
       //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return Checkout.fromJson(
-        result.data!['checkoutShippingAddressUpdateV2']?.data['checkout']);
+        result.data!['checkoutShippingAddressUpdateV2']['checkout'] ?? {});
   }
 
   Future<Checkout> getCheckoutInfoWithAvailableShippingRatesQuery(
@@ -217,7 +217,7 @@ class ShopifyCheckout with ShopifyError {
     }
 
     return Checkout.fromJson(
-        result.data!['checkoutDiscountCodeApplyV2']?.data['checkout']);
+        result.data!['checkoutDiscountCodeApplyV2']['checkout'] ?? {});
   }
 
   /// Removes the applied discount from the [Checkout] that [checkoutId] belongs to.
@@ -237,7 +237,7 @@ class ShopifyCheckout with ShopifyError {
     }
 
     return Checkout.fromJson(
-        result.data!['checkoutDiscountCodeRemove']?.data['checkout']);
+        result.data!['checkoutDiscountCodeRemove']['checkout'] ?? {});
   }
 
   /// Appends the [giftCardCodes] to the [Checkout] that [checkoutId] belongs to.
@@ -317,7 +317,7 @@ class ShopifyCheckout with ShopifyError {
       //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
     return Checkout.fromJson(
-        result.data!['checkoutShippingLineUpdate']?.data['checkout']);
+        result.data!['checkoutShippingLineUpdate']['checkout'] ?? {});
   }
 
   Future<Checkout> emailUpdate(String checkoutId, String email,
@@ -331,8 +331,8 @@ class ShopifyCheckout with ShopifyError {
     if (deleteThisPartOfCache) {
       //_graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
-    return Checkout.fromJson(
-        result.data!['checkoutEmailUpdateV2']?.data['checkout']);
+
+    return Checkout.fromJson(result.data!['checkoutEmailUpdateV2']['checkout'] ?? {});
   }
 
   // bool _requiresShipping(QueryResult result) {

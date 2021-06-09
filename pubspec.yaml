@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  graphql: ^5.0.0-nullsafety.5
+  graphql: ^5.0.0
   shared_preferences: ^2.0.6
   enum_to_string: ^2.0.1
   intl: ^0.17.0

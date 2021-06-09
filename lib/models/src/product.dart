@@ -135,7 +135,7 @@ class Product {
   }
 
   static List<ProductVariant> _getProductVariants(Map<String, dynamic> json) {
-    return ((json['variants'] ?? const {})['edges'] as List<dynamic>)
+    return (((json['variants'] ?? const {})['edges'] ?? []) as List<dynamic>)
             .map((v) => ProductVariant.fromJson(v ?? const {}))
             .toList() ;
   }

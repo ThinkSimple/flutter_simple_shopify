@@ -98,7 +98,7 @@ class Order {
         email: (json ?? const {})['email'],
         currencyCode: (json ?? const {})['currencyCode'],
         customerUrl: (json ?? const {})['customerUrl'],
-        lineItems: LineItemsOrder.fromJson((json ?? const {})['lineItems']),
+        lineItems: LineItemsOrder.fromJson((json ?? const {})['lineItems'] ?? {}),
         name: (json ?? const {})['name'],
         orderNumber: (json ?? const {})['orderNumber'],
         phone: (json ?? const {})['phone'],
