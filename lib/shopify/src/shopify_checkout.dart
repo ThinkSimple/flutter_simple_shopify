@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter_simple_shopify/enums/src/payment_token_type.dart';
 import 'package:flutter_simple_shopify/enums/src/sort_key_order.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_complete_free.dart';
@@ -16,8 +14,6 @@ import 'package:flutter_simple_shopify/models/src/checkout/line_item/line_item.d
 import 'package:flutter_simple_shopify/models/src/checkout/responses/checkout_response.dart';
 import 'package:flutter_simple_shopify/models/src/order/order.dart';
 import 'package:flutter_simple_shopify/models/src/order/orders/orders.dart';
-import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.dart';
-import 'package:flutter_simple_shopify/models/src/shop/payment_settings/payment_settings.dart';
 import 'package:flutter_simple_shopify/models/src/shopify_user/address/address.dart';
 import 'package:graphql/client.dart';
 
