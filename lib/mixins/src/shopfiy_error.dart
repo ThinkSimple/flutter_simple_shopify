@@ -7,7 +7,7 @@ mixin ShopifyError {
     if (queryResult.hasException) throw queryResult.exception!;
     if (key != null && errorKey != null) {
       Map<String, Object?> data = queryResult.data as Map<String, Object?>;
-      Map<String, Object>? content = data[key] as Map<String, Object>?;
+      Map<String, dynamic>? content = data[key] as Map<String, dynamic>?;
       if (content == null) return;
       List? errors = content[errorKey] as List<dynamic>?;
       if (errors != null && errors.isNotEmpty) {
