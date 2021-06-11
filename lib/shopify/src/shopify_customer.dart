@@ -3,6 +3,7 @@ import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_add
 import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_address_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/customer_update.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
+import 'package:flutter_simple_shopify/models/src/shopify_user/address/address.dart';
 import 'package:graphql/client.dart';
 
 import '../../shopify_config.dart';
@@ -93,7 +94,7 @@ class ShopifyCustomer with ShopifyError {
   }
 
   /// Creates a address for the customer to which [customerAccessToken] belongs to.
-  Future<void> customerAddressCreate(
+  Future<Address> customerAddressCreate(
       {String? address1,
       String? address2,
       String? company,
@@ -130,6 +131,10 @@ class ShopifyCustomer with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
+
+    print(result.data);
+
+    return Address.fromJson((result.data!['customerAddress'] ?? {}));
   }
 
   /// Deletes the address associated with the [addressId] from the customer to which [customerAccessToken] belongs to.
