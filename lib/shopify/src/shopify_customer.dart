@@ -17,19 +17,19 @@ class ShopifyCustomer with ShopifyError {
 
   /// Updated the Address of a Customer, please input only the fields that you wish to update.
   Future<void> customerAddressUpdate(
-      String address1,
-      String address2,
-      String company,
-      String city,
-      String country,
-      String firstName,
-      String lastName,
-      String phone,
-      String province,
-      String zip,
-      String customerAccessToken,
-      id,
-      {bool deleteThisPartOfCache = false}) async {
+      {String? address1,
+      String? address2,
+      String? company,
+      String? city,
+      String? country,
+      String? firstName,
+      String? lastName,
+      String? phone,
+      String? province,
+      String? zip,
+      required String customerAccessToken,
+      required String id,
+      bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options = MutationOptions(
         document: gql(customerAddressUpdateMutation),
         variables: {
@@ -77,7 +77,7 @@ class ShopifyCustomer with ShopifyError {
       'acceptsMarketing': acceptsMarketing,
       'customerAccessToken': customerAccessToken
     }).forEach((k, v) => v != {} ? variableMap[k] = v : {});
-   
+
     final MutationOptions _options = MutationOptions(
         document: gql(createValidMutationString(variableMap)),
         variables: variableMap);
