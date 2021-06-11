@@ -44,7 +44,7 @@ class ShopifyConfig {
         },
       ),
       cache: GraphQLCache(
-        store: _cacheStore,
+        // store: _cacheStore,
       ),
     );
   }
