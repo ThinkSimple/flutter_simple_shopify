@@ -134,7 +134,8 @@ class ShopifyCustomer with ShopifyError {
 
     print(result.data);
 
-    return Address.fromJson((result.data!['customerAddress'] ?? {}));
+    return Address.fromJson(
+        (result.data!['customerAddressCreate']['customerAddress'] ?? {}));
   }
 
   /// Deletes the address associated with the [addressId] from the customer to which [customerAccessToken] belongs to.
