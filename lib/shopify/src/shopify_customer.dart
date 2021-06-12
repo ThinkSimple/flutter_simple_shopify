@@ -132,8 +132,6 @@ class ShopifyCustomer with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
 
-    print(result.data);
-
     return Address.fromJson(
         (result.data!['customerAddressCreate']['customerAddress'] ?? {}));
   }
