@@ -22,9 +22,7 @@ _$_LastIncompleteCheckout _$_$_LastIncompleteCheckoutFromJson(
         ? null
         : PriceV2.fromJson(
             json['lineItemsSubtotalPrice'] as Map<String, dynamic>),
-    lineItems: json['lineItems'] == null
-        ? null
-        : LineItems.fromJson(json['lineItems'] as Map<String, dynamic>),
+    lineItems: JsonHelper.lineItems(json['lineItems']),
   );
 }
 
