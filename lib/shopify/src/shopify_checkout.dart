@@ -60,6 +60,7 @@ class ShopifyCheckout with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
+    print(_queryResult.data!['node']);
     return Checkout.fromJson(_queryResult.data!['node']);
   }
 
