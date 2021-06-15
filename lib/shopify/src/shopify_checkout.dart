@@ -5,6 +5,7 @@ import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_lin
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_line_item_remove.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_line_item_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_shipping_address_update.dart';
+import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_shipping_line_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/complete_checkout_token_v3.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/create_checkout.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_requires_shipping.dart';
@@ -413,6 +414,27 @@ class ShopifyCheckout with ShopifyError {
     checkForError(
       result,
       key: 'checkoutGiftCardRemoveV2',
+      errorKey: 'checkoutUserErrors',
+    );
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
+  }
+
+  /// Removes the Gift card that [appliedGiftCardId] belongs to, from the [Checkout] that [checkoutId] belongs to.
+  Future<void> checkoutShippingLineUpdate(
+      String checkoutId, String shippingRateHandle,
+      {bool deleteThisPartOfCache = false}) async {
+    final MutationOptions _options = MutationOptions(
+        document: gql(checkoutShippingLineUpdateMutation),
+        variables: {
+          'shippingRateHandle': shippingRateHandle,
+          'checkoutId': checkoutId
+        });
+    final QueryResult result = await _graphQLClient!.mutate(_options);
+    checkForError(
+      result,
+      key: 'checkoutShippingLineUpdate',
       errorKey: 'checkoutUserErrors',
     );
     if (deleteThisPartOfCache) {
