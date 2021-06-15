@@ -40,7 +40,7 @@ class ShopifyCheckout with ShopifyError {
   ///
   /// Returns the Checkout object of the checkout with the [checkoutId].
   Future<Checkout> getCheckoutInfoQuery(String checkoutId,
-      {bool deleteThisPartOfCache = false}) async {
+      {bool getShippingInfo = true, bool deleteThisPartOfCache = false}) async {
     final WatchQueryOptions _optionsRequireShipping = WatchQueryOptions(
         document: gql(getCheckoutInfoAboutShipping),
         variables: {
@@ -49,7 +49,7 @@ class ShopifyCheckout with ShopifyError {
     QueryResult result = await _graphQLClient!.query(_optionsRequireShipping);
 
     final WatchQueryOptions _options = WatchQueryOptions(
-        document: gql(_requiresShipping(result) == true
+        document: gql(_requiresShipping(result) == true && getShippingInfo
             ? getCheckoutInfo
             : getCheckoutInfoWithoutShipping),
         variables: {
