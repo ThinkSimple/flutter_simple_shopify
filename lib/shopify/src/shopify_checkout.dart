@@ -262,8 +262,7 @@ class ShopifyCheckout with ShopifyError {
   }
 
   Future<CheckoutResponse> createCheckout(List<LineItem> lineItems,
-      {MailingAddress? mailingAddress,
-      bool deleteThisPartOfCache = false}) async {
+      {Address? mailingAddress, bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options =
         MutationOptions(document: gql(createCheckoutMutation), variables: {
       'input': mailingAddress == null
