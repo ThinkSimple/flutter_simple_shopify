@@ -9,10 +9,10 @@ part of 'checkout.dart';
 _$_Checkout _$_$_CheckoutFromJson(Map<String, dynamic> json) {
   return _$_Checkout(
     id: json['id'] as String,
-    availableShippingrates: json['availableShippingrates'] == null
+    availableShippingRates: json['availableShippingRates'] == null
         ? null
         : AvailableShippingRates.fromJson(
-            json['availableShippingrates'] as Map<String, dynamic>),
+            json['availableShippingRates'] as Map<String, dynamic>),
     createdAt: json['createdAt'] as String,
     currencyCode: json['currencyCode'] as String,
     totalTaxV2: PriceV2.fromJson(json['totalTaxV2'] as Map<String, dynamic>),
@@ -51,7 +51,7 @@ _$_Checkout _$_$_CheckoutFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_CheckoutToJson(_$_Checkout instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'availableShippingrates': instance.availableShippingrates,
+      'availableShippingRates': instance.availableShippingRates,
       'createdAt': instance.createdAt,
       'currencyCode': instance.currencyCode,
       'totalTaxV2': instance.totalTaxV2,
