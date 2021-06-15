@@ -18,7 +18,7 @@ class Checkout with _$Checkout {
 
   factory Checkout({
     required String id,
-    required AvailableShippingRates? availableShippingrates,
+    required AvailableShippingRates? availableShippingRates,
     required String createdAt,
     required String currencyCode,
     required PriceV2 totalTaxV2,
