@@ -11,6 +11,7 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_i
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_without_shipping_rates.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/checkout/line_item/line_item.dart';
+import 'package:flutter_simple_shopify/models/src/checkout/mailing_address/mailing_address.dart';
 import 'package:flutter_simple_shopify/models/src/checkout/responses/checkout_response.dart';
 import 'package:flutter_simple_shopify/models/src/order/order.dart';
 import 'package:flutter_simple_shopify/models/src/order/orders/orders.dart';
@@ -261,18 +262,41 @@ class ShopifyCheckout with ShopifyError {
   }
 
   Future<CheckoutResponse> createCheckout(List<LineItem> lineItems,
-      {bool deleteThisPartOfCache = false}) async {
+      {MailingAddress? mailingAddress,
+      bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options =
         MutationOptions(document: gql(createCheckoutMutation), variables: {
-      'input': {
-        'lineItems': [
-          for (var lineItem in lineItems)
-            {
-              'variantId': lineItem.variantId,
-              'quantity': lineItem.quantity,
+      'input': mailingAddress == null
+          ? {
+              'lineItems': [
+                for (var lineItem in lineItems)
+                  {
+                    'variantId': lineItem.variantId,
+                    'quantity': lineItem.quantity,
+                  }
+              ],
             }
-        ]
-      },
+          : {
+              'lineItems': [
+                for (var lineItem in lineItems)
+                  {
+                    'variantId': lineItem.variantId,
+                    'quantity': lineItem.quantity,
+                  }
+              ],
+              'shippingAddress': {
+                'address1': mailingAddress.address1,
+                'address2': mailingAddress.address2,
+                'city': mailingAddress.city,
+                'company': mailingAddress.company,
+                'country': mailingAddress.country,
+                'firstName': mailingAddress.firstName,
+                'lastName': mailingAddress.lastName,
+                'phone': mailingAddress.phone,
+                'province': mailingAddress.province,
+                'zip': mailingAddress.zip
+              }
+            }
     });
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
