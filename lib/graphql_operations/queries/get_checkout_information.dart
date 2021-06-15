@@ -24,6 +24,17 @@ query($id: ID!){
         }
         title
       }
+      availableShippingRates {
+        ready
+        shippingRates {
+          handle
+          title
+          priceV2 {
+            amount
+            currencyCode
+          }
+        }
+      }
       shippingAddress {
         address1
         address2
@@ -103,14 +114,6 @@ query($id: ID!){
 }
 ''';
 
-/* availableShippingRates {
-        ready
-        shippingRates {
-          handle
-          title
-          priceV2 {
-            amount
-            currencyCode
-       }}}
+/* 
 
  */
