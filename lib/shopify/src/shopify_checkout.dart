@@ -406,7 +406,7 @@ class ShopifyCheckout with ShopifyError {
     final MutationOptions _options = MutationOptions(
         document: gql(checkoutGiftCardRemoveMutation),
         variables: {
-          'appliedGiftCards': appliedGiftCardId,
+          'appliedGiftCardId': appliedGiftCardId,
           'checkoutId': checkoutId
         });
     final QueryResult result = await _graphQLClient!.mutate(_options);
