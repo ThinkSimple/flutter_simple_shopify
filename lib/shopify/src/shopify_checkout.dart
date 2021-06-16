@@ -422,7 +422,7 @@ class ShopifyCheckout with ShopifyError {
   }
 
   /// Removes the Gift card that [appliedGiftCardId] belongs to, from the [Checkout] that [checkoutId] belongs to.
-  Future<void> checkoutShippingLineUpdate(
+  Future<CheckoutResponse> checkoutShippingLineUpdate(
       String checkoutId, String shippingRateHandle,
       {bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options = MutationOptions(
@@ -440,6 +440,10 @@ class ShopifyCheckout with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
+
+    return CheckoutResponse.fromJson(
+        ((result.data!['checkoutShippingLineUpdate'] ?? const {})['checkout'] ??
+            const {}));
   }
 
   /// Complete [Checkout] without providing payment information.
