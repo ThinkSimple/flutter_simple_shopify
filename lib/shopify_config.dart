@@ -36,17 +36,24 @@ class ShopifyConfig {
     _storeUrl = storeUrl;
     _storefrontApiVersion = storefrontApiVersion ?? _storefrontApiVersion;
     _cacheStore = cacheStore;
-    _graphQLClient = GraphQLClient(
-      link: HttpLink(
-        'https://$_storeUrl/api/$_storefrontApiVersion/graphql.json',
-        defaultHeaders: {
-          'X-Shopify-Storefront-Access-Token': _storefrontAccessToken!,
-        },
-      ),
-      cache: GraphQLCache(
-        // store: _cacheStore,
-      ),
+    final policies = Policies(
+      fetch: FetchPolicy.noCache,
     );
+    _graphQLClient = GraphQLClient(
+        link: HttpLink(
+          'https://$_storeUrl/api/$_storefrontApiVersion/graphql.json',
+          defaultHeaders: {
+            'X-Shopify-Storefront-Access-Token': _storefrontAccessToken!,
+          },
+        ),
+        cache: GraphQLCache(
+            // store: _cacheStore,
+            ),
+        defaultPolicies: DefaultPolicies(
+          watchQuery: policies,
+          query: policies,
+          mutate: policies,
+        ));
   }
 
   static GraphQLClient? _graphQLClient;
