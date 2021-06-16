@@ -62,7 +62,10 @@ query($id: ID!){
             quantity
             title
             discountAllocations {
-              allocatedAmount
+              allocatedAmount {
+                amount
+                currencyCode
+              }
             }
             variant {
               id
