@@ -12,7 +12,6 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_i
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_without_shipping_rates.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/checkout/line_item/line_item.dart';
-import 'package:flutter_simple_shopify/models/src/checkout/mailing_address/mailing_address.dart';
 import 'package:flutter_simple_shopify/models/src/checkout/responses/checkout_response.dart';
 import 'package:flutter_simple_shopify/models/src/order/order.dart';
 import 'package:flutter_simple_shopify/models/src/order/orders/orders.dart';

@@ -70,6 +70,12 @@ mutation MyMutation($firstName: String, $lastName: String, $email: String!, $pas
               id
               quantity
               title
+              discountAllocations {
+               allocatedAmount {
+                 amount
+                currencyCode
+               }
+              }
               variant {
                 priceV2 {
                   amount

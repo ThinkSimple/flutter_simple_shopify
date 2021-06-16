@@ -10,6 +10,12 @@ mutation checkoutLineItemsRemove($lineItemIds: [ID!]!, $checkoutId: ID!) {
              id
              title
              quantity
+              discountAllocations {
+              allocatedAmount {
+                amount
+                currencyCode
+              }
+            }
              variant {
               id
               priceV2 {

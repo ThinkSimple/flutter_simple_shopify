@@ -69,8 +69,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;
 
     if (checkoutId == null) {
-      CheckoutResponse response = await shopifyCheckout.createCheckout(
-          [LineItem(title: variant.title, id: variant.id, quantity: 1)]);
+      CheckoutResponse response = await shopifyCheckout.createCheckout([
+        LineItem(
+            title: variant.title,
+            id: variant.id,
+            quantity: 1,
+            discountAllocations: [])
+      ]);
       setState(() {
         checkoutId = response.id;
         checkoutUrl = response.webUrl;
