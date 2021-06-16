@@ -133,7 +133,7 @@ class ShopifyCheckout with ShopifyError {
   }
 
   /// Updates the shipping address on given [checkoutId]
-  Future<void> shippingAddressUpdate(
+  Future<CheckoutResponse> shippingAddressUpdate(
     String checkoutId,
     Address address, {
     bool deleteThisPartOfCache = false,
@@ -153,6 +153,11 @@ class ShopifyCheckout with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
+
+    return CheckoutResponse.fromJson(
+        ((result.data!['checkoutShippingAddressUpdateV2'] ??
+                const {})['checkout'] ??
+            const {}));
   }
 
   /// Helper method for transforming a list of variant ids into a List Of Map<String, dynamic> which looks like this:
