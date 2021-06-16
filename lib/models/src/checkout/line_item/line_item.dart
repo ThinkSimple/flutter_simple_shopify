@@ -26,7 +26,8 @@ class LineItem with _$LineItem {
             ? ProductVariantCheckout.fromJson(nodeJson['variant'])
             : null,
         title: nodeJson['title'],
-        discountAllocations: nodeJson['discountAllocations'] != null
+        discountAllocations: nodeJson['discountAllocations'] != null &&
+                nodeJson['discountAllocations']['allocatedAmount'] != null
             ? DiscountAllocations.fromJson(nodeJson['discountAllocations'])
             : null);
   }

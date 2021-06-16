@@ -9,8 +9,9 @@ part of 'discount_allocations.dart';
 _$_DiscountAllocations _$_$_DiscountAllocationsFromJson(
     Map<String, dynamic> json) {
   return _$_DiscountAllocations(
-    allocatedAmount:
-        PriceV2.fromJson(json['allocatedAmount'] as Map<String, dynamic>),
+    allocatedAmount: json['allocatedAmount'] == null
+        ? null
+        : PriceV2.fromJson(json['allocatedAmount'] as Map<String, dynamic>),
   );
 }
 
