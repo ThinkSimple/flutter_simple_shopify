@@ -10,7 +10,7 @@ class AvailableShippingRates with _$AvailableShippingRates {
 
   factory AvailableShippingRates(
       {required bool ready,
-      required List<ShippingRates> shippingRates}) = _AvailableShippingRates;
+      required List<ShippingRates>? shippingRates}) = _AvailableShippingRates;
 
   factory AvailableShippingRates.fromJson(Map<String, dynamic> json) =>
       _$AvailableShippingRatesFromJson(json);
