@@ -8,13 +8,14 @@ part 'line_item.g.dart';
 @freezed
 class LineItem with _$LineItem {
   const LineItem._();
-  factory LineItem(
-      {required String title,
-      required int quantity,
-      String? variantId,
-      String? id,
-      ProductVariantCheckout? variant,
-      DiscountAllocations? discountAllocations}) = _LineItem;
+  factory LineItem({
+    required String title,
+    required int quantity,
+    required List<DiscountAllocations> discountAllocations,
+    String? variantId,
+    String? id,
+    ProductVariantCheckout? variant,
+  }) = _LineItem;
 
   static LineItem fromGraphJson(Map<String, dynamic> json) {
     Map<String, dynamic> nodeJson = json['node'] ?? {};
@@ -26,10 +27,9 @@ class LineItem with _$LineItem {
             ? ProductVariantCheckout.fromJson(nodeJson['variant'])
             : null,
         title: nodeJson['title'],
-        discountAllocations: nodeJson['discountAllocations'] != null &&
-                nodeJson['discountAllocations']['allocatedAmount'] != null
-            ? DiscountAllocations.fromJson(nodeJson['discountAllocations'])
-            : null);
+        discountAllocations: (nodeJson['discountAllocations'] as List)
+            .map((e) => DiscountAllocations.fromJson(e))
+            .toList());
   }
 
   factory LineItem.fromJson(Map<String, dynamic> json) =>
