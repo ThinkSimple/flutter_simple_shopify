@@ -10,6 +10,12 @@ mutation checkoutLineItemsAdd($lineItems: [CheckoutLineItemInput!]!, $checkoutId
              id
              title
              quantity
+              discountAllocations {
+              allocatedAmount {
+                amount
+                currencyCode
+              }
+            }
              variant {
               id
               priceV2 {

@@ -10,6 +10,12 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
              id
              title
              quantity
+              discountAllocations {
+              allocatedAmount {
+                amount
+                currencyCode
+              }
+            }
              variant {
               id
               priceV2 {
