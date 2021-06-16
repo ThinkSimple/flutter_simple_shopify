@@ -31,9 +31,9 @@ class _$CheckoutTearOff {
       required bool taxExempt,
       required PriceV2 subtotalPriceV2,
       required bool requiresShipping,
+      required List<AppliedGiftCards> appliedGiftCards,
       @JsonKey(fromJson: JsonHelper.lineItems)
           required List<LineItem> lineItems,
-      List<AppliedGiftCards> appliedGiftcards = const [],
       Order? order,
       String? orderStatusUrl,
       String? shopifyPaymentsAccountId,
@@ -55,8 +55,8 @@ class _$CheckoutTearOff {
       taxExempt: taxExempt,
       subtotalPriceV2: subtotalPriceV2,
       requiresShipping: requiresShipping,
+      appliedGiftCards: appliedGiftCards,
       lineItems: lineItems,
-      appliedGiftcards: appliedGiftcards,
       order: order,
       orderStatusUrl: orderStatusUrl,
       shopifyPaymentsAccountId: shopifyPaymentsAccountId,
@@ -91,10 +91,10 @@ mixin _$Checkout {
   bool get taxExempt => throw _privateConstructorUsedError;
   PriceV2 get subtotalPriceV2 => throw _privateConstructorUsedError;
   bool get requiresShipping => throw _privateConstructorUsedError;
+  List<AppliedGiftCards> get appliedGiftCards =>
+      throw _privateConstructorUsedError;
   @JsonKey(fromJson: JsonHelper.lineItems)
   List<LineItem> get lineItems => throw _privateConstructorUsedError;
-  List<AppliedGiftCards> get appliedGiftcards =>
-      throw _privateConstructorUsedError;
   Order? get order => throw _privateConstructorUsedError;
   String? get orderStatusUrl => throw _privateConstructorUsedError;
   String? get shopifyPaymentsAccountId => throw _privateConstructorUsedError;
@@ -127,8 +127,8 @@ abstract class $CheckoutCopyWith<$Res> {
       bool taxExempt,
       PriceV2 subtotalPriceV2,
       bool requiresShipping,
+      List<AppliedGiftCards> appliedGiftCards,
       @JsonKey(fromJson: JsonHelper.lineItems) List<LineItem> lineItems,
-      List<AppliedGiftCards> appliedGiftcards,
       Order? order,
       String? orderStatusUrl,
       String? shopifyPaymentsAccountId,
@@ -169,8 +169,8 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
     Object? taxExempt = freezed,
     Object? subtotalPriceV2 = freezed,
     Object? requiresShipping = freezed,
+    Object? appliedGiftCards = freezed,
     Object? lineItems = freezed,
-    Object? appliedGiftcards = freezed,
     Object? order = freezed,
     Object? orderStatusUrl = freezed,
     Object? shopifyPaymentsAccountId = freezed,
@@ -223,14 +223,14 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
           ? _value.requiresShipping
           : requiresShipping // ignore: cast_nullable_to_non_nullable
               as bool,
+      appliedGiftCards: appliedGiftCards == freezed
+          ? _value.appliedGiftCards
+          : appliedGiftCards // ignore: cast_nullable_to_non_nullable
+              as List<AppliedGiftCards>,
       lineItems: lineItems == freezed
           ? _value.lineItems
           : lineItems // ignore: cast_nullable_to_non_nullable
               as List<LineItem>,
-      appliedGiftcards: appliedGiftcards == freezed
-          ? _value.appliedGiftcards
-          : appliedGiftcards // ignore: cast_nullable_to_non_nullable
-              as List<AppliedGiftCards>,
       order: order == freezed
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
@@ -357,8 +357,8 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
       bool taxExempt,
       PriceV2 subtotalPriceV2,
       bool requiresShipping,
+      List<AppliedGiftCards> appliedGiftCards,
       @JsonKey(fromJson: JsonHelper.lineItems) List<LineItem> lineItems,
-      List<AppliedGiftCards> appliedGiftcards,
       Order? order,
       String? orderStatusUrl,
       String? shopifyPaymentsAccountId,
@@ -407,8 +407,8 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
     Object? taxExempt = freezed,
     Object? subtotalPriceV2 = freezed,
     Object? requiresShipping = freezed,
+    Object? appliedGiftCards = freezed,
     Object? lineItems = freezed,
-    Object? appliedGiftcards = freezed,
     Object? order = freezed,
     Object? orderStatusUrl = freezed,
     Object? shopifyPaymentsAccountId = freezed,
@@ -461,14 +461,14 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
           ? _value.requiresShipping
           : requiresShipping // ignore: cast_nullable_to_non_nullable
               as bool,
+      appliedGiftCards: appliedGiftCards == freezed
+          ? _value.appliedGiftCards
+          : appliedGiftCards // ignore: cast_nullable_to_non_nullable
+              as List<AppliedGiftCards>,
       lineItems: lineItems == freezed
           ? _value.lineItems
           : lineItems // ignore: cast_nullable_to_non_nullable
               as List<LineItem>,
-      appliedGiftcards: appliedGiftcards == freezed
-          ? _value.appliedGiftcards
-          : appliedGiftcards // ignore: cast_nullable_to_non_nullable
-              as List<AppliedGiftCards>,
       order: order == freezed
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
@@ -527,8 +527,8 @@ class _$_Checkout extends _Checkout {
       required this.taxExempt,
       required this.subtotalPriceV2,
       required this.requiresShipping,
+      required this.appliedGiftCards,
       @JsonKey(fromJson: JsonHelper.lineItems) required this.lineItems,
-      this.appliedGiftcards = const [],
       this.order,
       this.orderStatusUrl,
       this.shopifyPaymentsAccountId,
@@ -565,11 +565,10 @@ class _$_Checkout extends _Checkout {
   @override
   final bool requiresShipping;
   @override
+  final List<AppliedGiftCards> appliedGiftCards;
+  @override
   @JsonKey(fromJson: JsonHelper.lineItems)
   final List<LineItem> lineItems;
-  @JsonKey(defaultValue: const [])
-  @override
-  final List<AppliedGiftCards> appliedGiftcards;
   @override
   final Order? order;
   @override
@@ -593,7 +592,7 @@ class _$_Checkout extends _Checkout {
 
   @override
   String toString() {
-    return 'Checkout(id: $id, availableShippingRates: $availableShippingRates, createdAt: $createdAt, currencyCode: $currencyCode, totalTaxV2: $totalTaxV2, totalPriceV2: $totalPriceV2, taxesIncluded: $taxesIncluded, taxExempt: $taxExempt, subtotalPriceV2: $subtotalPriceV2, requiresShipping: $requiresShipping, lineItems: $lineItems, appliedGiftcards: $appliedGiftcards, order: $order, orderStatusUrl: $orderStatusUrl, shopifyPaymentsAccountId: $shopifyPaymentsAccountId, shippingAddress: $shippingAddress, shippingLine: $shippingLine, email: $email, completedAt: $completedAt, note: $note, webUrl: $webUrl, updatedAt: $updatedAt)';
+    return 'Checkout(id: $id, availableShippingRates: $availableShippingRates, createdAt: $createdAt, currencyCode: $currencyCode, totalTaxV2: $totalTaxV2, totalPriceV2: $totalPriceV2, taxesIncluded: $taxesIncluded, taxExempt: $taxExempt, subtotalPriceV2: $subtotalPriceV2, requiresShipping: $requiresShipping, appliedGiftCards: $appliedGiftCards, lineItems: $lineItems, order: $order, orderStatusUrl: $orderStatusUrl, shopifyPaymentsAccountId: $shopifyPaymentsAccountId, shippingAddress: $shippingAddress, shippingLine: $shippingLine, email: $email, completedAt: $completedAt, note: $note, webUrl: $webUrl, updatedAt: $updatedAt)';
   }
 
   @override
@@ -629,12 +628,12 @@ class _$_Checkout extends _Checkout {
             (identical(other.requiresShipping, requiresShipping) ||
                 const DeepCollectionEquality()
                     .equals(other.requiresShipping, requiresShipping)) &&
+            (identical(other.appliedGiftCards, appliedGiftCards) ||
+                const DeepCollectionEquality()
+                    .equals(other.appliedGiftCards, appliedGiftCards)) &&
             (identical(other.lineItems, lineItems) ||
                 const DeepCollectionEquality()
                     .equals(other.lineItems, lineItems)) &&
-            (identical(other.appliedGiftcards, appliedGiftcards) ||
-                const DeepCollectionEquality()
-                    .equals(other.appliedGiftcards, appliedGiftcards)) &&
             (identical(other.order, order) ||
                 const DeepCollectionEquality().equals(other.order, order)) &&
             (identical(other.orderStatusUrl, orderStatusUrl) ||
@@ -677,8 +676,8 @@ class _$_Checkout extends _Checkout {
       const DeepCollectionEquality().hash(taxExempt) ^
       const DeepCollectionEquality().hash(subtotalPriceV2) ^
       const DeepCollectionEquality().hash(requiresShipping) ^
+      const DeepCollectionEquality().hash(appliedGiftCards) ^
       const DeepCollectionEquality().hash(lineItems) ^
-      const DeepCollectionEquality().hash(appliedGiftcards) ^
       const DeepCollectionEquality().hash(order) ^
       const DeepCollectionEquality().hash(orderStatusUrl) ^
       const DeepCollectionEquality().hash(shopifyPaymentsAccountId) ^
@@ -713,9 +712,9 @@ abstract class _Checkout extends Checkout {
       required bool taxExempt,
       required PriceV2 subtotalPriceV2,
       required bool requiresShipping,
+      required List<AppliedGiftCards> appliedGiftCards,
       @JsonKey(fromJson: JsonHelper.lineItems)
           required List<LineItem> lineItems,
-      List<AppliedGiftCards> appliedGiftcards,
       Order? order,
       String? orderStatusUrl,
       String? shopifyPaymentsAccountId,
@@ -752,11 +751,11 @@ abstract class _Checkout extends Checkout {
   @override
   bool get requiresShipping => throw _privateConstructorUsedError;
   @override
+  List<AppliedGiftCards> get appliedGiftCards =>
+      throw _privateConstructorUsedError;
+  @override
   @JsonKey(fromJson: JsonHelper.lineItems)
   List<LineItem> get lineItems => throw _privateConstructorUsedError;
-  @override
-  List<AppliedGiftCards> get appliedGiftcards =>
-      throw _privateConstructorUsedError;
   @override
   Order? get order => throw _privateConstructorUsedError;
   @override
