@@ -15,9 +15,7 @@ query($id: ID!){
         }
         id
       }
-      discountAllocations {
-        allocatedAmount
-      }
+      
       requiresShipping
       shippingLine {
         handle
@@ -66,6 +64,9 @@ query($id: ID!){
             id
             quantity
             title
+            discountAllocations {
+              allocatedAmount
+            }
             variant {
               id
               priceV2 {
