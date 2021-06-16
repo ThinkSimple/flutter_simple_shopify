@@ -354,7 +354,7 @@ class ShopifyCheckout with ShopifyError {
           'lineItems': [
             for (var lineItem in lineItems)
               {
-                'variantId': lineItem.variantId,
+                'variantId': lineItem.id,
                 'quantity': lineItem.quantity,
               }
           ],
