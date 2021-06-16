@@ -16,6 +16,10 @@ _$_LineItem _$_$_LineItemFromJson(Map<String, dynamic> json) {
         ? null
         : ProductVariantCheckout.fromJson(
             json['variant'] as Map<String, dynamic>),
+    discountAllocations: json['discountAllocations'] == null
+        ? null
+        : DiscountAllocations.fromJson(
+            json['discountAllocations'] as Map<String, dynamic>),
   );
 }
 
@@ -26,4 +30,5 @@ Map<String, dynamic> _$_$_LineItemToJson(_$_LineItem instance) =>
       'variantId': instance.variantId,
       'id': instance.id,
       'variant': instance.variant,
+      'discountAllocations': instance.discountAllocations,
     };
