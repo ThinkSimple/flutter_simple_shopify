@@ -10,8 +10,8 @@ _$_AvailableShippingRates _$_$_AvailableShippingRatesFromJson(
     Map<String, dynamic> json) {
   return _$_AvailableShippingRates(
     ready: json['ready'] as bool,
-    shippingRates: (json['shippingRates'] as List<dynamic>)
-        .map((e) => ShippingRates.fromJson(e as Map<String, dynamic>))
+    shippingRates: (json['shippingRates'] as List<dynamic>?)
+        ?.map((e) => ShippingRates.fromJson(e as Map<String, dynamic>))
         .toList(),
   );
 }
