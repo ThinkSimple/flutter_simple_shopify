@@ -7,7 +7,7 @@ part 'discount_allocations.g.dart';
 @freezed
 class DiscountAllocations with _$DiscountAllocations {
   const DiscountAllocations._();
-  factory DiscountAllocations({required PriceV2 allocatedAmount}) =
+  factory DiscountAllocations({required PriceV2? allocatedAmount}) =
       _DiscountAllocations;
 
   factory DiscountAllocations.fromJson(Map<String, dynamic> json) =>
