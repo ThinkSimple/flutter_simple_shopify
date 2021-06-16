@@ -27,9 +27,11 @@ class LineItem with _$LineItem {
             ? ProductVariantCheckout.fromJson(nodeJson['variant'])
             : null,
         title: nodeJson['title'],
-        discountAllocations: (nodeJson['discountAllocations'] as List)
-            .map((e) => DiscountAllocations.fromJson(e))
-            .toList());
+        discountAllocations: nodeJson['discountAllocations'] == null
+            ? []
+            : (nodeJson['discountAllocations'] as List)
+                .map((e) => DiscountAllocations.fromJson(e))
+                .toList());
   }
 
   factory LineItem.fromJson(Map<String, dynamic> json) =>
