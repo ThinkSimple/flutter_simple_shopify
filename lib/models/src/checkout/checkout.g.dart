@@ -23,11 +23,10 @@ _$_Checkout _$_$_CheckoutFromJson(Map<String, dynamic> json) {
     subtotalPriceV2:
         PriceV2.fromJson(json['subtotalPriceV2'] as Map<String, dynamic>),
     requiresShipping: json['requiresShipping'] as bool,
+    appliedGiftCards: (json['appliedGiftCards'] as List<dynamic>)
+        .map((e) => AppliedGiftCards.fromJson(e as Map<String, dynamic>))
+        .toList(),
     lineItems: JsonHelper.lineItems(json['lineItems']),
-    appliedGiftcards: (json['appliedGiftcards'] as List<dynamic>?)
-            ?.map((e) => AppliedGiftCards.fromJson(e as Map<String, dynamic>))
-            .toList() ??
-        [],
     order: json['order'] == null
         ? null
         : Order.fromJson(json['order'] as Map<String, dynamic>),
@@ -60,8 +59,8 @@ Map<String, dynamic> _$_$_CheckoutToJson(_$_Checkout instance) =>
       'taxExempt': instance.taxExempt,
       'subtotalPriceV2': instance.subtotalPriceV2,
       'requiresShipping': instance.requiresShipping,
+      'appliedGiftCards': instance.appliedGiftCards,
       'lineItems': instance.lineItems,
-      'appliedGiftcards': instance.appliedGiftcards,
       'order': instance.order,
       'orderStatusUrl': instance.orderStatusUrl,
       'shopifyPaymentsAccountId': instance.shopifyPaymentsAccountId,

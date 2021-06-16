@@ -15,7 +15,6 @@ query($id: ID!){
         }
         id
       }
-      
       requiresShipping
       shippingLine {
         handle
