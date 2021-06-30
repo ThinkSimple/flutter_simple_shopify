@@ -3,6 +3,7 @@ query($id: ID!){
   node(id: $id) {
     ... on Checkout {
       id
+      ready
       email
       appliedGiftCards {
         amountUsedV2 {
