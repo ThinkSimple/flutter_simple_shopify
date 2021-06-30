@@ -9,6 +9,7 @@ import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_shi
 import 'package:flutter_simple_shopify/graphql_operations/mutations/complete_checkout_token_v3.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/create_checkout.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_requires_shipping.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_with_payment_id.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_without_shipping_rates.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/checkout/line_item/line_item.dart';
@@ -41,7 +42,9 @@ class ShopifyCheckout with ShopifyError {
   ///
   /// Returns the Checkout object of the checkout with the [checkoutId].
   Future<Checkout> getCheckoutInfoQuery(String checkoutId,
-      {bool getShippingInfo = true, bool deleteThisPartOfCache = false}) async {
+      {bool getShippingInfo = true,
+      bool withPaymentId = false,
+      bool deleteThisPartOfCache = false}) async {
     final WatchQueryOptions _optionsRequireShipping = WatchQueryOptions(
         document: gql(getCheckoutInfoAboutShipping),
         variables: {
@@ -51,7 +54,9 @@ class ShopifyCheckout with ShopifyError {
 
     final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(_requiresShipping(result) == true && getShippingInfo
-            ? getCheckoutInfo
+            ? withPaymentId
+                ? getCheckoutInfoWithPaymentId
+                : getCheckoutInfo
             : getCheckoutInfoWithoutShipping),
         variables: {
           'id': checkoutId,
