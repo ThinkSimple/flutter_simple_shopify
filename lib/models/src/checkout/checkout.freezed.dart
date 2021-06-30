@@ -22,6 +22,7 @@ class _$CheckoutTearOff {
 
   _Checkout call(
       {required String id,
+      required bool ready,
       required AvailableShippingRates? availableShippingRates,
       required String createdAt,
       required String currencyCode,
@@ -46,6 +47,7 @@ class _$CheckoutTearOff {
       String? updatedAt}) {
     return _Checkout(
       id: id,
+      ready: ready,
       availableShippingRates: availableShippingRates,
       createdAt: createdAt,
       currencyCode: currencyCode,
@@ -81,6 +83,7 @@ const $Checkout = _$CheckoutTearOff();
 /// @nodoc
 mixin _$Checkout {
   String get id => throw _privateConstructorUsedError;
+  bool get ready => throw _privateConstructorUsedError;
   AvailableShippingRates? get availableShippingRates =>
       throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
@@ -118,6 +121,7 @@ abstract class $CheckoutCopyWith<$Res> {
       _$CheckoutCopyWithImpl<$Res>;
   $Res call(
       {String id,
+      bool ready,
       AvailableShippingRates? availableShippingRates,
       String createdAt,
       String currencyCode,
@@ -160,6 +164,7 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? ready = freezed,
     Object? availableShippingRates = freezed,
     Object? createdAt = freezed,
     Object? currencyCode = freezed,
@@ -187,6 +192,10 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      ready: ready == freezed
+          ? _value.ready
+          : ready // ignore: cast_nullable_to_non_nullable
+              as bool,
       availableShippingRates: availableShippingRates == freezed
           ? _value.availableShippingRates
           : availableShippingRates // ignore: cast_nullable_to_non_nullable
@@ -348,6 +357,7 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
   @override
   $Res call(
       {String id,
+      bool ready,
       AvailableShippingRates? availableShippingRates,
       String createdAt,
       String currencyCode,
@@ -398,6 +408,7 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? ready = freezed,
     Object? availableShippingRates = freezed,
     Object? createdAt = freezed,
     Object? currencyCode = freezed,
@@ -425,6 +436,10 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      ready: ready == freezed
+          ? _value.ready
+          : ready // ignore: cast_nullable_to_non_nullable
+              as bool,
       availableShippingRates: availableShippingRates == freezed
           ? _value.availableShippingRates
           : availableShippingRates // ignore: cast_nullable_to_non_nullable
@@ -518,6 +533,7 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
 class _$_Checkout extends _Checkout {
   _$_Checkout(
       {required this.id,
+      required this.ready,
       required this.availableShippingRates,
       required this.createdAt,
       required this.currencyCode,
@@ -546,6 +562,8 @@ class _$_Checkout extends _Checkout {
 
   @override
   final String id;
+  @override
+  final bool ready;
   @override
   final AvailableShippingRates? availableShippingRates;
   @override
@@ -592,7 +610,7 @@ class _$_Checkout extends _Checkout {
 
   @override
   String toString() {
-    return 'Checkout(id: $id, availableShippingRates: $availableShippingRates, createdAt: $createdAt, currencyCode: $currencyCode, totalTaxV2: $totalTaxV2, totalPriceV2: $totalPriceV2, taxesIncluded: $taxesIncluded, taxExempt: $taxExempt, subtotalPriceV2: $subtotalPriceV2, requiresShipping: $requiresShipping, appliedGiftCards: $appliedGiftCards, lineItems: $lineItems, order: $order, orderStatusUrl: $orderStatusUrl, shopifyPaymentsAccountId: $shopifyPaymentsAccountId, shippingAddress: $shippingAddress, shippingLine: $shippingLine, email: $email, completedAt: $completedAt, note: $note, webUrl: $webUrl, updatedAt: $updatedAt)';
+    return 'Checkout(id: $id, ready: $ready, availableShippingRates: $availableShippingRates, createdAt: $createdAt, currencyCode: $currencyCode, totalTaxV2: $totalTaxV2, totalPriceV2: $totalPriceV2, taxesIncluded: $taxesIncluded, taxExempt: $taxExempt, subtotalPriceV2: $subtotalPriceV2, requiresShipping: $requiresShipping, appliedGiftCards: $appliedGiftCards, lineItems: $lineItems, order: $order, orderStatusUrl: $orderStatusUrl, shopifyPaymentsAccountId: $shopifyPaymentsAccountId, shippingAddress: $shippingAddress, shippingLine: $shippingLine, email: $email, completedAt: $completedAt, note: $note, webUrl: $webUrl, updatedAt: $updatedAt)';
   }
 
   @override
@@ -601,6 +619,8 @@ class _$_Checkout extends _Checkout {
         (other is _Checkout &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.ready, ready) ||
+                const DeepCollectionEquality().equals(other.ready, ready)) &&
             (identical(other.availableShippingRates, availableShippingRates) ||
                 const DeepCollectionEquality().equals(
                     other.availableShippingRates, availableShippingRates)) &&
@@ -667,6 +687,7 @@ class _$_Checkout extends _Checkout {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(ready) ^
       const DeepCollectionEquality().hash(availableShippingRates) ^
       const DeepCollectionEquality().hash(createdAt) ^
       const DeepCollectionEquality().hash(currencyCode) ^
@@ -703,6 +724,7 @@ class _$_Checkout extends _Checkout {
 abstract class _Checkout extends Checkout {
   factory _Checkout(
       {required String id,
+      required bool ready,
       required AvailableShippingRates? availableShippingRates,
       required String createdAt,
       required String currencyCode,
@@ -731,6 +753,8 @@ abstract class _Checkout extends Checkout {
 
   @override
   String get id => throw _privateConstructorUsedError;
+  @override
+  bool get ready => throw _privateConstructorUsedError;
   @override
   AvailableShippingRates? get availableShippingRates =>
       throw _privateConstructorUsedError;

@@ -3,6 +3,7 @@ query($id: ID!){
   node(id: $id) {
     ... on Checkout {
       id
+      ready
       shopify_payments_account_id
       email
       appliedGiftCards {
