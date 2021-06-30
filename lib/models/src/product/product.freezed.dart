@@ -31,11 +31,11 @@ class _$ProductTearOff {
       required String publishedAt,
       required List<String> tags,
       required String updatedAt,
-      required String cursor,
       required List<ShopifyImage> images,
       required List<Option> option,
       required String vendor,
       required List<Metafield> metafields,
+      String? cursor,
       String? onlineStoreUrl,
       String? description,
       String? descriptionHtml,
@@ -51,11 +51,11 @@ class _$ProductTearOff {
       publishedAt: publishedAt,
       tags: tags,
       updatedAt: updatedAt,
-      cursor: cursor,
       images: images,
       option: option,
       vendor: vendor,
       metafields: metafields,
+      cursor: cursor,
       onlineStoreUrl: onlineStoreUrl,
       description: description,
       descriptionHtml: descriptionHtml,
@@ -85,11 +85,11 @@ mixin _$Product {
   String get publishedAt => throw _privateConstructorUsedError;
   List<String> get tags => throw _privateConstructorUsedError;
   String get updatedAt => throw _privateConstructorUsedError;
-  String get cursor => throw _privateConstructorUsedError;
   List<ShopifyImage> get images => throw _privateConstructorUsedError;
   List<Option> get option => throw _privateConstructorUsedError;
   String get vendor => throw _privateConstructorUsedError;
   List<Metafield> get metafields => throw _privateConstructorUsedError;
+  String? get cursor => throw _privateConstructorUsedError;
   String? get onlineStoreUrl => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get descriptionHtml => throw _privateConstructorUsedError;
@@ -115,11 +115,11 @@ abstract class $ProductCopyWith<$Res> {
       String publishedAt,
       List<String> tags,
       String updatedAt,
-      String cursor,
       List<ShopifyImage> images,
       List<Option> option,
       String vendor,
       List<Metafield> metafields,
+      String? cursor,
       String? onlineStoreUrl,
       String? description,
       String? descriptionHtml,
@@ -146,11 +146,11 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object? publishedAt = freezed,
     Object? tags = freezed,
     Object? updatedAt = freezed,
-    Object? cursor = freezed,
     Object? images = freezed,
     Object? option = freezed,
     Object? vendor = freezed,
     Object? metafields = freezed,
+    Object? cursor = freezed,
     Object? onlineStoreUrl = freezed,
     Object? description = freezed,
     Object? descriptionHtml = freezed,
@@ -197,10 +197,6 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
-      cursor: cursor == freezed
-          ? _value.cursor
-          : cursor // ignore: cast_nullable_to_non_nullable
-              as String,
       images: images == freezed
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
@@ -217,6 +213,10 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _value.metafields
           : metafields // ignore: cast_nullable_to_non_nullable
               as List<Metafield>,
+      cursor: cursor == freezed
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
       onlineStoreUrl: onlineStoreUrl == freezed
           ? _value.onlineStoreUrl
           : onlineStoreUrl // ignore: cast_nullable_to_non_nullable
@@ -253,11 +253,11 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String publishedAt,
       List<String> tags,
       String updatedAt,
-      String cursor,
       List<ShopifyImage> images,
       List<Option> option,
       String vendor,
       List<Metafield> metafields,
+      String? cursor,
       String? onlineStoreUrl,
       String? description,
       String? descriptionHtml,
@@ -285,11 +285,11 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object? publishedAt = freezed,
     Object? tags = freezed,
     Object? updatedAt = freezed,
-    Object? cursor = freezed,
     Object? images = freezed,
     Object? option = freezed,
     Object? vendor = freezed,
     Object? metafields = freezed,
+    Object? cursor = freezed,
     Object? onlineStoreUrl = freezed,
     Object? description = freezed,
     Object? descriptionHtml = freezed,
@@ -336,10 +336,6 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
-      cursor: cursor == freezed
-          ? _value.cursor
-          : cursor // ignore: cast_nullable_to_non_nullable
-              as String,
       images: images == freezed
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
@@ -356,6 +352,10 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           ? _value.metafields
           : metafields // ignore: cast_nullable_to_non_nullable
               as List<Metafield>,
+      cursor: cursor == freezed
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
       onlineStoreUrl: onlineStoreUrl == freezed
           ? _value.onlineStoreUrl
           : onlineStoreUrl // ignore: cast_nullable_to_non_nullable
@@ -390,11 +390,11 @@ class _$_Product extends _Product {
       required this.publishedAt,
       required this.tags,
       required this.updatedAt,
-      required this.cursor,
       required this.images,
       required this.option,
       required this.vendor,
       required this.metafields,
+      this.cursor,
       this.onlineStoreUrl,
       this.description,
       this.descriptionHtml,
@@ -425,8 +425,6 @@ class _$_Product extends _Product {
   @override
   final String updatedAt;
   @override
-  final String cursor;
-  @override
   final List<ShopifyImage> images;
   @override
   final List<Option> option;
@@ -434,6 +432,8 @@ class _$_Product extends _Product {
   final String vendor;
   @override
   final List<Metafield> metafields;
+  @override
+  final String? cursor;
   @override
   final String? onlineStoreUrl;
   @override
@@ -445,7 +445,7 @@ class _$_Product extends _Product {
 
   @override
   String toString() {
-    return 'Product(collectionList: $collectionList, title: $title, id: $id, availableForSale: $availableForSale, createdAt: $createdAt, productVariants: $productVariants, productType: $productType, publishedAt: $publishedAt, tags: $tags, updatedAt: $updatedAt, cursor: $cursor, images: $images, option: $option, vendor: $vendor, metafields: $metafields, onlineStoreUrl: $onlineStoreUrl, description: $description, descriptionHtml: $descriptionHtml, handle: $handle)';
+    return 'Product(collectionList: $collectionList, title: $title, id: $id, availableForSale: $availableForSale, createdAt: $createdAt, productVariants: $productVariants, productType: $productType, publishedAt: $publishedAt, tags: $tags, updatedAt: $updatedAt, images: $images, option: $option, vendor: $vendor, metafields: $metafields, cursor: $cursor, onlineStoreUrl: $onlineStoreUrl, description: $description, descriptionHtml: $descriptionHtml, handle: $handle)';
   }
 
   @override
@@ -479,8 +479,6 @@ class _$_Product extends _Product {
             (identical(other.updatedAt, updatedAt) ||
                 const DeepCollectionEquality()
                     .equals(other.updatedAt, updatedAt)) &&
-            (identical(other.cursor, cursor) ||
-                const DeepCollectionEquality().equals(other.cursor, cursor)) &&
             (identical(other.images, images) ||
                 const DeepCollectionEquality().equals(other.images, images)) &&
             (identical(other.option, option) ||
@@ -490,6 +488,8 @@ class _$_Product extends _Product {
             (identical(other.metafields, metafields) ||
                 const DeepCollectionEquality()
                     .equals(other.metafields, metafields)) &&
+            (identical(other.cursor, cursor) ||
+                const DeepCollectionEquality().equals(other.cursor, cursor)) &&
             (identical(other.onlineStoreUrl, onlineStoreUrl) ||
                 const DeepCollectionEquality()
                     .equals(other.onlineStoreUrl, onlineStoreUrl)) &&
@@ -516,11 +516,11 @@ class _$_Product extends _Product {
       const DeepCollectionEquality().hash(publishedAt) ^
       const DeepCollectionEquality().hash(tags) ^
       const DeepCollectionEquality().hash(updatedAt) ^
-      const DeepCollectionEquality().hash(cursor) ^
       const DeepCollectionEquality().hash(images) ^
       const DeepCollectionEquality().hash(option) ^
       const DeepCollectionEquality().hash(vendor) ^
       const DeepCollectionEquality().hash(metafields) ^
+      const DeepCollectionEquality().hash(cursor) ^
       const DeepCollectionEquality().hash(onlineStoreUrl) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(descriptionHtml) ^
@@ -549,11 +549,11 @@ abstract class _Product extends Product {
       required String publishedAt,
       required List<String> tags,
       required String updatedAt,
-      required String cursor,
       required List<ShopifyImage> images,
       required List<Option> option,
       required String vendor,
       required List<Metafield> metafields,
+      String? cursor,
       String? onlineStoreUrl,
       String? description,
       String? descriptionHtml,
@@ -585,8 +585,6 @@ abstract class _Product extends Product {
   @override
   String get updatedAt => throw _privateConstructorUsedError;
   @override
-  String get cursor => throw _privateConstructorUsedError;
-  @override
   List<ShopifyImage> get images => throw _privateConstructorUsedError;
   @override
   List<Option> get option => throw _privateConstructorUsedError;
@@ -594,6 +592,8 @@ abstract class _Product extends Product {
   String get vendor => throw _privateConstructorUsedError;
   @override
   List<Metafield> get metafields => throw _privateConstructorUsedError;
+  @override
+  String? get cursor => throw _privateConstructorUsedError;
   @override
   String? get onlineStoreUrl => throw _privateConstructorUsedError;
   @override
