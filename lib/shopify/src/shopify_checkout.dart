@@ -10,6 +10,7 @@ import 'package:flutter_simple_shopify/graphql_operations/mutations/complete_che
 import 'package:flutter_simple_shopify/graphql_operations/mutations/create_checkout.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_requires_shipping.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_with_payment_id.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_info_with_payment_id_without_shipping_rates.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_without_shipping_rates.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/checkout/line_item/line_item.dart';
@@ -57,7 +58,9 @@ class ShopifyCheckout with ShopifyError {
             ? withPaymentId
                 ? getCheckoutInfoWithPaymentId
                 : getCheckoutInfo
-            : getCheckoutInfoWithoutShipping),
+            : withPaymentId
+                ? getCheckoutInfoWithPaymentIdWithoutShipping
+                : getCheckoutInfoWithoutShipping),
         variables: {
           'id': checkoutId,
         });
