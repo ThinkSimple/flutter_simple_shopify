@@ -1,6 +1,7 @@
 import 'package:flutter_simple_shopify/enums/src/payment_token_type.dart';
 import 'package:flutter_simple_shopify/enums/src/sort_key_order.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_complete_free.dart';
+import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_complete_with_credit_card_V2.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_line_item_add.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_line_item_remove.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_line_item_update.dart';
@@ -14,9 +15,11 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_i
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_without_shipping_rates.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/checkout/line_item/line_item.dart';
+import 'package:flutter_simple_shopify/models/src/checkout/mailing_address/mailing_address.dart';
 import 'package:flutter_simple_shopify/models/src/checkout/responses/checkout_response.dart';
 import 'package:flutter_simple_shopify/models/src/order/order.dart';
 import 'package:flutter_simple_shopify/models/src/order/orders/orders.dart';
+import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.dart';
 import 'package:flutter_simple_shopify/models/src/shopify_user/address/address.dart';
 import 'package:graphql/client.dart';
 
@@ -166,6 +169,48 @@ class ShopifyCheckout with ShopifyError {
         ((result.data!['checkoutShippingAddressUpdateV2'] ??
                 const {})['checkout'] ??
             const {}));
+  }
+
+  /// Updates the shipping address on given [checkoutId]
+  Future<String?> completeCheckoutWithTokenizedPaymentV2({
+    required String checkoutId,
+    required PriceV2 price,
+    required MailingAddress billingAddress,
+    required String impotencyKey,
+    required String tokenizedPayment,
+    required String type,
+    bool test = false,
+    bool deleteThisPartOfCache = false,
+  }) async {
+    final MutationOptions _options = MutationOptions(
+      document: gql(compCheckoutWithTokenizedPaymentV2),
+      variables: {
+        'checkoutId': checkoutId,
+        "payment": {
+          "paymentAmount": {
+            "amount": price.amount,
+            "currencyCode": price.currencyCode
+          },
+          "idempotencyKey": impotencyKey,
+          "billingAddress": billingAddress.toJson(),
+          "paymentData": tokenizedPayment,
+          "type": type
+        }
+      },
+    );
+    final QueryResult result = await _graphQLClient!.mutate(_options);
+    checkForError(
+      result,
+      key: 'checkoutCompleteWithTokenizedPaymentV2',
+      errorKey: 'checkoutUserErrors',
+    );
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
+
+    return (result.data!['checkoutCompleteWithTokenizedPaymentV2'] ??
+            const {})['payment']['id'] ??
+        null;
   }
 
   /// Helper method for transforming a list of variant ids into a List Of Map<String, dynamic> which looks like this:

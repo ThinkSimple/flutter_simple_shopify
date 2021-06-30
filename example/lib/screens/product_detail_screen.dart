@@ -81,22 +81,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         checkoutUrl = response.webUrl;
         lineItems = response.lineItems;
       });
-    } else {
-      CheckoutResponse response = await shopifyCheckout.addLineItemsToCheckout(
-          checkoutId: checkoutId,
-          lineItems: [
-            LineItem(title: variant.title, id: variant.id, quantity: 1)
-          ]);
     }
   }
 
   Future<void> _removeProductFromShoppingCart(LineItem lineItem) async {
-    ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;
-
     print(lineItem.id);
-
-    CheckoutResponse response = await shopifyCheckout
-        .removeLineItemsFromCheckout(
-            checkoutId: checkoutId, lineItems: [lineItem]);
   }
 }
