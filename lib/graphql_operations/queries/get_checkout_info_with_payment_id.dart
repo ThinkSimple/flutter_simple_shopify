@@ -1,8 +1,9 @@
-const String getCheckoutInfoWithShippingRate = r'''
+const String getCheckoutInfoWithPaymentId = r'''
 query($id: ID!){
   node(id: $id) {
     ... on Checkout {
       id
+      shopify_payments_account_id
       email
       appliedGiftCards {
         amountUsedV2 {
@@ -16,6 +17,14 @@ query($id: ID!){
         id
       }
       requiresShipping
+      shippingLine {
+        handle
+        priceV2 {
+          amount
+          currencyCode
+        }
+        title
+      }
       availableShippingRates {
         ready
         shippingRates {
@@ -24,7 +33,9 @@ query($id: ID!){
           priceV2 {
             amount
             currencyCode
-       }}}
+          }
+        }
+      }
       shippingAddress {
         address1
         address2
@@ -43,14 +54,6 @@ query($id: ID!){
         province
         provinceCode
         zip
-      }
-      shippingLine {
-        handle
-        priceV2 {
-          amount
-          currencyCode
-        }
-        title
       }
       completedAt
       createdAt
@@ -110,20 +113,14 @@ query($id: ID!){
         currencyCode
       }
       orderStatusUrl
+      order {
+        id
+      }
     }
   }
 }
 ''';
 
-
-/* availableShippingRates {
-        ready
-        shippingRates {
-          handle
-          title
-          priceV2 {
-            amount
-            currencyCode
-       }}}
+/* 
 
  */
