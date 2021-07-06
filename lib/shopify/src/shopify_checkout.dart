@@ -358,7 +358,7 @@ class ShopifyCheckout with ShopifyError {
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
-      key: 'checkoutWithLineItems',
+      key: 'checkoutCreate',
       errorKey: 'checkoutUserErrors',
     );
     if (deleteThisPartOfCache) {
