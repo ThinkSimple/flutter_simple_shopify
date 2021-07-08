@@ -1,6 +1,11 @@
 String createCheckoutMutation = r'''
 mutation checkoutCreate($input: CheckoutCreateInput!) {
   checkoutCreate(input: $input) {
+    checkoutUserErrors {
+      code
+      field
+      message
+    }
     checkout {
       id
       webUrl
