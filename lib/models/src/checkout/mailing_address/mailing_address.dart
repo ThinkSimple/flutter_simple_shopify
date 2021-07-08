@@ -7,13 +7,13 @@ part 'mailing_address.g.dart';
 class MailingAddress with _$MailingAddress {
   factory MailingAddress({
     required String id,
-    required String lastName,
     required String address1,
-    required String name,
     required String city,
     required String country,
-    required String firstName,
     required String zip,
+    String? lastName,
+    String? name,
+    String? firstName,
     String? address2,
     String? company,
     String? countryCodeV2,

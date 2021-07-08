@@ -22,13 +22,13 @@ class _$MailingAddressTearOff {
 
   _MailingAddress call(
       {required String id,
-      required String lastName,
       required String address1,
-      required String name,
       required String city,
       required String country,
-      required String firstName,
       required String zip,
+      String? lastName,
+      String? name,
+      String? firstName,
       String? address2,
       String? company,
       String? countryCodeV2,
@@ -40,13 +40,13 @@ class _$MailingAddressTearOff {
       String? provinceCode}) {
     return _MailingAddress(
       id: id,
-      lastName: lastName,
       address1: address1,
-      name: name,
       city: city,
       country: country,
-      firstName: firstName,
       zip: zip,
+      lastName: lastName,
+      name: name,
+      firstName: firstName,
       address2: address2,
       company: company,
       countryCodeV2: countryCodeV2,
@@ -70,13 +70,13 @@ const $MailingAddress = _$MailingAddressTearOff();
 /// @nodoc
 mixin _$MailingAddress {
   String get id => throw _privateConstructorUsedError;
-  String get lastName => throw _privateConstructorUsedError;
   String get address1 => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   String get country => throw _privateConstructorUsedError;
-  String get firstName => throw _privateConstructorUsedError;
   String get zip => throw _privateConstructorUsedError;
+  String? get lastName => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get firstName => throw _privateConstructorUsedError;
   String? get address2 => throw _privateConstructorUsedError;
   String? get company => throw _privateConstructorUsedError;
   String? get countryCodeV2 => throw _privateConstructorUsedError;
@@ -100,13 +100,13 @@ abstract class $MailingAddressCopyWith<$Res> {
       _$MailingAddressCopyWithImpl<$Res>;
   $Res call(
       {String id,
-      String lastName,
       String address1,
-      String name,
       String city,
       String country,
-      String firstName,
       String zip,
+      String? lastName,
+      String? name,
+      String? firstName,
       String? address2,
       String? company,
       String? countryCodeV2,
@@ -130,13 +130,13 @@ class _$MailingAddressCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? lastName = freezed,
     Object? address1 = freezed,
-    Object? name = freezed,
     Object? city = freezed,
     Object? country = freezed,
-    Object? firstName = freezed,
     Object? zip = freezed,
+    Object? lastName = freezed,
+    Object? name = freezed,
+    Object? firstName = freezed,
     Object? address2 = freezed,
     Object? company = freezed,
     Object? countryCodeV2 = freezed,
@@ -152,17 +152,9 @@ class _$MailingAddressCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      lastName: lastName == freezed
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
       address1: address1 == freezed
           ? _value.address1
           : address1 // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
               as String,
       city: city == freezed
           ? _value.city
@@ -172,14 +164,22 @@ class _$MailingAddressCopyWithImpl<$Res>
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String,
-      firstName: firstName == freezed
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
       zip: zip == freezed
           ? _value.zip
           : zip // ignore: cast_nullable_to_non_nullable
               as String,
+      lastName: lastName == freezed
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      firstName: firstName == freezed
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String?,
       address2: address2 == freezed
           ? _value.address2
           : address2 // ignore: cast_nullable_to_non_nullable
@@ -229,13 +229,13 @@ abstract class _$MailingAddressCopyWith<$Res>
   @override
   $Res call(
       {String id,
-      String lastName,
       String address1,
-      String name,
       String city,
       String country,
-      String firstName,
       String zip,
+      String? lastName,
+      String? name,
+      String? firstName,
       String? address2,
       String? company,
       String? countryCodeV2,
@@ -261,13 +261,13 @@ class __$MailingAddressCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? lastName = freezed,
     Object? address1 = freezed,
-    Object? name = freezed,
     Object? city = freezed,
     Object? country = freezed,
-    Object? firstName = freezed,
     Object? zip = freezed,
+    Object? lastName = freezed,
+    Object? name = freezed,
+    Object? firstName = freezed,
     Object? address2 = freezed,
     Object? company = freezed,
     Object? countryCodeV2 = freezed,
@@ -283,17 +283,9 @@ class __$MailingAddressCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      lastName: lastName == freezed
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
       address1: address1 == freezed
           ? _value.address1
           : address1 // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
               as String,
       city: city == freezed
           ? _value.city
@@ -303,14 +295,22 @@ class __$MailingAddressCopyWithImpl<$Res>
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String,
-      firstName: firstName == freezed
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
       zip: zip == freezed
           ? _value.zip
           : zip // ignore: cast_nullable_to_non_nullable
               as String,
+      lastName: lastName == freezed
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      firstName: firstName == freezed
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String?,
       address2: address2 == freezed
           ? _value.address2
           : address2 // ignore: cast_nullable_to_non_nullable
@@ -356,13 +356,13 @@ class __$MailingAddressCopyWithImpl<$Res>
 class _$_MailingAddress implements _MailingAddress {
   _$_MailingAddress(
       {required this.id,
-      required this.lastName,
       required this.address1,
-      required this.name,
       required this.city,
       required this.country,
-      required this.firstName,
       required this.zip,
+      this.lastName,
+      this.name,
+      this.firstName,
       this.address2,
       this.company,
       this.countryCodeV2,
@@ -379,19 +379,19 @@ class _$_MailingAddress implements _MailingAddress {
   @override
   final String id;
   @override
-  final String lastName;
-  @override
   final String address1;
-  @override
-  final String name;
   @override
   final String city;
   @override
   final String country;
   @override
-  final String firstName;
-  @override
   final String zip;
+  @override
+  final String? lastName;
+  @override
+  final String? name;
+  @override
+  final String? firstName;
   @override
   final String? address2;
   @override
@@ -413,7 +413,7 @@ class _$_MailingAddress implements _MailingAddress {
 
   @override
   String toString() {
-    return 'MailingAddress(id: $id, lastName: $lastName, address1: $address1, name: $name, city: $city, country: $country, firstName: $firstName, zip: $zip, address2: $address2, company: $company, countryCodeV2: $countryCodeV2, formattedArea: $formattedArea, latitude: $latitude, longitude: $longitude, phone: $phone, province: $province, provinceCode: $provinceCode)';
+    return 'MailingAddress(id: $id, address1: $address1, city: $city, country: $country, zip: $zip, lastName: $lastName, name: $name, firstName: $firstName, address2: $address2, company: $company, countryCodeV2: $countryCodeV2, formattedArea: $formattedArea, latitude: $latitude, longitude: $longitude, phone: $phone, province: $province, provinceCode: $provinceCode)';
   }
 
   @override
@@ -422,24 +422,24 @@ class _$_MailingAddress implements _MailingAddress {
         (other is _MailingAddress &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.lastName, lastName) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastName, lastName)) &&
             (identical(other.address1, address1) ||
                 const DeepCollectionEquality()
                     .equals(other.address1, address1)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.city, city) ||
                 const DeepCollectionEquality().equals(other.city, city)) &&
             (identical(other.country, country) ||
                 const DeepCollectionEquality()
                     .equals(other.country, country)) &&
+            (identical(other.zip, zip) ||
+                const DeepCollectionEquality().equals(other.zip, zip)) &&
+            (identical(other.lastName, lastName) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastName, lastName)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.firstName, firstName) ||
                 const DeepCollectionEquality()
                     .equals(other.firstName, firstName)) &&
-            (identical(other.zip, zip) ||
-                const DeepCollectionEquality().equals(other.zip, zip)) &&
             (identical(other.address2, address2) ||
                 const DeepCollectionEquality()
                     .equals(other.address2, address2)) &&
@@ -472,13 +472,13 @@ class _$_MailingAddress implements _MailingAddress {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(lastName) ^
       const DeepCollectionEquality().hash(address1) ^
-      const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(city) ^
       const DeepCollectionEquality().hash(country) ^
-      const DeepCollectionEquality().hash(firstName) ^
       const DeepCollectionEquality().hash(zip) ^
+      const DeepCollectionEquality().hash(lastName) ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(firstName) ^
       const DeepCollectionEquality().hash(address2) ^
       const DeepCollectionEquality().hash(company) ^
       const DeepCollectionEquality().hash(countryCodeV2) ^
@@ -503,13 +503,13 @@ class _$_MailingAddress implements _MailingAddress {
 abstract class _MailingAddress implements MailingAddress {
   factory _MailingAddress(
       {required String id,
-      required String lastName,
       required String address1,
-      required String name,
       required String city,
       required String country,
-      required String firstName,
       required String zip,
+      String? lastName,
+      String? name,
+      String? firstName,
       String? address2,
       String? company,
       String? countryCodeV2,
@@ -526,19 +526,19 @@ abstract class _MailingAddress implements MailingAddress {
   @override
   String get id => throw _privateConstructorUsedError;
   @override
-  String get lastName => throw _privateConstructorUsedError;
-  @override
   String get address1 => throw _privateConstructorUsedError;
-  @override
-  String get name => throw _privateConstructorUsedError;
   @override
   String get city => throw _privateConstructorUsedError;
   @override
   String get country => throw _privateConstructorUsedError;
   @override
-  String get firstName => throw _privateConstructorUsedError;
-  @override
   String get zip => throw _privateConstructorUsedError;
+  @override
+  String? get lastName => throw _privateConstructorUsedError;
+  @override
+  String? get name => throw _privateConstructorUsedError;
+  @override
+  String? get firstName => throw _privateConstructorUsedError;
   @override
   String? get address2 => throw _privateConstructorUsedError;
   @override
