@@ -175,7 +175,7 @@ class ShopifyCheckout with ShopifyError {
   Future<String?> completeCheckoutWithTokenizedPaymentV2({
     required String checkoutId,
     required PriceV2 price,
-    required MailingAddress billingAddress,
+    required Address billingAddress,
     required String impotencyKey,
     required String tokenizedPayment,
     required String type,
