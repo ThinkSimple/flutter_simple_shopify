@@ -9,13 +9,13 @@ part of 'mailing_address.dart';
 _$_MailingAddress _$_$_MailingAddressFromJson(Map<String, dynamic> json) {
   return _$_MailingAddress(
     id: json['id'] as String,
-    lastName: json['lastName'] as String,
     address1: json['address1'] as String,
-    name: json['name'] as String,
     city: json['city'] as String,
     country: json['country'] as String,
-    firstName: json['firstName'] as String,
     zip: json['zip'] as String,
+    lastName: json['lastName'] as String?,
+    name: json['name'] as String?,
+    firstName: json['firstName'] as String?,
     address2: json['address2'] as String?,
     company: json['company'] as String?,
     countryCodeV2: json['countryCodeV2'] as String?,
@@ -31,13 +31,13 @@ _$_MailingAddress _$_$_MailingAddressFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_MailingAddressToJson(_$_MailingAddress instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'lastName': instance.lastName,
       'address1': instance.address1,
-      'name': instance.name,
       'city': instance.city,
       'country': instance.country,
-      'firstName': instance.firstName,
       'zip': instance.zip,
+      'lastName': instance.lastName,
+      'name': instance.name,
+      'firstName': instance.firstName,
       'address2': instance.address2,
       'company': instance.company,
       'countryCodeV2': instance.countryCodeV2,
