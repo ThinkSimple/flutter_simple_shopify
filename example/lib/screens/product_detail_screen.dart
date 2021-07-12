@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_simple_shopify/flutter_simple_shopify.dart';
 import 'package:flutter_simple_shopify/models/src/checkout/line_item/line_item.dart';
-import 'package:flutter_simple_shopify/models/src/checkout/responses/checkout_response.dart';
 import 'package:flutter_simple_shopify/models/src/product/product_variant/product_variant.dart';
 
 class ProductDetailScreen extends StatefulWidget {
@@ -65,24 +64,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   }
 
   ///Adds a product variant to the checkout
-  Future<void> _addProductToShoppingCart(ProductVariant variant) async {
-    ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;
-
-    if (checkoutId == null) {
-      CheckoutResponse response = await shopifyCheckout.createCheckout([
-        LineItem(
-            title: variant.title,
-            id: variant.id,
-            quantity: 1,
-            discountAllocations: [])
-      ]);
-      setState(() {
-        checkoutId = response.id;
-        checkoutUrl = response.webUrl;
-        lineItems = response.lineItems;
-      });
-    }
-  }
+  Future<void> _addProductToShoppingCart(ProductVariant variant) async {}
 
   Future<void> _removeProductFromShoppingCart(LineItem lineItem) async {
     print(lineItem.id);

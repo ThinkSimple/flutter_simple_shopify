@@ -15,7 +15,6 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_i
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_checkout_without_shipping_rates.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/checkout/line_item/line_item.dart';
-import 'package:flutter_simple_shopify/models/src/checkout/responses/checkout_response.dart';
 import 'package:flutter_simple_shopify/models/src/order/order.dart';
 import 'package:flutter_simple_shopify/models/src/order/orders/orders.dart';
 import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.dart';
@@ -318,7 +317,7 @@ class ShopifyCheckout with ShopifyError {
     }
   }
 
-  Future<CheckoutResponse> createCheckout(List<LineItem> lineItems,
+  Future<Checkout> createCheckout(List<LineItem> lineItems,
       {Address? mailingAddress, bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options =
         MutationOptions(document: gql(createCheckoutMutation), variables: {
@@ -364,11 +363,11 @@ class ShopifyCheckout with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
 
-    return CheckoutResponse.fromJson(
+    return Checkout.fromJson(
         ((result.data!['checkoutCreate'] ?? const {})['checkout'] ?? const {}));
   }
 
-  Future<CheckoutResponse> addLineItemsToCheckout(
+  Future<Checkout> addLineItemsToCheckout(
       {required String checkoutId,
       required List<LineItem> lineItems,
       bool deleteThisPartOfCache = false}) async {
@@ -394,12 +393,12 @@ class ShopifyCheckout with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
 
-    return CheckoutResponse.fromJson(
+    return Checkout.fromJson(
         ((result.data!['checkoutLineItemsAdd'] ?? const {})['checkout'] ??
             const {}));
   }
 
-  Future<CheckoutResponse> updateLineItemsInCheckout(
+  Future<Checkout> updateLineItemsInCheckout(
       {required String checkoutId,
       required List<LineItem> lineItems,
       bool deleteThisPartOfCache = false}) async {
@@ -425,12 +424,12 @@ class ShopifyCheckout with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
 
-    return CheckoutResponse.fromJson(
+    return Checkout.fromJson(
         ((result.data!['checkoutLineItemsUpdate'] ?? const {})['checkout'] ??
             const {}));
   }
 
-  Future<CheckoutResponse> removeLineItemsFromCheckout(
+  Future<Checkout> removeLineItemsFromCheckout(
       {required String checkoutId,
       required List<LineItem> lineItems,
       bool deleteThisPartOfCache = false}) async {
@@ -451,7 +450,7 @@ class ShopifyCheckout with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
 
-    return CheckoutResponse.fromJson(
+    return Checkout.fromJson(
         ((result.data!['checkoutLineItemsRemove'] ?? const {})['checkout'] ??
             const {}));
   }
