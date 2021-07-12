@@ -143,7 +143,7 @@ class ShopifyCheckout with ShopifyError {
   }
 
   /// Updates the shipping address on given [checkoutId]
-  Future<CheckoutResponse> shippingAddressUpdate(
+  Future<Checkout> shippingAddressUpdate(
     String checkoutId,
     Address address, {
     bool deleteThisPartOfCache = false,
@@ -164,7 +164,7 @@ class ShopifyCheckout with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
 
-    return CheckoutResponse.fromJson(
+    return Checkout.fromJson(
         ((result.data!['checkoutShippingAddressUpdateV2'] ??
                 const {})['checkout'] ??
             const {}));
