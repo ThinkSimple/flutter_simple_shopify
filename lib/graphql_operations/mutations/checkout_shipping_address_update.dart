@@ -25,6 +25,17 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
         }
         title
       }
+      availableShippingRates {
+        ready
+        shippingRates {
+          handle
+          title
+          priceV2 {
+            amount
+            currencyCode
+          }
+        }
+      }
       shippingAddress {
         address1
         address2
