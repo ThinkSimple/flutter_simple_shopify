@@ -190,7 +190,15 @@ class ShopifyCheckout with ShopifyError {
             "currencyCode": price.currencyCode
           },
           "idempotencyKey": impotencyKey,
-          "billingAddress": billingAddress.toJson(),
+          "billingAddress": {
+            "firstName": billingAddress.firstName,
+            "lastName": billingAddress.lastName,
+            "address1": billingAddress.address1,
+            "province": billingAddress.province,
+            "country": billingAddress.country,
+            "city": billingAddress.city,
+            "zip": billingAddress.zip
+          },
           "paymentData": tokenizedPayment,
           "type": type
         }
