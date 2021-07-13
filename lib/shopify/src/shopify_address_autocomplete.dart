@@ -1,7 +1,9 @@
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_address_details.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_address_predictions.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
-import 'package:flutter_simple_shopify/models/src/address_autocomplete.dart';
+import 'package:flutter_simple_shopify/models/src/address_autocomplete/address_details/address_details.dart';
+import 'package:flutter_simple_shopify/models/src/address_autocomplete/address_prediction/address_prediction.dart';
+import 'package:flutter_simple_shopify/models/src/address_autocomplete/location_input/location_input.dart';
 import 'package:graphql/client.dart';
 import 'package:intl/intl.dart';
 
@@ -30,8 +32,8 @@ class ShopifyAddressAutocomplete with ShopifyError {
   Future<List<AddressPrediction>> getPredictions(
     String query,
     String countryCode, {
-    String locale,
-    LocationInput location,
+    String? locale,
+    LocationInput? location,
     bool deleteThisPartOfCache = false,
   }) async {
     final QueryOptions _options = WatchQueryOptions(
@@ -46,16 +48,16 @@ class ShopifyAddressAutocomplete with ShopifyError {
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
-    return (result.data['predictions'] as List)
+    return (result.data!['predictions'] as List)
         .map((e) => AddressPrediction.fromJson(e))
         .toList();
   }
 
   Future<AddressDetails> getDetails(
     AddressPrediction prediction, {
-    String locale,
+    String? locale,
     bool deleteThisPartOfCache = false,
   }) async {
     final QueryOptions _options = WatchQueryOptions(
@@ -68,8 +70,8 @@ class ShopifyAddressAutocomplete with ShopifyError {
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
     if (deleteThisPartOfCache) {
-      _graphQLClient.cache.writeQuery(_options.asRequest, data: null);
+      _graphQLClient.cache.writeQuery(_options.asRequest, data: {});
     }
-    return AddressDetails.fromJson(result.data['address']);
+    return AddressDetails.fromJson(result.data!['address']);
   }
 }

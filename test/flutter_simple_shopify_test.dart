@@ -1,4 +1,4 @@
-import 'package:flutter_simple_shopify/flutter_simple_shopify.dart';
+import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -8,7 +8,7 @@ void main() {
       'currencyCode': 'EUR',
     });
     expect(price.amount, 1.0);
-    expect(price.currencySymbol, '€');
-    expect(price.formattedPrice, '1.0 €');
+    expect(price.currencyCode, '€');
+    expect(price.currencyCode, '1.0 €');
   });
 }

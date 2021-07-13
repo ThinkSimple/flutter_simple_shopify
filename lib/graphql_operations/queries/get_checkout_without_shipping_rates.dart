@@ -4,6 +4,7 @@ query($id: ID!){
     ... on Checkout {
       id
       email
+      ready
       appliedGiftCards {
         amountUsedV2 {
           amount
@@ -52,6 +53,12 @@ query($id: ID!){
             id
             quantity
             title
+             discountAllocations {
+              allocatedAmount {
+                amount
+                currencyCode
+              }
+            }
             variant {
               id
               priceV2 {

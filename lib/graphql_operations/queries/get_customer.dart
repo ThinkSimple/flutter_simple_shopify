@@ -70,6 +70,12 @@ query($customerAccessToken : String!){
               id
               quantity
               title
+              discountAllocations {
+                 allocatedAmount {
+                   amount
+                    currencyCode
+                }
+              }
               variant {
                 priceV2 {
                   amount

@@ -3,6 +3,7 @@ query($id: ID!){
   node(id: $id) {
     ... on Checkout {
       id
+      ready
       email
       appliedGiftCards {
         amountUsedV2 {
@@ -23,6 +24,17 @@ query($id: ID!){
           currencyCode
         }
         title
+      }
+      availableShippingRates {
+        ready
+        shippingRates {
+          handle
+          title
+          priceV2 {
+            amount
+            currencyCode
+          }
+        }
       }
       shippingAddress {
         address1
@@ -52,6 +64,12 @@ query($id: ID!){
             id
             quantity
             title
+            discountAllocations {
+              allocatedAmount {
+                amount
+                currencyCode
+              }
+            }
             variant {
               id
               priceV2 {
@@ -103,14 +121,6 @@ query($id: ID!){
 }
 ''';
 
-/* availableShippingRates {
-        ready
-        shippingRates {
-          handle
-          title
-          priceV2 {
-            amount
-            currencyCode
-       }}}
+/* 
 
  */
