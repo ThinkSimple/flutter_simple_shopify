@@ -147,7 +147,8 @@ class ShopifyCheckout with ShopifyError {
     Address address, {
     bool deleteThisPartOfCache = false,
   }) async {
-    Map<String, dynamic> variables = address.toJson();
+    Map<String, dynamic> variables = {};
+    variables['shippingAddress'] = address.toJson();
     variables['checkoutId'] = checkoutId;
     final MutationOptions _options = MutationOptions(
       document: gql(checkoutShippingAddressUpdateMutation),
