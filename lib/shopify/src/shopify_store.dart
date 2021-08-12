@@ -408,13 +408,20 @@ class ShopifyStore with ShopifyError {
       bool reverse = false}) async {
     final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getXProductsOnQueryAfterCursorQuery),
-        variables: {
-          'cursor': cursor,
-          'limit': limit,
-          'sortKey': sortKey?.parseToString(),
-          'query': query,
-          'reverse': reverse
-        });
+        variables: cursor == null
+            ? {
+                'limit': limit,
+                'sortKey': sortKey?.parseToString(),
+                'query': query,
+                'reverse': reverse
+              }
+            : {
+                'cursor': cursor,
+                'limit': limit,
+                'sortKey': sortKey?.parseToString(),
+                'query': query,
+                'reverse': reverse
+              });
     final QueryResult result =
         await ShopifyConfig.graphQLClient!.query(_options);
     checkForError(result);
