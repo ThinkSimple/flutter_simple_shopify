@@ -84,6 +84,8 @@ class Product with _$Product {
 
   static List<AssociatedCollections> _getCollectionList(
       Map<String, dynamic> json) {
+    if ((json['node'] ?? const {})['collections'] == null) return [];
+
     return (((json['node'] ?? const {})['collections'] ?? const {})['edges']
             as List)
         .map((v) => AssociatedCollections.fromGraphJson(v ?? const {}))
