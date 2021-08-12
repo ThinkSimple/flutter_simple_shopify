@@ -11,6 +11,7 @@ query getShop {
       currencyCode
       enabledPresentmentCurrencies
       supportedDigitalWallets
+      shopifyPaymentsAccountId
     }
     primaryDomain {
       host
