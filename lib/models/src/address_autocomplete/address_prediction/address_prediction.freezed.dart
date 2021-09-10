@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'address_prediction.dart';
 
@@ -149,7 +150,7 @@ class _$_AddressPrediction implements _AddressPrediction {
       {this.addressId, this.description, this.matchedSubstrings});
 
   factory _$_AddressPrediction.fromJson(Map<String, dynamic> json) =>
-      _$_$_AddressPredictionFromJson(json);
+      _$$_AddressPredictionFromJson(json);
 
   @override
   final String? addressId;
@@ -192,7 +193,7 @@ class _$_AddressPrediction implements _AddressPrediction {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_AddressPredictionToJson(this);
+    return _$$_AddressPredictionToJson(this);
   }
 }
 

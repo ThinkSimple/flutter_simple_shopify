@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'available_shipping_rates.dart';
 
@@ -129,7 +130,7 @@ class _$_AvailableShippingRates extends _AvailableShippingRates {
       : super._();
 
   factory _$_AvailableShippingRates.fromJson(Map<String, dynamic> json) =>
-      _$_$_AvailableShippingRatesFromJson(json);
+      _$$_AvailableShippingRatesFromJson(json);
 
   @override
   final bool ready;
@@ -166,7 +167,7 @@ class _$_AvailableShippingRates extends _AvailableShippingRates {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_AvailableShippingRatesToJson(this);
+    return _$$_AvailableShippingRatesToJson(this);
   }
 }
 

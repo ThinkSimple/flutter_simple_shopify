@@ -6,29 +6,28 @@ part of 'mailing_address.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MailingAddress _$_$_MailingAddressFromJson(Map<String, dynamic> json) {
-  return _$_MailingAddress(
-    id: json['id'] as String,
-    address1: json['address1'] as String,
-    city: json['city'] as String,
-    country: json['country'] as String,
-    zip: json['zip'] as String,
-    lastName: json['lastName'] as String?,
-    name: json['name'] as String?,
-    firstName: json['firstName'] as String?,
-    address2: json['address2'] as String?,
-    company: json['company'] as String?,
-    countryCodeV2: json['countryCodeV2'] as String?,
-    formattedArea: json['formattedArea'] as String?,
-    latitude: (json['latitude'] as num?)?.toDouble(),
-    longitude: (json['longitude'] as num?)?.toDouble(),
-    phone: json['phone'] as String?,
-    province: json['province'] as String?,
-    provinceCode: json['provinceCode'] as String?,
-  );
-}
+_$_MailingAddress _$$_MailingAddressFromJson(Map<String, dynamic> json) =>
+    _$_MailingAddress(
+      id: json['id'] as String,
+      address1: json['address1'] as String,
+      city: json['city'] as String,
+      country: json['country'] as String,
+      zip: json['zip'] as String,
+      lastName: json['lastName'] as String?,
+      name: json['name'] as String?,
+      firstName: json['firstName'] as String?,
+      address2: json['address2'] as String?,
+      company: json['company'] as String?,
+      countryCodeV2: json['countryCodeV2'] as String?,
+      formattedArea: json['formattedArea'] as String?,
+      latitude: (json['latitude'] as num?)?.toDouble(),
+      longitude: (json['longitude'] as num?)?.toDouble(),
+      phone: json['phone'] as String?,
+      province: json['province'] as String?,
+      provinceCode: json['provinceCode'] as String?,
+    );
 
-Map<String, dynamic> _$_$_MailingAddressToJson(_$_MailingAddress instance) =>
+Map<String, dynamic> _$$_MailingAddressToJson(_$_MailingAddress instance) =>
     <String, dynamic>{
       'id': instance.id,
       'address1': instance.address1,

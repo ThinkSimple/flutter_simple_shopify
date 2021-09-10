@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'blog.dart';
 
@@ -186,8 +187,7 @@ class _$_Blog extends _Blog {
   _$_Blog({this.id, this.handle, this.title, this.url, this.articles})
       : super._();
 
-  factory _$_Blog.fromJson(Map<String, dynamic> json) =>
-      _$_$_BlogFromJson(json);
+  factory _$_Blog.fromJson(Map<String, dynamic> json) => _$$_BlogFromJson(json);
 
   @override
   final String? id;
@@ -238,7 +238,7 @@ class _$_Blog extends _Blog {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_BlogToJson(this);
+    return _$$_BlogToJson(this);
   }
 }
 

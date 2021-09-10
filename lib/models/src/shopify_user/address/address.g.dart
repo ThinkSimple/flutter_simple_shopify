@@ -6,29 +6,27 @@ part of 'address.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Address _$_$_AddressFromJson(Map<String, dynamic> json) {
-  return _$_Address(
-    id: json['id'] as String?,
-    address1: json['address1'] as String?,
-    address2: json['address2'] as String?,
-    city: json['city'] as String?,
-    company: json['company'] as String?,
-    country: json['country'] as String?,
-    countryCode: json['countryCode'] as String?,
-    firstName: json['firstName'] as String?,
-    lastName: json['lastName'] as String?,
-    formattedArea: json['formattedArea'] as String?,
-    latitude: json['latitude'] as String?,
-    longitude: json['longitude'] as String?,
-    name: json['name'] as String?,
-    phone: json['phone'] as String?,
-    province: json['province'] as String?,
-    provinceCode: json['provinceCode'] as String?,
-    zip: json['zip'] as String?,
-  );
-}
+_$_Address _$$_AddressFromJson(Map<String, dynamic> json) => _$_Address(
+      id: json['id'] as String?,
+      address1: json['address1'] as String?,
+      address2: json['address2'] as String?,
+      city: json['city'] as String?,
+      company: json['company'] as String?,
+      country: json['country'] as String?,
+      countryCode: json['countryCode'] as String?,
+      firstName: json['firstName'] as String?,
+      lastName: json['lastName'] as String?,
+      formattedArea: json['formattedArea'] as String?,
+      latitude: json['latitude'] as String?,
+      longitude: json['longitude'] as String?,
+      name: json['name'] as String?,
+      phone: json['phone'] as String?,
+      province: json['province'] as String?,
+      provinceCode: json['provinceCode'] as String?,
+      zip: json['zip'] as String?,
+    );
 
-Map<String, dynamic> _$_$_AddressToJson(_$_Address instance) =>
+Map<String, dynamic> _$$_AddressToJson(_$_Address instance) =>
     <String, dynamic>{
       'id': instance.id,
       'address1': instance.address1,

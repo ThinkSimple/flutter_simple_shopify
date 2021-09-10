@@ -4,24 +4,23 @@ version: 0.0.25-alpha
 homepage: https://github.com/ThinkSimple/flutter_simple_shopify
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ">=2.12.0 <3.0.0"
   flutter: 2.0.6
 
 dependencies:
   flutter:
     sdk: flutter
   graphql: ^5.0.0-nullsafety.4
-  freezed_annotation: ^0.14.1
-  json_serializable: ^4.1.1
-  shared_preferences: ^2.0.5
+  freezed_annotation: ^0.14.3
+  json_serializable: ^5.0.0
+  shared_preferences: ^2.0.7
   intl: ^0.17.0
-  url_launcher: ^6.0.3
-
+  url_launcher: ^6.0.10
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^2.0.1
-  freezed: ^0.14.1+3
-  injectable_generator: ^1.3.0
-  pedantic: ^1.11.0
+  build_runner: ^2.1.2
+  freezed: ^0.14.5
+  injectable_generator: ^1.5.2
+  pedantic: ^1.11.1
