@@ -6,27 +6,26 @@ part of 'product_variant_checkout.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ProductVariantCheckout _$_$_ProductVariantCheckoutFromJson(
-    Map<String, dynamic> json) {
-  return _$_ProductVariantCheckout(
-    priceV2: PriceV2.fromJson(json['priceV2'] as Map<String, dynamic>),
-    title: json['title'] as String,
-    availableForSale: json['availableForSale'] as bool,
-    sku: json['sku'] as String,
-    requiresShipping: json['requiresShipping'] as bool,
-    id: json['id'] as String,
-    image: json['image'] == null
-        ? null
-        : ShopifyImage.fromJson(json['image'] as Map<String, dynamic>),
-    compareAtPrice: json['compareAtPrice'] == null
-        ? null
-        : PriceV2.fromJson(json['compareAtPrice'] as Map<String, dynamic>),
-    weight: (json['weight'] as num?)?.toDouble(),
-    weightUnit: json['weightUnit'] as String?,
-  );
-}
+_$_ProductVariantCheckout _$$_ProductVariantCheckoutFromJson(
+        Map<String, dynamic> json) =>
+    _$_ProductVariantCheckout(
+      priceV2: PriceV2.fromJson(json['priceV2'] as Map<String, dynamic>),
+      title: json['title'] as String,
+      availableForSale: json['availableForSale'] as bool,
+      sku: json['sku'] as String,
+      requiresShipping: json['requiresShipping'] as bool,
+      id: json['id'] as String,
+      image: json['image'] == null
+          ? null
+          : ShopifyImage.fromJson(json['image'] as Map<String, dynamic>),
+      compareAtPrice: json['compareAtPrice'] == null
+          ? null
+          : PriceV2.fromJson(json['compareAtPrice'] as Map<String, dynamic>),
+      weight: (json['weight'] as num?)?.toDouble(),
+      weightUnit: json['weightUnit'] as String?,
+    );
 
-Map<String, dynamic> _$_$_ProductVariantCheckoutToJson(
+Map<String, dynamic> _$$_ProductVariantCheckoutToJson(
         _$_ProductVariantCheckout instance) =>
     <String, dynamic>{
       'priceV2': instance.priceV2,

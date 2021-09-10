@@ -18,7 +18,7 @@ class Checkout with _$Checkout {
 
   factory Checkout({
     required String id,
-    required bool ready, 
+    required bool ready,
     required AvailableShippingRates? availableShippingRates,
     required String createdAt,
     required String currencyCode,

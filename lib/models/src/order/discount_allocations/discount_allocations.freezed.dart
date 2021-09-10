@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'discount_allocations.dart';
 
@@ -130,7 +131,7 @@ class _$_DiscountAllocations extends _DiscountAllocations {
   _$_DiscountAllocations({required this.allocatedAmount}) : super._();
 
   factory _$_DiscountAllocations.fromJson(Map<String, dynamic> json) =>
-      _$_$_DiscountAllocationsFromJson(json);
+      _$$_DiscountAllocationsFromJson(json);
 
   @override
   final PriceV2? allocatedAmount;
@@ -162,7 +163,7 @@ class _$_DiscountAllocations extends _DiscountAllocations {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_DiscountAllocationsToJson(this);
+    return _$$_DiscountAllocationsToJson(this);
   }
 }
 

@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'orders.dart';
 
@@ -119,7 +120,7 @@ class _$_Orders implements _Orders {
   _$_Orders({required this.orderList, required this.hasNextPage});
 
   factory _$_Orders.fromJson(Map<String, dynamic> json) =>
-      _$_$_OrdersFromJson(json);
+      _$$_OrdersFromJson(json);
 
   @override
   final List<Order> orderList;
@@ -156,7 +157,7 @@ class _$_Orders implements _Orders {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_OrdersToJson(this);
+    return _$$_OrdersToJson(this);
   }
 }
 

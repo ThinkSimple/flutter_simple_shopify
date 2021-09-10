@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'author_v_2.dart';
 
@@ -171,7 +172,7 @@ class _$_AuthorV2 implements _AuthorV2 {
   _$_AuthorV2({this.bio, this.email, this.firstName, this.lastName, this.name});
 
   factory _$_AuthorV2.fromJson(Map<String, dynamic> json) =>
-      _$_$_AuthorV2FromJson(json);
+      _$$_AuthorV2FromJson(json);
 
   @override
   final String? bio;
@@ -223,7 +224,7 @@ class _$_AuthorV2 implements _AuthorV2 {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_AuthorV2ToJson(this);
+    return _$$_AuthorV2ToJson(this);
   }
 }
 

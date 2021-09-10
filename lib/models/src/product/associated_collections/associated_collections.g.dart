@@ -6,19 +6,18 @@ part of 'associated_collections.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AssociatedCollections _$_$_AssociatedCollectionsFromJson(
-    Map<String, dynamic> json) {
-  return _$_AssociatedCollections(
-    id: json['id'] as String,
-    title: json['title'] as String,
-    description: json['description'] as String,
-    updatedAt: json['updatedAt'] as String,
-    descriptionHtml: json['descriptionHtml'] as String?,
-    handle: json['handle'] as String?,
-  );
-}
+_$_AssociatedCollections _$$_AssociatedCollectionsFromJson(
+        Map<String, dynamic> json) =>
+    _$_AssociatedCollections(
+      id: json['id'] as String,
+      title: json['title'] as String,
+      description: json['description'] as String,
+      updatedAt: json['updatedAt'] as String,
+      descriptionHtml: json['descriptionHtml'] as String?,
+      handle: json['handle'] as String?,
+    );
 
-Map<String, dynamic> _$_$_AssociatedCollectionsToJson(
+Map<String, dynamic> _$$_AssociatedCollectionsToJson(
         _$_AssociatedCollections instance) =>
     <String, dynamic>{
       'id': instance.id,

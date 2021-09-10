@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'payment_settings.dart';
 
@@ -216,7 +217,7 @@ class _$_PaymentSettings implements _PaymentSettings {
       this.supportedDigitalWallets});
 
   factory _$_PaymentSettings.fromJson(Map<String, dynamic> json) =>
-      _$_$_PaymentSettingsFromJson(json);
+      _$$_PaymentSettingsFromJson(json);
 
   @override
   final List<String>? acceptedCardBrands;
@@ -287,7 +288,7 @@ class _$_PaymentSettings implements _PaymentSettings {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PaymentSettingsToJson(this);
+    return _$$_PaymentSettingsToJson(this);
   }
 }
 
