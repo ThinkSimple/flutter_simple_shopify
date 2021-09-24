@@ -1,3 +1,4 @@
+import 'package:flutter_simple_shopify/flutter_simple_shopify.dart';
 import 'package:graphql/client.dart';
 
 class ShopifyConfig {
@@ -22,6 +23,14 @@ class ShopifyConfig {
   static Store? _cacheStore;
 
   static Store? get cacheStore => _cacheStore;
+  
+  static Currency? _currency;
+
+  static Currency? get currency => _currency;
+  
+  static String? _activeCurrency;
+
+  static String? get activeCurrency => _activeCurrency;
 
   /// Sets the config.
   ///
@@ -31,11 +40,15 @@ class ShopifyConfig {
     String storeUrl,
     String? storefrontApiVersion, {
     Store? cacheStore,
+    Currency? currency,
+    String? activeCurrency
   }) {
     _storefrontAccessToken = storefrontAccessToken;
     _storeUrl = storeUrl;
     _storefrontApiVersion = storefrontApiVersion ?? _storefrontApiVersion;
     _cacheStore = cacheStore;
+    _currency = currency;
+    _activeCurrency = activeCurrency;
     final policies = Policies(
       fetch: FetchPolicy.noCache,
     );

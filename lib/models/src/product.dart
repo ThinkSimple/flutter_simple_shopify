@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flutter_simple_shopify/flutter_simple_shopify.dart';
 import 'package:intl/intl.dart';
 
 class Products {
@@ -136,8 +137,8 @@ class Product {
 
   static List<ProductVariant> _getProductVariants(Map<String, dynamic> json) {
     return (((json['variants'] ?? const {})['edges'] ?? []) as List<dynamic>)
-            .map((v) => ProductVariant.fromJson(v ?? const {}))
-            .toList() ;
+        .map((v) => ProductVariant.fromJson(v ?? const {}))
+        .toList();
   }
 
   ProductVariant? getProductVariantBySelectedOption(
@@ -153,7 +154,7 @@ class Product {
         this.productVariants?.firstWhere((ProductVariant productVariant) {
       bool found = false;
       List<Map<String?, String?>> selectedOptionList = [];
-  
+
       productVariant.selectedOptions?.forEach((SelectedOption selectedOption) {
         selectedOptionList.add({selectedOption.name: selectedOption.value});
       });
@@ -388,6 +389,54 @@ class SelectedOption {
   }
 }
 
+class Currency {
+  final String shopCurrency;
+  final String moneyFormat;
+  final String moneyWithCurrencyFormat;
+  final bool currencyConversionEnabled;
+  final String currencyConversionMoneyFormat;
+  final List<String> currencySupported;
+  final List<String> countrySupported;
+  final bool currencyConversionRoundAmounts;
+  final Map<String, dynamic> rates;
+
+  Currency(
+      this.shopCurrency,
+      this.moneyFormat,
+      this.moneyWithCurrencyFormat,
+      this.currencyConversionEnabled,
+      this.currencyConversionMoneyFormat,
+      this.currencySupported,
+      this.countrySupported,
+      this.currencyConversionRoundAmounts,
+      this.rates);
+
+  static Currency fromJson(Map<String, dynamic> json) {
+    return Currency(
+        json['shop_currency'],
+        json['money_format'],
+        json['money_with_currency_format'],
+        json['currency_conversion_enabled'],
+        json['currency_conversion_money_format'],
+        List.from(json['currency_supported']),
+        List.from(json['country_supported']),
+        json['currency_conversion_round_amounts'],
+        Map.from(json['rates']));
+  }
+
+  Map toJson() => {
+        'shopCurrency': shopCurrency,
+        'moneyFormat': moneyFormat,
+        'moneyWithCurrencyFormat': moneyWithCurrencyFormat,
+        'currencyConversionEnabled': currencyConversionEnabled,
+        'currencyConversionMoneyFormat': currencyConversionMoneyFormat,
+        'currencySupported': currencySupported,
+        'countrySupported': countrySupported,
+        'currencyConversionRoundAmounts': currencyConversionRoundAmounts,
+        'rates': rates,
+      };
+}
+
 class PriceV2 {
   final double? amount;
   final String? currencyCode;
@@ -399,46 +448,71 @@ class PriceV2 {
       {this.formattedPrice,
       this.currencySymbol,
       this.amount,
-      this.currencyCode, 
+      this.currencyCode,
       this.numberFormattedPrice});
 
   static PriceV2 fromJson(Map<String, dynamic> json) {
-    // var format = NumberFormat.currency(locale: 'HI');
-    // String amount = json['amount'] != null
-    //     ? double.parse(json['amount']).toStringAsFixed(2)
-    //     : '';
-    return PriceV2(
+    PriceV2 price = PriceV2(
         amount: json['amount'] != null ? double.parse(json['amount']) : null,
         currencyCode: json['currencyCode'],
         currencySymbol: _simpleCurrencySymbols[json['currencyCode']],
-        formattedPrice: _chooseRightOrderOnCurrencySymbol(json['amount'], json['currencyCode']),
-        numberFormattedPrice: _chooseRightOrderOnCurrencySymbol(json['amount'], json['currencyCode'], numberFormat: true)
-        );
+        formattedPrice: _chooseRightOrderOnCurrencySymbol(
+            json['amount'], json['currencyCode']),
+        numberFormattedPrice: _chooseRightOrderOnCurrencySymbol(
+            json['amount'], json['currencyCode'],
+            numberFormat: true));
+    Currency? currency = ShopifyConfig.currency;
+    String? activeCurrency = ShopifyConfig.activeCurrency;
+    if (currency != null && price.amount != null && activeCurrency != null) {
+      if (currency.currencyConversionEnabled) {
+        double amt = convert(price.amount!, currency.rates[price.currencyCode],
+            currency.rates[activeCurrency], currency.currencyConversionRoundAmounts);
+        price = PriceV2(
+            amount: amt,
+            currencyCode: activeCurrency,
+            currencySymbol: _simpleCurrencySymbols[activeCurrency],
+            formattedPrice:
+                _chooseRightOrderOnCurrencySymbol(amt.toString(), activeCurrency),
+            numberFormattedPrice: _chooseRightOrderOnCurrencySymbol(
+                amt.toString(), activeCurrency,
+                numberFormat: true));
+      }
+    }
+    // print("object");
+    return price;
   }
 
-  static String _chooseRightOrderOnCurrencySymbol(String? amount, String? currencyCode, {bool numberFormat = false}) {
+  static double convert(
+      double amount, double from, double to, bool shouldRound) {
+    double amt = (amount * from) / to;
+    
+    if (shouldRound) {
+      amt = double.parse(amt.toStringAsFixed(0));
+    } else {
+      amt = double.parse(amt.toStringAsFixed(2));
+    }
+    // print('amt $amt');
+    return amt;
+  }
+
+  static String _chooseRightOrderOnCurrencySymbol(
+      String? amount, String? currencyCode,
+      {bool numberFormat = false}) {
     String currencyString;
     String formattedAmount = '';
 
-    if(amount != null){
-      if(numberFormat){
+    if (amount != null) {
+      if (numberFormat) {
         var format = NumberFormat.currency(locale: 'HI', symbol: '');
         formattedAmount = format.format(double.parse(amount));
-      }else{
+      } else {
         formattedAmount = double.parse(amount).toStringAsFixed(2);
       }
-    }else{
+    } else {
       // formattedAmount = '';
       return '';
     }
     switch (currencyCode) {
-      case "INR":
-        {
-          currencyString =
-              '${_simpleCurrencySymbols[currencyCode!]}$formattedAmount';
-        }
-        break;
-
       case "EUR":
         {
           currencyString =
@@ -451,7 +525,13 @@ class PriceV2 {
               '${_simpleCurrencySymbols[currencyCode!]}$formattedAmount';
         }
         break;
+      case "INR":
+      case "QAR":
+      case "OMR":
+      case "BHD":
+      case "KWD":
       case "AED":
+      case "SAR":
         {
           currencyString =
               '${_simpleCurrencySymbols[currencyCode!]} $formattedAmount';
@@ -482,11 +562,11 @@ class PriceV2 {
     'NIO': r'C$',
     'GMD': 'GMD',
     'MKD': 'din',
-    'BHD': 'din',
+    'BHD': 'BHD',
     'DZD': 'din',
     'IQD': 'din',
     'JOD': 'din',
-    'KWD': 'din',
+    'KWD': 'KWD',
     'LYD': 'din',
     'RSD': 'din',
     'TND': 'din',
@@ -589,13 +669,13 @@ class PriceV2 {
     'GTQ': 'Q',
     'ZAR': 'R',
     'BRL': r'R$',
-    'OMR': 'Rial',
-    'QAR': 'Rial',
+    'OMR': 'OMR',
+    'QAR': 'QAR',
     'YER': 'Rial',
     'IRR': 'Rial',
     'KHR': 'Riel',
     'MYR': 'RM',
-    'SAR': 'Riyal',
+    'SAR': 'SAR',
     'BYR': 'BYR',
     'RUB': 'руб.',
     'MUR': 'Rs',
