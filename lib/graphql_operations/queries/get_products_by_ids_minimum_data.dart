@@ -5,6 +5,7 @@ query($ids: [ID!]!) {
       id
       handle
       title
+      tags
       availableForSale
       descriptionHtml
       productType
