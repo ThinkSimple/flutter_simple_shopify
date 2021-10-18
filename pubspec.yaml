@@ -10,16 +10,16 @@ dependencies:
   flutter:
     sdk: flutter
   graphql: ^5.0.0
-  freezed_annotation: ^0.14.3
-  json_serializable: ^5.0.0
-  shared_preferences: ^2.0.7
+  freezed_annotation: ^0.15.0
+  json_serializable: ^6.0.0
+  shared_preferences: ^2.0.8
   intl: ^0.17.0
-  url_launcher: ^6.0.10
+  url_launcher: ^6.0.12
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^2.1.2
-  freezed: ^0.14.5
+  build_runner: ^2.1.4
+  freezed: ^0.15.0+1
   injectable_generator: ^1.5.2
   pedantic: ^1.11.1
