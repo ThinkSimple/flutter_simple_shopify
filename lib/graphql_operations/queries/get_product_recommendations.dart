@@ -1,6 +1,7 @@
-const String getProductRecommendationsQuery = r'''
-query getProductRecommentationsQuery($id: ID!){
-  productRecommendations(productId: $id) {
+String getProductRecommendationsQuery(int variantsCount) {
+  return '''
+query getProductRecommentationsQuery(\$id: ID!){
+  productRecommendations(productId: \$id) {
     id
     handle
     title
@@ -29,7 +30,7 @@ query getProductRecommentationsQuery($id: ID!){
         }
       }
     }
-    variants(first: 1) {
+    variants(first: $variantsCount) {
       edges {
         node {
           id
@@ -46,9 +47,14 @@ query getProductRecommentationsQuery($id: ID!){
             amount
             currencyCode
           }
+          selectedOptions {
+            name
+            value
+          }
         }
       }
     }
   }
 }
 ''';
+}

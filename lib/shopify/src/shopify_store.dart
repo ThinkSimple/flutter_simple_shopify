@@ -26,6 +26,7 @@ import 'package:flutter_simple_shopify/enums/src/sort_key_product.dart';
 import 'package:flutter_simple_shopify/models/src/shop.dart';
 import 'package:graphql/client.dart';
 import '../../graphql_operations/queries/get_n_products.dart';
+import '../../graphql_operations/queries/get_product_recommendations.dart';
 import '../../graphql_operations/queries/get_products.dart';
 import '../../models/src/collection.dart';
 import '../../shopify_config.dart';
@@ -119,11 +120,11 @@ class ShopifyStore with ShopifyError {
   ///
   /// Returns the Products associated to the given id's in [idList]
   Future<List<Product>> getProductsByIds(List<String> idList,
-      {bool deleteThisPartOfCache = false, minimumData = true}) async {
+      {bool deleteThisPartOfCache = false, minimumData = true, int variantsCount = 1}) async {
     List<Product> productList = [];
     final QueryOptions _options = WatchQueryOptions(
         document: minimumData
-            ? gql(getProductsByIdsMinimumDataQuery)
+            ? gql(getProductsByIdsMinimumDataQuery(variantsCount))
             : gql(getProductsByIdsQuery),
         variables: {'ids': idList});
     final QueryResult result = await _graphQLClient!.query(_options);
@@ -179,10 +180,10 @@ class ShopifyStore with ShopifyError {
 
   /// Returns a list of recommended [Product] by given id.
   Future<List<Product>> getProductRecommendations(String productId,
-      {bool deleteThisPartOfCache = false}) async {
+      {bool deleteThisPartOfCache = false, int variantsCount = 1}) async {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
-          document: gql(getProductRecommendationsQuery),
+          document: gql(getProductRecommendationsQuery(variantsCount)),
           variables: {'id': productId});
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
@@ -240,12 +241,12 @@ class ShopifyStore with ShopifyError {
 
   /// Returns a collection by handle.
   Future<Collection> getCollectionByHandle(String handle,
-      {bool deleteThisPartOfCache = false, productsCount}) async {
+      {bool deleteThisPartOfCache = false, int? productsCount, int variantsCount = 1}) async {
     Collection collection = Collection.fromJson({});
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
           document: productsCount != null
-              ? gql(getCollectionByHandleWithProductsQuery(productsCount))
+              ? gql(getCollectionByHandleWithProductsQuery(productsCount, variantsCount))
               : gql(getCollectionByHandleQuery),
           variables: {'handle': handle});
       final QueryResult result = await _graphQLClient!.query(_options);

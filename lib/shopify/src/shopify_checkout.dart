@@ -395,10 +395,11 @@ class ShopifyCheckout with ShopifyError {
       String customerAccessToken, int limit,
       {SortKeyOrder sortKey = SortKeyOrder.ID,
       bool reverse = true,
+      int variantsCount = 1,
       bool deleteThisPartOfCache = false}) async {
     String? cursor;
     final QueryOptions _options = WatchQueryOptions(
-        document: gql(getRecentlyOrderedProductsQuery),
+        document: gql(getRecentlyOrderedProductsQuery(variantsCount)),
         variables: {
           'accessToken': customerAccessToken,
           'sortKey': sortKey.parseToString(),

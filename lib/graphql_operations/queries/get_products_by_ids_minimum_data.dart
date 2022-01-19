@@ -1,6 +1,7 @@
-const String getProductsByIdsMinimumDataQuery = r'''
-query($ids: [ID!]!) {
-  nodes(ids: $ids) {
+String getProductsByIdsMinimumDataQuery(int variantsCount) {
+  return '''
+query(\$ids: [ID!]!) {
+  nodes(ids: \$ids) {
     ... on Product {
       id
       handle
@@ -32,7 +33,7 @@ query($ids: [ID!]!) {
           }
         }
       }
-      variants(first: 1) {
+      variants(first: $variantsCount) {
         edges {
           node {
             id
@@ -49,6 +50,10 @@ query($ids: [ID!]!) {
               amount
               currencyCode
             }
+            selectedOptions {
+              name
+              value
+            }
           }
         }
       }
@@ -57,3 +62,4 @@ query($ids: [ID!]!) {
 }
 
 ''';
+}

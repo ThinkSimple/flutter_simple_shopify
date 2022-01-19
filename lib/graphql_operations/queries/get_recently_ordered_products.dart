@@ -1,14 +1,15 @@
-const String getRecentlyOrderedProductsQuery = r'''
+String getRecentlyOrderedProductsQuery(int variantsCount) {
+  return '''
 query getOrders(
-  $cursor: String
-  $x: Int
-  $sortKey: OrderSortKeys
-  $accessToken: String!
-  $reverse: Boolean
+  \$cursor: String
+  \$x: Int
+  \$sortKey: OrderSortKeys
+  \$accessToken: String!
+  \$reverse: Boolean
 ) {
-  customer(customerAccessToken: $accessToken) {
+  customer(customerAccessToken: \$accessToken) {
     id
-    orders(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
+    orders(first: \$x, after: \$cursor, sortKey: \$sortKey, reverse: \$reverse) {
       pageInfo {
         hasNextPage
       }
@@ -20,7 +21,7 @@ query getOrders(
           cancelReason
           financialStatus
           fulfillmentStatus
-          lineItems(first: 250) {
+          lineItems(first: 10) {
             edges {
               node {
                 title
@@ -53,7 +54,7 @@ query getOrders(
                         }
                       }
                     }
-                    variants(first: 1) {
+                    variants(first: $variantsCount) {
                       edges {
                         node {
                           id
@@ -69,6 +70,10 @@ query getOrders(
                           compareAtPriceV2 {
                             amount
                             currencyCode
+                          }
+                          selectedOptions {
+                            name
+                            value
                           }
                         }
                       }
@@ -86,3 +91,4 @@ query getOrders(
   }
 }
 ''';
+}

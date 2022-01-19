@@ -154,11 +154,11 @@ class Product {
         this.productVariants?.firstWhere((ProductVariant productVariant) {
       bool found = false;
       List<Map<String?, String?>> selectedOptionList = [];
-
+      
       productVariant.selectedOptions?.forEach((SelectedOption selectedOption) {
         selectedOptionList.add({selectedOption.name: selectedOption.value});
       });
-
+      
       if (unOrdDeepEq(selectedOptionList, filterList) == true) {
         found = true;
       }
@@ -452,17 +452,24 @@ class PriceV2 {
       this.numberFormattedPrice});
 
   static PriceV2 fromJson(Map<String, dynamic> json) {
+    Currency? currency = ShopifyConfig.currency;
+    String? activeCurrency = ShopifyConfig.activeCurrency;
+
+    double? amount;
+    if(json['amount'] != null) {
+      amount = double.parse(json['amount']);
+    }
+
     PriceV2 price = PriceV2(
-        amount: json['amount'] != null ? double.parse(json['amount']) : null,
+        amount: amount,
         currencyCode: json['currencyCode'],
         currencySymbol: _simpleCurrencySymbols[json['currencyCode']],
         formattedPrice: _chooseRightOrderOnCurrencySymbol(
-            json['amount'], json['currencyCode']),
+            amount?.toString(), json['currencyCode']),
         numberFormattedPrice: _chooseRightOrderOnCurrencySymbol(
-            json['amount'], json['currencyCode'],
+            amount?.toString(), json['currencyCode'],
             numberFormat: true));
-    Currency? currency = ShopifyConfig.currency;
-    String? activeCurrency = ShopifyConfig.activeCurrency;
+    
     if (currency != null && price.amount != null && activeCurrency != null) {
       if (currency.currencyConversionEnabled) {
         double amt = convert(price.amount!, currency.rates[price.currencyCode],
@@ -487,7 +494,7 @@ class PriceV2 {
     double amt = (amount * from) / to;
     
     if (shouldRound) {
-      amt = double.parse(amt.toStringAsFixed(0));
+      amt = double.parse(amt.ceil().toString());
     } else {
       amt = double.parse(amt.toStringAsFixed(2));
     }
@@ -530,8 +537,13 @@ class PriceV2 {
       case "OMR":
       case "BHD":
       case "KWD":
-      case "AED":
       case "SAR":
+        {
+          currencyString =
+              '$formattedAmount ${_simpleCurrencySymbols[currencyCode!]}';
+        }
+        break;
+      case "AED":
         {
           currencyString =
               '${_simpleCurrencySymbols[currencyCode!]} $formattedAmount';

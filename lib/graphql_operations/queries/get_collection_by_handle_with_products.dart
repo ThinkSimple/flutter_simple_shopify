@@ -1,4 +1,4 @@
-String getCollectionByHandleWithProductsQuery(int productsCount) {
+String getCollectionByHandleWithProductsQuery(int productsCount, int variantsCount) {
   return '''
 query(\$handle: String!) {
   collectionByHandle(handle: \$handle) {
@@ -32,7 +32,7 @@ query(\$handle: String!) {
             value 
             valueType 
           }
-          variants(first: 1) {
+          variants(first: $variantsCount) {
             edges {
               node {
                 id
@@ -53,6 +53,10 @@ query(\$handle: String!) {
                 compareAtPriceV2 {
                   amount
                   currencyCode
+                }
+                selectedOptions {
+                  name
+                  value
                 }
               }
             }
