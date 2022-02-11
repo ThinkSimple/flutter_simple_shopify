@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'author_v_2.dart';
@@ -36,7 +37,7 @@ class _$AuthorV2TearOff {
     );
   }
 
-  AuthorV2 fromJson(Map<String, Object> json) {
+  AuthorV2 fromJson(Map<String, Object?> json) {
     return AuthorV2.fromJson(json);
   }
 }
@@ -193,29 +194,23 @@ class _$_AuthorV2 implements _AuthorV2 {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AuthorV2 &&
-            (identical(other.bio, bio) ||
-                const DeepCollectionEquality().equals(other.bio, bio)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.firstName, firstName) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstName, firstName)) &&
-            (identical(other.lastName, lastName) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastName, lastName)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+        (other.runtimeType == runtimeType &&
+            other is _AuthorV2 &&
+            const DeepCollectionEquality().equals(other.bio, bio) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.firstName, firstName) &&
+            const DeepCollectionEquality().equals(other.lastName, lastName) &&
+            const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(bio) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(firstName) ^
-      const DeepCollectionEquality().hash(lastName) ^
-      const DeepCollectionEquality().hash(name);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(bio),
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(firstName),
+      const DeepCollectionEquality().hash(lastName),
+      const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
@@ -239,15 +234,15 @@ abstract class _AuthorV2 implements AuthorV2 {
   factory _AuthorV2.fromJson(Map<String, dynamic> json) = _$_AuthorV2.fromJson;
 
   @override
-  String? get bio => throw _privateConstructorUsedError;
+  String? get bio;
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
-  String? get firstName => throw _privateConstructorUsedError;
+  String? get firstName;
   @override
-  String? get lastName => throw _privateConstructorUsedError;
+  String? get lastName;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
   @JsonKey(ignore: true)
   _$AuthorV2CopyWith<_AuthorV2> get copyWith =>

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'comment.dart';
@@ -36,7 +37,7 @@ class _$CommentTearOff {
     );
   }
 
-  Comment fromJson(Map<String, Object> json) {
+  Comment fromJson(Map<String, Object?> json) {
     return Comment.fromJson(json);
   }
 }
@@ -193,29 +194,24 @@ class _$_Comment extends _Comment {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Comment &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.content, content) ||
-                const DeepCollectionEquality()
-                    .equals(other.content, content)) &&
-            (identical(other.contentHtml, contentHtml) ||
-                const DeepCollectionEquality()
-                    .equals(other.contentHtml, contentHtml)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+        (other.runtimeType == runtimeType &&
+            other is _Comment &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.content, content) &&
+            const DeepCollectionEquality()
+                .equals(other.contentHtml, contentHtml) &&
+            const DeepCollectionEquality().equals(other.id, id));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(content) ^
-      const DeepCollectionEquality().hash(contentHtml) ^
-      const DeepCollectionEquality().hash(id);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(content),
+      const DeepCollectionEquality().hash(contentHtml),
+      const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
   @override
@@ -240,15 +236,15 @@ abstract class _Comment extends Comment {
   factory _Comment.fromJson(Map<String, dynamic> json) = _$_Comment.fromJson;
 
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get content => throw _privateConstructorUsedError;
+  String? get content;
   @override
-  String? get contentHtml => throw _privateConstructorUsedError;
+  String? get contentHtml;
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @JsonKey(ignore: true)
   _$CommentCopyWith<_Comment> get copyWith =>

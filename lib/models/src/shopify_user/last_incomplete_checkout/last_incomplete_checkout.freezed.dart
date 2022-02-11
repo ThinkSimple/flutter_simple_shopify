@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'last_incomplete_checkout.dart';
@@ -45,7 +46,7 @@ class _$LastIncompleteCheckoutTearOff {
     );
   }
 
-  LastIncompleteCheckout fromJson(Map<String, Object> json) {
+  LastIncompleteCheckout fromJson(Map<String, Object?> json) {
     return LastIncompleteCheckout.fromJson(json);
   }
 }
@@ -309,45 +310,35 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LastIncompleteCheckout &&
-            (identical(other.completedAt, completedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.completedAt, completedAt)) &&
-            (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.currencyCode, currencyCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.currencyCode, currencyCode)) &&
-            (identical(other.webUrl, webUrl) ||
-                const DeepCollectionEquality().equals(other.webUrl, webUrl)) &&
-            (identical(other.totalPriceV2, totalPriceV2) ||
-                const DeepCollectionEquality()
-                    .equals(other.totalPriceV2, totalPriceV2)) &&
-            (identical(other.lineItemsSubtotalPrice, lineItemsSubtotalPrice) ||
-                const DeepCollectionEquality().equals(
-                    other.lineItemsSubtotalPrice, lineItemsSubtotalPrice)) &&
-            (identical(other.lineItems, lineItems) ||
-                const DeepCollectionEquality()
-                    .equals(other.lineItems, lineItems)));
+        (other.runtimeType == runtimeType &&
+            other is _LastIncompleteCheckout &&
+            const DeepCollectionEquality()
+                .equals(other.completedAt, completedAt) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.currencyCode, currencyCode) &&
+            const DeepCollectionEquality().equals(other.webUrl, webUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.totalPriceV2, totalPriceV2) &&
+            const DeepCollectionEquality()
+                .equals(other.lineItemsSubtotalPrice, lineItemsSubtotalPrice) &&
+            const DeepCollectionEquality().equals(other.lineItems, lineItems));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(completedAt) ^
-      const DeepCollectionEquality().hash(createdAt) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(currencyCode) ^
-      const DeepCollectionEquality().hash(webUrl) ^
-      const DeepCollectionEquality().hash(totalPriceV2) ^
-      const DeepCollectionEquality().hash(lineItemsSubtotalPrice) ^
-      const DeepCollectionEquality().hash(lineItems);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(completedAt),
+      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(currencyCode),
+      const DeepCollectionEquality().hash(webUrl),
+      const DeepCollectionEquality().hash(totalPriceV2),
+      const DeepCollectionEquality().hash(lineItemsSubtotalPrice),
+      const DeepCollectionEquality().hash(lineItems));
 
   @JsonKey(ignore: true)
   @override
@@ -378,24 +369,24 @@ abstract class _LastIncompleteCheckout implements LastIncompleteCheckout {
       _$_LastIncompleteCheckout.fromJson;
 
   @override
-  String? get completedAt => throw _privateConstructorUsedError;
+  String? get completedAt;
   @override
-  String? get createdAt => throw _privateConstructorUsedError;
+  String? get createdAt;
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String? get currencyCode => throw _privateConstructorUsedError;
+  String? get currencyCode;
   @override
-  String? get webUrl => throw _privateConstructorUsedError;
+  String? get webUrl;
   @override
-  PriceV2? get totalPriceV2 => throw _privateConstructorUsedError;
+  PriceV2? get totalPriceV2;
   @override
-  PriceV2? get lineItemsSubtotalPrice => throw _privateConstructorUsedError;
+  PriceV2? get lineItemsSubtotalPrice;
   @override
   @JsonKey(fromJson: JsonHelper.lineItems)
-  List<LineItem>? get lineItems => throw _privateConstructorUsedError;
+  List<LineItem>? get lineItems;
   @override
   @JsonKey(ignore: true)
   _$LastIncompleteCheckoutCopyWith<_LastIncompleteCheckout> get copyWith =>

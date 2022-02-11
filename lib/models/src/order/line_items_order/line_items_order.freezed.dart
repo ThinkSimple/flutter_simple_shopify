@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'line_items_order.dart';
@@ -27,7 +28,7 @@ class _$LineItemsOrderTearOff {
     );
   }
 
-  LineItemsOrder fromJson(Map<String, Object> json) {
+  LineItemsOrder fromJson(Map<String, Object?> json) {
     return LineItemsOrder.fromJson(json);
   }
 }
@@ -129,16 +130,15 @@ class _$_LineItemsOrder implements _LineItemsOrder {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LineItemsOrder &&
-            (identical(other.lineItemOrderList, lineItemOrderList) ||
-                const DeepCollectionEquality()
-                    .equals(other.lineItemOrderList, lineItemOrderList)));
+        (other.runtimeType == runtimeType &&
+            other is _LineItemsOrder &&
+            const DeepCollectionEquality()
+                .equals(other.lineItemOrderList, lineItemOrderList));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(lineItemOrderList);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(lineItemOrderList));
 
   @JsonKey(ignore: true)
   @override
@@ -159,8 +159,7 @@ abstract class _LineItemsOrder implements LineItemsOrder {
       _$_LineItemsOrder.fromJson;
 
   @override
-  List<LineItemOrder> get lineItemOrderList =>
-      throw _privateConstructorUsedError;
+  List<LineItemOrder> get lineItemOrderList;
   @override
   @JsonKey(ignore: true)
   _$LineItemsOrderCopyWith<_LineItemsOrder> get copyWith =>

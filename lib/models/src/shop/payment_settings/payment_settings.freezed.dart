@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'payment_settings.dart';
@@ -40,7 +41,7 @@ class _$PaymentSettingsTearOff {
     );
   }
 
-  PaymentSettings fromJson(Map<String, Object> json) {
+  PaymentSettings fromJson(Map<String, Object?> json) {
     return PaymentSettings.fromJson(json);
   }
 }
@@ -242,44 +243,35 @@ class _$_PaymentSettings implements _PaymentSettings {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentSettings &&
-            (identical(other.acceptedCardBrands, acceptedCardBrands) ||
-                const DeepCollectionEquality()
-                    .equals(other.acceptedCardBrands, acceptedCardBrands)) &&
-            (identical(other.cardVaultUrl, cardVaultUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.cardVaultUrl, cardVaultUrl)) &&
-            (identical(other.countryCode, countryCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.countryCode, countryCode)) &&
-            (identical(other.currencyCode, currencyCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.currencyCode, currencyCode)) &&
-            (identical(other.enabledPresentmentCurrencies,
-                    enabledPresentmentCurrencies) ||
-                const DeepCollectionEquality().equals(
-                    other.enabledPresentmentCurrencies,
-                    enabledPresentmentCurrencies)) &&
-            (identical(
-                    other.shopifyPaymentAccountId, shopifyPaymentAccountId) ||
-                const DeepCollectionEquality().equals(
-                    other.shopifyPaymentAccountId, shopifyPaymentAccountId)) &&
-            (identical(
-                    other.supportedDigitalWallets, supportedDigitalWallets) ||
-                const DeepCollectionEquality().equals(
-                    other.supportedDigitalWallets, supportedDigitalWallets)));
+        (other.runtimeType == runtimeType &&
+            other is _PaymentSettings &&
+            const DeepCollectionEquality()
+                .equals(other.acceptedCardBrands, acceptedCardBrands) &&
+            const DeepCollectionEquality()
+                .equals(other.cardVaultUrl, cardVaultUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.countryCode, countryCode) &&
+            const DeepCollectionEquality()
+                .equals(other.currencyCode, currencyCode) &&
+            const DeepCollectionEquality().equals(
+                other.enabledPresentmentCurrencies,
+                enabledPresentmentCurrencies) &&
+            const DeepCollectionEquality().equals(
+                other.shopifyPaymentAccountId, shopifyPaymentAccountId) &&
+            const DeepCollectionEquality().equals(
+                other.supportedDigitalWallets, supportedDigitalWallets));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(acceptedCardBrands) ^
-      const DeepCollectionEquality().hash(cardVaultUrl) ^
-      const DeepCollectionEquality().hash(countryCode) ^
-      const DeepCollectionEquality().hash(currencyCode) ^
-      const DeepCollectionEquality().hash(enabledPresentmentCurrencies) ^
-      const DeepCollectionEquality().hash(shopifyPaymentAccountId) ^
-      const DeepCollectionEquality().hash(supportedDigitalWallets);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(acceptedCardBrands),
+      const DeepCollectionEquality().hash(cardVaultUrl),
+      const DeepCollectionEquality().hash(countryCode),
+      const DeepCollectionEquality().hash(currencyCode),
+      const DeepCollectionEquality().hash(enabledPresentmentCurrencies),
+      const DeepCollectionEquality().hash(shopifyPaymentAccountId),
+      const DeepCollectionEquality().hash(supportedDigitalWallets));
 
   @JsonKey(ignore: true)
   @override
@@ -306,21 +298,19 @@ abstract class _PaymentSettings implements PaymentSettings {
       _$_PaymentSettings.fromJson;
 
   @override
-  List<String>? get acceptedCardBrands => throw _privateConstructorUsedError;
+  List<String>? get acceptedCardBrands;
   @override
-  String? get cardVaultUrl => throw _privateConstructorUsedError;
+  String? get cardVaultUrl;
   @override
-  String? get countryCode => throw _privateConstructorUsedError;
+  String? get countryCode;
   @override
-  String? get currencyCode => throw _privateConstructorUsedError;
+  String? get currencyCode;
   @override
-  List<String>? get enabledPresentmentCurrencies =>
-      throw _privateConstructorUsedError;
+  List<String>? get enabledPresentmentCurrencies;
   @override
-  String? get shopifyPaymentAccountId => throw _privateConstructorUsedError;
+  String? get shopifyPaymentAccountId;
   @override
-  List<String>? get supportedDigitalWallets =>
-      throw _privateConstructorUsedError;
+  List<String>? get supportedDigitalWallets;
   @override
   @JsonKey(ignore: true)
   _$PaymentSettingsCopyWith<_PaymentSettings> get copyWith =>

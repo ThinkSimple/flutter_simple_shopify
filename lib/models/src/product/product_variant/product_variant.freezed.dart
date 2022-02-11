@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'product_variant.dart';
@@ -54,7 +55,7 @@ class _$ProductVariantTearOff {
     );
   }
 
-  ProductVariant fromJson(Map<String, Object> json) {
+  ProductVariant fromJson(Map<String, Object?> json) {
     return ProductVariant.fromJson(json);
   }
 }
@@ -438,62 +439,48 @@ class _$_ProductVariant extends _ProductVariant {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ProductVariant &&
-            (identical(other.price, price) ||
-                const DeepCollectionEquality().equals(other.price, price)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.weight, weight) ||
-                const DeepCollectionEquality().equals(other.weight, weight)) &&
-            (identical(other.weightUnit, weightUnit) ||
-                const DeepCollectionEquality()
-                    .equals(other.weightUnit, weightUnit)) &&
-            (identical(other.availableForSale, availableForSale) ||
-                const DeepCollectionEquality()
-                    .equals(other.availableForSale, availableForSale)) &&
-            (identical(other.sku, sku) ||
-                const DeepCollectionEquality().equals(other.sku, sku)) &&
-            (identical(other.requiresShipping, requiresShipping) ||
-                const DeepCollectionEquality()
-                    .equals(other.requiresShipping, requiresShipping)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.quantityAvailable, quantityAvailable) ||
-                const DeepCollectionEquality()
-                    .equals(other.quantityAvailable, quantityAvailable)) &&
-            (identical(other.unitPrice, unitPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.unitPrice, unitPrice)) &&
-            (identical(other.unitPriceMeasurement, unitPriceMeasurement) ||
-                const DeepCollectionEquality().equals(
-                    other.unitPriceMeasurement, unitPriceMeasurement)) &&
-            (identical(other.selectedOptions, selectedOptions) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectedOptions, selectedOptions)) &&
-            (identical(other.compareAtPrice, compareAtPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.compareAtPrice, compareAtPrice)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)));
+        (other.runtimeType == runtimeType &&
+            other is _ProductVariant &&
+            const DeepCollectionEquality().equals(other.price, price) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.weight, weight) &&
+            const DeepCollectionEquality()
+                .equals(other.weightUnit, weightUnit) &&
+            const DeepCollectionEquality()
+                .equals(other.availableForSale, availableForSale) &&
+            const DeepCollectionEquality().equals(other.sku, sku) &&
+            const DeepCollectionEquality()
+                .equals(other.requiresShipping, requiresShipping) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.quantityAvailable, quantityAvailable) &&
+            const DeepCollectionEquality().equals(other.unitPrice, unitPrice) &&
+            const DeepCollectionEquality()
+                .equals(other.unitPriceMeasurement, unitPriceMeasurement) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedOptions, selectedOptions) &&
+            const DeepCollectionEquality()
+                .equals(other.compareAtPrice, compareAtPrice) &&
+            const DeepCollectionEquality().equals(other.image, image));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(price) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(weight) ^
-      const DeepCollectionEquality().hash(weightUnit) ^
-      const DeepCollectionEquality().hash(availableForSale) ^
-      const DeepCollectionEquality().hash(sku) ^
-      const DeepCollectionEquality().hash(requiresShipping) ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(quantityAvailable) ^
-      const DeepCollectionEquality().hash(unitPrice) ^
-      const DeepCollectionEquality().hash(unitPriceMeasurement) ^
-      const DeepCollectionEquality().hash(selectedOptions) ^
-      const DeepCollectionEquality().hash(compareAtPrice) ^
-      const DeepCollectionEquality().hash(image);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(price),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(weight),
+      const DeepCollectionEquality().hash(weightUnit),
+      const DeepCollectionEquality().hash(availableForSale),
+      const DeepCollectionEquality().hash(sku),
+      const DeepCollectionEquality().hash(requiresShipping),
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(quantityAvailable),
+      const DeepCollectionEquality().hash(unitPrice),
+      const DeepCollectionEquality().hash(unitPriceMeasurement),
+      const DeepCollectionEquality().hash(selectedOptions),
+      const DeepCollectionEquality().hash(compareAtPrice),
+      const DeepCollectionEquality().hash(image));
 
   @JsonKey(ignore: true)
   @override
@@ -528,35 +515,33 @@ abstract class _ProductVariant extends ProductVariant {
       _$_ProductVariant.fromJson;
 
   @override
-  PriceV2 get price => throw _privateConstructorUsedError;
+  PriceV2 get price;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  double get weight => throw _privateConstructorUsedError;
+  double get weight;
   @override
-  String get weightUnit => throw _privateConstructorUsedError;
+  String get weightUnit;
   @override
-  bool get availableForSale => throw _privateConstructorUsedError;
+  bool get availableForSale;
   @override
-  String get sku => throw _privateConstructorUsedError;
+  String get sku;
   @override
-  bool get requiresShipping => throw _privateConstructorUsedError;
+  bool get requiresShipping;
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  int get quantityAvailable => throw _privateConstructorUsedError;
+  int get quantityAvailable;
   @override
-  PriceV2? get unitPrice => throw _privateConstructorUsedError;
+  PriceV2? get unitPrice;
   @override
-  UnitPriceMeasurement? get unitPriceMeasurement =>
-      throw _privateConstructorUsedError;
+  UnitPriceMeasurement? get unitPriceMeasurement;
   @override
-  List<SelectedOption>? get selectedOptions =>
-      throw _privateConstructorUsedError;
+  List<SelectedOption>? get selectedOptions;
   @override
-  PriceV2? get compareAtPrice => throw _privateConstructorUsedError;
+  PriceV2? get compareAtPrice;
   @override
-  ShopifyImage? get image => throw _privateConstructorUsedError;
+  ShopifyImage? get image;
   @override
   @JsonKey(ignore: true)
   _$ProductVariantCopyWith<_ProductVariant> get copyWith =>

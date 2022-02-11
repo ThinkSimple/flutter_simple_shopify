@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'addresses.dart';
@@ -27,7 +28,7 @@ class _$AddressesTearOff {
     );
   }
 
-  Addresses fromJson(Map<String, Object> json) {
+  Addresses fromJson(Map<String, Object?> json) {
     return Addresses.fromJson(json);
   }
 }
@@ -123,15 +124,15 @@ class _$_Addresses extends _Addresses {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Addresses &&
-            (identical(other.addressList, addressList) ||
-                const DeepCollectionEquality()
-                    .equals(other.addressList, addressList)));
+        (other.runtimeType == runtimeType &&
+            other is _Addresses &&
+            const DeepCollectionEquality()
+                .equals(other.addressList, addressList));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(addressList);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(addressList));
 
   @JsonKey(ignore: true)
   @override
@@ -152,7 +153,7 @@ abstract class _Addresses extends Addresses {
       _$_Addresses.fromJson;
 
   @override
-  List<Address> get addressList => throw _privateConstructorUsedError;
+  List<Address> get addressList;
   @override
   @JsonKey(ignore: true)
   _$AddressesCopyWith<_Addresses> get copyWith =>

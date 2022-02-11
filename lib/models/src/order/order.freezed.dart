@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'order.dart';
@@ -60,7 +61,7 @@ class _$OrderTearOff {
     );
   }
 
-  Order fromJson(Map<String, Object> json) {
+  Order fromJson(Map<String, Object?> json) {
     return Order.fromJson(json);
   }
 }
@@ -490,75 +491,57 @@ class _$_Order extends _Order {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Order &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.currencyCode, currencyCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.currencyCode, currencyCode)) &&
-            (identical(other.customerUrl, customerUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.customerUrl, customerUrl)) &&
-            (identical(other.lineItems, lineItems) ||
-                const DeepCollectionEquality()
-                    .equals(other.lineItems, lineItems)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.orderNumber, orderNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.orderNumber, orderNumber)) &&
-            (identical(other.processedAt, processedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.processedAt, processedAt)) &&
-            (identical(other.shippingAddress, shippingAddress) ||
-                const DeepCollectionEquality()
-                    .equals(other.shippingAddress, shippingAddress)) &&
-            (identical(other.statusUrl, statusUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.statusUrl, statusUrl)) &&
-            (identical(other.subtotalPriceV2, subtotalPriceV2) ||
-                const DeepCollectionEquality()
-                    .equals(other.subtotalPriceV2, subtotalPriceV2)) &&
-            (identical(other.totalPriceV2, totalPriceV2) ||
-                const DeepCollectionEquality()
-                    .equals(other.totalPriceV2, totalPriceV2)) &&
-            (identical(other.totalShippingPriceV2, totalShippingPriceV2) ||
-                const DeepCollectionEquality().equals(
-                    other.totalShippingPriceV2, totalShippingPriceV2)) &&
-            (identical(other.totalTaxV2, totalTaxV2) ||
-                const DeepCollectionEquality()
-                    .equals(other.totalTaxV2, totalTaxV2)) &&
-            (identical(other.totalRefundedV2, totalRefundedV2) ||
-                const DeepCollectionEquality()
-                    .equals(other.totalRefundedV2, totalRefundedV2)) &&
-            (identical(other.phone, phone) ||
-                const DeepCollectionEquality().equals(other.phone, phone)) &&
-            (identical(other.cursor, cursor) ||
-                const DeepCollectionEquality().equals(other.cursor, cursor)));
+        (other.runtimeType == runtimeType &&
+            other is _Order &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality()
+                .equals(other.currencyCode, currencyCode) &&
+            const DeepCollectionEquality()
+                .equals(other.customerUrl, customerUrl) &&
+            const DeepCollectionEquality().equals(other.lineItems, lineItems) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.orderNumber, orderNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.processedAt, processedAt) &&
+            const DeepCollectionEquality()
+                .equals(other.shippingAddress, shippingAddress) &&
+            const DeepCollectionEquality().equals(other.statusUrl, statusUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.subtotalPriceV2, subtotalPriceV2) &&
+            const DeepCollectionEquality()
+                .equals(other.totalPriceV2, totalPriceV2) &&
+            const DeepCollectionEquality()
+                .equals(other.totalShippingPriceV2, totalShippingPriceV2) &&
+            const DeepCollectionEquality()
+                .equals(other.totalTaxV2, totalTaxV2) &&
+            const DeepCollectionEquality()
+                .equals(other.totalRefundedV2, totalRefundedV2) &&
+            const DeepCollectionEquality().equals(other.phone, phone) &&
+            const DeepCollectionEquality().equals(other.cursor, cursor));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(currencyCode) ^
-      const DeepCollectionEquality().hash(customerUrl) ^
-      const DeepCollectionEquality().hash(lineItems) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(orderNumber) ^
-      const DeepCollectionEquality().hash(processedAt) ^
-      const DeepCollectionEquality().hash(shippingAddress) ^
-      const DeepCollectionEquality().hash(statusUrl) ^
-      const DeepCollectionEquality().hash(subtotalPriceV2) ^
-      const DeepCollectionEquality().hash(totalPriceV2) ^
-      const DeepCollectionEquality().hash(totalShippingPriceV2) ^
-      const DeepCollectionEquality().hash(totalTaxV2) ^
-      const DeepCollectionEquality().hash(totalRefundedV2) ^
-      const DeepCollectionEquality().hash(phone) ^
-      const DeepCollectionEquality().hash(cursor);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(currencyCode),
+      const DeepCollectionEquality().hash(customerUrl),
+      const DeepCollectionEquality().hash(lineItems),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(orderNumber),
+      const DeepCollectionEquality().hash(processedAt),
+      const DeepCollectionEquality().hash(shippingAddress),
+      const DeepCollectionEquality().hash(statusUrl),
+      const DeepCollectionEquality().hash(subtotalPriceV2),
+      const DeepCollectionEquality().hash(totalPriceV2),
+      const DeepCollectionEquality().hash(totalShippingPriceV2),
+      const DeepCollectionEquality().hash(totalTaxV2),
+      const DeepCollectionEquality().hash(totalRefundedV2),
+      const DeepCollectionEquality().hash(phone),
+      const DeepCollectionEquality().hash(cursor));
 
   @JsonKey(ignore: true)
   @override
@@ -595,39 +578,39 @@ abstract class _Order extends Order {
   factory _Order.fromJson(Map<String, dynamic> json) = _$_Order.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get email => throw _privateConstructorUsedError;
+  String get email;
   @override
-  String get currencyCode => throw _privateConstructorUsedError;
+  String get currencyCode;
   @override
-  String get customerUrl => throw _privateConstructorUsedError;
+  String get customerUrl;
   @override
-  LineItemsOrder get lineItems => throw _privateConstructorUsedError;
+  LineItemsOrder get lineItems;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  int get orderNumber => throw _privateConstructorUsedError;
+  int get orderNumber;
   @override
-  String get processedAt => throw _privateConstructorUsedError;
+  String get processedAt;
   @override
-  ShippingAddress get shippingAddress => throw _privateConstructorUsedError;
+  ShippingAddress get shippingAddress;
   @override
-  String get statusUrl => throw _privateConstructorUsedError;
+  String get statusUrl;
   @override
-  PriceV2 get subtotalPriceV2 => throw _privateConstructorUsedError;
+  PriceV2 get subtotalPriceV2;
   @override
-  PriceV2 get totalPriceV2 => throw _privateConstructorUsedError;
+  PriceV2 get totalPriceV2;
   @override
-  PriceV2 get totalShippingPriceV2 => throw _privateConstructorUsedError;
+  PriceV2 get totalShippingPriceV2;
   @override
-  PriceV2 get totalTaxV2 => throw _privateConstructorUsedError;
+  PriceV2 get totalTaxV2;
   @override
-  PriceV2? get totalRefundedV2 => throw _privateConstructorUsedError;
+  PriceV2? get totalRefundedV2;
   @override
-  String? get phone => throw _privateConstructorUsedError;
+  String? get phone;
   @override
-  String? get cursor => throw _privateConstructorUsedError;
+  String? get cursor;
   @override
   @JsonKey(ignore: true)
   _$OrderCopyWith<_Order> get copyWith => throw _privateConstructorUsedError;

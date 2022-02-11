@@ -336,6 +336,12 @@ class ShopifyCheckout with ShopifyError {
                   {
                     'variantId': lineItem.variantId,
                     'quantity': lineItem.quantity,
+                    'customAttributes': lineItem.customAttributes
+                        .map((e) => {
+                              'key': e.key,
+                              'value': e.value,
+                            })
+                        .toList(),
                   }
               ],
             }
@@ -345,6 +351,12 @@ class ShopifyCheckout with ShopifyError {
                   {
                     'variantId': lineItem.variantId,
                     'quantity': lineItem.quantity,
+                    'customAttributes': lineItem.customAttributes
+                        .map((e) => {
+                              'key': e.key,
+                              'value': e.value,
+                            })
+                        .toList(),
                   }
               ],
               'shippingAddress': {
@@ -388,6 +400,12 @@ class ShopifyCheckout with ShopifyError {
               {
                 'variantId': lineItem.id,
                 'quantity': lineItem.quantity,
+                'customAttributes': lineItem.customAttributes
+                    .map((e) => {
+                          'key': e.key,
+                          'value': e.value,
+                        })
+                    .toList(),
               }
           ],
         });
@@ -419,6 +437,12 @@ class ShopifyCheckout with ShopifyError {
               {
                 'variantId': lineItem.id,
                 'quantity': lineItem.quantity,
+                'customAttributes': lineItem.customAttributes
+                    .map((e) => {
+                          'key': e.key,
+                          'value': e.value,
+                        })
+                    .toList(),
               }
           ],
         });

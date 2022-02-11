@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'line_item_order.dart';
@@ -40,7 +41,7 @@ class _$LineItemOrderTearOff {
     );
   }
 
-  LineItemOrder fromJson(Map<String, Object> json) {
+  LineItemOrder fromJson(Map<String, Object?> json) {
     return LineItemOrder.fromJson(json);
   }
 }
@@ -265,10 +266,10 @@ class _$_LineItemOrder extends _LineItemOrder {
   final int quantity;
   @override
   final String title;
-  @JsonKey(defaultValue: const [])
+  @JsonKey()
   @override
   final List<DiscountAllocations> discountAllocations;
-  @JsonKey(defaultValue: null)
+  @JsonKey()
   @override
   final ProductVariantCheckout? variant;
 
@@ -280,38 +281,31 @@ class _$_LineItemOrder extends _LineItemOrder {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LineItemOrder &&
-            (identical(other.currentQuantity, currentQuantity) ||
-                const DeepCollectionEquality()
-                    .equals(other.currentQuantity, currentQuantity)) &&
-            (identical(other.discountedTotalPrice, discountedTotalPrice) ||
-                const DeepCollectionEquality().equals(
-                    other.discountedTotalPrice, discountedTotalPrice)) &&
-            (identical(other.originalTotalPrice, originalTotalPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.originalTotalPrice, originalTotalPrice)) &&
-            (identical(other.quantity, quantity) ||
-                const DeepCollectionEquality()
-                    .equals(other.quantity, quantity)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.discountAllocations, discountAllocations) ||
-                const DeepCollectionEquality()
-                    .equals(other.discountAllocations, discountAllocations)) &&
-            (identical(other.variant, variant) ||
-                const DeepCollectionEquality().equals(other.variant, variant)));
+        (other.runtimeType == runtimeType &&
+            other is _LineItemOrder &&
+            const DeepCollectionEquality()
+                .equals(other.currentQuantity, currentQuantity) &&
+            const DeepCollectionEquality()
+                .equals(other.discountedTotalPrice, discountedTotalPrice) &&
+            const DeepCollectionEquality()
+                .equals(other.originalTotalPrice, originalTotalPrice) &&
+            const DeepCollectionEquality().equals(other.quantity, quantity) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality()
+                .equals(other.discountAllocations, discountAllocations) &&
+            const DeepCollectionEquality().equals(other.variant, variant));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(currentQuantity) ^
-      const DeepCollectionEquality().hash(discountedTotalPrice) ^
-      const DeepCollectionEquality().hash(originalTotalPrice) ^
-      const DeepCollectionEquality().hash(quantity) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(discountAllocations) ^
-      const DeepCollectionEquality().hash(variant);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(currentQuantity),
+      const DeepCollectionEquality().hash(discountedTotalPrice),
+      const DeepCollectionEquality().hash(originalTotalPrice),
+      const DeepCollectionEquality().hash(quantity),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(discountAllocations),
+      const DeepCollectionEquality().hash(variant));
 
   @JsonKey(ignore: true)
   @override
@@ -339,20 +333,19 @@ abstract class _LineItemOrder extends LineItemOrder {
       _$_LineItemOrder.fromJson;
 
   @override
-  int get currentQuantity => throw _privateConstructorUsedError;
+  int get currentQuantity;
   @override
-  PriceV2 get discountedTotalPrice => throw _privateConstructorUsedError;
+  PriceV2 get discountedTotalPrice;
   @override
-  PriceV2 get originalTotalPrice => throw _privateConstructorUsedError;
+  PriceV2 get originalTotalPrice;
   @override
-  int get quantity => throw _privateConstructorUsedError;
+  int get quantity;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  List<DiscountAllocations> get discountAllocations =>
-      throw _privateConstructorUsedError;
+  List<DiscountAllocations> get discountAllocations;
   @override
-  ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
+  ProductVariantCheckout? get variant;
   @override
   @JsonKey(ignore: true)
   _$LineItemOrderCopyWith<_LineItemOrder> get copyWith =>

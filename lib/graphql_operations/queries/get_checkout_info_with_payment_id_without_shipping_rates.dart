@@ -54,6 +54,10 @@ query($id: ID!){
             id
             quantity
             title
+            customAttributes {
+                key
+                value
+            }
             discountAllocations {
               allocatedAmount {
                 amount

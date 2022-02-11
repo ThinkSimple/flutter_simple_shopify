@@ -53,6 +53,10 @@ mutation checkoutLineItemsAdd($lineItems: [CheckoutLineItemInput!]!, $checkoutId
             id
             quantity
             title
+            customAttributes {
+                key
+                value
+            }
              discountAllocations {
               allocatedAmount {
                 amount

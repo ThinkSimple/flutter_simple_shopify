@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'product.dart';
@@ -64,7 +65,7 @@ class _$ProductTearOff {
     );
   }
 
-  Product fromJson(Map<String, Object> json) {
+  Product fromJson(Map<String, Object?> json) {
     return Product.fromJson(json);
   }
 }
@@ -452,80 +453,61 @@ class _$_Product extends _Product {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Product &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.availableForSale, availableForSale) ||
-                const DeepCollectionEquality()
-                    .equals(other.availableForSale, availableForSale)) &&
-            (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)) &&
-            (identical(other.productVariants, productVariants) ||
-                const DeepCollectionEquality()
-                    .equals(other.productVariants, productVariants)) &&
-            (identical(other.productType, productType) ||
-                const DeepCollectionEquality()
-                    .equals(other.productType, productType)) &&
-            (identical(other.publishedAt, publishedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.publishedAt, publishedAt)) &&
-            (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)) &&
-            (identical(other.updatedAt, updatedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.updatedAt, updatedAt)) &&
-            (identical(other.images, images) ||
-                const DeepCollectionEquality().equals(other.images, images)) &&
-            (identical(other.option, option) ||
-                const DeepCollectionEquality().equals(other.option, option)) &&
-            (identical(other.vendor, vendor) ||
-                const DeepCollectionEquality().equals(other.vendor, vendor)) &&
-            (identical(other.metafields, metafields) ||
-                const DeepCollectionEquality()
-                    .equals(other.metafields, metafields)) &&
-            (identical(other.collectionList, collectionList) ||
-                const DeepCollectionEquality()
-                    .equals(other.collectionList, collectionList)) &&
-            (identical(other.cursor, cursor) ||
-                const DeepCollectionEquality().equals(other.cursor, cursor)) &&
-            (identical(other.onlineStoreUrl, onlineStoreUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.onlineStoreUrl, onlineStoreUrl)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.descriptionHtml, descriptionHtml) ||
-                const DeepCollectionEquality()
-                    .equals(other.descriptionHtml, descriptionHtml)) &&
-            (identical(other.handle, handle) ||
-                const DeepCollectionEquality().equals(other.handle, handle)));
+        (other.runtimeType == runtimeType &&
+            other is _Product &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.availableForSale, availableForSale) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality()
+                .equals(other.productVariants, productVariants) &&
+            const DeepCollectionEquality()
+                .equals(other.productType, productType) &&
+            const DeepCollectionEquality()
+                .equals(other.publishedAt, publishedAt) &&
+            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
+            const DeepCollectionEquality().equals(other.images, images) &&
+            const DeepCollectionEquality().equals(other.option, option) &&
+            const DeepCollectionEquality().equals(other.vendor, vendor) &&
+            const DeepCollectionEquality()
+                .equals(other.metafields, metafields) &&
+            const DeepCollectionEquality()
+                .equals(other.collectionList, collectionList) &&
+            const DeepCollectionEquality().equals(other.cursor, cursor) &&
+            const DeepCollectionEquality()
+                .equals(other.onlineStoreUrl, onlineStoreUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality()
+                .equals(other.descriptionHtml, descriptionHtml) &&
+            const DeepCollectionEquality().equals(other.handle, handle));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(availableForSale) ^
-      const DeepCollectionEquality().hash(createdAt) ^
-      const DeepCollectionEquality().hash(productVariants) ^
-      const DeepCollectionEquality().hash(productType) ^
-      const DeepCollectionEquality().hash(publishedAt) ^
-      const DeepCollectionEquality().hash(tags) ^
-      const DeepCollectionEquality().hash(updatedAt) ^
-      const DeepCollectionEquality().hash(images) ^
-      const DeepCollectionEquality().hash(option) ^
-      const DeepCollectionEquality().hash(vendor) ^
-      const DeepCollectionEquality().hash(metafields) ^
-      const DeepCollectionEquality().hash(collectionList) ^
-      const DeepCollectionEquality().hash(cursor) ^
-      const DeepCollectionEquality().hash(onlineStoreUrl) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(descriptionHtml) ^
-      const DeepCollectionEquality().hash(handle);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(title),
+        const DeepCollectionEquality().hash(id),
+        const DeepCollectionEquality().hash(availableForSale),
+        const DeepCollectionEquality().hash(createdAt),
+        const DeepCollectionEquality().hash(productVariants),
+        const DeepCollectionEquality().hash(productType),
+        const DeepCollectionEquality().hash(publishedAt),
+        const DeepCollectionEquality().hash(tags),
+        const DeepCollectionEquality().hash(updatedAt),
+        const DeepCollectionEquality().hash(images),
+        const DeepCollectionEquality().hash(option),
+        const DeepCollectionEquality().hash(vendor),
+        const DeepCollectionEquality().hash(metafields),
+        const DeepCollectionEquality().hash(collectionList),
+        const DeepCollectionEquality().hash(cursor),
+        const DeepCollectionEquality().hash(onlineStoreUrl),
+        const DeepCollectionEquality().hash(description),
+        const DeepCollectionEquality().hash(descriptionHtml),
+        const DeepCollectionEquality().hash(handle)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -564,45 +546,43 @@ abstract class _Product extends Product {
   factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
 
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  bool get availableForSale => throw _privateConstructorUsedError;
+  bool get availableForSale;
   @override
-  String get createdAt => throw _privateConstructorUsedError;
+  String get createdAt;
   @override
-  List<ProductVariant> get productVariants =>
-      throw _privateConstructorUsedError;
+  List<ProductVariant> get productVariants;
   @override
-  String get productType => throw _privateConstructorUsedError;
+  String get productType;
   @override
-  String get publishedAt => throw _privateConstructorUsedError;
+  String get publishedAt;
   @override
-  List<String> get tags => throw _privateConstructorUsedError;
+  List<String> get tags;
   @override
-  String get updatedAt => throw _privateConstructorUsedError;
+  String get updatedAt;
   @override
-  List<ShopifyImage> get images => throw _privateConstructorUsedError;
+  List<ShopifyImage> get images;
   @override
-  List<Option> get option => throw _privateConstructorUsedError;
+  List<Option> get option;
   @override
-  String get vendor => throw _privateConstructorUsedError;
+  String get vendor;
   @override
-  List<Metafield> get metafields => throw _privateConstructorUsedError;
+  List<Metafield> get metafields;
   @override
-  List<AssociatedCollections>? get collectionList =>
-      throw _privateConstructorUsedError;
+  List<AssociatedCollections>? get collectionList;
   @override
-  String? get cursor => throw _privateConstructorUsedError;
+  String? get cursor;
   @override
-  String? get onlineStoreUrl => throw _privateConstructorUsedError;
+  String? get onlineStoreUrl;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  String? get descriptionHtml => throw _privateConstructorUsedError;
+  String? get descriptionHtml;
   @override
-  String? get handle => throw _privateConstructorUsedError;
+  String? get handle;
   @override
   @JsonKey(ignore: true)
   _$ProductCopyWith<_Product> get copyWith =>

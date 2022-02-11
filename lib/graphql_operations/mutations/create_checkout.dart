@@ -58,6 +58,14 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
             id
             quantity
             title
+            customAttributes {
+                key
+                value
+            }
+            customAttributes {
+                key
+                value
+            }
              discountAllocations {
               allocatedAmount {
                 amount
