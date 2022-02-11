@@ -1,5 +1,4 @@
 import 'package:flutter_simple_shopify/enums/enums.dart';
-import 'package:flutter_simple_shopify/enums/src/sort_key_article.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_blogs.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_blog_by_handle.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_n_articles_sorted.dart';
