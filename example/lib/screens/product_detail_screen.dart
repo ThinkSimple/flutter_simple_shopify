@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_simple_shopify/flutter_simple_shopify.dart';
-import 'package:flutter_simple_shopify/models/src/checkout/line_item/line_item.dart';
 import 'package:flutter_simple_shopify/models/src/product/product_variant/product_variant.dart';
 
 class ProductDetailScreen extends StatefulWidget {
