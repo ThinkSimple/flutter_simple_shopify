@@ -64,6 +64,10 @@ mutation checkoutShippingLineUpdate($checkoutId: ID!, $shippingRateHandle: Strin
             id
             quantity
             title
+            customAttributes {
+                key
+                value
+            }
             discountAllocations {
               allocatedAmount {
                 amount

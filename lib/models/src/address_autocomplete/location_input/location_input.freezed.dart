@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'location_input.dart';
@@ -28,7 +29,7 @@ class _$LocationInputTearOff {
     );
   }
 
-  LocationInput fromJson(Map<String, Object> json) {
+  LocationInput fromJson(Map<String, Object?> json) {
     return LocationInput.fromJson(json);
   }
 }
@@ -142,20 +143,17 @@ class _$_LocationInput implements _LocationInput {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LocationInput &&
-            (identical(other.latitude, latitude) ||
-                const DeepCollectionEquality()
-                    .equals(other.latitude, latitude)) &&
-            (identical(other.longitude, longitude) ||
-                const DeepCollectionEquality()
-                    .equals(other.longitude, longitude)));
+        (other.runtimeType == runtimeType &&
+            other is _LocationInput &&
+            const DeepCollectionEquality().equals(other.latitude, latitude) &&
+            const DeepCollectionEquality().equals(other.longitude, longitude));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(latitude) ^
-      const DeepCollectionEquality().hash(longitude);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(latitude),
+      const DeepCollectionEquality().hash(longitude));
 
   @JsonKey(ignore: true)
   @override
@@ -176,9 +174,9 @@ abstract class _LocationInput implements LocationInput {
       _$_LocationInput.fromJson;
 
   @override
-  double? get latitude => throw _privateConstructorUsedError;
+  double? get latitude;
   @override
-  double? get longitude => throw _privateConstructorUsedError;
+  double? get longitude;
   @override
   @JsonKey(ignore: true)
   _$LocationInputCopyWith<_LocationInput> get copyWith =>

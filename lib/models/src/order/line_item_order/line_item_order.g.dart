@@ -19,7 +19,7 @@ _$_LineItemOrder _$$_LineItemOrderFromJson(Map<String, dynamic> json) =>
               ?.map((e) =>
                   DiscountAllocations.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          [],
+          const [],
       variant: json['variant'] == null
           ? null
           : ProductVariantCheckout.fromJson(

@@ -53,6 +53,10 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
             id
             quantity
             title
+            customAttributes {
+                key
+                value
+            }
              discountAllocations {
               allocatedAmount {
                 amount

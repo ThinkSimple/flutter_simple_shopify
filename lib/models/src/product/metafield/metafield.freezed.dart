@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'metafield.dart';
@@ -38,7 +39,7 @@ class _$MetafieldTearOff {
     );
   }
 
-  Metafield fromJson(Map<String, Object> json) {
+  Metafield fromJson(Map<String, Object?> json) {
     return Metafield.fromJson(json);
   }
 }
@@ -207,7 +208,7 @@ class _$_Metafield extends _Metafield {
   final String value;
   @override
   final String valueType;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String description;
 
@@ -219,33 +220,26 @@ class _$_Metafield extends _Metafield {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Metafield &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.namespace, namespace) ||
-                const DeepCollectionEquality()
-                    .equals(other.namespace, namespace)) &&
-            (identical(other.key, key) ||
-                const DeepCollectionEquality().equals(other.key, key)) &&
-            (identical(other.value, value) ||
-                const DeepCollectionEquality().equals(other.value, value)) &&
-            (identical(other.valueType, valueType) ||
-                const DeepCollectionEquality()
-                    .equals(other.valueType, valueType)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)));
+        (other.runtimeType == runtimeType &&
+            other is _Metafield &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.namespace, namespace) &&
+            const DeepCollectionEquality().equals(other.key, key) &&
+            const DeepCollectionEquality().equals(other.value, value) &&
+            const DeepCollectionEquality().equals(other.valueType, valueType) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(namespace) ^
-      const DeepCollectionEquality().hash(key) ^
-      const DeepCollectionEquality().hash(value) ^
-      const DeepCollectionEquality().hash(valueType) ^
-      const DeepCollectionEquality().hash(description);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(namespace),
+      const DeepCollectionEquality().hash(key),
+      const DeepCollectionEquality().hash(value),
+      const DeepCollectionEquality().hash(valueType),
+      const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)
   @override
@@ -272,17 +266,17 @@ abstract class _Metafield extends Metafield {
       _$_Metafield.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get namespace => throw _privateConstructorUsedError;
+  String get namespace;
   @override
-  String get key => throw _privateConstructorUsedError;
+  String get key;
   @override
-  String get value => throw _privateConstructorUsedError;
+  String get value;
   @override
-  String get valueType => throw _privateConstructorUsedError;
+  String get valueType;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
   @JsonKey(ignore: true)
   _$MetafieldCopyWith<_Metafield> get copyWith =>

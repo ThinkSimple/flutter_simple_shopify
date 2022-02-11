@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'shopify_user.dart';
@@ -46,7 +47,7 @@ class _$ShopifyUserTearOff {
     );
   }
 
-  ShopifyUser fromJson(Map<String, Object> json) {
+  ShopifyUser fromJson(Map<String, Object?> json) {
     return ShopifyUser.fromJson(json);
   }
 }
@@ -324,48 +325,35 @@ class _$_ShopifyUser implements _ShopifyUser {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ShopifyUser &&
-            (identical(other.address, address) ||
-                const DeepCollectionEquality()
-                    .equals(other.address, address)) &&
-            (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)) &&
-            (identical(other.displayName, displayName) ||
-                const DeepCollectionEquality()
-                    .equals(other.displayName, displayName)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.firstName, firstName) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstName, firstName)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.lastName, lastName) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastName, lastName)) &&
-            (identical(other.phone, phone) ||
-                const DeepCollectionEquality().equals(other.phone, phone)) &&
-            (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)) &&
-            (identical(other.lastIncompleteCheckout, lastIncompleteCheckout) ||
-                const DeepCollectionEquality().equals(
-                    other.lastIncompleteCheckout, lastIncompleteCheckout)));
+        (other.runtimeType == runtimeType &&
+            other is _ShopifyUser &&
+            const DeepCollectionEquality().equals(other.address, address) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality()
+                .equals(other.displayName, displayName) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.firstName, firstName) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.lastName, lastName) &&
+            const DeepCollectionEquality().equals(other.phone, phone) &&
+            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality()
+                .equals(other.lastIncompleteCheckout, lastIncompleteCheckout));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(address) ^
-      const DeepCollectionEquality().hash(createdAt) ^
-      const DeepCollectionEquality().hash(displayName) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(firstName) ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(lastName) ^
-      const DeepCollectionEquality().hash(phone) ^
-      const DeepCollectionEquality().hash(tags) ^
-      const DeepCollectionEquality().hash(lastIncompleteCheckout);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(address),
+      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(displayName),
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(firstName),
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(lastName),
+      const DeepCollectionEquality().hash(phone),
+      const DeepCollectionEquality().hash(tags),
+      const DeepCollectionEquality().hash(lastIncompleteCheckout));
 
   @JsonKey(ignore: true)
   @override
@@ -395,26 +383,25 @@ abstract class _ShopifyUser implements ShopifyUser {
       _$_ShopifyUser.fromJson;
 
   @override
-  Addresses? get address => throw _privateConstructorUsedError;
+  Addresses? get address;
   @override
-  String? get createdAt => throw _privateConstructorUsedError;
+  String? get createdAt;
   @override
-  String? get displayName => throw _privateConstructorUsedError;
+  String? get displayName;
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
-  String? get firstName => throw _privateConstructorUsedError;
+  String? get firstName;
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String? get lastName => throw _privateConstructorUsedError;
+  String? get lastName;
   @override
-  String? get phone => throw _privateConstructorUsedError;
+  String? get phone;
   @override
-  List<String>? get tags => throw _privateConstructorUsedError;
+  List<String>? get tags;
   @override
-  LastIncompleteCheckout? get lastIncompleteCheckout =>
-      throw _privateConstructorUsedError;
+  LastIncompleteCheckout? get lastIncompleteCheckout;
   @override
   @JsonKey(ignore: true)
   _$ShopifyUserCopyWith<_ShopifyUser> get copyWith =>

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'shipping_rates.dart';
@@ -32,7 +33,7 @@ class _$ShippingRatesTearOff {
     );
   }
 
-  ShippingRates fromJson(Map<String, Object> json) {
+  ShippingRates fromJson(Map<String, Object?> json) {
     return ShippingRates.fromJson(json);
   }
 }
@@ -173,21 +174,19 @@ class _$_ShippingRates extends _ShippingRates {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ShippingRates &&
-            (identical(other.handle, handle) ||
-                const DeepCollectionEquality().equals(other.handle, handle)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.priceV2, priceV2) ||
-                const DeepCollectionEquality().equals(other.priceV2, priceV2)));
+        (other.runtimeType == runtimeType &&
+            other is _ShippingRates &&
+            const DeepCollectionEquality().equals(other.handle, handle) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.priceV2, priceV2));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(handle) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(priceV2);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(handle),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(priceV2));
 
   @JsonKey(ignore: true)
   @override
@@ -211,11 +210,11 @@ abstract class _ShippingRates extends ShippingRates {
       _$_ShippingRates.fromJson;
 
   @override
-  String get handle => throw _privateConstructorUsedError;
+  String get handle;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  PriceV2 get priceV2 => throw _privateConstructorUsedError;
+  PriceV2 get priceV2;
   @override
   @JsonKey(ignore: true)
   _$ShippingRatesCopyWith<_ShippingRates> get copyWith =>

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'address.dart';
@@ -60,7 +61,7 @@ class _$AddressTearOff {
     );
   }
 
-  Address fromJson(Map<String, Object> json) {
+  Address fromJson(Map<String, Object?> json) {
     return Address.fromJson(json);
   }
 }
@@ -414,75 +415,50 @@ class _$_Address extends _Address {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Address &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.address1, address1) ||
-                const DeepCollectionEquality()
-                    .equals(other.address1, address1)) &&
-            (identical(other.address2, address2) ||
-                const DeepCollectionEquality()
-                    .equals(other.address2, address2)) &&
-            (identical(other.city, city) ||
-                const DeepCollectionEquality().equals(other.city, city)) &&
-            (identical(other.company, company) ||
-                const DeepCollectionEquality()
-                    .equals(other.company, company)) &&
-            (identical(other.country, country) ||
-                const DeepCollectionEquality()
-                    .equals(other.country, country)) &&
-            (identical(other.countryCode, countryCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.countryCode, countryCode)) &&
-            (identical(other.firstName, firstName) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstName, firstName)) &&
-            (identical(other.lastName, lastName) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastName, lastName)) &&
-            (identical(other.formattedArea, formattedArea) ||
-                const DeepCollectionEquality()
-                    .equals(other.formattedArea, formattedArea)) &&
-            (identical(other.latitude, latitude) ||
-                const DeepCollectionEquality()
-                    .equals(other.latitude, latitude)) &&
-            (identical(other.longitude, longitude) ||
-                const DeepCollectionEquality()
-                    .equals(other.longitude, longitude)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.phone, phone) ||
-                const DeepCollectionEquality().equals(other.phone, phone)) &&
-            (identical(other.province, province) ||
-                const DeepCollectionEquality()
-                    .equals(other.province, province)) &&
-            (identical(other.provinceCode, provinceCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.provinceCode, provinceCode)) &&
-            (identical(other.zip, zip) ||
-                const DeepCollectionEquality().equals(other.zip, zip)));
+        (other.runtimeType == runtimeType &&
+            other is _Address &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.address1, address1) &&
+            const DeepCollectionEquality().equals(other.address2, address2) &&
+            const DeepCollectionEquality().equals(other.city, city) &&
+            const DeepCollectionEquality().equals(other.company, company) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
+            const DeepCollectionEquality()
+                .equals(other.countryCode, countryCode) &&
+            const DeepCollectionEquality().equals(other.firstName, firstName) &&
+            const DeepCollectionEquality().equals(other.lastName, lastName) &&
+            const DeepCollectionEquality()
+                .equals(other.formattedArea, formattedArea) &&
+            const DeepCollectionEquality().equals(other.latitude, latitude) &&
+            const DeepCollectionEquality().equals(other.longitude, longitude) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.phone, phone) &&
+            const DeepCollectionEquality().equals(other.province, province) &&
+            const DeepCollectionEquality()
+                .equals(other.provinceCode, provinceCode) &&
+            const DeepCollectionEquality().equals(other.zip, zip));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(address1) ^
-      const DeepCollectionEquality().hash(address2) ^
-      const DeepCollectionEquality().hash(city) ^
-      const DeepCollectionEquality().hash(company) ^
-      const DeepCollectionEquality().hash(country) ^
-      const DeepCollectionEquality().hash(countryCode) ^
-      const DeepCollectionEquality().hash(firstName) ^
-      const DeepCollectionEquality().hash(lastName) ^
-      const DeepCollectionEquality().hash(formattedArea) ^
-      const DeepCollectionEquality().hash(latitude) ^
-      const DeepCollectionEquality().hash(longitude) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(phone) ^
-      const DeepCollectionEquality().hash(province) ^
-      const DeepCollectionEquality().hash(provinceCode) ^
-      const DeepCollectionEquality().hash(zip);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(address1),
+      const DeepCollectionEquality().hash(address2),
+      const DeepCollectionEquality().hash(city),
+      const DeepCollectionEquality().hash(company),
+      const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(countryCode),
+      const DeepCollectionEquality().hash(firstName),
+      const DeepCollectionEquality().hash(lastName),
+      const DeepCollectionEquality().hash(formattedArea),
+      const DeepCollectionEquality().hash(latitude),
+      const DeepCollectionEquality().hash(longitude),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(phone),
+      const DeepCollectionEquality().hash(province),
+      const DeepCollectionEquality().hash(provinceCode),
+      const DeepCollectionEquality().hash(zip));
 
   @JsonKey(ignore: true)
   @override
@@ -519,39 +495,39 @@ abstract class _Address extends Address {
   factory _Address.fromJson(Map<String, dynamic> json) = _$_Address.fromJson;
 
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String? get address1 => throw _privateConstructorUsedError;
+  String? get address1;
   @override
-  String? get address2 => throw _privateConstructorUsedError;
+  String? get address2;
   @override
-  String? get city => throw _privateConstructorUsedError;
+  String? get city;
   @override
-  String? get company => throw _privateConstructorUsedError;
+  String? get company;
   @override
-  String? get country => throw _privateConstructorUsedError;
+  String? get country;
   @override
-  String? get countryCode => throw _privateConstructorUsedError;
+  String? get countryCode;
   @override
-  String? get firstName => throw _privateConstructorUsedError;
+  String? get firstName;
   @override
-  String? get lastName => throw _privateConstructorUsedError;
+  String? get lastName;
   @override
-  String? get formattedArea => throw _privateConstructorUsedError;
+  String? get formattedArea;
   @override
-  String? get latitude => throw _privateConstructorUsedError;
+  String? get latitude;
   @override
-  String? get longitude => throw _privateConstructorUsedError;
+  String? get longitude;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get phone => throw _privateConstructorUsedError;
+  String? get phone;
   @override
-  String? get province => throw _privateConstructorUsedError;
+  String? get province;
   @override
-  String? get provinceCode => throw _privateConstructorUsedError;
+  String? get provinceCode;
   @override
-  String? get zip => throw _privateConstructorUsedError;
+  String? get zip;
   @override
   @JsonKey(ignore: true)
   _$AddressCopyWith<_Address> get copyWith =>

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'shop.dart';
@@ -44,7 +45,7 @@ class _$ShopTearOff {
     );
   }
 
-  Shop fromJson(Map<String, Object> json) {
+  Shop fromJson(Map<String, Object?> json) {
     return Shop.fromJson(json);
   }
 }
@@ -340,47 +341,39 @@ class _$_Shop implements _Shop {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Shop &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.moneyFormat, moneyFormat) ||
-                const DeepCollectionEquality()
-                    .equals(other.moneyFormat, moneyFormat)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.paymentSettings, paymentSettings) ||
-                const DeepCollectionEquality()
-                    .equals(other.paymentSettings, paymentSettings)) &&
-            (identical(other.primaryDomain, primaryDomain) ||
-                const DeepCollectionEquality()
-                    .equals(other.primaryDomain, primaryDomain)) &&
-            (identical(other.privacyPolicy, privacyPolicy) ||
-                const DeepCollectionEquality()
-                    .equals(other.privacyPolicy, privacyPolicy)) &&
-            (identical(other.refundPolicy, refundPolicy) ||
-                const DeepCollectionEquality()
-                    .equals(other.refundPolicy, refundPolicy)) &&
-            (identical(other.shipsToCountries, shipsToCountries) ||
-                const DeepCollectionEquality()
-                    .equals(other.shipsToCountries, shipsToCountries)) &&
-            (identical(other.termsOfService, termsOfService) ||
-                const DeepCollectionEquality()
-                    .equals(other.termsOfService, termsOfService)));
+        (other.runtimeType == runtimeType &&
+            other is _Shop &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality()
+                .equals(other.moneyFormat, moneyFormat) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentSettings, paymentSettings) &&
+            const DeepCollectionEquality()
+                .equals(other.primaryDomain, primaryDomain) &&
+            const DeepCollectionEquality()
+                .equals(other.privacyPolicy, privacyPolicy) &&
+            const DeepCollectionEquality()
+                .equals(other.refundPolicy, refundPolicy) &&
+            const DeepCollectionEquality()
+                .equals(other.shipsToCountries, shipsToCountries) &&
+            const DeepCollectionEquality()
+                .equals(other.termsOfService, termsOfService));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(moneyFormat) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(paymentSettings) ^
-      const DeepCollectionEquality().hash(primaryDomain) ^
-      const DeepCollectionEquality().hash(privacyPolicy) ^
-      const DeepCollectionEquality().hash(refundPolicy) ^
-      const DeepCollectionEquality().hash(shipsToCountries) ^
-      const DeepCollectionEquality().hash(termsOfService);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(moneyFormat),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(paymentSettings),
+      const DeepCollectionEquality().hash(primaryDomain),
+      const DeepCollectionEquality().hash(privacyPolicy),
+      const DeepCollectionEquality().hash(refundPolicy),
+      const DeepCollectionEquality().hash(shipsToCountries),
+      const DeepCollectionEquality().hash(termsOfService));
 
   @JsonKey(ignore: true)
   @override
@@ -408,23 +401,23 @@ abstract class _Shop implements Shop {
   factory _Shop.fromJson(Map<String, dynamic> json) = _$_Shop.fromJson;
 
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  String? get moneyFormat => throw _privateConstructorUsedError;
+  String? get moneyFormat;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  PaymentSettings? get paymentSettings => throw _privateConstructorUsedError;
+  PaymentSettings? get paymentSettings;
   @override
-  PrimaryDomain? get primaryDomain => throw _privateConstructorUsedError;
+  PrimaryDomain? get primaryDomain;
   @override
-  PrivacyPolicy? get privacyPolicy => throw _privateConstructorUsedError;
+  PrivacyPolicy? get privacyPolicy;
   @override
-  RefundPolicy? get refundPolicy => throw _privateConstructorUsedError;
+  RefundPolicy? get refundPolicy;
   @override
-  List<String>? get shipsToCountries => throw _privateConstructorUsedError;
+  List<String>? get shipsToCountries;
   @override
-  TermsOfService? get termsOfService => throw _privateConstructorUsedError;
+  TermsOfService? get termsOfService;
   @override
   @JsonKey(ignore: true)
   _$ShopCopyWith<_Shop> get copyWith => throw _privateConstructorUsedError;

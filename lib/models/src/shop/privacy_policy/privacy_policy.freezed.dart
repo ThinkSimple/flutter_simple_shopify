@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'privacy_policy.dart';
@@ -32,7 +33,7 @@ class _$PrivacyPolicyTearOff {
     );
   }
 
-  PrivacyPolicy fromJson(Map<String, Object> json) {
+  PrivacyPolicy fromJson(Map<String, Object?> json) {
     return PrivacyPolicy.fromJson(json);
   }
 }
@@ -187,27 +188,23 @@ class _$_PrivacyPolicy implements _PrivacyPolicy {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PrivacyPolicy &&
-            (identical(other.body, body) ||
-                const DeepCollectionEquality().equals(other.body, body)) &&
-            (identical(other.handle, handle) ||
-                const DeepCollectionEquality().equals(other.handle, handle)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)));
+        (other.runtimeType == runtimeType &&
+            other is _PrivacyPolicy &&
+            const DeepCollectionEquality().equals(other.body, body) &&
+            const DeepCollectionEquality().equals(other.handle, handle) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.url, url));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(body) ^
-      const DeepCollectionEquality().hash(handle) ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(url);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(body),
+      const DeepCollectionEquality().hash(handle),
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(url));
 
   @JsonKey(ignore: true)
   @override
@@ -232,15 +229,15 @@ abstract class _PrivacyPolicy implements PrivacyPolicy {
       _$_PrivacyPolicy.fromJson;
 
   @override
-  String? get body => throw _privateConstructorUsedError;
+  String? get body;
   @override
-  String? get handle => throw _privateConstructorUsedError;
+  String? get handle;
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String? get title => throw _privateConstructorUsedError;
+  String? get title;
   @override
-  String? get url => throw _privateConstructorUsedError;
+  String? get url;
   @override
   @JsonKey(ignore: true)
   _$PrivacyPolicyCopyWith<_PrivacyPolicy> get copyWith =>

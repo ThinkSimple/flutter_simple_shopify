@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'address_prediction.dart';
@@ -32,7 +33,7 @@ class _$AddressPredictionTearOff {
     );
   }
 
-  AddressPrediction fromJson(Map<String, Object> json) {
+  AddressPrediction fromJson(Map<String, Object?> json) {
     return AddressPrediction.fromJson(json);
   }
 }
@@ -167,24 +168,21 @@ class _$_AddressPrediction implements _AddressPrediction {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AddressPrediction &&
-            (identical(other.addressId, addressId) ||
-                const DeepCollectionEquality()
-                    .equals(other.addressId, addressId)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.matchedSubstrings, matchedSubstrings) ||
-                const DeepCollectionEquality()
-                    .equals(other.matchedSubstrings, matchedSubstrings)));
+        (other.runtimeType == runtimeType &&
+            other is _AddressPrediction &&
+            const DeepCollectionEquality().equals(other.addressId, addressId) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality()
+                .equals(other.matchedSubstrings, matchedSubstrings));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(addressId) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(matchedSubstrings);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(addressId),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(matchedSubstrings));
 
   @JsonKey(ignore: true)
   @override
@@ -207,12 +205,11 @@ abstract class _AddressPrediction implements AddressPrediction {
       _$_AddressPrediction.fromJson;
 
   @override
-  String? get addressId => throw _privateConstructorUsedError;
+  String? get addressId;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  List<MatchedSubstring>? get matchedSubstrings =>
-      throw _privateConstructorUsedError;
+  List<MatchedSubstring>? get matchedSubstrings;
   @override
   @JsonKey(ignore: true)
   _$AddressPredictionCopyWith<_AddressPrediction> get copyWith =>

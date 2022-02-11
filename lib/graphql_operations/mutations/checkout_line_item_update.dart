@@ -53,6 +53,10 @@ mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemInput!]!, $checkou
             id
             quantity
             title
+            customAttributes {
+                key
+                value
+            }
              discountAllocations {
               allocatedAmount {
                 amount

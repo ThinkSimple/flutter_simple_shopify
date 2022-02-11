@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'pages.dart';
@@ -27,7 +28,7 @@ class _$PagesTearOff {
     );
   }
 
-  Pages fromJson(Map<String, Object> json) {
+  Pages fromJson(Map<String, Object?> json) {
     return Pages.fromJson(json);
   }
 }
@@ -121,15 +122,14 @@ class _$_Pages implements _Pages {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Pages &&
-            (identical(other.pageList, pageList) ||
-                const DeepCollectionEquality()
-                    .equals(other.pageList, pageList)));
+        (other.runtimeType == runtimeType &&
+            other is _Pages &&
+            const DeepCollectionEquality().equals(other.pageList, pageList));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(pageList);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(pageList));
 
   @JsonKey(ignore: true)
   @override
@@ -148,7 +148,7 @@ abstract class _Pages implements Pages {
   factory _Pages.fromJson(Map<String, dynamic> json) = _$_Pages.fromJson;
 
   @override
-  List<Page> get pageList => throw _privateConstructorUsedError;
+  List<Page> get pageList;
   @override
   @JsonKey(ignore: true)
   _$PagesCopyWith<_Pages> get copyWith => throw _privateConstructorUsedError;

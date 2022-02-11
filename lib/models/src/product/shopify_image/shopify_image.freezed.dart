@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'shopify_image.dart';
@@ -30,7 +31,7 @@ class _$ShopifyImageTearOff {
     );
   }
 
-  ShopifyImage fromJson(Map<String, Object> json) {
+  ShopifyImage fromJson(Map<String, Object?> json) {
     return ShopifyImage.fromJson(json);
   }
 }
@@ -156,22 +157,20 @@ class _$_ShopifyImage extends _ShopifyImage {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ShopifyImage &&
-            (identical(other.originalSrc, originalSrc) ||
-                const DeepCollectionEquality()
-                    .equals(other.originalSrc, originalSrc)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.altText, altText) ||
-                const DeepCollectionEquality().equals(other.altText, altText)));
+        (other.runtimeType == runtimeType &&
+            other is _ShopifyImage &&
+            const DeepCollectionEquality()
+                .equals(other.originalSrc, originalSrc) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.altText, altText));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(originalSrc) ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(altText);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(originalSrc),
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(altText));
 
   @JsonKey(ignore: true)
   @override
@@ -195,11 +194,11 @@ abstract class _ShopifyImage extends ShopifyImage {
       _$_ShopifyImage.fromJson;
 
   @override
-  String get originalSrc => throw _privateConstructorUsedError;
+  String get originalSrc;
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String? get altText => throw _privateConstructorUsedError;
+  String? get altText;
   @override
   @JsonKey(ignore: true)
   _$ShopifyImageCopyWith<_ShopifyImage> get copyWith =>

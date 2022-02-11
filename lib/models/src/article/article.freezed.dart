@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'article.dart';
@@ -52,7 +53,7 @@ class _$ArticleTearOff {
     );
   }
 
-  Article fromJson(Map<String, Object> json) {
+  Article fromJson(Map<String, Object?> json) {
     return Article.fromJson(json);
   }
 }
@@ -372,57 +373,43 @@ class _$_Article extends _Article {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Article &&
-            (identical(other.author, author) ||
-                const DeepCollectionEquality().equals(other.author, author)) &&
-            (identical(other.commentList, commentList) ||
-                const DeepCollectionEquality()
-                    .equals(other.commentList, commentList)) &&
-            (identical(other.content, content) ||
-                const DeepCollectionEquality()
-                    .equals(other.content, content)) &&
-            (identical(other.contentHtml, contentHtml) ||
-                const DeepCollectionEquality()
-                    .equals(other.contentHtml, contentHtml)) &&
-            (identical(other.excerpt, excerpt) ||
-                const DeepCollectionEquality()
-                    .equals(other.excerpt, excerpt)) &&
-            (identical(other.excerptHtml, excerptHtml) ||
-                const DeepCollectionEquality()
-                    .equals(other.excerptHtml, excerptHtml)) &&
-            (identical(other.handle, handle) ||
-                const DeepCollectionEquality().equals(other.handle, handle)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)) &&
-            (identical(other.publishedAt, publishedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.publishedAt, publishedAt)) &&
-            (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)));
+        (other.runtimeType == runtimeType &&
+            other is _Article &&
+            const DeepCollectionEquality().equals(other.author, author) &&
+            const DeepCollectionEquality()
+                .equals(other.commentList, commentList) &&
+            const DeepCollectionEquality().equals(other.content, content) &&
+            const DeepCollectionEquality()
+                .equals(other.contentHtml, contentHtml) &&
+            const DeepCollectionEquality().equals(other.excerpt, excerpt) &&
+            const DeepCollectionEquality()
+                .equals(other.excerptHtml, excerptHtml) &&
+            const DeepCollectionEquality().equals(other.handle, handle) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.image, image) &&
+            const DeepCollectionEquality()
+                .equals(other.publishedAt, publishedAt) &&
+            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.url, url));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(author) ^
-      const DeepCollectionEquality().hash(commentList) ^
-      const DeepCollectionEquality().hash(content) ^
-      const DeepCollectionEquality().hash(contentHtml) ^
-      const DeepCollectionEquality().hash(excerpt) ^
-      const DeepCollectionEquality().hash(excerptHtml) ^
-      const DeepCollectionEquality().hash(handle) ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(image) ^
-      const DeepCollectionEquality().hash(publishedAt) ^
-      const DeepCollectionEquality().hash(tags) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(url);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(author),
+      const DeepCollectionEquality().hash(commentList),
+      const DeepCollectionEquality().hash(content),
+      const DeepCollectionEquality().hash(contentHtml),
+      const DeepCollectionEquality().hash(excerpt),
+      const DeepCollectionEquality().hash(excerptHtml),
+      const DeepCollectionEquality().hash(handle),
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(image),
+      const DeepCollectionEquality().hash(publishedAt),
+      const DeepCollectionEquality().hash(tags),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(url));
 
   @JsonKey(ignore: true)
   @override
@@ -455,31 +442,31 @@ abstract class _Article extends Article {
   factory _Article.fromJson(Map<String, dynamic> json) = _$_Article.fromJson;
 
   @override
-  AuthorV2? get author => throw _privateConstructorUsedError;
+  AuthorV2? get author;
   @override
-  List<Comment>? get commentList => throw _privateConstructorUsedError;
+  List<Comment>? get commentList;
   @override
-  String? get content => throw _privateConstructorUsedError;
+  String? get content;
   @override
-  String? get contentHtml => throw _privateConstructorUsedError;
+  String? get contentHtml;
   @override
-  String? get excerpt => throw _privateConstructorUsedError;
+  String? get excerpt;
   @override
-  String? get excerptHtml => throw _privateConstructorUsedError;
+  String? get excerptHtml;
   @override
-  String? get handle => throw _privateConstructorUsedError;
+  String? get handle;
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  ShopifyImage? get image => throw _privateConstructorUsedError;
+  ShopifyImage? get image;
   @override
-  String? get publishedAt => throw _privateConstructorUsedError;
+  String? get publishedAt;
   @override
-  List<String>? get tags => throw _privateConstructorUsedError;
+  List<String>? get tags;
   @override
-  String? get title => throw _privateConstructorUsedError;
+  String? get title;
   @override
-  String? get url => throw _privateConstructorUsedError;
+  String? get url;
   @override
   @JsonKey(ignore: true)
   _$ArticleCopyWith<_Article> get copyWith =>

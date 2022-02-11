@@ -1,3 +1,4 @@
+import 'package:flutter_simple_shopify/models/src/checkout/attribute/attribute.dart';
 import 'package:flutter_simple_shopify/models/src/checkout/product_variant_checkout/product_variant_checkout.dart';
 import 'package:flutter_simple_shopify/models/src/order/discount_allocations/discount_allocations.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -12,6 +13,7 @@ class LineItem with _$LineItem {
     required String title,
     required int quantity,
     required List<DiscountAllocations> discountAllocations,
+    @Default([]) List<Attribute> customAttributes,
     String? variantId,
     String? id,
     ProductVariantCheckout? variant,

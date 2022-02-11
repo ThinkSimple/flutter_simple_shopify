@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'checkout.dart';
@@ -73,7 +74,7 @@ class _$CheckoutTearOff {
     );
   }
 
-  Checkout fromJson(Map<String, Object> json) {
+  Checkout fromJson(Map<String, Object?> json) {
     return Checkout.fromJson(json);
   }
 }
@@ -617,99 +618,73 @@ class _$_Checkout extends _Checkout {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Checkout &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.ready, ready) ||
-                const DeepCollectionEquality().equals(other.ready, ready)) &&
-            (identical(other.availableShippingRates, availableShippingRates) ||
-                const DeepCollectionEquality().equals(
-                    other.availableShippingRates, availableShippingRates)) &&
-            (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)) &&
-            (identical(other.currencyCode, currencyCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.currencyCode, currencyCode)) &&
-            (identical(other.totalTaxV2, totalTaxV2) ||
-                const DeepCollectionEquality()
-                    .equals(other.totalTaxV2, totalTaxV2)) &&
-            (identical(other.totalPriceV2, totalPriceV2) ||
-                const DeepCollectionEquality()
-                    .equals(other.totalPriceV2, totalPriceV2)) &&
-            (identical(other.taxesIncluded, taxesIncluded) ||
-                const DeepCollectionEquality()
-                    .equals(other.taxesIncluded, taxesIncluded)) &&
-            (identical(other.taxExempt, taxExempt) ||
-                const DeepCollectionEquality()
-                    .equals(other.taxExempt, taxExempt)) &&
-            (identical(other.subtotalPriceV2, subtotalPriceV2) ||
-                const DeepCollectionEquality()
-                    .equals(other.subtotalPriceV2, subtotalPriceV2)) &&
-            (identical(other.requiresShipping, requiresShipping) ||
-                const DeepCollectionEquality()
-                    .equals(other.requiresShipping, requiresShipping)) &&
-            (identical(other.appliedGiftCards, appliedGiftCards) ||
-                const DeepCollectionEquality()
-                    .equals(other.appliedGiftCards, appliedGiftCards)) &&
-            (identical(other.lineItems, lineItems) ||
-                const DeepCollectionEquality()
-                    .equals(other.lineItems, lineItems)) &&
-            (identical(other.order, order) ||
-                const DeepCollectionEquality().equals(other.order, order)) &&
-            (identical(other.orderStatusUrl, orderStatusUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.orderStatusUrl, orderStatusUrl)) &&
-            (identical(other.shopifyPaymentsAccountId, shopifyPaymentsAccountId) ||
-                const DeepCollectionEquality().equals(
-                    other.shopifyPaymentsAccountId,
-                    shopifyPaymentsAccountId)) &&
-            (identical(other.shippingAddress, shippingAddress) ||
-                const DeepCollectionEquality()
-                    .equals(other.shippingAddress, shippingAddress)) &&
-            (identical(other.shippingLine, shippingLine) ||
-                const DeepCollectionEquality()
-                    .equals(other.shippingLine, shippingLine)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.completedAt, completedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.completedAt, completedAt)) &&
-            (identical(other.note, note) ||
-                const DeepCollectionEquality().equals(other.note, note)) &&
-            (identical(other.webUrl, webUrl) ||
-                const DeepCollectionEquality().equals(other.webUrl, webUrl)) &&
-            (identical(other.updatedAt, updatedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.updatedAt, updatedAt)));
+        (other.runtimeType == runtimeType &&
+            other is _Checkout &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.ready, ready) &&
+            const DeepCollectionEquality()
+                .equals(other.availableShippingRates, availableShippingRates) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality()
+                .equals(other.currencyCode, currencyCode) &&
+            const DeepCollectionEquality()
+                .equals(other.totalTaxV2, totalTaxV2) &&
+            const DeepCollectionEquality()
+                .equals(other.totalPriceV2, totalPriceV2) &&
+            const DeepCollectionEquality()
+                .equals(other.taxesIncluded, taxesIncluded) &&
+            const DeepCollectionEquality().equals(other.taxExempt, taxExempt) &&
+            const DeepCollectionEquality()
+                .equals(other.subtotalPriceV2, subtotalPriceV2) &&
+            const DeepCollectionEquality()
+                .equals(other.requiresShipping, requiresShipping) &&
+            const DeepCollectionEquality()
+                .equals(other.appliedGiftCards, appliedGiftCards) &&
+            const DeepCollectionEquality().equals(other.lineItems, lineItems) &&
+            const DeepCollectionEquality().equals(other.order, order) &&
+            const DeepCollectionEquality()
+                .equals(other.orderStatusUrl, orderStatusUrl) &&
+            const DeepCollectionEquality().equals(
+                other.shopifyPaymentsAccountId, shopifyPaymentsAccountId) &&
+            const DeepCollectionEquality()
+                .equals(other.shippingAddress, shippingAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.shippingLine, shippingLine) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality()
+                .equals(other.completedAt, completedAt) &&
+            const DeepCollectionEquality().equals(other.note, note) &&
+            const DeepCollectionEquality().equals(other.webUrl, webUrl) &&
+            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(ready) ^
-      const DeepCollectionEquality().hash(availableShippingRates) ^
-      const DeepCollectionEquality().hash(createdAt) ^
-      const DeepCollectionEquality().hash(currencyCode) ^
-      const DeepCollectionEquality().hash(totalTaxV2) ^
-      const DeepCollectionEquality().hash(totalPriceV2) ^
-      const DeepCollectionEquality().hash(taxesIncluded) ^
-      const DeepCollectionEquality().hash(taxExempt) ^
-      const DeepCollectionEquality().hash(subtotalPriceV2) ^
-      const DeepCollectionEquality().hash(requiresShipping) ^
-      const DeepCollectionEquality().hash(appliedGiftCards) ^
-      const DeepCollectionEquality().hash(lineItems) ^
-      const DeepCollectionEquality().hash(order) ^
-      const DeepCollectionEquality().hash(orderStatusUrl) ^
-      const DeepCollectionEquality().hash(shopifyPaymentsAccountId) ^
-      const DeepCollectionEquality().hash(shippingAddress) ^
-      const DeepCollectionEquality().hash(shippingLine) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(completedAt) ^
-      const DeepCollectionEquality().hash(note) ^
-      const DeepCollectionEquality().hash(webUrl) ^
-      const DeepCollectionEquality().hash(updatedAt);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(id),
+        const DeepCollectionEquality().hash(ready),
+        const DeepCollectionEquality().hash(availableShippingRates),
+        const DeepCollectionEquality().hash(createdAt),
+        const DeepCollectionEquality().hash(currencyCode),
+        const DeepCollectionEquality().hash(totalTaxV2),
+        const DeepCollectionEquality().hash(totalPriceV2),
+        const DeepCollectionEquality().hash(taxesIncluded),
+        const DeepCollectionEquality().hash(taxExempt),
+        const DeepCollectionEquality().hash(subtotalPriceV2),
+        const DeepCollectionEquality().hash(requiresShipping),
+        const DeepCollectionEquality().hash(appliedGiftCards),
+        const DeepCollectionEquality().hash(lineItems),
+        const DeepCollectionEquality().hash(order),
+        const DeepCollectionEquality().hash(orderStatusUrl),
+        const DeepCollectionEquality().hash(shopifyPaymentsAccountId),
+        const DeepCollectionEquality().hash(shippingAddress),
+        const DeepCollectionEquality().hash(shippingLine),
+        const DeepCollectionEquality().hash(email),
+        const DeepCollectionEquality().hash(completedAt),
+        const DeepCollectionEquality().hash(note),
+        const DeepCollectionEquality().hash(webUrl),
+        const DeepCollectionEquality().hash(updatedAt)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -753,54 +728,52 @@ abstract class _Checkout extends Checkout {
   factory _Checkout.fromJson(Map<String, dynamic> json) = _$_Checkout.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  bool get ready => throw _privateConstructorUsedError;
+  bool get ready;
   @override
-  AvailableShippingRates? get availableShippingRates =>
-      throw _privateConstructorUsedError;
+  AvailableShippingRates? get availableShippingRates;
   @override
-  String get createdAt => throw _privateConstructorUsedError;
+  String get createdAt;
   @override
-  String get currencyCode => throw _privateConstructorUsedError;
+  String get currencyCode;
   @override
-  PriceV2 get totalTaxV2 => throw _privateConstructorUsedError;
+  PriceV2 get totalTaxV2;
   @override
-  PriceV2 get totalPriceV2 => throw _privateConstructorUsedError;
+  PriceV2 get totalPriceV2;
   @override
-  bool get taxesIncluded => throw _privateConstructorUsedError;
+  bool get taxesIncluded;
   @override
-  bool get taxExempt => throw _privateConstructorUsedError;
+  bool get taxExempt;
   @override
-  PriceV2 get subtotalPriceV2 => throw _privateConstructorUsedError;
+  PriceV2 get subtotalPriceV2;
   @override
-  bool get requiresShipping => throw _privateConstructorUsedError;
+  bool get requiresShipping;
   @override
-  List<AppliedGiftCards> get appliedGiftCards =>
-      throw _privateConstructorUsedError;
+  List<AppliedGiftCards> get appliedGiftCards;
   @override
   @JsonKey(fromJson: JsonHelper.lineItems)
-  List<LineItem> get lineItems => throw _privateConstructorUsedError;
+  List<LineItem> get lineItems;
   @override
-  Order? get order => throw _privateConstructorUsedError;
+  Order? get order;
   @override
-  String? get orderStatusUrl => throw _privateConstructorUsedError;
+  String? get orderStatusUrl;
   @override
-  String? get shopifyPaymentsAccountId => throw _privateConstructorUsedError;
+  String? get shopifyPaymentsAccountId;
   @override
-  MailingAddress? get shippingAddress => throw _privateConstructorUsedError;
+  MailingAddress? get shippingAddress;
   @override
-  ShippingRates? get shippingLine => throw _privateConstructorUsedError;
+  ShippingRates? get shippingLine;
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
-  String? get completedAt => throw _privateConstructorUsedError;
+  String? get completedAt;
   @override
-  String? get note => throw _privateConstructorUsedError;
+  String? get note;
   @override
-  String? get webUrl => throw _privateConstructorUsedError;
+  String? get webUrl;
   @override
-  String? get updatedAt => throw _privateConstructorUsedError;
+  String? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$CheckoutCopyWith<_Checkout> get copyWith =>

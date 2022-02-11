@@ -12,6 +12,10 @@ _$_LineItem _$$_LineItemFromJson(Map<String, dynamic> json) => _$_LineItem(
       discountAllocations: (json['discountAllocations'] as List<dynamic>)
           .map((e) => DiscountAllocations.fromJson(e as Map<String, dynamic>))
           .toList(),
+      customAttributes: (json['customAttributes'] as List<dynamic>?)
+              ?.map((e) => Attribute.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
       variantId: json['variantId'] as String?,
       id: json['id'] as String?,
       variant: json['variant'] == null
@@ -25,6 +29,7 @@ Map<String, dynamic> _$$_LineItemToJson(_$_LineItem instance) =>
       'title': instance.title,
       'quantity': instance.quantity,
       'discountAllocations': instance.discountAllocations,
+      'customAttributes': instance.customAttributes,
       'variantId': instance.variantId,
       'id': instance.id,
       'variant': instance.variant,

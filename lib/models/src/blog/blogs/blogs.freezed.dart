@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'blogs.dart';
@@ -27,7 +28,7 @@ class _$BlogsTearOff {
     );
   }
 
-  Blogs fromJson(Map<String, Object> json) {
+  Blogs fromJson(Map<String, Object?> json) {
     return Blogs.fromJson(json);
   }
 }
@@ -121,15 +122,14 @@ class _$_Blogs implements _Blogs {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Blogs &&
-            (identical(other.blogList, blogList) ||
-                const DeepCollectionEquality()
-                    .equals(other.blogList, blogList)));
+        (other.runtimeType == runtimeType &&
+            other is _Blogs &&
+            const DeepCollectionEquality().equals(other.blogList, blogList));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(blogList);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(blogList));
 
   @JsonKey(ignore: true)
   @override
@@ -148,7 +148,7 @@ abstract class _Blogs implements Blogs {
   factory _Blogs.fromJson(Map<String, dynamic> json) = _$_Blogs.fromJson;
 
   @override
-  List<Blog> get blogList => throw _privateConstructorUsedError;
+  List<Blog> get blogList;
   @override
   @JsonKey(ignore: true)
   _$BlogsCopyWith<_Blogs> get copyWith => throw _privateConstructorUsedError;
