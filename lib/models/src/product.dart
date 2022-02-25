@@ -154,11 +154,11 @@ class Product {
         this.productVariants?.firstWhere((ProductVariant productVariant) {
       bool found = false;
       List<Map<String?, String?>> selectedOptionList = [];
-      
+
       productVariant.selectedOptions?.forEach((SelectedOption selectedOption) {
         selectedOptionList.add({selectedOption.name: selectedOption.value});
       });
-      
+
       if (unOrdDeepEq(selectedOptionList, filterList) == true) {
         found = true;
       }
@@ -439,50 +439,73 @@ class Currency {
 
 class PriceV2 {
   final double? amount;
+  final double? originalAmount;
   final String? currencyCode;
   final String? currencySymbol;
   final String? formattedPrice;
+  final String? originalFormattedPrice;
   final String? numberFormattedPrice;
+  final String? originalNumberFormattedPrice;
+  final bool? isConverted;
 
   const PriceV2(
       {this.formattedPrice,
+      this.originalFormattedPrice,
       this.currencySymbol,
       this.amount,
+      this.originalAmount,
       this.currencyCode,
-      this.numberFormattedPrice});
+      this.numberFormattedPrice,
+      this.originalNumberFormattedPrice,
+      this.isConverted});
 
   static PriceV2 fromJson(Map<String, dynamic> json) {
     Currency? currency = ShopifyConfig.currency;
     String? activeCurrency = ShopifyConfig.activeCurrency;
 
     double? amount;
-    if(json['amount'] != null) {
+    if (json['amount'] != null) {
       amount = double.parse(json['amount']);
     }
 
     PriceV2 price = PriceV2(
         amount: amount,
+        originalAmount: amount,
         currencyCode: json['currencyCode'],
         currencySymbol: _simpleCurrencySymbols[json['currencyCode']],
         formattedPrice: _chooseRightOrderOnCurrencySymbol(
             amount?.toString(), json['currencyCode']),
+        originalFormattedPrice: _chooseRightOrderOnCurrencySymbol(
+            amount?.toString(), json['currencyCode']),
         numberFormattedPrice: _chooseRightOrderOnCurrencySymbol(
+            amount?.toString(), json['currencyCode'], numberFormat: true),
+        originalNumberFormattedPrice: _chooseRightOrderOnCurrencySymbol(
             amount?.toString(), json['currencyCode'],
-            numberFormat: true));
-    
+            numberFormat: true),
+        isConverted: false);
+
     if (currency != null && price.amount != null && activeCurrency != null) {
       if (currency.currencyConversionEnabled) {
-        double amt = convert(price.amount!, currency.rates[price.currencyCode],
-            currency.rates[activeCurrency], currency.currencyConversionRoundAmounts);
+        double amt = convert(
+            price.amount!,
+            currency.rates[price.currencyCode],
+            currency.rates[activeCurrency],
+            currency.currencyConversionRoundAmounts);
         price = PriceV2(
             amount: amt,
+            originalAmount: price.amount,
             currencyCode: activeCurrency,
             currencySymbol: _simpleCurrencySymbols[activeCurrency],
-            formattedPrice:
-                _chooseRightOrderOnCurrencySymbol(amt.toString(), activeCurrency),
+            formattedPrice: _chooseRightOrderOnCurrencySymbol(
+                amt.toString(), activeCurrency),
+            originalFormattedPrice: _chooseRightOrderOnCurrencySymbol(
+                price.amount.toString(), json['currencyCode']),
             numberFormattedPrice: _chooseRightOrderOnCurrencySymbol(
-                amt.toString(), activeCurrency,
-                numberFormat: true));
+                amt.toString(), activeCurrency, numberFormat: true),
+            originalNumberFormattedPrice: _chooseRightOrderOnCurrencySymbol(
+                price.amount.toString(), json['currencyCode'],
+                numberFormat: true),
+            isConverted: true);
       }
     }
     // print("object");
@@ -492,7 +515,7 @@ class PriceV2 {
   static double convert(
       double amount, double from, double to, bool shouldRound) {
     double amt = (amount * from) / to;
-    
+
     if (shouldRound) {
       amt = double.parse(amt.ceil().toString());
     } else {
