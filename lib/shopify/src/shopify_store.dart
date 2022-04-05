@@ -212,7 +212,7 @@ class ShopifyStore with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
-    return Shop.fromJson(result.data!);
+    return Shop.fromJson(result.data!['shop']);
   }
 
   /// Returns a collection by handle.
