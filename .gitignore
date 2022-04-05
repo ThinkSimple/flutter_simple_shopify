@@ -8,7 +8,7 @@
 .buildlog/
 .history
 .svn/
-.fvm/
+.fvm/flutter_sdk
 
 # IntelliJ related
 *.iml
