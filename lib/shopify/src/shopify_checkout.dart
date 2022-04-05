@@ -5,6 +5,7 @@ import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_com
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_line_item_add.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_line_item_remove.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_line_item_update.dart';
+import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_line_items_replace.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_shipping_address_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/checkout_shipping_line_update.dart';
 import 'package:flutter_simple_shopify/graphql_operations/mutations/complete_checkout_token_v3.dart';
@@ -139,6 +140,33 @@ class ShopifyCheckout with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return orders.orderList;
+  }
+
+  /// Replaces the [LineItems] in the [Checkout] associated to the [checkoutId].
+  ///
+  /// [checkoutLineItems] is a List of Variant Ids
+  Future<void> checkoutLineItemsReplace(
+    String checkoutId,
+    List<String> variantIdList, {
+    bool deleteThisPartOfCache = false,
+  }) async {
+    var checkoutLineItems = transformVariantIdListIntoListOfMaps(variantIdList);
+    final MutationOptions _options = MutationOptions(
+      document: gql(replaceCheckoutItemsMutation),
+      variables: {
+        'checkoutId': checkoutId,
+        'checkoutLineItems': checkoutLineItems,
+      },
+    );
+    final QueryResult result = await _graphQLClient!.mutate(_options);
+    checkForError(
+      result,
+      key: 'checkoutLineItemsReplace',
+      errorKey: 'userErrors',
+    );
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
   }
 
   /// Updates the shipping address on given [checkoutId]
