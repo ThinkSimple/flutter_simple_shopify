@@ -154,7 +154,7 @@ class ShopifyAuth with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
-    return _extractAccessToken(result.data);
+    return _extractAccessToken(result.data, "customerAccessTokenCreate");
   }
 
   /// Helper method for creating the accessToken with Multipass.
@@ -167,13 +167,18 @@ class ShopifyAuth with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
-    return _extractAccessToken(result.data);
+    return _extractAccessToken(
+      result.data,
+      "customerAccessTokenCreateWithMultipass",
+    );
   }
 
   /// Helper method for extracting the customerAccessToken from the mutation.
-  String? _extractAccessToken(Map<String, dynamic>? mutationData) {
-    return (((mutationData ??
-                const {})['customerAccessTokenCreateWithMultipass'] ??
+  String? _extractAccessToken(
+    Map<String, dynamic>? mutationData,
+    String mutation,
+  ) {
+    return (((mutationData ?? const {})[mutation] ??
             const {})['customerAccessToken'] ??
         const {})['accessToken'];
   }
@@ -205,7 +210,7 @@ class ShopifyAuth with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
-    return _extractAccessToken(result.data);
+    return _extractAccessToken(result.data, "customerAccessTokenRenew");
   }
 
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
