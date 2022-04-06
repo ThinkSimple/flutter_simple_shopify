@@ -56,6 +56,14 @@ query($id: ID!){
         provinceCode
         zip
       }
+      shippingLine {
+        handle
+        priceV2 {
+          amount
+          currencyCode
+        }
+        title
+      }
       completedAt
       createdAt
       currencyCode
@@ -126,6 +134,6 @@ query($id: ID!){
 }
 ''';
 
-/* 
+/*
 
  */
