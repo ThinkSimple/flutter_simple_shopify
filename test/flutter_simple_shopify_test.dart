@@ -8,7 +8,7 @@ void main() {
       'currencyCode': 'EUR',
     });
     expect(price.amount, 1.0);
-    expect(price.currencyCode, '€');
-    expect(price.currencyCode, '1.0 €');
+    expect(price.currencyCode, 'EUR');
+    expect(price.formattedPrice, '1 €');
   });
 }
