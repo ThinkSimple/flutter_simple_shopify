@@ -83,7 +83,6 @@ query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSor
                   }
                   availableForSale
                   id
-                  quantityAvailable
                 }
               }
             }

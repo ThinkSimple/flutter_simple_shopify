@@ -83,7 +83,6 @@ query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys){
                   }
                   availableForSale
                   id
-                  quantityAvailable
                   unitPrice {
                       amount
                       currencyCode

@@ -47,7 +47,6 @@ query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean){
                       value
                     }
                     availableForSale
-                    quantityAvailable
                   }
                 }
               }

@@ -47,7 +47,6 @@ query($cursor : String, $metafieldsNamespace : String){
               availableForSale
               sku
               requiresShipping
-              quantityAvailable
               selectedOptions {
                 name
                 value

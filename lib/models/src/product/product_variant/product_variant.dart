@@ -19,7 +19,6 @@ class ProductVariant with _$ProductVariant {
     required String sku,
     required bool requiresShipping,
     required String id,
-    required int quantityAvailable,
     PriceV2? unitPrice,
     UnitPriceMeasurement? unitPriceMeasurement,
     List<SelectedOption>? selectedOptions,
@@ -45,7 +44,6 @@ class ProductVariant with _$ProductVariant {
       sku: nodeJson['sku'],
       requiresShipping: nodeJson['requiresShipping'],
       id: nodeJson['id'],
-      quantityAvailable: nodeJson['quantityAvailable'],
       unitPrice: nodeJson['unitPrice'] != null
           ? PriceV2.fromJson(nodeJson['unitPrice'])
           : null,

@@ -45,7 +45,6 @@ Map<String, dynamic> _$$_ProductVariantToJson(_$_ProductVariant instance) =>
       'sku': instance.sku,
       'requiresShipping': instance.requiresShipping,
       'id': instance.id,
-      'quantityAvailable': instance.quantityAvailable,
       'unitPrice': instance.unitPrice,
       'unitPriceMeasurement': instance.unitPriceMeasurement,
       'selectedOptions': instance.selectedOptions,

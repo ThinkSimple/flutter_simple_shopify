@@ -17,7 +17,6 @@ query getProductByHandle($handle : String!){
             amount
             currencyCode
           }
-          quantityAvailable
         }
       }
     }
