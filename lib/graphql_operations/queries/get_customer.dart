@@ -50,6 +50,7 @@ query($customerAccessToken : String!){
     id
     lastName
     metafields{
+    id
     key
     value
     namespace
