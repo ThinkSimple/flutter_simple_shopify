@@ -16,7 +16,6 @@ _$_ProductVariant _$$_ProductVariantFromJson(Map<String, dynamic> json) =>
       sku: json['sku'] as String,
       requiresShipping: json['requiresShipping'] as bool,
       id: json['id'] as String,
-      quantityAvailable: json['quantityAvailable'] as int,
       unitPrice: json['unitPrice'] == null
           ? null
           : PriceV2.fromJson(json['unitPrice'] as Map<String, dynamic>),
