@@ -98,7 +98,7 @@ class ShopifyCustomer with ShopifyError {
   Future<Metafield> getCustomerMetaFields(String? customerAccessToken) async{
     // call query to get customer metafields
     final MutationOptions _options = MutationOptions(
-        document: gql(customerAddressDeleteMutation),
+        document: gql(getCustomerQuery),
         variables: {
           'customerAccessToken': customerAccessToken,
           //'id': addressId
