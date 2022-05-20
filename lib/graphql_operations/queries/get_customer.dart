@@ -49,6 +49,15 @@ query($customerAccessToken : String!){
     firstName
     id
     lastName
+    metafields {
+      edges
+      nodes {
+        id
+        key
+        namespace
+        value
+      }
+    }
     lastIncompleteCheckout {
         completedAt
         createdAt

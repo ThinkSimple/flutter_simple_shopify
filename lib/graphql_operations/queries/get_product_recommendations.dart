@@ -51,7 +51,6 @@ query getProductRecommentationsQuery($id: ID!){
           availableForSale
           sku
           requiresShipping
-          quantityAvailable
           selectedOptions {
             name
             value
