@@ -49,7 +49,7 @@ query($customerAccessToken : String!){
     firstName
     id
     lastName
-    metafields {
+    metafields(first:250) {
       edges {
       node {
         id
