@@ -51,7 +51,7 @@ query($customerAccessToken : String!){
     lastName
     metafields {
       edges {
-      nodes {
+      node {
         id
         key
         namespace
