@@ -50,12 +50,13 @@ query($customerAccessToken : String!){
     id
     lastName
     metafields {
-      edges
+      edges {
       nodes {
         id
         key
         namespace
         value
+        }
       }
     }
     lastIncompleteCheckout {
