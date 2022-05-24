@@ -9,8 +9,6 @@
 .history
 .svn/
 .fvm/flutter_sdk
-*.g.dart
-*.freezed.dart
 
 # IntelliJ related
 *.iml
