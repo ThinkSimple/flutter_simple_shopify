@@ -4,6 +4,7 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_collec
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_from_collection_by_id.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_on_query.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_collections_by_ids.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_menu_by_handle.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_metafileds_from_product.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_product_recommendations.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_products_by_ids.dart';
@@ -447,22 +448,25 @@ class ShopifyStore with ShopifyError {
         .toList();
   }
 
-  /// Returns a menu by handle.
-  Future<Menu> getMenuByHandle(String menuName,
-      {bool deleteThisPartOfCache = false}) async {
-    try {
-      final WatchQueryOptions _options = WatchQueryOptions(
-          document: gql(getFeaturedCollectionQuery),
-          variables: {'handle': menuName});
-      final QueryResult result = await _graphQLClient!.query(_options);
-      checkForError(result);
-      if (deleteThisPartOfCache) {
-        _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
-      }
-      return Menu.fromJson(result.data!['menu']);
-    } catch (e) {
-      print(e);
+  /// Returns a [Menu].
+  ///
+  /// Returns the [Menu] that is associated to the [handle].
+  Future<Menu> getMenuByHandle(
+    String handle, {
+    bool deleteThisPartOfCache = false,
+  }) async {
+    final QueryOptions _options = WatchQueryOptions(
+      document: gql(getMenuByHandleQuery),
+      variables: {
+        'handle': handle,
+      },
+    );
+    final QueryResult result = await _graphQLClient!.query(_options);
+    checkForError(result);
+    var response = result.data!['menu'];
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
-    return Menu.fromJson({});
+    return Menu.fromJson(response);
   }
 }
