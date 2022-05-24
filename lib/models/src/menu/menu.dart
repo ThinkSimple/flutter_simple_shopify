@@ -1,6 +1,5 @@
+import 'package:flutter_simple_shopify/models/src/menu/menu_item/menu_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'menu_item/menu_item.dart';
 
 part 'menu.freezed.dart';
 part 'menu.g.dart';
