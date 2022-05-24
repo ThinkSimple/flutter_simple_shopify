@@ -5,7 +5,6 @@ query($handle : String!){
     id
     items {
       id
-      items
       resourceId
       tags
       title
