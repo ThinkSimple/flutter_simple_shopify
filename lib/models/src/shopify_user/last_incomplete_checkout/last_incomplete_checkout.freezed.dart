@@ -12,47 +12,12 @@ part of 'last_incomplete_checkout.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 LastIncompleteCheckout _$LastIncompleteCheckoutFromJson(
     Map<String, dynamic> json) {
   return _LastIncompleteCheckout.fromJson(json);
 }
-
-/// @nodoc
-class _$LastIncompleteCheckoutTearOff {
-  const _$LastIncompleteCheckoutTearOff();
-
-  _LastIncompleteCheckout call(
-      {String? completedAt,
-      String? createdAt,
-      String? email,
-      String? id,
-      String? currencyCode,
-      String? webUrl,
-      PriceV2? totalPriceV2,
-      PriceV2? lineItemsSubtotalPrice,
-      @JsonKey(fromJson: JsonHelper.lineItems) List<LineItem>? lineItems}) {
-    return _LastIncompleteCheckout(
-      completedAt: completedAt,
-      createdAt: createdAt,
-      email: email,
-      id: id,
-      currencyCode: currencyCode,
-      webUrl: webUrl,
-      totalPriceV2: totalPriceV2,
-      lineItemsSubtotalPrice: lineItemsSubtotalPrice,
-      lineItems: lineItems,
-    );
-  }
-
-  LastIncompleteCheckout fromJson(Map<String, Object?> json) {
-    return LastIncompleteCheckout.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $LastIncompleteCheckout = _$LastIncompleteCheckoutTearOff();
 
 /// @nodoc
 mixin _$LastIncompleteCheckout {
@@ -178,11 +143,11 @@ class _$LastIncompleteCheckoutCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$LastIncompleteCheckoutCopyWith<$Res>
+abstract class _$$_LastIncompleteCheckoutCopyWith<$Res>
     implements $LastIncompleteCheckoutCopyWith<$Res> {
-  factory _$LastIncompleteCheckoutCopyWith(_LastIncompleteCheckout value,
-          $Res Function(_LastIncompleteCheckout) then) =
-      __$LastIncompleteCheckoutCopyWithImpl<$Res>;
+  factory _$$_LastIncompleteCheckoutCopyWith(_$_LastIncompleteCheckout value,
+          $Res Function(_$_LastIncompleteCheckout) then) =
+      __$$_LastIncompleteCheckoutCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? completedAt,
@@ -202,15 +167,16 @@ abstract class _$LastIncompleteCheckoutCopyWith<$Res>
 }
 
 /// @nodoc
-class __$LastIncompleteCheckoutCopyWithImpl<$Res>
+class __$$_LastIncompleteCheckoutCopyWithImpl<$Res>
     extends _$LastIncompleteCheckoutCopyWithImpl<$Res>
-    implements _$LastIncompleteCheckoutCopyWith<$Res> {
-  __$LastIncompleteCheckoutCopyWithImpl(_LastIncompleteCheckout _value,
-      $Res Function(_LastIncompleteCheckout) _then)
-      : super(_value, (v) => _then(v as _LastIncompleteCheckout));
+    implements _$$_LastIncompleteCheckoutCopyWith<$Res> {
+  __$$_LastIncompleteCheckoutCopyWithImpl(_$_LastIncompleteCheckout _value,
+      $Res Function(_$_LastIncompleteCheckout) _then)
+      : super(_value, (v) => _then(v as _$_LastIncompleteCheckout));
 
   @override
-  _LastIncompleteCheckout get _value => super._value as _LastIncompleteCheckout;
+  _$_LastIncompleteCheckout get _value =>
+      super._value as _$_LastIncompleteCheckout;
 
   @override
   $Res call({
@@ -224,7 +190,7 @@ class __$LastIncompleteCheckoutCopyWithImpl<$Res>
     Object? lineItemsSubtotalPrice = freezed,
     Object? lineItems = freezed,
   }) {
-    return _then(_LastIncompleteCheckout(
+    return _then(_$_LastIncompleteCheckout(
       completedAt: completedAt == freezed
           ? _value.completedAt
           : completedAt // ignore: cast_nullable_to_non_nullable
@@ -258,7 +224,7 @@ class __$LastIncompleteCheckoutCopyWithImpl<$Res>
           : lineItemsSubtotalPrice // ignore: cast_nullable_to_non_nullable
               as PriceV2?,
       lineItems: lineItems == freezed
-          ? _value.lineItems
+          ? _value._lineItems
           : lineItems // ignore: cast_nullable_to_non_nullable
               as List<LineItem>?,
     ));
@@ -277,7 +243,8 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
       this.webUrl,
       this.totalPriceV2,
       this.lineItemsSubtotalPrice,
-      @JsonKey(fromJson: JsonHelper.lineItems) this.lineItems});
+      @JsonKey(fromJson: JsonHelper.lineItems) final List<LineItem>? lineItems})
+      : _lineItems = lineItems;
 
   factory _$_LastIncompleteCheckout.fromJson(Map<String, dynamic> json) =>
       _$$_LastIncompleteCheckoutFromJson(json);
@@ -298,9 +265,15 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
   final PriceV2? totalPriceV2;
   @override
   final PriceV2? lineItemsSubtotalPrice;
+  final List<LineItem>? _lineItems;
   @override
   @JsonKey(fromJson: JsonHelper.lineItems)
-  final List<LineItem>? lineItems;
+  List<LineItem>? get lineItems {
+    final value = _lineItems;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -311,7 +284,7 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LastIncompleteCheckout &&
+            other is _$_LastIncompleteCheckout &&
             const DeepCollectionEquality()
                 .equals(other.completedAt, completedAt) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
@@ -324,9 +297,11 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
                 .equals(other.totalPriceV2, totalPriceV2) &&
             const DeepCollectionEquality()
                 .equals(other.lineItemsSubtotalPrice, lineItemsSubtotalPrice) &&
-            const DeepCollectionEquality().equals(other.lineItems, lineItems));
+            const DeepCollectionEquality()
+                .equals(other._lineItems, _lineItems));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -338,12 +313,12 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
       const DeepCollectionEquality().hash(webUrl),
       const DeepCollectionEquality().hash(totalPriceV2),
       const DeepCollectionEquality().hash(lineItemsSubtotalPrice),
-      const DeepCollectionEquality().hash(lineItems));
+      const DeepCollectionEquality().hash(_lineItems));
 
   @JsonKey(ignore: true)
   @override
-  _$LastIncompleteCheckoutCopyWith<_LastIncompleteCheckout> get copyWith =>
-      __$LastIncompleteCheckoutCopyWithImpl<_LastIncompleteCheckout>(
+  _$$_LastIncompleteCheckoutCopyWith<_$_LastIncompleteCheckout> get copyWith =>
+      __$$_LastIncompleteCheckoutCopyWithImpl<_$_LastIncompleteCheckout>(
           this, _$identity);
 
   @override
@@ -354,41 +329,41 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
 
 abstract class _LastIncompleteCheckout implements LastIncompleteCheckout {
   factory _LastIncompleteCheckout(
-          {String? completedAt,
-          String? createdAt,
-          String? email,
-          String? id,
-          String? currencyCode,
-          String? webUrl,
-          PriceV2? totalPriceV2,
-          PriceV2? lineItemsSubtotalPrice,
-          @JsonKey(fromJson: JsonHelper.lineItems) List<LineItem>? lineItems}) =
-      _$_LastIncompleteCheckout;
+      {final String? completedAt,
+      final String? createdAt,
+      final String? email,
+      final String? id,
+      final String? currencyCode,
+      final String? webUrl,
+      final PriceV2? totalPriceV2,
+      final PriceV2? lineItemsSubtotalPrice,
+      @JsonKey(fromJson: JsonHelper.lineItems)
+          final List<LineItem>? lineItems}) = _$_LastIncompleteCheckout;
 
   factory _LastIncompleteCheckout.fromJson(Map<String, dynamic> json) =
       _$_LastIncompleteCheckout.fromJson;
 
   @override
-  String? get completedAt;
+  String? get completedAt => throw _privateConstructorUsedError;
   @override
-  String? get createdAt;
+  String? get createdAt => throw _privateConstructorUsedError;
   @override
-  String? get email;
+  String? get email => throw _privateConstructorUsedError;
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get currencyCode;
+  String? get currencyCode => throw _privateConstructorUsedError;
   @override
-  String? get webUrl;
+  String? get webUrl => throw _privateConstructorUsedError;
   @override
-  PriceV2? get totalPriceV2;
+  PriceV2? get totalPriceV2 => throw _privateConstructorUsedError;
   @override
-  PriceV2? get lineItemsSubtotalPrice;
+  PriceV2? get lineItemsSubtotalPrice => throw _privateConstructorUsedError;
   @override
   @JsonKey(fromJson: JsonHelper.lineItems)
-  List<LineItem>? get lineItems;
+  List<LineItem>? get lineItems => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LastIncompleteCheckoutCopyWith<_LastIncompleteCheckout> get copyWith =>
+  _$$_LastIncompleteCheckoutCopyWith<_$_LastIncompleteCheckout> get copyWith =>
       throw _privateConstructorUsedError;
 }

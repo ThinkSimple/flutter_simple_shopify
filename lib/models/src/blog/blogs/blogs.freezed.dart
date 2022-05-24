@@ -12,29 +12,11 @@ part of 'blogs.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Blogs _$BlogsFromJson(Map<String, dynamic> json) {
   return _Blogs.fromJson(json);
 }
-
-/// @nodoc
-class _$BlogsTearOff {
-  const _$BlogsTearOff();
-
-  _Blogs call({required List<Blog> blogList}) {
-    return _Blogs(
-      blogList: blogList,
-    );
-  }
-
-  Blogs fromJson(Map<String, Object?> json) {
-    return Blogs.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Blogs = _$BlogsTearOff();
 
 /// @nodoc
 mixin _$Blogs {
@@ -74,29 +56,29 @@ class _$BlogsCopyWithImpl<$Res> implements $BlogsCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$BlogsCopyWith<$Res> implements $BlogsCopyWith<$Res> {
-  factory _$BlogsCopyWith(_Blogs value, $Res Function(_Blogs) then) =
-      __$BlogsCopyWithImpl<$Res>;
+abstract class _$$_BlogsCopyWith<$Res> implements $BlogsCopyWith<$Res> {
+  factory _$$_BlogsCopyWith(_$_Blogs value, $Res Function(_$_Blogs) then) =
+      __$$_BlogsCopyWithImpl<$Res>;
   @override
   $Res call({List<Blog> blogList});
 }
 
 /// @nodoc
-class __$BlogsCopyWithImpl<$Res> extends _$BlogsCopyWithImpl<$Res>
-    implements _$BlogsCopyWith<$Res> {
-  __$BlogsCopyWithImpl(_Blogs _value, $Res Function(_Blogs) _then)
-      : super(_value, (v) => _then(v as _Blogs));
+class __$$_BlogsCopyWithImpl<$Res> extends _$BlogsCopyWithImpl<$Res>
+    implements _$$_BlogsCopyWith<$Res> {
+  __$$_BlogsCopyWithImpl(_$_Blogs _value, $Res Function(_$_Blogs) _then)
+      : super(_value, (v) => _then(v as _$_Blogs));
 
   @override
-  _Blogs get _value => super._value as _Blogs;
+  _$_Blogs get _value => super._value as _$_Blogs;
 
   @override
   $Res call({
     Object? blogList = freezed,
   }) {
-    return _then(_Blogs(
+    return _then(_$_Blogs(
       blogList: blogList == freezed
-          ? _value.blogList
+          ? _value._blogList
           : blogList // ignore: cast_nullable_to_non_nullable
               as List<Blog>,
     ));
@@ -106,13 +88,17 @@ class __$BlogsCopyWithImpl<$Res> extends _$BlogsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Blogs implements _Blogs {
-  _$_Blogs({required this.blogList});
+  _$_Blogs({required final List<Blog> blogList}) : _blogList = blogList;
 
   factory _$_Blogs.fromJson(Map<String, dynamic> json) =>
       _$$_BlogsFromJson(json);
 
+  final List<Blog> _blogList;
   @override
-  final List<Blog> blogList;
+  List<Blog> get blogList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_blogList);
+  }
 
   @override
   String toString() {
@@ -123,18 +109,19 @@ class _$_Blogs implements _Blogs {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Blogs &&
-            const DeepCollectionEquality().equals(other.blogList, blogList));
+            other is _$_Blogs &&
+            const DeepCollectionEquality().equals(other._blogList, _blogList));
   }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(blogList));
 
   @JsonKey(ignore: true)
   @override
-  _$BlogsCopyWith<_Blogs> get copyWith =>
-      __$BlogsCopyWithImpl<_Blogs>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_blogList));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_BlogsCopyWith<_$_Blogs> get copyWith =>
+      __$$_BlogsCopyWithImpl<_$_Blogs>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -143,13 +130,14 @@ class _$_Blogs implements _Blogs {
 }
 
 abstract class _Blogs implements Blogs {
-  factory _Blogs({required List<Blog> blogList}) = _$_Blogs;
+  factory _Blogs({required final List<Blog> blogList}) = _$_Blogs;
 
   factory _Blogs.fromJson(Map<String, dynamic> json) = _$_Blogs.fromJson;
 
   @override
-  List<Blog> get blogList;
+  List<Blog> get blogList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BlogsCopyWith<_Blogs> get copyWith => throw _privateConstructorUsedError;
+  _$$_BlogsCopyWith<_$_Blogs> get copyWith =>
+      throw _privateConstructorUsedError;
 }

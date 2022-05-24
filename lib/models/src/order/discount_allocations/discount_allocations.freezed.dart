@@ -12,29 +12,11 @@ part of 'discount_allocations.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 DiscountAllocations _$DiscountAllocationsFromJson(Map<String, dynamic> json) {
   return _DiscountAllocations.fromJson(json);
 }
-
-/// @nodoc
-class _$DiscountAllocationsTearOff {
-  const _$DiscountAllocationsTearOff();
-
-  _DiscountAllocations call({required PriceV2? allocatedAmount}) {
-    return _DiscountAllocations(
-      allocatedAmount: allocatedAmount,
-    );
-  }
-
-  DiscountAllocations fromJson(Map<String, Object?> json) {
-    return DiscountAllocations.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $DiscountAllocations = _$DiscountAllocationsTearOff();
 
 /// @nodoc
 mixin _$DiscountAllocations {
@@ -90,11 +72,11 @@ class _$DiscountAllocationsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$DiscountAllocationsCopyWith<$Res>
+abstract class _$$_DiscountAllocationsCopyWith<$Res>
     implements $DiscountAllocationsCopyWith<$Res> {
-  factory _$DiscountAllocationsCopyWith(_DiscountAllocations value,
-          $Res Function(_DiscountAllocations) then) =
-      __$DiscountAllocationsCopyWithImpl<$Res>;
+  factory _$$_DiscountAllocationsCopyWith(_$_DiscountAllocations value,
+          $Res Function(_$_DiscountAllocations) then) =
+      __$$_DiscountAllocationsCopyWithImpl<$Res>;
   @override
   $Res call({PriceV2? allocatedAmount});
 
@@ -103,21 +85,21 @@ abstract class _$DiscountAllocationsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$DiscountAllocationsCopyWithImpl<$Res>
+class __$$_DiscountAllocationsCopyWithImpl<$Res>
     extends _$DiscountAllocationsCopyWithImpl<$Res>
-    implements _$DiscountAllocationsCopyWith<$Res> {
-  __$DiscountAllocationsCopyWithImpl(
-      _DiscountAllocations _value, $Res Function(_DiscountAllocations) _then)
-      : super(_value, (v) => _then(v as _DiscountAllocations));
+    implements _$$_DiscountAllocationsCopyWith<$Res> {
+  __$$_DiscountAllocationsCopyWithImpl(_$_DiscountAllocations _value,
+      $Res Function(_$_DiscountAllocations) _then)
+      : super(_value, (v) => _then(v as _$_DiscountAllocations));
 
   @override
-  _DiscountAllocations get _value => super._value as _DiscountAllocations;
+  _$_DiscountAllocations get _value => super._value as _$_DiscountAllocations;
 
   @override
   $Res call({
     Object? allocatedAmount = freezed,
   }) {
-    return _then(_DiscountAllocations(
+    return _then(_$_DiscountAllocations(
       allocatedAmount: allocatedAmount == freezed
           ? _value.allocatedAmount
           : allocatedAmount // ignore: cast_nullable_to_non_nullable
@@ -146,19 +128,20 @@ class _$_DiscountAllocations extends _DiscountAllocations {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DiscountAllocations &&
+            other is _$_DiscountAllocations &&
             const DeepCollectionEquality()
                 .equals(other.allocatedAmount, allocatedAmount));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(allocatedAmount));
 
   @JsonKey(ignore: true)
   @override
-  _$DiscountAllocationsCopyWith<_DiscountAllocations> get copyWith =>
-      __$DiscountAllocationsCopyWithImpl<_DiscountAllocations>(
+  _$$_DiscountAllocationsCopyWith<_$_DiscountAllocations> get copyWith =>
+      __$$_DiscountAllocationsCopyWithImpl<_$_DiscountAllocations>(
           this, _$identity);
 
   @override
@@ -168,7 +151,7 @@ class _$_DiscountAllocations extends _DiscountAllocations {
 }
 
 abstract class _DiscountAllocations extends DiscountAllocations {
-  factory _DiscountAllocations({required PriceV2? allocatedAmount}) =
+  factory _DiscountAllocations({required final PriceV2? allocatedAmount}) =
       _$_DiscountAllocations;
   _DiscountAllocations._() : super._();
 
@@ -176,9 +159,9 @@ abstract class _DiscountAllocations extends DiscountAllocations {
       _$_DiscountAllocations.fromJson;
 
   @override
-  PriceV2? get allocatedAmount;
+  PriceV2? get allocatedAmount => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DiscountAllocationsCopyWith<_DiscountAllocations> get copyWith =>
+  _$$_DiscountAllocationsCopyWith<_$_DiscountAllocations> get copyWith =>
       throw _privateConstructorUsedError;
 }

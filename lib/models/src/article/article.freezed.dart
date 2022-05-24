@@ -12,54 +12,11 @@ part of 'article.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Article _$ArticleFromJson(Map<String, dynamic> json) {
   return _Article.fromJson(json);
 }
-
-/// @nodoc
-class _$ArticleTearOff {
-  const _$ArticleTearOff();
-
-  _Article call(
-      {AuthorV2? author,
-      List<Comment>? commentList,
-      String? content,
-      String? contentHtml,
-      String? excerpt,
-      String? excerptHtml,
-      String? handle,
-      String? id,
-      ShopifyImage? image,
-      String? publishedAt,
-      List<String>? tags,
-      String? title,
-      String? url}) {
-    return _Article(
-      author: author,
-      commentList: commentList,
-      content: content,
-      contentHtml: contentHtml,
-      excerpt: excerpt,
-      excerptHtml: excerptHtml,
-      handle: handle,
-      id: id,
-      image: image,
-      publishedAt: publishedAt,
-      tags: tags,
-      title: title,
-      url: url,
-    );
-  }
-
-  Article fromJson(Map<String, Object?> json) {
-    return Article.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Article = _$ArticleTearOff();
 
 /// @nodoc
 mixin _$Article {
@@ -209,9 +166,10 @@ class _$ArticleCopyWithImpl<$Res> implements $ArticleCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ArticleCopyWith<$Res> implements $ArticleCopyWith<$Res> {
-  factory _$ArticleCopyWith(_Article value, $Res Function(_Article) then) =
-      __$ArticleCopyWithImpl<$Res>;
+abstract class _$$_ArticleCopyWith<$Res> implements $ArticleCopyWith<$Res> {
+  factory _$$_ArticleCopyWith(
+          _$_Article value, $Res Function(_$_Article) then) =
+      __$$_ArticleCopyWithImpl<$Res>;
   @override
   $Res call(
       {AuthorV2? author,
@@ -235,13 +193,13 @@ abstract class _$ArticleCopyWith<$Res> implements $ArticleCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ArticleCopyWithImpl<$Res> extends _$ArticleCopyWithImpl<$Res>
-    implements _$ArticleCopyWith<$Res> {
-  __$ArticleCopyWithImpl(_Article _value, $Res Function(_Article) _then)
-      : super(_value, (v) => _then(v as _Article));
+class __$$_ArticleCopyWithImpl<$Res> extends _$ArticleCopyWithImpl<$Res>
+    implements _$$_ArticleCopyWith<$Res> {
+  __$$_ArticleCopyWithImpl(_$_Article _value, $Res Function(_$_Article) _then)
+      : super(_value, (v) => _then(v as _$_Article));
 
   @override
-  _Article get _value => super._value as _Article;
+  _$_Article get _value => super._value as _$_Article;
 
   @override
   $Res call({
@@ -259,13 +217,13 @@ class __$ArticleCopyWithImpl<$Res> extends _$ArticleCopyWithImpl<$Res>
     Object? title = freezed,
     Object? url = freezed,
   }) {
-    return _then(_Article(
+    return _then(_$_Article(
       author: author == freezed
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as AuthorV2?,
       commentList: commentList == freezed
-          ? _value.commentList
+          ? _value._commentList
           : commentList // ignore: cast_nullable_to_non_nullable
               as List<Comment>?,
       content: content == freezed
@@ -301,7 +259,7 @@ class __$ArticleCopyWithImpl<$Res> extends _$ArticleCopyWithImpl<$Res>
           : publishedAt // ignore: cast_nullable_to_non_nullable
               as String?,
       tags: tags == freezed
-          ? _value.tags
+          ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       title: title == freezed
@@ -321,7 +279,7 @@ class __$ArticleCopyWithImpl<$Res> extends _$ArticleCopyWithImpl<$Res>
 class _$_Article extends _Article {
   _$_Article(
       {this.author,
-      this.commentList,
+      final List<Comment>? commentList,
       this.content,
       this.contentHtml,
       this.excerpt,
@@ -330,18 +288,27 @@ class _$_Article extends _Article {
       this.id,
       this.image,
       this.publishedAt,
-      this.tags,
+      final List<String>? tags,
       this.title,
       this.url})
-      : super._();
+      : _commentList = commentList,
+        _tags = tags,
+        super._();
 
   factory _$_Article.fromJson(Map<String, dynamic> json) =>
       _$$_ArticleFromJson(json);
 
   @override
   final AuthorV2? author;
+  final List<Comment>? _commentList;
   @override
-  final List<Comment>? commentList;
+  List<Comment>? get commentList {
+    final value = _commentList;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? content;
   @override
@@ -358,8 +325,15 @@ class _$_Article extends _Article {
   final ShopifyImage? image;
   @override
   final String? publishedAt;
+  final List<String>? _tags;
   @override
-  final List<String>? tags;
+  List<String>? get tags {
+    final value = _tags;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? title;
   @override
@@ -374,10 +348,10 @@ class _$_Article extends _Article {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Article &&
+            other is _$_Article &&
             const DeepCollectionEquality().equals(other.author, author) &&
             const DeepCollectionEquality()
-                .equals(other.commentList, commentList) &&
+                .equals(other._commentList, _commentList) &&
             const DeepCollectionEquality().equals(other.content, content) &&
             const DeepCollectionEquality()
                 .equals(other.contentHtml, contentHtml) &&
@@ -389,16 +363,17 @@ class _$_Article extends _Article {
             const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality()
                 .equals(other.publishedAt, publishedAt) &&
-            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality().equals(other._tags, _tags) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.url, url));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(author),
-      const DeepCollectionEquality().hash(commentList),
+      const DeepCollectionEquality().hash(_commentList),
       const DeepCollectionEquality().hash(content),
       const DeepCollectionEquality().hash(contentHtml),
       const DeepCollectionEquality().hash(excerpt),
@@ -407,14 +382,14 @@ class _$_Article extends _Article {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(image),
       const DeepCollectionEquality().hash(publishedAt),
-      const DeepCollectionEquality().hash(tags),
+      const DeepCollectionEquality().hash(_tags),
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(url));
 
   @JsonKey(ignore: true)
   @override
-  _$ArticleCopyWith<_Article> get copyWith =>
-      __$ArticleCopyWithImpl<_Article>(this, _$identity);
+  _$$_ArticleCopyWith<_$_Article> get copyWith =>
+      __$$_ArticleCopyWithImpl<_$_Article>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -424,51 +399,51 @@ class _$_Article extends _Article {
 
 abstract class _Article extends Article {
   factory _Article(
-      {AuthorV2? author,
-      List<Comment>? commentList,
-      String? content,
-      String? contentHtml,
-      String? excerpt,
-      String? excerptHtml,
-      String? handle,
-      String? id,
-      ShopifyImage? image,
-      String? publishedAt,
-      List<String>? tags,
-      String? title,
-      String? url}) = _$_Article;
+      {final AuthorV2? author,
+      final List<Comment>? commentList,
+      final String? content,
+      final String? contentHtml,
+      final String? excerpt,
+      final String? excerptHtml,
+      final String? handle,
+      final String? id,
+      final ShopifyImage? image,
+      final String? publishedAt,
+      final List<String>? tags,
+      final String? title,
+      final String? url}) = _$_Article;
   _Article._() : super._();
 
   factory _Article.fromJson(Map<String, dynamic> json) = _$_Article.fromJson;
 
   @override
-  AuthorV2? get author;
+  AuthorV2? get author => throw _privateConstructorUsedError;
   @override
-  List<Comment>? get commentList;
+  List<Comment>? get commentList => throw _privateConstructorUsedError;
   @override
-  String? get content;
+  String? get content => throw _privateConstructorUsedError;
   @override
-  String? get contentHtml;
+  String? get contentHtml => throw _privateConstructorUsedError;
   @override
-  String? get excerpt;
+  String? get excerpt => throw _privateConstructorUsedError;
   @override
-  String? get excerptHtml;
+  String? get excerptHtml => throw _privateConstructorUsedError;
   @override
-  String? get handle;
+  String? get handle => throw _privateConstructorUsedError;
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  ShopifyImage? get image;
+  ShopifyImage? get image => throw _privateConstructorUsedError;
   @override
-  String? get publishedAt;
+  String? get publishedAt => throw _privateConstructorUsedError;
   @override
-  List<String>? get tags;
+  List<String>? get tags => throw _privateConstructorUsedError;
   @override
-  String? get title;
+  String? get title => throw _privateConstructorUsedError;
   @override
-  String? get url;
+  String? get url => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ArticleCopyWith<_Article> get copyWith =>
+  _$$_ArticleCopyWith<_$_Article> get copyWith =>
       throw _privateConstructorUsedError;
 }

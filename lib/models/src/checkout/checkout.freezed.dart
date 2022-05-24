@@ -12,75 +12,11 @@ part of 'checkout.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Checkout _$CheckoutFromJson(Map<String, dynamic> json) {
   return _Checkout.fromJson(json);
 }
-
-/// @nodoc
-class _$CheckoutTearOff {
-  const _$CheckoutTearOff();
-
-  _Checkout call(
-      {required String id,
-      required bool ready,
-      required AvailableShippingRates? availableShippingRates,
-      required String createdAt,
-      required String currencyCode,
-      required PriceV2 totalTaxV2,
-      required PriceV2 totalPriceV2,
-      required bool taxesIncluded,
-      required bool taxExempt,
-      required PriceV2 subtotalPriceV2,
-      required bool requiresShipping,
-      required List<AppliedGiftCards> appliedGiftCards,
-      @JsonKey(fromJson: JsonHelper.lineItems)
-          required List<LineItem> lineItems,
-      Order? order,
-      String? orderStatusUrl,
-      String? shopifyPaymentsAccountId,
-      MailingAddress? shippingAddress,
-      ShippingRates? shippingLine,
-      String? email,
-      String? completedAt,
-      String? note,
-      String? webUrl,
-      String? updatedAt}) {
-    return _Checkout(
-      id: id,
-      ready: ready,
-      availableShippingRates: availableShippingRates,
-      createdAt: createdAt,
-      currencyCode: currencyCode,
-      totalTaxV2: totalTaxV2,
-      totalPriceV2: totalPriceV2,
-      taxesIncluded: taxesIncluded,
-      taxExempt: taxExempt,
-      subtotalPriceV2: subtotalPriceV2,
-      requiresShipping: requiresShipping,
-      appliedGiftCards: appliedGiftCards,
-      lineItems: lineItems,
-      order: order,
-      orderStatusUrl: orderStatusUrl,
-      shopifyPaymentsAccountId: shopifyPaymentsAccountId,
-      shippingAddress: shippingAddress,
-      shippingLine: shippingLine,
-      email: email,
-      completedAt: completedAt,
-      note: note,
-      webUrl: webUrl,
-      updatedAt: updatedAt,
-    );
-  }
-
-  Checkout fromJson(Map<String, Object?> json) {
-    return Checkout.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Checkout = _$CheckoutTearOff();
 
 /// @nodoc
 mixin _$Checkout {
@@ -353,9 +289,10 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
-  factory _$CheckoutCopyWith(_Checkout value, $Res Function(_Checkout) then) =
-      __$CheckoutCopyWithImpl<$Res>;
+abstract class _$$_CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
+  factory _$$_CheckoutCopyWith(
+          _$_Checkout value, $Res Function(_$_Checkout) then) =
+      __$$_CheckoutCopyWithImpl<$Res>;
   @override
   $Res call(
       {String id,
@@ -399,13 +336,14 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
-    implements _$CheckoutCopyWith<$Res> {
-  __$CheckoutCopyWithImpl(_Checkout _value, $Res Function(_Checkout) _then)
-      : super(_value, (v) => _then(v as _Checkout));
+class __$$_CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
+    implements _$$_CheckoutCopyWith<$Res> {
+  __$$_CheckoutCopyWithImpl(
+      _$_Checkout _value, $Res Function(_$_Checkout) _then)
+      : super(_value, (v) => _then(v as _$_Checkout));
 
   @override
-  _Checkout get _value => super._value as _Checkout;
+  _$_Checkout get _value => super._value as _$_Checkout;
 
   @override
   $Res call({
@@ -433,7 +371,7 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
     Object? webUrl = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_Checkout(
+    return _then(_$_Checkout(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -479,11 +417,11 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
           : requiresShipping // ignore: cast_nullable_to_non_nullable
               as bool,
       appliedGiftCards: appliedGiftCards == freezed
-          ? _value.appliedGiftCards
+          ? _value._appliedGiftCards
           : appliedGiftCards // ignore: cast_nullable_to_non_nullable
               as List<AppliedGiftCards>,
       lineItems: lineItems == freezed
-          ? _value.lineItems
+          ? _value._lineItems
           : lineItems // ignore: cast_nullable_to_non_nullable
               as List<LineItem>,
       order: order == freezed
@@ -545,8 +483,9 @@ class _$_Checkout extends _Checkout {
       required this.taxExempt,
       required this.subtotalPriceV2,
       required this.requiresShipping,
-      required this.appliedGiftCards,
-      @JsonKey(fromJson: JsonHelper.lineItems) required this.lineItems,
+      required final List<AppliedGiftCards> appliedGiftCards,
+      @JsonKey(fromJson: JsonHelper.lineItems)
+          required final List<LineItem> lineItems,
       this.order,
       this.orderStatusUrl,
       this.shopifyPaymentsAccountId,
@@ -557,7 +496,9 @@ class _$_Checkout extends _Checkout {
       this.note,
       this.webUrl,
       this.updatedAt})
-      : super._();
+      : _appliedGiftCards = appliedGiftCards,
+        _lineItems = lineItems,
+        super._();
 
   factory _$_Checkout.fromJson(Map<String, dynamic> json) =>
       _$$_CheckoutFromJson(json);
@@ -584,11 +525,21 @@ class _$_Checkout extends _Checkout {
   final PriceV2 subtotalPriceV2;
   @override
   final bool requiresShipping;
+  final List<AppliedGiftCards> _appliedGiftCards;
   @override
-  final List<AppliedGiftCards> appliedGiftCards;
+  List<AppliedGiftCards> get appliedGiftCards {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_appliedGiftCards);
+  }
+
+  final List<LineItem> _lineItems;
   @override
   @JsonKey(fromJson: JsonHelper.lineItems)
-  final List<LineItem> lineItems;
+  List<LineItem> get lineItems {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lineItems);
+  }
+
   @override
   final Order? order;
   @override
@@ -619,7 +570,7 @@ class _$_Checkout extends _Checkout {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Checkout &&
+            other is _$_Checkout &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.ready, ready) &&
             const DeepCollectionEquality()
@@ -639,8 +590,9 @@ class _$_Checkout extends _Checkout {
             const DeepCollectionEquality()
                 .equals(other.requiresShipping, requiresShipping) &&
             const DeepCollectionEquality()
-                .equals(other.appliedGiftCards, appliedGiftCards) &&
-            const DeepCollectionEquality().equals(other.lineItems, lineItems) &&
+                .equals(other._appliedGiftCards, _appliedGiftCards) &&
+            const DeepCollectionEquality()
+                .equals(other._lineItems, _lineItems) &&
             const DeepCollectionEquality().equals(other.order, order) &&
             const DeepCollectionEquality()
                 .equals(other.orderStatusUrl, orderStatusUrl) &&
@@ -658,6 +610,7 @@ class _$_Checkout extends _Checkout {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -672,8 +625,8 @@ class _$_Checkout extends _Checkout {
         const DeepCollectionEquality().hash(taxExempt),
         const DeepCollectionEquality().hash(subtotalPriceV2),
         const DeepCollectionEquality().hash(requiresShipping),
-        const DeepCollectionEquality().hash(appliedGiftCards),
-        const DeepCollectionEquality().hash(lineItems),
+        const DeepCollectionEquality().hash(_appliedGiftCards),
+        const DeepCollectionEquality().hash(_lineItems),
         const DeepCollectionEquality().hash(order),
         const DeepCollectionEquality().hash(orderStatusUrl),
         const DeepCollectionEquality().hash(shopifyPaymentsAccountId),
@@ -688,8 +641,8 @@ class _$_Checkout extends _Checkout {
 
   @JsonKey(ignore: true)
   @override
-  _$CheckoutCopyWith<_Checkout> get copyWith =>
-      __$CheckoutCopyWithImpl<_Checkout>(this, _$identity);
+  _$$_CheckoutCopyWith<_$_Checkout> get copyWith =>
+      __$$_CheckoutCopyWithImpl<_$_Checkout>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -699,83 +652,85 @@ class _$_Checkout extends _Checkout {
 
 abstract class _Checkout extends Checkout {
   factory _Checkout(
-      {required String id,
-      required bool ready,
-      required AvailableShippingRates? availableShippingRates,
-      required String createdAt,
-      required String currencyCode,
-      required PriceV2 totalTaxV2,
-      required PriceV2 totalPriceV2,
-      required bool taxesIncluded,
-      required bool taxExempt,
-      required PriceV2 subtotalPriceV2,
-      required bool requiresShipping,
-      required List<AppliedGiftCards> appliedGiftCards,
+      {required final String id,
+      required final bool ready,
+      required final AvailableShippingRates? availableShippingRates,
+      required final String createdAt,
+      required final String currencyCode,
+      required final PriceV2 totalTaxV2,
+      required final PriceV2 totalPriceV2,
+      required final bool taxesIncluded,
+      required final bool taxExempt,
+      required final PriceV2 subtotalPriceV2,
+      required final bool requiresShipping,
+      required final List<AppliedGiftCards> appliedGiftCards,
       @JsonKey(fromJson: JsonHelper.lineItems)
-          required List<LineItem> lineItems,
-      Order? order,
-      String? orderStatusUrl,
-      String? shopifyPaymentsAccountId,
-      MailingAddress? shippingAddress,
-      ShippingRates? shippingLine,
-      String? email,
-      String? completedAt,
-      String? note,
-      String? webUrl,
-      String? updatedAt}) = _$_Checkout;
+          required final List<LineItem> lineItems,
+      final Order? order,
+      final String? orderStatusUrl,
+      final String? shopifyPaymentsAccountId,
+      final MailingAddress? shippingAddress,
+      final ShippingRates? shippingLine,
+      final String? email,
+      final String? completedAt,
+      final String? note,
+      final String? webUrl,
+      final String? updatedAt}) = _$_Checkout;
   _Checkout._() : super._();
 
   factory _Checkout.fromJson(Map<String, dynamic> json) = _$_Checkout.fromJson;
 
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  bool get ready;
+  bool get ready => throw _privateConstructorUsedError;
   @override
-  AvailableShippingRates? get availableShippingRates;
+  AvailableShippingRates? get availableShippingRates =>
+      throw _privateConstructorUsedError;
   @override
-  String get createdAt;
+  String get createdAt => throw _privateConstructorUsedError;
   @override
-  String get currencyCode;
+  String get currencyCode => throw _privateConstructorUsedError;
   @override
-  PriceV2 get totalTaxV2;
+  PriceV2 get totalTaxV2 => throw _privateConstructorUsedError;
   @override
-  PriceV2 get totalPriceV2;
+  PriceV2 get totalPriceV2 => throw _privateConstructorUsedError;
   @override
-  bool get taxesIncluded;
+  bool get taxesIncluded => throw _privateConstructorUsedError;
   @override
-  bool get taxExempt;
+  bool get taxExempt => throw _privateConstructorUsedError;
   @override
-  PriceV2 get subtotalPriceV2;
+  PriceV2 get subtotalPriceV2 => throw _privateConstructorUsedError;
   @override
-  bool get requiresShipping;
+  bool get requiresShipping => throw _privateConstructorUsedError;
   @override
-  List<AppliedGiftCards> get appliedGiftCards;
+  List<AppliedGiftCards> get appliedGiftCards =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(fromJson: JsonHelper.lineItems)
-  List<LineItem> get lineItems;
+  List<LineItem> get lineItems => throw _privateConstructorUsedError;
   @override
-  Order? get order;
+  Order? get order => throw _privateConstructorUsedError;
   @override
-  String? get orderStatusUrl;
+  String? get orderStatusUrl => throw _privateConstructorUsedError;
   @override
-  String? get shopifyPaymentsAccountId;
+  String? get shopifyPaymentsAccountId => throw _privateConstructorUsedError;
   @override
-  MailingAddress? get shippingAddress;
+  MailingAddress? get shippingAddress => throw _privateConstructorUsedError;
   @override
-  ShippingRates? get shippingLine;
+  ShippingRates? get shippingLine => throw _privateConstructorUsedError;
   @override
-  String? get email;
+  String? get email => throw _privateConstructorUsedError;
   @override
-  String? get completedAt;
+  String? get completedAt => throw _privateConstructorUsedError;
   @override
-  String? get note;
+  String? get note => throw _privateConstructorUsedError;
   @override
-  String? get webUrl;
+  String? get webUrl => throw _privateConstructorUsedError;
   @override
-  String? get updatedAt;
+  String? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CheckoutCopyWith<_Checkout> get copyWith =>
+  _$$_CheckoutCopyWith<_$_Checkout> get copyWith =>
       throw _privateConstructorUsedError;
 }

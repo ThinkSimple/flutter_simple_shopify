@@ -12,49 +12,12 @@ part of 'product_variant_checkout.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ProductVariantCheckout _$ProductVariantCheckoutFromJson(
     Map<String, dynamic> json) {
   return _ProductVariantCheckout.fromJson(json);
 }
-
-/// @nodoc
-class _$ProductVariantCheckoutTearOff {
-  const _$ProductVariantCheckoutTearOff();
-
-  _ProductVariantCheckout call(
-      {required PriceV2 priceV2,
-      required String title,
-      required bool availableForSale,
-      required String sku,
-      required bool requiresShipping,
-      required String id,
-      ShopifyImage? image,
-      PriceV2? compareAtPrice,
-      double? weight,
-      String? weightUnit}) {
-    return _ProductVariantCheckout(
-      priceV2: priceV2,
-      title: title,
-      availableForSale: availableForSale,
-      sku: sku,
-      requiresShipping: requiresShipping,
-      id: id,
-      image: image,
-      compareAtPrice: compareAtPrice,
-      weight: weight,
-      weightUnit: weightUnit,
-    );
-  }
-
-  ProductVariantCheckout fromJson(Map<String, Object?> json) {
-    return ProductVariantCheckout.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ProductVariantCheckout = _$ProductVariantCheckoutTearOff();
 
 /// @nodoc
 mixin _$ProductVariantCheckout {
@@ -194,11 +157,11 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ProductVariantCheckoutCopyWith<$Res>
+abstract class _$$_ProductVariantCheckoutCopyWith<$Res>
     implements $ProductVariantCheckoutCopyWith<$Res> {
-  factory _$ProductVariantCheckoutCopyWith(_ProductVariantCheckout value,
-          $Res Function(_ProductVariantCheckout) then) =
-      __$ProductVariantCheckoutCopyWithImpl<$Res>;
+  factory _$$_ProductVariantCheckoutCopyWith(_$_ProductVariantCheckout value,
+          $Res Function(_$_ProductVariantCheckout) then) =
+      __$$_ProductVariantCheckoutCopyWithImpl<$Res>;
   @override
   $Res call(
       {PriceV2 priceV2,
@@ -221,15 +184,16 @@ abstract class _$ProductVariantCheckoutCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ProductVariantCheckoutCopyWithImpl<$Res>
+class __$$_ProductVariantCheckoutCopyWithImpl<$Res>
     extends _$ProductVariantCheckoutCopyWithImpl<$Res>
-    implements _$ProductVariantCheckoutCopyWith<$Res> {
-  __$ProductVariantCheckoutCopyWithImpl(_ProductVariantCheckout _value,
-      $Res Function(_ProductVariantCheckout) _then)
-      : super(_value, (v) => _then(v as _ProductVariantCheckout));
+    implements _$$_ProductVariantCheckoutCopyWith<$Res> {
+  __$$_ProductVariantCheckoutCopyWithImpl(_$_ProductVariantCheckout _value,
+      $Res Function(_$_ProductVariantCheckout) _then)
+      : super(_value, (v) => _then(v as _$_ProductVariantCheckout));
 
   @override
-  _ProductVariantCheckout get _value => super._value as _ProductVariantCheckout;
+  _$_ProductVariantCheckout get _value =>
+      super._value as _$_ProductVariantCheckout;
 
   @override
   $Res call({
@@ -244,7 +208,7 @@ class __$ProductVariantCheckoutCopyWithImpl<$Res>
     Object? weight = freezed,
     Object? weightUnit = freezed,
   }) {
-    return _then(_ProductVariantCheckout(
+    return _then(_$_ProductVariantCheckout(
       priceV2: priceV2 == freezed
           ? _value.priceV2
           : priceV2 // ignore: cast_nullable_to_non_nullable
@@ -338,7 +302,7 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductVariantCheckout &&
+            other is _$_ProductVariantCheckout &&
             const DeepCollectionEquality().equals(other.priceV2, priceV2) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
@@ -355,6 +319,7 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
                 .equals(other.weightUnit, weightUnit));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -371,8 +336,8 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
 
   @JsonKey(ignore: true)
   @override
-  _$ProductVariantCheckoutCopyWith<_ProductVariantCheckout> get copyWith =>
-      __$ProductVariantCheckoutCopyWithImpl<_ProductVariantCheckout>(
+  _$$_ProductVariantCheckoutCopyWith<_$_ProductVariantCheckout> get copyWith =>
+      __$$_ProductVariantCheckoutCopyWithImpl<_$_ProductVariantCheckout>(
           this, _$identity);
 
   @override
@@ -383,43 +348,43 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
 
 abstract class _ProductVariantCheckout extends ProductVariantCheckout {
   factory _ProductVariantCheckout(
-      {required PriceV2 priceV2,
-      required String title,
-      required bool availableForSale,
-      required String sku,
-      required bool requiresShipping,
-      required String id,
-      ShopifyImage? image,
-      PriceV2? compareAtPrice,
-      double? weight,
-      String? weightUnit}) = _$_ProductVariantCheckout;
+      {required final PriceV2 priceV2,
+      required final String title,
+      required final bool availableForSale,
+      required final String sku,
+      required final bool requiresShipping,
+      required final String id,
+      final ShopifyImage? image,
+      final PriceV2? compareAtPrice,
+      final double? weight,
+      final String? weightUnit}) = _$_ProductVariantCheckout;
   _ProductVariantCheckout._() : super._();
 
   factory _ProductVariantCheckout.fromJson(Map<String, dynamic> json) =
       _$_ProductVariantCheckout.fromJson;
 
   @override
-  PriceV2 get priceV2;
+  PriceV2 get priceV2 => throw _privateConstructorUsedError;
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  bool get availableForSale;
+  bool get availableForSale => throw _privateConstructorUsedError;
   @override
-  String get sku;
+  String get sku => throw _privateConstructorUsedError;
   @override
-  bool get requiresShipping;
+  bool get requiresShipping => throw _privateConstructorUsedError;
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  ShopifyImage? get image;
+  ShopifyImage? get image => throw _privateConstructorUsedError;
   @override
-  PriceV2? get compareAtPrice;
+  PriceV2? get compareAtPrice => throw _privateConstructorUsedError;
   @override
-  double? get weight;
+  double? get weight => throw _privateConstructorUsedError;
   @override
-  String? get weightUnit;
+  String? get weightUnit => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProductVariantCheckoutCopyWith<_ProductVariantCheckout> get copyWith =>
+  _$$_ProductVariantCheckoutCopyWith<_$_ProductVariantCheckout> get copyWith =>
       throw _privateConstructorUsedError;
 }

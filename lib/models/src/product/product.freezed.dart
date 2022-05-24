@@ -12,66 +12,11 @@ part of 'product.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Product _$ProductFromJson(Map<String, dynamic> json) {
   return _Product.fromJson(json);
 }
-
-/// @nodoc
-class _$ProductTearOff {
-  const _$ProductTearOff();
-
-  _Product call(
-      {required String title,
-      required String id,
-      required bool availableForSale,
-      required String createdAt,
-      required List<ProductVariant> productVariants,
-      required String productType,
-      required String publishedAt,
-      required List<String> tags,
-      required String updatedAt,
-      required List<ShopifyImage> images,
-      required List<Option> option,
-      required String vendor,
-      required List<Metafield> metafields,
-      List<AssociatedCollections>? collectionList,
-      String? cursor,
-      String? onlineStoreUrl,
-      String? description,
-      String? descriptionHtml,
-      String? handle}) {
-    return _Product(
-      title: title,
-      id: id,
-      availableForSale: availableForSale,
-      createdAt: createdAt,
-      productVariants: productVariants,
-      productType: productType,
-      publishedAt: publishedAt,
-      tags: tags,
-      updatedAt: updatedAt,
-      images: images,
-      option: option,
-      vendor: vendor,
-      metafields: metafields,
-      collectionList: collectionList,
-      cursor: cursor,
-      onlineStoreUrl: onlineStoreUrl,
-      description: description,
-      descriptionHtml: descriptionHtml,
-      handle: handle,
-    );
-  }
-
-  Product fromJson(Map<String, Object?> json) {
-    return Product.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Product = _$ProductTearOff();
 
 /// @nodoc
 mixin _$Product {
@@ -240,9 +185,10 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
-  factory _$ProductCopyWith(_Product value, $Res Function(_Product) then) =
-      __$ProductCopyWithImpl<$Res>;
+abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
+  factory _$$_ProductCopyWith(
+          _$_Product value, $Res Function(_$_Product) then) =
+      __$$_ProductCopyWithImpl<$Res>;
   @override
   $Res call(
       {String title,
@@ -267,13 +213,13 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
-    implements _$ProductCopyWith<$Res> {
-  __$ProductCopyWithImpl(_Product _value, $Res Function(_Product) _then)
-      : super(_value, (v) => _then(v as _Product));
+class __$$_ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
+    implements _$$_ProductCopyWith<$Res> {
+  __$$_ProductCopyWithImpl(_$_Product _value, $Res Function(_$_Product) _then)
+      : super(_value, (v) => _then(v as _$_Product));
 
   @override
-  _Product get _value => super._value as _Product;
+  _$_Product get _value => super._value as _$_Product;
 
   @override
   $Res call({
@@ -297,7 +243,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object? descriptionHtml = freezed,
     Object? handle = freezed,
   }) {
-    return _then(_Product(
+    return _then(_$_Product(
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -315,7 +261,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
       productVariants: productVariants == freezed
-          ? _value.productVariants
+          ? _value._productVariants
           : productVariants // ignore: cast_nullable_to_non_nullable
               as List<ProductVariant>,
       productType: productType == freezed
@@ -327,7 +273,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           : publishedAt // ignore: cast_nullable_to_non_nullable
               as String,
       tags: tags == freezed
-          ? _value.tags
+          ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>,
       updatedAt: updatedAt == freezed
@@ -335,11 +281,11 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
       images: images == freezed
-          ? _value.images
+          ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
               as List<ShopifyImage>,
       option: option == freezed
-          ? _value.option
+          ? _value._option
           : option // ignore: cast_nullable_to_non_nullable
               as List<Option>,
       vendor: vendor == freezed
@@ -347,11 +293,11 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           : vendor // ignore: cast_nullable_to_non_nullable
               as String,
       metafields: metafields == freezed
-          ? _value.metafields
+          ? _value._metafields
           : metafields // ignore: cast_nullable_to_non_nullable
               as List<Metafield>,
       collectionList: collectionList == freezed
-          ? _value.collectionList
+          ? _value._collectionList
           : collectionList // ignore: cast_nullable_to_non_nullable
               as List<AssociatedCollections>?,
       cursor: cursor == freezed
@@ -386,22 +332,28 @@ class _$_Product extends _Product {
       required this.id,
       required this.availableForSale,
       required this.createdAt,
-      required this.productVariants,
+      required final List<ProductVariant> productVariants,
       required this.productType,
       required this.publishedAt,
-      required this.tags,
+      required final List<String> tags,
       required this.updatedAt,
-      required this.images,
-      required this.option,
+      required final List<ShopifyImage> images,
+      required final List<Option> option,
       required this.vendor,
-      required this.metafields,
-      this.collectionList,
+      required final List<Metafield> metafields,
+      final List<AssociatedCollections>? collectionList,
       this.cursor,
       this.onlineStoreUrl,
       this.description,
       this.descriptionHtml,
       this.handle})
-      : super._();
+      : _productVariants = productVariants,
+        _tags = tags,
+        _images = images,
+        _option = option,
+        _metafields = metafields,
+        _collectionList = collectionList,
+        super._();
 
   factory _$_Product.fromJson(Map<String, dynamic> json) =>
       _$$_ProductFromJson(json);
@@ -414,26 +366,58 @@ class _$_Product extends _Product {
   final bool availableForSale;
   @override
   final String createdAt;
+  final List<ProductVariant> _productVariants;
   @override
-  final List<ProductVariant> productVariants;
+  List<ProductVariant> get productVariants {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_productVariants);
+  }
+
   @override
   final String productType;
   @override
   final String publishedAt;
+  final List<String> _tags;
   @override
-  final List<String> tags;
+  List<String> get tags {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tags);
+  }
+
   @override
   final String updatedAt;
+  final List<ShopifyImage> _images;
   @override
-  final List<ShopifyImage> images;
+  List<ShopifyImage> get images {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_images);
+  }
+
+  final List<Option> _option;
   @override
-  final List<Option> option;
+  List<Option> get option {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_option);
+  }
+
   @override
   final String vendor;
+  final List<Metafield> _metafields;
   @override
-  final List<Metafield> metafields;
+  List<Metafield> get metafields {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_metafields);
+  }
+
+  final List<AssociatedCollections>? _collectionList;
   @override
-  final List<AssociatedCollections>? collectionList;
+  List<AssociatedCollections>? get collectionList {
+    final value = _collectionList;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? cursor;
   @override
@@ -454,27 +438,27 @@ class _$_Product extends _Product {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Product &&
+            other is _$_Product &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.availableForSale, availableForSale) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality()
-                .equals(other.productVariants, productVariants) &&
+                .equals(other._productVariants, _productVariants) &&
             const DeepCollectionEquality()
                 .equals(other.productType, productType) &&
             const DeepCollectionEquality()
                 .equals(other.publishedAt, publishedAt) &&
-            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality().equals(other._tags, _tags) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality().equals(other.images, images) &&
-            const DeepCollectionEquality().equals(other.option, option) &&
+            const DeepCollectionEquality().equals(other._images, _images) &&
+            const DeepCollectionEquality().equals(other._option, _option) &&
             const DeepCollectionEquality().equals(other.vendor, vendor) &&
             const DeepCollectionEquality()
-                .equals(other.metafields, metafields) &&
+                .equals(other._metafields, _metafields) &&
             const DeepCollectionEquality()
-                .equals(other.collectionList, collectionList) &&
+                .equals(other._collectionList, _collectionList) &&
             const DeepCollectionEquality().equals(other.cursor, cursor) &&
             const DeepCollectionEquality()
                 .equals(other.onlineStoreUrl, onlineStoreUrl) &&
@@ -485,6 +469,7 @@ class _$_Product extends _Product {
             const DeepCollectionEquality().equals(other.handle, handle));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -492,16 +477,16 @@ class _$_Product extends _Product {
         const DeepCollectionEquality().hash(id),
         const DeepCollectionEquality().hash(availableForSale),
         const DeepCollectionEquality().hash(createdAt),
-        const DeepCollectionEquality().hash(productVariants),
+        const DeepCollectionEquality().hash(_productVariants),
         const DeepCollectionEquality().hash(productType),
         const DeepCollectionEquality().hash(publishedAt),
-        const DeepCollectionEquality().hash(tags),
+        const DeepCollectionEquality().hash(_tags),
         const DeepCollectionEquality().hash(updatedAt),
-        const DeepCollectionEquality().hash(images),
-        const DeepCollectionEquality().hash(option),
+        const DeepCollectionEquality().hash(_images),
+        const DeepCollectionEquality().hash(_option),
         const DeepCollectionEquality().hash(vendor),
-        const DeepCollectionEquality().hash(metafields),
-        const DeepCollectionEquality().hash(collectionList),
+        const DeepCollectionEquality().hash(_metafields),
+        const DeepCollectionEquality().hash(_collectionList),
         const DeepCollectionEquality().hash(cursor),
         const DeepCollectionEquality().hash(onlineStoreUrl),
         const DeepCollectionEquality().hash(description),
@@ -511,8 +496,8 @@ class _$_Product extends _Product {
 
   @JsonKey(ignore: true)
   @override
-  _$ProductCopyWith<_Product> get copyWith =>
-      __$ProductCopyWithImpl<_Product>(this, _$identity);
+  _$$_ProductCopyWith<_$_Product> get copyWith =>
+      __$$_ProductCopyWithImpl<_$_Product>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -522,69 +507,71 @@ class _$_Product extends _Product {
 
 abstract class _Product extends Product {
   factory _Product(
-      {required String title,
-      required String id,
-      required bool availableForSale,
-      required String createdAt,
-      required List<ProductVariant> productVariants,
-      required String productType,
-      required String publishedAt,
-      required List<String> tags,
-      required String updatedAt,
-      required List<ShopifyImage> images,
-      required List<Option> option,
-      required String vendor,
-      required List<Metafield> metafields,
-      List<AssociatedCollections>? collectionList,
-      String? cursor,
-      String? onlineStoreUrl,
-      String? description,
-      String? descriptionHtml,
-      String? handle}) = _$_Product;
+      {required final String title,
+      required final String id,
+      required final bool availableForSale,
+      required final String createdAt,
+      required final List<ProductVariant> productVariants,
+      required final String productType,
+      required final String publishedAt,
+      required final List<String> tags,
+      required final String updatedAt,
+      required final List<ShopifyImage> images,
+      required final List<Option> option,
+      required final String vendor,
+      required final List<Metafield> metafields,
+      final List<AssociatedCollections>? collectionList,
+      final String? cursor,
+      final String? onlineStoreUrl,
+      final String? description,
+      final String? descriptionHtml,
+      final String? handle}) = _$_Product;
   _Product._() : super._();
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
 
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  bool get availableForSale;
+  bool get availableForSale => throw _privateConstructorUsedError;
   @override
-  String get createdAt;
+  String get createdAt => throw _privateConstructorUsedError;
   @override
-  List<ProductVariant> get productVariants;
+  List<ProductVariant> get productVariants =>
+      throw _privateConstructorUsedError;
   @override
-  String get productType;
+  String get productType => throw _privateConstructorUsedError;
   @override
-  String get publishedAt;
+  String get publishedAt => throw _privateConstructorUsedError;
   @override
-  List<String> get tags;
+  List<String> get tags => throw _privateConstructorUsedError;
   @override
-  String get updatedAt;
+  String get updatedAt => throw _privateConstructorUsedError;
   @override
-  List<ShopifyImage> get images;
+  List<ShopifyImage> get images => throw _privateConstructorUsedError;
   @override
-  List<Option> get option;
+  List<Option> get option => throw _privateConstructorUsedError;
   @override
-  String get vendor;
+  String get vendor => throw _privateConstructorUsedError;
   @override
-  List<Metafield> get metafields;
+  List<Metafield> get metafields => throw _privateConstructorUsedError;
   @override
-  List<AssociatedCollections>? get collectionList;
+  List<AssociatedCollections>? get collectionList =>
+      throw _privateConstructorUsedError;
   @override
-  String? get cursor;
+  String? get cursor => throw _privateConstructorUsedError;
   @override
-  String? get onlineStoreUrl;
+  String? get onlineStoreUrl => throw _privateConstructorUsedError;
   @override
-  String? get description;
+  String? get description => throw _privateConstructorUsedError;
   @override
-  String? get descriptionHtml;
+  String? get descriptionHtml => throw _privateConstructorUsedError;
   @override
-  String? get handle;
+  String? get handle => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProductCopyWith<_Product> get copyWith =>
+  _$$_ProductCopyWith<_$_Product> get copyWith =>
       throw _privateConstructorUsedError;
 }

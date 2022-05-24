@@ -12,31 +12,11 @@ part of 'primary_domain.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 PrimaryDomain _$PrimaryDomainFromJson(Map<String, dynamic> json) {
   return _PrimaryDomain.fromJson(json);
 }
-
-/// @nodoc
-class _$PrimaryDomainTearOff {
-  const _$PrimaryDomainTearOff();
-
-  _PrimaryDomain call({String? host, bool? sslEnabled, String? url}) {
-    return _PrimaryDomain(
-      host: host,
-      sslEnabled: sslEnabled,
-      url: url,
-    );
-  }
-
-  PrimaryDomain fromJson(Map<String, Object?> json) {
-    return PrimaryDomain.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PrimaryDomain = _$PrimaryDomainTearOff();
 
 /// @nodoc
 mixin _$PrimaryDomain {
@@ -91,25 +71,25 @@ class _$PrimaryDomainCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PrimaryDomainCopyWith<$Res>
+abstract class _$$_PrimaryDomainCopyWith<$Res>
     implements $PrimaryDomainCopyWith<$Res> {
-  factory _$PrimaryDomainCopyWith(
-          _PrimaryDomain value, $Res Function(_PrimaryDomain) then) =
-      __$PrimaryDomainCopyWithImpl<$Res>;
+  factory _$$_PrimaryDomainCopyWith(
+          _$_PrimaryDomain value, $Res Function(_$_PrimaryDomain) then) =
+      __$$_PrimaryDomainCopyWithImpl<$Res>;
   @override
   $Res call({String? host, bool? sslEnabled, String? url});
 }
 
 /// @nodoc
-class __$PrimaryDomainCopyWithImpl<$Res>
+class __$$_PrimaryDomainCopyWithImpl<$Res>
     extends _$PrimaryDomainCopyWithImpl<$Res>
-    implements _$PrimaryDomainCopyWith<$Res> {
-  __$PrimaryDomainCopyWithImpl(
-      _PrimaryDomain _value, $Res Function(_PrimaryDomain) _then)
-      : super(_value, (v) => _then(v as _PrimaryDomain));
+    implements _$$_PrimaryDomainCopyWith<$Res> {
+  __$$_PrimaryDomainCopyWithImpl(
+      _$_PrimaryDomain _value, $Res Function(_$_PrimaryDomain) _then)
+      : super(_value, (v) => _then(v as _$_PrimaryDomain));
 
   @override
-  _PrimaryDomain get _value => super._value as _PrimaryDomain;
+  _$_PrimaryDomain get _value => super._value as _$_PrimaryDomain;
 
   @override
   $Res call({
@@ -117,7 +97,7 @@ class __$PrimaryDomainCopyWithImpl<$Res>
     Object? sslEnabled = freezed,
     Object? url = freezed,
   }) {
-    return _then(_PrimaryDomain(
+    return _then(_$_PrimaryDomain(
       host: host == freezed
           ? _value.host
           : host // ignore: cast_nullable_to_non_nullable
@@ -158,13 +138,14 @@ class _$_PrimaryDomain implements _PrimaryDomain {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PrimaryDomain &&
+            other is _$_PrimaryDomain &&
             const DeepCollectionEquality().equals(other.host, host) &&
             const DeepCollectionEquality()
                 .equals(other.sslEnabled, sslEnabled) &&
             const DeepCollectionEquality().equals(other.url, url));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -174,8 +155,8 @@ class _$_PrimaryDomain implements _PrimaryDomain {
 
   @JsonKey(ignore: true)
   @override
-  _$PrimaryDomainCopyWith<_PrimaryDomain> get copyWith =>
-      __$PrimaryDomainCopyWithImpl<_PrimaryDomain>(this, _$identity);
+  _$$_PrimaryDomainCopyWith<_$_PrimaryDomain> get copyWith =>
+      __$$_PrimaryDomainCopyWithImpl<_$_PrimaryDomain>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -184,20 +165,22 @@ class _$_PrimaryDomain implements _PrimaryDomain {
 }
 
 abstract class _PrimaryDomain implements PrimaryDomain {
-  factory _PrimaryDomain({String? host, bool? sslEnabled, String? url}) =
-      _$_PrimaryDomain;
+  factory _PrimaryDomain(
+      {final String? host,
+      final bool? sslEnabled,
+      final String? url}) = _$_PrimaryDomain;
 
   factory _PrimaryDomain.fromJson(Map<String, dynamic> json) =
       _$_PrimaryDomain.fromJson;
 
   @override
-  String? get host;
+  String? get host => throw _privateConstructorUsedError;
   @override
-  bool? get sslEnabled;
+  bool? get sslEnabled => throw _privateConstructorUsedError;
   @override
-  String? get url;
+  String? get url => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PrimaryDomainCopyWith<_PrimaryDomain> get copyWith =>
+  _$$_PrimaryDomainCopyWith<_$_PrimaryDomain> get copyWith =>
       throw _privateConstructorUsedError;
 }

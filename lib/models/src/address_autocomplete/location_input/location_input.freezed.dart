@@ -12,30 +12,11 @@ part of 'location_input.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 LocationInput _$LocationInputFromJson(Map<String, dynamic> json) {
   return _LocationInput.fromJson(json);
 }
-
-/// @nodoc
-class _$LocationInputTearOff {
-  const _$LocationInputTearOff();
-
-  _LocationInput call({double? latitude, double? longitude}) {
-    return _LocationInput(
-      latitude: latitude,
-      longitude: longitude,
-    );
-  }
-
-  LocationInput fromJson(Map<String, Object?> json) {
-    return LocationInput.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $LocationInput = _$LocationInputTearOff();
 
 /// @nodoc
 mixin _$LocationInput {
@@ -84,32 +65,32 @@ class _$LocationInputCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$LocationInputCopyWith<$Res>
+abstract class _$$_LocationInputCopyWith<$Res>
     implements $LocationInputCopyWith<$Res> {
-  factory _$LocationInputCopyWith(
-          _LocationInput value, $Res Function(_LocationInput) then) =
-      __$LocationInputCopyWithImpl<$Res>;
+  factory _$$_LocationInputCopyWith(
+          _$_LocationInput value, $Res Function(_$_LocationInput) then) =
+      __$$_LocationInputCopyWithImpl<$Res>;
   @override
   $Res call({double? latitude, double? longitude});
 }
 
 /// @nodoc
-class __$LocationInputCopyWithImpl<$Res>
+class __$$_LocationInputCopyWithImpl<$Res>
     extends _$LocationInputCopyWithImpl<$Res>
-    implements _$LocationInputCopyWith<$Res> {
-  __$LocationInputCopyWithImpl(
-      _LocationInput _value, $Res Function(_LocationInput) _then)
-      : super(_value, (v) => _then(v as _LocationInput));
+    implements _$$_LocationInputCopyWith<$Res> {
+  __$$_LocationInputCopyWithImpl(
+      _$_LocationInput _value, $Res Function(_$_LocationInput) _then)
+      : super(_value, (v) => _then(v as _$_LocationInput));
 
   @override
-  _LocationInput get _value => super._value as _LocationInput;
+  _$_LocationInput get _value => super._value as _$_LocationInput;
 
   @override
   $Res call({
     Object? latitude = freezed,
     Object? longitude = freezed,
   }) {
-    return _then(_LocationInput(
+    return _then(_$_LocationInput(
       latitude: latitude == freezed
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -144,11 +125,12 @@ class _$_LocationInput implements _LocationInput {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LocationInput &&
+            other is _$_LocationInput &&
             const DeepCollectionEquality().equals(other.latitude, latitude) &&
             const DeepCollectionEquality().equals(other.longitude, longitude));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -157,8 +139,8 @@ class _$_LocationInput implements _LocationInput {
 
   @JsonKey(ignore: true)
   @override
-  _$LocationInputCopyWith<_LocationInput> get copyWith =>
-      __$LocationInputCopyWithImpl<_LocationInput>(this, _$identity);
+  _$$_LocationInputCopyWith<_$_LocationInput> get copyWith =>
+      __$$_LocationInputCopyWithImpl<_$_LocationInput>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -167,18 +149,18 @@ class _$_LocationInput implements _LocationInput {
 }
 
 abstract class _LocationInput implements LocationInput {
-  factory _LocationInput({double? latitude, double? longitude}) =
+  factory _LocationInput({final double? latitude, final double? longitude}) =
       _$_LocationInput;
 
   factory _LocationInput.fromJson(Map<String, dynamic> json) =
       _$_LocationInput.fromJson;
 
   @override
-  double? get latitude;
+  double? get latitude => throw _privateConstructorUsedError;
   @override
-  double? get longitude;
+  double? get longitude => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LocationInputCopyWith<_LocationInput> get copyWith =>
+  _$$_LocationInputCopyWith<_$_LocationInput> get copyWith =>
       throw _privateConstructorUsedError;
 }

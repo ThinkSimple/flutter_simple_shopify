@@ -12,29 +12,11 @@ part of 'pages.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Pages _$PagesFromJson(Map<String, dynamic> json) {
   return _Pages.fromJson(json);
 }
-
-/// @nodoc
-class _$PagesTearOff {
-  const _$PagesTearOff();
-
-  _Pages call({required List<Page> pageList}) {
-    return _Pages(
-      pageList: pageList,
-    );
-  }
-
-  Pages fromJson(Map<String, Object?> json) {
-    return Pages.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Pages = _$PagesTearOff();
 
 /// @nodoc
 mixin _$Pages {
@@ -74,29 +56,29 @@ class _$PagesCopyWithImpl<$Res> implements $PagesCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$PagesCopyWith<$Res> implements $PagesCopyWith<$Res> {
-  factory _$PagesCopyWith(_Pages value, $Res Function(_Pages) then) =
-      __$PagesCopyWithImpl<$Res>;
+abstract class _$$_PagesCopyWith<$Res> implements $PagesCopyWith<$Res> {
+  factory _$$_PagesCopyWith(_$_Pages value, $Res Function(_$_Pages) then) =
+      __$$_PagesCopyWithImpl<$Res>;
   @override
   $Res call({List<Page> pageList});
 }
 
 /// @nodoc
-class __$PagesCopyWithImpl<$Res> extends _$PagesCopyWithImpl<$Res>
-    implements _$PagesCopyWith<$Res> {
-  __$PagesCopyWithImpl(_Pages _value, $Res Function(_Pages) _then)
-      : super(_value, (v) => _then(v as _Pages));
+class __$$_PagesCopyWithImpl<$Res> extends _$PagesCopyWithImpl<$Res>
+    implements _$$_PagesCopyWith<$Res> {
+  __$$_PagesCopyWithImpl(_$_Pages _value, $Res Function(_$_Pages) _then)
+      : super(_value, (v) => _then(v as _$_Pages));
 
   @override
-  _Pages get _value => super._value as _Pages;
+  _$_Pages get _value => super._value as _$_Pages;
 
   @override
   $Res call({
     Object? pageList = freezed,
   }) {
-    return _then(_Pages(
+    return _then(_$_Pages(
       pageList: pageList == freezed
-          ? _value.pageList
+          ? _value._pageList
           : pageList // ignore: cast_nullable_to_non_nullable
               as List<Page>,
     ));
@@ -106,13 +88,17 @@ class __$PagesCopyWithImpl<$Res> extends _$PagesCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Pages implements _Pages {
-  _$_Pages({required this.pageList});
+  _$_Pages({required final List<Page> pageList}) : _pageList = pageList;
 
   factory _$_Pages.fromJson(Map<String, dynamic> json) =>
       _$$_PagesFromJson(json);
 
+  final List<Page> _pageList;
   @override
-  final List<Page> pageList;
+  List<Page> get pageList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pageList);
+  }
 
   @override
   String toString() {
@@ -123,18 +109,19 @@ class _$_Pages implements _Pages {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Pages &&
-            const DeepCollectionEquality().equals(other.pageList, pageList));
+            other is _$_Pages &&
+            const DeepCollectionEquality().equals(other._pageList, _pageList));
   }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pageList));
 
   @JsonKey(ignore: true)
   @override
-  _$PagesCopyWith<_Pages> get copyWith =>
-      __$PagesCopyWithImpl<_Pages>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_pageList));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PagesCopyWith<_$_Pages> get copyWith =>
+      __$$_PagesCopyWithImpl<_$_Pages>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -143,13 +130,14 @@ class _$_Pages implements _Pages {
 }
 
 abstract class _Pages implements Pages {
-  factory _Pages({required List<Page> pageList}) = _$_Pages;
+  factory _Pages({required final List<Page> pageList}) = _$_Pages;
 
   factory _Pages.fromJson(Map<String, dynamic> json) = _$_Pages.fromJson;
 
   @override
-  List<Page> get pageList;
+  List<Page> get pageList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PagesCopyWith<_Pages> get copyWith => throw _privateConstructorUsedError;
+  _$$_PagesCopyWith<_$_Pages> get copyWith =>
+      throw _privateConstructorUsedError;
 }

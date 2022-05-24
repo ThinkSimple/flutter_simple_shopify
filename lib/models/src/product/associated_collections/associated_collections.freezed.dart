@@ -12,41 +12,12 @@ part of 'associated_collections.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AssociatedCollections _$AssociatedCollectionsFromJson(
     Map<String, dynamic> json) {
   return _AssociatedCollections.fromJson(json);
 }
-
-/// @nodoc
-class _$AssociatedCollectionsTearOff {
-  const _$AssociatedCollectionsTearOff();
-
-  _AssociatedCollections call(
-      {required String id,
-      required String title,
-      required String description,
-      required String updatedAt,
-      String? descriptionHtml,
-      String? handle}) {
-    return _AssociatedCollections(
-      id: id,
-      title: title,
-      description: description,
-      updatedAt: updatedAt,
-      descriptionHtml: descriptionHtml,
-      handle: handle,
-    );
-  }
-
-  AssociatedCollections fromJson(Map<String, Object?> json) {
-    return AssociatedCollections.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AssociatedCollections = _$AssociatedCollectionsTearOff();
 
 /// @nodoc
 mixin _$AssociatedCollections {
@@ -125,11 +96,11 @@ class _$AssociatedCollectionsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AssociatedCollectionsCopyWith<$Res>
+abstract class _$$_AssociatedCollectionsCopyWith<$Res>
     implements $AssociatedCollectionsCopyWith<$Res> {
-  factory _$AssociatedCollectionsCopyWith(_AssociatedCollections value,
-          $Res Function(_AssociatedCollections) then) =
-      __$AssociatedCollectionsCopyWithImpl<$Res>;
+  factory _$$_AssociatedCollectionsCopyWith(_$_AssociatedCollections value,
+          $Res Function(_$_AssociatedCollections) then) =
+      __$$_AssociatedCollectionsCopyWithImpl<$Res>;
   @override
   $Res call(
       {String id,
@@ -141,15 +112,16 @@ abstract class _$AssociatedCollectionsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AssociatedCollectionsCopyWithImpl<$Res>
+class __$$_AssociatedCollectionsCopyWithImpl<$Res>
     extends _$AssociatedCollectionsCopyWithImpl<$Res>
-    implements _$AssociatedCollectionsCopyWith<$Res> {
-  __$AssociatedCollectionsCopyWithImpl(_AssociatedCollections _value,
-      $Res Function(_AssociatedCollections) _then)
-      : super(_value, (v) => _then(v as _AssociatedCollections));
+    implements _$$_AssociatedCollectionsCopyWith<$Res> {
+  __$$_AssociatedCollectionsCopyWithImpl(_$_AssociatedCollections _value,
+      $Res Function(_$_AssociatedCollections) _then)
+      : super(_value, (v) => _then(v as _$_AssociatedCollections));
 
   @override
-  _AssociatedCollections get _value => super._value as _AssociatedCollections;
+  _$_AssociatedCollections get _value =>
+      super._value as _$_AssociatedCollections;
 
   @override
   $Res call({
@@ -160,7 +132,7 @@ class __$AssociatedCollectionsCopyWithImpl<$Res>
     Object? descriptionHtml = freezed,
     Object? handle = freezed,
   }) {
-    return _then(_AssociatedCollections(
+    return _then(_$_AssociatedCollections(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -226,7 +198,7 @@ class _$_AssociatedCollections extends _AssociatedCollections {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AssociatedCollections &&
+            other is _$_AssociatedCollections &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
@@ -237,6 +209,7 @@ class _$_AssociatedCollections extends _AssociatedCollections {
             const DeepCollectionEquality().equals(other.handle, handle));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -249,8 +222,8 @@ class _$_AssociatedCollections extends _AssociatedCollections {
 
   @JsonKey(ignore: true)
   @override
-  _$AssociatedCollectionsCopyWith<_AssociatedCollections> get copyWith =>
-      __$AssociatedCollectionsCopyWithImpl<_AssociatedCollections>(
+  _$$_AssociatedCollectionsCopyWith<_$_AssociatedCollections> get copyWith =>
+      __$$_AssociatedCollectionsCopyWithImpl<_$_AssociatedCollections>(
           this, _$identity);
 
   @override
@@ -261,31 +234,31 @@ class _$_AssociatedCollections extends _AssociatedCollections {
 
 abstract class _AssociatedCollections extends AssociatedCollections {
   factory _AssociatedCollections(
-      {required String id,
-      required String title,
-      required String description,
-      required String updatedAt,
-      String? descriptionHtml,
-      String? handle}) = _$_AssociatedCollections;
+      {required final String id,
+      required final String title,
+      required final String description,
+      required final String updatedAt,
+      final String? descriptionHtml,
+      final String? handle}) = _$_AssociatedCollections;
   _AssociatedCollections._() : super._();
 
   factory _AssociatedCollections.fromJson(Map<String, dynamic> json) =
       _$_AssociatedCollections.fromJson;
 
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String get description;
+  String get description => throw _privateConstructorUsedError;
   @override
-  String get updatedAt;
+  String get updatedAt => throw _privateConstructorUsedError;
   @override
-  String? get descriptionHtml;
+  String? get descriptionHtml => throw _privateConstructorUsedError;
   @override
-  String? get handle;
+  String? get handle => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AssociatedCollectionsCopyWith<_AssociatedCollections> get copyWith =>
+  _$$_AssociatedCollectionsCopyWith<_$_AssociatedCollections> get copyWith =>
       throw _privateConstructorUsedError;
 }

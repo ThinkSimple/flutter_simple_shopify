@@ -12,34 +12,11 @@ part of 'privacy_policy.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 PrivacyPolicy _$PrivacyPolicyFromJson(Map<String, dynamic> json) {
   return _PrivacyPolicy.fromJson(json);
 }
-
-/// @nodoc
-class _$PrivacyPolicyTearOff {
-  const _$PrivacyPolicyTearOff();
-
-  _PrivacyPolicy call(
-      {String? body, String? handle, String? id, String? title, String? url}) {
-    return _PrivacyPolicy(
-      body: body,
-      handle: handle,
-      id: id,
-      title: title,
-      url: url,
-    );
-  }
-
-  PrivacyPolicy fromJson(Map<String, Object?> json) {
-    return PrivacyPolicy.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PrivacyPolicy = _$PrivacyPolicyTearOff();
 
 /// @nodoc
 mixin _$PrivacyPolicy {
@@ -107,26 +84,26 @@ class _$PrivacyPolicyCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PrivacyPolicyCopyWith<$Res>
+abstract class _$$_PrivacyPolicyCopyWith<$Res>
     implements $PrivacyPolicyCopyWith<$Res> {
-  factory _$PrivacyPolicyCopyWith(
-          _PrivacyPolicy value, $Res Function(_PrivacyPolicy) then) =
-      __$PrivacyPolicyCopyWithImpl<$Res>;
+  factory _$$_PrivacyPolicyCopyWith(
+          _$_PrivacyPolicy value, $Res Function(_$_PrivacyPolicy) then) =
+      __$$_PrivacyPolicyCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? body, String? handle, String? id, String? title, String? url});
 }
 
 /// @nodoc
-class __$PrivacyPolicyCopyWithImpl<$Res>
+class __$$_PrivacyPolicyCopyWithImpl<$Res>
     extends _$PrivacyPolicyCopyWithImpl<$Res>
-    implements _$PrivacyPolicyCopyWith<$Res> {
-  __$PrivacyPolicyCopyWithImpl(
-      _PrivacyPolicy _value, $Res Function(_PrivacyPolicy) _then)
-      : super(_value, (v) => _then(v as _PrivacyPolicy));
+    implements _$$_PrivacyPolicyCopyWith<$Res> {
+  __$$_PrivacyPolicyCopyWithImpl(
+      _$_PrivacyPolicy _value, $Res Function(_$_PrivacyPolicy) _then)
+      : super(_value, (v) => _then(v as _$_PrivacyPolicy));
 
   @override
-  _PrivacyPolicy get _value => super._value as _PrivacyPolicy;
+  _$_PrivacyPolicy get _value => super._value as _$_PrivacyPolicy;
 
   @override
   $Res call({
@@ -136,7 +113,7 @@ class __$PrivacyPolicyCopyWithImpl<$Res>
     Object? title = freezed,
     Object? url = freezed,
   }) {
-    return _then(_PrivacyPolicy(
+    return _then(_$_PrivacyPolicy(
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -189,7 +166,7 @@ class _$_PrivacyPolicy implements _PrivacyPolicy {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PrivacyPolicy &&
+            other is _$_PrivacyPolicy &&
             const DeepCollectionEquality().equals(other.body, body) &&
             const DeepCollectionEquality().equals(other.handle, handle) &&
             const DeepCollectionEquality().equals(other.id, id) &&
@@ -197,6 +174,7 @@ class _$_PrivacyPolicy implements _PrivacyPolicy {
             const DeepCollectionEquality().equals(other.url, url));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -208,8 +186,8 @@ class _$_PrivacyPolicy implements _PrivacyPolicy {
 
   @JsonKey(ignore: true)
   @override
-  _$PrivacyPolicyCopyWith<_PrivacyPolicy> get copyWith =>
-      __$PrivacyPolicyCopyWithImpl<_PrivacyPolicy>(this, _$identity);
+  _$$_PrivacyPolicyCopyWith<_$_PrivacyPolicy> get copyWith =>
+      __$$_PrivacyPolicyCopyWithImpl<_$_PrivacyPolicy>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -219,27 +197,27 @@ class _$_PrivacyPolicy implements _PrivacyPolicy {
 
 abstract class _PrivacyPolicy implements PrivacyPolicy {
   factory _PrivacyPolicy(
-      {String? body,
-      String? handle,
-      String? id,
-      String? title,
-      String? url}) = _$_PrivacyPolicy;
+      {final String? body,
+      final String? handle,
+      final String? id,
+      final String? title,
+      final String? url}) = _$_PrivacyPolicy;
 
   factory _PrivacyPolicy.fromJson(Map<String, dynamic> json) =
       _$_PrivacyPolicy.fromJson;
 
   @override
-  String? get body;
+  String? get body => throw _privateConstructorUsedError;
   @override
-  String? get handle;
+  String? get handle => throw _privateConstructorUsedError;
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get title;
+  String? get title => throw _privateConstructorUsedError;
   @override
-  String? get url;
+  String? get url => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PrivacyPolicyCopyWith<_PrivacyPolicy> get copyWith =>
+  _$$_PrivacyPolicyCopyWith<_$_PrivacyPolicy> get copyWith =>
       throw _privateConstructorUsedError;
 }

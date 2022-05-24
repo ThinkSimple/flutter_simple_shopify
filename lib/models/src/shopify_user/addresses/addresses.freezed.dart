@@ -12,29 +12,11 @@ part of 'addresses.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Addresses _$AddressesFromJson(Map<String, dynamic> json) {
   return _Addresses.fromJson(json);
 }
-
-/// @nodoc
-class _$AddressesTearOff {
-  const _$AddressesTearOff();
-
-  _Addresses call({required List<Address> addressList}) {
-    return _Addresses(
-      addressList: addressList,
-    );
-  }
-
-  Addresses fromJson(Map<String, Object?> json) {
-    return Addresses.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Addresses = _$AddressesTearOff();
 
 /// @nodoc
 mixin _$Addresses {
@@ -75,30 +57,31 @@ class _$AddressesCopyWithImpl<$Res> implements $AddressesCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AddressesCopyWith<$Res> implements $AddressesCopyWith<$Res> {
-  factory _$AddressesCopyWith(
-          _Addresses value, $Res Function(_Addresses) then) =
-      __$AddressesCopyWithImpl<$Res>;
+abstract class _$$_AddressesCopyWith<$Res> implements $AddressesCopyWith<$Res> {
+  factory _$$_AddressesCopyWith(
+          _$_Addresses value, $Res Function(_$_Addresses) then) =
+      __$$_AddressesCopyWithImpl<$Res>;
   @override
   $Res call({List<Address> addressList});
 }
 
 /// @nodoc
-class __$AddressesCopyWithImpl<$Res> extends _$AddressesCopyWithImpl<$Res>
-    implements _$AddressesCopyWith<$Res> {
-  __$AddressesCopyWithImpl(_Addresses _value, $Res Function(_Addresses) _then)
-      : super(_value, (v) => _then(v as _Addresses));
+class __$$_AddressesCopyWithImpl<$Res> extends _$AddressesCopyWithImpl<$Res>
+    implements _$$_AddressesCopyWith<$Res> {
+  __$$_AddressesCopyWithImpl(
+      _$_Addresses _value, $Res Function(_$_Addresses) _then)
+      : super(_value, (v) => _then(v as _$_Addresses));
 
   @override
-  _Addresses get _value => super._value as _Addresses;
+  _$_Addresses get _value => super._value as _$_Addresses;
 
   @override
   $Res call({
     Object? addressList = freezed,
   }) {
-    return _then(_Addresses(
+    return _then(_$_Addresses(
       addressList: addressList == freezed
-          ? _value.addressList
+          ? _value._addressList
           : addressList // ignore: cast_nullable_to_non_nullable
               as List<Address>,
     ));
@@ -108,13 +91,19 @@ class __$AddressesCopyWithImpl<$Res> extends _$AddressesCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Addresses extends _Addresses {
-  _$_Addresses({required this.addressList}) : super._();
+  _$_Addresses({required final List<Address> addressList})
+      : _addressList = addressList,
+        super._();
 
   factory _$_Addresses.fromJson(Map<String, dynamic> json) =>
       _$$_AddressesFromJson(json);
 
+  final List<Address> _addressList;
   @override
-  final List<Address> addressList;
+  List<Address> get addressList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_addressList);
+  }
 
   @override
   String toString() {
@@ -125,19 +114,20 @@ class _$_Addresses extends _Addresses {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Addresses &&
+            other is _$_Addresses &&
             const DeepCollectionEquality()
-                .equals(other.addressList, addressList));
+                .equals(other._addressList, _addressList));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(addressList));
 
   @JsonKey(ignore: true)
   @override
-  _$AddressesCopyWith<_Addresses> get copyWith =>
-      __$AddressesCopyWithImpl<_Addresses>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_addressList));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_AddressesCopyWith<_$_Addresses> get copyWith =>
+      __$$_AddressesCopyWithImpl<_$_Addresses>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -146,16 +136,16 @@ class _$_Addresses extends _Addresses {
 }
 
 abstract class _Addresses extends Addresses {
-  factory _Addresses({required List<Address> addressList}) = _$_Addresses;
+  factory _Addresses({required final List<Address> addressList}) = _$_Addresses;
   _Addresses._() : super._();
 
   factory _Addresses.fromJson(Map<String, dynamic> json) =
       _$_Addresses.fromJson;
 
   @override
-  List<Address> get addressList;
+  List<Address> get addressList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AddressesCopyWith<_Addresses> get copyWith =>
+  _$$_AddressesCopyWith<_$_Addresses> get copyWith =>
       throw _privateConstructorUsedError;
 }

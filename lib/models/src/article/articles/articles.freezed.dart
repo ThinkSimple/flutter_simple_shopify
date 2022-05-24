@@ -12,29 +12,11 @@ part of 'articles.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Articles _$ArticlesFromJson(Map<String, dynamic> json) {
   return _Articles.fromJson(json);
 }
-
-/// @nodoc
-class _$ArticlesTearOff {
-  const _$ArticlesTearOff();
-
-  _Articles call({required List<Article> articleList}) {
-    return _Articles(
-      articleList: articleList,
-    );
-  }
-
-  Articles fromJson(Map<String, Object?> json) {
-    return Articles.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Articles = _$ArticlesTearOff();
 
 /// @nodoc
 mixin _$Articles {
@@ -75,29 +57,31 @@ class _$ArticlesCopyWithImpl<$Res> implements $ArticlesCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ArticlesCopyWith<$Res> implements $ArticlesCopyWith<$Res> {
-  factory _$ArticlesCopyWith(_Articles value, $Res Function(_Articles) then) =
-      __$ArticlesCopyWithImpl<$Res>;
+abstract class _$$_ArticlesCopyWith<$Res> implements $ArticlesCopyWith<$Res> {
+  factory _$$_ArticlesCopyWith(
+          _$_Articles value, $Res Function(_$_Articles) then) =
+      __$$_ArticlesCopyWithImpl<$Res>;
   @override
   $Res call({List<Article> articleList});
 }
 
 /// @nodoc
-class __$ArticlesCopyWithImpl<$Res> extends _$ArticlesCopyWithImpl<$Res>
-    implements _$ArticlesCopyWith<$Res> {
-  __$ArticlesCopyWithImpl(_Articles _value, $Res Function(_Articles) _then)
-      : super(_value, (v) => _then(v as _Articles));
+class __$$_ArticlesCopyWithImpl<$Res> extends _$ArticlesCopyWithImpl<$Res>
+    implements _$$_ArticlesCopyWith<$Res> {
+  __$$_ArticlesCopyWithImpl(
+      _$_Articles _value, $Res Function(_$_Articles) _then)
+      : super(_value, (v) => _then(v as _$_Articles));
 
   @override
-  _Articles get _value => super._value as _Articles;
+  _$_Articles get _value => super._value as _$_Articles;
 
   @override
   $Res call({
     Object? articleList = freezed,
   }) {
-    return _then(_Articles(
+    return _then(_$_Articles(
       articleList: articleList == freezed
-          ? _value.articleList
+          ? _value._articleList
           : articleList // ignore: cast_nullable_to_non_nullable
               as List<Article>,
     ));
@@ -107,13 +91,18 @@ class __$ArticlesCopyWithImpl<$Res> extends _$ArticlesCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Articles implements _Articles {
-  _$_Articles({required this.articleList});
+  _$_Articles({required final List<Article> articleList})
+      : _articleList = articleList;
 
   factory _$_Articles.fromJson(Map<String, dynamic> json) =>
       _$$_ArticlesFromJson(json);
 
+  final List<Article> _articleList;
   @override
-  final List<Article> articleList;
+  List<Article> get articleList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_articleList);
+  }
 
   @override
   String toString() {
@@ -124,19 +113,20 @@ class _$_Articles implements _Articles {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Articles &&
+            other is _$_Articles &&
             const DeepCollectionEquality()
-                .equals(other.articleList, articleList));
+                .equals(other._articleList, _articleList));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(articleList));
 
   @JsonKey(ignore: true)
   @override
-  _$ArticlesCopyWith<_Articles> get copyWith =>
-      __$ArticlesCopyWithImpl<_Articles>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_articleList));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ArticlesCopyWith<_$_Articles> get copyWith =>
+      __$$_ArticlesCopyWithImpl<_$_Articles>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -145,14 +135,14 @@ class _$_Articles implements _Articles {
 }
 
 abstract class _Articles implements Articles {
-  factory _Articles({required List<Article> articleList}) = _$_Articles;
+  factory _Articles({required final List<Article> articleList}) = _$_Articles;
 
   factory _Articles.fromJson(Map<String, dynamic> json) = _$_Articles.fromJson;
 
   @override
-  List<Article> get articleList;
+  List<Article> get articleList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ArticlesCopyWith<_Articles> get copyWith =>
+  _$$_ArticlesCopyWith<_$_Articles> get copyWith =>
       throw _privateConstructorUsedError;
 }

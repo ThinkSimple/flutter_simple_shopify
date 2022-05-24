@@ -12,30 +12,11 @@ part of 'attribute.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Attribute _$AttributeFromJson(Map<String, dynamic> json) {
   return _Attribute.fromJson(json);
 }
-
-/// @nodoc
-class _$AttributeTearOff {
-  const _$AttributeTearOff();
-
-  _Attribute call({required String key, String? value}) {
-    return _Attribute(
-      key: key,
-      value: value,
-    );
-  }
-
-  Attribute fromJson(Map<String, Object?> json) {
-    return Attribute.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Attribute = _$AttributeTearOff();
 
 /// @nodoc
 mixin _$Attribute {
@@ -82,29 +63,30 @@ class _$AttributeCopyWithImpl<$Res> implements $AttributeCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AttributeCopyWith<$Res> implements $AttributeCopyWith<$Res> {
-  factory _$AttributeCopyWith(
-          _Attribute value, $Res Function(_Attribute) then) =
-      __$AttributeCopyWithImpl<$Res>;
+abstract class _$$_AttributeCopyWith<$Res> implements $AttributeCopyWith<$Res> {
+  factory _$$_AttributeCopyWith(
+          _$_Attribute value, $Res Function(_$_Attribute) then) =
+      __$$_AttributeCopyWithImpl<$Res>;
   @override
   $Res call({String key, String? value});
 }
 
 /// @nodoc
-class __$AttributeCopyWithImpl<$Res> extends _$AttributeCopyWithImpl<$Res>
-    implements _$AttributeCopyWith<$Res> {
-  __$AttributeCopyWithImpl(_Attribute _value, $Res Function(_Attribute) _then)
-      : super(_value, (v) => _then(v as _Attribute));
+class __$$_AttributeCopyWithImpl<$Res> extends _$AttributeCopyWithImpl<$Res>
+    implements _$$_AttributeCopyWith<$Res> {
+  __$$_AttributeCopyWithImpl(
+      _$_Attribute _value, $Res Function(_$_Attribute) _then)
+      : super(_value, (v) => _then(v as _$_Attribute));
 
   @override
-  _Attribute get _value => super._value as _Attribute;
+  _$_Attribute get _value => super._value as _$_Attribute;
 
   @override
   $Res call({
     Object? key = freezed,
     Object? value = freezed,
   }) {
-    return _then(_Attribute(
+    return _then(_$_Attribute(
       key: key == freezed
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
@@ -139,11 +121,12 @@ class _$_Attribute extends _Attribute {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Attribute &&
+            other is _$_Attribute &&
             const DeepCollectionEquality().equals(other.key, key) &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -152,8 +135,8 @@ class _$_Attribute extends _Attribute {
 
   @JsonKey(ignore: true)
   @override
-  _$AttributeCopyWith<_Attribute> get copyWith =>
-      __$AttributeCopyWithImpl<_Attribute>(this, _$identity);
+  _$$_AttributeCopyWith<_$_Attribute> get copyWith =>
+      __$$_AttributeCopyWithImpl<_$_Attribute>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -162,18 +145,19 @@ class _$_Attribute extends _Attribute {
 }
 
 abstract class _Attribute extends Attribute {
-  factory _Attribute({required String key, String? value}) = _$_Attribute;
+  factory _Attribute({required final String key, final String? value}) =
+      _$_Attribute;
   _Attribute._() : super._();
 
   factory _Attribute.fromJson(Map<String, dynamic> json) =
       _$_Attribute.fromJson;
 
   @override
-  String get key;
+  String get key => throw _privateConstructorUsedError;
   @override
-  String? get value;
+  String? get value => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AttributeCopyWith<_Attribute> get copyWith =>
+  _$$_AttributeCopyWith<_$_Attribute> get copyWith =>
       throw _privateConstructorUsedError;
 }

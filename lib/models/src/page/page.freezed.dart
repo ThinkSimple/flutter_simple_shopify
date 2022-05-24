@@ -12,44 +12,11 @@ part of 'page.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Page _$PageFromJson(Map<String, dynamic> json) {
   return _Page.fromJson(json);
 }
-
-/// @nodoc
-class _$PageTearOff {
-  const _$PageTearOff();
-
-  _Page call(
-      {required String body,
-      required String bodySummary,
-      required DateTime createdAt,
-      required String handle,
-      required String id,
-      required String title,
-      required DateTime updatedAt,
-      required String url}) {
-    return _Page(
-      body: body,
-      bodySummary: bodySummary,
-      createdAt: createdAt,
-      handle: handle,
-      id: id,
-      title: title,
-      updatedAt: updatedAt,
-      url: url,
-    );
-  }
-
-  Page fromJson(Map<String, Object?> json) {
-    return Page.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Page = _$PageTearOff();
 
 /// @nodoc
 mixin _$Page {
@@ -139,9 +106,9 @@ class _$PageCopyWithImpl<$Res> implements $PageCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$PageCopyWith<$Res> implements $PageCopyWith<$Res> {
-  factory _$PageCopyWith(_Page value, $Res Function(_Page) then) =
-      __$PageCopyWithImpl<$Res>;
+abstract class _$$_PageCopyWith<$Res> implements $PageCopyWith<$Res> {
+  factory _$$_PageCopyWith(_$_Page value, $Res Function(_$_Page) then) =
+      __$$_PageCopyWithImpl<$Res>;
   @override
   $Res call(
       {String body,
@@ -155,13 +122,13 @@ abstract class _$PageCopyWith<$Res> implements $PageCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$PageCopyWithImpl<$Res> extends _$PageCopyWithImpl<$Res>
-    implements _$PageCopyWith<$Res> {
-  __$PageCopyWithImpl(_Page _value, $Res Function(_Page) _then)
-      : super(_value, (v) => _then(v as _Page));
+class __$$_PageCopyWithImpl<$Res> extends _$PageCopyWithImpl<$Res>
+    implements _$$_PageCopyWith<$Res> {
+  __$$_PageCopyWithImpl(_$_Page _value, $Res Function(_$_Page) _then)
+      : super(_value, (v) => _then(v as _$_Page));
 
   @override
-  _Page get _value => super._value as _Page;
+  _$_Page get _value => super._value as _$_Page;
 
   @override
   $Res call({
@@ -174,7 +141,7 @@ class __$PageCopyWithImpl<$Res> extends _$PageCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? url = freezed,
   }) {
-    return _then(_Page(
+    return _then(_$_Page(
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -253,7 +220,7 @@ class _$_Page extends _Page {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Page &&
+            other is _$_Page &&
             const DeepCollectionEquality().equals(other.body, body) &&
             const DeepCollectionEquality()
                 .equals(other.bodySummary, bodySummary) &&
@@ -265,6 +232,7 @@ class _$_Page extends _Page {
             const DeepCollectionEquality().equals(other.url, url));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -279,8 +247,8 @@ class _$_Page extends _Page {
 
   @JsonKey(ignore: true)
   @override
-  _$PageCopyWith<_Page> get copyWith =>
-      __$PageCopyWithImpl<_Page>(this, _$identity);
+  _$$_PageCopyWith<_$_Page> get copyWith =>
+      __$$_PageCopyWithImpl<_$_Page>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -290,35 +258,35 @@ class _$_Page extends _Page {
 
 abstract class _Page extends Page {
   factory _Page(
-      {required String body,
-      required String bodySummary,
-      required DateTime createdAt,
-      required String handle,
-      required String id,
-      required String title,
-      required DateTime updatedAt,
-      required String url}) = _$_Page;
+      {required final String body,
+      required final String bodySummary,
+      required final DateTime createdAt,
+      required final String handle,
+      required final String id,
+      required final String title,
+      required final DateTime updatedAt,
+      required final String url}) = _$_Page;
   _Page._() : super._();
 
   factory _Page.fromJson(Map<String, dynamic> json) = _$_Page.fromJson;
 
   @override
-  String get body;
+  String get body => throw _privateConstructorUsedError;
   @override
-  String get bodySummary;
+  String get bodySummary => throw _privateConstructorUsedError;
   @override
-  DateTime get createdAt;
+  DateTime get createdAt => throw _privateConstructorUsedError;
   @override
-  String get handle;
+  String get handle => throw _privateConstructorUsedError;
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  DateTime get updatedAt;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
   @override
-  String get url;
+  String get url => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PageCopyWith<_Page> get copyWith => throw _privateConstructorUsedError;
+  _$$_PageCopyWith<_$_Page> get copyWith => throw _privateConstructorUsedError;
 }

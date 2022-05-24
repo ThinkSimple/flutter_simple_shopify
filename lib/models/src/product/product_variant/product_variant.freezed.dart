@@ -12,56 +12,11 @@ part of 'product_variant.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ProductVariant _$ProductVariantFromJson(Map<String, dynamic> json) {
   return _ProductVariant.fromJson(json);
 }
-
-/// @nodoc
-class _$ProductVariantTearOff {
-  const _$ProductVariantTearOff();
-
-  _ProductVariant call(
-      {required PriceV2 price,
-      required String title,
-      required double weight,
-      required String weightUnit,
-      required bool availableForSale,
-      required String sku,
-      required bool requiresShipping,
-      required String id,
-      required int quantityAvailable,
-      PriceV2? unitPrice,
-      UnitPriceMeasurement? unitPriceMeasurement,
-      List<SelectedOption>? selectedOptions,
-      PriceV2? compareAtPrice,
-      ShopifyImage? image}) {
-    return _ProductVariant(
-      price: price,
-      title: title,
-      weight: weight,
-      weightUnit: weightUnit,
-      availableForSale: availableForSale,
-      sku: sku,
-      requiresShipping: requiresShipping,
-      id: id,
-      quantityAvailable: quantityAvailable,
-      unitPrice: unitPrice,
-      unitPriceMeasurement: unitPriceMeasurement,
-      selectedOptions: selectedOptions,
-      compareAtPrice: compareAtPrice,
-      image: image,
-    );
-  }
-
-  ProductVariant fromJson(Map<String, Object?> json) {
-    return ProductVariant.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ProductVariant = _$ProductVariantTearOff();
 
 /// @nodoc
 mixin _$ProductVariant {
@@ -256,11 +211,11 @@ class _$ProductVariantCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ProductVariantCopyWith<$Res>
+abstract class _$$_ProductVariantCopyWith<$Res>
     implements $ProductVariantCopyWith<$Res> {
-  factory _$ProductVariantCopyWith(
-          _ProductVariant value, $Res Function(_ProductVariant) then) =
-      __$ProductVariantCopyWithImpl<$Res>;
+  factory _$$_ProductVariantCopyWith(
+          _$_ProductVariant value, $Res Function(_$_ProductVariant) then) =
+      __$$_ProductVariantCopyWithImpl<$Res>;
   @override
   $Res call(
       {PriceV2 price,
@@ -291,15 +246,15 @@ abstract class _$ProductVariantCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ProductVariantCopyWithImpl<$Res>
+class __$$_ProductVariantCopyWithImpl<$Res>
     extends _$ProductVariantCopyWithImpl<$Res>
-    implements _$ProductVariantCopyWith<$Res> {
-  __$ProductVariantCopyWithImpl(
-      _ProductVariant _value, $Res Function(_ProductVariant) _then)
-      : super(_value, (v) => _then(v as _ProductVariant));
+    implements _$$_ProductVariantCopyWith<$Res> {
+  __$$_ProductVariantCopyWithImpl(
+      _$_ProductVariant _value, $Res Function(_$_ProductVariant) _then)
+      : super(_value, (v) => _then(v as _$_ProductVariant));
 
   @override
-  _ProductVariant get _value => super._value as _ProductVariant;
+  _$_ProductVariant get _value => super._value as _$_ProductVariant;
 
   @override
   $Res call({
@@ -318,7 +273,7 @@ class __$ProductVariantCopyWithImpl<$Res>
     Object? compareAtPrice = freezed,
     Object? image = freezed,
   }) {
-    return _then(_ProductVariant(
+    return _then(_$_ProductVariant(
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -364,7 +319,7 @@ class __$ProductVariantCopyWithImpl<$Res>
           : unitPriceMeasurement // ignore: cast_nullable_to_non_nullable
               as UnitPriceMeasurement?,
       selectedOptions: selectedOptions == freezed
-          ? _value.selectedOptions
+          ? _value._selectedOptions
           : selectedOptions // ignore: cast_nullable_to_non_nullable
               as List<SelectedOption>?,
       compareAtPrice: compareAtPrice == freezed
@@ -394,10 +349,11 @@ class _$_ProductVariant extends _ProductVariant {
       required this.quantityAvailable,
       this.unitPrice,
       this.unitPriceMeasurement,
-      this.selectedOptions,
+      final List<SelectedOption>? selectedOptions,
       this.compareAtPrice,
       this.image})
-      : super._();
+      : _selectedOptions = selectedOptions,
+        super._();
 
   factory _$_ProductVariant.fromJson(Map<String, dynamic> json) =>
       _$$_ProductVariantFromJson(json);
@@ -424,8 +380,15 @@ class _$_ProductVariant extends _ProductVariant {
   final PriceV2? unitPrice;
   @override
   final UnitPriceMeasurement? unitPriceMeasurement;
+  final List<SelectedOption>? _selectedOptions;
   @override
-  final List<SelectedOption>? selectedOptions;
+  List<SelectedOption>? get selectedOptions {
+    final value = _selectedOptions;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final PriceV2? compareAtPrice;
   @override
@@ -440,7 +403,7 @@ class _$_ProductVariant extends _ProductVariant {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductVariant &&
+            other is _$_ProductVariant &&
             const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.weight, weight) &&
@@ -458,12 +421,13 @@ class _$_ProductVariant extends _ProductVariant {
             const DeepCollectionEquality()
                 .equals(other.unitPriceMeasurement, unitPriceMeasurement) &&
             const DeepCollectionEquality()
-                .equals(other.selectedOptions, selectedOptions) &&
+                .equals(other._selectedOptions, _selectedOptions) &&
             const DeepCollectionEquality()
                 .equals(other.compareAtPrice, compareAtPrice) &&
             const DeepCollectionEquality().equals(other.image, image));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -478,14 +442,14 @@ class _$_ProductVariant extends _ProductVariant {
       const DeepCollectionEquality().hash(quantityAvailable),
       const DeepCollectionEquality().hash(unitPrice),
       const DeepCollectionEquality().hash(unitPriceMeasurement),
-      const DeepCollectionEquality().hash(selectedOptions),
+      const DeepCollectionEquality().hash(_selectedOptions),
       const DeepCollectionEquality().hash(compareAtPrice),
       const DeepCollectionEquality().hash(image));
 
   @JsonKey(ignore: true)
   @override
-  _$ProductVariantCopyWith<_ProductVariant> get copyWith =>
-      __$ProductVariantCopyWithImpl<_ProductVariant>(this, _$identity);
+  _$$_ProductVariantCopyWith<_$_ProductVariant> get copyWith =>
+      __$$_ProductVariantCopyWithImpl<_$_ProductVariant>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -495,55 +459,57 @@ class _$_ProductVariant extends _ProductVariant {
 
 abstract class _ProductVariant extends ProductVariant {
   factory _ProductVariant(
-      {required PriceV2 price,
-      required String title,
-      required double weight,
-      required String weightUnit,
-      required bool availableForSale,
-      required String sku,
-      required bool requiresShipping,
-      required String id,
-      required int quantityAvailable,
-      PriceV2? unitPrice,
-      UnitPriceMeasurement? unitPriceMeasurement,
-      List<SelectedOption>? selectedOptions,
-      PriceV2? compareAtPrice,
-      ShopifyImage? image}) = _$_ProductVariant;
+      {required final PriceV2 price,
+      required final String title,
+      required final double weight,
+      required final String weightUnit,
+      required final bool availableForSale,
+      required final String sku,
+      required final bool requiresShipping,
+      required final String id,
+      required final int quantityAvailable,
+      final PriceV2? unitPrice,
+      final UnitPriceMeasurement? unitPriceMeasurement,
+      final List<SelectedOption>? selectedOptions,
+      final PriceV2? compareAtPrice,
+      final ShopifyImage? image}) = _$_ProductVariant;
   _ProductVariant._() : super._();
 
   factory _ProductVariant.fromJson(Map<String, dynamic> json) =
       _$_ProductVariant.fromJson;
 
   @override
-  PriceV2 get price;
+  PriceV2 get price => throw _privateConstructorUsedError;
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  double get weight;
+  double get weight => throw _privateConstructorUsedError;
   @override
-  String get weightUnit;
+  String get weightUnit => throw _privateConstructorUsedError;
   @override
-  bool get availableForSale;
+  bool get availableForSale => throw _privateConstructorUsedError;
   @override
-  String get sku;
+  String get sku => throw _privateConstructorUsedError;
   @override
-  bool get requiresShipping;
+  bool get requiresShipping => throw _privateConstructorUsedError;
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  int get quantityAvailable;
+  int get quantityAvailable => throw _privateConstructorUsedError;
   @override
-  PriceV2? get unitPrice;
+  PriceV2? get unitPrice => throw _privateConstructorUsedError;
   @override
-  UnitPriceMeasurement? get unitPriceMeasurement;
+  UnitPriceMeasurement? get unitPriceMeasurement =>
+      throw _privateConstructorUsedError;
   @override
-  List<SelectedOption>? get selectedOptions;
+  List<SelectedOption>? get selectedOptions =>
+      throw _privateConstructorUsedError;
   @override
-  PriceV2? get compareAtPrice;
+  PriceV2? get compareAtPrice => throw _privateConstructorUsedError;
   @override
-  ShopifyImage? get image;
+  ShopifyImage? get image => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProductVariantCopyWith<_ProductVariant> get copyWith =>
+  _$$_ProductVariantCopyWith<_$_ProductVariant> get copyWith =>
       throw _privateConstructorUsedError;
 }

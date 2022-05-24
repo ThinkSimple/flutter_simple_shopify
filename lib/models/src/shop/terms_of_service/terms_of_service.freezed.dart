@@ -12,34 +12,11 @@ part of 'terms_of_service.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 TermsOfService _$TermsOfServiceFromJson(Map<String, dynamic> json) {
   return _TermsOfService.fromJson(json);
 }
-
-/// @nodoc
-class _$TermsOfServiceTearOff {
-  const _$TermsOfServiceTearOff();
-
-  _TermsOfService call(
-      {String? body, String? handle, String? id, String? title, String? url}) {
-    return _TermsOfService(
-      body: body,
-      handle: handle,
-      id: id,
-      title: title,
-      url: url,
-    );
-  }
-
-  TermsOfService fromJson(Map<String, Object?> json) {
-    return TermsOfService.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $TermsOfService = _$TermsOfServiceTearOff();
 
 /// @nodoc
 mixin _$TermsOfService {
@@ -107,26 +84,26 @@ class _$TermsOfServiceCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$TermsOfServiceCopyWith<$Res>
+abstract class _$$_TermsOfServiceCopyWith<$Res>
     implements $TermsOfServiceCopyWith<$Res> {
-  factory _$TermsOfServiceCopyWith(
-          _TermsOfService value, $Res Function(_TermsOfService) then) =
-      __$TermsOfServiceCopyWithImpl<$Res>;
+  factory _$$_TermsOfServiceCopyWith(
+          _$_TermsOfService value, $Res Function(_$_TermsOfService) then) =
+      __$$_TermsOfServiceCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? body, String? handle, String? id, String? title, String? url});
 }
 
 /// @nodoc
-class __$TermsOfServiceCopyWithImpl<$Res>
+class __$$_TermsOfServiceCopyWithImpl<$Res>
     extends _$TermsOfServiceCopyWithImpl<$Res>
-    implements _$TermsOfServiceCopyWith<$Res> {
-  __$TermsOfServiceCopyWithImpl(
-      _TermsOfService _value, $Res Function(_TermsOfService) _then)
-      : super(_value, (v) => _then(v as _TermsOfService));
+    implements _$$_TermsOfServiceCopyWith<$Res> {
+  __$$_TermsOfServiceCopyWithImpl(
+      _$_TermsOfService _value, $Res Function(_$_TermsOfService) _then)
+      : super(_value, (v) => _then(v as _$_TermsOfService));
 
   @override
-  _TermsOfService get _value => super._value as _TermsOfService;
+  _$_TermsOfService get _value => super._value as _$_TermsOfService;
 
   @override
   $Res call({
@@ -136,7 +113,7 @@ class __$TermsOfServiceCopyWithImpl<$Res>
     Object? title = freezed,
     Object? url = freezed,
   }) {
-    return _then(_TermsOfService(
+    return _then(_$_TermsOfService(
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -189,7 +166,7 @@ class _$_TermsOfService implements _TermsOfService {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TermsOfService &&
+            other is _$_TermsOfService &&
             const DeepCollectionEquality().equals(other.body, body) &&
             const DeepCollectionEquality().equals(other.handle, handle) &&
             const DeepCollectionEquality().equals(other.id, id) &&
@@ -197,6 +174,7 @@ class _$_TermsOfService implements _TermsOfService {
             const DeepCollectionEquality().equals(other.url, url));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -208,8 +186,8 @@ class _$_TermsOfService implements _TermsOfService {
 
   @JsonKey(ignore: true)
   @override
-  _$TermsOfServiceCopyWith<_TermsOfService> get copyWith =>
-      __$TermsOfServiceCopyWithImpl<_TermsOfService>(this, _$identity);
+  _$$_TermsOfServiceCopyWith<_$_TermsOfService> get copyWith =>
+      __$$_TermsOfServiceCopyWithImpl<_$_TermsOfService>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -219,27 +197,27 @@ class _$_TermsOfService implements _TermsOfService {
 
 abstract class _TermsOfService implements TermsOfService {
   factory _TermsOfService(
-      {String? body,
-      String? handle,
-      String? id,
-      String? title,
-      String? url}) = _$_TermsOfService;
+      {final String? body,
+      final String? handle,
+      final String? id,
+      final String? title,
+      final String? url}) = _$_TermsOfService;
 
   factory _TermsOfService.fromJson(Map<String, dynamic> json) =
       _$_TermsOfService.fromJson;
 
   @override
-  String? get body;
+  String? get body => throw _privateConstructorUsedError;
   @override
-  String? get handle;
+  String? get handle => throw _privateConstructorUsedError;
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get title;
+  String? get title => throw _privateConstructorUsedError;
   @override
-  String? get url;
+  String? get url => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TermsOfServiceCopyWith<_TermsOfService> get copyWith =>
+  _$$_TermsOfServiceCopyWith<_$_TermsOfService> get copyWith =>
       throw _privateConstructorUsedError;
 }

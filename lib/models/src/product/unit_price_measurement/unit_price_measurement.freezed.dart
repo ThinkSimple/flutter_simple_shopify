@@ -12,38 +12,11 @@ part of 'unit_price_measurement.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 UnitPriceMeasurement _$UnitPriceMeasurementFromJson(Map<String, dynamic> json) {
   return _UnitPriceMeasurement.fromJson(json);
 }
-
-/// @nodoc
-class _$UnitPriceMeasurementTearOff {
-  const _$UnitPriceMeasurementTearOff();
-
-  _UnitPriceMeasurement call(
-      {required String measuredType,
-      required String quantityUnit,
-      required double quantityValue,
-      required String referenceUnit,
-      required int referenceValue}) {
-    return _UnitPriceMeasurement(
-      measuredType: measuredType,
-      quantityUnit: quantityUnit,
-      quantityValue: quantityValue,
-      referenceUnit: referenceUnit,
-      referenceValue: referenceValue,
-    );
-  }
-
-  UnitPriceMeasurement fromJson(Map<String, Object?> json) {
-    return UnitPriceMeasurement.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $UnitPriceMeasurement = _$UnitPriceMeasurementTearOff();
 
 /// @nodoc
 mixin _$UnitPriceMeasurement {
@@ -115,11 +88,11 @@ class _$UnitPriceMeasurementCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$UnitPriceMeasurementCopyWith<$Res>
+abstract class _$$_UnitPriceMeasurementCopyWith<$Res>
     implements $UnitPriceMeasurementCopyWith<$Res> {
-  factory _$UnitPriceMeasurementCopyWith(_UnitPriceMeasurement value,
-          $Res Function(_UnitPriceMeasurement) then) =
-      __$UnitPriceMeasurementCopyWithImpl<$Res>;
+  factory _$$_UnitPriceMeasurementCopyWith(_$_UnitPriceMeasurement value,
+          $Res Function(_$_UnitPriceMeasurement) then) =
+      __$$_UnitPriceMeasurementCopyWithImpl<$Res>;
   @override
   $Res call(
       {String measuredType,
@@ -130,15 +103,15 @@ abstract class _$UnitPriceMeasurementCopyWith<$Res>
 }
 
 /// @nodoc
-class __$UnitPriceMeasurementCopyWithImpl<$Res>
+class __$$_UnitPriceMeasurementCopyWithImpl<$Res>
     extends _$UnitPriceMeasurementCopyWithImpl<$Res>
-    implements _$UnitPriceMeasurementCopyWith<$Res> {
-  __$UnitPriceMeasurementCopyWithImpl(
-      _UnitPriceMeasurement _value, $Res Function(_UnitPriceMeasurement) _then)
-      : super(_value, (v) => _then(v as _UnitPriceMeasurement));
+    implements _$$_UnitPriceMeasurementCopyWith<$Res> {
+  __$$_UnitPriceMeasurementCopyWithImpl(_$_UnitPriceMeasurement _value,
+      $Res Function(_$_UnitPriceMeasurement) _then)
+      : super(_value, (v) => _then(v as _$_UnitPriceMeasurement));
 
   @override
-  _UnitPriceMeasurement get _value => super._value as _UnitPriceMeasurement;
+  _$_UnitPriceMeasurement get _value => super._value as _$_UnitPriceMeasurement;
 
   @override
   $Res call({
@@ -148,7 +121,7 @@ class __$UnitPriceMeasurementCopyWithImpl<$Res>
     Object? referenceUnit = freezed,
     Object? referenceValue = freezed,
   }) {
-    return _then(_UnitPriceMeasurement(
+    return _then(_$_UnitPriceMeasurement(
       measuredType: measuredType == freezed
           ? _value.measuredType
           : measuredType // ignore: cast_nullable_to_non_nullable
@@ -207,7 +180,7 @@ class _$_UnitPriceMeasurement extends _UnitPriceMeasurement {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UnitPriceMeasurement &&
+            other is _$_UnitPriceMeasurement &&
             const DeepCollectionEquality()
                 .equals(other.measuredType, measuredType) &&
             const DeepCollectionEquality()
@@ -220,6 +193,7 @@ class _$_UnitPriceMeasurement extends _UnitPriceMeasurement {
                 .equals(other.referenceValue, referenceValue));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -231,8 +205,8 @@ class _$_UnitPriceMeasurement extends _UnitPriceMeasurement {
 
   @JsonKey(ignore: true)
   @override
-  _$UnitPriceMeasurementCopyWith<_UnitPriceMeasurement> get copyWith =>
-      __$UnitPriceMeasurementCopyWithImpl<_UnitPriceMeasurement>(
+  _$$_UnitPriceMeasurementCopyWith<_$_UnitPriceMeasurement> get copyWith =>
+      __$$_UnitPriceMeasurementCopyWithImpl<_$_UnitPriceMeasurement>(
           this, _$identity);
 
   @override
@@ -243,28 +217,28 @@ class _$_UnitPriceMeasurement extends _UnitPriceMeasurement {
 
 abstract class _UnitPriceMeasurement extends UnitPriceMeasurement {
   factory _UnitPriceMeasurement(
-      {required String measuredType,
-      required String quantityUnit,
-      required double quantityValue,
-      required String referenceUnit,
-      required int referenceValue}) = _$_UnitPriceMeasurement;
+      {required final String measuredType,
+      required final String quantityUnit,
+      required final double quantityValue,
+      required final String referenceUnit,
+      required final int referenceValue}) = _$_UnitPriceMeasurement;
   _UnitPriceMeasurement._() : super._();
 
   factory _UnitPriceMeasurement.fromJson(Map<String, dynamic> json) =
       _$_UnitPriceMeasurement.fromJson;
 
   @override
-  String get measuredType;
+  String get measuredType => throw _privateConstructorUsedError;
   @override
-  String get quantityUnit;
+  String get quantityUnit => throw _privateConstructorUsedError;
   @override
-  double get quantityValue;
+  double get quantityValue => throw _privateConstructorUsedError;
   @override
-  String get referenceUnit;
+  String get referenceUnit => throw _privateConstructorUsedError;
   @override
-  int get referenceValue;
+  int get referenceValue => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UnitPriceMeasurementCopyWith<_UnitPriceMeasurement> get copyWith =>
+  _$$_UnitPriceMeasurementCopyWith<_$_UnitPriceMeasurement> get copyWith =>
       throw _privateConstructorUsedError;
 }

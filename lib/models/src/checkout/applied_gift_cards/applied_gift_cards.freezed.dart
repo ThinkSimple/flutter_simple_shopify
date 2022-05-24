@@ -12,34 +12,11 @@ part of 'applied_gift_cards.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AppliedGiftCards _$AppliedGiftCardsFromJson(Map<String, dynamic> json) {
   return _AppliedGiftCards.fromJson(json);
 }
-
-/// @nodoc
-class _$AppliedGiftCardsTearOff {
-  const _$AppliedGiftCardsTearOff();
-
-  _AppliedGiftCards call(
-      {required PriceV2 amountUsedV2,
-      required PriceV2 balanceV2,
-      required String id}) {
-    return _AppliedGiftCards(
-      amountUsedV2: amountUsedV2,
-      balanceV2: balanceV2,
-      id: id,
-    );
-  }
-
-  AppliedGiftCards fromJson(Map<String, Object?> json) {
-    return AppliedGiftCards.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AppliedGiftCards = _$AppliedGiftCardsTearOff();
 
 /// @nodoc
 mixin _$AppliedGiftCards {
@@ -111,11 +88,11 @@ class _$AppliedGiftCardsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AppliedGiftCardsCopyWith<$Res>
+abstract class _$$_AppliedGiftCardsCopyWith<$Res>
     implements $AppliedGiftCardsCopyWith<$Res> {
-  factory _$AppliedGiftCardsCopyWith(
-          _AppliedGiftCards value, $Res Function(_AppliedGiftCards) then) =
-      __$AppliedGiftCardsCopyWithImpl<$Res>;
+  factory _$$_AppliedGiftCardsCopyWith(
+          _$_AppliedGiftCards value, $Res Function(_$_AppliedGiftCards) then) =
+      __$$_AppliedGiftCardsCopyWithImpl<$Res>;
   @override
   $Res call({PriceV2 amountUsedV2, PriceV2 balanceV2, String id});
 
@@ -126,15 +103,15 @@ abstract class _$AppliedGiftCardsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AppliedGiftCardsCopyWithImpl<$Res>
+class __$$_AppliedGiftCardsCopyWithImpl<$Res>
     extends _$AppliedGiftCardsCopyWithImpl<$Res>
-    implements _$AppliedGiftCardsCopyWith<$Res> {
-  __$AppliedGiftCardsCopyWithImpl(
-      _AppliedGiftCards _value, $Res Function(_AppliedGiftCards) _then)
-      : super(_value, (v) => _then(v as _AppliedGiftCards));
+    implements _$$_AppliedGiftCardsCopyWith<$Res> {
+  __$$_AppliedGiftCardsCopyWithImpl(
+      _$_AppliedGiftCards _value, $Res Function(_$_AppliedGiftCards) _then)
+      : super(_value, (v) => _then(v as _$_AppliedGiftCards));
 
   @override
-  _AppliedGiftCards get _value => super._value as _AppliedGiftCards;
+  _$_AppliedGiftCards get _value => super._value as _$_AppliedGiftCards;
 
   @override
   $Res call({
@@ -142,7 +119,7 @@ class __$AppliedGiftCardsCopyWithImpl<$Res>
     Object? balanceV2 = freezed,
     Object? id = freezed,
   }) {
-    return _then(_AppliedGiftCards(
+    return _then(_$_AppliedGiftCards(
       amountUsedV2: amountUsedV2 == freezed
           ? _value.amountUsedV2
           : amountUsedV2 // ignore: cast_nullable_to_non_nullable
@@ -185,13 +162,14 @@ class _$_AppliedGiftCards extends _AppliedGiftCards {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AppliedGiftCards &&
+            other is _$_AppliedGiftCards &&
             const DeepCollectionEquality()
                 .equals(other.amountUsedV2, amountUsedV2) &&
             const DeepCollectionEquality().equals(other.balanceV2, balanceV2) &&
             const DeepCollectionEquality().equals(other.id, id));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -201,8 +179,8 @@ class _$_AppliedGiftCards extends _AppliedGiftCards {
 
   @JsonKey(ignore: true)
   @override
-  _$AppliedGiftCardsCopyWith<_AppliedGiftCards> get copyWith =>
-      __$AppliedGiftCardsCopyWithImpl<_AppliedGiftCards>(this, _$identity);
+  _$$_AppliedGiftCardsCopyWith<_$_AppliedGiftCards> get copyWith =>
+      __$$_AppliedGiftCardsCopyWithImpl<_$_AppliedGiftCards>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -212,22 +190,22 @@ class _$_AppliedGiftCards extends _AppliedGiftCards {
 
 abstract class _AppliedGiftCards extends AppliedGiftCards {
   factory _AppliedGiftCards(
-      {required PriceV2 amountUsedV2,
-      required PriceV2 balanceV2,
-      required String id}) = _$_AppliedGiftCards;
+      {required final PriceV2 amountUsedV2,
+      required final PriceV2 balanceV2,
+      required final String id}) = _$_AppliedGiftCards;
   _AppliedGiftCards._() : super._();
 
   factory _AppliedGiftCards.fromJson(Map<String, dynamic> json) =
       _$_AppliedGiftCards.fromJson;
 
   @override
-  PriceV2 get amountUsedV2;
+  PriceV2 get amountUsedV2 => throw _privateConstructorUsedError;
   @override
-  PriceV2 get balanceV2;
+  PriceV2 get balanceV2 => throw _privateConstructorUsedError;
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppliedGiftCardsCopyWith<_AppliedGiftCards> get copyWith =>
+  _$$_AppliedGiftCardsCopyWith<_$_AppliedGiftCards> get copyWith =>
       throw _privateConstructorUsedError;
 }

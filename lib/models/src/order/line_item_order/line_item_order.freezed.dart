@@ -12,42 +12,11 @@ part of 'line_item_order.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 LineItemOrder _$LineItemOrderFromJson(Map<String, dynamic> json) {
   return _LineItemOrder.fromJson(json);
 }
-
-/// @nodoc
-class _$LineItemOrderTearOff {
-  const _$LineItemOrderTearOff();
-
-  _LineItemOrder call(
-      {required int currentQuantity,
-      required PriceV2 discountedTotalPrice,
-      required PriceV2 originalTotalPrice,
-      required int quantity,
-      required String title,
-      List<DiscountAllocations> discountAllocations = const [],
-      ProductVariantCheckout? variant = null}) {
-    return _LineItemOrder(
-      currentQuantity: currentQuantity,
-      discountedTotalPrice: discountedTotalPrice,
-      originalTotalPrice: originalTotalPrice,
-      quantity: quantity,
-      title: title,
-      discountAllocations: discountAllocations,
-      variant: variant,
-    );
-  }
-
-  LineItemOrder fromJson(Map<String, Object?> json) {
-    return LineItemOrder.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $LineItemOrder = _$LineItemOrderTearOff();
 
 /// @nodoc
 mixin _$LineItemOrder {
@@ -163,11 +132,11 @@ class _$LineItemOrderCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$LineItemOrderCopyWith<$Res>
+abstract class _$$_LineItemOrderCopyWith<$Res>
     implements $LineItemOrderCopyWith<$Res> {
-  factory _$LineItemOrderCopyWith(
-          _LineItemOrder value, $Res Function(_LineItemOrder) then) =
-      __$LineItemOrderCopyWithImpl<$Res>;
+  factory _$$_LineItemOrderCopyWith(
+          _$_LineItemOrder value, $Res Function(_$_LineItemOrder) then) =
+      __$$_LineItemOrderCopyWithImpl<$Res>;
   @override
   $Res call(
       {int currentQuantity,
@@ -187,15 +156,15 @@ abstract class _$LineItemOrderCopyWith<$Res>
 }
 
 /// @nodoc
-class __$LineItemOrderCopyWithImpl<$Res>
+class __$$_LineItemOrderCopyWithImpl<$Res>
     extends _$LineItemOrderCopyWithImpl<$Res>
-    implements _$LineItemOrderCopyWith<$Res> {
-  __$LineItemOrderCopyWithImpl(
-      _LineItemOrder _value, $Res Function(_LineItemOrder) _then)
-      : super(_value, (v) => _then(v as _LineItemOrder));
+    implements _$$_LineItemOrderCopyWith<$Res> {
+  __$$_LineItemOrderCopyWithImpl(
+      _$_LineItemOrder _value, $Res Function(_$_LineItemOrder) _then)
+      : super(_value, (v) => _then(v as _$_LineItemOrder));
 
   @override
-  _LineItemOrder get _value => super._value as _LineItemOrder;
+  _$_LineItemOrder get _value => super._value as _$_LineItemOrder;
 
   @override
   $Res call({
@@ -207,7 +176,7 @@ class __$LineItemOrderCopyWithImpl<$Res>
     Object? discountAllocations = freezed,
     Object? variant = freezed,
   }) {
-    return _then(_LineItemOrder(
+    return _then(_$_LineItemOrder(
       currentQuantity: currentQuantity == freezed
           ? _value.currentQuantity
           : currentQuantity // ignore: cast_nullable_to_non_nullable
@@ -229,7 +198,7 @@ class __$LineItemOrderCopyWithImpl<$Res>
           : title // ignore: cast_nullable_to_non_nullable
               as String,
       discountAllocations: discountAllocations == freezed
-          ? _value.discountAllocations
+          ? _value._discountAllocations
           : discountAllocations // ignore: cast_nullable_to_non_nullable
               as List<DiscountAllocations>,
       variant: variant == freezed
@@ -249,9 +218,10 @@ class _$_LineItemOrder extends _LineItemOrder {
       required this.originalTotalPrice,
       required this.quantity,
       required this.title,
-      this.discountAllocations = const [],
+      final List<DiscountAllocations> discountAllocations = const [],
       this.variant = null})
-      : super._();
+      : _discountAllocations = discountAllocations,
+        super._();
 
   factory _$_LineItemOrder.fromJson(Map<String, dynamic> json) =>
       _$$_LineItemOrderFromJson(json);
@@ -266,11 +236,16 @@ class _$_LineItemOrder extends _LineItemOrder {
   final int quantity;
   @override
   final String title;
-  @JsonKey()
+  final List<DiscountAllocations> _discountAllocations;
   @override
-  final List<DiscountAllocations> discountAllocations;
   @JsonKey()
+  List<DiscountAllocations> get discountAllocations {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_discountAllocations);
+  }
+
   @override
+  @JsonKey()
   final ProductVariantCheckout? variant;
 
   @override
@@ -282,7 +257,7 @@ class _$_LineItemOrder extends _LineItemOrder {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LineItemOrder &&
+            other is _$_LineItemOrder &&
             const DeepCollectionEquality()
                 .equals(other.currentQuantity, currentQuantity) &&
             const DeepCollectionEquality()
@@ -292,10 +267,11 @@ class _$_LineItemOrder extends _LineItemOrder {
             const DeepCollectionEquality().equals(other.quantity, quantity) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
-                .equals(other.discountAllocations, discountAllocations) &&
+                .equals(other._discountAllocations, _discountAllocations) &&
             const DeepCollectionEquality().equals(other.variant, variant));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -304,13 +280,13 @@ class _$_LineItemOrder extends _LineItemOrder {
       const DeepCollectionEquality().hash(originalTotalPrice),
       const DeepCollectionEquality().hash(quantity),
       const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(discountAllocations),
+      const DeepCollectionEquality().hash(_discountAllocations),
       const DeepCollectionEquality().hash(variant));
 
   @JsonKey(ignore: true)
   @override
-  _$LineItemOrderCopyWith<_LineItemOrder> get copyWith =>
-      __$LineItemOrderCopyWithImpl<_LineItemOrder>(this, _$identity);
+  _$$_LineItemOrderCopyWith<_$_LineItemOrder> get copyWith =>
+      __$$_LineItemOrderCopyWithImpl<_$_LineItemOrder>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -320,34 +296,35 @@ class _$_LineItemOrder extends _LineItemOrder {
 
 abstract class _LineItemOrder extends LineItemOrder {
   factory _LineItemOrder(
-      {required int currentQuantity,
-      required PriceV2 discountedTotalPrice,
-      required PriceV2 originalTotalPrice,
-      required int quantity,
-      required String title,
-      List<DiscountAllocations> discountAllocations,
-      ProductVariantCheckout? variant}) = _$_LineItemOrder;
+      {required final int currentQuantity,
+      required final PriceV2 discountedTotalPrice,
+      required final PriceV2 originalTotalPrice,
+      required final int quantity,
+      required final String title,
+      final List<DiscountAllocations> discountAllocations,
+      final ProductVariantCheckout? variant}) = _$_LineItemOrder;
   _LineItemOrder._() : super._();
 
   factory _LineItemOrder.fromJson(Map<String, dynamic> json) =
       _$_LineItemOrder.fromJson;
 
   @override
-  int get currentQuantity;
+  int get currentQuantity => throw _privateConstructorUsedError;
   @override
-  PriceV2 get discountedTotalPrice;
+  PriceV2 get discountedTotalPrice => throw _privateConstructorUsedError;
   @override
-  PriceV2 get originalTotalPrice;
+  PriceV2 get originalTotalPrice => throw _privateConstructorUsedError;
   @override
-  int get quantity;
+  int get quantity => throw _privateConstructorUsedError;
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  List<DiscountAllocations> get discountAllocations;
+  List<DiscountAllocations> get discountAllocations =>
+      throw _privateConstructorUsedError;
   @override
-  ProductVariantCheckout? get variant;
+  ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LineItemOrderCopyWith<_LineItemOrder> get copyWith =>
+  _$$_LineItemOrderCopyWith<_$_LineItemOrder> get copyWith =>
       throw _privateConstructorUsedError;
 }

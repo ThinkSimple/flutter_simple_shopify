@@ -12,62 +12,11 @@ part of 'order.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Order _$OrderFromJson(Map<String, dynamic> json) {
   return _Order.fromJson(json);
 }
-
-/// @nodoc
-class _$OrderTearOff {
-  const _$OrderTearOff();
-
-  _Order call(
-      {required String id,
-      required String email,
-      required String currencyCode,
-      required String customerUrl,
-      required LineItemsOrder lineItems,
-      required String name,
-      required int orderNumber,
-      required String processedAt,
-      required ShippingAddress shippingAddress,
-      required String statusUrl,
-      required PriceV2 subtotalPriceV2,
-      required PriceV2 totalPriceV2,
-      required PriceV2 totalShippingPriceV2,
-      required PriceV2 totalTaxV2,
-      PriceV2? totalRefundedV2,
-      String? phone,
-      String? cursor}) {
-    return _Order(
-      id: id,
-      email: email,
-      currencyCode: currencyCode,
-      customerUrl: customerUrl,
-      lineItems: lineItems,
-      name: name,
-      orderNumber: orderNumber,
-      processedAt: processedAt,
-      shippingAddress: shippingAddress,
-      statusUrl: statusUrl,
-      subtotalPriceV2: subtotalPriceV2,
-      totalPriceV2: totalPriceV2,
-      totalShippingPriceV2: totalShippingPriceV2,
-      totalTaxV2: totalTaxV2,
-      totalRefundedV2: totalRefundedV2,
-      phone: phone,
-      cursor: cursor,
-    );
-  }
-
-  Order fromJson(Map<String, Object?> json) {
-    return Order.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Order = _$OrderTearOff();
 
 /// @nodoc
 mixin _$Order {
@@ -281,9 +230,9 @@ class _$OrderCopyWithImpl<$Res> implements $OrderCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
-  factory _$OrderCopyWith(_Order value, $Res Function(_Order) then) =
-      __$OrderCopyWithImpl<$Res>;
+abstract class _$$_OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
+  factory _$$_OrderCopyWith(_$_Order value, $Res Function(_$_Order) then) =
+      __$$_OrderCopyWithImpl<$Res>;
   @override
   $Res call(
       {String id,
@@ -321,13 +270,13 @@ abstract class _$OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res>
-    implements _$OrderCopyWith<$Res> {
-  __$OrderCopyWithImpl(_Order _value, $Res Function(_Order) _then)
-      : super(_value, (v) => _then(v as _Order));
+class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res>
+    implements _$$_OrderCopyWith<$Res> {
+  __$$_OrderCopyWithImpl(_$_Order _value, $Res Function(_$_Order) _then)
+      : super(_value, (v) => _then(v as _$_Order));
 
   @override
-  _Order get _value => super._value as _Order;
+  _$_Order get _value => super._value as _$_Order;
 
   @override
   $Res call({
@@ -349,7 +298,7 @@ class __$OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? cursor = freezed,
   }) {
-    return _then(_Order(
+    return _then(_$_Order(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -492,7 +441,7 @@ class _$_Order extends _Order {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Order &&
+            other is _$_Order &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality()
@@ -522,6 +471,7 @@ class _$_Order extends _Order {
             const DeepCollectionEquality().equals(other.cursor, cursor));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -545,8 +495,8 @@ class _$_Order extends _Order {
 
   @JsonKey(ignore: true)
   @override
-  _$OrderCopyWith<_Order> get copyWith =>
-      __$OrderCopyWithImpl<_Order>(this, _$identity);
+  _$$_OrderCopyWith<_$_Order> get copyWith =>
+      __$$_OrderCopyWithImpl<_$_Order>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -556,62 +506,63 @@ class _$_Order extends _Order {
 
 abstract class _Order extends Order {
   factory _Order(
-      {required String id,
-      required String email,
-      required String currencyCode,
-      required String customerUrl,
-      required LineItemsOrder lineItems,
-      required String name,
-      required int orderNumber,
-      required String processedAt,
-      required ShippingAddress shippingAddress,
-      required String statusUrl,
-      required PriceV2 subtotalPriceV2,
-      required PriceV2 totalPriceV2,
-      required PriceV2 totalShippingPriceV2,
-      required PriceV2 totalTaxV2,
-      PriceV2? totalRefundedV2,
-      String? phone,
-      String? cursor}) = _$_Order;
+      {required final String id,
+      required final String email,
+      required final String currencyCode,
+      required final String customerUrl,
+      required final LineItemsOrder lineItems,
+      required final String name,
+      required final int orderNumber,
+      required final String processedAt,
+      required final ShippingAddress shippingAddress,
+      required final String statusUrl,
+      required final PriceV2 subtotalPriceV2,
+      required final PriceV2 totalPriceV2,
+      required final PriceV2 totalShippingPriceV2,
+      required final PriceV2 totalTaxV2,
+      final PriceV2? totalRefundedV2,
+      final String? phone,
+      final String? cursor}) = _$_Order;
   _Order._() : super._();
 
   factory _Order.fromJson(Map<String, dynamic> json) = _$_Order.fromJson;
 
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String get email;
+  String get email => throw _privateConstructorUsedError;
   @override
-  String get currencyCode;
+  String get currencyCode => throw _privateConstructorUsedError;
   @override
-  String get customerUrl;
+  String get customerUrl => throw _privateConstructorUsedError;
   @override
-  LineItemsOrder get lineItems;
+  LineItemsOrder get lineItems => throw _privateConstructorUsedError;
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  int get orderNumber;
+  int get orderNumber => throw _privateConstructorUsedError;
   @override
-  String get processedAt;
+  String get processedAt => throw _privateConstructorUsedError;
   @override
-  ShippingAddress get shippingAddress;
+  ShippingAddress get shippingAddress => throw _privateConstructorUsedError;
   @override
-  String get statusUrl;
+  String get statusUrl => throw _privateConstructorUsedError;
   @override
-  PriceV2 get subtotalPriceV2;
+  PriceV2 get subtotalPriceV2 => throw _privateConstructorUsedError;
   @override
-  PriceV2 get totalPriceV2;
+  PriceV2 get totalPriceV2 => throw _privateConstructorUsedError;
   @override
-  PriceV2 get totalShippingPriceV2;
+  PriceV2 get totalShippingPriceV2 => throw _privateConstructorUsedError;
   @override
-  PriceV2 get totalTaxV2;
+  PriceV2 get totalTaxV2 => throw _privateConstructorUsedError;
   @override
-  PriceV2? get totalRefundedV2;
+  PriceV2? get totalRefundedV2 => throw _privateConstructorUsedError;
   @override
-  String? get phone;
+  String? get phone => throw _privateConstructorUsedError;
   @override
-  String? get cursor;
+  String? get cursor => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$OrderCopyWith<_Order> get copyWith => throw _privateConstructorUsedError;
+  _$$_OrderCopyWith<_$_Order> get copyWith =>
+      throw _privateConstructorUsedError;
 }

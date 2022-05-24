@@ -12,62 +12,11 @@ part of 'mailing_address.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 MailingAddress _$MailingAddressFromJson(Map<String, dynamic> json) {
   return _MailingAddress.fromJson(json);
 }
-
-/// @nodoc
-class _$MailingAddressTearOff {
-  const _$MailingAddressTearOff();
-
-  _MailingAddress call(
-      {required String id,
-      required String address1,
-      required String city,
-      required String country,
-      required String zip,
-      String? lastName,
-      String? name,
-      String? firstName,
-      String? address2,
-      String? company,
-      String? countryCodeV2,
-      String? formattedArea,
-      double? latitude,
-      double? longitude,
-      String? phone,
-      String? province,
-      String? provinceCode}) {
-    return _MailingAddress(
-      id: id,
-      address1: address1,
-      city: city,
-      country: country,
-      zip: zip,
-      lastName: lastName,
-      name: name,
-      firstName: firstName,
-      address2: address2,
-      company: company,
-      countryCodeV2: countryCodeV2,
-      formattedArea: formattedArea,
-      latitude: latitude,
-      longitude: longitude,
-      phone: phone,
-      province: province,
-      provinceCode: provinceCode,
-    );
-  }
-
-  MailingAddress fromJson(Map<String, Object?> json) {
-    return MailingAddress.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MailingAddress = _$MailingAddressTearOff();
 
 /// @nodoc
 mixin _$MailingAddress {
@@ -223,11 +172,11 @@ class _$MailingAddressCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MailingAddressCopyWith<$Res>
+abstract class _$$_MailingAddressCopyWith<$Res>
     implements $MailingAddressCopyWith<$Res> {
-  factory _$MailingAddressCopyWith(
-          _MailingAddress value, $Res Function(_MailingAddress) then) =
-      __$MailingAddressCopyWithImpl<$Res>;
+  factory _$$_MailingAddressCopyWith(
+          _$_MailingAddress value, $Res Function(_$_MailingAddress) then) =
+      __$$_MailingAddressCopyWithImpl<$Res>;
   @override
   $Res call(
       {String id,
@@ -250,15 +199,15 @@ abstract class _$MailingAddressCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MailingAddressCopyWithImpl<$Res>
+class __$$_MailingAddressCopyWithImpl<$Res>
     extends _$MailingAddressCopyWithImpl<$Res>
-    implements _$MailingAddressCopyWith<$Res> {
-  __$MailingAddressCopyWithImpl(
-      _MailingAddress _value, $Res Function(_MailingAddress) _then)
-      : super(_value, (v) => _then(v as _MailingAddress));
+    implements _$$_MailingAddressCopyWith<$Res> {
+  __$$_MailingAddressCopyWithImpl(
+      _$_MailingAddress _value, $Res Function(_$_MailingAddress) _then)
+      : super(_value, (v) => _then(v as _$_MailingAddress));
 
   @override
-  _MailingAddress get _value => super._value as _MailingAddress;
+  _$_MailingAddress get _value => super._value as _$_MailingAddress;
 
   @override
   $Res call({
@@ -280,7 +229,7 @@ class __$MailingAddressCopyWithImpl<$Res>
     Object? province = freezed,
     Object? provinceCode = freezed,
   }) {
-    return _then(_MailingAddress(
+    return _then(_$_MailingAddress(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -422,7 +371,7 @@ class _$_MailingAddress implements _MailingAddress {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MailingAddress &&
+            other is _$_MailingAddress &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.address1, address1) &&
             const DeepCollectionEquality().equals(other.city, city) &&
@@ -445,6 +394,7 @@ class _$_MailingAddress implements _MailingAddress {
                 .equals(other.provinceCode, provinceCode));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -468,8 +418,8 @@ class _$_MailingAddress implements _MailingAddress {
 
   @JsonKey(ignore: true)
   @override
-  _$MailingAddressCopyWith<_MailingAddress> get copyWith =>
-      __$MailingAddressCopyWithImpl<_MailingAddress>(this, _$identity);
+  _$$_MailingAddressCopyWith<_$_MailingAddress> get copyWith =>
+      __$$_MailingAddressCopyWithImpl<_$_MailingAddress>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -479,63 +429,63 @@ class _$_MailingAddress implements _MailingAddress {
 
 abstract class _MailingAddress implements MailingAddress {
   factory _MailingAddress(
-      {required String id,
-      required String address1,
-      required String city,
-      required String country,
-      required String zip,
-      String? lastName,
-      String? name,
-      String? firstName,
-      String? address2,
-      String? company,
-      String? countryCodeV2,
-      String? formattedArea,
-      double? latitude,
-      double? longitude,
-      String? phone,
-      String? province,
-      String? provinceCode}) = _$_MailingAddress;
+      {required final String id,
+      required final String address1,
+      required final String city,
+      required final String country,
+      required final String zip,
+      final String? lastName,
+      final String? name,
+      final String? firstName,
+      final String? address2,
+      final String? company,
+      final String? countryCodeV2,
+      final String? formattedArea,
+      final double? latitude,
+      final double? longitude,
+      final String? phone,
+      final String? province,
+      final String? provinceCode}) = _$_MailingAddress;
 
   factory _MailingAddress.fromJson(Map<String, dynamic> json) =
       _$_MailingAddress.fromJson;
 
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String get address1;
+  String get address1 => throw _privateConstructorUsedError;
   @override
-  String get city;
+  String get city => throw _privateConstructorUsedError;
   @override
-  String get country;
+  String get country => throw _privateConstructorUsedError;
   @override
-  String get zip;
+  String get zip => throw _privateConstructorUsedError;
   @override
-  String? get lastName;
+  String? get lastName => throw _privateConstructorUsedError;
   @override
-  String? get name;
+  String? get name => throw _privateConstructorUsedError;
   @override
-  String? get firstName;
+  String? get firstName => throw _privateConstructorUsedError;
   @override
-  String? get address2;
+  String? get address2 => throw _privateConstructorUsedError;
   @override
-  String? get company;
+  String? get company => throw _privateConstructorUsedError;
   @override
-  String? get countryCodeV2;
+  String? get countryCodeV2 => throw _privateConstructorUsedError;
   @override
-  String? get formattedArea;
+  String? get formattedArea => throw _privateConstructorUsedError;
   @override
-  double? get latitude;
+  double? get latitude => throw _privateConstructorUsedError;
   @override
-  double? get longitude;
+  double? get longitude => throw _privateConstructorUsedError;
   @override
-  String? get phone;
+  String? get phone => throw _privateConstructorUsedError;
   @override
-  String? get province;
+  String? get province => throw _privateConstructorUsedError;
   @override
-  String? get provinceCode;
+  String? get provinceCode => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MailingAddressCopyWith<_MailingAddress> get copyWith =>
+  _$$_MailingAddressCopyWith<_$_MailingAddress> get copyWith =>
       throw _privateConstructorUsedError;
 }

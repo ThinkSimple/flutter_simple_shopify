@@ -12,40 +12,11 @@ part of 'metafield.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Metafield _$MetafieldFromJson(Map<String, dynamic> json) {
   return _Metafield.fromJson(json);
 }
-
-/// @nodoc
-class _$MetafieldTearOff {
-  const _$MetafieldTearOff();
-
-  _Metafield call(
-      {required String id,
-      required String namespace,
-      required String key,
-      required String value,
-      required String valueType,
-      String description = ''}) {
-    return _Metafield(
-      id: id,
-      namespace: namespace,
-      key: key,
-      value: value,
-      valueType: valueType,
-      description: description,
-    );
-  }
-
-  Metafield fromJson(Map<String, Object?> json) {
-    return Metafield.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Metafield = _$MetafieldTearOff();
 
 /// @nodoc
 mixin _$Metafield {
@@ -122,10 +93,10 @@ class _$MetafieldCopyWithImpl<$Res> implements $MetafieldCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MetafieldCopyWith<$Res> implements $MetafieldCopyWith<$Res> {
-  factory _$MetafieldCopyWith(
-          _Metafield value, $Res Function(_Metafield) then) =
-      __$MetafieldCopyWithImpl<$Res>;
+abstract class _$$_MetafieldCopyWith<$Res> implements $MetafieldCopyWith<$Res> {
+  factory _$$_MetafieldCopyWith(
+          _$_Metafield value, $Res Function(_$_Metafield) then) =
+      __$$_MetafieldCopyWithImpl<$Res>;
   @override
   $Res call(
       {String id,
@@ -137,13 +108,14 @@ abstract class _$MetafieldCopyWith<$Res> implements $MetafieldCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$MetafieldCopyWithImpl<$Res> extends _$MetafieldCopyWithImpl<$Res>
-    implements _$MetafieldCopyWith<$Res> {
-  __$MetafieldCopyWithImpl(_Metafield _value, $Res Function(_Metafield) _then)
-      : super(_value, (v) => _then(v as _Metafield));
+class __$$_MetafieldCopyWithImpl<$Res> extends _$MetafieldCopyWithImpl<$Res>
+    implements _$$_MetafieldCopyWith<$Res> {
+  __$$_MetafieldCopyWithImpl(
+      _$_Metafield _value, $Res Function(_$_Metafield) _then)
+      : super(_value, (v) => _then(v as _$_Metafield));
 
   @override
-  _Metafield get _value => super._value as _Metafield;
+  _$_Metafield get _value => super._value as _$_Metafield;
 
   @override
   $Res call({
@@ -154,7 +126,7 @@ class __$MetafieldCopyWithImpl<$Res> extends _$MetafieldCopyWithImpl<$Res>
     Object? valueType = freezed,
     Object? description = freezed,
   }) {
-    return _then(_Metafield(
+    return _then(_$_Metafield(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -208,8 +180,8 @@ class _$_Metafield extends _Metafield {
   final String value;
   @override
   final String valueType;
-  @JsonKey()
   @override
+  @JsonKey()
   final String description;
 
   @override
@@ -221,7 +193,7 @@ class _$_Metafield extends _Metafield {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Metafield &&
+            other is _$_Metafield &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.namespace, namespace) &&
             const DeepCollectionEquality().equals(other.key, key) &&
@@ -231,6 +203,7 @@ class _$_Metafield extends _Metafield {
                 .equals(other.description, description));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -243,8 +216,8 @@ class _$_Metafield extends _Metafield {
 
   @JsonKey(ignore: true)
   @override
-  _$MetafieldCopyWith<_Metafield> get copyWith =>
-      __$MetafieldCopyWithImpl<_Metafield>(this, _$identity);
+  _$$_MetafieldCopyWith<_$_Metafield> get copyWith =>
+      __$$_MetafieldCopyWithImpl<_$_Metafield>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -254,31 +227,31 @@ class _$_Metafield extends _Metafield {
 
 abstract class _Metafield extends Metafield {
   factory _Metafield(
-      {required String id,
-      required String namespace,
-      required String key,
-      required String value,
-      required String valueType,
-      String description}) = _$_Metafield;
+      {required final String id,
+      required final String namespace,
+      required final String key,
+      required final String value,
+      required final String valueType,
+      final String description}) = _$_Metafield;
   _Metafield._() : super._();
 
   factory _Metafield.fromJson(Map<String, dynamic> json) =
       _$_Metafield.fromJson;
 
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String get namespace;
+  String get namespace => throw _privateConstructorUsedError;
   @override
-  String get key;
+  String get key => throw _privateConstructorUsedError;
   @override
-  String get value;
+  String get value => throw _privateConstructorUsedError;
   @override
-  String get valueType;
+  String get valueType => throw _privateConstructorUsedError;
   @override
-  String get description;
+  String get description => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MetafieldCopyWith<_Metafield> get copyWith =>
+  _$$_MetafieldCopyWith<_$_Metafield> get copyWith =>
       throw _privateConstructorUsedError;
 }

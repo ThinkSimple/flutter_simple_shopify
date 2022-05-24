@@ -12,34 +12,11 @@ part of 'address_prediction.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AddressPrediction _$AddressPredictionFromJson(Map<String, dynamic> json) {
   return _AddressPrediction.fromJson(json);
 }
-
-/// @nodoc
-class _$AddressPredictionTearOff {
-  const _$AddressPredictionTearOff();
-
-  _AddressPrediction call(
-      {String? addressId,
-      String? description,
-      List<MatchedSubstring>? matchedSubstrings}) {
-    return _AddressPrediction(
-      addressId: addressId,
-      description: description,
-      matchedSubstrings: matchedSubstrings,
-    );
-  }
-
-  AddressPrediction fromJson(Map<String, Object?> json) {
-    return AddressPrediction.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AddressPrediction = _$AddressPredictionTearOff();
 
 /// @nodoc
 mixin _$AddressPrediction {
@@ -98,11 +75,11 @@ class _$AddressPredictionCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AddressPredictionCopyWith<$Res>
+abstract class _$$_AddressPredictionCopyWith<$Res>
     implements $AddressPredictionCopyWith<$Res> {
-  factory _$AddressPredictionCopyWith(
-          _AddressPrediction value, $Res Function(_AddressPrediction) then) =
-      __$AddressPredictionCopyWithImpl<$Res>;
+  factory _$$_AddressPredictionCopyWith(_$_AddressPrediction value,
+          $Res Function(_$_AddressPrediction) then) =
+      __$$_AddressPredictionCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? addressId,
@@ -111,15 +88,15 @@ abstract class _$AddressPredictionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AddressPredictionCopyWithImpl<$Res>
+class __$$_AddressPredictionCopyWithImpl<$Res>
     extends _$AddressPredictionCopyWithImpl<$Res>
-    implements _$AddressPredictionCopyWith<$Res> {
-  __$AddressPredictionCopyWithImpl(
-      _AddressPrediction _value, $Res Function(_AddressPrediction) _then)
-      : super(_value, (v) => _then(v as _AddressPrediction));
+    implements _$$_AddressPredictionCopyWith<$Res> {
+  __$$_AddressPredictionCopyWithImpl(
+      _$_AddressPrediction _value, $Res Function(_$_AddressPrediction) _then)
+      : super(_value, (v) => _then(v as _$_AddressPrediction));
 
   @override
-  _AddressPrediction get _value => super._value as _AddressPrediction;
+  _$_AddressPrediction get _value => super._value as _$_AddressPrediction;
 
   @override
   $Res call({
@@ -127,7 +104,7 @@ class __$AddressPredictionCopyWithImpl<$Res>
     Object? description = freezed,
     Object? matchedSubstrings = freezed,
   }) {
-    return _then(_AddressPrediction(
+    return _then(_$_AddressPrediction(
       addressId: addressId == freezed
           ? _value.addressId
           : addressId // ignore: cast_nullable_to_non_nullable
@@ -137,7 +114,7 @@ class __$AddressPredictionCopyWithImpl<$Res>
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
       matchedSubstrings: matchedSubstrings == freezed
-          ? _value.matchedSubstrings
+          ? _value._matchedSubstrings
           : matchedSubstrings // ignore: cast_nullable_to_non_nullable
               as List<MatchedSubstring>?,
     ));
@@ -148,7 +125,10 @@ class __$AddressPredictionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_AddressPrediction implements _AddressPrediction {
   const _$_AddressPrediction(
-      {this.addressId, this.description, this.matchedSubstrings});
+      {this.addressId,
+      this.description,
+      final List<MatchedSubstring>? matchedSubstrings})
+      : _matchedSubstrings = matchedSubstrings;
 
   factory _$_AddressPrediction.fromJson(Map<String, dynamic> json) =>
       _$$_AddressPredictionFromJson(json);
@@ -157,8 +137,14 @@ class _$_AddressPrediction implements _AddressPrediction {
   final String? addressId;
   @override
   final String? description;
+  final List<MatchedSubstring>? _matchedSubstrings;
   @override
-  final List<MatchedSubstring>? matchedSubstrings;
+  List<MatchedSubstring>? get matchedSubstrings {
+    final value = _matchedSubstrings;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -169,25 +155,27 @@ class _$_AddressPrediction implements _AddressPrediction {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AddressPrediction &&
+            other is _$_AddressPrediction &&
             const DeepCollectionEquality().equals(other.addressId, addressId) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality()
-                .equals(other.matchedSubstrings, matchedSubstrings));
+                .equals(other._matchedSubstrings, _matchedSubstrings));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(addressId),
       const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(matchedSubstrings));
+      const DeepCollectionEquality().hash(_matchedSubstrings));
 
   @JsonKey(ignore: true)
   @override
-  _$AddressPredictionCopyWith<_AddressPrediction> get copyWith =>
-      __$AddressPredictionCopyWithImpl<_AddressPrediction>(this, _$identity);
+  _$$_AddressPredictionCopyWith<_$_AddressPrediction> get copyWith =>
+      __$$_AddressPredictionCopyWithImpl<_$_AddressPrediction>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -197,21 +185,22 @@ class _$_AddressPrediction implements _AddressPrediction {
 
 abstract class _AddressPrediction implements AddressPrediction {
   const factory _AddressPrediction(
-      {String? addressId,
-      String? description,
-      List<MatchedSubstring>? matchedSubstrings}) = _$_AddressPrediction;
+      {final String? addressId,
+      final String? description,
+      final List<MatchedSubstring>? matchedSubstrings}) = _$_AddressPrediction;
 
   factory _AddressPrediction.fromJson(Map<String, dynamic> json) =
       _$_AddressPrediction.fromJson;
 
   @override
-  String? get addressId;
+  String? get addressId => throw _privateConstructorUsedError;
   @override
-  String? get description;
+  String? get description => throw _privateConstructorUsedError;
   @override
-  List<MatchedSubstring>? get matchedSubstrings;
+  List<MatchedSubstring>? get matchedSubstrings =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AddressPredictionCopyWith<_AddressPrediction> get copyWith =>
+  _$$_AddressPredictionCopyWith<_$_AddressPrediction> get copyWith =>
       throw _privateConstructorUsedError;
 }

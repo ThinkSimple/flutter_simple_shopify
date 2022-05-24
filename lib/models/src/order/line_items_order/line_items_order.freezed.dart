@@ -12,29 +12,11 @@ part of 'line_items_order.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 LineItemsOrder _$LineItemsOrderFromJson(Map<String, dynamic> json) {
   return _LineItemsOrder.fromJson(json);
 }
-
-/// @nodoc
-class _$LineItemsOrderTearOff {
-  const _$LineItemsOrderTearOff();
-
-  _LineItemsOrder call({required List<LineItemOrder> lineItemOrderList}) {
-    return _LineItemsOrder(
-      lineItemOrderList: lineItemOrderList,
-    );
-  }
-
-  LineItemsOrder fromJson(Map<String, Object?> json) {
-    return LineItemsOrder.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $LineItemsOrder = _$LineItemsOrderTearOff();
 
 /// @nodoc
 mixin _$LineItemsOrder {
@@ -78,33 +60,33 @@ class _$LineItemsOrderCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$LineItemsOrderCopyWith<$Res>
+abstract class _$$_LineItemsOrderCopyWith<$Res>
     implements $LineItemsOrderCopyWith<$Res> {
-  factory _$LineItemsOrderCopyWith(
-          _LineItemsOrder value, $Res Function(_LineItemsOrder) then) =
-      __$LineItemsOrderCopyWithImpl<$Res>;
+  factory _$$_LineItemsOrderCopyWith(
+          _$_LineItemsOrder value, $Res Function(_$_LineItemsOrder) then) =
+      __$$_LineItemsOrderCopyWithImpl<$Res>;
   @override
   $Res call({List<LineItemOrder> lineItemOrderList});
 }
 
 /// @nodoc
-class __$LineItemsOrderCopyWithImpl<$Res>
+class __$$_LineItemsOrderCopyWithImpl<$Res>
     extends _$LineItemsOrderCopyWithImpl<$Res>
-    implements _$LineItemsOrderCopyWith<$Res> {
-  __$LineItemsOrderCopyWithImpl(
-      _LineItemsOrder _value, $Res Function(_LineItemsOrder) _then)
-      : super(_value, (v) => _then(v as _LineItemsOrder));
+    implements _$$_LineItemsOrderCopyWith<$Res> {
+  __$$_LineItemsOrderCopyWithImpl(
+      _$_LineItemsOrder _value, $Res Function(_$_LineItemsOrder) _then)
+      : super(_value, (v) => _then(v as _$_LineItemsOrder));
 
   @override
-  _LineItemsOrder get _value => super._value as _LineItemsOrder;
+  _$_LineItemsOrder get _value => super._value as _$_LineItemsOrder;
 
   @override
   $Res call({
     Object? lineItemOrderList = freezed,
   }) {
-    return _then(_LineItemsOrder(
+    return _then(_$_LineItemsOrder(
       lineItemOrderList: lineItemOrderList == freezed
-          ? _value.lineItemOrderList
+          ? _value._lineItemOrderList
           : lineItemOrderList // ignore: cast_nullable_to_non_nullable
               as List<LineItemOrder>,
     ));
@@ -114,13 +96,18 @@ class __$LineItemsOrderCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_LineItemsOrder implements _LineItemsOrder {
-  _$_LineItemsOrder({required this.lineItemOrderList});
+  _$_LineItemsOrder({required final List<LineItemOrder> lineItemOrderList})
+      : _lineItemOrderList = lineItemOrderList;
 
   factory _$_LineItemsOrder.fromJson(Map<String, dynamic> json) =>
       _$$_LineItemsOrderFromJson(json);
 
+  final List<LineItemOrder> _lineItemOrderList;
   @override
-  final List<LineItemOrder> lineItemOrderList;
+  List<LineItemOrder> get lineItemOrderList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lineItemOrderList);
+  }
 
   @override
   String toString() {
@@ -131,19 +118,20 @@ class _$_LineItemsOrder implements _LineItemsOrder {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LineItemsOrder &&
+            other is _$_LineItemsOrder &&
             const DeepCollectionEquality()
-                .equals(other.lineItemOrderList, lineItemOrderList));
+                .equals(other._lineItemOrderList, _lineItemOrderList));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(lineItemOrderList));
 
   @JsonKey(ignore: true)
   @override
-  _$LineItemsOrderCopyWith<_LineItemsOrder> get copyWith =>
-      __$LineItemsOrderCopyWithImpl<_LineItemsOrder>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_lineItemOrderList));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_LineItemsOrderCopyWith<_$_LineItemsOrder> get copyWith =>
+      __$$_LineItemsOrderCopyWithImpl<_$_LineItemsOrder>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -152,16 +140,18 @@ class _$_LineItemsOrder implements _LineItemsOrder {
 }
 
 abstract class _LineItemsOrder implements LineItemsOrder {
-  factory _LineItemsOrder({required List<LineItemOrder> lineItemOrderList}) =
+  factory _LineItemsOrder(
+          {required final List<LineItemOrder> lineItemOrderList}) =
       _$_LineItemsOrder;
 
   factory _LineItemsOrder.fromJson(Map<String, dynamic> json) =
       _$_LineItemsOrder.fromJson;
 
   @override
-  List<LineItemOrder> get lineItemOrderList;
+  List<LineItemOrder> get lineItemOrderList =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LineItemsOrderCopyWith<_LineItemsOrder> get copyWith =>
+  _$$_LineItemsOrderCopyWith<_$_LineItemsOrder> get copyWith =>
       throw _privateConstructorUsedError;
 }

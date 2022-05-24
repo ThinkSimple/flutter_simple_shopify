@@ -12,30 +12,11 @@ part of 'orders.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Orders _$OrdersFromJson(Map<String, dynamic> json) {
   return _Orders.fromJson(json);
 }
-
-/// @nodoc
-class _$OrdersTearOff {
-  const _$OrdersTearOff();
-
-  _Orders call({required List<Order> orderList, required bool hasNextPage}) {
-    return _Orders(
-      orderList: orderList,
-      hasNextPage: hasNextPage,
-    );
-  }
-
-  Orders fromJson(Map<String, Object?> json) {
-    return Orders.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Orders = _$OrdersTearOff();
 
 /// @nodoc
 mixin _$Orders {
@@ -81,30 +62,30 @@ class _$OrdersCopyWithImpl<$Res> implements $OrdersCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$OrdersCopyWith<$Res> implements $OrdersCopyWith<$Res> {
-  factory _$OrdersCopyWith(_Orders value, $Res Function(_Orders) then) =
-      __$OrdersCopyWithImpl<$Res>;
+abstract class _$$_OrdersCopyWith<$Res> implements $OrdersCopyWith<$Res> {
+  factory _$$_OrdersCopyWith(_$_Orders value, $Res Function(_$_Orders) then) =
+      __$$_OrdersCopyWithImpl<$Res>;
   @override
   $Res call({List<Order> orderList, bool hasNextPage});
 }
 
 /// @nodoc
-class __$OrdersCopyWithImpl<$Res> extends _$OrdersCopyWithImpl<$Res>
-    implements _$OrdersCopyWith<$Res> {
-  __$OrdersCopyWithImpl(_Orders _value, $Res Function(_Orders) _then)
-      : super(_value, (v) => _then(v as _Orders));
+class __$$_OrdersCopyWithImpl<$Res> extends _$OrdersCopyWithImpl<$Res>
+    implements _$$_OrdersCopyWith<$Res> {
+  __$$_OrdersCopyWithImpl(_$_Orders _value, $Res Function(_$_Orders) _then)
+      : super(_value, (v) => _then(v as _$_Orders));
 
   @override
-  _Orders get _value => super._value as _Orders;
+  _$_Orders get _value => super._value as _$_Orders;
 
   @override
   $Res call({
     Object? orderList = freezed,
     Object? hasNextPage = freezed,
   }) {
-    return _then(_Orders(
+    return _then(_$_Orders(
       orderList: orderList == freezed
-          ? _value.orderList
+          ? _value._orderList
           : orderList // ignore: cast_nullable_to_non_nullable
               as List<Order>,
       hasNextPage: hasNextPage == freezed
@@ -118,13 +99,19 @@ class __$OrdersCopyWithImpl<$Res> extends _$OrdersCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Orders implements _Orders {
-  _$_Orders({required this.orderList, required this.hasNextPage});
+  _$_Orders({required final List<Order> orderList, required this.hasNextPage})
+      : _orderList = orderList;
 
   factory _$_Orders.fromJson(Map<String, dynamic> json) =>
       _$$_OrdersFromJson(json);
 
+  final List<Order> _orderList;
   @override
-  final List<Order> orderList;
+  List<Order> get orderList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_orderList);
+  }
+
   @override
   final bool hasNextPage;
 
@@ -137,22 +124,24 @@ class _$_Orders implements _Orders {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Orders &&
-            const DeepCollectionEquality().equals(other.orderList, orderList) &&
+            other is _$_Orders &&
+            const DeepCollectionEquality()
+                .equals(other._orderList, _orderList) &&
             const DeepCollectionEquality()
                 .equals(other.hasNextPage, hasNextPage));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(orderList),
+      const DeepCollectionEquality().hash(_orderList),
       const DeepCollectionEquality().hash(hasNextPage));
 
   @JsonKey(ignore: true)
   @override
-  _$OrdersCopyWith<_Orders> get copyWith =>
-      __$OrdersCopyWithImpl<_Orders>(this, _$identity);
+  _$$_OrdersCopyWith<_$_Orders> get copyWith =>
+      __$$_OrdersCopyWithImpl<_$_Orders>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -161,16 +150,18 @@ class _$_Orders implements _Orders {
 }
 
 abstract class _Orders implements Orders {
-  factory _Orders({required List<Order> orderList, required bool hasNextPage}) =
-      _$_Orders;
+  factory _Orders(
+      {required final List<Order> orderList,
+      required final bool hasNextPage}) = _$_Orders;
 
   factory _Orders.fromJson(Map<String, dynamic> json) = _$_Orders.fromJson;
 
   @override
-  List<Order> get orderList;
+  List<Order> get orderList => throw _privateConstructorUsedError;
   @override
-  bool get hasNextPage;
+  bool get hasNextPage => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$OrdersCopyWith<_Orders> get copyWith => throw _privateConstructorUsedError;
+  _$$_OrdersCopyWith<_$_Orders> get copyWith =>
+      throw _privateConstructorUsedError;
 }

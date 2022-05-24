@@ -12,32 +12,11 @@ part of 'shopify_image.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ShopifyImage _$ShopifyImageFromJson(Map<String, dynamic> json) {
   return _ShopifyImage.fromJson(json);
 }
-
-/// @nodoc
-class _$ShopifyImageTearOff {
-  const _$ShopifyImageTearOff();
-
-  _ShopifyImage call(
-      {required String originalSrc, required String id, String? altText}) {
-    return _ShopifyImage(
-      originalSrc: originalSrc,
-      id: id,
-      altText: altText,
-    );
-  }
-
-  ShopifyImage fromJson(Map<String, Object?> json) {
-    return ShopifyImage.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ShopifyImage = _$ShopifyImageTearOff();
 
 /// @nodoc
 mixin _$ShopifyImage {
@@ -91,24 +70,25 @@ class _$ShopifyImageCopyWithImpl<$Res> implements $ShopifyImageCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ShopifyImageCopyWith<$Res>
+abstract class _$$_ShopifyImageCopyWith<$Res>
     implements $ShopifyImageCopyWith<$Res> {
-  factory _$ShopifyImageCopyWith(
-          _ShopifyImage value, $Res Function(_ShopifyImage) then) =
-      __$ShopifyImageCopyWithImpl<$Res>;
+  factory _$$_ShopifyImageCopyWith(
+          _$_ShopifyImage value, $Res Function(_$_ShopifyImage) then) =
+      __$$_ShopifyImageCopyWithImpl<$Res>;
   @override
   $Res call({String originalSrc, String id, String? altText});
 }
 
 /// @nodoc
-class __$ShopifyImageCopyWithImpl<$Res> extends _$ShopifyImageCopyWithImpl<$Res>
-    implements _$ShopifyImageCopyWith<$Res> {
-  __$ShopifyImageCopyWithImpl(
-      _ShopifyImage _value, $Res Function(_ShopifyImage) _then)
-      : super(_value, (v) => _then(v as _ShopifyImage));
+class __$$_ShopifyImageCopyWithImpl<$Res>
+    extends _$ShopifyImageCopyWithImpl<$Res>
+    implements _$$_ShopifyImageCopyWith<$Res> {
+  __$$_ShopifyImageCopyWithImpl(
+      _$_ShopifyImage _value, $Res Function(_$_ShopifyImage) _then)
+      : super(_value, (v) => _then(v as _$_ShopifyImage));
 
   @override
-  _ShopifyImage get _value => super._value as _ShopifyImage;
+  _$_ShopifyImage get _value => super._value as _$_ShopifyImage;
 
   @override
   $Res call({
@@ -116,7 +96,7 @@ class __$ShopifyImageCopyWithImpl<$Res> extends _$ShopifyImageCopyWithImpl<$Res>
     Object? id = freezed,
     Object? altText = freezed,
   }) {
-    return _then(_ShopifyImage(
+    return _then(_$_ShopifyImage(
       originalSrc: originalSrc == freezed
           ? _value.originalSrc
           : originalSrc // ignore: cast_nullable_to_non_nullable
@@ -158,13 +138,14 @@ class _$_ShopifyImage extends _ShopifyImage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ShopifyImage &&
+            other is _$_ShopifyImage &&
             const DeepCollectionEquality()
                 .equals(other.originalSrc, originalSrc) &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.altText, altText));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -174,8 +155,8 @@ class _$_ShopifyImage extends _ShopifyImage {
 
   @JsonKey(ignore: true)
   @override
-  _$ShopifyImageCopyWith<_ShopifyImage> get copyWith =>
-      __$ShopifyImageCopyWithImpl<_ShopifyImage>(this, _$identity);
+  _$$_ShopifyImageCopyWith<_$_ShopifyImage> get copyWith =>
+      __$$_ShopifyImageCopyWithImpl<_$_ShopifyImage>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -185,22 +166,22 @@ class _$_ShopifyImage extends _ShopifyImage {
 
 abstract class _ShopifyImage extends ShopifyImage {
   factory _ShopifyImage(
-      {required String originalSrc,
-      required String id,
-      String? altText}) = _$_ShopifyImage;
+      {required final String originalSrc,
+      required final String id,
+      final String? altText}) = _$_ShopifyImage;
   _ShopifyImage._() : super._();
 
   factory _ShopifyImage.fromJson(Map<String, dynamic> json) =
       _$_ShopifyImage.fromJson;
 
   @override
-  String get originalSrc;
+  String get originalSrc => throw _privateConstructorUsedError;
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String? get altText;
+  String? get altText => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ShopifyImageCopyWith<_ShopifyImage> get copyWith =>
+  _$$_ShopifyImageCopyWith<_$_ShopifyImage> get copyWith =>
       throw _privateConstructorUsedError;
 }

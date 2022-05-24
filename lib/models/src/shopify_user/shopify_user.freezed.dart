@@ -12,48 +12,11 @@ part of 'shopify_user.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ShopifyUser _$ShopifyUserFromJson(Map<String, dynamic> json) {
   return _ShopifyUser.fromJson(json);
 }
-
-/// @nodoc
-class _$ShopifyUserTearOff {
-  const _$ShopifyUserTearOff();
-
-  _ShopifyUser call(
-      {Addresses? address,
-      String? createdAt,
-      String? displayName,
-      String? email,
-      String? firstName,
-      String? id,
-      String? lastName,
-      String? phone,
-      List<String>? tags,
-      LastIncompleteCheckout? lastIncompleteCheckout}) {
-    return _ShopifyUser(
-      address: address,
-      createdAt: createdAt,
-      displayName: displayName,
-      email: email,
-      firstName: firstName,
-      id: id,
-      lastName: lastName,
-      phone: phone,
-      tags: tags,
-      lastIncompleteCheckout: lastIncompleteCheckout,
-    );
-  }
-
-  ShopifyUser fromJson(Map<String, Object?> json) {
-    return ShopifyUser.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ShopifyUser = _$ShopifyUserTearOff();
 
 /// @nodoc
 mixin _$ShopifyUser {
@@ -186,11 +149,11 @@ class _$ShopifyUserCopyWithImpl<$Res> implements $ShopifyUserCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ShopifyUserCopyWith<$Res>
+abstract class _$$_ShopifyUserCopyWith<$Res>
     implements $ShopifyUserCopyWith<$Res> {
-  factory _$ShopifyUserCopyWith(
-          _ShopifyUser value, $Res Function(_ShopifyUser) then) =
-      __$ShopifyUserCopyWithImpl<$Res>;
+  factory _$$_ShopifyUserCopyWith(
+          _$_ShopifyUser value, $Res Function(_$_ShopifyUser) then) =
+      __$$_ShopifyUserCopyWithImpl<$Res>;
   @override
   $Res call(
       {Addresses? address,
@@ -211,14 +174,14 @@ abstract class _$ShopifyUserCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ShopifyUserCopyWithImpl<$Res> extends _$ShopifyUserCopyWithImpl<$Res>
-    implements _$ShopifyUserCopyWith<$Res> {
-  __$ShopifyUserCopyWithImpl(
-      _ShopifyUser _value, $Res Function(_ShopifyUser) _then)
-      : super(_value, (v) => _then(v as _ShopifyUser));
+class __$$_ShopifyUserCopyWithImpl<$Res> extends _$ShopifyUserCopyWithImpl<$Res>
+    implements _$$_ShopifyUserCopyWith<$Res> {
+  __$$_ShopifyUserCopyWithImpl(
+      _$_ShopifyUser _value, $Res Function(_$_ShopifyUser) _then)
+      : super(_value, (v) => _then(v as _$_ShopifyUser));
 
   @override
-  _ShopifyUser get _value => super._value as _ShopifyUser;
+  _$_ShopifyUser get _value => super._value as _$_ShopifyUser;
 
   @override
   $Res call({
@@ -233,7 +196,7 @@ class __$ShopifyUserCopyWithImpl<$Res> extends _$ShopifyUserCopyWithImpl<$Res>
     Object? tags = freezed,
     Object? lastIncompleteCheckout = freezed,
   }) {
-    return _then(_ShopifyUser(
+    return _then(_$_ShopifyUser(
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -267,7 +230,7 @@ class __$ShopifyUserCopyWithImpl<$Res> extends _$ShopifyUserCopyWithImpl<$Res>
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
       tags: tags == freezed
-          ? _value.tags
+          ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       lastIncompleteCheckout: lastIncompleteCheckout == freezed
@@ -290,8 +253,9 @@ class _$_ShopifyUser implements _ShopifyUser {
       this.id,
       this.lastName,
       this.phone,
-      this.tags,
-      this.lastIncompleteCheckout});
+      final List<String>? tags,
+      this.lastIncompleteCheckout})
+      : _tags = tags;
 
   factory _$_ShopifyUser.fromJson(Map<String, dynamic> json) =>
       _$$_ShopifyUserFromJson(json);
@@ -312,8 +276,15 @@ class _$_ShopifyUser implements _ShopifyUser {
   final String? lastName;
   @override
   final String? phone;
+  final List<String>? _tags;
   @override
-  final List<String>? tags;
+  List<String>? get tags {
+    final value = _tags;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final LastIncompleteCheckout? lastIncompleteCheckout;
 
@@ -326,7 +297,7 @@ class _$_ShopifyUser implements _ShopifyUser {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ShopifyUser &&
+            other is _$_ShopifyUser &&
             const DeepCollectionEquality().equals(other.address, address) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality()
@@ -336,11 +307,12 @@ class _$_ShopifyUser implements _ShopifyUser {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.lastName, lastName) &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
-            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality().equals(other._tags, _tags) &&
             const DeepCollectionEquality()
                 .equals(other.lastIncompleteCheckout, lastIncompleteCheckout));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -352,13 +324,13 @@ class _$_ShopifyUser implements _ShopifyUser {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(lastName),
       const DeepCollectionEquality().hash(phone),
-      const DeepCollectionEquality().hash(tags),
+      const DeepCollectionEquality().hash(_tags),
       const DeepCollectionEquality().hash(lastIncompleteCheckout));
 
   @JsonKey(ignore: true)
   @override
-  _$ShopifyUserCopyWith<_ShopifyUser> get copyWith =>
-      __$ShopifyUserCopyWithImpl<_ShopifyUser>(this, _$identity);
+  _$$_ShopifyUserCopyWith<_$_ShopifyUser> get copyWith =>
+      __$$_ShopifyUserCopyWithImpl<_$_ShopifyUser>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -368,42 +340,43 @@ class _$_ShopifyUser implements _ShopifyUser {
 
 abstract class _ShopifyUser implements ShopifyUser {
   factory _ShopifyUser(
-      {Addresses? address,
-      String? createdAt,
-      String? displayName,
-      String? email,
-      String? firstName,
-      String? id,
-      String? lastName,
-      String? phone,
-      List<String>? tags,
-      LastIncompleteCheckout? lastIncompleteCheckout}) = _$_ShopifyUser;
+      {final Addresses? address,
+      final String? createdAt,
+      final String? displayName,
+      final String? email,
+      final String? firstName,
+      final String? id,
+      final String? lastName,
+      final String? phone,
+      final List<String>? tags,
+      final LastIncompleteCheckout? lastIncompleteCheckout}) = _$_ShopifyUser;
 
   factory _ShopifyUser.fromJson(Map<String, dynamic> json) =
       _$_ShopifyUser.fromJson;
 
   @override
-  Addresses? get address;
+  Addresses? get address => throw _privateConstructorUsedError;
   @override
-  String? get createdAt;
+  String? get createdAt => throw _privateConstructorUsedError;
   @override
-  String? get displayName;
+  String? get displayName => throw _privateConstructorUsedError;
   @override
-  String? get email;
+  String? get email => throw _privateConstructorUsedError;
   @override
-  String? get firstName;
+  String? get firstName => throw _privateConstructorUsedError;
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get lastName;
+  String? get lastName => throw _privateConstructorUsedError;
   @override
-  String? get phone;
+  String? get phone => throw _privateConstructorUsedError;
   @override
-  List<String>? get tags;
+  List<String>? get tags => throw _privateConstructorUsedError;
   @override
-  LastIncompleteCheckout? get lastIncompleteCheckout;
+  LastIncompleteCheckout? get lastIncompleteCheckout =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ShopifyUserCopyWith<_ShopifyUser> get copyWith =>
+  _$$_ShopifyUserCopyWith<_$_ShopifyUser> get copyWith =>
       throw _privateConstructorUsedError;
 }

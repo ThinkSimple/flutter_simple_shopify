@@ -12,38 +12,11 @@ part of 'comment.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Comment _$CommentFromJson(Map<String, dynamic> json) {
   return _Comment.fromJson(json);
 }
-
-/// @nodoc
-class _$CommentTearOff {
-  const _$CommentTearOff();
-
-  _Comment call(
-      {String? email,
-      String? name,
-      String? content,
-      String? contentHtml,
-      String? id}) {
-    return _Comment(
-      email: email,
-      name: name,
-      content: content,
-      contentHtml: contentHtml,
-      id: id,
-    );
-  }
-
-  Comment fromJson(Map<String, Object?> json) {
-    return Comment.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Comment = _$CommentTearOff();
 
 /// @nodoc
 mixin _$Comment {
@@ -112,9 +85,10 @@ class _$CommentCopyWithImpl<$Res> implements $CommentCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CommentCopyWith<$Res> implements $CommentCopyWith<$Res> {
-  factory _$CommentCopyWith(_Comment value, $Res Function(_Comment) then) =
-      __$CommentCopyWithImpl<$Res>;
+abstract class _$$_CommentCopyWith<$Res> implements $CommentCopyWith<$Res> {
+  factory _$$_CommentCopyWith(
+          _$_Comment value, $Res Function(_$_Comment) then) =
+      __$$_CommentCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? email,
@@ -125,13 +99,13 @@ abstract class _$CommentCopyWith<$Res> implements $CommentCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$CommentCopyWithImpl<$Res> extends _$CommentCopyWithImpl<$Res>
-    implements _$CommentCopyWith<$Res> {
-  __$CommentCopyWithImpl(_Comment _value, $Res Function(_Comment) _then)
-      : super(_value, (v) => _then(v as _Comment));
+class __$$_CommentCopyWithImpl<$Res> extends _$CommentCopyWithImpl<$Res>
+    implements _$$_CommentCopyWith<$Res> {
+  __$$_CommentCopyWithImpl(_$_Comment _value, $Res Function(_$_Comment) _then)
+      : super(_value, (v) => _then(v as _$_Comment));
 
   @override
-  _Comment get _value => super._value as _Comment;
+  _$_Comment get _value => super._value as _$_Comment;
 
   @override
   $Res call({
@@ -141,7 +115,7 @@ class __$CommentCopyWithImpl<$Res> extends _$CommentCopyWithImpl<$Res>
     Object? contentHtml = freezed,
     Object? id = freezed,
   }) {
-    return _then(_Comment(
+    return _then(_$_Comment(
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -195,7 +169,7 @@ class _$_Comment extends _Comment {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Comment &&
+            other is _$_Comment &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.content, content) &&
@@ -204,6 +178,7 @@ class _$_Comment extends _Comment {
             const DeepCollectionEquality().equals(other.id, id));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -215,8 +190,8 @@ class _$_Comment extends _Comment {
 
   @JsonKey(ignore: true)
   @override
-  _$CommentCopyWith<_Comment> get copyWith =>
-      __$CommentCopyWithImpl<_Comment>(this, _$identity);
+  _$$_CommentCopyWith<_$_Comment> get copyWith =>
+      __$$_CommentCopyWithImpl<_$_Comment>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -226,27 +201,27 @@ class _$_Comment extends _Comment {
 
 abstract class _Comment extends Comment {
   factory _Comment(
-      {String? email,
-      String? name,
-      String? content,
-      String? contentHtml,
-      String? id}) = _$_Comment;
+      {final String? email,
+      final String? name,
+      final String? content,
+      final String? contentHtml,
+      final String? id}) = _$_Comment;
   _Comment._() : super._();
 
   factory _Comment.fromJson(Map<String, dynamic> json) = _$_Comment.fromJson;
 
   @override
-  String? get email;
+  String? get email => throw _privateConstructorUsedError;
   @override
-  String? get name;
+  String? get name => throw _privateConstructorUsedError;
   @override
-  String? get content;
+  String? get content => throw _privateConstructorUsedError;
   @override
-  String? get contentHtml;
+  String? get contentHtml => throw _privateConstructorUsedError;
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CommentCopyWith<_Comment> get copyWith =>
+  _$$_CommentCopyWith<_$_Comment> get copyWith =>
       throw _privateConstructorUsedError;
 }

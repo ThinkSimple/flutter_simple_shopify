@@ -12,32 +12,12 @@ part of 'available_shipping_rates.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AvailableShippingRates _$AvailableShippingRatesFromJson(
     Map<String, dynamic> json) {
   return _AvailableShippingRates.fromJson(json);
 }
-
-/// @nodoc
-class _$AvailableShippingRatesTearOff {
-  const _$AvailableShippingRatesTearOff();
-
-  _AvailableShippingRates call(
-      {required bool ready, required List<ShippingRates>? shippingRates}) {
-    return _AvailableShippingRates(
-      ready: ready,
-      shippingRates: shippingRates,
-    );
-  }
-
-  AvailableShippingRates fromJson(Map<String, Object?> json) {
-    return AvailableShippingRates.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AvailableShippingRates = _$AvailableShippingRatesTearOff();
 
 /// @nodoc
 mixin _$AvailableShippingRates {
@@ -86,38 +66,39 @@ class _$AvailableShippingRatesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AvailableShippingRatesCopyWith<$Res>
+abstract class _$$_AvailableShippingRatesCopyWith<$Res>
     implements $AvailableShippingRatesCopyWith<$Res> {
-  factory _$AvailableShippingRatesCopyWith(_AvailableShippingRates value,
-          $Res Function(_AvailableShippingRates) then) =
-      __$AvailableShippingRatesCopyWithImpl<$Res>;
+  factory _$$_AvailableShippingRatesCopyWith(_$_AvailableShippingRates value,
+          $Res Function(_$_AvailableShippingRates) then) =
+      __$$_AvailableShippingRatesCopyWithImpl<$Res>;
   @override
   $Res call({bool ready, List<ShippingRates>? shippingRates});
 }
 
 /// @nodoc
-class __$AvailableShippingRatesCopyWithImpl<$Res>
+class __$$_AvailableShippingRatesCopyWithImpl<$Res>
     extends _$AvailableShippingRatesCopyWithImpl<$Res>
-    implements _$AvailableShippingRatesCopyWith<$Res> {
-  __$AvailableShippingRatesCopyWithImpl(_AvailableShippingRates _value,
-      $Res Function(_AvailableShippingRates) _then)
-      : super(_value, (v) => _then(v as _AvailableShippingRates));
+    implements _$$_AvailableShippingRatesCopyWith<$Res> {
+  __$$_AvailableShippingRatesCopyWithImpl(_$_AvailableShippingRates _value,
+      $Res Function(_$_AvailableShippingRates) _then)
+      : super(_value, (v) => _then(v as _$_AvailableShippingRates));
 
   @override
-  _AvailableShippingRates get _value => super._value as _AvailableShippingRates;
+  _$_AvailableShippingRates get _value =>
+      super._value as _$_AvailableShippingRates;
 
   @override
   $Res call({
     Object? ready = freezed,
     Object? shippingRates = freezed,
   }) {
-    return _then(_AvailableShippingRates(
+    return _then(_$_AvailableShippingRates(
       ready: ready == freezed
           ? _value.ready
           : ready // ignore: cast_nullable_to_non_nullable
               as bool,
       shippingRates: shippingRates == freezed
-          ? _value.shippingRates
+          ? _value._shippingRates
           : shippingRates // ignore: cast_nullable_to_non_nullable
               as List<ShippingRates>?,
     ));
@@ -127,16 +108,24 @@ class __$AvailableShippingRatesCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AvailableShippingRates extends _AvailableShippingRates {
-  _$_AvailableShippingRates({required this.ready, required this.shippingRates})
-      : super._();
+  _$_AvailableShippingRates(
+      {required this.ready, required final List<ShippingRates>? shippingRates})
+      : _shippingRates = shippingRates,
+        super._();
 
   factory _$_AvailableShippingRates.fromJson(Map<String, dynamic> json) =>
       _$$_AvailableShippingRatesFromJson(json);
 
   @override
   final bool ready;
+  final List<ShippingRates>? _shippingRates;
   @override
-  final List<ShippingRates>? shippingRates;
+  List<ShippingRates>? get shippingRates {
+    final value = _shippingRates;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -147,22 +136,23 @@ class _$_AvailableShippingRates extends _AvailableShippingRates {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AvailableShippingRates &&
+            other is _$_AvailableShippingRates &&
             const DeepCollectionEquality().equals(other.ready, ready) &&
             const DeepCollectionEquality()
-                .equals(other.shippingRates, shippingRates));
+                .equals(other._shippingRates, _shippingRates));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(ready),
-      const DeepCollectionEquality().hash(shippingRates));
+      const DeepCollectionEquality().hash(_shippingRates));
 
   @JsonKey(ignore: true)
   @override
-  _$AvailableShippingRatesCopyWith<_AvailableShippingRates> get copyWith =>
-      __$AvailableShippingRatesCopyWithImpl<_AvailableShippingRates>(
+  _$$_AvailableShippingRatesCopyWith<_$_AvailableShippingRates> get copyWith =>
+      __$$_AvailableShippingRatesCopyWithImpl<_$_AvailableShippingRates>(
           this, _$identity);
 
   @override
@@ -173,19 +163,20 @@ class _$_AvailableShippingRates extends _AvailableShippingRates {
 
 abstract class _AvailableShippingRates extends AvailableShippingRates {
   factory _AvailableShippingRates(
-      {required bool ready,
-      required List<ShippingRates>? shippingRates}) = _$_AvailableShippingRates;
+          {required final bool ready,
+          required final List<ShippingRates>? shippingRates}) =
+      _$_AvailableShippingRates;
   _AvailableShippingRates._() : super._();
 
   factory _AvailableShippingRates.fromJson(Map<String, dynamic> json) =
       _$_AvailableShippingRates.fromJson;
 
   @override
-  bool get ready;
+  bool get ready => throw _privateConstructorUsedError;
   @override
-  List<ShippingRates>? get shippingRates;
+  List<ShippingRates>? get shippingRates => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AvailableShippingRatesCopyWith<_AvailableShippingRates> get copyWith =>
+  _$$_AvailableShippingRatesCopyWith<_$_AvailableShippingRates> get copyWith =>
       throw _privateConstructorUsedError;
 }

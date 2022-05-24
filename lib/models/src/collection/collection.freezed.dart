@@ -12,46 +12,11 @@ part of 'collection.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Collection _$CollectionFromJson(Map<String, dynamic> json) {
   return _Collection.fromJson(json);
 }
-
-/// @nodoc
-class _$CollectionTearOff {
-  const _$CollectionTearOff();
-
-  _Collection call(
-      {required String title,
-      required String id,
-      required Products products,
-      String? cursor,
-      String? description,
-      String? descriptionHtml,
-      String? handle,
-      String? updatedAt,
-      ShopifyImage? image}) {
-    return _Collection(
-      title: title,
-      id: id,
-      products: products,
-      cursor: cursor,
-      description: description,
-      descriptionHtml: descriptionHtml,
-      handle: handle,
-      updatedAt: updatedAt,
-      image: image,
-    );
-  }
-
-  Collection fromJson(Map<String, Object?> json) {
-    return Collection.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Collection = _$CollectionTearOff();
 
 /// @nodoc
 mixin _$Collection {
@@ -171,10 +136,11 @@ class _$CollectionCopyWithImpl<$Res> implements $CollectionCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CollectionCopyWith<$Res> implements $CollectionCopyWith<$Res> {
-  factory _$CollectionCopyWith(
-          _Collection value, $Res Function(_Collection) then) =
-      __$CollectionCopyWithImpl<$Res>;
+abstract class _$$_CollectionCopyWith<$Res>
+    implements $CollectionCopyWith<$Res> {
+  factory _$$_CollectionCopyWith(
+          _$_Collection value, $Res Function(_$_Collection) then) =
+      __$$_CollectionCopyWithImpl<$Res>;
   @override
   $Res call(
       {String title,
@@ -194,14 +160,14 @@ abstract class _$CollectionCopyWith<$Res> implements $CollectionCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$CollectionCopyWithImpl<$Res> extends _$CollectionCopyWithImpl<$Res>
-    implements _$CollectionCopyWith<$Res> {
-  __$CollectionCopyWithImpl(
-      _Collection _value, $Res Function(_Collection) _then)
-      : super(_value, (v) => _then(v as _Collection));
+class __$$_CollectionCopyWithImpl<$Res> extends _$CollectionCopyWithImpl<$Res>
+    implements _$$_CollectionCopyWith<$Res> {
+  __$$_CollectionCopyWithImpl(
+      _$_Collection _value, $Res Function(_$_Collection) _then)
+      : super(_value, (v) => _then(v as _$_Collection));
 
   @override
-  _Collection get _value => super._value as _Collection;
+  _$_Collection get _value => super._value as _$_Collection;
 
   @override
   $Res call({
@@ -215,7 +181,7 @@ class __$CollectionCopyWithImpl<$Res> extends _$CollectionCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? image = freezed,
   }) {
-    return _then(_Collection(
+    return _then(_$_Collection(
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -302,7 +268,7 @@ class _$_Collection extends _Collection {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Collection &&
+            other is _$_Collection &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.products, products) &&
@@ -316,6 +282,7 @@ class _$_Collection extends _Collection {
             const DeepCollectionEquality().equals(other.image, image));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -331,8 +298,8 @@ class _$_Collection extends _Collection {
 
   @JsonKey(ignore: true)
   @override
-  _$CollectionCopyWith<_Collection> get copyWith =>
-      __$CollectionCopyWithImpl<_Collection>(this, _$identity);
+  _$$_CollectionCopyWith<_$_Collection> get copyWith =>
+      __$$_CollectionCopyWithImpl<_$_Collection>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -342,40 +309,40 @@ class _$_Collection extends _Collection {
 
 abstract class _Collection extends Collection {
   factory _Collection(
-      {required String title,
-      required String id,
-      required Products products,
-      String? cursor,
-      String? description,
-      String? descriptionHtml,
-      String? handle,
-      String? updatedAt,
-      ShopifyImage? image}) = _$_Collection;
+      {required final String title,
+      required final String id,
+      required final Products products,
+      final String? cursor,
+      final String? description,
+      final String? descriptionHtml,
+      final String? handle,
+      final String? updatedAt,
+      final ShopifyImage? image}) = _$_Collection;
   _Collection._() : super._();
 
   factory _Collection.fromJson(Map<String, dynamic> json) =
       _$_Collection.fromJson;
 
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  Products get products;
+  Products get products => throw _privateConstructorUsedError;
   @override
-  String? get cursor;
+  String? get cursor => throw _privateConstructorUsedError;
   @override
-  String? get description;
+  String? get description => throw _privateConstructorUsedError;
   @override
-  String? get descriptionHtml;
+  String? get descriptionHtml => throw _privateConstructorUsedError;
   @override
-  String? get handle;
+  String? get handle => throw _privateConstructorUsedError;
   @override
-  String? get updatedAt;
+  String? get updatedAt => throw _privateConstructorUsedError;
   @override
-  ShopifyImage? get image;
+  ShopifyImage? get image => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CollectionCopyWith<_Collection> get copyWith =>
+  _$$_CollectionCopyWith<_$_Collection> get copyWith =>
       throw _privateConstructorUsedError;
 }

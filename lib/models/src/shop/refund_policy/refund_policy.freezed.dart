@@ -12,34 +12,11 @@ part of 'refund_policy.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 RefundPolicy _$RefundPolicyFromJson(Map<String, dynamic> json) {
   return _RefundPolicy.fromJson(json);
 }
-
-/// @nodoc
-class _$RefundPolicyTearOff {
-  const _$RefundPolicyTearOff();
-
-  _RefundPolicy call(
-      {String? body, String? handle, String? id, String? title, String? url}) {
-    return _RefundPolicy(
-      body: body,
-      handle: handle,
-      id: id,
-      title: title,
-      url: url,
-    );
-  }
-
-  RefundPolicy fromJson(Map<String, Object?> json) {
-    return RefundPolicy.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $RefundPolicy = _$RefundPolicyTearOff();
 
 /// @nodoc
 mixin _$RefundPolicy {
@@ -106,25 +83,26 @@ class _$RefundPolicyCopyWithImpl<$Res> implements $RefundPolicyCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$RefundPolicyCopyWith<$Res>
+abstract class _$$_RefundPolicyCopyWith<$Res>
     implements $RefundPolicyCopyWith<$Res> {
-  factory _$RefundPolicyCopyWith(
-          _RefundPolicy value, $Res Function(_RefundPolicy) then) =
-      __$RefundPolicyCopyWithImpl<$Res>;
+  factory _$$_RefundPolicyCopyWith(
+          _$_RefundPolicy value, $Res Function(_$_RefundPolicy) then) =
+      __$$_RefundPolicyCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? body, String? handle, String? id, String? title, String? url});
 }
 
 /// @nodoc
-class __$RefundPolicyCopyWithImpl<$Res> extends _$RefundPolicyCopyWithImpl<$Res>
-    implements _$RefundPolicyCopyWith<$Res> {
-  __$RefundPolicyCopyWithImpl(
-      _RefundPolicy _value, $Res Function(_RefundPolicy) _then)
-      : super(_value, (v) => _then(v as _RefundPolicy));
+class __$$_RefundPolicyCopyWithImpl<$Res>
+    extends _$RefundPolicyCopyWithImpl<$Res>
+    implements _$$_RefundPolicyCopyWith<$Res> {
+  __$$_RefundPolicyCopyWithImpl(
+      _$_RefundPolicy _value, $Res Function(_$_RefundPolicy) _then)
+      : super(_value, (v) => _then(v as _$_RefundPolicy));
 
   @override
-  _RefundPolicy get _value => super._value as _RefundPolicy;
+  _$_RefundPolicy get _value => super._value as _$_RefundPolicy;
 
   @override
   $Res call({
@@ -134,7 +112,7 @@ class __$RefundPolicyCopyWithImpl<$Res> extends _$RefundPolicyCopyWithImpl<$Res>
     Object? title = freezed,
     Object? url = freezed,
   }) {
-    return _then(_RefundPolicy(
+    return _then(_$_RefundPolicy(
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -187,7 +165,7 @@ class _$_RefundPolicy implements _RefundPolicy {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RefundPolicy &&
+            other is _$_RefundPolicy &&
             const DeepCollectionEquality().equals(other.body, body) &&
             const DeepCollectionEquality().equals(other.handle, handle) &&
             const DeepCollectionEquality().equals(other.id, id) &&
@@ -195,6 +173,7 @@ class _$_RefundPolicy implements _RefundPolicy {
             const DeepCollectionEquality().equals(other.url, url));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -206,8 +185,8 @@ class _$_RefundPolicy implements _RefundPolicy {
 
   @JsonKey(ignore: true)
   @override
-  _$RefundPolicyCopyWith<_RefundPolicy> get copyWith =>
-      __$RefundPolicyCopyWithImpl<_RefundPolicy>(this, _$identity);
+  _$$_RefundPolicyCopyWith<_$_RefundPolicy> get copyWith =>
+      __$$_RefundPolicyCopyWithImpl<_$_RefundPolicy>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -217,27 +196,27 @@ class _$_RefundPolicy implements _RefundPolicy {
 
 abstract class _RefundPolicy implements RefundPolicy {
   factory _RefundPolicy(
-      {String? body,
-      String? handle,
-      String? id,
-      String? title,
-      String? url}) = _$_RefundPolicy;
+      {final String? body,
+      final String? handle,
+      final String? id,
+      final String? title,
+      final String? url}) = _$_RefundPolicy;
 
   factory _RefundPolicy.fromJson(Map<String, dynamic> json) =
       _$_RefundPolicy.fromJson;
 
   @override
-  String? get body;
+  String? get body => throw _privateConstructorUsedError;
   @override
-  String? get handle;
+  String? get handle => throw _privateConstructorUsedError;
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get title;
+  String? get title => throw _privateConstructorUsedError;
   @override
-  String? get url;
+  String? get url => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RefundPolicyCopyWith<_RefundPolicy> get copyWith =>
+  _$$_RefundPolicyCopyWith<_$_RefundPolicy> get copyWith =>
       throw _privateConstructorUsedError;
 }

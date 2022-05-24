@@ -12,30 +12,11 @@ part of 'selected_option.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SelectedOption _$SelectedOptionFromJson(Map<String, dynamic> json) {
   return _SelectedOption.fromJson(json);
 }
-
-/// @nodoc
-class _$SelectedOptionTearOff {
-  const _$SelectedOptionTearOff();
-
-  _SelectedOption call({required String name, required String value}) {
-    return _SelectedOption(
-      name: name,
-      value: value,
-    );
-  }
-
-  SelectedOption fromJson(Map<String, Object?> json) {
-    return SelectedOption.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $SelectedOption = _$SelectedOptionTearOff();
 
 /// @nodoc
 mixin _$SelectedOption {
@@ -84,32 +65,32 @@ class _$SelectedOptionCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SelectedOptionCopyWith<$Res>
+abstract class _$$_SelectedOptionCopyWith<$Res>
     implements $SelectedOptionCopyWith<$Res> {
-  factory _$SelectedOptionCopyWith(
-          _SelectedOption value, $Res Function(_SelectedOption) then) =
-      __$SelectedOptionCopyWithImpl<$Res>;
+  factory _$$_SelectedOptionCopyWith(
+          _$_SelectedOption value, $Res Function(_$_SelectedOption) then) =
+      __$$_SelectedOptionCopyWithImpl<$Res>;
   @override
   $Res call({String name, String value});
 }
 
 /// @nodoc
-class __$SelectedOptionCopyWithImpl<$Res>
+class __$$_SelectedOptionCopyWithImpl<$Res>
     extends _$SelectedOptionCopyWithImpl<$Res>
-    implements _$SelectedOptionCopyWith<$Res> {
-  __$SelectedOptionCopyWithImpl(
-      _SelectedOption _value, $Res Function(_SelectedOption) _then)
-      : super(_value, (v) => _then(v as _SelectedOption));
+    implements _$$_SelectedOptionCopyWith<$Res> {
+  __$$_SelectedOptionCopyWithImpl(
+      _$_SelectedOption _value, $Res Function(_$_SelectedOption) _then)
+      : super(_value, (v) => _then(v as _$_SelectedOption));
 
   @override
-  _SelectedOption get _value => super._value as _SelectedOption;
+  _$_SelectedOption get _value => super._value as _$_SelectedOption;
 
   @override
   $Res call({
     Object? name = freezed,
     Object? value = freezed,
   }) {
-    return _then(_SelectedOption(
+    return _then(_$_SelectedOption(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -144,11 +125,12 @@ class _$_SelectedOption extends _SelectedOption {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SelectedOption &&
+            other is _$_SelectedOption &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -157,8 +139,8 @@ class _$_SelectedOption extends _SelectedOption {
 
   @JsonKey(ignore: true)
   @override
-  _$SelectedOptionCopyWith<_SelectedOption> get copyWith =>
-      __$SelectedOptionCopyWithImpl<_SelectedOption>(this, _$identity);
+  _$$_SelectedOptionCopyWith<_$_SelectedOption> get copyWith =>
+      __$$_SelectedOptionCopyWithImpl<_$_SelectedOption>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -167,19 +149,20 @@ class _$_SelectedOption extends _SelectedOption {
 }
 
 abstract class _SelectedOption extends SelectedOption {
-  factory _SelectedOption({required String name, required String value}) =
-      _$_SelectedOption;
+  factory _SelectedOption(
+      {required final String name,
+      required final String value}) = _$_SelectedOption;
   _SelectedOption._() : super._();
 
   factory _SelectedOption.fromJson(Map<String, dynamic> json) =
       _$_SelectedOption.fromJson;
 
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  String get value;
+  String get value => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SelectedOptionCopyWith<_SelectedOption> get copyWith =>
+  _$$_SelectedOptionCopyWith<_$_SelectedOption> get copyWith =>
       throw _privateConstructorUsedError;
 }

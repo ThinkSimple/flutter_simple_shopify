@@ -12,46 +12,11 @@ part of 'shop.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Shop _$ShopFromJson(Map<String, dynamic> json) {
   return _Shop.fromJson(json);
 }
-
-/// @nodoc
-class _$ShopTearOff {
-  const _$ShopTearOff();
-
-  _Shop call(
-      {String? description,
-      String? moneyFormat,
-      String? name,
-      PaymentSettings? paymentSettings,
-      PrimaryDomain? primaryDomain,
-      PrivacyPolicy? privacyPolicy,
-      RefundPolicy? refundPolicy,
-      List<String>? shipsToCountries,
-      TermsOfService? termsOfService}) {
-    return _Shop(
-      description: description,
-      moneyFormat: moneyFormat,
-      name: name,
-      paymentSettings: paymentSettings,
-      primaryDomain: primaryDomain,
-      privacyPolicy: privacyPolicy,
-      refundPolicy: refundPolicy,
-      shipsToCountries: shipsToCountries,
-      termsOfService: termsOfService,
-    );
-  }
-
-  Shop fromJson(Map<String, Object?> json) {
-    return Shop.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Shop = _$ShopTearOff();
 
 /// @nodoc
 mixin _$Shop {
@@ -209,9 +174,9 @@ class _$ShopCopyWithImpl<$Res> implements $ShopCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ShopCopyWith<$Res> implements $ShopCopyWith<$Res> {
-  factory _$ShopCopyWith(_Shop value, $Res Function(_Shop) then) =
-      __$ShopCopyWithImpl<$Res>;
+abstract class _$$_ShopCopyWith<$Res> implements $ShopCopyWith<$Res> {
+  factory _$$_ShopCopyWith(_$_Shop value, $Res Function(_$_Shop) then) =
+      __$$_ShopCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? description,
@@ -237,13 +202,13 @@ abstract class _$ShopCopyWith<$Res> implements $ShopCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res>
-    implements _$ShopCopyWith<$Res> {
-  __$ShopCopyWithImpl(_Shop _value, $Res Function(_Shop) _then)
-      : super(_value, (v) => _then(v as _Shop));
+class __$$_ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res>
+    implements _$$_ShopCopyWith<$Res> {
+  __$$_ShopCopyWithImpl(_$_Shop _value, $Res Function(_$_Shop) _then)
+      : super(_value, (v) => _then(v as _$_Shop));
 
   @override
-  _Shop get _value => super._value as _Shop;
+  _$_Shop get _value => super._value as _$_Shop;
 
   @override
   $Res call({
@@ -257,7 +222,7 @@ class __$ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res>
     Object? shipsToCountries = freezed,
     Object? termsOfService = freezed,
   }) {
-    return _then(_Shop(
+    return _then(_$_Shop(
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -287,7 +252,7 @@ class __$ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res>
           : refundPolicy // ignore: cast_nullable_to_non_nullable
               as RefundPolicy?,
       shipsToCountries: shipsToCountries == freezed
-          ? _value.shipsToCountries
+          ? _value._shipsToCountries
           : shipsToCountries // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       termsOfService: termsOfService == freezed
@@ -309,8 +274,9 @@ class _$_Shop implements _Shop {
       this.primaryDomain,
       this.privacyPolicy,
       this.refundPolicy,
-      this.shipsToCountries,
-      this.termsOfService});
+      final List<String>? shipsToCountries,
+      this.termsOfService})
+      : _shipsToCountries = shipsToCountries;
 
   factory _$_Shop.fromJson(Map<String, dynamic> json) => _$$_ShopFromJson(json);
 
@@ -328,8 +294,15 @@ class _$_Shop implements _Shop {
   final PrivacyPolicy? privacyPolicy;
   @override
   final RefundPolicy? refundPolicy;
+  final List<String>? _shipsToCountries;
   @override
-  final List<String>? shipsToCountries;
+  List<String>? get shipsToCountries {
+    final value = _shipsToCountries;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final TermsOfService? termsOfService;
 
@@ -342,7 +315,7 @@ class _$_Shop implements _Shop {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Shop &&
+            other is _$_Shop &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality()
@@ -357,11 +330,12 @@ class _$_Shop implements _Shop {
             const DeepCollectionEquality()
                 .equals(other.refundPolicy, refundPolicy) &&
             const DeepCollectionEquality()
-                .equals(other.shipsToCountries, shipsToCountries) &&
+                .equals(other._shipsToCountries, _shipsToCountries) &&
             const DeepCollectionEquality()
                 .equals(other.termsOfService, termsOfService));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -372,13 +346,13 @@ class _$_Shop implements _Shop {
       const DeepCollectionEquality().hash(primaryDomain),
       const DeepCollectionEquality().hash(privacyPolicy),
       const DeepCollectionEquality().hash(refundPolicy),
-      const DeepCollectionEquality().hash(shipsToCountries),
+      const DeepCollectionEquality().hash(_shipsToCountries),
       const DeepCollectionEquality().hash(termsOfService));
 
   @JsonKey(ignore: true)
   @override
-  _$ShopCopyWith<_Shop> get copyWith =>
-      __$ShopCopyWithImpl<_Shop>(this, _$identity);
+  _$$_ShopCopyWith<_$_Shop> get copyWith =>
+      __$$_ShopCopyWithImpl<_$_Shop>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -388,37 +362,37 @@ class _$_Shop implements _Shop {
 
 abstract class _Shop implements Shop {
   factory _Shop(
-      {String? description,
-      String? moneyFormat,
-      String? name,
-      PaymentSettings? paymentSettings,
-      PrimaryDomain? primaryDomain,
-      PrivacyPolicy? privacyPolicy,
-      RefundPolicy? refundPolicy,
-      List<String>? shipsToCountries,
-      TermsOfService? termsOfService}) = _$_Shop;
+      {final String? description,
+      final String? moneyFormat,
+      final String? name,
+      final PaymentSettings? paymentSettings,
+      final PrimaryDomain? primaryDomain,
+      final PrivacyPolicy? privacyPolicy,
+      final RefundPolicy? refundPolicy,
+      final List<String>? shipsToCountries,
+      final TermsOfService? termsOfService}) = _$_Shop;
 
   factory _Shop.fromJson(Map<String, dynamic> json) = _$_Shop.fromJson;
 
   @override
-  String? get description;
+  String? get description => throw _privateConstructorUsedError;
   @override
-  String? get moneyFormat;
+  String? get moneyFormat => throw _privateConstructorUsedError;
   @override
-  String? get name;
+  String? get name => throw _privateConstructorUsedError;
   @override
-  PaymentSettings? get paymentSettings;
+  PaymentSettings? get paymentSettings => throw _privateConstructorUsedError;
   @override
-  PrimaryDomain? get primaryDomain;
+  PrimaryDomain? get primaryDomain => throw _privateConstructorUsedError;
   @override
-  PrivacyPolicy? get privacyPolicy;
+  PrivacyPolicy? get privacyPolicy => throw _privateConstructorUsedError;
   @override
-  RefundPolicy? get refundPolicy;
+  RefundPolicy? get refundPolicy => throw _privateConstructorUsedError;
   @override
-  List<String>? get shipsToCountries;
+  List<String>? get shipsToCountries => throw _privateConstructorUsedError;
   @override
-  TermsOfService? get termsOfService;
+  TermsOfService? get termsOfService => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ShopCopyWith<_Shop> get copyWith => throw _privateConstructorUsedError;
+  _$$_ShopCopyWith<_$_Shop> get copyWith => throw _privateConstructorUsedError;
 }

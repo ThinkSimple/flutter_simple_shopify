@@ -12,42 +12,11 @@ part of 'payment_settings.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 PaymentSettings _$PaymentSettingsFromJson(Map<String, dynamic> json) {
   return _PaymentSettings.fromJson(json);
 }
-
-/// @nodoc
-class _$PaymentSettingsTearOff {
-  const _$PaymentSettingsTearOff();
-
-  _PaymentSettings call(
-      {List<String>? acceptedCardBrands,
-      String? cardVaultUrl,
-      String? countryCode,
-      String? currencyCode,
-      List<String>? enabledPresentmentCurrencies,
-      String? shopifyPaymentAccountId,
-      List<String>? supportedDigitalWallets}) {
-    return _PaymentSettings(
-      acceptedCardBrands: acceptedCardBrands,
-      cardVaultUrl: cardVaultUrl,
-      countryCode: countryCode,
-      currencyCode: currencyCode,
-      enabledPresentmentCurrencies: enabledPresentmentCurrencies,
-      shopifyPaymentAccountId: shopifyPaymentAccountId,
-      supportedDigitalWallets: supportedDigitalWallets,
-    );
-  }
-
-  PaymentSettings fromJson(Map<String, Object?> json) {
-    return PaymentSettings.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PaymentSettings = _$PaymentSettingsTearOff();
 
 /// @nodoc
 mixin _$PaymentSettings {
@@ -135,11 +104,11 @@ class _$PaymentSettingsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PaymentSettingsCopyWith<$Res>
+abstract class _$$_PaymentSettingsCopyWith<$Res>
     implements $PaymentSettingsCopyWith<$Res> {
-  factory _$PaymentSettingsCopyWith(
-          _PaymentSettings value, $Res Function(_PaymentSettings) then) =
-      __$PaymentSettingsCopyWithImpl<$Res>;
+  factory _$$_PaymentSettingsCopyWith(
+          _$_PaymentSettings value, $Res Function(_$_PaymentSettings) then) =
+      __$$_PaymentSettingsCopyWithImpl<$Res>;
   @override
   $Res call(
       {List<String>? acceptedCardBrands,
@@ -152,15 +121,15 @@ abstract class _$PaymentSettingsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PaymentSettingsCopyWithImpl<$Res>
+class __$$_PaymentSettingsCopyWithImpl<$Res>
     extends _$PaymentSettingsCopyWithImpl<$Res>
-    implements _$PaymentSettingsCopyWith<$Res> {
-  __$PaymentSettingsCopyWithImpl(
-      _PaymentSettings _value, $Res Function(_PaymentSettings) _then)
-      : super(_value, (v) => _then(v as _PaymentSettings));
+    implements _$$_PaymentSettingsCopyWith<$Res> {
+  __$$_PaymentSettingsCopyWithImpl(
+      _$_PaymentSettings _value, $Res Function(_$_PaymentSettings) _then)
+      : super(_value, (v) => _then(v as _$_PaymentSettings));
 
   @override
-  _PaymentSettings get _value => super._value as _PaymentSettings;
+  _$_PaymentSettings get _value => super._value as _$_PaymentSettings;
 
   @override
   $Res call({
@@ -172,9 +141,9 @@ class __$PaymentSettingsCopyWithImpl<$Res>
     Object? shopifyPaymentAccountId = freezed,
     Object? supportedDigitalWallets = freezed,
   }) {
-    return _then(_PaymentSettings(
+    return _then(_$_PaymentSettings(
       acceptedCardBrands: acceptedCardBrands == freezed
-          ? _value.acceptedCardBrands
+          ? _value._acceptedCardBrands
           : acceptedCardBrands // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       cardVaultUrl: cardVaultUrl == freezed
@@ -190,7 +159,7 @@ class __$PaymentSettingsCopyWithImpl<$Res>
           : currencyCode // ignore: cast_nullable_to_non_nullable
               as String?,
       enabledPresentmentCurrencies: enabledPresentmentCurrencies == freezed
-          ? _value.enabledPresentmentCurrencies
+          ? _value._enabledPresentmentCurrencies
           : enabledPresentmentCurrencies // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       shopifyPaymentAccountId: shopifyPaymentAccountId == freezed
@@ -198,7 +167,7 @@ class __$PaymentSettingsCopyWithImpl<$Res>
           : shopifyPaymentAccountId // ignore: cast_nullable_to_non_nullable
               as String?,
       supportedDigitalWallets: supportedDigitalWallets == freezed
-          ? _value.supportedDigitalWallets
+          ? _value._supportedDigitalWallets
           : supportedDigitalWallets // ignore: cast_nullable_to_non_nullable
               as List<String>?,
     ));
@@ -209,31 +178,54 @@ class __$PaymentSettingsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PaymentSettings implements _PaymentSettings {
   _$_PaymentSettings(
-      {this.acceptedCardBrands,
+      {final List<String>? acceptedCardBrands,
       this.cardVaultUrl,
       this.countryCode,
       this.currencyCode,
-      this.enabledPresentmentCurrencies,
+      final List<String>? enabledPresentmentCurrencies,
       this.shopifyPaymentAccountId,
-      this.supportedDigitalWallets});
+      final List<String>? supportedDigitalWallets})
+      : _acceptedCardBrands = acceptedCardBrands,
+        _enabledPresentmentCurrencies = enabledPresentmentCurrencies,
+        _supportedDigitalWallets = supportedDigitalWallets;
 
   factory _$_PaymentSettings.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentSettingsFromJson(json);
 
+  final List<String>? _acceptedCardBrands;
   @override
-  final List<String>? acceptedCardBrands;
+  List<String>? get acceptedCardBrands {
+    final value = _acceptedCardBrands;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? cardVaultUrl;
   @override
   final String? countryCode;
   @override
   final String? currencyCode;
+  final List<String>? _enabledPresentmentCurrencies;
   @override
-  final List<String>? enabledPresentmentCurrencies;
+  List<String>? get enabledPresentmentCurrencies {
+    final value = _enabledPresentmentCurrencies;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? shopifyPaymentAccountId;
+  final List<String>? _supportedDigitalWallets;
   @override
-  final List<String>? supportedDigitalWallets;
+  List<String>? get supportedDigitalWallets {
+    final value = _supportedDigitalWallets;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -244,9 +236,9 @@ class _$_PaymentSettings implements _PaymentSettings {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PaymentSettings &&
+            other is _$_PaymentSettings &&
             const DeepCollectionEquality()
-                .equals(other.acceptedCardBrands, acceptedCardBrands) &&
+                .equals(other._acceptedCardBrands, _acceptedCardBrands) &&
             const DeepCollectionEquality()
                 .equals(other.cardVaultUrl, cardVaultUrl) &&
             const DeepCollectionEquality()
@@ -254,29 +246,30 @@ class _$_PaymentSettings implements _PaymentSettings {
             const DeepCollectionEquality()
                 .equals(other.currencyCode, currencyCode) &&
             const DeepCollectionEquality().equals(
-                other.enabledPresentmentCurrencies,
-                enabledPresentmentCurrencies) &&
+                other._enabledPresentmentCurrencies,
+                _enabledPresentmentCurrencies) &&
             const DeepCollectionEquality().equals(
                 other.shopifyPaymentAccountId, shopifyPaymentAccountId) &&
             const DeepCollectionEquality().equals(
-                other.supportedDigitalWallets, supportedDigitalWallets));
+                other._supportedDigitalWallets, _supportedDigitalWallets));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(acceptedCardBrands),
-      const DeepCollectionEquality().hash(cardVaultUrl),
-      const DeepCollectionEquality().hash(countryCode),
-      const DeepCollectionEquality().hash(currencyCode),
-      const DeepCollectionEquality().hash(enabledPresentmentCurrencies),
-      const DeepCollectionEquality().hash(shopifyPaymentAccountId),
-      const DeepCollectionEquality().hash(supportedDigitalWallets));
 
   @JsonKey(ignore: true)
   @override
-  _$PaymentSettingsCopyWith<_PaymentSettings> get copyWith =>
-      __$PaymentSettingsCopyWithImpl<_PaymentSettings>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_acceptedCardBrands),
+      const DeepCollectionEquality().hash(cardVaultUrl),
+      const DeepCollectionEquality().hash(countryCode),
+      const DeepCollectionEquality().hash(currencyCode),
+      const DeepCollectionEquality().hash(_enabledPresentmentCurrencies),
+      const DeepCollectionEquality().hash(shopifyPaymentAccountId),
+      const DeepCollectionEquality().hash(_supportedDigitalWallets));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PaymentSettingsCopyWith<_$_PaymentSettings> get copyWith =>
+      __$$_PaymentSettingsCopyWithImpl<_$_PaymentSettings>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -286,33 +279,35 @@ class _$_PaymentSettings implements _PaymentSettings {
 
 abstract class _PaymentSettings implements PaymentSettings {
   factory _PaymentSettings(
-      {List<String>? acceptedCardBrands,
-      String? cardVaultUrl,
-      String? countryCode,
-      String? currencyCode,
-      List<String>? enabledPresentmentCurrencies,
-      String? shopifyPaymentAccountId,
-      List<String>? supportedDigitalWallets}) = _$_PaymentSettings;
+      {final List<String>? acceptedCardBrands,
+      final String? cardVaultUrl,
+      final String? countryCode,
+      final String? currencyCode,
+      final List<String>? enabledPresentmentCurrencies,
+      final String? shopifyPaymentAccountId,
+      final List<String>? supportedDigitalWallets}) = _$_PaymentSettings;
 
   factory _PaymentSettings.fromJson(Map<String, dynamic> json) =
       _$_PaymentSettings.fromJson;
 
   @override
-  List<String>? get acceptedCardBrands;
+  List<String>? get acceptedCardBrands => throw _privateConstructorUsedError;
   @override
-  String? get cardVaultUrl;
+  String? get cardVaultUrl => throw _privateConstructorUsedError;
   @override
-  String? get countryCode;
+  String? get countryCode => throw _privateConstructorUsedError;
   @override
-  String? get currencyCode;
+  String? get currencyCode => throw _privateConstructorUsedError;
   @override
-  List<String>? get enabledPresentmentCurrencies;
+  List<String>? get enabledPresentmentCurrencies =>
+      throw _privateConstructorUsedError;
   @override
-  String? get shopifyPaymentAccountId;
+  String? get shopifyPaymentAccountId => throw _privateConstructorUsedError;
   @override
-  List<String>? get supportedDigitalWallets;
+  List<String>? get supportedDigitalWallets =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PaymentSettingsCopyWith<_PaymentSettings> get copyWith =>
+  _$$_PaymentSettingsCopyWith<_$_PaymentSettings> get copyWith =>
       throw _privateConstructorUsedError;
 }

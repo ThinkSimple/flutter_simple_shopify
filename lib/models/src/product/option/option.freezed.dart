@@ -12,34 +12,11 @@ part of 'option.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Option _$OptionFromJson(Map<String, dynamic> json) {
   return _Option.fromJson(json);
 }
-
-/// @nodoc
-class _$OptionTearOff {
-  const _$OptionTearOff();
-
-  _Option call(
-      {required String id,
-      required String name,
-      required List<String> values}) {
-    return _Option(
-      id: id,
-      name: name,
-      values: values,
-    );
-  }
-
-  Option fromJson(Map<String, Object?> json) {
-    return Option.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Option = _$OptionTearOff();
 
 /// @nodoc
 mixin _$Option {
@@ -91,21 +68,21 @@ class _$OptionCopyWithImpl<$Res> implements $OptionCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$OptionCopyWith<$Res> implements $OptionCopyWith<$Res> {
-  factory _$OptionCopyWith(_Option value, $Res Function(_Option) then) =
-      __$OptionCopyWithImpl<$Res>;
+abstract class _$$_OptionCopyWith<$Res> implements $OptionCopyWith<$Res> {
+  factory _$$_OptionCopyWith(_$_Option value, $Res Function(_$_Option) then) =
+      __$$_OptionCopyWithImpl<$Res>;
   @override
   $Res call({String id, String name, List<String> values});
 }
 
 /// @nodoc
-class __$OptionCopyWithImpl<$Res> extends _$OptionCopyWithImpl<$Res>
-    implements _$OptionCopyWith<$Res> {
-  __$OptionCopyWithImpl(_Option _value, $Res Function(_Option) _then)
-      : super(_value, (v) => _then(v as _Option));
+class __$$_OptionCopyWithImpl<$Res> extends _$OptionCopyWithImpl<$Res>
+    implements _$$_OptionCopyWith<$Res> {
+  __$$_OptionCopyWithImpl(_$_Option _value, $Res Function(_$_Option) _then)
+      : super(_value, (v) => _then(v as _$_Option));
 
   @override
-  _Option get _value => super._value as _Option;
+  _$_Option get _value => super._value as _$_Option;
 
   @override
   $Res call({
@@ -113,7 +90,7 @@ class __$OptionCopyWithImpl<$Res> extends _$OptionCopyWithImpl<$Res>
     Object? name = freezed,
     Object? values = freezed,
   }) {
-    return _then(_Option(
+    return _then(_$_Option(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -123,7 +100,7 @@ class __$OptionCopyWithImpl<$Res> extends _$OptionCopyWithImpl<$Res>
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       values: values == freezed
-          ? _value.values
+          ? _value._values
           : values // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
@@ -133,8 +110,12 @@ class __$OptionCopyWithImpl<$Res> extends _$OptionCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Option extends _Option {
-  _$_Option({required this.id, required this.name, required this.values})
-      : super._();
+  _$_Option(
+      {required this.id,
+      required this.name,
+      required final List<String> values})
+      : _values = values,
+        super._();
 
   factory _$_Option.fromJson(Map<String, dynamic> json) =>
       _$$_OptionFromJson(json);
@@ -143,8 +124,12 @@ class _$_Option extends _Option {
   final String id;
   @override
   final String name;
+  final List<String> _values;
   @override
-  final List<String> values;
+  List<String> get values {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_values);
+  }
 
   @override
   String toString() {
@@ -155,23 +140,24 @@ class _$_Option extends _Option {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Option &&
+            other is _$_Option &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.values, values));
+            const DeepCollectionEquality().equals(other._values, _values));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(values));
+      const DeepCollectionEquality().hash(_values));
 
   @JsonKey(ignore: true)
   @override
-  _$OptionCopyWith<_Option> get copyWith =>
-      __$OptionCopyWithImpl<_Option>(this, _$identity);
+  _$$_OptionCopyWith<_$_Option> get copyWith =>
+      __$$_OptionCopyWithImpl<_$_Option>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -181,20 +167,21 @@ class _$_Option extends _Option {
 
 abstract class _Option extends Option {
   factory _Option(
-      {required String id,
-      required String name,
-      required List<String> values}) = _$_Option;
+      {required final String id,
+      required final String name,
+      required final List<String> values}) = _$_Option;
   _Option._() : super._();
 
   factory _Option.fromJson(Map<String, dynamic> json) = _$_Option.fromJson;
 
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  List<String> get values;
+  List<String> get values => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$OptionCopyWith<_Option> get copyWith => throw _privateConstructorUsedError;
+  _$$_OptionCopyWith<_$_Option> get copyWith =>
+      throw _privateConstructorUsedError;
 }
