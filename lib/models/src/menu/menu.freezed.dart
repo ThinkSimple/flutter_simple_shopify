@@ -141,14 +141,15 @@ class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Menu implements _Menu {
+class _$_Menu extends _Menu {
   _$_Menu(
       {this.handle,
       this.id,
       final List<MenuItem>? items,
       this.itemsCount,
       this.title})
-      : _items = items;
+      : _items = items,
+        super._();
 
   factory _$_Menu.fromJson(Map<String, dynamic> json) => _$$_MenuFromJson(json);
 
@@ -209,13 +210,14 @@ class _$_Menu implements _Menu {
   }
 }
 
-abstract class _Menu implements Menu {
+abstract class _Menu extends Menu {
   factory _Menu(
       {final String? handle,
       final String? id,
       final List<MenuItem>? items,
       final int? itemsCount,
       final String? title}) = _$_Menu;
+  _Menu._() : super._();
 
   factory _Menu.fromJson(Map<String, dynamic> json) = _$_Menu.fromJson;
 

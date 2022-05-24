@@ -6,6 +6,8 @@ part 'menu.g.dart';
 
 @freezed
 class Menu with _$Menu {
+  const Menu._();
+
   factory Menu({
     String? handle,
     String? id,

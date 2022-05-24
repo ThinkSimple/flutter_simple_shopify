@@ -5,6 +5,7 @@ part 'menu_item.g.dart';
 
 @freezed
 class MenuItem with _$MenuItem {
+  const MenuItem._();
   factory MenuItem({
     String? id,
     List<MenuItem>? items,
