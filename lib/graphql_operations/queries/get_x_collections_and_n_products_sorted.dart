@@ -47,7 +47,6 @@ query($cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCol
                       value
                     }
                     availableForSale
-                    quantityAvailable
                   }
                 }
               }

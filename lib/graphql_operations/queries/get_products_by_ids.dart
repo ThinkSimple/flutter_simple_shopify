@@ -62,7 +62,6 @@ query($ids : [ID!]!){
               value
              }
             id
-            quantityAvailable
           }
         }
       }

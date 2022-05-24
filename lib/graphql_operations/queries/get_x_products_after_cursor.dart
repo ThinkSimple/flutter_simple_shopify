@@ -35,7 +35,6 @@ query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys){
               availableForSale
               sku
               requiresShipping
-              quantityAvailable
               selectedOptions {
                 name
                 value
