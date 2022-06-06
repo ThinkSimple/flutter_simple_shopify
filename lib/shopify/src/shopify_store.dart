@@ -4,6 +4,7 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_collec
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_from_collection_by_id.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_on_query.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_collections_by_ids.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_meta_field.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_metafileds_from_product.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_product_recommendations.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_products_by_ids.dart';
@@ -444,5 +445,20 @@ class ShopifyStore with ShopifyError {
             as List<Object>)
         .map((e) => Metafield.fromGraphJson(e as Map<String, dynamic>))
         .toList();
+  }
+
+  Future<List<Metafield>> getMetaFields(
+      String id) async {
+    final WatchQueryOptions _options = WatchQueryOptions(
+        document: gql(get_meta_field),
+        variables: {'id': id});
+    final QueryResult result =
+    await ShopifyConfig.graphQLClient!.query(_options);
+    checkForError(result);
+    return (result.data!['product']['metafields']['edges']
+    as List<Object>)
+        .map((e) => Metafield.fromGraphJson(e as Map<String, dynamic>))
+        .toList();
+
   }
 }
