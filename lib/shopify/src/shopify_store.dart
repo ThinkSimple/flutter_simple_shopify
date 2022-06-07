@@ -450,7 +450,7 @@ class ShopifyStore with ShopifyError {
   Future<List<Metafield>> getMetaFields(
       String id) async {
     final WatchQueryOptions _options = WatchQueryOptions(
-        document: gql(get_meta_field),
+        document: gql(getMetaField),
         variables: {'id': id});
     final QueryResult result =
     await ShopifyConfig.graphQLClient!.query(_options);
