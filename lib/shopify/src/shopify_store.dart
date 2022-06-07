@@ -451,7 +451,10 @@ class ShopifyStore with ShopifyError {
       String id, {bool deleteThisPartOfCache = false}) async {
     final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getMetaField),
-        variables: {'id': id});
+        variables: {
+          'namespace': "wildfox",
+          'key':'country_of_origin',
+          'ownerId': "gid://shopify/Product/6662536396859"});
     final QueryResult result =
     await ShopifyConfig.graphQLClient!.query(_options);
     if (deleteThisPartOfCache) {
