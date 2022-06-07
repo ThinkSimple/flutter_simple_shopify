@@ -1,5 +1,5 @@
 const String getMetaField = r'''
-query($id : ID!){
+query ProductMetafields($id : ID!){
   product(id: $id) {
     metafields(namespace: "wildFox", first: 3) {
       edges {
