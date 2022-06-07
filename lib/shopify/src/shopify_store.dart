@@ -452,7 +452,7 @@ class ShopifyStore with ShopifyError {
     final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getMetaField),
         variables: {
-          'ownerId': "gid://shopify/Product/6662536396859"});
+          'ownerId': "gid://shopify/Product/$id"});
     final QueryResult result =
     await ShopifyConfig.graphQLClient!.query(_options);
     checkForError(result);
