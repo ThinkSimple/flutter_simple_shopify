@@ -8,6 +8,8 @@ query ProductMetafields($ownerId : ID!){
           namespace
           key
           value
+          valueType
+          description
         }
       }
     }

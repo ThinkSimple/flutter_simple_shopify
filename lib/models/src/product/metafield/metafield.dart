@@ -13,7 +13,7 @@ class Metafield with _$Metafield {
     required String key,
     required String value,
     required String valueType,
-    @Default('') String description,
+    @Default('') String? description,
   }) = _Metafield;
 
   static Metafield fromGraphJson(Map<String, dynamic> json) {
