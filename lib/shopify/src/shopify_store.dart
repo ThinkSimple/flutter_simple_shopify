@@ -452,15 +452,13 @@ class ShopifyStore with ShopifyError {
     final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getMetaField),
         variables: {
-          'namespace': "wildfox",
-          'key':'country_of_origin',
           'ownerId': "gid://shopify/Product/6662536396859"});
     final QueryResult result =
     await ShopifyConfig.graphQLClient!.query(_options);
+    checkForError(result);
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
-    checkForError(result);
     return (result.data!['product']['metafields']['edges']
     as List<Object>)
         .map((e) => Metafield.fromGraphJson(e as Map<String, dynamic>))
