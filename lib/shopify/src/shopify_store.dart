@@ -448,12 +448,15 @@ class ShopifyStore with ShopifyError {
   }
 
   Future<List<Metafield>> getMetaFields(
-      String id) async {
+      String id, {bool deleteThisPartOfCache = false}) async {
     final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getMetaField),
         variables: {'id': id});
     final QueryResult result =
     await ShopifyConfig.graphQLClient!.query(_options);
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
     checkForError(result);
     return (result.data!['product']['metafields']['edges']
     as List<Object>)
