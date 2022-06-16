@@ -59,7 +59,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
       {bool deleteThisPartOfCache = false})
      Future<Products> getXProductsAfterCursorWithinCollection(String id, int limit, String startCursor, SortKeyProduct sortKey)
      Future<Collection> getXProductsAfterCursorByCollectionHandle(
-      String handle, int limit, String startCursor,
+      String handle, int limit, String? startCursor,
       {bool deleteThisPartOfCache = false,
       bool reverse = false,
       SortKeyProductCollection sortKeyProductCollection = SortKeyProductCollection.RELEVANCE})

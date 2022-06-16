@@ -550,12 +550,12 @@ class PriceV2 {
         }
         break;
       case "USD":
+      case "INR":
         {
           currencyString =
               '${_simpleCurrencySymbols[currencyCode!]}$formattedAmount';
         }
         break;
-      case "INR":
       case "QAR":
       case "OMR":
       case "BHD":

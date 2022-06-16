@@ -263,12 +263,12 @@ class ShopifyStore with ShopifyError {
   }
 
   Future<Collection> getXProductsAfterCursorByCollectionHandle(
-      String handle, int limit, String startCursor,
+      String handle, int limit, String? startCursor,
       {bool deleteThisPartOfCache = false,
       bool reverse = false,
       SortKeyProductCollection sortKeyProductCollection =
           SortKeyProductCollection.RELEVANCE}) async {
-    String cursor = startCursor;
+    String? cursor = startCursor;
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
           document: gql(getXProductAfterCursorByCollectionHandleQuery),
