@@ -1,6 +1,6 @@
 const String getMetaField = r'''
-query ProductMetafields($productId : ID!){
-  product(id: $productId) {
+query ProductMetafields($ownerId : ID!){
+  product(id: $ownerId) {
     metafields(namespace: "wildfox", first: 50) {
       edges {
         node {
