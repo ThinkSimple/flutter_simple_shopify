@@ -8,7 +8,8 @@ query($handle: String!) {
     tags
     onlineStoreUrl
     productType
-    vendor 
+    vendor
+    descriptionHtml 
     options(first: 50) {
       id
       name
@@ -19,13 +20,13 @@ query($handle: String!) {
       key 
       namespace 
       value 
-      valueType 
+      type 
     }
     review_count: metafield(namespace: "rview", key: "review-count") {
       key 
       namespace 
       value 
-      valueType 
+      type 
     }
     variants(first: 250) {
       edges {

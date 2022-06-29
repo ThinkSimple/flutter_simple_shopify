@@ -81,6 +81,7 @@ class ShopifyStore with ShopifyError {
       if (deleteThisPartOfCache) {
         //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
       }
+      print('object');
       // Map<String, dynamic> a = (result?.data ?? const {})['productByHandle'] ?? {};
       return Product.fromProductHandleJson(
           (result.data ?? const {})['productByHandle'] ?? {});
@@ -134,6 +135,7 @@ class ShopifyStore with ShopifyError {
       'edges': List.generate(response['nodes'].length,
           (index) => {'node': response['nodes'][index]})
     };
+    print('object');
     productList = Products.fromJson(newResponse).productList;
     if (deleteThisPartOfCache) {
       //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});

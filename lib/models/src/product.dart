@@ -331,7 +331,7 @@ class Metafield {
   final String? namespace;
   final String? key;
   final String? value;
-  final String? valueType;
+  final String? type;
   final String? description;
 
   const Metafield(
@@ -339,7 +339,7 @@ class Metafield {
       this.namespace,
       this.key,
       this.value,
-      this.valueType,
+      this.type,
       this.description});
 
   static Metafield fromJson(Map<String, dynamic> json) {
@@ -348,7 +348,7 @@ class Metafield {
         namespace: (json['node'] ?? const {})['namespace'],
         key: (json['node'] ?? const {})['key'],
         value: (json['node'] ?? const {})['value'],
-        valueType: (json['node'] ?? const {})['valueType'],
+        type: (json['node'] ?? const {})['type'],
         description: (json['node'] ?? const {})['description']);
   }
 }
@@ -717,7 +717,7 @@ class PriceV2 {
     'SCR': 'SCR',
     'LKR': 'Rs',
     'NPR': 'Rs',
-    'INR': '\u20b9',
+    'INR': 'Rs.',
     'PKR': 'Rs',
     'IDR': 'Rp',
     'ILS': '\u20aa',

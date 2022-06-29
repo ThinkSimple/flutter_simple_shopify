@@ -17,13 +17,13 @@ query($n : Int, $sortKey : ProductSortKeys, $reverse: Boolean){
           key 
           namespace 
           value 
-          valueType 
+          type 
         }
         review_count: metafield(namespace: "rview", key: "review-count") {
           key 
           namespace 
           value 
-          valueType 
+          type 
         }
         variants(first: 1) {
           edges {

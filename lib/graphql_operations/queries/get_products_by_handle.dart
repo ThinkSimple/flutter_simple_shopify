@@ -13,13 +13,13 @@ query getProductByHandle($handle: String!) {
       key 
       namespace 
       value 
-      valueType 
+      type 
     }
     review_count: metafield(namespace: "rview", key: "review-count") {
       key 
       namespace 
       value 
-      valueType 
+      type 
     }
     options(first: 50) {
       id

@@ -15,13 +15,13 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
           key 
           namespace 
           value 
-          valueType 
+          type 
         }
         review_count: metafield(namespace: "rview", key: "review-count") {
           key 
           namespace 
           value 
-          valueType 
+          type 
         }
         images(first: 1) {
           edges {

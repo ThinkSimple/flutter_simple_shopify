@@ -5,7 +5,7 @@ query($handle : String!){
         handle
         title 
         body
-        url
+        onlineStoreUrl
     }
 }
 ''';

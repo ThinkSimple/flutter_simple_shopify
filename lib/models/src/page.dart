@@ -16,7 +16,7 @@ class ShopifyPage {
         handle: json['handle'],
         title: json['title'],
         body: json['body'],
-        url: json['url'],
+        url: json['onlineStoreUrl'],
     );
   }
 

@@ -19,7 +19,7 @@ query($cursor : String,  $shouldFetchMetafields : Boolean = false, $metafieldsNa
               namespace
               key
               value
-              valueType
+              type
               description
             }
           }

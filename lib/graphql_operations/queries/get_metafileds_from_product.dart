@@ -8,7 +8,7 @@ query($handle: String!, $namespace: String!) {
           namespace
           key
           value
-          valueType
+          type
           description
         }
       }
