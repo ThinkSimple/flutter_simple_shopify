@@ -13,6 +13,36 @@ query ProductMetafields($ownerId : ID!){
         }
       }
     }
+    variants(first: 250) {
+      edges {
+        node {
+          id
+          title
+          image {
+            altText
+            id
+            originalSrc
+          }
+          priceV2 {
+            amount
+            currencyCode
+          }
+          compareAtPriceV2 {
+            amount
+            currencyCode
+          }
+          weight
+          weightUnit
+          availableForSale
+          sku
+          requiresShipping
+          selectedOptions {
+            name
+            value
+          }
+        }
+      }
+    }
   }
 }
 ''';
