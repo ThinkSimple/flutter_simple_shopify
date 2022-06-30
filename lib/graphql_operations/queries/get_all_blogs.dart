@@ -6,7 +6,7 @@ query getBlogs($reverseBlogs: Boolean, $reverseArticles: Boolean, $sortKey: Blog
         id
         handle
         title
-        url
+        onlineStoreUrl
         articles(first: 250, sortKey: TITLE, reverse: $reverseArticles) {
           edges {
             node {
@@ -45,7 +45,7 @@ query getBlogs($reverseBlogs: Boolean, $reverseArticles: Boolean, $sortKey: Blog
               publishedAt
               tags
               title
-              url
+              onlineStoreUrl
             }
           }
         }

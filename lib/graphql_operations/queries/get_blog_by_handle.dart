@@ -39,14 +39,14 @@ query($handle : String!, $sortKey: ArticleSortKeys, $reverseArticles: Boolean){
           publishedAt
           tags
           title
-          url
+          onlineStoreUrl
         }
       }
     }
     handle
     id
     title
-    url
+    onlineStoreUrl
   }
 }
 ''';

@@ -11,7 +11,7 @@ query($cursor: String, $x: Int, $reverse: Boolean, $sortKey: ArticleSortKeys) {
         handle
         title
         publishedAt
-        url
+        onlineStoreUrl
         excerpt
         excerptHtml
         contentHtml
