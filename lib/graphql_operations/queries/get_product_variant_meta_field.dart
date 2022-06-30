@@ -1,13 +1,25 @@
 const String getProductVariantMetaField = r'''
 query ProductMetafields($ownerId : ID!){
-  productVariants(first: 10) {
-    edges {
-      node {
-        metafields(first: 10) {
+    product(id: $ownerId) {
+    metafields {
+      edges {
+        node {
+          id
+          key
+          namespace
+          value
+        }
+      }
+    }
+    variants(first: 10) {
+      edges
+      nodes {
+        metafields {
           edges {
             node {
-              namespace
+              id
               key
+              namespace
               value
             }
           }
