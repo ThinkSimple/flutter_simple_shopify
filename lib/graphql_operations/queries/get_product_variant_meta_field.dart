@@ -12,15 +12,16 @@ query ProductMetafields($ownerId : ID!){
       }
     }
     variants(first: 10) {
-      edges
-      nodes {
+      edges {
+      node {
         metafields {
-          edges {
-            node {
-              id
-              key
-              namespace
-              value
+            edges {
+              node {
+                id
+                key
+                namespace
+                value
+              }
             }
           }
         }
