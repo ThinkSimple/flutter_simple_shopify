@@ -95,7 +95,7 @@ class ShopifyCustomer with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
   }
-  Future<Metafield> getCustomerMetaFields(String? customerAccessToken) async{
+  Future<dynamic> getCustomerMetaFields(String? customerAccessToken) async{
     // call query to get customer metafields
     /*final MutationOptions _options = MutationOptions(
         document: gql(getCustomerQuery),
@@ -109,7 +109,7 @@ class ShopifyCustomer with ShopifyError {
     final QueryResult result = (await _graphQLClient!.query(_getCustomer));
     checkForError(result);
 
-    return Metafield.fromJson(result.data!['customer']['metafields']);
+    return result.data;
   }
   /// Creates a address for the customer to which [customerAccessToken] belongs to.
   Future<Address> customerAddressCreate(
