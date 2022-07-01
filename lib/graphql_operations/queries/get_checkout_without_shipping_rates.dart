@@ -31,6 +31,7 @@ query($id: ID!){
           amount
           currencyCode
         }
+        lastCharacters
         id
       }
       requiresShipping
@@ -100,6 +101,10 @@ query($id: ID!){
       webUrl
       updatedAt
       lineItemsSubtotalPrice {
+        amount
+        currencyCode
+      }
+      paymentDueV2 {
         amount
         currencyCode
       }

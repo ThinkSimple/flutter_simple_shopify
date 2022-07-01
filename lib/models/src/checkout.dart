@@ -20,6 +20,7 @@ class Checkout {
   final String? updatedAt;
   final PriceV2 lineItemsSubtotalPrice;
   final PriceV2 discountAmount;
+  final PriceV2 paymentDueV2;
   final PriceV2 totalTaxV2;
   final PriceV2 totalPriceV2;
   final bool? taxesIncluded;
@@ -48,6 +49,7 @@ class Checkout {
       required this.totalPriceV2,
       required this.lineItemsSubtotalPrice,
       required this.discountAmount,
+      required this.paymentDueV2,
       this.taxesIncluded,
       this.taxExempt,
       required this.subtotalPriceV2,
@@ -97,6 +99,7 @@ class Checkout {
         lineItemsSubtotalPrice: lineItemsSubtotalPrice,
         discountAmount: PriceV2.fromJson(
             {'amount': amount, 'currencyCode': currencyCode}),
+        paymentDueV2: PriceV2.fromJson(json['paymentDueV2'] ?? const {}),
         totalTaxV2: totalTaxV2,
         totalPriceV2: totalPriceV2,
         taxesIncluded: taxesIncluded,
@@ -327,6 +330,7 @@ class ProductVariantCheckout {
       this.product});
 
   static ProductVariantCheckout fromJson(Map<String, dynamic> json) {
+    print('object');
     return ProductVariantCheckout(
       price: PriceV2.fromJson(json['priceV2'] ?? const {}),
       title: json['title'],
@@ -346,14 +350,16 @@ class ProductVariantCheckout {
 class AppliedGiftCards {
   final PriceV2 amountUsedV2;
   final PriceV2 balanceV2;
+  final String lastCharacters;
   final String? id;
 
-  AppliedGiftCards({required this.amountUsedV2, required this.balanceV2, this.id});
+  AppliedGiftCards({required this.amountUsedV2, required this.balanceV2, required this.lastCharacters, this.id});
 
   static AppliedGiftCards fromJson(Map<String, dynamic> json) {
     return AppliedGiftCards(
         amountUsedV2: PriceV2.fromJson(json['amountUsedV2'] ?? const {}),
         balanceV2: PriceV2.fromJson(json['balanceV2'] ?? const {}),
+        lastCharacters: json['lastCharacters'],
         id: json['id']);
   }
 }

@@ -104,6 +104,18 @@ mutation checkoutShippingAddressUpdateV2(
           }
         }
       }
+      appliedGiftCards {
+        amountUsedV2 {
+          amount
+          currencyCode
+        }
+        balanceV2 {
+          amount
+          currencyCode
+        }
+        lastCharacters
+        id
+      }
       discountApplications(first: 10) {
         edges {
           node {
@@ -123,6 +135,10 @@ mutation checkoutShippingAddressUpdateV2(
         }
       }
       lineItemsSubtotalPrice {
+        amount
+        currencyCode
+      }
+      paymentDueV2 {
         amount
         currencyCode
       }

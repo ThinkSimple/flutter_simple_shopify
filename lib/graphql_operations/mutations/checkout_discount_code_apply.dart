@@ -38,6 +38,18 @@ mutation checkoutDiscountCodeApplyV2($checkoutId: ID!, $discountCode: String!) {
         provinceCode
         zip
       }
+      appliedGiftCards {
+        amountUsedV2 {
+          amount
+          currencyCode
+        }
+        balanceV2 {
+          amount
+          currencyCode
+        }
+        lastCharacters
+        id
+      }
       discountApplications(first: 10) {
         edges {
           node {
@@ -57,6 +69,10 @@ mutation checkoutDiscountCodeApplyV2($checkoutId: ID!, $discountCode: String!) {
         }
       }
       lineItemsSubtotalPrice {
+        amount
+        currencyCode
+      }
+      paymentDueV2 {
         amount
         currencyCode
       }

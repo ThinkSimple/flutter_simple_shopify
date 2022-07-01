@@ -35,6 +35,18 @@ mutation checkoutEmailUpdate($checkoutId: ID!, $email: String!) {
         provinceCode
         zip
       }
+      appliedGiftCards {
+        amountUsedV2 {
+          amount
+          currencyCode
+        }
+        balanceV2 {
+          amount
+          currencyCode
+        }
+        lastCharacters
+        id
+      }
       discountApplications(first: 10) {
         edges {
           node {
@@ -54,6 +66,10 @@ mutation checkoutEmailUpdate($checkoutId: ID!, $email: String!) {
         }
       }
       lineItemsSubtotalPrice {
+        amount
+        currencyCode
+      }
+      paymentDueV2 {
         amount
         currencyCode
       }

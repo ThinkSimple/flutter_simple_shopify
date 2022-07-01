@@ -31,6 +31,7 @@ query getOrders(
             edges {
               node {
                 title
+                quantity
                 variant {
                   id
                   title

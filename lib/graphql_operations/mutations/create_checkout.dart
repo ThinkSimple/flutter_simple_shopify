@@ -68,6 +68,18 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
           }
         }
       }
+      appliedGiftCards {
+        amountUsedV2 {
+          amount
+          currencyCode
+        }
+        balanceV2 {
+          amount
+          currencyCode
+        }
+        lastCharacters
+        id
+      }
       discountApplications(first: 10) {
         edges {
           node {
@@ -87,6 +99,10 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
         }
       }
       lineItemsSubtotalPrice {
+        amount
+        currencyCode
+      }
+      paymentDueV2 {
         amount
         currencyCode
       }
