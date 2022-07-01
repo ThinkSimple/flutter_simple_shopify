@@ -109,7 +109,7 @@ class ShopifyCustomer with ShopifyError {
     final QueryResult result = (await _graphQLClient!.query(_getCustomer));
     checkForError(result);
 
-    return result.data;
+    return result.data!['customer']['tags'];
   }
   /// Creates a address for the customer to which [customerAccessToken] belongs to.
   Future<Address> customerAddressCreate(
