@@ -5,6 +5,7 @@ query(
   $x: Int
   $reverse: Boolean
   $sortKey: ProductCollectionSortKeys
+  $filters: [ProductFilter!]
 ) {
   collectionByHandle(handle: $handle) {
     id
@@ -17,9 +18,20 @@ query(
       originalSrc
       transformedSrc(maxWidth: 400, crop: CENTER)
     }
-    products(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
+    products(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse, filters: $filters) {
       pageInfo {
         hasNextPage
+      }
+      filters {
+        id
+        label
+        type
+        values {
+          id
+          label
+          count
+          input
+        }
       }
       edges {
         cursor

@@ -81,7 +81,7 @@ class ShopifyStore with ShopifyError {
       if (deleteThisPartOfCache) {
         //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
       }
-      print('object');
+      // print('object');
       // Map<String, dynamic> a = (result?.data ?? const {})['productByHandle'] ?? {};
       return Product.fromProductHandleJson(
           (result.data ?? const {})['productByHandle'] ?? {});
@@ -121,7 +121,9 @@ class ShopifyStore with ShopifyError {
   ///
   /// Returns the Products associated to the given id's in [idList]
   Future<List<Product>> getProductsByIds(List<String> idList,
-      {bool deleteThisPartOfCache = false, minimumData = true, int variantsCount = 1}) async {
+      {bool deleteThisPartOfCache = false,
+      minimumData = true,
+      int variantsCount = 1}) async {
     List<Product> productList = [];
     final QueryOptions _options = WatchQueryOptions(
         document: minimumData
@@ -135,7 +137,7 @@ class ShopifyStore with ShopifyError {
       'edges': List.generate(response['nodes'].length,
           (index) => {'node': response['nodes'][index]})
     };
-    print('object');
+    // print('object');
     productList = Products.fromJson(newResponse).productList;
     if (deleteThisPartOfCache) {
       //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
@@ -243,12 +245,15 @@ class ShopifyStore with ShopifyError {
 
   /// Returns a collection by handle.
   Future<Collection> getCollectionByHandle(String handle,
-      {bool deleteThisPartOfCache = false, int? productsCount, int variantsCount = 1}) async {
+      {bool deleteThisPartOfCache = false,
+      int? productsCount,
+      int variantsCount = 1}) async {
     Collection collection = Collection.fromJson({});
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
           document: productsCount != null
-              ? gql(getCollectionByHandleWithProductsQuery(productsCount, variantsCount))
+              ? gql(getCollectionByHandleWithProductsQuery(
+                  productsCount, variantsCount))
               : gql(getCollectionByHandleQuery),
           variables: {'handle': handle});
       final QueryResult result = await _graphQLClient!.query(_options);
@@ -268,6 +273,7 @@ class ShopifyStore with ShopifyError {
       String handle, int limit, String? startCursor,
       {bool deleteThisPartOfCache = false,
       bool reverse = false,
+      List<dynamic> filters = const [],
       SortKeyProductCollection sortKeyProductCollection =
           SortKeyProductCollection.RELEVANCE}) async {
     String? cursor = startCursor;
@@ -279,9 +285,12 @@ class ShopifyStore with ShopifyError {
             'x': limit,
             'cursor': cursor,
             'reverse': reverse,
-            'sortKey': sortKeyProductCollection.parseToString()
+            'sortKey': sortKeyProductCollection.parseToString(),
+            'filters': filters
           });
       final QueryResult result = await _graphQLClient!.query(_options);
+      // var a = "$result";
+      // print('result $result');
       checkForError(result);
       if (deleteThisPartOfCache) {
         //_graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
@@ -425,7 +434,7 @@ class ShopifyStore with ShopifyError {
   ///
   /// Gets all [Product] from a [query] search sorted by [sortKey].
   Future<List<Product>> getAllProductsOnQuery(String cursor, String query,
-      {SortKeyProduct? sortKey,
+      {SortKeyProduct sortKey = SortKeyProduct.RELEVANCE,
       bool deleteThisPartOfCache = false,
       bool reverse = false}) async {
     String? cursor;
@@ -459,8 +468,8 @@ class ShopifyStore with ShopifyError {
   ///
   /// Gets [limit] amount of [Product] from the [query] search, sorted by [sortKey].
   Future<Products> getXProductsOnQueryAfterCursor(
-      String query, int limit, String cursor,
-      {SortKeyProduct? sortKey,
+      String query, int limit, String? cursor,
+      {SortKeyProduct sortKey = SortKeyProduct.RELEVANCE,
       bool deleteThisPartOfCache = false,
       bool reverse = false}) async {
     final WatchQueryOptions _options = WatchQueryOptions(

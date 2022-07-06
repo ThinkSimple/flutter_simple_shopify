@@ -1,17 +1,96 @@
+import 'dart:convert';
+
 import 'package:collection/collection.dart';
 import 'package:flutter_simple_shopify/flutter_simple_shopify.dart';
 import 'package:intl/intl.dart';
 
+class Filter {
+  final String id;
+  final String label;
+  final String type;
+  final List<FilterValue> values;
+
+  Filter(
+      {required this.id,
+      required this.label,
+      required this.type,
+      required this.values});
+
+  static Filter fromJson(Map<String, dynamic> json) {
+    return Filter(
+      id: json['id'],
+      label: json['label'],
+      type: json['type'],
+      values: FilterValue.getList(json['values']),
+    );
+  }
+
+  static List<Filter> getList(List jsonList) {
+    List<Filter> fList = [];
+    jsonList.forEach((e) => fList.add(Filter.fromJson(e ?? const {})));
+    return fList;
+  }
+}
+
+class FilterValue {
+  final String id;
+  final String label;
+  final int count;
+  final Map input;
+
+  FilterValue(
+      {required this.id,
+      required this.label,
+      required this.count,
+      required this.input});
+
+  static FilterValue fromJson(Map json) {
+    return FilterValue(
+      id: json['id'],
+      label: json['label'],
+      count: json['count'],
+      input: jsonDecode(json['input']),
+    );
+  }
+
+  static List<FilterValue> getList(List jsonList) {
+    List<FilterValue> fvList = [];
+    jsonList.forEach((e) => fvList.add(FilterValue.fromJson(e ?? const {})));
+    return fvList;
+  }
+
+  Map toJson() => {
+        'id': id,
+        'label': label,
+        'count': count,
+        'input': jsonEncode(input),
+      };
+
+  FilterValue copyWith({String? id, String? label, int? count, Map? input}) {
+    return FilterValue(
+      id: id ?? this.id,
+      label: label ?? this.label,
+      count: count ?? this.count,
+      input: input ?? this.input,
+    );
+  }
+}
+
 class Products {
   final List<Product> productList;
   final bool? hasNextPage;
+  final List<Filter>? filters;
 
-  Products({required this.productList, required this.hasNextPage});
+  Products(
+      {required this.productList, required this.hasNextPage, this.filters});
 
   static Products fromJson(Map<String, dynamic> json) {
+    var a = json['filters'];
+    print('object');
     return Products(
         productList: _getProductList(json),
-        hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage']);
+        hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage'],
+        filters: Filter.getList(json['filters'] ?? []));
   }
 
   static List<Product> _getProductList(Map<String, dynamic> json) {
