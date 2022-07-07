@@ -1,0 +1,130 @@
+#file for azure pipelines build
+trigger:
+  - master
+
+pool:
+  vmImage: macOS-11
+
+stages:
+  - stage: AndroidStage
+    dependsOn: []
+    displayName: Android
+    jobs:
+
+      - job: AndroidJob
+        displayName: Android
+        steps:
+
+#          - task: DownloadSecureFile@1
+#            name: keyprop
+#            displayName: Download key properties file
+#            inputs:
+#              secureFile: 'key.properties'
+#
+#          - task: DownloadSecureFile@1
+#            name: key
+#            displayName: Download signing key
+#            inputs:
+#              secureFile: 'key.jks'
+#
+#          - task: Bash@3
+#            displayName: Copy config files
+#            inputs:
+#              targetType: 'inline'
+#              script: |
+#                cp $(keyprop.secureFilePath) $(Build.SourcesDirectory)/android/key.properties
+#                cp $(key.secureFilePath) $(Build.SourcesDirectory)/android/app/key.jks
+#
+#                echo "key.properties copied to $(Build.SourcesDirectory)/android/key.properties"
+#                echo "key.jks copied to $(Build.SourcesDirectory)/android/app/key.jks"
+
+          - task: FlutterInstall@0
+            displayName: "Install Flutter SDK"
+            inputs:
+              mode: 'auto'
+              channel: 'stable'
+              version: 'latest'
+
+          - task: FlutterBuild@0
+            displayName: "Build application"
+            inputs:
+              target: 'aab'
+              projectDirectory: '$(Build.SourcesDirectory)'
+
+          - task: FlutterTest@0
+            displayName: "Run unit tests"
+            inputs:
+              generateCodeCoverageReport: true
+              projectDirectory: '$(Build.SourcesDirectory)'
+
+          - task: CopyFiles@2
+            displayName: "Copy app to staging directory"
+            inputs:
+              sourceFolder: '$(Agent.BuildDirectory)'
+              contents: '**/bundle/**'
+              targetFolder: '$(Build.StagingDirectory)'
+              flattenFolders: true
+
+          - task: PublishBuildArtifacts@1
+            displayName: "Publish AAB file"
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'AAB'
+              publishLocation: 'Container'
+
+#  - stage: iOSStage
+#    dependsOn: []
+#    displayName: iOS
+#    jobs:
+#
+#      - job: iOSJob
+#        displayName: iOS
+#        steps:
+#
+#          - task: InstallAppleCertificate@2
+#            displayName: Install certificate
+#            inputs:
+#              certSecureFile: 'iosKey'
+#              certPwd: 'yourPwd'
+#              keychain: 'temp'
+#
+#          - task: InstallAppleProvisioningProfile@1
+#            displayName: Install provisioning file
+#            inputs:
+#              provisioningProfileLocation: 'secureFiles'
+#              provProfileSecureFile: 'ios_Profile.mobileprovision'
+#
+#          - task: FlutterInstall@0
+#            displayName: "Install Flutter SDK"
+#            inputs:
+#              mode: 'auto'
+#              channel: 'stable'
+#              version: 'latest'
+#
+#          - task: FlutterBuild@0
+#            displayName: "Build application"
+#            inputs:
+#              target: ipa
+#              projectDirectory: '$(Build.SourcesDirectory)'
+#              exportOptionsPlist: 'ios/exportOptions.plist'
+#
+#          - task: FlutterTest@0
+#            displayName: "Run unit tests"
+#            inputs:
+#              generateCodeCoverageReport: true
+#              projectDirectory: '$(Build.SourcesDirectory)'
+#
+#          - task: CopyFiles@2
+#            displayName: "Copy app to staging directory"
+#            inputs:
+#              sourceFolder: '$(Agent.BuildDirectory)'
+#              contents: '**/ipa/*.ipa'
+#              targetFolder: '$(Build.StagingDirectory)'
+#              flattenFolders: true
+#
+#          - task: PublishBuildArtifacts@1
+#            displayName: "Publish IPA file"
+#            inputs:
+#              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#              ArtifactName: 'IPA'
+#              publishLocation: 'Container'
