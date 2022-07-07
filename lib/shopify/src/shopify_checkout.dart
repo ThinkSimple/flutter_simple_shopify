@@ -34,7 +34,7 @@ class ShopifyCheckout with ShopifyError {
   ///
   /// Creates a new [Checkout].
   Future<Checkout> createCheckout(List<String> variantIdList,
-      {Map<String, String>? shippingAddress,
+      {Map<String, String?>? shippingAddress,
       String? email,
       String? note,
       bool deleteThisPartOfCache = false}) async {
@@ -105,16 +105,16 @@ class ShopifyCheckout with ShopifyError {
   /// Updates the shipping address on given [checkoutId]
   Future<Checkout> shippingAddressUpdate(
       String checkoutId,
-      String address1,
-      String address2,
-      String company,
-      String city,
-      String country,
-      String firstName,
-      String lastName,
-      String phone,
-      String province,
-      String zip,
+      String? address1,
+      String? address2,
+      String? company,
+      String? city,
+      String? country,
+      String? firstName,
+      String? lastName,
+      String? phone,
+      String? province,
+      String? zip,
       {bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options = MutationOptions(
         document: gql(checkoutShippingAddressUpdateMutation),
@@ -132,6 +132,7 @@ class ShopifyCheckout with ShopifyError {
           'zip': zip
         });
     final QueryResult result = await _graphQLClient.mutate(_options);
+    print("object");
     checkForError(
       result,
       key: 'checkoutShippingAddressUpdateV2',
