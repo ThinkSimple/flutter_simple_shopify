@@ -466,4 +466,24 @@ class ShopifyStore with ShopifyError {
 
   }
 
+  Future<List<Metafield>> getProductVariantMetaFields(
+      String id, {bool deleteThisPartOfCache = false}) async {
+    final WatchQueryOptions _options = WatchQueryOptions(
+        document: gql(getMetaField),
+        variables: {
+          'ownerId': "gid://shopify/Product/$id"});
+    final QueryResult result =
+    await ShopifyConfig.graphQLClient!.query(_options);
+    checkForError(result);
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
+    return (result.data!['product']['variants']['edges'][0]['node']
+    as List<Object?>)
+        .map((e) => Metafield.fromGraphJson(e as Map<String, dynamic>))
+        .toList();
+
+  }
+
+
 }

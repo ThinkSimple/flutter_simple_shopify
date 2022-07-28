@@ -3,24 +3,6 @@ query ProductMetafields($ownerId : ID!){
   product(id: $ownerId) {
     id
     title
-    variants(first : 5){
-      edges {
-        node {
-          id
-          title
-          metafields (first : 250, namespace: "wildfox"){
-            edges {
-              node {
-                id
-                namespace
-                key
-                value
-              }
-            }
-          }
-        }
-      }
-    }
     metafields(namespace: "wildfox", first: 50) {
       edges {
         node {
@@ -30,6 +12,24 @@ query ProductMetafields($ownerId : ID!){
           value
           valueType
           description
+        }
+      }
+    }
+    variants(first : 50){
+      edges {
+        node {
+          id
+          title
+          metafields (first : 50, namespace: "wildfox"){
+            edges {
+              node {
+                id
+                namespace
+                key
+                value
+              }
+            }
+          }
         }
       }
     }
