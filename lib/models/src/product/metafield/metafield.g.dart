@@ -11,8 +11,6 @@ _$_Metafield _$$_MetafieldFromJson(Map<String, dynamic> json) => _$_Metafield(
       namespace: json['namespace'] as String,
       key: json['key'] as String,
       value: json['value'] as String,
-      valueType: json['valueType'] as String,
-      description: json['description'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_MetafieldToJson(_$_Metafield instance) =>
@@ -21,6 +19,4 @@ Map<String, dynamic> _$$_MetafieldToJson(_$_Metafield instance) =>
       'namespace': instance.namespace,
       'key': instance.key,
       'value': instance.value,
-      'valueType': instance.valueType,
-      'description': instance.description,
     };

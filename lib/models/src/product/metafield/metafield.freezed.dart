@@ -26,16 +26,12 @@ class _$MetafieldTearOff {
       {required String id,
       required String namespace,
       required String key,
-      required String value,
-      required String valueType,
-      String? description = ''}) {
+      required String value}) {
     return _Metafield(
       id: id,
       namespace: namespace,
       key: key,
       value: value,
-      valueType: valueType,
-      description: description,
     );
   }
 
@@ -53,8 +49,6 @@ mixin _$Metafield {
   String get namespace => throw _privateConstructorUsedError;
   String get key => throw _privateConstructorUsedError;
   String get value => throw _privateConstructorUsedError;
-  String get valueType => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -66,13 +60,7 @@ mixin _$Metafield {
 abstract class $MetafieldCopyWith<$Res> {
   factory $MetafieldCopyWith(Metafield value, $Res Function(Metafield) then) =
       _$MetafieldCopyWithImpl<$Res>;
-  $Res call(
-      {String id,
-      String namespace,
-      String key,
-      String value,
-      String valueType,
-      String? description});
+  $Res call({String id, String namespace, String key, String value});
 }
 
 /// @nodoc
@@ -89,8 +77,6 @@ class _$MetafieldCopyWithImpl<$Res> implements $MetafieldCopyWith<$Res> {
     Object? namespace = freezed,
     Object? key = freezed,
     Object? value = freezed,
-    Object? valueType = freezed,
-    Object? description = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -109,14 +95,6 @@ class _$MetafieldCopyWithImpl<$Res> implements $MetafieldCopyWith<$Res> {
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
-      valueType: valueType == freezed
-          ? _value.valueType
-          : valueType // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -127,13 +105,7 @@ abstract class _$MetafieldCopyWith<$Res> implements $MetafieldCopyWith<$Res> {
           _Metafield value, $Res Function(_Metafield) then) =
       __$MetafieldCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String id,
-      String namespace,
-      String key,
-      String value,
-      String valueType,
-      String? description});
+  $Res call({String id, String namespace, String key, String value});
 }
 
 /// @nodoc
@@ -151,8 +123,6 @@ class __$MetafieldCopyWithImpl<$Res> extends _$MetafieldCopyWithImpl<$Res>
     Object? namespace = freezed,
     Object? key = freezed,
     Object? value = freezed,
-    Object? valueType = freezed,
-    Object? description = freezed,
   }) {
     return _then(_Metafield(
       id: id == freezed
@@ -171,14 +141,6 @@ class __$MetafieldCopyWithImpl<$Res> extends _$MetafieldCopyWithImpl<$Res>
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
-      valueType: valueType == freezed
-          ? _value.valueType
-          : valueType // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -190,9 +152,7 @@ class _$_Metafield extends _Metafield {
       {required this.id,
       required this.namespace,
       required this.key,
-      required this.value,
-      required this.valueType,
-      this.description = ''})
+      required this.value})
       : super._();
 
   factory _$_Metafield.fromJson(Map<String, dynamic> json) =>
@@ -206,15 +166,10 @@ class _$_Metafield extends _Metafield {
   final String key;
   @override
   final String value;
-  @override
-  final String valueType;
-  @JsonKey()
-  @override
-  final String? description;
 
   @override
   String toString() {
-    return 'Metafield(id: $id, namespace: $namespace, key: $key, value: $value, valueType: $valueType, description: $description)';
+    return 'Metafield(id: $id, namespace: $namespace, key: $key, value: $value)';
   }
 
   @override
@@ -225,10 +180,7 @@ class _$_Metafield extends _Metafield {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.namespace, namespace) &&
             const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality().equals(other.valueType, valueType) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description));
+            const DeepCollectionEquality().equals(other.value, value));
   }
 
   @override
@@ -237,9 +189,7 @@ class _$_Metafield extends _Metafield {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(namespace),
       const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(valueType),
-      const DeepCollectionEquality().hash(description));
+      const DeepCollectionEquality().hash(value));
 
   @JsonKey(ignore: true)
   @override
@@ -257,9 +207,7 @@ abstract class _Metafield extends Metafield {
       {required String id,
       required String namespace,
       required String key,
-      required String value,
-      required String valueType,
-      String? description}) = _$_Metafield;
+      required String value}) = _$_Metafield;
   _Metafield._() : super._();
 
   factory _Metafield.fromJson(Map<String, dynamic> json) =
@@ -273,10 +221,6 @@ abstract class _Metafield extends Metafield {
   String get key;
   @override
   String get value;
-  @override
-  String get valueType;
-  @override
-  String? get description;
   @override
   @JsonKey(ignore: true)
   _$MetafieldCopyWith<_Metafield> get copyWith =>

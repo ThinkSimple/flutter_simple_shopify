@@ -478,7 +478,7 @@ class ShopifyStore with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
-    return (result.data!['product']['variants']['edges'][0]['node']
+    return (result.data!['product']['variants']['edges'][0]['node']['metafields']['edges']
     as List<Object?>)
         .map((e) => Metafield.fromGraphJson(e as Map<String, dynamic>))
         .toList();
