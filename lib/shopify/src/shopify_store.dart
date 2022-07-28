@@ -23,7 +23,6 @@ import 'package:graphql/client.dart';
 
 import '../../graphql_operations/queries/get_featured_collections.dart';
 import '../../graphql_operations/queries/get_n_products.dart';
-import '../../graphql_operations/queries/get_product_variant_meta_field.dart';
 import '../../graphql_operations/queries/get_products.dart';
 import '../../models/src/collection/collection.dart';
 import '../../shopify_config.dart';
@@ -467,22 +466,4 @@ class ShopifyStore with ShopifyError {
 
   }
 
-  Future<List<Metafield>> getProductVariantMetaFields(
-      String id, {bool deleteThisPartOfCache = false}) async {
-    final WatchQueryOptions _options = WatchQueryOptions(
-        document: gql(getProductVariantMetaField),
-        variables: {
-          'ownerId': "gid://shopify/Product/$id"});
-    final QueryResult result =
-    await ShopifyConfig.graphQLClient!.query(_options);
-    checkForError(result);
-    if (deleteThisPartOfCache) {
-      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
-    }
-    return (result.data!['product']['metafields']['edges']
-    as List<Object?>)
-        .map((e) => Metafield.fromGraphJson(e as Map<String, dynamic>))
-        .toList();
-
-  }
 }
