@@ -8,7 +8,7 @@ query ProductMetafields($ownerId : ID!){
         node {
           id
           title
-          metafields (first : 250, namespace: $namespace){
+          metafields (first : 250, namespace: "wildfox"){
             edges {
               node {
                 id
