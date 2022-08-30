@@ -27,14 +27,16 @@ class LineItemOrder with _$LineItemOrder {
     return LineItemOrder(
         currentQuantity: (json['node'] ?? const {})['currentQuantity'],
         discountAllocations: _getDiscountAllocationsList(json),
-        discountedTotalPrice: PriceV2.fromJson(
-            (json['node'] ?? const {})['discountedTotalPrice']),
+        discountedTotalPrice: PriceV2.fromJson((json['node'] ??
+            const {})['discountedTotalPrice'] as Map<String, dynamic>),
         originalTotalPrice:
             PriceV2.fromJson((json['node'] ?? const {})['originalTotalPrice']),
         quantity: (json['node'] ?? const {})['quantity'],
         title: (json['node'] ?? const {})['title'],
-        variant: ProductVariantCheckout.fromJson(
-            (json['node'] ?? const {})['variant'] ?? const {}));
+        variant: json['node']!['variant'] == null
+            ? null
+            : ProductVariantCheckout.fromJson(
+                (json['node'] ?? const {})['variant'] ?? const {}));
   }
 
   static _getDiscountAllocationsList(Map<String, dynamic> json) {

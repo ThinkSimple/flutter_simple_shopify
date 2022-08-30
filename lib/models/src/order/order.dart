@@ -37,7 +37,7 @@ class Order with _$Order {
         email: (json['node'] ?? const {})['email'],
         currencyCode: (json['node'] ?? const {})['currencyCode'],
         customerUrl: (json['node'] ?? const {})['customerUrl'],
-        lineItems: LineItemsOrder.fromJson(
+        lineItems: LineItemsOrder.fromGraphJson(
             (json['node'] ?? const {})['lineItems'] ?? const {}),
         name: (json['node'] ?? const {})['name'],
         orderNumber: (json['node'] ?? const {})['orderNumber'],

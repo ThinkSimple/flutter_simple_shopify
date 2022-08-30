@@ -9,13 +9,13 @@ part 'orders.g.dart';
 class Orders with _$Orders {
   factory Orders({required List<Order> orderList, required bool hasNextPage}) =
       _Orders;
-      
+
   factory Orders.fromJson(Map<String, dynamic> json) => _$OrdersFromJson(json);
 
   static Orders fromGraphJson(Map<String, dynamic> json) {
     return Orders(
         orderList: _getOrderList(json),
-        hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage']);
+        hasNextPage: false); //(json['pageInfo'] ?? const {})['hasNextPage']);
   }
 
   static List<Order> _getOrderList(Map<String, dynamic> json) {

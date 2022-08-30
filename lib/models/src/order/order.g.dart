@@ -7,18 +7,18 @@ part of 'order.dart';
 // **************************************************************************
 
 _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
-      id: json['id'] as String,
-      email: json['email'] as String,
-      currencyCode: json['currencyCode'] as String,
-      customerUrl: json['customerUrl'] as String,
-      lineItems:
-          LineItemsOrder.fromJson(json['lineItems'] as Map<String, dynamic>),
-      name: json['name'] as String,
-      orderNumber: json['orderNumber'] as int,
-      processedAt: json['processedAt'] as String,
+      id: json['node']['id'] as String,
+      email: json['node']['email'] as String,
+      currencyCode: json['node']['currencyCode'] as String,
+      customerUrl: json['node']['customerUrl'] as String,
+      lineItems: LineItemsOrder.fromJson(
+          json['node']['lineItems'] as Map<String, dynamic>),
+      name: json['node']['name'] as String,
+      orderNumber: json['node']['orderNumber'] as int,
+      processedAt: json['node']['processedAt'] as String,
       shippingAddress: ShippingAddress.fromJson(
-          json['shippingAddress'] as Map<String, dynamic>),
-      statusUrl: json['statusUrl'] as String,
+          json['node']['shippingAddress'] as Map<String, dynamic>),
+      statusUrl: json['node']['statusUrl'] as String,
       subtotalPriceV2:
           PriceV2.fromJson(json['subtotalPriceV2'] as Map<String, dynamic>),
       totalPriceV2:

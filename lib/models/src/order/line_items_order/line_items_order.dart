@@ -18,8 +18,8 @@ class LineItemsOrder with _$LineItemsOrder {
 
   static _getLineItemOrderList(Map<String, dynamic> json) {
     List<LineItemOrder> lineItemListOrder = [];
-    json['edges']?.forEach((lineItemOrder) =>
-        lineItemListOrder.add(LineItemOrder.fromGraphJson(lineItemOrder)));
+    json['edges']?.forEach((lineItemOrder) => lineItemListOrder.add(
+        LineItemOrder.fromGraphJson(lineItemOrder as Map<String, dynamic>)));
     return lineItemListOrder;
   }
 }
